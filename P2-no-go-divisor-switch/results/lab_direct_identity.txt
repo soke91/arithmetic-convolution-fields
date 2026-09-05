@@ -1,0 +1,97 @@
+STATISTIC: sum_{k<N}(log k)mu(k)A(N;k) against
+           sum_{p<N}Lambda(N-p)log p; their relative difference;
+           the ratio of that quantity to S(N)N; the partial sums
+           over k < N^0.56, N^0.70, N^0.90 and their share of the
+           total; and the same total restricted to (k,N) = 1.
+DENOM: the identity residual is divided by the right-hand side,
+       sum_{p<N}Lambda(N-p)log p;
+NULL: none is run and none would mean anything. Z1 is an exact
+      arithmetic identity whose reference is itself, Z2 compares
+      against S(N)N which is the reference, and Z3 and Z4
+      compare two sums over the SAME terms, so a sign control
+      would move both sides together. The field's sign controls
+      were run in lab_sign_structure.py and lab_signed_level.py.
+FIELD: N = 2e5 through 3.2e6 by doubling; k over every squarefree
+       2 <= k < N, with no coprimality restriction except where
+       Z4 imposes one; S(N) from an Euler product at the fixed
+       bound 4e6.
+
+sieving to 3200000 ...
+
+  N            LHS sum_k         RHS sum_p        rel err
+  --------------------------------------------------------------
+  200000       353468.010206     353468.010206    3.294e-16
+  400000       694658.006261     694658.006261    6.703e-16
+  800000       1393278.168495    1393278.168495   3.342e-16
+  1600000      2821443.738013    2821443.738013   3.136e-15
+  3200000      5615497.330075    5615497.330075   1.161e-15
+
+Z1  the identity holds at every N            hold
+
+Z2  the quantity against S(N)N
+  N            RHS/N      S(N)      ratio
+  200000       1.7673     1.7604    1.0039
+  400000       1.7366     1.7604    0.9865
+  800000       1.7416     1.7604    0.9893
+  1600000      1.7634     1.7604    1.0017
+  3200000      1.7548     1.7604    0.9968
+  Z2 hold
+
+Z3  how little of it lives below the truncation
+  N            k<N^0.56    k<N^0.70    k<N^0.90    share at 0.90
+  200000       -0.4394     -1.7200     -4.3412     2.4564
+  400000       -0.3967     -1.6641     -4.6951     2.7035
+  800000       -0.3253     -1.5499     -5.0055     2.8741
+  1600000      -0.2565     -1.4400     -5.3075     3.0098
+  3200000      -0.2107     -1.3182     -5.6291     3.2078
+  Z3 REFUTED
+
+Z4  restricting to (k,N) = 1
+  N            all k          (k,N)=1        rel diff
+  200000       1.7673         1.7673         0.0000
+  400000       1.7366         1.7366         0.0000
+  800000       1.7416         1.7416         0.0000
+  1600000      1.7634         1.7634         0.0000
+  3200000      1.7548         1.7548         0.0000
+  Z4 hold
+
+  DIAGNOSTIC (post hoc). Where the mass is. By [eq:dilate],
+  H(N;k) = sum_{m<N/k,(m,k)=1} Lambda(N-mk)mu(m), so once
+  k > N/2 only m = 1 survives and the term is (log k)Lambda(N-k),
+  nonnegative. The share of the total carried above N/2:
+  N            k>N/2 share   k in (N^0.9, N/2] share
+  200000       2.6529        0.8034
+  400000       2.8537        0.8498
+  800000       2.9996        0.8745
+  1600000      3.1214        0.8884
+  3200000      3.2932        0.9146
+  So the count is assembled almost entirely from the moduli the
+  reduction truncates away, and the m = 1 tail alone carries it.
+
+  Cross-check lines. sum_{k<N^0.56,(k,N)=1}(log k)H(N;k)/N is
+  computed independently by lab_signed_level.py; the gate holds
+  the two against each other. That comparison is what found
+  the missing mu(k) in that script.
+  partial at 0.56, N=200000: -0.439477
+  partial at 0.56, N=400000: -0.396683
+  partial at 0.56, N=800000: -0.325300
+  partial at 0.56, N=1600000: -0.256448
+  partial at 0.56, N=3200000: -0.210663
+  and the total itself, which lab_layer_decomposition.py
+  reaches by cutting the same double sum along m instead:
+AGREE untrunc_total N=200000 1.767340 1e-9
+AGREE untrunc_total N=400000 1.736645 1e-9
+AGREE untrunc_total N=800000 1.741598 1e-9
+AGREE untrunc_total N=1600000 1.763402 1e-9
+AGREE untrunc_total N=3200000 1.754843 1e-9
+  These partials are reported and NOT cross-checked. They
+  carried an AGREE label, which claims another result file
+  reaches the same number by another route. None does --
+  searched across this generation and the frozen ones, since
+  the sibling label mstar_001 turned out to have its partner
+  sitting in a frozen tree and looked unmatched for the same
+  reason. The claim is withdrawn: an unmatched cross-check
+  gives confidence and tests nothing.
+
+======================================================================
+REFUTED

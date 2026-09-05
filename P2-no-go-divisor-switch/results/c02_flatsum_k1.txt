@@ -1,0 +1,65 @@
+STATISTIC: the flat sum of dilated walls |sum_k H(N;k)|/N computed over
+           two index sets -- k >= 1, which is how P2 [eq:Tw] and
+           {#prop:flatsum} index it, and k >= 2, which is what
+           lab_weight_gap.py computes -- with their difference against
+           C(N); the ratio |sum_k H| / |sum_k (log k) H| under both;
+           |T_1|/N under both; and the fitted decay exponent of each.
+FIELD: N = 2e5 through 2.56e7 by doubling (all of the form 2^a 5^b --
+       that is the target's own field and is kept here on purpose so the
+       comparison is like for like); theta' = THETA = 0.56, so k runs
+       over the squarefree k < floor(N^0.56) coprime to N and m over
+       1 <= m < N/k; Lambda and mu from an independent integer sieve to
+       2.56e7 -- mu by an omega-counter plus a squarefull mask, NOT by
+       the sign-flip + leftover-cofactor recurrence the target uses --
+       sums in float64; exponents by np.polyfit of log y on log N,
+       8 points.
+CONSTANTS: THETA = 0.56 (theta', the truncation exponent K = N^THETA);
+           NS = 2e5, 4e5, 8e5, 1.6e6, 3.2e6, 6.4e6, 1.28e7, 2.56e7;
+           sieve bound NMAX = max(NS) = 25600000; brute-force
+           cross-check bound 10^4.
+NULL: none applies. Every quantity here is a deterministic rearrangement
+      of one integer sieve, and the finding is a difference between two
+      index sets rather than a detection, so there is no sign pattern to
+      permute. No random number is drawn; there is no seed.
+DENOM: every relative figure below is divided by N, as its label states.
+
+C-02  flat sum of dilated walls with k = 1 restored
+==============================================================================
+independent sieve to 25600000 ...
+  self-check against trial division for n <= 10^4: 0 mismatches
+
+  N            C(N)/N       flat_code/N   flat_paper/N   ratio_code  ratio_paper
+  ----------------------------------------------------------------------------
+  200000       +0.000976    0.079409      0.078433       0.1807      0.1785
+  400000       +0.007177    0.069006      0.061829       0.1740      0.1559
+  800000       +0.004546    0.052834      0.048288       0.1624      0.1484
+  1600000      -0.002407    0.035624      0.038032       0.1389      0.1483
+  3200000      +0.001875    0.030682      0.028807       0.1456      0.1367
+  6400000      -0.002143    0.022098      0.024241       0.1216      0.1334
+  12800000     +0.000239    0.018400      0.018161       0.1258      0.1241
+  25600000     +0.000668    0.014925      0.014256       0.1188      0.1135
+
+  H(N;1) = C(N) exactly, so flat_paper - flat_code = C(N):
+    N = 200000      flat_paper - flat_code = +195.187778   C(N) = +195.187778
+    N = 400000      flat_paper - flat_code = +2870.642737   C(N) = +2870.642737
+    N = 800000      flat_paper - flat_code = +3637.011704   C(N) = +3637.011704
+    N = 1600000     flat_paper - flat_code = -3851.655335   C(N) = -3851.655335
+    N = 3200000     flat_paper - flat_code = +6001.414390   C(N) = +6001.414390
+    N = 6400000     flat_paper - flat_code = -13717.007112   C(N) = -13717.007112
+    N = 12800000    flat_paper - flat_code = +3053.867465   C(N) = +3053.867465
+    N = 25600000    flat_paper - flat_code = +17110.815241   C(N) = +17110.815241
+
+  T_1 is unaffected by k=1 (its k=1 term is A(N;1) - C(N)/phi(1) = 0):
+    N = 200000      |T_1|/N  k>=1: 0.07843   k>=2: 0.07843   diff 9.09e-18
+    N = 400000      |T_1|/N  k>=1: 0.06179   k>=2: 0.06179   diff 0.00e+00
+    N = 800000      |T_1|/N  k>=1: 0.04827   k>=2: 0.04827   diff 9.09e-18
+    N = 1600000     |T_1|/N  k>=1: 0.03805   k>=2: 0.03805   diff 0.00e+00
+    N = 3200000     |T_1|/N  k>=1: 0.02880   k>=2: 0.02880   diff 0.00e+00
+    N = 6400000     |T_1|/N  k>=1: 0.02425   k>=2: 0.02425   diff 0.00e+00
+    N = 12800000    |T_1|/N  k>=1: 0.01816   k>=2: 0.01816   diff 2.27e-18
+    N = 25600000    |T_1|/N  k>=1: 0.01425   k>=2: 0.01425   diff 0.00e+00
+
+  fitted flat-sum exponent, code (k>=2)    : -0.3620
+
+  fitted flat-sum exponent, paper (k>=1)   : -0.3505
+  fitted log-weighted exponent            : -0.2696

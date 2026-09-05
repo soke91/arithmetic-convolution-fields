@@ -1,0 +1,93 @@
+STATISTIC: the exact expansion of the count over pairs (m,d)
+           with combined modulus q = m d^2 < N; the deficit of
+           the truncation to q < Q at Q = 1e2 .. 1e6; the least
+           Q* past which the deficit stays under 0.01 N, in
+           units of sqrt(N) and as an exponent; and the same
+           deficit with the sign of mu(d) randomised.
+DENOM: the expansion residual is divided by the right-hand side;
+NULL: the sign draw of Y4 -- every L2(N;m,d) held fixed, the
+      sign attached to each d >= 2 redrawn, 16 draws. It cannot
+      buy square-root cancellation inside a term, unlike the
+      coin that beat mu on the level, so it isolates the
+      structure on d, which is what the expansion credits.
+FIELD: N = 2e5 through 1.6e6 by doubling; every pair of
+       squarefree m, d with (d,m) = 1 and m d^2 < N; j over
+       1 <= j < N/(m d^2) coprime to m; S(N) from an Euler
+       product at the fixed bound 4e6; seed 20260808.
+
+sieving to 1600000 ...
+  N = 200000     pairs = 166384    total/N = 1.767340  target = 1.767340
+  N = 400000     pairs = 332765    total/N = 1.736645  target = 1.736645
+  N = 800000     pairs = 665530    total/N = 1.741598  target = 1.741598
+  N = 1600000    pairs = 1331048   total/N = 1.763402  target = 1.763402
+
+Y1  the expansion is exact, worst relative 4.525e-15   hold
+
+Y2  the deficit |total - T(N;Q)|/N, T over the pairs m d^2 < Q
+  N            Q=100       Q=1000      Q=10000     Q=100000    Q=1000000 
+  200000       0.4983      0.3290      0.0256      0.0217      0.0000    
+  400000       0.5259      0.3499      0.0375      0.0075      0.0000    
+  800000       0.5468      0.3743      0.0547      0.0068      0.0000    
+  1600000      0.6001      0.4486      0.0733      0.0024      0.0041    
+  Y2 REFUTED
+
+Y3  where the combined modulus has to reach
+  N            sqrt N     Q*         Q*/sqrt N   log Q*/log N
+  200000       447.2      160112     358.0213    0.9818
+  400000       632.5      200848     317.5686    0.9466
+  800000       894.4      482589     539.5509    0.9628
+  1600000      1264.9     589203     465.8059    0.9301
+  Y3 log Q*/log N at least 0.5 everywhere   hold
+
+Y4  the control: sign of mu(d) drawn at random for d >= 2
+  N            mu deficit at Q=10000   draws min   median   max
+  200000       0.0256               0.0008      0.0231    0.0646
+  400000       0.0375               0.0050      0.0440    0.0703
+  800000       0.0547               0.0073      0.0454    0.0711
+  1600000      0.0733               0.0038      0.0342    0.0825
+  Y4 REFUTED
+
+  DIAGNOSTIC (post hoc). How Q* compares with the truncation
+  in m alone, read from results/lab_layer_tail.txt rather than
+  copied, and with the reduction's K > N^{1/2} in k.
+  Fitted, Q* ~ N^{0.6904} with correlation 0.96357 -- above the
+  1/2 -- but that comparison does not survive.
+  audit_truncation_exponent.py sweeps the tolerance that
+  defines Q* and finds the fitted exponent moving over more
+  than a unit, including a negative value, because the deficit
+  oscillates while it decays. The fit is printed because it is
+  what this script computes at one tolerance, not because it is
+  a property of the count.
+  leave-one-out on qstar: full 0.6904, without the smallest N 0.7763,
+  without the largest 0.7959 -- spread 0.1055
+SWEPT qstar N-range 0.1055
+  The truncation in m alone fits N^{0.1089} at the same
+  tolerance and is equally tolerance-bound, so the honest
+  comparison is between the Q* and M* VALUES tabulated
+  above, not between their exponents.
+
+  On the two refutations. Y2 failed on a terminal oscillation,
+  not on a trend: the deficit at the finer grid reads
+  N            Q=3000       Q=30000      Q=300000     Q=3000000  
+  200000       0.14736      0.01324      0.00000      0.00000    
+  400000       0.18149      0.00565      0.00627      0.00000    
+  800000       0.18948      0.01648      0.01462      0.00000    
+  1600000      0.22560      0.01496      0.01058      0.00000    
+  -- it falls by three orders and then wanders at the 1e-3
+  level, which is the alternating sum finishing, not a failure
+  to converge. Y4 failed because the convergence in Q is not
+  bought by mu(d) at all: the random draws bracket mu rather
+  than losing to it, so what makes the far pairs negligible is
+  their size and not their signs. The Mobius structure that
+  does earn its keep is the one on m, measured in
+  what the layers weigh.
+
+  Cross-check lines, against the three scripts that reach the
+  same total by other cuts of the same double sum.
+AGREE untrunc_total N=200000 1.767340 1e-9
+AGREE untrunc_total N=400000 1.736645 1e-9
+AGREE untrunc_total N=800000 1.741598 1e-9
+AGREE untrunc_total N=1600000 1.763402 1e-9
+
+======================================================================
+REFUTED

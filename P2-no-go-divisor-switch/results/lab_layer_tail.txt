@@ -1,0 +1,137 @@
+STATISTIC: the tail |sum_{m>=M} mu(m)L(N;m)|/N at
+           M = 10, 30, 100, 300, 1000, 3000; the normalised
+           profile R(m) = phi(m)L(N;m)log N/(N log(N/m)) over the
+           squarefree m <= 200 coprime to N; and the same tail
+           with the signs on m >= 3000 randomised.
+NULL: the sign draw of Z4 -- every layer L(N;m) held fixed and
+      nonnegative, the sign of each m >= 3000 redrawn, 16 draws.
+      Unlike the coin that beat mu it cannot buy
+      square-root cancellation inside a layer, so it isolates
+      the sign pattern across m, which is what is being
+      credited for the tail's smallness.
+FIELD: N = 2e5 through 1.6e6 by doubling; m over the squarefree
+       1 <= m < N; k over the squarefree k < N/m coprime to m;
+       S(N) from an Euler product at the fixed bound 4e6; seed
+       20260808 + j at the j-th N of the ladder, so the
+       four runs use 20260808 to 20260811; the declaration
+       named the base alone and the runs could not be
+       reproduced from it.
+
+sieving to 1600000 ...
+  N = 200000     total/N = 1.767340
+  N = 400000     total/N = 1.736645
+  N = 800000     total/N = 1.741598
+  N = 1600000    total/N = 1.763402
+
+Z1/Z2  the tail |sum_{m>=M} mu(m)L(N;m)| / N
+  N            M=10       M=30       M=100      M=300      M=1000     M=3000   
+  200000       2.8230     0.8025     0.2906     0.0454     0.0089     0.0002   
+  400000       3.0836     0.9168     0.3585     0.0527     0.0367     0.0082   
+  800000       3.3268     0.9812     0.3806     0.0748     0.0309     0.0008   
+  1600000      3.5477     1.0484     0.4088     0.0660     0.0067     0.0015   
+  Z1 decreasing in M    hold
+  Z2 under 0.5 at M=3000   hold
+
+Z3  the 1/phi(m) law: R(m) = phi(m)L(N;m)logN/(N log(N/m))
+  N            m=1      m=3      m=7      m=11     m=13     min      max
+  200000       8.8266    6.9693    7.6024    7.9045    8.0623   6.0127   8.8266
+  400000       9.3836    7.4513    8.1603    8.4725    8.5636   6.4367   10.0058
+  800000       9.9117    7.8757    8.5694    8.9845    9.0034   6.7976   9.9117
+  1600000      10.4611   8.3234    9.0881    9.4578    9.5673   7.2404   10.4611
+  Z3 REFUTED
+
+Z4  the control: signs on m >= 3000 drawn at random, layers fixed
+  N            |mu tail|/N   draws min/N   median/N   max/N
+  200000       0.0002        0.0032        0.0149     0.0404
+  400000       0.0082        0.0002        0.0188     0.0645
+  800000       0.0008        0.0040        0.0329     0.1166
+  1600000      0.0015        0.0006        0.0409     0.0965
+  Z4 REFUTED
+
+  DIAGNOSTIC 1 (post hoc). Why Z4 failed. Past M the layers
+  still carry mass -- a few N -- but each one is tiny, so the
+  l2 norm that governs a random sign sum is far below it and a
+  coin cancels the tail about as well as mu does:
+  N            l1 mass at 3000   l2 norm      mu tail   largest
+  200000       1.4885            0.0240       0.0002    0.0016
+  400000       2.2021            0.0295       0.0082    0.0018
+  800000       3.0141            0.0341       0.0008    0.0017
+  1600000      3.9771            0.0398       0.0015    0.0020
+  So mu earns nothing out there and the refutation is correct:
+  the tail is small because the layers are individually small,
+  not because of a cancellation only mu can supply. Contrast
+  lab_layer_decomposition.py, where the FULL mass is tens of N,
+  the l2 norm is dominated by the first layers, and mu beats
+  every draw. The cancellation is spent at small m.
+
+  DIAGNOSTIC 2 (post hoc). Where the truncation can actually
+  sit. M*(N) is the least M such that the tail stays under
+  0.01 N for every M' >= M:
+  N            sqrt N     M*        M*/sqrt N   log M*/log N
+  200000       447.2      8264      18.4789     0.7389
+  400000       632.5      8624      13.6357     0.7025
+  800000       894.4      9332      10.4335     0.6725
+  1600000      1264.9     10352     8.1840      0.6472
+  Fitted at this tolerance, M* ~ N^{0.1089} with correlation
+  0.98390. That exponent is NOT a property of the count:
+  audit_truncation_exponent.py sweeps the tolerance and finds
+  the fitted exponent moving over most of the unit interval,
+  with correlations near zero at some tolerances, because the
+  tail of an alternating sum oscillates while it decays and
+  M*(eps) reads the last excursion rather than a trend. What
+  the table above supports is that M* is of order 1e4 at these
+  N and grows slowly; the rate is not determined here.
+  leave-one-out on mstar: full 0.1089, without the smallest N 0.1317,
+  without the largest 0.0877 -- spread 0.0441
+SWEPT mstar N-range 0.0441
+
+  DIAGNOSTIC 3 (post hoc). Why a truncation inside the
+  Bombieri-Vinogradov range does not finish the argument.
+  L(N;m) is a prime count in the progression p = N (mod m), but
+  with the cofactor k = (N-p)/m required SQUAREFREE -- the
+  condition mu(k) != 0 that [eq:layers] inherits from
+  H(N;k) = mu(k)A(N;k). Dropping it and recomputing the same
+  alternating sum over m < 2000:
+  N            with mu(k)!=0   without        ratio
+  200000       1.7882          2.5644         1.4340
+  400000       1.7690          2.5168         1.4227
+  800000       1.7730          2.5388         1.4319
+  1600000      1.7819          2.5479         1.4299
+  The squarefree condition is not decoration: dropping it moves
+  the sum by the factor above. Detecting it costs
+  mu^2(k) = sum_{d^2 | k} mu(d), which turns each layer into a
+  sum over moduli d^2 m with d up to sqrt(N/m) -- and that is
+  where the square-root barrier comes back in. The cheap
+  truncation in m does not remove it; it relocates it inside
+  the layer.
+
+  DIAGNOSTIC 4 (post hoc). What the tail costs against what the
+  reduction is allowed. S(N)N is the budget:
+  N            S(N)      tail at M=3000   tail/S(N)
+  200000       1.7604    0.0002           0.0001
+  400000       1.7604    0.0082           0.0047
+  800000       1.7604    0.0008           0.0005
+  1600000      1.7604    0.0015           0.0009
+
+  Cross-check lines, against lab_direct_identity.py and
+  lab_layer_decomposition.py, which reach the same total by
+  cutting the double sum along k and along m respectively.
+AGREE untrunc_total N=200000 1.767340 1e-9
+AGREE untrunc_total N=400000 1.736645 1e-9
+AGREE untrunc_total N=800000 1.741598 1e-9
+AGREE untrunc_total N=1600000 1.763402 1e-9
+  and M* at the 0.01 tolerance, which
+  audit_truncation_exponent.py recomputes from the expanded
+  pairs (m,d) grouped back by m:
+AGREE mstar_001 N=200000 8264 0.02
+AGREE mstar_001 N=400000 8624 0.02
+AGREE mstar_001 N=800000 9332 0.02
+AGREE mstar_001 N=1600000 10352 0.02
+  These M* are cross-checked. audit_truncation_exponent.py
+  recomputes them from the expanded pairs (m,d) grouped back by
+  m -- a different route to the same number -- and lands at
+  8268, 8622, 9331 and 10350 against the 8264, 8624, 9332 and
+  10352 here, inside the 2% the labels declare.
+
+======================================================================
+REFUTED

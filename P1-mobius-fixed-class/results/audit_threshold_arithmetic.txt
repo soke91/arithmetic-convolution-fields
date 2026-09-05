@@ -1,0 +1,104 @@
+STATISTIC: S(N) = 2 C_2 prod_{p|N,p>2}(p-1)/(p-2) and
+           A(N) = prod_{q not| N}(1 - 1/(q(q-1))) from Euler
+           products truncated at 1e7; the threshold S(N)(1-A(N));
+           |E_3(N)|/N and B(N)/N at seven N of comparable size and
+           different factorisation; and the verdict on
+           [eq:onesided] against each N's own threshold and
+           against the constant 0.3745.
+NULL: the constant 0.3745. It is what the repository has been
+      comparing against, so running the same verdict against it
+      is exactly the counterfactual 'what would the published
+      practice have concluded', and the claim here is the
+      difference between the two verdict columns. A sign control
+      is not applicable: S and A are Euler products with no
+      randomisable ingredient.
+FIELD: the published sweep N = 2e5 * 2^j, j = 0..7; seven test N
+       in [1.40e6, 1.63e6] chosen for their odd radicals, from a
+       pure 2-power-times-3 to a product of six odd primes;
+       theta' = 0.56; k over the squarefree k < N^0.56 coprime
+       to N.
+
+Euler products truncated at 10000000 ...
+  twin-prime constant C_2 = 0.6601618197
+  Artin's constant       = 0.3739558158
+  truncation tail on either product < 1.241e-08
+
+V1  the published sweep, N = 2e5 * 2^j
+  N            odd primes of N      S(N)      A(N)      threshold
+  200000       5                    1.7604    0.7873    0.374487
+  400000       5                    1.7604    0.7873    0.374487
+  800000       5                    1.7604    0.7873    0.374487
+  1600000      5                    1.7604    0.7873    0.374487
+  3200000      5                    1.7604    0.7873    0.374487
+  6400000      5                    1.7604    0.7873    0.374487
+  12800000     5                    1.7604    0.7873    0.374487
+  25600000     5                    1.7604    0.7873    0.374487
+  distinct odd radicals across the sweep: 1
+  recomputed threshold 0.374487 against the published 0.3745   hold
+
+measuring at comparable size and different arithmetic ...
+
+V2/V3  the threshold across the test set
+  N            odd primes of N            threshold
+  1572864      3                          0.270682
+  1404928      7                          0.370504
+  1600000      5                          0.374487
+  1620000      3,5                        0.194596
+  1531530      3,5,7,11,13,17             0.073312
+  1621620      3,5,7,11,13                0.087306
+  1600006      17,47059                   0.351148
+  range 0.073312 to 0.374487, spread 1.3451 of the midpoint (floor 0.20)   hold
+  the published family is at 0.374487, the median is 0.270682   hold
+
+V4  the verdict on [eq:onesided], each N against its own
+    threshold, and the null: the same N against the constant
+    0.3745 the repository has been using
+  N            |E_3|/N    B/N       own thr.   own      constant
+  1572864      0.5543     0.6475    0.270682   FAILS    FAILS
+  1404928      0.2221     0.6328    0.370504   holds    holds
+  1600000      0.2608     0.6547    0.374487   holds    holds
+  1620000      1.0909     1.0917    0.194596   FAILS    FAILS
+  1531530      2.7763     2.7763    0.073312   FAILS    FAILS
+  1621620      2.4647     2.4647    0.087306   FAILS    FAILS
+  1600006      0.1289     0.5720    0.351148   holds    holds
+  3 of 7 hold against their own threshold; the constant
+  disagrees with the honest verdict at 0 of them   hold
+
+  DIAGNOSTIC 1 (post hoc). Where the failures come from. For N
+  with several small odd prime factors every term of E_3 has the
+  same sign -- |E_3| = B exactly -- so there is no cancellation
+  across k at all. The reason is visible in the smallest
+  admissible k: k must be coprime to N, and by [eq:dilate] the m
+  that survive are coprime to rad(N) too, so over a short range
+  they are almost all primes and mu(m) = -1 dominates.
+  N            odd primes                 k_min  terms +  -
+  1572864      3                          5      144      752
+  1404928      7                          3      463      519
+  1600000      5                          3      442      562
+  1620000      3,5                        7      2        756
+  1531530      3,5,7,11,13,17             19     0        513
+  1621620      3,5,7,11,13                17     0        565
+  1600006      17,47059                   3      553      586
+
+  DIAGNOSTIC 2 (post hoc). Where the conservatism is. The
+  threshold is S(1-A) only because [prop:onesided] bounds the
+  wall by |C(N)| <= A(N)N. Measured, that bound is slack by two
+  to three orders. Putting the measured wall in its place,
+  Theorem [thm:C] asks for |E_3|/N < S(N)(1 - |C(N)|/N):
+  N            |C|/N      A(N)     |C|/(A N)  S(1-|C|/N)  |E_3|/N   verdict
+  1572864      0.0020     0.8975   0.0022     2.6353      0.5543    holds
+  1404928      0.0010     0.7662   0.0012     1.5829      0.2221    holds
+  1600000      0.0024     0.7873   0.0031     1.7562      0.2608    holds
+  1620000      0.0024     0.9447   0.0025     3.5125      1.0909    holds
+  1531530      0.0205     0.9866   0.0208     5.3505      2.7763    holds
+  1621620      0.0116     0.9830   0.0118     5.0620      2.4647    holds
+  1600006      0.0017     0.7507   0.0023     1.4060      0.1289    holds
+  every test N satisfies the measured-wall condition, so the arithmetic
+  dependence of the verdict lives entirely in the slack of
+  |C| <= A N, not in E_3. This is a measurement, not a proof:
+  |C(N)| = o(N) is the open problem, and nothing here supplies
+  it. What it locates is which of the two inequalities in
+  [prop:onesided] is doing the damage.
+
+======================================================================
+the sufficient condition's threshold moves with N's arithmetic and the sweep held it fixed

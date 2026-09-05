@@ -1,0 +1,106 @@
+STATISTIC: Blog(K) = sum mu(k)log k/phi(k) against -S(N); the
+           residual of rtilde = S N + sum (log k)H(N;k); the
+           direct ratio B_H/(S N) with B_H = sum (log k)|H|; and
+           the old ratio B/(S(1-A)N), on a size sweep and on
+           seven N of one size and different factorisations.
+NULL: mu replaced by a coin eps = +-1 on supp(mu^2), eight draws
+      at N = 3.2e6, everything else identical. The cancellation
+      being tested uses mu twice, inside H and inside Blog, so
+      the coin is the right reference: it says how small the
+      residual would be for a sign pattern with no arithmetic.
+FIELD: N = 2e5 through 3.2e6 by doubling, and seven N in
+       [1.40e6, 1.63e6]; theta' = 0.56, k over the squarefree
+       k < N^0.56 coprime to N; S and A from Euler products
+       truncated at 4e6; seed 20260808.
+
+sieving to 3200000 ...
+
+Y1  the residual coupling Blog(K) + S(N)
+  N            S(N)      Blog(K)    |Blog+S|/S
+  200000       1.7604    -1.8278    0.0383
+  400000       1.7604    -1.8066    0.0262
+  800000       1.7604    -1.7903    0.0170
+  1600000      1.7604    -1.8188    0.0332
+  3200000      1.7604    -1.7908    0.0172
+  Y1 REFUTED
+  DIAGNOSTIC (post hoc). The prediction asked a Mobius-weighted
+  partial sum to converge monotonically, which was a bad ask:
+  the ratio falls, rises at 1.6e6, falls again. What matters is
+  the level, and it stays under 0.0383 throughout. The wall's only
+  surviving entry into the count is C(N)(Blog + S), which is
+  therefore this small times |C|/N:
+  N            |C|/N      |Blog+S|   |C(Blog+S)|/N
+  200000       0.00098    0.0674     6.578e-05
+  400000       0.00718    0.0462     3.315e-04
+  800000       0.00455    0.0299     1.358e-04
+  1600000      0.00241    0.0584     1.405e-04
+  3200000      0.00188    0.0303     5.687e-05
+  -- four orders below S(N). The cancellation of the wall is
+  not approximate.
+
+Y2  the reformulated identity
+    rtilde = S N + sum (log k) H - C(Blog + S) + O_A(...)
+  N            rtilde/N   S(N)      sumH/N     residual/N
+  200000       1.7768     1.7604    -0.4395    0.4559
+  400000       1.7370     1.7604    -0.3967    0.3732
+  800000       1.7461     1.7604    -0.3253    0.3110
+  1600000      1.7636     1.7604    -0.2564    0.2596
+  3200000      1.7573     1.7604    -0.2107    0.2076
+  residual at the largest N: 0.2076  (cap 0.20)   REFUTED
+
+  THE NULL: the same residual with mu replaced by a coin on
+  supp(mu^2), 8 draws at the largest N of the sweep.
+  mu residual 0.2076 against coin residuals with median 0.0157,
+  min 0.0062 and max 0.0402 -- the coin is SMALLER by a factor 13.2
+
+  DIAGNOSTIC (post hoc). The null came out inverted, and as
+  designed it tests nothing: for a coin both sum (log k)H_eps
+  and rtilde - S N are separately near zero, so their difference
+  is small for a reason that has nothing to do with the
+  cancellation. What the inversion does say is worth more than
+  the test was: the mu residual is not noise, and it tracks
+  sum (log k)H itself --
+  N            residual/N   -sum H/N   ratio
+  200000       0.4559       0.4395     1.0373
+  400000       0.3732       0.3967     0.9409
+  800000       0.3110       0.3253     0.9559
+  1600000      0.2596       0.2564     1.0124
+  3200000      0.2076       0.2107     0.9853
+  So at accessible N the unspecified O_A term of Theorem
+  [thm:C] is numerically almost exactly the quantity the direct
+  route needs to bound. That is why [thm:C] cannot be checked
+  numerically here, and it is a sharper statement of that
+  limitation than 'the error is not negligible'. The residual
+  does fall cleanly: fitting it against log N,
+  residual/N ~ N^{-0.2794}, r = -0.99930; at that rate it reaches
+  leave-one-out on residual_decay: full -0.2794, without the smallest N -0.2800,
+  without the largest -0.2700 -- spread 0.0100
+SWEPT residual_decay N-range 0.0100
+  0.020 at N = 10^10.16
+  0.002 at N = 10^13.74
+  -- so nothing below 10^10 settles it either way.
+
+Y3  the direct condition B_H(N) < S(N) N
+  N            B_H/N      S(N)      B_H/(S N)  old B/(S(1-A)N)
+  200000       0.8059     1.7604    0.4578     2.1591
+  400000       0.7155     1.7604    0.4064     1.9747
+  800000       0.7181     1.7604    0.4079     1.9500
+  1600000      0.6636     1.7604    0.3769     1.7483
+  3200000      0.5876     1.7604    0.3338     1.5798
+
+  the same at the seven N of audit_threshold_arithmetic.py
+  N            odd primes                 B_H/(S N)  old B/(S(1-A)N)
+  1572864      3                          0.2462     2.3920
+  1404928      7                          0.3970     1.7080
+  1600000      5                          0.3769     1.7483
+  1620000      3,5                        0.3124     5.6100
+  1531530      3,5,7,11,13,17             0.4920     37.8696
+  1621620      3,5,7,11,13                0.4716     28.2303
+  1600006      17,47059                   0.4073     1.6290
+  Y3 hold
+
+Y4  spread across the seven: new 2.00, old 23.25; the new is
+    0.0860 of the old  (cap 0.25)   hold
+
+======================================================================
+REFUTED

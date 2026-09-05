@@ -13,6 +13,12 @@ directory can be read, run, or moved on its own.
 | directory | paper | status |
 |---|---|---|
 | [`P4-coherent-cell-floor/`](P4-coherent-cell-floor/) | Cell-mean fluctuations in an arithmetic convolution field: exact Rademacher-null variances and a permutation control | not submitted |
+| [`P1-mobius-fixed-class/`](P1-mobius-fixed-class/) | A fixed class for the Möbius side | not submitted |
+| [`P2-no-go-divisor-switch/`](P2-no-go-divisor-switch/) | A no-go for the divisor-switch route | not submitted |
+
+Only the cell-mean paper carries a machine-checked component. The other
+two say so in their own appendices; none of the three has had a reading
+by a subject expert.
 
 ## The object
 

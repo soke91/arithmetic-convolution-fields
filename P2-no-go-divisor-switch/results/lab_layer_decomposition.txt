@@ -1,0 +1,89 @@
+STATISTIC: L(N;m) = sum_{k<N/m,(k,m)=1,mu(k)!=0}(log k)Lambda(N-mk),
+           nonnegative; the alternating total sum_m mu(m)L(N;m)
+           against sum_{p<N}Lambda(N-p)log p; the first layer
+           against S(N)N; the partial sum at M = N^0.25; the
+           profile m L(N;m)/N; the total mass sum_m L(N;m); and
+           the same total with the signs on m >= 2 randomised.
+NULL: the sign draw of Z4 -- every layer L(N;m) held fixed, the
+      sign of each m >= 2 redrawn, 16 draws, eps(1) = 1. It is
+      the right control here precisely because the layers are
+      fixed: unlike the coin that beat mu it cannot buy
+      square-root cancellation inside a layer, so it isolates
+      the sign pattern across m and nothing else.
+FIELD: N = 2e5 through 1.6e6 by doubling; m over the squarefree
+       1 <= m < N; k over the squarefree k < N/m coprime to m;
+       S(N) from an Euler product at the fixed bound 4e6; seed
+       20260808 + j at the j-th N of the ladder, so the
+       four runs use 20260808 to 20260811; the declaration
+       named the base alone and the runs could not be
+       reproduced from it.
+
+sieving to 1600000 ...
+
+  N            sum_m mu(m)L    sum_p            rel err
+  --------------------------------------------------------------
+  200000       353468.010206    353468.010206    6.587e-16
+  400000       694658.006261    694658.006261    3.352e-16
+  800000       1393278.168495   1393278.168495   8.355e-16
+  1600000      2821443.738013   2821443.738013   2.641e-15
+
+Z1  the exchange is exact at every N        hold
+
+Z2  the first layer against the answer
+  N            L(N;1)/N   S(N)N/N   ratio
+  200000       8.8266     1.7604    5.0139
+  400000       9.3836     1.7604    5.3303
+  800000       9.9117     1.7604    5.6303
+  1600000      10.4611    1.7604    5.9423
+  Z2 hold
+
+Z3  how slowly the layers converge
+  N            M=N^0.25   partial/N   total/N    |partial/total|
+  200000       21         2.6799      1.7673     1.5163
+  400000       25         2.8816      1.7366     1.6593
+  800000       29         2.9764      1.7416     1.7090
+  1600000      35         2.8466      1.7634     1.6143
+  Z3 REFUTED
+
+Z4  the control: same layers, signs on m >= 2 drawn at random
+  N            |mu total|/N   draws min/N   median/N   max/N
+  200000       1.7673         1.8609        7.8990     14.9912
+  400000       1.7366         4.4112        11.9557    15.0642
+  800000       1.7416         4.6742        9.6442     16.8623
+  1600000      1.7634         7.0547        12.5309    16.6294
+  Z4 hold
+
+  DIAGNOSTIC (post hoc). The size of the layers. If
+  L(N;m) ~ c(m) N/m then m L(N;m)/N is the profile in m:
+  N            m=1      m=2      m=3      m=5      m=7
+  200000       8.8266    0.0000    9.5131    0.0004    7.4555  
+  400000       9.3836    0.0000    10.2251   0.0002    8.0841  
+  800000       9.9117    0.0000    10.8587   0.0001    8.5664  
+  1600000      10.4611   0.0000    11.5249   0.0001    9.1585  
+  The layers at m = 2 and m = 5 are empty because every N here
+  is 2^a 5^b: if q | N and q | m then N - mk is divisible by q,
+  so Lambda(N-mk) survives only at the single point N - mk = q.
+  The share of the total mass carried by m coprime to N:
+  N            (m,N)=1 mass/N   (m,N)>1 mass/N   share
+  200000       24.552           0.000            0.999986
+  400000       27.296           0.000            0.999998
+  800000       30.037           0.000            0.999992
+  1600000      32.973           0.000            0.999999
+  which is the dual of lab_direct_identity.py's finding that
+  restricting k to (k,N) = 1 changes the total by nothing.
+  and the total mass, which is what has to cancel away:
+  N            sum_m L(N;m)/N   |total|/N   cancellation
+  200000       24.6             1.7673      7.198e-02
+  400000       27.3             1.7366      6.362e-02
+  800000       30.0             1.7416      5.798e-02
+  1600000      33.0             1.7634      5.348e-02
+
+  Cross-check lines. The same total is reached from the k side
+  by lab_direct_identity.py; the gate holds the two together.
+AGREE untrunc_total N=200000 1.767340 1e-9
+AGREE untrunc_total N=400000 1.736645 1e-9
+AGREE untrunc_total N=800000 1.741598 1e-9
+AGREE untrunc_total N=1600000 1.763402 1e-9
+
+======================================================================
+REFUTED

@@ -1,0 +1,83 @@
+STATISTIC: the relative error of E_3 = sum mu^2(k)(log k)H(N;k)
+           - C(N)B_log(K); the cross-k cancellation gain
+           G = sum(log k)|H| / |sum(log k)H| for mu and the
+           corresponding gain for coin signs, against sqrt of the
+           number of moduli; and the share of sum(log k)|H|
+           carried by the top decile of k.
+DENOM: the identity residual is divided by E_3(N);
+NULL: the coin is the control and is structural here rather than
+      numerical -- eps(k)eps(mk) does not collapse, so a coin
+      keeps signed weights and the cross-k cancellation that mu
+      loses. Four draws per N, same support and k-range.
+FIELD: N = 2e5, 4e5, 8e5, 1.6e6, 3.2e6 with theta' = 0.56, so k
+       runs over the squarefree k < N^0.56 coprime to N; m over
+       1 <= m < N/k; Lambda and mu from an integer sieve to
+       3.2e6; numpy default_rng seed 20260808.
+
+sieving to 3200000 ...
+
+  N          K      #k     |E_3 - identity| / |E_3|   G_mu     G_eps     sqrt K   top-decile share
+  ------------------------------------------------------------------------------------------------
+  200000     930    313    1.662e-16                  1.834    965.6     17.7     0.3572
+  400000     1371   462    0.000e+00                  1.804    13.3      21.5     0.3587
+  800000     2021   682    1.147e-16                  2.207    25.0      26.1     0.3486
+  1600000    2980   1004   0.000e+00                  2.588    1000.4    31.7     0.3510
+  3200000    4394   1485   1.755e-16                  2.789    96.0      38.5     0.3485
+
+T1  the identity holds to 1e-12 relative at every N   hold
+T2  G_mu in [1.5, 5] at every N                       hold
+T3  G_eps > 5 G_mu at every N                         hold
+T4  top decile carries more than 40%                  REFUTED
+
+  T3 COULD NOT HAVE FAILED (post hoc, scoring nothing). Its
+  threshold 5*G_mu is below what independent signs FORCE, which
+  is l1/l2 on these magnitudes, at every N:
+    N          5*G_mu     l1/l2 (forced)   threshold below?
+    200000     9.169      11.96            yes
+    400000     9.018      14.23            yes
+    800000     11.037     17.90            yes
+    1600000    12.938     21.43            yes
+    3200000    13.946     26.21            yes
+  So a coin behaving as a coin passes T3 automatically. The rule
+  was written against the count sqrt(#k) -- the same
+  equal-magnitude idealisation corrected below. It is left as
+  scored; a registration is not edited after its run.
+  The estimator is a further reason not to read G_eps: it is a
+  mean of l1/|sum| over four draws, and E[1/|X|] diverges for a
+  Gaussian, so the large entries are one draw with a small
+  denominator rather than signal.
+
+  DIAGNOSTIC (post hoc). T4 guessed the wrong explanation. The
+  top decile carries about 35%, concentrated but not dominant,
+  so the missing sqrt(K) is not a heavy tail -- it is a genuine
+  sign correlation among the H(N;k). Two ways to see it:
+  N          n_eff = G^2   #k       (l1/l2)^2   wtd frac H > 0
+  200000     3.4           313      143.0       0.4029
+  400000     3.3           462      202.6       0.3763
+  800000     4.9           682      320.4       0.4269
+  1600000    6.7           1004     459.3       0.4326
+  3200000    7.8           1485     687.0       0.4809
+  n_eff is the number of independent signs the sum behaves as
+  if it had. THE REFERENCE IS THE FOURTH COLUMN, NOT THE THIRD.
+  n_eff = G^2 and the count #k are both the equal-magnitude
+  idealisation; what independent signs force on THESE magnitudes
+  is (l1/l2)^2. The conclusion is unchanged -- single digits
+  against three figures either way -- but the count overstates
+  the reference by the same factor the block below corrects.
+
+  The sqrt K column above is a COUNT-based reference: it is the
+  l1/l2 of a vector whose entries all share one magnitude. The
+  entries here do not, so the magnitude-based reference -- the
+  actual l1/l2 of (log k)H(N;k) -- is smaller, and the shortfall
+  it leaves for the signs to explain is correspondingly smaller.
+  N          l1/l2      sqrt #k    ratio
+  200000     11.96      17.69      0.6760
+  400000     14.23      21.49      0.6622
+  800000     17.90      26.12      0.6854
+  1600000    21.43      31.69      0.6764
+  3200000    26.21      38.54      0.6802
+REFERENCE lab_positive_weights 5 0.6622 0.6854
+
+======================================================================
+T1 hold  T2 hold  T3 hold  T4 REFUTED
+REFUTED

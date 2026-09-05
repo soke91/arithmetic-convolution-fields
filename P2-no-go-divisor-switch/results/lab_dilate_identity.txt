@@ -1,0 +1,41 @@
+STATISTIC: the relative error of the identity A(N;k) =
+           mu(k) H(N;k), where A is the progression sum
+           sum_{n = N mod k} Lambda(n) mu(N-n) and H(N;k) =
+           sum_{m<N/k,(m,k)=1} Lambda(N-mk) mu(m); the same ratio
+           for coin signs on the support of mu^2; the fraction of
+           k at which it is exact; and the ratio of mean |A| for
+           mu against mean |A| for the coin, by k-band.
+DENOM: the identity residual is divided by |A(N;k)|, or by 1 where
+       A vanishes;
+NULL: the coin is the control and is the point -- eps(mk) is
+      independent of eps(m) and eps(k), so the identity is
+      available to mu and to nothing else on the same support.
+      Eight draws per N, same support, same k-range.
+FIELD: N = 2e5, 4e5, 8e5 with theta' = 0.56, so k runs over the
+       squarefree k < N^0.56 coprime to N; m over 1 <= m < N/k
+       with (m,k) = 1; Lambda and mu from an integer sieve to
+       8e5; k-bands [2,32), [32,256), [256,2048); numpy
+       default_rng seed 20260808.
+
+sieving to 800000 ...
+
+  N          K      #k      worst |A - mu(k)H| / |A|   frac exact   coin frac exact (max over 8 draws)
+  --------------------------------------------------------------------------------------------
+  200000     930    313     2.294e-14                 1.000000     0.000000
+  400000     1371   462     1.197e-13                 1.000000     0.000000
+  800000     2021   682     4.591e-14                 1.000000     0.000000
+
+P1  worst relative error of A = mu(k)H over all N: below 1e-12 at every N: True   hold
+P2  median |r_eps - 1| over k and draws = 1.4366   (floor 0.5)   hold
+P3  exact-fraction 1 for mu and < 0.01 for every coin draw: True   hold
+
+P4  <|A_mu|> / <|A_eps|> by k-band
+  band            N=200000   N=400000   N=800000
+  [2    ,32    )   1.0761     1.2570     1.1733
+  [32   ,256   )   1.5306     1.2671     1.5013
+  [256  ,2048  )   1.4820     1.4496     1.4830
+  P4 hold
+
+======================================================================
+P1 hold  P2 hold  P3 hold  P4 hold
+the demand-side discrepancy factorises as mu(k) times a dilated Mobius-prime sum, and that is why the coin wins on B

@@ -1,0 +1,90 @@
+STATISTIC: the residual R(N,theta') = |E_3(N;theta')
+           - (r~(N) - S(N)(N - C(N)))| / N, with E_3 computed by
+           direct enumeration over k < K = floor(N^theta'), swept
+           over theta'; the minimising theta' at each N; and the
+           value of R there.
+FIELD: N = 2e5, 4e5, 8e5; theta' in 0.51, 0.55, 0.56, 0.60, 0.65,
+       0.70, 0.75, 0.80, 0.85, 0.90, 0.95; Lambda and mu from an
+       integer sieve to 1e6; S(N) as an Euler product over
+       p < 4e6, the bound CLIM and deliberately not tied to
+       the 1e6 measurement sieve (an earlier printing of this
+       line said p < 1e6); r~ and C by direct summation.
+NULL: none applies. R(N,theta') is the residual of the identity of
+      Theorem {#thm:C}, and a coin satisfies no such identity, so
+      there is no control quantity to compare against. The finding
+      is a monotonicity in theta' and a ratio trend in N, neither of
+      which is a detection claim.
+
+sieving to 1000000 ...
+
+N = 200000   S(N) = 1.760432   C(N)/N = +0.000976   (r~ - S(N-C))/N = +0.01810311
+  theta'   K          E_3/N        residual R    
+  ----------------------------------------------------
+  0.51     505        -0.256859    0.274962
+  0.55     823        -0.404911    0.423014
+  0.56     930        -0.437693    0.455796
+  0.60     1515       -0.681272    0.699376
+  0.65     2790       -1.116619    1.134722
+  0.70     5137       -1.718214    1.736317
+  0.75     9457       -2.530893    2.548996
+  0.80     17411      -3.511338    3.529442
+  0.85     32053      -4.104927    4.123030
+  0.90     59010      -4.339499    4.357602
+  0.95     108637     -2.518272    2.536375
+
+N = 400000   S(N) = 1.760432   C(N)/N = +0.007177   (r~ - S(N-C))/N = -0.01081673
+  theta'   K          E_3/N        residual R    
+  ----------------------------------------------------
+  0.51     719        -0.209626    0.198809
+  0.55     1205       -0.342628    0.331812
+  0.56     1371       -0.383718    0.372901
+  0.60     2297       -0.607542    0.596725
+  0.65     4378       -1.014263    1.003446
+  0.70     8345       -1.651382    1.640566
+  0.75     15905      -2.494482    2.483665
+  0.80     30314      -3.621815    3.610999
+  0.85     57776      -4.446366    4.435549
+  0.90     110116     -4.682452    4.671635
+  0.95     209873     -2.973781    2.962964
+
+N = 800000   S(N) = 1.760432   C(N)/N = +0.004546   (r~ - S(N-C))/N = -0.00633949
+  theta'   K          E_3/N        residual R    
+  ----------------------------------------------------
+  0.51     1024       -0.176506    0.170167
+  0.55     1764       -0.282501    0.276162
+  0.56     2021       -0.317161    0.310822
+  0.60     3482       -0.509405    0.503065
+  0.65     6870       -0.900912    0.894573
+  0.70     13556      -1.541842    1.535502
+  0.75     26749      -2.432599    2.426259
+  0.80     52780      -3.632582    3.626242
+  0.85     104142     -4.644240    4.637900
+  0.90     205485     -4.997517    4.991178
+  0.95     405448     -3.406695    3.400355
+
+======================================================================
+N = 200000   argmin theta' = 0.51  R = 0.274962  interior: False
+N = 400000   argmin theta' = 0.51  R = 0.198809  interior: False
+N = 800000   argmin theta' = 0.51  R = 0.170167  interior: False
+I1 REFUTED   I2 REFUTED   I3 REFUTED
+I4  R at theta'=0.56: 0.4558, 0.3729, 0.3108   against 0.456, 0.373, 0.311   max dev 0.000204   hold
+I5  R at the argmin by N: 0.274962, 0.198809, 0.170167   decreasing: True   hold
+
+  DIAGNOSTIC (post hoc). I1-I3 fail because R is essentially
+  MONOTONE INCREASING in theta': the finite-N error is dominated
+  by the main-term cancellation over m < M = N^{1-theta'}, which
+  theta' -> 1 destroys, and the gain in B_log(K) is second order.
+  So the best theta' is the smallest admissible one. The question
+  the OPEN item actually asks is whether R falls below the signal
+  it is compared against, and that is a ratio, not a level:
+  N          signal |r~-S(N-C)|/N   R at argmin   ratio
+  200000     0.01810311             0.274962      15.19
+  400000     0.01081673             0.198809      18.38
+  800000     0.00633949             0.170167      26.84
+  the ratio WIDENS with N
+  because the signal falls faster than the error: signal ratios
+  0.598, 0.586 against error ratios 0.723, 0.856
+
+======================================================================
+I1 REFUTED  I2 REFUTED  I3 REFUTED  I4 hold  I5 hold
+REFUTED

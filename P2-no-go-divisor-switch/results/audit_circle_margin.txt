@@ -1,0 +1,43 @@
+STATISTIC: ||S_mu||_2/sqrt(N) and ||S_Lambda||_2/sqrt(N) by
+           Parseval (exact); sup|S_mu|/sqrt(N) as the maximum and
+           ||S_Lambda||_1/sqrt(N) as the mean modulus over a
+           4N-point grid; the route-(i) bound ||S_L||_2||S_mu||_2/N;
+           the route-(ii) margin N/(sup|S_mu| ||S_Lambda||_1); and
+           C(N)/N = sum_{n<N} Lambda(n) mu(N-n) / N.
+DENOM: the Parseval check is relative to the exact l2 norms
+       of the coefficient arrays; the grid integral of C(N) is
+       compared with the direct sum over N;
+FIELD: N = 2^14, 2^16, 2^18, 2^20; coefficients on [1,N]; grid
+       a = j/(4N), j = 0..4N-1, by zero-padded FFT; Lambda and mu
+       from an integer sieve to 2^20.
+
+sieving to 1048576 ...
+
+  N        ||Smu||2/vN  sup|Smu|/vN  ||SL||1/vN   (i)/N     margin    C(N)/N
+  ----------------------------------------------------------------------------
+  16384    0.779764     3.0583       1.9462       2.2972    0.1680    -0.010543
+  65536    0.779725     2.7423       2.0844       2.4727    0.1749    +0.000125
+  262144   0.779686     2.8531       2.2189       2.6393    0.1580    +0.005950
+  1048576  0.779699     2.8012       2.3463       2.7954    0.1521    +0.003179
+
+  sqrt(6/pi^2) = 0.779697
+
+published vs recomputed
+  ------------------------------------------------------------
+  mu2      max |published - recomputed| = 0.000036   tol 0.0002   ok
+  margin   max |published - recomputed| = 0.000147   tol 0.0020   ok
+  route1   max |published - recomputed| = 0.000445   tol 0.0020   ok
+  CN       max |published - recomputed| = 0.000050   tol 0.0002   ok
+  supmu    max |published - recomputed| = 0.000336   tol 0.0100   ok
+  lam1     max |published - recomputed| = 0.000449   tol 0.0100   ok
+  Parseval on the grid against the exact norms: worst relative 1.51e-16   tol 1.0e-12   ok
+  route (ii) margin below 1 at every N: True
+  DIAGNOSTIC (post hoc, does not gate). C(N) by the grid
+  integral against the direct sum, worst |grid - direct|/N: 3.47e-18   tol 1.0e-12   ok
+  The norm identity above holds on any grid that holds the
+  arrays, and so does this coefficient; what this line adds is
+  the wiring from the transforms through their product to C(N).
+
+====================================================================
+R1 hold  R2 hold  R3 hold  R4 hold   (R5 grid convention: hold)
+Proposition {#prop:E}'s table reproduces

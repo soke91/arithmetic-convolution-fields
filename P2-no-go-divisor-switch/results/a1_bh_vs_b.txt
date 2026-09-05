@@ -1,0 +1,65 @@
+sieving to 3200000 ...
+  done N=200000
+  done N=400000
+  done N=800000
+  done N=1600000
+  done N=3200000
+a1_bh_vs_b.py  --  pass4, blind mathematical re-verification.
+
+PRE-REGISTRATION (fixed before the run).
+
+WHAT IS MEASURED.  At N in {2e5,4e5,8e5,1.6e6,3.2e6}, theta'=0.56,
+K=floor(N**0.56), over moduli k<K with (k,N)=1 (and separately over the
+squarefree such k):
+
+  A(N;k)    = sum_{n<N, n = N (mod k)} Lambda(n) mu(N-n)
+  C(N)      = sum_{n<N} Lambda(n) mu(N-n)
+  E_mu(N;k) = A(N;k) - C(N)/phi(k)
+  H(N;k)    = sum_{1<=m<N/k, (m,k)=1} Lambda(N-mk) mu(m)
+  B_all  = sum_k (log k)|E_mu|,  B_sqf  = same over squarefree k
+  BH_all = sum_k (log k)|H|,     BH_sqf = same over squarefree k
+
+and the two ratios P2's Measurement 11 prints, with
+S(N) the singular series and A(N)=prod_{q not| N}(1-1/(q(q-1))).
+
+WHAT WOULD FALSIFY THE FINDING UNDER TEST.  The finding is: P2
+Measurement 11 writes BOTH of its ratio lists with the numerator
+B_H(N)=sum(log k)|H(N;k)|, but its second ("old") list is in fact
+built from B(N)=sum(log k)|E_mu(N;k)| -- P1's eq:(9) quantity, a
+different sum.  FALSIFIED if BH/(S(1-A)N) reproduces the printed
+2.1591, 1.9747, 1.9500, 1.7483, 1.5798 to the digits printed.
+CONFIRMED if it does not and B/(S(1-A)N) does.
+
+PREDICTION.  E_mu(N;k) = mu(k)H(N;k) - C(N)/phi(k); inside an absolute
+value the subtracted mean term does not cancel, so B != B_H by a
+quantity of order |C(N)|(log K)^2, i.e. of order 1e-2 N or more here,
+which is larger than the gap between the two printed lists.
+
+NULL.  None applies and none would mean anything: every quantity here
+is a deterministic arithmetic sum with no sign input of its own, and a
+sign control would alter both sides of every comparison alike.  The
+reference is the printed digit string, which is what the test compares
+against.
+
+  N         K      B_all/N   B_sqf/N   BH_all/N  BH_sqf/N  S(N)      1-A(N)   
+  ----------------------------------------------------------------------------------
+  200000    930    0.8106    0.8086    1.1202    0.8059    1.760432  0.212725 
+  400000    1371   0.7564    0.7395    1.0042    0.7155    1.760432  0.212725 
+  800000    2021   0.7422    0.7303    0.9892    0.7181    1.760432  0.212725 
+  1600000   2980   0.6617    0.6547    0.9056    0.6636    1.760432  0.212725 
+  3200000   4394   0.5976    0.5916    0.8035    0.5876    1.760432  0.212725 
+
+  P2 Measurement 11's two lists, recomputed four ways
+  N         BH_sqf/(SN) pub new  | B_all/(S(1-A)N) B_sqf/(...)   BH_sqf/(...)  pub old 
+  200000    0.4578      0.4578   | 2.1646        2.1591        2.1519        2.1591  
+  400000    0.4064      0.4064   | 2.0199        1.9747        1.9105        1.9747  
+  800000    0.4079      0.4079   | 1.9819        1.9500        1.9175        1.9500  
+  1600000   0.3769      0.3769   | 1.7670        1.7483        1.7720        1.7483  
+  3200000   0.3338      0.3338   | 1.5958        1.5798        1.5691        1.5798  
+
+  the size of the gap the paper's formula hides
+  N=200000    |C|/N=0.000976  (B_all-BH_sqf)/N=+0.0047  (B_sqf-BH_sqf)/N=+0.0027
+  N=400000    |C|/N=0.007177  (B_all-BH_sqf)/N=+0.0410  (B_sqf-BH_sqf)/N=+0.0240
+  N=800000    |C|/N=0.004546  (B_all-BH_sqf)/N=+0.0241  (B_sqf-BH_sqf)/N=+0.0122
+  N=1600000   |C|/N=0.002407  (B_all-BH_sqf)/N=-0.0019  (B_sqf-BH_sqf)/N=-0.0089
+  N=3200000   |C|/N=0.001875  (B_all-BH_sqf)/N=+0.0100  (B_sqf-BH_sqf)/N=+0.0040

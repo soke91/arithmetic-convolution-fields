@@ -1,0 +1,54 @@
+STATISTIC: the transform b = mu * w of the two weights the two
+           branches carry, w = 1 and w = log k, computed
+           elementwise for d <= 4000 and compared with the
+           delta and with Lambda; the largest d with b_d
+           nonzero for each, against the no-go's support bound
+           N^{theta'-1/2}; and T_w computed both as
+           sum_{k<K} w_k mu(k) A(N;k) and as
+           sum_{k<K} w_k mu^2(k) H(N;k), with the relative
+           difference, for both weights.
+DENOM: each difference is divided by max(the value compared
+       against, 1);
+NULL: none. Every quantity here is an identity being checked --
+      two convolutions against their known values, and two
+      forms of one sum against each other -- or a comparison of
+      a support with a stated bound. There is no statistic
+      being read against chance.
+FIELD: d <= 4000 for the transforms; N = 4e5 and 1.6e6 and
+       theta' in {0.44, 0.56}, one below the threshold and one
+       above, for the supports and the two forms of T_w; every
+       squarefree k < K coprime to N.
+
+building mu and Lambda to 1600000 ...
+
+TD1/TD2  the two weights' transforms b = mu * w
+======================================================================
+  w = 1:      b_1 = 1.0, nonzero b_d for 2<=d<=4000: 0
+  w = log k:  worst |b_d - Lambda(d)| relative over d<=4000: 3.55e-15
+  -> TD1 HOLDS   TD2 HOLDS
+
+TD3/TD4  which branch the no-go's hypothesis covers
+======================================================================
+  the hypothesis asks b supported in [1, N^{theta'-1/2-delta}].
+
+  N        theta'   N^(t-1/2)   supp(b) w=1  supp(b) w=log   T_1 resid   T_log resid
+  ----------------------------------------------------------------------------
+  400000   0.44     0.5         1            289            2.59e-16    1.73e-16
+  400000   0.56     2.2         1            1369           0           1.82e-16
+  1600000  0.44     0.4         1            529            2.48e-16    4e-16
+  1600000  0.56     2.4         1            2971           2.39e-16    0
+  -> TD3 REFUTED   TD4 HOLDS   TD5 HOLDS
+
+  below 1/2 the bound N^{theta'-1/2} is under 1, so the no-go's
+  design space is empty there -- the delta itself does not meet
+  the hypothesis.  That is the whole of TD3's failure.
+
+======================================================================
+  TD1 holds
+  TD2 holds
+  TD3 REFUTED
+  TD4 holds
+  TD5 holds
+
+which of the two branches the companion no-go's hypothesis covers, in the dilate vocabulary
+at least one pre-registered rule failed; it is named above

@@ -1,0 +1,54 @@
+STATISTIC: the two pieces of CP_2(N) = sum_{u<N squarefree}
+           Lambda(N-u) Lambda_2(u), split by omega(u) = 1 and 2,
+           each divided by N; their ratio; CP_2/(N log N); the
+           D=1 calibration sum_p Lambda(N-p) log p / N against the
+           singular series S(N); CP for f = x^2 + c x at
+           c = 2+2gamma and c = -2gamma with the percentage change
+           from the untuned c = 0; and the residual coefficient
+           (sum_{u<=x} b_u - 2 x log x)/x with b = Lambda_2 + c
+           Lambda, computed from psi_2(x) = sum Lambda(n) log n +
+           sum_d Lambda(d) psi(x/d).
+FIELD: N = 1e6, 4e6, 1.6e7 for the CP tables; x = 1.6e7 for the
+       residual coefficients; primes and prime powers from a
+       numpy sieve to 1.6e7; the r=2 piece by direct enumeration
+       of p < q with pq < N; gamma = 0.5772156649015329.
+
+sieving primes to 16000000 ...
+building Lambda ...
+
+  N          r=1/N     pub     r=2/N     pub     ratio    pub     CP2/(NlogN)  pub     calib     pub      S(N)
+  ----------------------------------------------------------------------------------------------------
+  1000000    22.5145   22.51   17.3648   17.36   0.7713   0.771   2.8866       2.887   1.7565    1.7565   1.76043
+  4000000    25.0438   25.04   19.7926   19.79   0.7903   0.790   2.9494       2.949   1.7633    1.7633   1.76043
+  16000000   27.4579   27.46   22.2512   22.25   0.8104   0.810   2.9967       2.997   1.7614    1.7614   1.76043
+
+  N          untuned   pub     x^2+(2+2g)x  pub     pct     pub     x^2-2gx   pub     pct     pub
+  ----------------------------------------------------------------------------------------------------
+  1000000    39.8793   39.88   45.4201      45.42   13.89   13.9    37.8516   37.85   -5.08   -5.1
+  4000000    44.8364   44.84   50.3988      50.40   12.41   12.4    42.8008   42.80   -4.54   -4.5
+  16000000   49.7091   49.71   55.2654      55.27   11.18   11.2    47.6756   47.68   -4.09   -4.1
+
+  psi_2(x) = sum_{n<=x} Lambda_2(n) = sum Lambda(n) log n + sum_{d} Lambda(d) psi(x/d)
+  x = 16000000   psi(x)/x = 0.999999   psi_2(x)/(x log x) = 1.809846
+  residual coefficient (sum b_u - 2x log x)/x:
+    x^2+(2+2g)x    +0.0001   published +0.0001   predicted -0.0000
+    x^2            -3.1543   published -3.1536   predicted -3.1544
+    x^2-2gx        -4.3087   published -4.3086   predicted -4.3089
+
+W1   max |recomputed - printed| = 0.00450  (tol 0.0050)  hold
+W2   max |recomputed - printed| = 0.00482  (tol 0.0050)  hold
+W3   max |recomputed - printed| = 0.00037  (tol 0.0005)  hold
+     ratio row increasing: True
+W4   max |recomputed - printed| = 0.00004  (tol 0.0001)  hold
+W5   max |recomputed - printed| = 0.00005  (tol 0.0001)  hold
+     all within 0.5% of S(N): True
+W6   max |recomputed - printed| = 0.00069  (tol 0.0020)  hold
+W7   max |recomputed - printed| = 0.00464  (tol 0.0100)  hold
+W7   max |recomputed - printed| = 0.00438  (tol 0.0100)  hold
+W7   max |recomputed - printed| = 0.02237  (tol 0.0500)  hold
+W7   max |recomputed - printed| = 0.04020  (tol 0.0500)  hold
+W8   CP_2/(N log N) in [2.8,3.1] and both pieces positive: hold
+
+======================================================================
+W1 hold  W2 hold  W3 hold  W4 hold  W5 hold  W6 hold  W7 hold  W8 hold
+the polynomial-weight remarks reproduce

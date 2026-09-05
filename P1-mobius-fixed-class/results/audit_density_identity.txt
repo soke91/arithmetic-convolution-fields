@@ -1,0 +1,59 @@
+STATISTIC: (a) the residual of sum_{g|m} mu(g)/(phi(m/g) g phi(g))
+           - 1/m in exact rational arithmetic; (b) the count of
+           squarefree m in [1,400); (c) the residual of the p|m
+           local factor minus 1/p in exact rationals; (d) the
+           truncated c_{D,E}(m) of Lemma {#lem:density} against
+           A(N) lambda(m) / m, and that gap rescaled by m*D.
+FIELD: (a),(b) every squarefree m in [1,400); (c) every prime
+       p < 200; (d) N = 10^6, m in {1,3,7,21,143,187} (all coprime
+       to N), truncations D = 10^2, 10^3, 10^4 with e | m complete;
+       A(N) as an Euler product over p < 4*10^6.
+
+Q1/Q2  the load-bearing identity, exact rationals
+====================================================================
+  squarefree m in [1,400):     243   (remark says 243)
+  mismatches:                  0
+  -> Q1 HOLDS   Q2 HOLDS
+
+Q4  the p|m local factor is exactly 1/p, exact rationals
+  NOT AN INDEPENDENT GATE. Every prime p < 200 is a
+  squarefree m < 400, and the expression and the tolerance
+  are Q1's, so Q4's field is contained in Q1's and Q4
+  cannot fail unless Q1 does. It is Q1 restricted to the
+  primes, kept because the note below records what it was
+  before -- a hand-written form whose last two terms
+  cancelled, which judged nothing. The repair turned a dead
+  check into a redundant one; three gates are independent,
+  not four.
+====================================================================
+  primes tested:               46
+  mismatches:                  0
+  -> Q4 HOLDS
+
+Q3  truncated c_{D,E}(m) against A(N) lambda(m) / m
+====================================================================
+  N = 1000000   P(N) = [2, 5]   A(N) = 0.78727541
+  m     D        c_{D,E}(m)        A*lambda/m        |diff|*m*D
+  1     100      0.7874069558      0.7872754093      0.013
+  1     1000     0.7872702295      0.7872754093      0.005
+  1     10000    0.7872751987      0.7872754093      0.002
+  3     100      0.3152359732      0.3149101637      0.098
+  3     1000     0.3149150390      0.3149101637      0.015
+  3     10000    0.3149101789      0.3149101637      0.000
+  7     100      0.1152684500      0.1152110355      0.040
+  7     1000     0.1152107197      0.1152110355      0.002
+  7     10000    0.1152110127      0.1152110355      0.002
+  21    100      0.0461499223      0.0460844142      0.138
+  21    1000     0.0460859070      0.0460844142      0.031
+  21    10000    0.0460844387      0.0460844142      0.005
+  143   100      0.0055940945      0.0055917756      0.033
+  143   1000     0.0055917642      0.0055917756      0.002
+  143   10000    0.0055917741      0.0055917756      0.002
+  187   100      0.0042664705      0.0042643307      0.040
+  187   1000     0.0042643299      0.0042643307      0.000
+  187   10000    0.0042643297      0.0042643307      0.002
+  -> Q3 HOLDS
+
+====================================================================
+Q1 hold  Q2 hold  Q3 hold  Q4 hold
+Lemma {#lem:density} and Remark {#rem:loadbearing} stand

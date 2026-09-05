@@ -1,0 +1,35 @@
+STATISTIC: admitted(w) = sum over k < K with (k,N)=1 and
+           mu(k) = 0 of w_k H(N;k), the mass the mu^2(k) of
+           [eq:flatsum] excludes; and its size against N and
+           against |T_log| from the same identity.
+FIELD: N = 2e5, 4e5, 8e5; theta' = 0.56; K = floor(N^theta').
+NULL: the paper's own printed figures, registered as V1-V4.
+DENOM: admitted/N is over N; admitted/|T_log| is over the
+       |T_log| this same run computes, not a published one.
+
+  N = 200000   K = 930    admitted(1)/N = -0.054316  admitted(log)/N = -0.287165
+             |T_log|/N = 0.437693   admitted(log)/|T_log| = 0.656087
+  N = 400000   K = 1371   admitted(1)/N = -0.046498  admitted(log)/N = -0.269232
+             |T_log|/N = 0.383718   admitted(log)/|T_log| = 0.701640
+  N = 800000   K = 2021   admitted(1)/N = -0.039878  admitted(log)/N = -0.250075
+             |T_log|/N = 0.317161   admitted(log)/|T_log| = 0.788480
+
+======================================================================
+  V1 published 0.054   measured 0.054316   hold
+  V2 published 0.29    measured 0.287165   hold
+  V3 N = 200000   published 0.656   measured 0.656087
+  V3 N = 400000   published 0.702   measured 0.701640
+  V3 N = 800000   published 0.789   measured 0.788480
+  V3 REFUTED
+  V4 increasing in N: hold
+  V5 fraction above 1/2 at every N: hold
+
+  V1 hold  V2 hold  V3 REFUTED  V4 hold  V5 hold
+REFUTED
+
+The exit is non-zero because at least one of the paper's
+printed figures is not reproduced.  V5, which is the note's
+assertion rather than its arithmetic, holds: the excluded
+mass is a constant fraction of |T_log| at every N here, so
+the restriction is load-bearing.  What is refuted is the
+printing, and the note is corrected to what this run reads.
