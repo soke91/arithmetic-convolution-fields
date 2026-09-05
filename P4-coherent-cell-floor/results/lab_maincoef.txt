@@ -1,0 +1,255 @@
+STATISTIC: E_same,c[A] - E_all[A], the main term of D_c in
+           Proposition {#prop:scaleinv}, with
+           A(h) = prod_{p|h, 2<p<=13} (p-1)/(p-2); computed as an
+           exact rational over the residue classes mod 2Q and the
+           pattern weights m(S) = prod_{p not in S}(p-1).
+DENOM: E_all[A], the same average over all even classes mod 2Q.
+NULL: an exact permutation null, run in this file. N1 asks whether
+      an exact rational is zero and no sampling enters it, so the
+      null bites on N2: with six depths all 720 relabellings of the
+      depth labels are enumerated and the observed count of cells
+      agreeing within two sampling errors is placed in that
+      distribution. The sampling errors are READ from
+      lab_cell_singular.txt and not recomputed here.
+FIELD: exact rationals throughout the A-differences; the constant
+       uses 2 C_2 = 1.32032363 and the product over 13 < p <= 4e6;
+       measured D_c read from lab_cell_singular.txt at (2e6,4e6].
+
+E_all[A] = 16384/11011 = 1.4879665789  (over all 15015 even classes mod 2Q)
+
+  depth  classes  E_same,c[A] exact                  difference exact
+  0      5760     4877509/2851200                    635653709/2854051200
+  1      6336     5251471/3449952                    10743253/313945632
+  2      2456     169120/94249                       318004704/1037775739
+  3      428      857984/377817                      296100736/378194817
+  4      34       28000/9537                         13823072/9546537
+  5      1        128/33                             78976/33033
+
+N1  the main term vanishes at no depth: hold
+    depth 5 gives 128/33 = 3.8787878788, which is prod_{2<p<=13}(1+1/(p-2))
+    -- the deepest cell is one residue class, so Q divides every
+    shift in it and A is its maximum there exactly.
+
+constant K = 2 prod_{p in P} p(p-2)/(p-1)^2 = 11011/8192 = 1.3441162109375
+  EXACTLY RATIONAL.  E_all[S_2] = 2 makes C_2's infinite product
+  cancel the Euler tail term by term, so the main term has no
+  irrational input at all -- not merely no fitted parameter.
+  The truncated product 2 C_2 * prod_{13<p<=4000000}(...) = 1.34411619
+  agrees with it to 2.08e-08 and is not used.
+
+  depth  predicted    measured D_c   predicted/measured
+  0      0.299361     0.302138       0.9908
+  1      0.045996     0.046766       0.9835
+  2      0.411876     0.412504       0.9985
+  3      1.052351     1.052129       1.0002
+  4      1.946236     1.946109       1.0001
+  5      3.213542     3.171298       1.0133
+
+N2  every depth within 3 per cent: hold   (worst 1.65% at depth 1)
+N3  the worst deviation is at depth 5: REFUTED
+
+    POST HOC (written after N3 was scored, and scoring
+    nothing).  N3 WAS REGISTERED ON THE WRONG QUANTITY.  The
+    measured D_c is a sampled estimator and this file's own
+    source prints its sampling error alongside it -- a fact
+    already in the repository, which the rule did not use. A
+    residual has to be read against that error before it is
+    read against 1/ell:
+
+      depth  residual     sampling SE   multiple of SE
+      0      -0.002777    0.001358           2.0
+      1      -0.000770    0.001318           0.6
+      2      -0.000628    0.001359           0.5
+      3      +0.000222    0.001370           0.2
+      4      +0.000127    0.001183           0.1
+      5      +0.042244    0.000162         260.8
+
+    Read that way the ordering inverts.  Depth 1's 1.65 per
+    cent is under one sampling error and is not a deviation
+    at all; depth 5's 1.33 per cent is over two hundred, so
+    it is the only one of the six that the sampling error
+    cannot account for -- and it is 1/ell in size, which is
+    the error term the proposition names.  N3's claim was
+    right about the cell and wrong about the statistic, and
+    it stands REFUTED as registered.
+
+NULL for N2, run here and not declined.  Six predictions against
+six measurements agree; the question a null has to answer is
+whether the ASSIGNMENT carries that, or only the scale.  With six
+depths the null is enumerable: all 720 permutations of the depth
+labels are run and the observed count is placed in that
+distribution.
+    depths within 2 sampling errors, true labelling: 4 of 6
+    over the 720 relabellings: max 4, mean 0.667, count >= 4: 2
+    p = 2/720 = 0.00278
+    The null is not a formality here: the six predictions span
+    a factor of 70, so a wrong pairing is refused by size
+    alone. What it shows is that the agreement is carried by
+    WHICH cell gets which number, which is the claim.
+
+DEPTH 5's RESIDUAL, COMPUTED RATHER THAN NAMED.
+
+An earlier printing of this file explained depth 5's miss as
+'1.33 per cent, the size of 1/ell'.  That is the reading the
+paper withdraws one paragraph later -- the proposition's term is
+O_eta(B^eta/ell), not 1/ell, and reading it as 1/ell sets both the
+constant and the divisor sum to 1.  It is also unfalsifiable: with
+an unnamed constant no discrepancy could refuse it.  Withdrawn.
+
+The real mechanism is exact and needs no asymptotics.  At depth 5
+the cell is ONE residue class mod 2Q, so it is an arithmetic
+progression segment N = N_0 + 2Q i.  Every same-cell shift is
+h = 2Q k with 0 < |k| < n_c, and every d in the divisor expansion
+is coprime to 2Q, so d | h iff d | k.  Hence NO d >= n_c divides
+any same-cell shift, while C_T sums over every d.  E_same,5[T] is
+therefore deficient against C_T, necessarily downward -- which is
+the sign observed.  The deficit is a finite sum over k < n_c.
+
+    E_same,5[T] at n_c = 67 = 1.0095149681
+    C_T                     = 1.0180202474
+    deficit Delta           = 8.505279e-03
+    2 C_2 * (128/33) * Delta = 0.043558
+    observed residual at depth 5 = 0.042244
+    ratio = 1.0311
+    residual after the correction = -0.001314 = 8.1 sampling errors
+    -- from 260.8 to 8.1.
+
+AND IT IS THE SAME QUANTITY meas:scaleinv MEASURES AS DEPTH 5's
+SPREAD.  Delta falls with n_c, so it induces a drift in D_5 across
+the three octaves.  Computed exactly at the three cell sizes:
+
+      octave        ell     n_c    Delta        correction/D_5
+      1000000        33.3    34  1.297902e-02     2.07%
+      2000000        66.6    67  8.505279e-03     1.36%
+      4000000       133.2   134  5.208268e-03     0.83%
+    induced spread across the three = 1.24 per cent
+    meas:scaleinv measures depth 5's spread as 1.28 per cent.
+
+    So the largest of the six spreads is not a failure of scale
+    invariance: it is the proposition's own error term, computed.
+    This was predicted BEFORE the computation by an independent
+    reading, which put the residual at about 1.35 per cent at
+    n_c = 67 and the spread at 'the right order, not the number';
+    the exact values are 1.36 and 1.24.
+
+N4  the deficit accounts for depth 5's residual to 10 per cent: hold  (3.1%)
+N5  the induced spread agrees with the measured 1.28 per cent to a factor 2: hold  (1.24%)
+
+THE BAND AVERAGE IS EXACTLY 2, AND IT WAS BEING SAMPLED.
+
+  E_all[S_2] = 2C_2 prod_{p>2} [ (1/p)(p-1)/(p-2) + (p-1)/p ]
+             = 2C_2 prod_{p>2} (p-1)^2 / (p(p-2)),
+  and C_2 = prod_{p>2}(1 - 1/(p-1)^2) = prod_{p>2} p(p-2)/(p-1)^2
+  is its reciprocal term by term.  So E_all[S_2] = 2 EXACTLY.
+
+  IT IS A LIMITING VALUE, NOT THE BAND'S OWN AVERAGE.  Taking
+  P(p|h) = 1/p for every odd p is what makes the two products
+  reciprocal; at a finite band that probability is not exactly
+  1/p.  lab_secondcell2.py computes the band's own pair average
+  exactly at its band and gets 1.999986107190 -- the difference is the
+  band's equidistribution error.  E_{all,B} and E_inf are two
+  quantities and {#eq:Dc} subtracts the first.
+
+  Found by an independent reading, not by this file.  It removes
+  a measured input: the prediction is D_c = 2C_2 C_T E_same,c[A]
+  - 2, with the 2 exact and the constant no longer entering the
+  subtracted term at all.
+
+  The run's band average, recovered as E_same,c - D_c, is the
+  same number in all six rows: 1.998755 against the exact 2,
+  shortfall -0.001245.  One additive offset shared by all six
+  measured D_c, since each is E_same,c minus that one number.
+  The S_2 sieve here runs over every prime to 8e6, so this is
+  the sampling error of the band average and not a truncated
+  prime product -- a truncation would bias low as well, but
+  would leave depth 5 exact, every same-cell shift there being
+  2Qk with k <= 66 and so free of prime factors above 61.
+
+  depth  D_c with E_all = 2   prediction       residual/se
+  0      0.300893             0.299361         -1.13
+  1      0.045521             0.045996         +0.36
+  2      0.411259             0.411876         +0.45
+  3      1.050884             1.052351         +1.07
+  4      1.944864             1.946236         +1.16
+  5      3.170053             3.169984         -0.43
+
+N6  with the band average at its exact value, every depth is
+    within two sampling errors of the prediction: hold
+    Depth 5 goes from 260.8 sampling errors to -0.43.
+    Nothing is fitted for this: the 2 is a theorem and the
+    depth-5 correction is a finite sum.
+
+THE SAME DEFICIT AT THE SHALLOWER CELLS, DILUTED BY 1/m.
+
+  The deficit is carried by the m DIAGONAL class pairs, where
+  alpha = beta so h = 0 mod 2Q and the shifts are confined
+  exactly as in a single-class cell.  The m^2 - m off-diagonal
+  pairs have c_d = -(alpha-beta)(2Q)^{-1} mod d spread over Z/d
+  and are ASSUMED to cancel; m/m^2 = 1/m.  That assumption is
+  precisely the cancellation {#prop:scaleinv} declines to claim.
+  It is applied here because it is applied in the second cell
+  shape's registration, and a model used in one place and not
+  the other is an asymmetry a reader can find by arithmetic.
+
+  depth  m       diluted correction   was      becomes
+  0      5760    0.000003                -1.13    -1.13
+  1      6336    0.000003                +0.36    +0.36
+  2      2456    0.000008                +0.45    +0.45
+  3      428     0.000060                +1.07    +1.03
+  4      34      0.000970                +1.16    +0.34
+  5      1       0.043558                -0.43    -0.43
+
+  Depth 5 is m = 1, so the dilution is the identity there and
+  its entry is the exact deficit.  The model moves depth 4 by
+  0.8 sampling errors and nothing else by as much as 0.1.
+
+N7  with the 1/m dilution applied at every depth, all six stay
+    within two sampling errors: hold
+    This is weak evidence for the 1/m model -- 0.8 sampling
+    errors at one cell -- and it is collected before the second
+    cell shape is measured, which is the only time it is worth
+    anything.
+
+ROBUSTNESS: is the constant's SPLIT right?  The singular series is
+2 C_2 prod_{p|h,p>2}(p-1)/(p-2), and this file cuts that product at
+13 -- A below, the Euler factor above.  An off-by-one in which
+primes are absorbed into C_2 and which are left in the product
+would move the constant by 1/(p(p-2)) at the prime concerned, which
+at p = 13 is 1/143 = 0.70 per cent.  Two things say it is not there.
+
+  (a) STRUCTURAL, and it needs no error bar.  A mis-split is a
+      UNIFORM multiplicative factor: all six would be off by the
+      same amount in the same direction.  The observed ratios fail
+      in OPPOSITE directions at the two ends, so no uniform factor
+      explains the scatter whatever bound is put on it.
+
+  (b) IN SAMPLING ERRORS, which is the only honest unit here.
+      A residual is a point estimate of a sampled quantity and
+      cannot bound anything on its own -- reading it as a bound
+      is the same defect as N3 above, which read an
+      unstandardised statistic while the standardisation was
+      printed beside it. So:
+
+      depth  residual %   sampling SE %   a 0.70% mis-split, in SE
+      0         0.9190         0.4495               1.6
+      1         1.6469         2.8183               0.2
+      2         0.1522         0.3295               2.1
+      3         0.0211         0.1302               5.4
+      4         0.0065         0.0608              11.5
+      5         1.3321         0.0051             136.9
+
+      At depth 4 alone a 0.70 per cent mis-split would show at
+      11.5 sampling errors, and at depth 3 at 5.4. That is the
+      bound, and it is stated in the statistic this file
+      already prints rather than in a ratio of percentages.
+
+PARAMETERS, printed so that the field reaches the result file:
+    CELLP = 3, 5, 7, 11, 13
+    2 C_2 = 1.3203236316937392
+    Euler product truncated at p <= 4000000
+
+======================================================================
+N1 hold  N2 hold  N3 REFUTED  N4 hold  N5 hold  N6 hold  N7 hold
+The main term of Proposition {#prop:scaleinv} is nonzero at every
+depth, so the exponent the proposition predicts is defined at every
+depth.

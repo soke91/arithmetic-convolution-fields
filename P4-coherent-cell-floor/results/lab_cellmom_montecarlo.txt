@@ -1,0 +1,55 @@
+STATISTIC: the sample standard deviation of m_c - mbar over
+           independent sign draws, against the closed form
+           Q_cc/n_c^2 - 2 Q_ca/(n_c n) + Q_aa/n^2 of Lemma
+           {#lem:cellmom}; the ratio of the two at 60 draws (the
+           count the paper quotes) and at 2000; and the
+           Monte-Carlo precision 1/sqrt(2(D-1)).
+NULL: the simulation IS the null -- independent signs on the
+      support of mu^2, which is the hypothesis under which the
+      closed form is derived. mu itself never enters: this
+      checks the formula, not a detection.
+FIELD: the band (1e5, 2e5], even N with V(N) > 0; cells indexed
+       by depth = #{p in 3,5,7,11,13 dividing N}; Lambda, mu and
+       the squarefree indicator from an integer sieve to 2e5;
+       V and each draw's C_eps by exact FFT convolution, u_c by
+       FFT cross-correlation; numpy default_rng seed 20260808.
+
+sieving to 200000 ...
+band (100000, 200000]: 50000 even N
+simulating 2000 draws ...
+
+  depth  n_c        closed form    MC sd (60)   ratio    MC sd (2000)  ratio
+  ------------------------------------------------------------------------------
+  0      19181      1.400796e-01   1.459774e-01  1.0421   1.389559e-01 0.9920
+  1      21097      5.272395e-02   5.464333e-02  1.0364   5.268940e-02 0.9993
+  2      8183       1.675788e-01   1.738178e-01  1.0372   1.662035e-01 0.9918
+  3      1421       2.736304e-01   2.913220e-01  1.0647   2.748215e-01 1.0044
+  4      115        3.780734e-01   3.996198e-01  1.0570   3.840050e-01 1.0157
+  5      3          6.393297e-01   6.516358e-01  1.0192   6.598090e-01 1.0320
+
+N1  |MC/closed - 1| at 2000 draws: max 0.0320   (cap 0.05)   hold
+N2  60-draw ratios in [1.0192, 1.0647]; band 1 +- 0.276   hold
+    the quoted band was 0.88 to 0.98
+N3  MC precision at 60 draws = 0.092057   quoted 0.09   hold
+N4  2000-draw ratios straddle 1: True   (3 above, 3 below)   hold
+
+POST HOC (not pre-registered; added after the paper moved its
+quotation from 60 draws to 2000, so that the sentences it now
+makes are checked by something). N2 and N3 above score a
+quotation this paper no longer makes.
+  Monte-Carlo precision at 2000 draws = 0.015815
+  depth   |MC/closed - 1|   multiple of the precision
+  0       0.008022          0.507
+  1       0.000655          0.041
+  2       0.008207          0.519
+  3       0.004353          0.275
+  4       0.015689          0.992
+  5       0.032032          2.025
+  worst is depth 5 at 2.025 times the precision; 5 of the six
+  lie below it, the closest being depth 4, short of the bar by
+  0.000126 -- 0.8% of the bar. That one is not a separation:
+  it sits at the precision, not below it.
+
+======================================================================
+N1 hold  N2 hold  N3 hold  N4 hold
+Lemma {#lem:cellmom}'s closed form is verified by simulation

@@ -1,0 +1,58 @@
+STATISTIC: the exact pair average of S_2 over each cell of the
+           second shape, by autocorrelation of the cell
+           indicator -- no sampling, no seed, no standard
+           error.  Registered against predictions sealed in
+           lab_secondcell_predict.txt at commit 3b1b7d1.
+DENOM: the exact band average 2.
+NULL: an exact enumeration, run in this file. The statistic
+      being measured is exact, so the tolerances are absolute;
+      the null asks instead whether T1's intervals are
+      cell-specific, by enumerating all 6 relabellings of the
+      three depths.
+FIELD: predictions read from the first seal; m = 48, 44, 12, 1;
+       no measurement is made here.
+
+READ FROM THE FIRST SEAL (lab_secondcell_predict.txt), not recomputed:
+
+  depth  m     uncorrected   undiluted corr.  1/m corrected
+  0      48    0.295736      0.000450         0.295726
+  1      44    0.126485      0.000417         0.126476
+  2      12    0.825521      0.000554         0.825475
+  3      1     2.375000      0.000858         2.374142
+
+T1's interval at each depth is [uncorrected - undiluted,
+uncorrected], since the deficit is negative:
+
+  depth  lower (fully corrected)  upper (uncorrected)   width
+  0      0.295286                 0.295736              0.000450
+  1      0.126068                 0.126485              0.000417
+  2      0.824967                 0.825521              0.000554
+
+T2's target is the 1/m corrected column, tolerance 1e-4.
+T3 reads alpha from  measured = uncorrected - full / m^alpha,
+i.e.  alpha = log(full / (uncorrected - measured)) / log m.
+
+The first run's SAMPLED thirty-draw mean at depth 2 is READ
+from lab_secondcell.txt as 0.825796 -- not retyped.
+It sits +0.000275 above T1's upper bound, so the sampled evidence
+leans towards T1 FAILING at depth 2, and T3's alpha there is
+undefined -- the measured value is above the main term.  Recorded before the exact run so that a pass cannot
+later be read as having been expected.
+
+NULL, enumerated here and not declined.  T1 asks whether the
+exact value lands in a cell-specific interval.  If the three
+intervals were interchangeable, T1 would carry no information
+about WHICH cell gets which number.  With three depths the null
+is enumerable -- all 6 relabellings:
+
+    relabellings whose intervals all still contain the true
+    cell's midpoint: 1 of 6.
+    The three intervals are disjoint by construction -- they sit
+    at 0.296, 0.126 and 0.826 -- so a mislabelling is refused by
+    size alone.  T1 is not a test of the labelling; it is a test
+    of a 5.5e-04-wide window against an exact number, and that is
+    what makes it sharp.
+
+======================================================================
+NOTHING IS SCORED HERE.  T1, T2 and T3 need lab_secondcell2.py,
+which does not exist.  That is the point of this file.

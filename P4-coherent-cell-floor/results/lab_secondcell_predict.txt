@@ -1,0 +1,81 @@
+STATISTIC: the predicted D'_c for a SECOND cell shape,
+           S = (3, 5, 7), computed from the residue structure
+           alone before any measurement of that shape exists.
+DENOM: E_all[A_S] over all even classes mod 2Q'.
+NULL: an exact enumeration, run in this file. Nothing is
+      measured here, so the null asks the only thing it can:
+      whether the predicted profile merely tracks cell size,
+      which this paper's thesis says it must not. With four
+      cells all 24 relabellings are enumerated and the true
+      labelling is placed in that distribution. P2's own null
+      is the sampling error of the measurement that does not
+      yet exist, and P2 is stated against it.
+FIELD: exact rationals throughout the A-differences; the
+       constant uses 2 C_2 = 1.32032363 and the product over
+       odd p <= 4e6 excluding 3, 5, 7; band (2e6, 4e6].
+
+SECOND CELL SHAPE: S = 3, 5, 7,  Q' = 105,  2Q' = 210
+band (2000000, 4000000],  ell = B/2Q' = 9523.8
+
+E_all[A_S] = 256/175 = 1.4628571429  (over all 105 even classes mod 2Q')
+
+  depth  classes  E_same,c[A_S] exact         difference exact
+  0      48       403/240                     1817/8400
+  1      44       941/605                     1959/21175
+  2      12       31/15                       317/525
+  3      1        16/5                        304/175
+
+F1  the main term vanishes at no depth: hold
+
+K = 2 prod_{p in S} p(p-2)/(p-1)^2 = 175/128 = 1.3671875000
+  EXACTLY RATIONAL -- no irrational input in the main term.
+  The truncated 2 C_2 * C_T' = 1.36718748 agrees to 2.12e-08 and is
+  not used.
+PARAMETERS: CELLP2 = 3, 5, 7;  2 C_2 = 1.3203236316937392;  PLIM = 4000000;  band = (2000000, 4000000]
+
+  depth  m (classes)  n_c approx   uncorrected prediction
+  0      48           457143       0.295736
+  1      44           419048       0.126485
+  2      12           114286       0.825521
+  3      1            9524         2.375000
+
+DEFICIT CORRECTION.  Exact where the cell is one class
+(depth 3 here); divided by m elsewhere, which is an estimate
+and is marked as one.
+
+  depth  m      n_c per class  deficit      correction   diluted
+  0      48     9524           2.030518e-04  0.000450   0.000009
+  1      44     9524           2.030518e-04  0.000417   0.000009
+  2      12     9524           2.030518e-04  0.000554   0.000046
+  3      1      9524           2.030518e-04  0.000858   0.000858
+
+  depth  corrected prediction
+  0      0.295726
+  1      0.126476
+  2      0.825475
+  3      2.374142
+
+F2  the deficit correction is largest at depth 3: hold
+    -- a COMPUTED FACT, not a test.  1/m with m = 48, 44, 12, 1 implies it.
+
+NULL: does the predicted profile just track cell size?
+
+  depth   n_c        predicted D'_c
+  0       457143     0.295726
+  1       419048     0.126476
+  2       114286     0.825475
+  3       9524       2.374142
+
+  concordant pairs with 1/n_c, true labelling: 5 of 6
+  over the 24 relabellings: max 6, mean 3.00, count >= 5: 4
+  p = 4/24 = 0.1667
+  A profile that merely tracked size would sit at the top of this
+  distribution.  Where it actually sits is printed above, and P2
+  is scored against the measurement rather than against this.
+
+======================================================================
+COMPUTED FACTS:  F1 hold   F2 hold
+PREDICTIONS:     P1 and P2 CANNOT BE SCORED HERE.  They need
+the measurement, which does not exist.  That is the point of
+this file.  Depth 3 is enumerated by the measurement and is a
+consistency check, not a score -- see the header.

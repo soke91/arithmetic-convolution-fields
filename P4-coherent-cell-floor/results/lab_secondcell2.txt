@@ -1,0 +1,312 @@
+STATISTIC: E_same,c[S_2] over each cell of the second shape,
+           EXACTLY, by autocorrelation of the cell indicator --
+           no sampling, no seed, no standard error.
+           D'_c = that minus the exact band average 2.
+DENOM: n_c(n_c-1) ordered pairs, checked against the
+       autocorrelation's own total before any number is
+       reported.
+NULL: the rules were registered in lab_secondcell2_predict.txt,
+      which carries an enumerated null on whether T1's
+      intervals are cell-specific. The statistic here is exact,
+      so the tolerances are absolute and no distribution
+      enters.
+FIELD: band (2e6, 4e6]; even N; cells by depth over 3,5,7; S_2
+       sieved to 2e6 over every prime with 2 C_2 to 4e6; rFFT
+       at length 2^21.
+
+SECOND CELL SHAPE, MEASURED EXACTLY.  S = 3, 5, 7, band (2000000, 4000000]
+rules T1, T2, T3 registered in lab_secondcell2_predict.txt
+predictions read from lab_secondcell_predict.txt
+
+  2 C_2 = 1.32032365;  S_2(2) = 1.320324;  S_2(6) = 2.640647 (= 2 S_2(2))
+  band positions 1000000, transform length 2097152
+
+  depth  n_c        E_same,c[S_2] exact   D'_c = that - 2
+  ----------------------------------------------------------
+  0      457143     2.295707753           0.295707753
+  1      419048     2.126454301           0.126454301
+  2      114285     2.825436443           0.825436443
+  3      9524       4.374142099           2.374142099
+
+  the pair counts reproduce n_c(n_c-1) exactly at all four
+  cells, so the autocorrelation is the integer one.
+
+T1  does the exact value lie between the uncorrected prediction
+    and the fully corrected one?
+
+  depth  lower        upper        exact        inside
+  0      0.295286     0.295736     0.295708     yes
+  1      0.126068     0.126485     0.126454     yes
+  2      0.824967     0.825521     0.825436     yes
+
+    T1: hold
+
+T2  is the 1/m corrected prediction right to 1e-04?
+    -- and can this tolerance SEE the alternative?  That second
+    question is asked because the answer decides what a pass
+    means, and it was not asked when the tolerance was set.
+
+  depth  1/m corrected   exact          difference
+  0      0.295726        0.295708       -0.000018
+  1      0.126476        0.126454       -0.000022
+  2      0.825475        0.825436       -0.000039
+
+    T2: VOID -- could not have discriminated.
+    The alternative T3 measures, alpha = 0.720, differs from
+    1/m by 1.8e-05 to 4.6e-05 at these m, all under the 1e-04
+    tolerance.  BOTH hypotheses pass it.  So T2 is recorded
+    neither held nor refuted: the data did not contradict
+    1/m and did not support it, and a rule filed as held
+    would be counted as support that does not exist.
+
+T3  is there ONE dilution law?  alpha spread cap 0.15
+    alpha from
+    exact = uncorrected - full / m^alpha
+
+  depth  m     implied alpha
+  0      48    +0.715
+  1      44    +0.689
+  2      12    +0.756
+
+    T3: hold  (spread 0.067)
+
+POST HOC (after T1-T3 were scored; it rescores nothing).
+
+  THE EXPONENT IS NOT A THING TO FIT.  alpha came out 0.715, 0.689, 0.756 at
+  m = 48, 44, 12 -- disagreeing by 0.067 and NOT MONOTONE in m, on a
+  measurement with no sampling in it.  A single power law gives
+  one number.  So m alone does not parameterise the deficit,
+  and this file's own output says so before any argument about
+  mechanism.
+
+  AND THE THREE ARE ONE COMPARISON, not three.  alpha's
+  leverage is log m:
+    log m = 3.871, 3.784, 2.485
+    depths 0 and 1 sit 0.087 apart against 1.386 from depth 0 to
+    depth 2 -- the first pair carries 15.9 times less leverage
+    and its two exponents are nearly forced to agree.  And the
+    measurement is exact, so the 0.067 spread is not an error
+    bar -- it is a measured DISAGREEMENT between three numbers
+    that are exactly unequal.  What makes them one law is the
+    registered tolerance 0.15, not the data.
+
+  Computed instead, by the same convolution:
+      Delta_c = C_T' - E_same,c[T'],   C_T' = K / 2C_2
+
+  C_T' = 1.0354942122
+
+  depth  E[A'] exact     E[T'] exact     Delta_c        2C_2 Cov
+  0      1.679163340     1.035488249     +5.963318e-06  -1.015437e-05
+  1      1.555366966     1.035488227     +5.985174e-06  -1.168188e-05
+  2      2.066663750     1.035474605     +1.960739e-05  -2.690108e-05
+  3      3.200000000     1.035291160     +2.030518e-04  +0.000000e+00
+
+  E[A'] reproduces 403/240 = 1.679166667, 941/605 = 1.555371901,
+  31/15 = 2.066666667 and 16/5 = 3.200000000, the exact rationals the
+  prediction is built from.  That is a check on the
+  autocorrelation, not a result.
+
+  With Delta_c computed the measurement decomposes with no
+  model anywhere -- but into FOUR terms, not three.  The main
+  term is K times the EXACT rational E_same,c[A'], and the
+  autocorrelation's E[A'] is not that rational: it departs by
+  O(1/ell) because the empirical class weights are not the
+  idealised ones.  That departure is {#prop:scaleinv}'s OTHER
+  error term, the equidistribution one, and nothing in this
+  paper had measured it until now.
+
+      D'_c = [K E_exact[A'] - 2]        main term, exact rational
+             + K (E[A'] - E_exact[A'])  pattern-weight resolution
+             - 2C_2 E[A'] Delta_c       divisor deficit
+             + 2C_2 Cov(A', T')         covariance
+
+  depth  main term      pattern wt.    deficit        covariance
+  0      0.295735677    -4.5484e-06    -1.3221e-05    -1.0154e-05
+  1      0.126485021    -6.7463e-06    -1.2291e-05    -1.1682e-05
+  2      0.825520833    -3.9874e-06    -5.3502e-05    -2.6901e-05
+  3      2.375000000    -6.0715e-16    -8.5790e-04    +0.0000e+00
+  sum    0.295707753  0.126454301  0.825436443  2.374142099
+  meas   0.295707753  0.126454301  0.825436443  2.374142099
+
+  The pattern-weight term is ZERO at depth 3 -- one class, so
+  the empirical weight is the idealised one -- and nonzero
+  wherever the cell unions more than one.  Same signature as
+  the covariance, and the same reason.
+
+  E[A'] therefore reproduces the exact rationals to about 2 ppm
+  and EXACTLY at depth 3, the departure being that term.
+
+  COVARIANCE.  The prediction assumed E[A'T'] = E[A'] E[T'].
+  At depth 3 that is EXACT -- A' is constant on every same-cell
+  pair of a single class -- which is why depth 3 came in at
+  -9.9e-08.  At the other three it does not vanish.  And the
+  first partition's calibration cell was a single class too, so
+  the exponent was being fitted at cells carrying TWO terms
+  that are structurally ABSENT where the deficit was
+  calibrated.
+
+  COMPLETE CANCELLATION, DERIVED.  Diagonal class pairs alone
+  predict Delta_full * m ell(ell-1)/(n_c(n_c-1)), which is
+  Delta_full/m to four digits -- so alpha = 1 IS that model.
+  An earlier printing of this block used A(B)/(n_c-1) instead,
+  on a reading adopted here without deriving it; that is the
+  prediction with EVERY class residual zero, diagonal included,
+  which nobody proposed and which the single-class cell itself
+  refutes.  Withdrawn.
+
+  depth  m     pair identity   diag-only        measured Delta_c   residual
+  0      48    1.000000000     4.2298e-06       5.9633e-06        +41.0%
+  1      44    1.000000000     4.6143e-06       5.9852e-06        +29.7%
+  2      12    1.000000000     1.6919e-05       1.9607e-05        +15.9%
+  3      1     1.000000000     2.0305e-04       2.0305e-04        +0.0%
+
+  MEASURED EXCEEDS DIAGONAL-ONLY at every multi-class cell.  So
+  the off-diagonal class pairs contribute additional deficit --
+  they do not cancel completely.  They do not over-cancel
+  either; that reading came from the withdrawn baseline.
+  AND THE EXCESS IS NOT A FUNCTION OF m EITHER: 41 per cent at
+  m = 48 against 30 at m = 44 is a 38 per cent change in the
+  excess for an 8 per cent change in m.  The three are quoted
+  and not summarised, for the same reason the deficit is.
+
+  THE BAND AVERAGE AT A FINITE BAND IS NOT 2.  The theorem is
+  asymptotic.  Computed exactly over the whole band -- the same
+  pair average with every even N as the cell, so the
+  autocorrelation is analytic:
+    E_all[S_2] over 1000000 positions = 1.999986107190
+    against the theorem's 2:  -1.3893e-05
+
+  THAT OFFSET IS LARGER THAN TWO OF THE FOUR TERMS ABOVE.  The
+  registration fixed D'_c = E_same,c - 2 with the 2 exact, and
+  T1, T2 and T3 are scored on that convention and stay scored
+  on it.  But {#eq:Dc} defines D_c as E_same,c - E_all, so this
+  file's D'_c and the first partition's D_c are two quantities
+  under one name, differing by 1.39e-05 at a band of this size.
+
+  depth  D'_c (E_all = 2)   D'_c (E_all exact)  main term
+  0      0.295707753        0.295721646         0.295735677
+  1      0.126454301        0.126468194         0.126485021
+  2      0.825436443        0.825450336         0.825520833
+  3      2.374142099        2.374155992         2.375000000
+
+  A FIFTH CELL, WHERE THE ANSWER IS KNOWN BEFORE THE RUN.  The
+  band is all 105 classes modulo 2Q', so it IS a cell of this
+  partition -- the one with m = 105 -- and its main term is
+  K E^ex_all[A_S] - 2 = (175/128)(256/175) - 2 = 0 exactly.  So
+  the four-term identity applies to it with a main term known
+  in advance, and decomposing its departure from 2 is the only
+  check here whose answer is fixed before the computation.
+
+    main term (known zero)  +0.000000e+00
+    pattern weight          -2.374997e-06
+    divisor deficit         -5.831770e-06   (Delta = 3.019386e-06)
+    covariance              -5.686043e-06
+    sum                     -1.389281e-05
+    measured E_all,B - 2    -1.389281e-05
+    difference              -1.44e-15
+  It closes.  So the band's departure from the limiting 2 is
+  the same three terms measured at the cells, with the main
+  term structurally absent -- the caution above is a
+  confirmation and not an apology.
+
+  Using the exact finite-band average removes the same
+  1.3893e-05 at every cell -- half the departure from the main term
+  at depth 0 and under two per cent of it at depth 3, since a
+  constant offset cannot take a fixed share off departures that
+  span a factor thirty.  The band's own equidistribution error
+  and the cell's partly cancel in a difference, which is the
+  direction; the size is not uniform.  Reported and not
+  folded in: the rules were registered on the other convention
+  and rescoring them here would be choosing the convention
+  after seeing which one flatters.
+
+  NO POWER LAW IN m FITS THESE THREE.  Local exponents:
+    m = 48 -> 44 :  0.042
+    m = 44 -> 12 :  0.913
+    m = 48 -> 12 :  0.859
+  The deficits at m = 48 and 44 are in the ratio 1.004 where a
+  power fitted to the second pair requires 1.083.
+  A monotone dependence on m is not excluded -- three points
+  cannot exclude one -- but no single power reaches them.  That
+  is a firmer reason to drop the exponent than 'no mechanism',
+  and it warns against fitting anything else in m either.
+
+  HOW TIGHT IS THE PROPOSITION'S OWN BOUND?  The terms are
+  quoted against the NUMBER 1/ell = 1.050e-04 and NOT against the
+  bound: the bound is that number times an unnamed constant and
+  a divisor sum above three, which is the reading this file
+  withdraws below.  So these are UPPER bounds on the fraction
+  of the bound the measurement realises -- the bound is at
+  least three times looser than they suggest, and the
+  conclusion that it is loose survives a fortiori.
+  At depth 0, all in T-space -- the covariance and
+  pattern-weight rows above are divided by 2 C_2 E[A_S] = 2.2170
+  to get here:
+    divisor deficit      5.68% of the bound
+    covariance           4.36%
+    pattern weight       1.95%
+    diagonal-only        4.03%  (what complete cancellation of
+                         the class-wise errors would give, and
+                         the proof declines to claim it)
+  So the measured deficit EXCEEDS the diagonal-only figure --
+  the off-diagonal pairs add deficit rather than cancelling it
+  -- and all three measured terms are a few per cent of the
+  bound the proposition proves.
+
+POST HOC (after T1-T3 were scored; it rescores nothing).
+
+  T2 HELD AND T3 SAYS alpha IS NOT 1.  Those are in tension and
+  the tension is T2's tolerance, which I set at 1e-4 without
+  checking what it could discriminate:
+
+    depth  1/m correction  alpha-fit correction  difference
+    0      0.000009        0.000028              0.000018
+    1      0.000009        0.000027              0.000018
+    2      0.000046        0.000093              0.000046
+
+  Every difference is under the 1e-4 cap, so T2 COULD NOT HAVE
+  REFUSED alpha = 0.720.  It held against an alternative it was
+  not sharp enough to see.  A rule whose tolerance is not
+  calibrated against the alternative it is meant to exclude
+  passes for a reason unrelated to the claim.
+
+  And the three residuals against the 1/m prediction are
+  -0.000018, -0.000022, -0.000039 -- all the same sign.
+  A systematic sign at three of three is what T3 reads and T2
+  cannot: the dilution is a power of m near 0.72, not 1.
+
+  WHAT alpha = 0.720 MEANS.  The 1 came from a mechanism -- the
+  deficit carried by the m diagonal class pairs and nothing
+  else.  0.72 has no mechanism proposed for it, so the reading
+  is that the off-diagonal class pairs do NOT cancel completely;
+  they carry a residual share of the deficit.  That is the
+  cancellation {#prop:scaleinv} declines to claim, measured
+  rather than assumed, and it is INCOMPLETE.
+
+  CONSEQUENCE FOR THE FIRST PARTITION, which the registration
+  named in advance for the T2-refuted case.  T2 was not refused,
+  so that clause does not fire literally; but its reason has
+  come true and the honest thing is to report the effect either
+  way.  At depth 4 of the first partition (m = 34):
+
+    no correction        residual +1.16 sampling errors
+    alpha = 1            residual +0.34
+    alpha = 0.720          residual -1.04
+
+  All three inside two sampling errors, so the first partition
+  does not decide the exponent and is not decided by it.  The
+  paper should carry the exponent as measured HERE, on a cell
+  shape where m spans 48 to 1, and not lean on depth 4.
+
+DEPTH 3 -- consistency check, not a score, as the first seal
+recorded: the corrected prediction and the exact value are the
+same finite sum.
+    sealed corrected prediction  2.374142000
+    exact                        2.374142099
+    difference                   -9.881e-08
+
+======================================================================
+T1 hold   T2 VOID   T3 hold
+The divisor deficit is the mechanism at multi-class cells
+too, and the main-term computation transfers to a cell shape
+it was not built on.

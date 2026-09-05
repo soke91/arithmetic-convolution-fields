@@ -1,0 +1,99 @@
+STATISTIC: the second moments E[G^2] of
+           G(N) = C(N)/sqrt(V(N)) over the eight classes cut by
+           which of (3, 5, 7) divide N, against an ensemble of 512 iid
+           sign patterns on mu's support -- the same depth
+           rem:cnmultdeep gave the multiplicative ensemble, so
+           that resolution and null type are separated.
+FIELD: even N in (2^20, 2^21], with Lambda and mu sieved once to
+       2097152 and every convolution taken by FFT over the whole
+       range. The 512 draws are built in 8 passes, 64 per pass,
+       each index carrying one random 64-bit word. For iid signs
+       E[C_eps(N)^2] = V(N) is exact, so the ensemble's E[G^2]
+       is 1 in every class, as it is for the multiplicative one.
+SEED: the draws come from numpy default_rng at seed 20260903; without
+      it the file does not reproduce its own control.
+
+READ audit_cn_class.txt POINT classm2_7 4.37497
+  the class second moment this run has to reproduce
+  the multiplicative ensemble's spread at that class was 0.63553,
+  read from results/audit_cn_multnull_deep.txt
+PRINTBOUND audit_cn_coin_deep 3 0.00050000
+  512 iid draws in 8 passes of 64
+sieving to 2097152, which is 2^21
+  transform length 8388608
+
+F1  does this run reproduce the class it shares?
+  class 7 E[G^2] here 4.37497 against its 4.37497
+  F1 hold   (cap: 3 decimals)
+  pass 1 of 8 done, 64 draws
+  pass 2 of 8 done, 128 draws
+  pass 3 of 8 done, 192 draws
+  pass 4 of 8 done, 256 draws
+  pass 5 of 8 done, 320 draws
+  pass 6 of 8 done, 384 draws
+  pass 7 of 8 done, 448 draws
+  pass 8 of 8 done, 512 draws
+
+F2  does the iid ensemble come to one?
+      3|N 5|N 7|N        N      E[G^2]    ens. mean      ens. sd      s.e.   |m-1|/s.e.
+       0   0   0    239675    +0.80803     +1.00224      0.20566   0.00909      0.25
+POINT coindeepmean_0 1.00224
+POINT coindeepsd_0 0.20566
+       1   0   0    119837    +0.83798     +0.99934      0.27836   0.01230      0.05
+POINT coindeepmean_1 0.99934
+POINT coindeepsd_1 0.27836
+       0   1   0     59918    +0.81369     +1.00588      0.26084   0.01153      0.51
+POINT coindeepmean_2 1.00588
+POINT coindeepsd_2 0.26084
+       1   1   0     29960    +1.16445     +1.01534      0.34266   0.01514      1.01
+POINT coindeepmean_3 1.01534
+POINT coindeepsd_3 0.34266
+       0   0   1     39945    +0.79576     +0.99808      0.24597   0.01087      0.18
+POINT coindeepmean_4 0.99808
+POINT coindeepsd_4 0.24597
+       1   0   1     19973    +0.91322     +0.98707      0.32281   0.01427      0.91
+POINT coindeepmean_5 0.98707
+POINT coindeepsd_5 0.32281
+       0   1   1      9987    +0.95176     +1.00566      0.30369   0.01342      0.42
+POINT coindeepmean_6 1.00566
+POINT coindeepsd_6 0.30369
+       1   1   1      4993    +4.37497     +1.00642      0.41025   0.01813      0.35
+POINT coindeepmean_7 1.00642
+POINT coindeepsd_7 0.41025
+SCALES 1
+      draws    mean over classes of |ens. mean - 1|
+         32    0.06330
+         64    0.02551
+        128    0.02300
+        256    0.00409
+        512    0.00638
+SCALES 5
+  the deviation falls from 32 to 512 draws
+  furthest from one at class 3, at 1.01 of its own standard error
+TSTAT coindeep_center 1.01
+SPREAD coindeep_center 0.01514
+  F2 hold   (cap: two standard errors)
+
+F3  does the iid ensemble cover mu at this depth?
+  real largest |z| 8.21 at class 7; the draws' own largest run 0.44 to 7.73,
+  and 0 of 512 reach it
+TSTAT coindeep_maxz 8.21
+SPREAD coindeep_maxz 1.00477
+  F3 REFUTED   (cap: at least one draw)
+
+F4  are the two nulls the same width once resolved?
+  iid spread at class 7 is 0.41025 against the multiplicative 0.63553,
+  a factor of 0.6455
+POINT coindeep_widthratio 0.64553
+  F4 REFUTED   (cap: within 1.5 either way)
+
+======================================================================
+F1 hold  F2 hold  F3 REFUTED  F4 REFUTED
+
+the null type did the work. An iid coin at full resolution still
+excludes mu where a multiplicative ensemble does not, so iid signs
+are narrower than the right null when the object is multiplicative.
+Every figure in this repository calibrated against a coin was
+calibrated against something narrower than it should have been. This
+is one band and one statistic and it says the question is worth
+asking of lem:coin in general, not that the answer is known.

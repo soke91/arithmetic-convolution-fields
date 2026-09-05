@@ -1,0 +1,83 @@
+STATISTIC: G(N) = C(N)/sqrt(V(N)) for even N in one band, with
+           C the convolution of Lambda with mu and V the exact
+           second moment of prop:V, so G is defined and not
+           fitted; its standard deviation, excess kurtosis, mean
+           and tail quantiles, each against a coin arm that
+           keeps mu's support and replaces its signs.
+FIELD: even N in (2000000, 4000000], 1000000 values, with Lambda
+       and mu sieved to 4000000 and both convolutions taken by FFT
+       over the whole range at once. Standard errors are blocked
+       over 64 contiguous blocks of N, fixed before the run,
+       because neighbouring N share almost all their summands.
+SEED: the coin draws from numpy default_rng at seed 20260820; without
+      it the file does not reproduce its own control.
+
+sieving to 4000000
+  Lambda nonzero at 283539 indices, mu nonzero at 2431736
+SEED: the coin draws from numpy default_rng at seed 20260820; without it
+      the file does not reproduce its own control
+
+P1  is the convolution right?
+  8 sampled N, drawn at the declared seed
+            N       direct           fft        |diff|
+       2069928  -2292.298066  -2292.298066     4.093e-12
+       2193016   6284.815315   6284.815315     1.000e-11
+       2665466  -2593.895388  -2593.895388     8.185e-12
+       2778208  -2757.920778  -2757.920778     4.547e-12
+       3413078  -2018.552641  -2018.552641     8.868e-12
+       3437984   9989.008273   9989.008273     5.457e-12
+       3768664  -2572.961144  -2572.961144     1.819e-12
+       3791658    683.994236    683.994236     6.366e-12
+  worst 1.000e-11 against the cap 1e-06
+  P1 hold   (cap: 1e-06 absolute)
+
+  the band is even N in (2000000, 4000000], 1000000 values
+  V/(N log N) runs 0.69510 to 0.92097 across the band
+  the coin keeps mu^2 and so keeps V exactly; only the sign pattern
+  is replaced
+
+P2  does the scale need fitting?
+  sd(G) = 0.92953 +- 0.00083 over 64 blocks
+POINT cnlaw_sd 0.92953
+  P2 REFUTED   (cap: [0.95, 1.05])
+SPREAD cnlaw_sd 0.00083
+
+P3  is G Gaussian in the bulk?
+  excess kurtosis 0.26422 +- 0.01613, t = 16.38
+POINT cnlaw_kurt 0.26422
+TSTAT cnlaw_kurtosis 16.38
+SPREAD cnlaw_kurtosis 0.01613
+  P3 hold   (cap: positive and |t| > 2)
+
+P4  can the coin make both?
+            statistic      real          coin      |gap|/se
+                   sd       0.92953       0.91811      8.81
+      excess kurtosis       0.26422      -0.00269     15.79
+TSTAT cnlaw_sd_gap 8.81
+SPREAD cnlaw_sd_gap 0.00130
+TSTAT cnlaw_kurt_gap 15.79
+SPREAD cnlaw_kurt_gap 0.01691
+  P4 REFUTED   (cap: both within two blocked standard errors)
+
+P5  is there a mean field?
+  mean(G) = -0.01439 +- 0.00901, t = -1.60
+TSTAT cnlaw_mean -1.60
+SPREAD cnlaw_mean 0.00901
+UNRESOLVED SIGN cnlaw_mean
+  the coin's mean is -0.10368 +- 0.02057 for comparison
+  P5 hold   (cap: |t| < 2)
+
+  the tail, since the withdrawn law named it
+       quantile      real        coin      normal
+          0.001    -3.1965    -2.9631    -3.0902
+          0.010    -2.2278    -2.2497    -2.3263
+          0.990     2.1204     2.0187     2.3263
+          0.999     2.8074     2.6990     3.0902
+SCALES 1
+
+======================================================================
+P1 hold  P2 REFUTED  P3 hold  P4 REFUTED  P5 hold
+
+and the bulk does NOT go the way the phase went: the coin misses at
+least one of the two statistics, which is content the withdrawn law
+needed and did not have. What separates them is named above.

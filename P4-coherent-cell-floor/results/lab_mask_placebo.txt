@@ -1,0 +1,126 @@
+STATISTIC: z_c = (m_c - mbar)/se_c with se_c the exact floor of
+           Lemma {#lem:cellmom}, computed for the true depth
+           labelling and for 10 random permutations of that
+           labelling over the band; max_c |z_c| in each case; the
+           floor se_c itself under permutation against the true
+           one; and the correlation between depth and z_c.
+           Also the mean floor under permutation against its
+           closed form (L5), and the numerator of the true
+           labelling against its exact permutation variance.
+NULL: this file is the null -- the placebo of Lemma
+      {#lem:placebo}, which Section {#sec:floor} cites but which
+      no script had run. Cell sizes are preserved exactly and the
+      floor is recomputed from scratch for every permutation, so
+      the cell-to-arithmetic correspondence is the only thing
+      destroyed.
+FIELD: the octave (2e6, 4e6], even N with V(N) > 0; cells indexed
+       by depth = #{p in 3,5,7,11,13 dividing N}; Lambda, mu and
+       the squarefree indicator from an integer sieve to 4e6;
+       V = mu^2 * Lambda^2 and C = mu * Lambda by exact FFT
+       convolution; u_c by FFT cross-correlation; numpy
+       default_rng seed 20260808.
+
+sieving to 4000000 ...
+convolving V and C ...
+band (2000000, 4000000]: 1000000 even N
+
+K's three terms, cells as arithmetic gives them  (POST HOC:
+written after the rules below were scored, and scores none)
+  Lemma [lem:cellmom] is doubly centred, so the variance is
+  E_same,c - 2 E_c,a + E_all and not the difference of the
+  outer two.  How much the cross term matters for K:
+  depth  E_same,c   E_c,a      E_all      2-term     Var        2-term/Var
+  0      0.135931   0.124636   0.128718   0.007214   0.015376   0.4691
+  1      0.133326   0.129935   0.128718   0.004608   0.002174   2.1199
+  2      0.160625   0.133668   0.128718   0.031907   0.022006   1.4499
+  3      0.202569   0.136416   0.128718   0.073851   0.058455   1.2634
+  4      0.258831   0.138486   0.128718   0.130113   0.110576   1.1767
+  5      0.342222   0.140049   0.128718   0.213504   0.190841   1.1188
+  E_c,a runs 0.124636 to 0.140049 against E_all = 0.128718, and the
+  two-term form misstates Var by factors 0.469 to 2.120.
+  So for K the cross term is not the band mean.  For the
+  singular series it is: lab_cell_singular.py measures that,
+  and there the two-term D_c and the doubly centred B_c[S_2]
+  agree.  The parallel drawn in [meas:Dc] is between two
+  doubly centred means; it is not a parallel of differences.
+
+true labelling
+  depth  n_c        se_c          z_c
+  0      383617     1.2400e-01    +0.1069
+  1      421978     4.6622e-02    +1.1133
+  2      163568     1.4834e-01    -0.2314
+  3      28507      2.4178e-01    -2.3990
+  4      2263       3.3253e-01    -5.9997
+  5      67         4.3685e-01    -11.0258
+  max |z_c| = 11.0258
+  L1 hold
+
+placebo: 10 label permutations (cell sizes preserved exactly)
+  draw   max |z_c|   z by depth
+  1      0.9359      +0.94 -0.33 -0.78 +0.07 +0.06 -0.77
+  2      1.6073      +0.29 -0.67 +0.26 +0.02 +1.61 +1.08
+  3      1.9921      -0.41 +1.09 -0.07 -1.99 +0.36 +0.14
+  4      1.5687      -1.57 +0.54 +0.92 +0.93 -0.73 -0.17
+  5      2.1392      -1.88 +2.14 -0.33 -0.20 -0.93 -0.15
+  6      1.1216      -0.77 +0.26 +1.12 -0.77 -1.10 -0.41
+  7      1.7178      +1.00 -1.72 +1.01 -0.20 +0.63 +1.22
+  8      1.1348      +0.97 -0.50 -0.90 +0.45 +0.43 -1.13
+  9      3.2040      +1.16 +0.98 -3.20 +0.03 +0.77 -0.46
+  10     1.3192      +0.57 +0.25 -0.92 -0.49 +0.45 +1.32
+  max over draws = 3.2040;  mean = 1.6741   (caps 5 and 3)   hold
+
+L3   the floor under permutation, by depth
+  depth  se_true       se_perm       |rel dev|
+  0      1.2400e-01    1.1794e-03    0.9905
+  1      4.6622e-02    1.1137e-03    0.9761
+  2      1.4834e-01    2.1090e-03    0.9858
+  3      2.4178e-01    5.5446e-03    0.9771
+  4      3.3253e-01    1.9584e-02    0.9411
+  5      4.3685e-01    1.1518e-01    0.7363
+  L3 REFUTED   (cap 0.10)
+
+L5   the floor under permutation against its closed form, by depth
+     Q_aa/n^2 = 0.128718   1 - Q_aa/n^2 = 0.871282   n = 1000000
+  depth  n_c        se_perm       sqrt(A)       se_perm/sqrt(A)  var_perm/A  |dev|/SE10  se_true/sqrt(A)
+  0      383617     1.1794e-03    1.1832e-03    0.9968           0.9960      0.20        104.80
+  1      421978     1.1137e-03    1.0925e-03    1.0195           1.0420      1.12        42.68
+  2      163568     2.1090e-03    2.1108e-03    0.9991           0.9992      0.09        70.28
+  3      28507      5.5446e-03    5.4491e-03    1.0175           1.0379      1.05        44.37
+  4      2263       1.9584e-02    1.9600e-02    0.9992           0.9999      0.06        16.97
+  5      67         1.1518e-01    1.1403e-01    1.0101           1.0216      0.83        3.83
+  collapse factors se_true/sqrt(A): 104.80 42.68 70.28 44.37 16.97 3.83
+  the floor of the arithmetic cell exceeds the closed form by factors from 3.8 to 104.8
+  L5 hold   (cap 0.25 on |se_perm/sqrt(A) - 1|; SE10 reported, not gated)
+
+numerator of the true labelling against its exact permutation law
+  s^2(Z) = 0.864029   s^2/(1 - Q_aa/n^2) = 0.991676
+  depth  n_c        m_c - mbar    tau_c = sqrt(B)  |t|/tau    Chebyshev
+  0      383617     +0.01325      1.1783e-03       11.25      7.91e-03
+  1      421978     +0.05191      1.0879e-03       47.71      4.39e-04
+  2      163568     -0.03432      2.1020e-03       16.33      3.75e-03
+  3      28507      -0.58002      5.4264e-03       106.89     8.75e-05
+  4      2263       -1.99506      1.9518e-02       102.22     9.57e-05
+  5      67         -4.81664      1.1356e-01       42.42      5.56e-04
+  union over 6 cells of the Chebyshev bounds: 1.28e-02
+
+L4   depth-vs-z: true Pearson -0.9106, true Spearman -0.9429;
+     permuted mean Pearson 0.0042, permuted mean Spearman -0.0114 (cap 0.3)
+     z monotone decreasing in depth: False
+     rises at depth 0->1 (+1.0065)
+     L4 REFUTED
+
+  DIAGNOSTIC (post hoc).  The permutation half of L4 holds:
+  the rank correlation the placebo produces is near zero.
+  The monotonicity half is false, and it is false at the
+  end where nothing is claimed -- depth 0 and 1 are the
+  cells with no effect to order, and the correspondence
+  L1-L3 measure is unaffected by their order.  The
+  prediction was written as if the effect had to grow with
+  depth monotonically; [rem:floorsignal] says the index is
+  coarse and both ends concentrate the shift.  The
+  threshold is not rewritten.
+
+======================================================================
+L1 hold  L2 hold  L3 REFUTED  L4 REFUTED
+L5 hold
+the mask survives the permutation that decides it (L2); refuted above are L3, L4

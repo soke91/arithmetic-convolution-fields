@@ -1,0 +1,88 @@
+STATISTIC: the second moments E[G^2] of
+           G(N) = C(N)/sqrt(V(N)) over the eight classes cut by
+           which of (3, 5, 7) divide N, against an ensemble of 512
+           random multiplicative sign functions, and the
+           convergence of that ensemble's class means to the 1
+           the identity E[C_f^2] = V requires.
+FIELD: even N in (2^20, 2^21], with Lambda and mu sieved once to
+       2097152 and every convolution taken by FFT over the whole
+       range. The 512 draws are built in 8 passes over the
+       primes, 64 per pass, each prime contributing one random
+       64-bit mask to a parity accumulator.
+SEED: the draws come from numpy default_rng at seed 20260902; without
+      it the file does not reproduce its own control.
+
+READ audit_cn_class.txt POINT classm2_7 4.37497
+  the class second moment this run has to reproduce
+PRINTBOUND audit_cn_multnull_deep 3 0.00050000
+  512 draws in 8 passes of 64
+sieving to 2097152, which is 2^21
+  transform length 8388608
+
+E1  does this run reproduce the class it shares?
+  class 7 E[G^2] here 4.37497 against its 4.37497
+  E1 hold   (cap: 3 decimals)
+
+  155611 primes carry the signs
+  pass 1 of 8 done, 64 draws
+  pass 2 of 8 done, 128 draws
+  pass 3 of 8 done, 192 draws
+  pass 4 of 8 done, 256 draws
+  pass 5 of 8 done, 320 draws
+  pass 6 of 8 done, 384 draws
+  pass 7 of 8 done, 448 draws
+  pass 8 of 8 done, 512 draws
+
+E2  does the ensemble come to one?
+      3|N 5|N 7|N        N      E[G^2]    ens. mean      ens. sd      s.e.   |m-1|/s.e.
+       0   0   0    239675    +0.80803     +1.04608      1.27572   0.05638      0.82
+POINT deepmean_0 1.04608
+       1   0   0    119837    +0.83798     +1.02478      0.90526   0.04001      0.62
+POINT deepmean_1 1.02478
+       0   1   0     59918    +0.81369     +1.06459      1.12322   0.04964      1.30
+POINT deepmean_2 1.06459
+       1   1   0     29960    +1.16445     +1.04262      0.85337   0.03771      1.13
+POINT deepmean_3 1.04262
+       0   0   1     39945    +0.79576     +1.00555      0.89368   0.03950      0.14
+POINT deepmean_4 1.00555
+       1   0   1     19973    +0.91322     +1.00290      0.70547   0.03118      0.09
+POINT deepmean_5 1.00290
+       0   1   1      9987    +0.95176     +1.02888      0.80478   0.03557      0.81
+POINT deepmean_6 1.02888
+       1   1   1      4993    +4.37497     +1.00609      0.63553   0.02809      0.22
+POINT deepmean_7 1.00609
+SCALES 1
+  furthest from one at class 2, at 1.30 of its own standard error
+TSTAT deep_center 1.30
+SPREAD deep_center 0.04964
+  E2 hold   (cap: two standard errors)
+
+E3  does it get there by converging?
+      draws    mean over classes of |ens. mean - 1|
+         32    0.13591
+POINT deepdev_32 0.13591
+         64    0.10868
+POINT deepdev_64 0.10868
+        128    0.03961
+POINT deepdev_128 0.03961
+        256    0.02859
+POINT deepdev_256 0.02859
+        512    0.02769
+POINT deepdev_512 0.02769
+SCALES 5
+  E3 hold   (cap: closer at 512 than at 32)
+
+E4  does the escape survive the resolved ensemble?
+  real largest |z| 5.30 at class 7; the draws' own largest run 0.12 to 30.88,
+  and 5 of 512 reach it
+TSTAT deep_maxz 5.30
+SPREAD deep_maxz 1.76304
+  E4 hold   (cap: at least one draw)
+
+======================================================================
+E1 hold  E2 hold  E3 hold  E4 hold
+
+the escape was the tail. With the ensemble resolved to where the
+identity puts it, draws of a random multiplicative sign function do
+reach where mu goes, and rem:cnmultm2's 11.83 was what 32 draws
+could not calibrate. Seven routes, and none of them escapes.
