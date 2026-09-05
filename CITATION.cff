@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: >-
+  Cell-mean fluctuations in an arithmetic convolution field: exact
+  Rademacher-null variances and a permutation control
+message: >-
+  If you use this code or the output committed with it, cite the paper
+  and this archive.
+type: software
+authors:
+  - family-names: Lee
+    given-names: Youngrok
+    country: KR
+abstract: >-
+  Reproduction packet for a paper on the fluctuation structure of cell
+  means of Z(N) = C(N)/sqrt(V(N)), where C(N) is the convolution of the
+  von Mangoldt and Moebius functions. Contains the paper, the fifteen
+  scripts it depends on, the output those scripts produced, and a Lean 4
+  development in which three of the paper's lemmas are proved. The
+  packet is closed under what it consumes: no script reads a file that
+  is not present, checked by running every script in dependency order.
+keywords:
+  - analytic number theory
+  - singular series
+  - Moebius function
+  - variance
+  - permutation test
+  - Lean
+license: CC-BY-4.0
+repository-code: https://github.com/soke91/arithmetic-convolution-fields
