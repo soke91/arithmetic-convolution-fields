@@ -1037,9 +1037,13 @@ argument needs is weaker and does hold: each pattern fixes, at each of
 the five primes, the admissible residue set, so within a pattern the
 law of $h$ modulo each of them is determined; and, the even $N$ of a
 band being equidistributed modulo $3\cdot5\cdot7\cdot11\cdot13$ to
-$O(1/\ell)$ per class, the residues at the five primes are independent within a
-pattern, so the joint law modulo their product is determined and not
-only the five marginals. The weights with
+$O(1/\ell)$ per class, the joint residue-class structure within a
+pattern is determined by the product modulus. The word is meant in the
+Chinese-remainder sense and not the probabilistic one: the admissible
+set modulo $3\cdot5\cdot7\cdot11\cdot13$ is the product of the
+admissible sets at the five primes, so the joint law modulo the product
+is determined and not only the five marginals. No independence of
+random variables is asserted or used. The weights with
 which the patterns enter a depth cell are their densities among the
 even $N$ of the band, which are the same at every scale. The induced
 law of $h$ modulo those primes is therefore determined by the cell
@@ -1705,7 +1709,7 @@ vanish with the band and neither of which carries a named implied
 constant; so no rate and no percentage may be read from it, and its
 consequence --- that this quantity is not what makes the effect decay
 --- holds in the limit and not at any fixed band. The argument is
-complete in \S\ref{sec:size}. It is the one labelled statement here
+given in \S\ref{sec:size}. It is the one labelled statement here
 that has had neither a machine check nor a reading by a subject
 expert, and its hardest step is named as such in its own proof.
 Two of the six depths are refused by the registered rules, and both
@@ -1910,40 +1914,31 @@ Script & Result file & Supports\\
 
 This work was done in close collaboration with an AI assistant, which
 carried much of the derivation and all of the computation. The author
-takes full responsibility for everything stated here. Because that
-division of labour makes independent checking the material question,
-this note says exactly what was checked and by what, rather than
-asserting that it was checked.
+takes full responsibility for every claim made here. What follows says
+what was checked and by what, rather than asserting that it was
+checked.
 
-\emph{Machine-verified.} Lemma~\ref{lem:cellmom}'s algebraic
-identity, Lemma~\ref{lem:permfloor}'s closed form, and
-Lemma~\ref{lem:placebo} are proved in Lean~4 against Mathlib, with the
-axiom report reproduced in the code packet; a proof there depends on
-\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}
-and on nothing else. \textbf{Proposition~\ref{prop:scaleinv} is not
-machine-verified.} Its statement is written out in Lean and left
-unproved. The finite half of its argument --- Rankin's truncation step
-both ways, the exact count of one residue class in an interval, and
-the cancellation of the class count $m$ --- is verified separately;
-the analytic half, the Euler product and its convergence, is not. The
-three errors this proposition's proof has carried were all in the
-finite half, which is why that half was the one formalised.
+\emph{Machine-verified.} Lemma~\ref{lem:cellmom}'s algebraic identity,
+Lemma~\ref{lem:permfloor}'s closed form and Lemma~\ref{lem:placebo}
+are proved in Lean~4 against Mathlib; the axiom report is in the code
+packet and each depends on \texttt{propext}, \texttt{Classical.choice}
+and \texttt{Quot.sound} and on nothing else. \textbf{Proposition~\ref{prop:scaleinv}
+is not machine-verified and has had no reading by a subject expert.}
+Its statement is written out in Lean and left unproved, so the axiom
+report carries \texttt{sorryAx} on that line and the absence is
+checkable rather than a matter of trust. The finite half of its
+argument is verified separately; the analytic half, the Euler product
+and its convergence, is not.
 
 \emph{Checked by computation.} Every figure quoted is produced by a
 named run in the accompanying code, and a check in the build refuses a
-figure that no cited run prints. Every registered rule is reported
-with its verdict, including the fourteen the runs did not meet and the
-one recorded void. The predictions of
-Measurement~\ref{meas:secondcell} were committed to the repository
-before the measurement that scores them existed.
+figure that no cited run prints. Every registered rule is reported with
+its verdict, including the thirteen the runs did not meet and the one
+recorded void. The predictions of Measurement~\ref{meas:secondcell} were
+committed to the repository before the measurement that scores them
+existed.
 
-\emph{Cross-read.} The proofs and the computations were additionally
-read by separate AI sessions working without sight of each other's
-findings, and several statements in this paper are corrections those
-readings produced. That is a check on internal consistency, on
-arithmetic, and on whether each statement matches the run it cites.
-\textbf{It is not a reading by a subject expert}, and
-Proposition~\ref{prop:scaleinv} has not had one.
+\subsection*{Supplement S1: what rests on what}
 
 Lemma~\ref{lem:contrast}, Lemma~\ref{lem:cellmom},
 Lemma~\ref{lem:placebo}, Lemma~\ref{lem:permfloor},
@@ -2002,11 +1997,9 @@ the first eight by counting the items of \S\ref{sec:notclaimed} and the
 paragraphs that carry no figure of their own alongside the named
 statements. Under a unit that can be checked the two numbers are five
 and six.
-
 The measurements state the band, the cell index and the statistic they
 were taken of, and each was run with its decision rule fixed in
 advance. Two qualifications belong beside that sentence.
-
 The first is that not every registered rule can fail. N3 of
 Measurement~\ref{meas:mc} reads the Monte-Carlo precision at the
 smaller draw count against the figure an earlier printing quoted; the
@@ -2014,7 +2007,6 @@ precision is a function of the draw count alone, and the draw count is
 a constant of the script, so N3 evaluates the same arithmetic on every
 run and cannot be refuted by any input. It is an identity, and it is
 counted among the registered rules below.
-
 The second is that one registration block carries text written after
 its run. The heading of \texttt{lab\_mask\_placebo.py} reads ``written
 before this script was run'', and L5 inside it argues for its own cap
@@ -2023,7 +2015,6 @@ records in the same block what the run failed to test. The rules
 themselves were fixed first --- what came later is the reasoning
 printed beside them --- but a reader who takes the heading literally
 is reading two layers as one.
-
 One quantity a measurement leans on carries no rule of its
 own: the spread of $\mathrm{se}_c^2/D_c$ that
 Measurement~\ref{meas:Dc} calls settling --- $25.4\%$ as printed,
@@ -2046,7 +2037,6 @@ run here'', and the other that the control the placebo file supplies
 is not the control that statement needs, since it permutes labels for
 a different statistic. The control is not claimed for the others, and
 what the evidence files say is what stands.
-
 \subsection*{Supplement S1: the registered rules and their verdicts}
 
 Six of the ten runs record a rule their own output did not meet. The

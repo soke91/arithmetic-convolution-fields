@@ -67,10 +67,20 @@ https://github.com/soke91/arithmetic-convolution-fields
 
 SUBMISSION FACTS
 ----------------
-Endorsement is required for a first submission to a category unless the
-submitter is auto-endorsed, so whether this account needs one for
-math.NT is a fact to be established at submission time; it is not
-recorded here.
+Endorsement is required for a first submission to a category. One
+positive endorsement from a qualified author in that category suffices,
+and endorsers judge whether the submitter works in the field rather
+than whether the paper is correct.
+
+The automatic route runs on an institutional email address associated
+with the account together with claimed co-authorship. The author of
+this paper is unaffiliated, so that route does not apply and a math.NT
+endorser has to be found. arXiv counts as qualified an author with
+enough papers in the category submitted between three months and five
+years earlier.
+
+This is the one obstacle on the arXiv side that the manuscript cannot
+remove, and it is unrelated to the manuscript.
 
 arXiv requires text-to-text generative AI use to be reported consistent
 with subject standards, and holds each named author individually
