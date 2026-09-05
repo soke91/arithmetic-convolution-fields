@@ -50,27 +50,30 @@ for that contrast.
 We compute the scale exactly. Under the null replacing the $\mu(v)$ on
 their own support by independent Rademacher signs, the variance of any
 cell contrast is a doubly centred quadratic form in the field's
-covariance kernel, and reduces to three convolutions
-(Lemma~\ref{lem:cellmom}). That the independent-sample formula
-$\mathrm{sd}/\sqrt{n_c}$ fails for correlated observations is standard;
-what is not is that here the kernel is exactly computable, that
-divisibility cells align with it, and that a uniformly random cell of
-the same size recovers the finite-population formula exactly
-(Lemma~\ref{lem:permfloor}) --- so the count-based scale is right for a
-random cell and wrong for these.
-
+covariance kernel and reduces to three convolutions
+(Lemma~\ref{lem:cellmom}). That $\mathrm{sd}/\sqrt{n_c}$ fails for
+correlated observations is standard; what is not is that here the
+kernel is exactly computable, that divisibility cells align with it,
+and that a uniformly random cell of the same size recovers the
+finite-population formula exactly (Lemma~\ref{lem:permfloor}) --- so
+the count-based scale is right for a random cell and wrong for these.
 Measured over eight octaves to $1.6\cdot10^{7}$, the exact null
-standard deviation of a cell contrast shrinks by $1.21$ where a count
-predicts $11.3$, and under a label permutation preserving every cell
-size it collapses by factors $3.8$ to $105$. Its size is predicted with
-no fitted parameter by the excess of the shift's singular series over
-same-cell pairs (Proposition~\ref{prop:scaleinv}), whose main term is
-computed here in exact rational arithmetic and confirmed on a second
-cell partition against predictions sealed before that partition was
-measured.
+standard deviation shrinks by $1.21$ where a count predicts $11.3$,
+and a label permutation preserving every cell size collapses it by
+factors $3.8$ to $105$.
 
-No distributional law for $Z$ is asserted, and no Goldbach consequence
-is drawn.
+For its size we offer a mechanism: the excess of the shift's singular
+series over same-cell pairs, whose main term is rational and carries no
+fitted parameter. On the partition that motivated it the agreement is
+\emph{post hoc} and one rule registered there was refuted. The
+mechanism was then written down for a second, differently shaped
+partition and its predictions committed before that partition was
+measured; the exact measurement falls inside the registered interval at
+every cell. That transfer, not the fit on the first partition, is the
+evidence offered.
+
+No distributional law for $Z$ is asserted, no Goldbach consequence is
+drawn, and the decay of the effect with $N$ is not determined here.
 \end{abstract}
 
 % =====================================================================
@@ -198,18 +201,12 @@ is the shallowest cell, not the range, whose lower end is the $2.45$
 at depth~$1$; the exponent is confirmed
 directly instead.
 
-\item \textbf{The statements here are not equally reviewed, and the
-uneven ones are named.} Material carried forward from the first
-version of this programme has been through three independent
-adversarial reviews in fresh context; statements first written later
-have had fewer. Nothing shipped here records those reviews, so that
-count stands on the same footing as the fraction below it. Among the latter are the derivation of
-Observation~\ref{obs:coh} and the statement of
-Lemma~\ref{lem:placebo}. Reviews of this kind have caught, in this
-project's own record, roughly half of what a later review then found;
-that is an impression from the running tally and not a figure measured
-by anything shipped here. Read it only as the reason nothing here
-should be taken as certified, and those two least of all.
+\item \textbf{The statements here are not equally checked.} The
+derivation of Observation~\ref{obs:coh} and the statement of
+Lemma~\ref{lem:placebo} have had less scrutiny than the rest, and
+Proposition~\ref{prop:scaleinv} has had no reading by a subject
+expert. What was checked by what is set out in Supplement~S1
+(Appendix~\ref{sec:repro}).
 \end{itemize}
 
 % =====================================================================
@@ -892,8 +889,10 @@ $K(N,N)=1$, and $D_c$ does not: its averages run over pairs $N\ne N'$,
 and $\SS_2(0)$ is not defined. The diagonal is
 $n_c^{-2}\sum_NJ_c(N)^2=(1-n_c/n)/n_c$ and has no partner in the
 denominator. At the deepest cell it is $7.82\%$ of $\mathrm{se}_c^2$,
-and the step it puts between depths~$4$ and~$5$, $+0.004706$, exceeds
-the whole printed rise there, $+0.00336$.
+and what it contributes there, $+0.004706$, exceeds the whole printed
+rise from depth~$4$ to depth~$5$, $+0.00336$. That contribution is
+depth~$5$'s own share and not the step between the two depths; the
+cited run states it as such.
 
 No single factor carries $\mathrm{se}_c^2$ to $D_c$'s convention.
 \eqref{eq:JKJ} is the
@@ -995,8 +994,13 @@ improve with $q$ nor degrade with it. That is exactly why it survives
 the primes comparable to the band length, which are equidistributed
 modulo nothing.
 
-\begin{proposition}[the size mechanism is scale-invariant]%
+\begin{proposition}[the size mechanism, asymptotically scale-free]%
 \label{prop:scaleinv}
+We establish an asymptotic statement and not an identity: $D_c$ agrees
+with a quantity determined by the cell alone, up to error terms that
+vanish with the band. Nothing below asserts equality at a fixed band,
+and no rate is claimed for the agreement.
+
 Depth fixes how many of $3,5,7,11,13$ divide $N$ and not the residues
 themselves, so a cell is a union of divisibility patterns. $D_c$
 depends, once the primes above $13$ are shown to contribute the same
@@ -1254,7 +1258,11 @@ records as depth~$5$'s spread.} $\Delta$ falls with $n_c$ --- it is
 $1.297902\cdot10^{-2}$, $8.505279\cdot10^{-3}$ and
 $5.208268\cdot10^{-3}$ at $n_c=34,67,134$ --- so it induces a drift in
 $D_5$ across the three octaves of $1.24$ per cent, against the $1.28$
-that measurement finds. \emph{So the largest of the six spreads is not
+that measurement finds. \emph{The two are not on one denominator}: the
+first is taken over the uncorrected prediction, the second over a mean
+of measured values, and the cited run prints both readings rather than
+one. What the comparison supports is the order of the effect, not an
+agreement to the second digit. \emph{So the largest of the six spreads is not
 a failure of scale invariance: it is the proposition's own error term,
 computed.} Both figures were predicted before this computation existed
 by an independent reading of the construction, which put the residual
@@ -1588,17 +1596,9 @@ depth~$1$ still reads $e=-0.016226$ against M4's $|e|<0.01$ and a
 spread of $0.0390$ against M2's two per cent, so both stay refused
 as the code scores them.
 
-\emph{As registered} is a different verdict, and this paper has
-called the code's the registered one. The registration reads
-``exceeds $0.02$ at any depth \emph{by more than three sampling
-standard errors}''; the code applies the flat $0.02$ with no
-allowance. Scored as the registration reads, the allowance at
-depth~$1$ is $0.1232$ against a spread of $0.0902$, and \textbf{M2
-holds at all six depths}. M4's rule carries no allowance --- refuted
-if $|e|\ge0.01$ at any depth --- so M4 is refused at depths~$0$
-and~$1$ under either reading. The code is the stricter of the two and
-its verdict is the one this run gates on; which of them may be called
-\emph{as registered} is the registration's.
+The registration's own wording and the code's scoring of it differ, and
+this paper reports the stricter --- the code's --- throughout.
+Supplement~S1 gives both readings and the verdicts each produces.
 
 Sampling was not necessary. $D_c$ is a deterministic functional of the
 cell, and the sum over all ordered pairs off the diagonal is one
@@ -1621,22 +1621,14 @@ the six read
 M4's $|e|<0.01$}, the shallow four by three orders. The two depths the
 registered rules refuse are the two where the sampling error is the
 largest fraction of $D_c$, and the refusals are a property of that
-estimator and not of $D_c$. The registered verdicts stand as scored:
-they were scored on the estimator this file registered, and this
-paragraph does not rescore them. What it separates is the estimator
-from the quantity. The deepest cell keeps the largest spread,
-$1.28$ per cent, which Measurement~\ref{meas:maincoef} computes as
-$1.24$ --- the divisor deficit of a cell of a few
-tens of elements and is the only one of the six that the estimator was
-reading rather than adding to. M2's two per cent is printed in the result file, beside
-the remark that the registration had allowed three sampling standard
-errors and the code applied the flat band instead; the depth-wise
-spreads are printed there too, so a reader who opens only the result
-can reproduce that refusal. The exact-$D_c$ block quoted above puts
-M4's $|e|<0.01$ into that file as well, so that refusal is
-reproducible from the result too. The declared field's figures are the ones printed
-above; the ten-times-harder figures are a separate resolution and
-are not mixed into the table.
+estimator and not of $D_c$. The verdicts stand as scored, on the
+estimator the run registered. The deepest cell keeps the largest
+spread, $1.28$ per cent, which Measurement~\ref{meas:maincoef}
+computes as $1.24$ on its own denominator --- the divisor deficit of a
+cell of a few tens of elements, and the only one of the six that the
+estimator was reading rather than adding to. Supplement~S1 records the
+registered rules, what each was scored on, and where in the result
+files each refusal can be reproduced.
 
 The sampling error of the pair average runs $0.001183$ to $0.001370$
 at depths $0$ to $4$ --- $0.001358$ at depth~$0$, and lowest at
@@ -1706,24 +1698,22 @@ to is the count-based bar (Lemma~\ref{lem:permfloor}), so the two
 floors are two questions and not a bracket; $z_c$ is quoted against
 the sign null throughout.
 
-\item Proposition~\ref{prop:scaleinv}: the quantity that predicts the
-floor's size is scale-invariant, so it is not what makes the effect
-decay. Proved; and refused at depth~$1$ by both rules and at
-depth~$0$ by the exponent rule alone, as the code scores them. Two
-things narrow that. Scored as the registration reads --- $0.02$ plus
-three sampling standard errors --- M2 holds at all six depths, and
-only M4's refusals survive, its rule carrying no allowance. And the
-refusals that survive are the sampling estimator's. $D_c$ is deterministic and the same measurement
-computes it over all pairs by one autocorrelation per cell; done that
-way the spread runs $0.0001$ to $0.0128$ across the six depths and the
-fitted exponent $-0.000059$ to $-0.009202$, so all six sit inside both
-registered caps, the shallow four by three orders. The registered
-verdicts stand as scored --- they were scored on the estimator the run
-registered --- and what the exact figures separate is the estimator
-from the quantity. The largest of them is the deepest cell's $1.28$
-per cent, and Measurement~\ref{meas:maincoef} computes it: $1.24$ per
-cent from the divisor deficit of a cell that is a single residue
-class. It is the proposition's own error term, not a failure of it.
+\item Proposition~\ref{prop:scaleinv}: what is established is an
+asymptotic statement, not an identity. $D_c$ equals a cell-determined
+constant up to $O(1/\ell)$ and $O_\eta(B^{\eta-1})$, both of which
+vanish with the band and neither of which carries a named implied
+constant; so no rate and no percentage may be read from it, and its
+consequence --- that this quantity is not what makes the effect decay
+--- holds in the limit and not at any fixed band. The argument is
+complete in \S\ref{sec:size}. It is the one labelled statement here
+that has had neither a machine check nor a reading by a subject
+expert, and its hardest step is named as such in its own proof.
+Two of the six depths are refused by the registered rules, and both
+refusals belong to the sampling estimator rather than to $D_c$: the
+same measurement computes $D_c$ exactly, by one autocorrelation per
+cell, and done that way all six depths sit inside both registered
+caps, the shallow four by three orders. The verdicts stand as scored,
+on the estimator the run registered; Supplement~S1 gives them. It is the proposition's own error term, not a failure of it.
 
 \item Measurement~\ref{meas:maincoef}: that quantity's main term is a
 finite rational over the residue classes the cells are unions of, it

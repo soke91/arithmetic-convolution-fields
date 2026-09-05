@@ -114,7 +114,11 @@ Three of the paper's lemmas are proved — the algebraic identity of
 Lemma 2, the closed form of Lemma 12, and Lemma 8 — and each depends on
 `propext`, `Classical.choice` and `Quot.sound` and on nothing else.
 
-Proposition 17 is **not** proved. Its statement is written out in
+Proposition 17 is **not** machine-checked. It has a proof in the paper,
+in the ordinary sense, and that proof is complete as written; what it
+does not have is a Lean development or a reading by a subject expert,
+and the paper says so in its own Summary rather than leaving it to be
+discovered here. Its statement is written out in
 `Statements.lean` and left unproved, and the axiom report says so: the
 line for `scaleinv_two_bands` carries `sorryAx`, which is what makes the
 absence checkable rather than a matter of trust. What *is* proved is the
@@ -126,6 +130,14 @@ half, the Euler product and its convergence, is not formalised.
 Building it needs Lean 4 and Mathlib at the versions pinned in
 `lean-toolchain` and `lakefile.toml`; `lake build` reproduces the axiom
 report.
+
+## Submission metadata
+
+`arxiv-metadata.txt` carries the title, the primary category, and the
+abstract in the plain text the arXiv form takes — that form resolves no
+`\ref` and no macros, so the abstract exists twice. A check in the build
+compares the numbers the two print and fails when they differ, which is
+how two copies of an abstract actually drift.
 
 ## Status
 
