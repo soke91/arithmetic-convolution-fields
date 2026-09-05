@@ -227,6 +227,40 @@ def read_Esame():
     return [out[d] for d in sorted(out)] if len(out) == 6 else []
 
 
+def read_D5_octaves():
+    """The exact D_5 at each of the three octaves, from lab_cell_singular.
+
+    Needed because the induced drift below and the width meas:scaleinv
+    reports were being quoted on DIFFERENT denominators -- the first
+    over the uncorrected prediction, the second over the mean of the
+    measured values -- so the two per cents were not comparable.  Read
+    the measured values here and put both on the measured mean.
+    """
+    p = os.path.join(ROOT, "results", "lab_cell_singular.txt")
+    if not os.path.exists(p):
+        return []
+    want = (("1000000,", "2000000]"), ("2000000,", "4000000]"),
+            ("4000000,", "8000000]"))
+    out = {}
+    for ln in io.open(p, encoding="utf-8", errors="replace"):
+        f = ln.split()
+        # (  lo,  hi] depth n_c E_same,c D_c se_c  -- D_c is field 6.
+        # Reading field 4 gave n_c, and the printed drift came out
+        # 0.05 against a "measured width" of 129 per cent, which is
+        # what made the mistake visible.  Guard on the value being a
+        # D_c and not a count.
+        if len(f) == 8 and f[0] == "(" and f[3] == "5":
+            for k, (lo, hi) in enumerate(want):
+                if f[1] == lo and f[2] == hi:
+                    try:
+                        v = float(f[6])
+                    except ValueError:
+                        continue
+                    if 0.0 < v < 100.0 and "." in f[6]:
+                        out[k] = v
+    return [out[k] for k in sorted(out)] if len(out) == 3 else []
+
+
 def read_finite_band():
     """The band's own exact pair average of S_2, from lab_secondcell2.txt.
 
@@ -467,7 +501,38 @@ def main():
             % (B, B / Q2, nc, dd, 100.0 * cc / D5p))
     say("    induced spread across the three = %.2f per cent"
         % (100.0 * (cs[0] - cs[2]) / D5p))
-    say("    meas:scaleinv measures depth 5's spread as 1.28 per cent.")
+    say("    -- taken over the UNCORRECTED prediction %.6f." % D5p)
+    say()
+    say("    SAME DENOMINATOR.  The width meas:scaleinv reports is")
+    say("    (max-min)/mean over the MEASURED D_5, so the two per cents")
+    say("    above sat on different denominators and were not comparable.")
+    d5m = read_D5_octaves()
+    if not d5m:
+        say("    the measured D_5 row was not found in")
+        say("    lab_cell_singular.txt -- the matched figures are not")
+        say("    computed, and the two above must not be compared.")
+    else:
+        mu = sum(d5m) / len(d5m)
+        say("      measured D_5 at the three octaves = %s"
+            % ", ".join("%.6f" % v for v in d5m))
+        say("      their mean = %.6f" % mu)
+        a = 100.0 * (cs[0] - cs[2]) / mu
+        b = 100.0 * (max(d5m) - min(d5m)) / mu
+        say("      induced drift over that mean  = %.3f per cent" % a)
+        say("      measured width over that mean = %.3f per cent" % b)
+        # The sentence about the agreement improving is COMPUTED, not
+        # asserted.  Typed as prose it printed unchanged while the
+        # numbers above it read 0.05 against 129 -- a claim about
+        # magnitudes with no arithmetic gating it, which is the shape
+        # this whole file exists to refuse.
+        old = abs(100.0 * (cs[0] - cs[2]) / D5p - 1.28) / 1.28
+        new = abs(a - b) / b if b else float("nan")
+        say("      mismatch before matching = %.1f per cent of the width"
+            % (100.0 * old))
+        say("      mismatch after  matching = %.1f per cent of the width"
+            % (100.0 * new))
+        say("    Matching the denominator %s the agreement."
+            % ("IMPROVES" if new < old else "does NOT improve"))
     say()
     say("    So the largest of the six spreads is not a failure of scale")
     say("    invariance: it is the proposition's own error term, computed.")

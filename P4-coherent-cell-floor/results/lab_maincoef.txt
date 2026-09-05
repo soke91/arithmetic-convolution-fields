@@ -123,7 +123,18 @@ the three octaves.  Computed exactly at the three cell sizes:
       2000000        66.6    67  8.505279e-03     1.36%
       4000000       133.2   134  5.208268e-03     0.83%
     induced spread across the three = 1.24 per cent
-    meas:scaleinv measures depth 5's spread as 1.28 per cent.
+    -- taken over the UNCORRECTED prediction 3.213542.
+
+    SAME DENOMINATOR.  The width meas:scaleinv reports is
+    (max-min)/mean over the MEASURED D_5, so the two per cents
+    above sat on different denominators and were not comparable.
+      measured D_5 at the three octaves = 3.148213, 3.171298, 3.185212
+      their mean = 3.168241
+      induced drift over that mean  = 1.256 per cent
+      measured width over that mean = 1.168 per cent
+      mismatch before matching = 3.3 per cent of the width
+      mismatch after  matching = 7.6 per cent of the width
+    Matching the denominator does NOT improve the agreement.
 
     So the largest of the six spreads is not a failure of scale
     invariance: it is the proposition's own error term, computed.
