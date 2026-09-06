@@ -893,9 +893,30 @@ $(v_p(d),v_p(e))\in\{0,1\}^2$ contribute
 \]
 Hence $c(m)=\prod_{p\mid m}p^{-1}\cdot
 \prod_{p\nmid m,\ p\nmid N}(1-\tfrac{1}{p(p-1)})
-=m^{-1}\AAA(N)\lambda(m)$. The truncation error is the tail
-$\sum_{d>D_0}1/\varphi(md^2)\ll1/(\varphi(m)D_0)$ and similarly for
-$e$.
+=m^{-1}\AAA(N)\lambda(m)$.
+
+The two truncations are not the same and are done separately. For $d$,
+$\varphi(md^2)\ge\varphi(m)\varphi(d^2)=\varphi(m)\,d\,\varphi(d)$, so
+the tail is
+$\sum_{d>D_0}1/\varphi(md^2)\le\varphi(m)^{-1}\sum_{d>D_0}1/(d\varphi(d))
+\ll1/(\varphi(m)D_0)$, with an absolute constant, uniformly in $m$.
+
+For $e$ the sum is finite --- $e$ runs over divisors of $m$ --- so the
+omitted terms are the $e\mid m$ with $e>E_0$, of which there are up to
+$d(m)$, and a divisor factor appears that the $d$-tail does not have.
+Each such term is at most $1/\varphi(me)\le1/(\varphi(m)\varphi(e))$
+and $1/\varphi(e)\ll\log\log e/e\ll\log\log M/E_0$ there, so
+\begin{equation}\label{eq:etail}
+  \sum_{\substack{e\mid m\\ e>E_0}}\frac{1}{\varphi(m\lcm(d^2,e))}
+  \;\ll\;\frac{d(m)\log\log M}{\varphi(m)E_0}.
+\end{equation}
+The divisor factor is harmless where the lemma is used, but only
+because it is used inside a sum over $m$: $\sum_{m<M}d(m)/\varphi(m)
+\ll(\log M)^{2}$, and $E_0^{-1}=e^{-\sqrt{\log N}}$ beats every power
+of $\log N$. It would not be harmless against a single $m$, where
+$d(m)$ is $m^{o(1)}$ and exceeds $E_0$; the bound is stated as
+\eqref{eq:etail} rather than absorbed so that the place it is used has
+to carry the sum.
 \end{proof}
 
 The load-bearing line is the local factor. Equivalently, for squarefree
@@ -991,10 +1012,21 @@ $\ll Ne^{-c''\sqrt{\log N}}$ and $\ll N^{(3+\theta')/4}e^{C\sqrt{\log N}}$
 respectively. All three pieces are $\ll Ne^{-c\sqrt{\log N}}$ for
 $\theta'<1$, the first and the third being powers of $N$ below $N$
 itself. The truncation error carried by
-Lemma~\ref{lem:density} is $\ll\sum_{m<M}|\Tcut_m(t)|/(\varphi(m)D_0)$,
-and $\Tcut_m(t)\le N$, so with $\sum_{m<M}1/\varphi(m)\ll\log M$ it is
-$\ll N\log N/D_0=N\log N\,e^{-\sqrt{\log N}}
-\ll Ne^{-c\sqrt{\log N}}$ for every $c<1$. The size here is $N$ and not
+Lemma~\ref{lem:density} has two halves and $\Tcut_m(t)\le N$ in both.
+The $d$-half is $\ll\sum_{m<M}|\Tcut_m(t)|/(\varphi(m)D_0)$, so with
+$\sum_{m<M}1/\varphi(m)\ll\log M$ it is
+$\ll N\log N/D_0=N\log N\,e^{-\sqrt{\log N}}$. The $e$-half carries the
+divisor factor of \eqref{eq:etail}, and \emph{this} is where the sum
+over $m$ absorbs it:
+\[
+  \ll\frac{N\log\log M}{E_0}\sum_{m<M}\frac{d(m)}{\varphi(m)}
+  \;\ll\;\frac{N(\log M)^{2}\log\log M}{E_0}
+  \;=\;N(\log M)^{2}\log\log M\,e^{-\sqrt{\log N}} .
+\]
+Both are $\ll Ne^{-c\sqrt{\log N}}$ for every $c<1$, since
+$e^{-\sqrt{\log N}}$ beats every power of $\log N$; the $e$-half has
+two powers less room than the $d$-half and still has room to spare.
+The size here is $N$ and not
 $M$: the truncation is per term of the harmonic sum, and the terms are
 of the size of $N$.
 \end{proof}

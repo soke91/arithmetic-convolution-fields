@@ -15,7 +15,7 @@ directory can be read, run, or moved on its own.
 | [`P4-coherent-cell-floor/`](P4-coherent-cell-floor/) | Cell-mean fluctuations in an arithmetic convolution field: exact Rademacher-null variances and a permutation control | submitted; **frozen** |
 | [`P4-coherent-cell-floor-r1/`](P4-coherent-cell-floor-r1/) | the same paper, corrected after submission | corrections not yet sent to the journal |
 | [`P1-mobius-fixed-class/`](P1-mobius-fixed-class/) | A fixed class for the Möbius side | superseded by `-r1` |
-| [`P1-mobius-fixed-class-r1/`](P1-mobius-fixed-class-r1/) | the same paper, corrected; **carries one unrepaired gap in its own proof, stated in its CORRECTIONS.md** | not submitted |
+| [`P1-mobius-fixed-class-r1/`](P1-mobius-fixed-class-r1/) | the same paper, corrected | not submitted |
 | [`P2-no-go-divisor-switch/`](P2-no-go-divisor-switch/) | A no-go for the divisor-switch route | not submitted |
 
 **Why the `-r1` directories exist rather than an edit in place.** One of
@@ -26,10 +26,12 @@ So corrections go in a new directory and the old one is left alone.
 Each `-r1` carries a `CORRECTIONS.md` saying what changed, why, and --
 where a reported defect turned out not to be one -- why not.
 
-**One of the corrections is not a correction but an admission.** The
-fixed-class paper's `-r1` records a gap in the proof of its own main
-theorem that has been found and not repaired. It is written down rather
-than left for a reader to hit.
+**One of the corrections carries its own mistake, on purpose.** A gap
+found in the fixed-class paper's main proof was first recorded as
+unrepairable, on a size estimate that turned out to measure a quantity
+the argument never forms. It is repaired, and its `CORRECTIONS.md`
+keeps the wrong reasoning next to the right one, because the way the
+estimate went wrong is more reusable than the estimate.
 
 A paper with a machine-checked component has a `lean/` directory and an
 axiom report inside it; a paper without one says so in its own appendix.
