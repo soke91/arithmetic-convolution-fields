@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "paper_id": "P2-no-go-divisor-switch",
+  "public_directory": "P2-no-go-divisor-switch",
+  "public_repository": "https://github.com/soke91/arithmetic-convolution-fields",
+  "source_snapshot": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0",
+  "paper_source": "P2-no-go-divisor-switch.tex",
+  "paper_pdf": "P2-no-go-divisor-switch.pdf",
+  "paper_files": [
+    {
+      "path": "P2-no-go-divisor-switch.tex",
+      "sha256": "51570fa89c71109edea3b1ca45aed8de0da20978b7a52b3c6800fead0552bfb5",
+      "imported_from": "deploy/papers/P2-no-go-divisor-switch.tex",
+      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+    },
+    {
+      "path": "P2-no-go-divisor-switch.pdf",
+      "sha256": "770ccb96858a09b0328ffec15690cc485e6e504eddd5466d2063a78f89fca6a8",
+      "imported_from": "deploy/papers/P2-no-go-divisor-switch.pdf",
+      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+    },
+    {
+      "path": "arxiv-metadata.txt",
+      "sha256": "f8c5ebb890df7bb4ee74ce4c7c0e5e81ed8fe024b920b3e86ab7436901ce123d",
+      "imported_from": "deploy/papers/P2-arxiv-metadata.txt",
+      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+    }
+  ],
+  "projection_sources": [
+    "generations/v2/paper/theorem_A.md",
+    "generations/v2/paper/wall_v3.md",
+    "generations/v3/paper/theorem_A.md"
+  ],
+  "artifacts": [
+    {
+      "kind": "code",
+      "name": "a1_bh_vs_b.py",
+      "source": "generations/v2/verify/pass4/code/a1_bh_vs_b.py",
+      "sha256": "5e9b7f42b644c9abc1e0d287ee637b87c045ceeae4f4567c91870c09137d1203"
+    },
+    {
+      "kind": "results",
+      "name": "a1_bh_vs_b.txt",
+      "source": "generations/v2/verify/pass4/results/a1_bh_vs_b.txt",
+      "sha256": "ff6716e32c783dce58f37cf24ae9224cca54701e3e0f393b42c3625ad8aceee8"
+    },
+    {
+      "kind": "code",
+      "name": "audit_circle_margin.py",
+      "source": "generations/v3/code/audit_circle_margin.py",
+      "sha256": "d5987bfd970b33e044bf01332ec09366e815e5890c399996fd775f7fc2b82106"
+    },
+    {
+      "kind": "results",
+      "name": "audit_circle_margin.txt",
+      "source": "generations/v3/results/audit_circle_margin.txt",
+      "sha256": "d9f474a2109293502cdc09d0a0294a6bb63f855c23a0b7c0d7e1b1101aaa6e61"
+    },
+    {
+      "kind": "code",
+      "name": "audit_extraction_tradeoff.py",
+      "source": "generations/v3/code/audit_extraction_tradeoff.py",
+      "sha256": "94599ab1611b747bcc37009e73950b7476b3fdd397b389d868106f4bb5bb5ef5"
+    },
+    {
+      "kind": "results",
+      "name": "audit_extraction_tradeoff.txt",
+      "source": "generations/v3/results/audit_extraction_tradeoff.txt",
+      "sha256": "8de835377e17456c170d82883fcc2a553637f65fa770b0ab54279f4bf4e9f0d9"
+    },
+    {
+      "kind": "code",
+      "name": "audit_nogo_scope.py",
+      "source": "generations/v3/code/audit_nogo_scope.py",
+      "sha256": "3d1e46c458cc16aa502c71cd1eb5b81d0cd53640ff3298cd31fa6defb52c6f8f"
+    },
+    {
+      "kind": "results",
+      "name": "audit_nogo_scope.txt",
+      "source": "generations/v3/results/audit_nogo_scope.txt",
+      "sha256": "d850e20f34c7283e0a701ce0931169c66ab508db291a5d7607bd829040a316bb"
+    },
+    {
+      "kind": "code",
+      "name": "audit_polyweight.py",
+      "source": "generations/v3/code/audit_polyweight.py",
+      "sha256": "4ad95a84aaf5a82cdffa4c37d805bc30761788cf774b3b61274d62e6448fdb31"
+    },
+    {
+      "kind": "results",
+      "name": "audit_polyweight.txt",
+      "source": "generations/v3/results/audit_polyweight.txt",
+      "sha256": "c6fad30040abec18bc54672de0477a8f726463d70360cd366c33b5e0d53da19d"
+    },
+    {
+      "kind": "code",
+      "name": "audit_squarefull_admitted.py",
+      "source": "generations/v3/code/audit_squarefull_admitted.py",
+      "sha256": "1d157518f9aad2ad4e46c83776770f5493627772fa06903a80fd3a1cfe7a5c0e"
+    },
+    {
+      "kind": "results",
+      "name": "audit_squarefull_admitted.txt",
+      "source": "generations/v3/results/audit_squarefull_admitted.txt",
+      "sha256": "818dd680c2a900e0ce0f58d342857a12171852fa0524d47bacda9ae215ea47ae"
+    },
+    {
+      "kind": "code",
+      "name": "c02_flatsum_k1.py",
+      "source": "generations/v2/verify/pass5/code/c02_flatsum_k1.py",
+      "sha256": "3b895790b8195d0cdc5f235ef03964a06d1fd3f23b681a24f8a8b4d880c44d23"
+    },
+    {
+      "kind": "results",
+      "name": "c02_flatsum_k1.txt",
+      "source": "generations/v2/verify/pass5/results/c02_flatsum_k1.txt",
+      "sha256": "ab6811f49bbd845b6681add3894949db9554c07026521d5e2f3e1bd5eaf47f81"
+    },
+    {
+      "kind": "code",
+      "name": "indep.py",
+      "source": "generations/v2/verify/pass5/code/indep.py",
+      "sha256": "aa39fd2c4ac4aeb8ee50cb5a977b3a18cec09ab775160d0b489eaab5551b1b97"
+    },
+    {
+      "kind": "code",
+      "name": "lab_combined_modulus.py",
+      "source": "generations/v3/code/lab_combined_modulus.py",
+      "sha256": "bff1d4929ff7fda9d8ce531c825d693ee47e3261636b53a7eceb700fe946c950"
+    },
+    {
+      "kind": "results",
+      "name": "lab_combined_modulus.txt",
+      "source": "generations/v3/results/lab_combined_modulus.txt",
+      "sha256": "79cc21648c43ddef6fd9425e80bdfe5a429f8783b94b7e4eae3e5ad15a9e513c"
+    },
+    {
+      "kind": "code",
+      "name": "lab_dilate_identity.py",
+      "source": "generations/v3/code/lab_dilate_identity.py",
+      "sha256": "bf674a50c289ee21493335f52cb64235c7f5b603cb4bc34a0eeb7edc03ac6685"
+    },
+    {
+      "kind": "results",
+      "name": "lab_dilate_identity.txt",
+      "source": "generations/v3/results/lab_dilate_identity.txt",
+      "sha256": "098a645f6940242c39ed985cd0ec346cd777a183e7d1ea99af19138889357b9f"
+    },
+    {
+      "kind": "code",
+      "name": "lab_direct_identity.py",
+      "source": "generations/v3/code/lab_direct_identity.py",
+      "sha256": "761d105e23e2767be1a1cd2cd1dc00e30204bfb38d5498359d9b1ba6cf46ddfb"
+    },
+    {
+      "kind": "results",
+      "name": "lab_direct_identity.txt",
+      "source": "generations/v3/results/lab_direct_identity.txt",
+      "sha256": "0154e4a6f8cd04cd7c77aefce1f44ec488ce73ad69dba05231a2031dcfab3769"
+    },
+    {
+      "kind": "code",
+      "name": "lab_direct_route.py",
+      "source": "generations/v3/code/lab_direct_route.py",
+      "sha256": "80ff55f9f56cc68bc19fc2bd27202d5ed3ef4316fe2a9ca7214b757ca9aeaa66"
+    },
+    {
+      "kind": "results",
+      "name": "lab_direct_route.txt",
+      "source": "generations/v3/results/lab_direct_route.txt",
+      "sha256": "7eae8d05026659e574a636c98be37e11c40272b05c1fd5d1a27abecbc719e5f2"
+    },
+    {
+      "kind": "code",
+      "name": "lab_layer_decomposition.py",
+      "source": "generations/v3/code/lab_layer_decomposition.py",
+      "sha256": "1b6ac8f4478695997674eca4d190e4cf992f99dffa4c2c9c03719a208f49729a"
+    },
+    {
+      "kind": "results",
+      "name": "lab_layer_decomposition.txt",
+      "source": "generations/v3/results/lab_layer_decomposition.txt",
+      "sha256": "b9de48dcbb379dc2101d2732664ec3ece8d500eb26869f15f991ba51b7d58c87"
+    },
+    {
+      "kind": "code",
+      "name": "lab_layer_tail.py",
+      "source": "generations/v3/code/lab_layer_tail.py",
+      "sha256": "9407dc34076231c6030269cfdec413c51051376292c18a60c572892232140a8d"
+    },
+    {
+      "kind": "results",
+      "name": "lab_layer_tail.txt",
+      "source": "generations/v3/results/lab_layer_tail.txt",
+      "sha256": "55c0f619db3d1d39dd1730308f7a6796acee3b2a5cb0d3542b9db568f35ba7f5"
+    },
+    {
+      "kind": "code",
+      "name": "lab_positive_weights.py",
+      "source": "generations/v3/code/lab_positive_weights.py",
+      "sha256": "cdad1bc692e0f91450201a514b53afd5e397317678dfd2ed59b6d08470001c7e"
+    },
+    {
+      "kind": "results",
+      "name": "lab_positive_weights.txt",
+      "source": "generations/v3/results/lab_positive_weights.txt",
+      "sha256": "92be06d52c036822bb8759ad6def0e3685fc39b57454f4781826542c4d42acfd"
+    },
+    {
+      "kind": "code",
+      "name": "lab_weight_gap.py",
+      "source": "generations/v3/code/lab_weight_gap.py",
+      "sha256": "d5e236064033cbc4cdaab2ef5cb9ffdef14c3d0d3074606c598bb30937f32f3d"
+    },
+    {
+      "kind": "results",
+      "name": "lab_weight_gap.txt",
+      "source": "generations/v3/results/lab_weight_gap.txt",
+      "sha256": "8fe87d81f3194230357ff9bf1194939cff60b22854b7404913784c54af340980"
+    }
+  ],
+  "formalization": {
+    "status": "library-in-tree",
+    "note": "The Lean development is carried at lean/ and every file here is generated from it. Its own upstream is the standalone repository z:/업무/goldbach-lean, imported 2026-09-06. The presence of these files does not mean the paper's main theorem is machine-checked.",
+    "files": [
+      {
+        "path": "lean/GoldbachLean.lean",
+        "source": "lean/GoldbachLean.lean",
+        "sha256": "cb1f36c7b24ac05c0351bd93d6f560bc5adbdbdbd2b29c4d2d044a3998bc0937"
+      },
+      {
+        "path": "lean/GoldbachLean/Basic.lean",
+        "source": "lean/GoldbachLean/Basic.lean",
+        "sha256": "a88fef4d3efa63c9f9f5c948dd5ba1de3ea09d828ce8388ee83fa3d039e734a4"
+      },
+      {
+        "path": "lean/GoldbachLean/Cellmom.lean",
+        "source": "lean/GoldbachLean/Cellmom.lean",
+        "sha256": "30e1244596975f326fe84dfb068a52c2952165857882716dd9fcd6996676e937"
+      },
+      {
+        "path": "lean/GoldbachLean/Fixedclass.lean",
+        "source": "lean/GoldbachLean/Fixedclass.lean",
+        "sha256": "2b1fc3858838793a3015e3ad1afe51abb16458b04c1da09ed8c5f105d0ff3fe3"
+      },
+      {
+        "path": "lean/GoldbachLean/Guards.lean",
+        "source": "lean/GoldbachLean/Guards.lean",
+        "sha256": "ef552d80a861c60d80afdff1a8cf5d1ee510b577c50c6f27e0335f456ffb37ab"
+      },
+      {
+        "path": "lean/GoldbachLean/Layers.lean",
+        "source": "lean/GoldbachLean/Layers.lean",
+        "sha256": "72bbb15e25c536539a3e6814a62f6584021d0a16571507c113f916b2db87a2c1"
+      },
+      {
+        "path": "lean/GoldbachLean/Permnum.lean",
+        "source": "lean/GoldbachLean/Permnum.lean",
+        "sha256": "7cd4f034f0f61f0f56cd6a7e206ca625eba55de92ab739cf365e5089d77c8427"
+      },
+      {
+        "path": "lean/GoldbachLean/Scaleinv.lean",
+        "source": "lean/GoldbachLean/Scaleinv.lean",
+        "sha256": "5c3781ffb7399c69557f5443ded5b0ee80add098a34fe187a3378d3ac17d3c09"
+      },
+      {
+        "path": "lean/GoldbachLean/Statements.lean",
+        "source": "lean/GoldbachLean/Statements.lean",
+        "sha256": "6bd7b1b56b119067ea77e2c41ed82656b5c8250c4a3a1ba2885d398303f24b62"
+      },
+      {
+        "path": "lean/README.md",
+        "source": "lean/README.md",
+        "sha256": "5eec6417ee2cd1afb9561508feb12b843051c1bc470a7d012b631230443ec3d2"
+      },
+      {
+        "path": "lean/lake-manifest.json",
+        "source": "lean/lake-manifest.json",
+        "sha256": "e6ed1f3f7f41b9941bbde6986e355fb2a4606bfb181b3a3d5c74bd72e6236ea2"
+      },
+      {
+        "path": "lean/lakefile.toml",
+        "source": "lean/lakefile.toml",
+        "sha256": "6daa5295587c96876dac5a4c8d577a7cc7d222080bd5aecb2b10d56d086dc65f"
+      },
+      {
+        "path": "lean/lean-toolchain",
+        "source": "lean/lean-toolchain",
+        "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+      },
+      {
+        "path": "lean/axioms.txt",
+        "source": null,
+        "sha256": "319d62d7591d7e5d8cdfb4fe8528760cddb1bdb9c70c1550363887420bfa326b",
+        "note": "`#print axioms` output for this paper's statements. A build product: it differs between papers and nothing in this tree regenerates it without lake."
+      }
+    ],
+    "library": "lean/"
+  },
+  "generated_directories": [
+    "code",
+    "results"
+  ],
+  "editing_rule": "Edit the paper source here; edit evidence only at its artifact source, then run tools/packets.py build."
+}

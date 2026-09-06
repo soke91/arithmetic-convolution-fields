@@ -9,9 +9,9 @@ arXiv submission metadata for P4-coherent-cell-floor.tex
 =========================================================
 
 The abstract field on the arXiv form is plain text: \ref and macros do
-not resolve there, and the paper's own abstract uses two \ref and eight
-macros. This is that abstract with the references dropped and the
-mathematics written in the subset arXiv renders. The two are kept in
+not resolve there, and the paper's own abstract uses macros. This is
+that abstract with the mathematics written in the subset arXiv
+renders. The two are kept in
 step by a check in the build, which compares the numbers each prints
 and fails when they differ.
 
@@ -34,46 +34,33 @@ math.PR is a possible cross-list.
 
 ABSTRACT (plain text)
 ---------------------
-Let Z(N) = C(N)/sqrt(V(N)) with C(N) = sum_{n<N} Lambda(n) mu(N-n) and
-V(N) = sum_{v<N} mu^2(v) Lambda(N-v)^2, and partition a band of even N
-into cells indexed by how many of 3, 5, 7, 11, 13 divide N. Whether a
-cell mean departs from the band mean cannot be asked without a
-reference scale for that contrast, and the obvious one -- the sample
-deviation over the square root of the cell size -- turns out to be
-wrong here by a factor that grows with the band.
+Let Z(N) = C(N)/sqrt(V(N)) with C(N) = sum_{n<N} Lambda(n) mu(N-n), and
+partition a band of even N into cells indexed by how many of 3, 5, 7,
+11, 13 divide N. Whether a cell mean departs from the band mean needs a
+reference scale, and the count-based one misses the null scale here by
+a factor that grows with the band.
 
-Trying to measure that discrepancy produced an exact statement rather
-than an estimate. Under the null replacing the mu(v) on their own
-support by independent Rademacher signs, the variance of any cell
-contrast is a doubly centred quadratic form in the field's covariance
-kernel and reduces to three convolutions; a uniformly random cell of
-the same size recovers the finite-population formula exactly. That
-sd/sqrt(n_c) fails for correlated observations is standard. What is not
-is that here the kernel is computable in closed form, so the correct
-scale can be written down rather than estimated, and that the
-divisibility cells align with it while a random cell does not.
-
+Under the null of independent Rademacher signs for the mu(v) on their
+support, the variance of any cell contrast is a doubly
+centred quadratic form in the covariance kernel and reduces to three
+convolutions: the exact Rademacher-null scale is written down, not
+estimated. A uniformly random cell of the same size recovers the
+finite-population formula exactly; the divisibility cells do not.
 Measured over eight octaves to 1.6 x 10^7, the exact null standard
 deviation shrinks by 1.21 where a count predicts 11.3, and a label
 permutation preserving every cell size collapses it by factors 3.8 to
-105. For its size we offer a candidate descriptor found the same way:
-the excess D_c of the shift's singular series over same-cell pairs,
-whose main term is a rational number and carries no fitted parameter.
-Two things are claimed for it and they carry different weight. That the
-residue structure determines D_c was written down for a second,
-differently shaped partition and its predictions committed before that
-partition was measured; the exact measurement falls inside the
-registered interval at every cell, and that transfer is the evidence
-offered. That D_c in turn determines the sign-null floor rests on a
-correlation of 0.9805 across the six cells of the first partition,
-computed after the fact and not transferred: the second partition was
-not measured for its floor. Descriptor and mechanism are therefore not
-on the same footing here, and the second word is not used for the
-second link. One rule registered on the first partition was refuted.
+105.
 
-Every registered rule is reported with its verdict, including the
-thirteen the runs did not meet and the one recorded void. No
-distributional law for Z is asserted, no Goldbach consequence is drawn,
+For its size we offer a descriptor: the excess D_c of the shift's
+singular series over same-cell pairs, whose main term is rational with
+no fitted parameter. That the residue structure determines D_c was
+committed for a second, differently shaped partition before it was
+measured; the exact measurement falls inside the registered interval
+at every cell, and that transfer is the evidence offered. That D_c in
+turn determines the null floor rests on a correlation of 0.9805 across
+six cells, computed after the fact and not transferred. Every
+registered rule is reported with its verdict, refuted ones included.
+No distributional law for Z and no Goldbach consequence is asserted,
 and the decay of the effect with N is not determined here.
 
 

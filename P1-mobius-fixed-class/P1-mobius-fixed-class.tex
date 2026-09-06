@@ -48,59 +48,31 @@ correlation sum in fixed residue classes}
 \maketitle
 
 \begin{abstract}
-Huang and Li \cite{HL} show that the binary Goldbach conjecture for
-large even $N$ follows from $EH$ together with a M\"obius-twisted
-variant $EH_\mu$ whose levels sum to more than $1$; by
-Bombieri--Vinogradov their Corollary~1 reduces this to
-$EH_\mu(N^{\theta'})$ alone for a single $\theta'>1/2$, consumed at
-two places in their \S3, the functionals they call $E_4(\alpha)$ and
-$E_3(\alpha)$. We show that this reduction does not
-decompose: of the two consumptions in that section there is no half
-whose discharge would constitute partial progress. One of the two is
-unnecessary --- the M\"obius-weighted correlation sum underlying $E_4$
-is $\ll_A N(\log N)^{-A}$ for every $A>0$ unconditionally and uniformly
-in the truncation point (Theorem~\ref{thm:A}), so that section's
-$EH_\mu$ demand collapses to the single scalar $E_3(\alpha)$
-(Corollary~\ref{cor:B}) --- and the one that survives is not an
-equidistribution statement one might hope to establish separately: by
-an unconditional identity (Theorem~\ref{thm:C}) it is Huang--Li's own
-equation~(22). It therefore already yields binary Goldbach for large
-even $N$, and yields the asymptotic $\tilde r(N)\sim\SS(N)N$ exactly
-when $\sum_{n<N}\Lambda(n)\mu(N-n)=o(N)$. After the half that can be
-discharged has been discharged, what is left is the conclusion
-(Note~\ref{note:collapse}). The root cause is $\mu*\log=\Lambda$: the
-weight $\log k$ carries the Goldbach content, so every divisor switch
-must hand it back.
-
-We then locate the true strength of the surviving demand: Goldbach
-needs only a one-sided bound on $E_3$
-(Proposition~\ref{prop:onesided}), at a threshold of order $N$ over the
-even $N$ measured, and hence, off the thin family where that threshold
-falls by a factor $\log N$, only a constant-factor bound where
-$EH_\mu$ is consumed with a saving of $(\log N)^A$ for every $A$
-(Proposition~\ref{prop:nolog}). We also treat a defect in \cite{HL}
-that is not ours to report: equation~(18) drops an $n$-dependent
-constraint present in the definition of $S_2(\alpha)$, which
-S.~Zheleznov reported to the authors independently and earlier, and
-which Moya \cite{Moya} both exhibits by an exact finite counterexample
-and repairs under \cite{HL}'s own hypothesis by keeping the moving
-endpoint. What is done here is the other side of it: the missing term
-is \emph{bounded} against the published form and shown harmless under
-the hypotheses already assumed, which is what carries
-Theorem~\ref{thm:A}'s bound over to the corrected formulation the
-authors have since adopted (Proposition~\ref{prop:movingcut}).
-
-We state plainly what is not claimed. Theorem~\ref{thm:A} removes only
-the part of the demand that carries no Goldbach content, and the net
-progress toward the Goldbach conjecture is zero. We also state plainly
-what is standard: the ingredients of Theorem~\ref{thm:A} are classical
-and its mechanism --- a divisor switch that moves the work onto a
-short variable, followed by Bombieri--Vinogradov --- is ordinary
-practice. What is offered is the application, the identity it makes
-visible, and the corrections both turn out to require. The finite
-rearrangements the argument runs on are formalised in Lean~4 against
-Mathlib, over arbitrary functions, so that what is checked is that they
-use no arithmetic property of $\Lambda$ or $\mu$.
+Huang and Li \cite{HL} reduce binary Goldbach for large even $N$ to a
+M\"obius-twisted Elliott--Halberstam hypothesis $EH_\mu(N^{\theta'})$
+with a single $\theta'>1/2$, consumed at two places in their \S3, the
+functionals $E_4(\alpha)$ and $E_3(\alpha)$. We show that this
+reduction does not decompose: neither consumption has a half whose
+discharge would be partial progress. One is unnecessary --- the
+M\"obius-weighted correlation sum underlying $E_4$ is
+$\ll_A N(\log N)^{-A}$ for every $A>0$, unconditionally and uniformly
+in the truncation point (Theorem~\ref{thm:A}) --- so that section's
+demand collapses to the scalar $E_3(\alpha)$ (Corollary~\ref{cor:B}).
+The other is not an equidistribution statement to be established
+separately: by an unconditional identity (Theorem~\ref{thm:C}) it is
+Huang--Li's own equation~(22), which already yields binary Goldbach for
+large even $N$, and $\tilde r(N)\sim\SS(N)N$ exactly when
+$\sum_{n<N}\Lambda(n)\mu(N-n)=o(N)$. The root cause is
+$\mu*\log=\Lambda$: the weight $\log k$ carries the Goldbach content,
+so every divisor switch must hand it back. The defect in \cite{HL}'s
+equation~(18) is not ours: S.~Zheleznov reported it earlier and Moya
+\cite{Moya} exhibits and repairs it; we add a bound on the missing term
+(Proposition~\ref{prop:movingcut}). The finite rearrangements are
+formalised in Lean~4 against Mathlib over arbitrary functions, so what
+is checked is that they use no arithmetic property of $\Lambda$ or
+$\mu$. Theorem~\ref{thm:A} removes only the part of the demand that
+carries no Goldbach content, and the net progress toward the Goldbach
+conjecture is zero.
 \end{abstract}
 
 % =====================================================================
@@ -719,6 +691,21 @@ Insert $\mu^2(k)=\sum_{d^2\mid k}\mu(d)$ and
 $\mathbf 1_{(k,m)=1}=\sum_{e\mid(k,m)}\mu(e)$ and truncate at
 $D_0,E_0$ of \eqref{eq:trunc}.
 
+Two indices are truncated at once, so the discarded set has to be named
+before it is bounded, and it is not the union of two independent tails.
+Write the double sum over $(d,e)$ and split it as
+\begin{equation}\label{eq:twotails}
+  \sum_{d,e}\;=\;\sum_{d\le D_0}\sum_{e\le E_0}
+  \;+\;\underbrace{\sum_{d>D_0}\sum_{e}}_{\text{$e$-sum complete}}
+  \;+\;\underbrace{\sum_{d\le D_0}\sum_{e>E_0}}_{\text{$d$-sum truncated}},
+\end{equation}
+an exact identity. In the second block the inner sum is the complete
+$\sum_{e\mid(k,m)}\mu(e)=\mathbf 1_{(k,m)=1}$, so no divisor factor
+enters from $e$; in the third the $d$-range is a subset of the complete
+one, so bounding it by the complete $\mu^2(k)\le1$ is legitimate. The
+two estimates below are of those two blocks in that order, and each is
+free of the other index's multiplicity for the reason just given.
+
 \emph{Tail $d>D_0$.} Such terms have $d^2\mid k$, hence
 $n=N-mk\equiv N\pmod{md^2}$; the number of $n\le N$ in that
 progression is $\ll N/(md^2)+1$ and each $\Lambda\ll\log N$. Summing,
@@ -835,12 +822,21 @@ $A'=2A+C_1(B)$. That theorem is stated for
 $N^{1/2}(\log N)^{-A'}\le Q'\le N^{1/2}$, a window closed below as well
 as above, whereas the $Q$ here lies beneath it. The gap is closed by
 monotonicity: the summand is non-negative, so for $Q\le Q'$ one has
-$\sum_{q\le Q}\mathcal E_q\le\sum_{q\le Q'}\mathcal E_q$, and taking
-$Q'=N^{1/2}(\log N)^{-(A'+3)}$ and applying the theorem with the
-exponent $A'+3$ in place of $A'$ --- for which that $Q'$ is the lower
-endpoint of the window and not a point beneath it --- gives
-$\ll N(\log N)^{-(A'+3)}\le N(\log N)^{-A'}$. The constant promised
-in the statement is $C=A'+3=2A+C_1(B)+3$.
+$\sum_{q\le Q}\mathcal E_q\le\sum_{q\le Q'}\mathcal E_q$. Take
+$Q'=N^{1/2}(\log N)^{-(A'+3)}$ and apply the theorem with the exponent
+$A'+3$ in place of $A'$, for which that $Q'$ is the lower endpoint of
+the window and not a point beneath it. What the theorem then gives is
+its own conclusion at that $Q'$, namely
+\[
+  \sum_{q\le Q'}\mathcal E_q\;\ll\;N^{1/2}Q'(\log N)^{3}
+  \;=\;N(\log N)^{-(A'+3)}(\log N)^{3}\;=\;N(\log N)^{-A'} .
+\]
+The exponent in the theorem's range condition is not the exponent of
+its conclusion: the conclusion is $x^{1/2}Q(\log x)^{3}$, and the
+free parameter only opens the window far enough down to admit this
+$Q'$. That is why $A'+3$ is chosen and why the saving that comes back
+is $A'$ and not $A'+3$. The constant promised in the statement is
+$C=A'+3=2A+C_1(B)+3$.
 \end{proof}
 
 \begin{note}[the constant is not effective]\label{note:noneffective}
@@ -878,7 +874,14 @@ Let $m$ be squarefree with $(m,N)=1$ and put
 \]
 Then $c(m)=\AAA(N)\lambda(m)/m$ with $\AAA(N)$ as in \eqref{eq:AN} and
 $\lambda(m)=\prod_{p\mid m}\bigl(1-\tfrac{1}{p(p-1)}\bigr)^{-1}$.
-Moreover $c_{D_0,E_0}(m)=c(m)+O(1/(\varphi(m)D_0))$.
+Moreover the two truncations contribute differently:
+\begin{equation}\label{eq:ctrunc}
+  c_{D_0,E_0}(m)\;=\;c(m)\;+\;O\!\left(\frac{1}{\varphi(m)D_0}\right)
+  \;+\;O\!\left(\frac{d(m)\log\log M}{\varphi(m)E_0}\right),
+\end{equation}
+the first error term uniform in $m$ and the second not: it carries a
+divisor factor, and what makes it harmless is the sum over $m$ in which
+the lemma is used and not any bound at a single $m$.
 \end{lemma}
 
 \begin{proof}
@@ -1571,7 +1574,10 @@ ours.
 \textbf{The defect is not claimed as new}: that the $n$-dependent
 restriction had been replaced by a fixed outer range was reported to
 the authors by S.~Zheleznov before this note was written, and they have
-since prepared a corrected manuscript.
+since prepared a corrected manuscript (H.~Li, private communication;
+the arXiv record of \cite{HL} stood at v2 of August 2022 when this was
+written, so a reader cannot yet check that last clause against a public
+document).
 
 \textbf{Neither is the repair from the inside, nor the demonstration
 that the omitted region is not empty.} Moya \cite{Moya}, in August
@@ -1853,14 +1859,26 @@ $m$ carrying a surviving term is $213,\,291,\,393,\,533,\,727$ against
 $\alpha=215,\,292,\,396,\,537,\,728$
 (\texttt{audit\_delta\_bridge.py}). Those five are the
 largest $m$ inside the sum as it is enumerated, which stops at
-$\lfloor\alpha\rfloor$. The run's rule Z3 asked whether any
-surviving $m$ exceeds $\alpha$, and until 2026-09-05 it
-compared that enumeration against its own bound and could not
-fail. Carrying the same survival test past $\alpha$ refutes
-it: surviving terms are found throughout $m\le4\alpha$, so
-the bridge tail is not confined to the short variable. The two
-identities above are unaffected --- they are Z1 and Z2, and both
-hold.
+$\lfloor\alpha\rfloor$.
+
+\textbf{Rule Z3 is void, and was for a while recorded as refuted.} It
+asked whether any surviving $m$ exceeds $\alpha$, and compared the
+enumeration against its own bound: since $\Delta$ of \eqref{eq:Delta}
+is defined with $m\le\alpha$, no $m$ in it can exceed $\alpha$ and the
+rule could not fail. That is the first of the ways a registration goes
+empty, and it is why the rule is void.
+
+What was then done was to carry the same survival test past $\alpha$
+and, finding surviving terms throughout $m\le4\alpha$, to record Z3 as
+refuted. That was wrong in the other direction: the summand of
+\eqref{eq:Delta} is defined for every $m$, but the terms with
+$m>\alpha$ are not terms of $\Delta$, so evaluating them tests a
+quantity the rule was not about. A rule that cannot fail is not repaired
+by enlarging the object until it can.
+
+So Z3 carries no verdict either way, and nothing above or below rests
+on it. The two identities are unaffected --- they are Z1 and Z2, and
+both hold.
 
 % =====================================================================
 \section{Relation to the literature}\label{sec:lit}
@@ -2341,9 +2359,12 @@ release named there pins the state these figures were read from.
 
 \emph{A nonzero exit status is not a failure.} These runs carry
 preregistered rules, and a run whose own rule was refuted says so in
-its exit code as well as in its output. Forty-two rules carry a
-verdict across the twelve runs and thirteen of them were refuted; all
-are reported below.
+its exit code as well as in its output. Fifty-five rules carry a
+verdict across the twelve runs and twelve of them were refuted; all
+are reported below. Those three numbers are counted from the verdict
+rosters the runs print --- a line carrying a rule's tag and its verdict
+and nothing else --- so a registered criterion and a stated prediction,
+which name a tag without judging it, are not counted.
 
 Every numerical figure printed above comes from one of the following
 scripts, with one class of exception: the citation counts, the
@@ -2352,13 +2373,14 @@ Section~\ref{sec:lit} are read from the literature and from the two
 databases named there on the date named there, and no script produces
 them. Each script below is standalone, runs under Python with numpy on
 a laptop, prints its own pass/fail criteria, and writes one result
-file. Seven of the twelve runs record a prediction their own output
-refuted, and all seven are reported:
+file. Six of the twelve runs record a prediction their own output
+refuted, and all six are reported:
 Notes~\ref{note:thetasweep}, \ref{note:halfline} and~\ref{note:trap},
-Measurement~\ref{meas:margin}, Measurement~\ref{meas:relocate}, which
-carries two --- the demand run and its control --- and
-\S\ref{sec:movingcut}, where the rule Z3 of
-\texttt{audit\_delta\_bridge.py} is recorded as refuted.
+Measurement~\ref{meas:margin}, and Measurement~\ref{meas:relocate},
+which carries two --- the demand run and its control. A seventh run,
+\texttt{audit\_delta\_bridge.py}, carries a rule that is \emph{void}
+rather than refuted: \S\ref{sec:movingcut} says why, and says that it
+was recorded as refuted before that was seen.
 
 \begin{center}
 \begin{tabular}{lll}

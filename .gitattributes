@@ -1,0 +1,9 @@
+# Bytes are returned exactly as stored.
+#
+# Every file here is pinned by SHA-256 in its paper's PACKET.json. With git's
+# default line-ending handling a checkout returns different bytes on Windows
+# than on Linux, so the published hashes verify on one platform and fail on the
+# other. Disabling conversion makes the hash mean the same thing everywhere.
+* -text
+
+*.pdf binary

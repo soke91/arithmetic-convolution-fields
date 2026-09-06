@@ -83,3 +83,65 @@ file promised by the paper are absent. They are not: the paper points
 at this repository by URL, and the files resolve anonymously. The
 reader had a working checkout in front of it, which is a different tree
 and does not contain them.
+
+---
+
+## This directory was revised again on 2026-09-06
+
+The version first published here was corrected the same day, so what is
+above is not the whole record. Nobody had been given a link to the
+first version and the journal had not been told, so it was replaced
+rather than left standing beside a second revision; this section is
+what the replacement changed. The frozen submitted directory was not
+touched.
+
+### One of the corrections above was itself wrong
+
+Fixing the Monte Carlo precision claim, this note wrote the precision
+as `1/sqrt(2(n-1))` times `sqrt(1 - sum a^4/(sum a^2)^2)`, stated as a
+value. That is a delta-method approximation. The fourth moment alone
+does not give the sampling variance of a sample *standard deviation*,
+and the expression is exact under no distribution. What has a closed
+form is one level down, the sample *variance*:
+`n^{-1}(mu_4 - (n-3)/(n-1) sigma^4)`.
+
+The text now separates what is exact from what is approximate and uses
+only the direction: the kurtosis is `3 - 2 sum a^4/(sum a^2)^2`, below
+normal, so the approximation overestimates at leading order and does so
+by a cell-dependent amount. "Only the three-element cells clear the
+threshold" is therefore a statement about a common threshold, not about
+the cells. No exact interval is claimed.
+
+The same reader found both the original defect and the overreach in its
+repair, from one file and one question.
+
+### Proposition 17 was not a statement
+
+Two readers reached that independently. The proposition carried no
+displayed formula, and its error terms and its object were defined in
+the middle of its own proof. An earlier line also drew a *derivative*
+limit out of a convergence: convergence to a nonzero limit gives
+`D_c(2B)/D_c(B) -> 1`, not a derivative, and `D_c` is defined per band.
+The proposition now fixes `Q`, the bands, `l`, the cells, `A`, `C_2`
+and `kappa`, displays its estimate, states the uniformity of its
+constants, and gives its conclusion as a one-step exponent. The proof
+says in as many words that no derivative is taken anywhere.
+
+### Three smaller ones
+
+"The correct scale" overclaimed, since the paper itself reports the
+multiplicative sign ensemble as wider and declines to call the
+statistic calibrated; it now reads "the exact Rademacher-null scale".
+"Computed exactly by convolution" conflated an exact identity with its
+float64 FFT evaluation, and the two are now separated. The abstract was
+377 words against a 200-250 rule and is now 271 with its references
+removed.
+
+### What was reported and refused
+
+Moving Supplement S1 out to supplementary material. The paper's own
+sections require the roster and the verdicts to sit inside it, and
+three repository checks read those counts from this file; moving it
+would leave those checks passing on an empty set. What was removed
+instead was the audit narrative the roster does not need. Every rule
+name, verdict, count and failure reason stayed.

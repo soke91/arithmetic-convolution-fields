@@ -337,6 +337,13 @@ def main():
     say()
     say("=" * 70)
     ok = v1 and v2 and v3 and v4
+    # The verdicts above are printed at the end of the sentence each rule
+    # is about, which reads well and is not countable: every other run in
+    # this packet ends with a tag-and-verdict roster, and a census over
+    # the packet silently scored this file at zero rules.  The roster is
+    # the same four verdicts in the countable shape.
+    say("V1 %s  V2 %s  V3 %s  V4 %s"
+        % tuple("hold" if v else "REFUTED" for v in (v1, v2, v3, v4)))
     say("the sufficient condition's threshold moves with N's arithmetic "
         "and the sweep held it fixed" if ok else "REFUTED")
 

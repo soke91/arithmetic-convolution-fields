@@ -195,10 +195,25 @@ theorem scaleinv_two_bands
     (η : ℝ) (hη : 0 < η) :
     ∃ C : ℝ, 0 < C ∧
       |Dc c - Dc c'|
-        ≤ C * (1 / c.card + 1 / c'.card                    -- residual equidistribution
+        ≤ C * (1 / ℓ + 1 / ℓ'                              -- residual equidistribution
                + (B : ℝ) ^ η / ℓ + (B' : ℝ) ^ η / ℓ'       -- divisor undersampling
                + (B : ℝ) ^ (η - 1) + (B' : ℝ) ^ (η - 1)) := by
   sorry
+
+/-  The residual term above was written `1/c.card + 1/c'.card` until
+    2026-09-06.  That is `O(1/n_c)`, and the paper says in as many words
+    that the resolution is `O(1/ℓ)` **and not** `O(1/n_c)`: a depth cell
+    meets each joint residue class in about `ℓ = B/2Q` terms, and it is
+    that count and not the cell's total that the empirical law is read
+    from.  Since a cell can hold more than `ℓ` terms, `1/n_c` is the
+    smaller quantity, so the statement as written was STRONGER than the
+    proposition it claims to state -- the failure mode that a `sorry`
+    hides best, because nothing checks a statement nobody proved.
+
+    The docstring above names this exact defect, in these words: writing
+    only "arithmetic progression" leaves it undecided whether the length
+    is `n_c` or `ℓ`.  The statement then chose `n_c`.  Found by an
+    outside reader, not by us. -/
 
 end Statements
 

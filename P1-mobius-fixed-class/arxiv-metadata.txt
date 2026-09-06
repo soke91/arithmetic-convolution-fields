@@ -25,53 +25,28 @@ math.NT
 
 ABSTRACT (plain text)
 ---------------------
-Huang and Li show that the binary Goldbach conjecture for large even N
-follows from EH together with a Moebius-twisted variant EH_mu whose
-levels sum to more than 1; by Bombieri-Vinogradov their Corollary 1
-reduces this to EH_mu(N^{theta'}) alone for a single theta' > 1/2,
-consumed at two places in their Section 3, the functionals they call
-E_4(alpha) and E_3(alpha).
-
-We show that this reduction does not decompose: of the two consumptions
-in that section there is no half whose discharge would constitute
-partial progress. One of the two is unnecessary -- the Moebius-weighted
+Huang and Li reduce binary Goldbach for large even N to a
+Moebius-twisted Elliott-Halberstam hypothesis EH_mu(N^{theta'}) with a
+single theta' > 1/2, consumed at two places in their Section 3, the
+functionals E_4(alpha) and E_3(alpha). We show that this reduction does
+not decompose: neither consumption has a half whose discharge would be
+partial progress. One is unnecessary -- the Moebius-weighted
 correlation sum underlying E_4 is O_A(N (log N)^{-A}) for every A > 0,
-unconditionally and uniformly in the truncation point, so that section's
-EH_mu demand collapses to the single scalar E_3(alpha). The one that
-survives is not an equidistribution statement one might hope to
-establish separately: by an unconditional identity it is Huang-Li's own
-equation (22). It therefore already yields binary Goldbach for large
-even N, and yields the asymptotic r(N) ~ S(N) N exactly when
-sum_{n<N} Lambda(n) mu(N-n) = o(N). After the half that can be
-discharged has been discharged, what is left is the conclusion. The root
-cause is mu * log = Lambda: the weight log k carries the Goldbach
-content, so every divisor switch must hand it back.
-
-We then locate the true strength of the surviving demand: Goldbach needs
-only a one-sided bound on E_3, at a threshold of order N over the even N
-measured, and hence, off the thin family where that threshold falls by a
-factor log N, only a constant-factor bound. We also treat a defect in
-the Huang-Li manuscript that is not ours to report: equation (18) drops
-an n-dependent constraint present in the definition of S_2(alpha),
-which S. Zheleznov reported to the authors independently and earlier,
-and which R. Moya (Zenodo, August 2026, DOI 10.5281/zenodo.21939906)
-both exhibits by an exact finite counterexample and repairs under
-Huang-Li's own hypothesis by keeping the moving endpoint. What is done
-here is the other side of it: the missing term is bounded against the
-published form and shown harmless under the hypotheses already assumed,
-which is what carries the theorem's bound over to the corrected
-formulation the authors have since adopted.
-
-We state plainly what is not claimed. The theorem removes only the part
-of the demand that carries no Goldbach content, and the net progress
-toward the Goldbach conjecture is zero. We also state plainly what is
-standard: the ingredients are classical and the mechanism -- a divisor
-switch onto a short variable, followed by Bombieri-Vinogradov -- is
-ordinary practice. What is offered is the application, the identity it
-makes visible, and the corrections both turn out to require. The finite
-rearrangements the argument runs on are formalised in Lean 4 against
-Mathlib, over arbitrary functions, so that what is checked is that they
-use no arithmetic property of Lambda or mu.
+unconditionally and uniformly in the truncation point -- so that
+section's demand collapses to the scalar E_3(alpha). The other is not
+an equidistribution statement to be established separately: by an
+unconditional identity it is Huang-Li's own equation (22), which
+already yields binary Goldbach for large even N, and r(N) ~ S(N) N
+exactly when sum_{n<N} Lambda(n) mu(N-n) = o(N). The root cause is
+mu * log = Lambda: the weight log k carries the Goldbach content, so
+every divisor switch must hand it back. The defect in Huang-Li's
+equation (18) is not ours: S. Zheleznov reported it earlier and R. Moya
+(Zenodo, August 2026, DOI 10.5281/zenodo.21939906) exhibits and repairs
+it; we add a bound on the missing term. The finite rearrangements are
+formalised in Lean 4 against Mathlib over arbitrary functions, so what
+is checked is that they use no arithmetic property of Lambda or mu. The
+theorem removes only the part of the demand that carries no Goldbach
+content, and the net progress toward the Goldbach conjecture is zero.
 
 
 COMMENTS FIELD

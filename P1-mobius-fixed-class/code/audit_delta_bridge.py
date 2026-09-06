@@ -68,11 +68,35 @@ FALSIFICATION, registered before the run
   through, which is the reason it needs Delta's estimate rather than a
   triangle inequality.
 
+  Z3 IS VOID -- it could not fail as registered, and was for a while
+  recorded as refuted.  The verdict block at the end of the run says
+  why in full.  The two identities are Z1 and Z2.
+
 NULL.  None applies: deterministic finite sums, no sampling, no sign
 input.  The control is that each identity is accumulated on two sides
 that share no index order -- divisor counts against residue classes in
 Z2, cofactor cut against full truncation in Z1.
 """
+# Why Z3 is void, at length.  This is below the docstring on purpose:
+# the docstring is printed into the result file as the registration
+# record, and the registration is left as it was registered.
+#
+# Delta is enumerated with m <= alpha, so no m in it can exceed alpha.
+# The clause "Z3 REFUTED if any surviving m exceeds alpha" therefore
+# compared the enumeration against its own bound and could not fail for
+# any input -- erasing the arithmetic entirely (Lambda = mu = 1, so
+# that nothing is filtered out) still gave hold.  What was then done
+# was to carry the same survival test past alpha, over m <= 4*alpha,
+# find surviving terms, and record Z3 refuted.  That is wrong in the
+# other direction: the summand is defined for every m, but the terms
+# with m > alpha are not terms of Delta, so evaluating them tests a
+# quantity the rule was not about.  A rule that cannot fail is not
+# repaired by enlarging the object until it can.
+#
+# The scan is kept and its numbers printed, because "the tail past
+# alpha is not short" is a true statement about the summand.  It
+# carries no verdict on Z3 and the exit status no longer depends on it.
+# Nothing above or below rests on Z3; P1 sec:movingcut says so.
 import io
 import math
 import os
@@ -158,7 +182,7 @@ def main():
     say(hdr)
     say("  " + "-" * (len(hdr) - 2))
 
-    ok1 = ok2 = ok3 = True
+    ok1 = ok2 = True
     for N in NS:
         alpha = N ** THETA
         K = (N - 1) / alpha
@@ -254,10 +278,14 @@ def main():
         # loop's own bound: int(alpha) <= alpha always, and the branch
         # to REFUTED was unreachable for every input.  Erasing the
         # arithmetic entirely (Lambda = mu = 1, so that nothing is
-        # filtered out) still gave hold.  The scan below carries the
-        # same survival test past alpha, over m <= SCAN*alpha, so the
-        # clause has somewhere to fail.  The range is stated because
-        # the rule is universal in m and this scan is not.
+        # filtered out) still gave hold.  THAT MAKES THE RULE VOID, and
+        # the scan below does not repair it -- carrying the survival
+        # test past alpha gives the clause somewhere to fail only by
+        # testing terms that are not terms of Delta.  So the scan is
+        # run and printed for what it does say (the tail past alpha is
+        # not short) and no verdict is read off it.  The range is
+        # stated because the rule is universal in m and this scan is
+        # not.
         SCAN = 4
         over = 0
         for m in range(int(alpha) + 1, SCAN * int(alpha) + 1):
@@ -275,7 +303,9 @@ def main():
             s = math.fsum(lam[N - m * kk].tolist())
             if s != 0.0:
                 over = max(over, m)
-        ok3 &= (over == 0)
+        # `over` is not compared against anything: see above, Z3 takes
+        # no verdict from this scan.
+        #
         # over saturates the scan bound at every N -- surviving
         # terms are found all the way to 4*alpha -- so it is a
         # LOWER bound on the excess and not a maximum.  Reporting
@@ -297,18 +327,23 @@ def main():
     say("Z2  the bridge term is the main term of Delta's shape, less its mean")
     say("    Z2 %s" % ("hold" if ok2 else "REFUTED"))
     say("Z3  the bridge term sits on the short variable")
-    say("    Z3 %s" % ("hold" if ok3 else "REFUTED"))
+    say("    Z3 VOID -- the rule asked whether any surviving m exceeds")
+    say("    alpha, and Delta is enumerated with m <= alpha, so it could")
+    say("    not fail.  It was for a while recorded as refuted, by")
+    say("    carrying the survival test past alpha; the terms that finds")
+    say("    are not terms of Delta.  No verdict either way.")
     say()
     say("Z4  sizes are in the table, reported not judged: nothing at these")
     say("    N bears on an asymptotic bound.")
     say()
     say("=" * 72)
-    say("Z1 %s  Z2 %s  Z3 %s"
-        % tuple("hold" if v else "REFUTED" for v in (ok1, ok2, ok3)))
+    say("Z1 %s  Z2 %s"
+        % tuple("hold" if v else "REFUTED" for v in (ok1, ok2)))
+    say("Z3 VOID -- could not fail as registered; no verdict is taken.")
 
     io.open(os.path.join(RES, "audit_delta_bridge.txt"), "w",
             encoding="utf-8", newline="\n").write("\n".join(lines) + "\n")
-    return 0 if (ok1 and ok2 and ok3) else 1
+    return 0 if (ok1 and ok2) else 1
 
 
 if __name__ == "__main__":

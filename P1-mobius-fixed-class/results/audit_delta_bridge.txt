@@ -67,6 +67,10 @@ FALSIFICATION, registered before the run
   through, which is the reason it needs Delta's estimate rather than a
   triangle inequality.
 
+  Z3 IS VOID -- it could not fail as registered, and was for a while
+  recorded as refuted.  The verdict block at the end of the run says
+  why in full.  The two identities are Z1 and Z2.
+
 NULL.  None applies: deterministic finite sums, no sampling, no sign
 input.  The control is that each identity is accumulated on two sides
 that share no index order -- divisor counts against residue classes in
@@ -106,10 +110,15 @@ Z1  the two cuts differ by exactly the bridge term
 Z2  the bridge term is the main term of Delta's shape, less its mean
     Z2 hold
 Z3  the bridge term sits on the short variable
-    Z3 REFUTED
+    Z3 VOID -- the rule asked whether any surviving m exceeds
+    alpha, and Delta is enumerated with m <= alpha, so it could
+    not fail.  It was for a while recorded as refuted, by
+    carrying the survival test past alpha; the terms that finds
+    are not terms of Delta.  No verdict either way.
 
 Z4  sizes are in the table, reported not judged: nothing at these
     N bears on an asymptotic bound.
 
 ========================================================================
-Z1 hold  Z2 hold  Z3 REFUTED
+Z1 hold  Z2 hold
+Z3 VOID -- could not fail as registered; no verdict is taken.

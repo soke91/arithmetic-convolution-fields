@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "paper_id": "P1-mobius-fixed-class",
+  "public_directory": "P1-mobius-fixed-class",
+  "public_repository": "https://github.com/soke91/arithmetic-convolution-fields",
+  "source_snapshot": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0",
+  "paper_source": "P1-mobius-fixed-class.tex",
+  "paper_pdf": "P1-mobius-fixed-class.pdf",
+  "paper_files": [
+    {
+      "path": "P1-mobius-fixed-class.tex",
+      "sha256": "c174a95fe2f8d0d1b13063e672bffeab19c099de57e467a4f05d56a4be69fb24",
+      "imported_from": "deploy/papers/P1-mobius-fixed-class.tex",
+      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+    },
+    {
+      "path": "P1-mobius-fixed-class.pdf",
+      "sha256": "0f8e6ee53c97b75e99563919814916018df7d5d8f63dd14f12272ba5f7449c57",
+      "imported_from": "deploy/papers/P1-mobius-fixed-class.pdf",
+      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+    },
+    {
+      "path": "arxiv-metadata.txt",
+      "sha256": "de9417c468e3004259e9307626ba874e1ecf661a077458df2e89bf8d219337a2",
+      "imported_from": "deploy/papers/P1-arxiv-metadata.txt",
+      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+    },
+    {
+      "path": "CORRECTIONS.md",
+      "sha256": "05f3b43f5cb56a54ed4cc9a3214ddd10ae5ca0fbba00eb407aa79ea82c8a2f92",
+      "imported_from": "github.com/soke91/arithmetic-convolution-fields/P1-mobius-fixed-class/CORRECTIONS.md",
+      "source_commit": "d17b97e66b9e4da61ba3d58e9eb3c6960656756f"
+    }
+  ],
+  "projection_sources": [
+    "generations/v3/paper/theorem_A.md"
+  ],
+  "artifacts": [
+    {
+      "kind": "code",
+      "name": "audit_E3_constant.py",
+      "source": "generations/v3/code/audit_E3_constant.py",
+      "sha256": "b124383267d2d988a53eef9f58720752cdd1c1e64cb81bf4718ceb8b7221204f"
+    },
+    {
+      "kind": "results",
+      "name": "audit_E3_constant.txt",
+      "source": "generations/v3/results/audit_E3_constant.txt",
+      "sha256": "add778a3cb0d8494bb508ef0b114d5be4b829d29e6a559aa304738bc1989c090"
+    },
+    {
+      "kind": "code",
+      "name": "audit_delta_bridge.py",
+      "source": "generations/v3/code/audit_delta_bridge.py",
+      "sha256": "1d155ec6853bb40c31f5d78f0e12cf5ec1b37321c59a67aacabe28b3d1c3d192"
+    },
+    {
+      "kind": "results",
+      "name": "audit_delta_bridge.txt",
+      "source": "generations/v3/results/audit_delta_bridge.txt",
+      "sha256": "cb69d73f4484d6d77a1970c7d03fc33631840de73513af908ec48e206ed0e84c"
+    },
+    {
+      "kind": "code",
+      "name": "audit_density_identity.py",
+      "source": "generations/v3/code/audit_density_identity.py",
+      "sha256": "f4d4219eac0f603ef686fe1be4b1f66a785d8d3228109bf3e42739f12fea0150"
+    },
+    {
+      "kind": "results",
+      "name": "audit_density_identity.txt",
+      "source": "generations/v3/results/audit_density_identity.txt",
+      "sha256": "3115a1f732fac7e559ae1605c9702aa9abba91406ef233b9887450dda8003e9f"
+    },
+    {
+      "kind": "code",
+      "name": "audit_switch_identity.py",
+      "source": "generations/v3/code/audit_switch_identity.py",
+      "sha256": "c9f755b9f35cf846f5a88e69ef3aece08599f61e91d0d66d81ef3b4506cfd7eb"
+    },
+    {
+      "kind": "results",
+      "name": "audit_switch_identity.txt",
+      "source": "generations/v3/results/audit_switch_identity.txt",
+      "sha256": "df24f8d639dee1f2df73bc6d8eb3c6c39d7dc69e929fd4a56fffd725141c9b22"
+    },
+    {
+      "kind": "code",
+      "name": "audit_theta_halfline.py",
+      "source": "generations/v3/code/audit_theta_halfline.py",
+      "sha256": "134df2a953ae56ac10cd3b5d6b0d7042ebb91d4caa1de3bf07a4d029c09be9f3"
+    },
+    {
+      "kind": "results",
+      "name": "audit_theta_halfline.txt",
+      "source": "generations/v3/results/audit_theta_halfline.txt",
+      "sha256": "e03b8cf21ceaef625555158c2db6afd74804fcc25aea62ddb835ab9fd23097da"
+    },
+    {
+      "kind": "code",
+      "name": "audit_threshold_arithmetic.py",
+      "source": "generations/v3/code/audit_threshold_arithmetic.py",
+      "sha256": "2af98eb7b30845fdd398cc0aaef5820e0fa3ac902621ab6a37420bceffe53ddc"
+    },
+    {
+      "kind": "results",
+      "name": "audit_threshold_arithmetic.txt",
+      "source": "generations/v3/results/audit_threshold_arithmetic.txt",
+      "sha256": "5f00d8ac8ba65726bfd3056fab6bf3951c3f4de6fcd191338d7d463b74c6e24a"
+    },
+    {
+      "kind": "code",
+      "name": "audit_threshold_order.py",
+      "source": "generations/v3/code/audit_threshold_order.py",
+      "sha256": "bfcce22e4475c92f94334e72612dcc9480131741748a21336d114a80ae2a5f4f"
+    },
+    {
+      "kind": "results",
+      "name": "audit_threshold_order.txt",
+      "source": "generations/v3/results/audit_threshold_order.txt",
+      "sha256": "afb0f588c9e79f7a17ec08fbf9fdd945c68d4c8afb4bf75867423fb55d46b1d9"
+    },
+    {
+      "kind": "code",
+      "name": "audit_trap_density.py",
+      "source": "generations/v3/code/audit_trap_density.py",
+      "sha256": "ae226d0402e3d23fb54d323a2f067585765afa513d8b0f5f4fc28f90ff79fd53"
+    },
+    {
+      "kind": "results",
+      "name": "audit_trap_density.txt",
+      "source": "generations/v3/results/audit_trap_density.txt",
+      "sha256": "9d855c3223170c83e34669672afb9b84507893df0b97f91914d3532bd201f2be"
+    },
+    {
+      "kind": "code",
+      "name": "lab_level_coin_null.py",
+      "source": "generations/v3/code/lab_level_coin_null.py",
+      "sha256": "88d05612cbbe86f0e381846c9bbb8190e69805d415a70ad348204a9d396750d8"
+    },
+    {
+      "kind": "results",
+      "name": "lab_level_coin_null.txt",
+      "source": "generations/v3/results/lab_level_coin_null.txt",
+      "sha256": "335b6cb3444b744ce27679d99d06b87ac699b8b448c1473b78745cabd21f2d27"
+    },
+    {
+      "kind": "code",
+      "name": "lab_onesided_demand.py",
+      "source": "generations/v3/code/lab_onesided_demand.py",
+      "sha256": "d0bfb7df30a0b20742a18bfa2b4fbdde9e8418f7c270b23a6d5a7c069809b59c"
+    },
+    {
+      "kind": "results",
+      "name": "lab_onesided_demand.txt",
+      "source": "generations/v3/results/lab_onesided_demand.txt",
+      "sha256": "04bb48bf552b8639ed17b235df29e50398524a7f04709f993505cbe8829969b5"
+    },
+    {
+      "kind": "code",
+      "name": "lab_onesided_margin.py",
+      "source": "generations/v3/code/lab_onesided_margin.py",
+      "sha256": "06a217c18506d800e4e30da80175dece0bff78dfb6b4a1954fa581de3715eb60"
+    },
+    {
+      "kind": "results",
+      "name": "lab_onesided_margin.txt",
+      "source": "generations/v3/results/lab_onesided_margin.txt",
+      "sha256": "7ec08572bbea985a1bdff0477af3951aa793231efd91b4fec4962c7bb39f39e1"
+    },
+    {
+      "kind": "code",
+      "name": "lab_theta_sweep.py",
+      "source": "generations/v3/code/lab_theta_sweep.py",
+      "sha256": "31700335fd539a9c918c20c83dfe93d932457624f93396ab1b78bf56580be356"
+    },
+    {
+      "kind": "results",
+      "name": "lab_theta_sweep.txt",
+      "source": "generations/v3/results/lab_theta_sweep.txt",
+      "sha256": "ed2f6b0e3636bb0ef5f4beaf1dc97034463f1b1c433fdca76d9333ce4f5b1cb2"
+    }
+  ],
+  "formalization": {
+    "status": "library-in-tree",
+    "note": "The Lean development is carried at lean/ and every file here is generated from it. Its own upstream is the standalone repository z:/업무/goldbach-lean, imported 2026-09-06. The presence of these files does not mean the paper's main theorem is machine-checked.",
+    "files": [
+      {
+        "path": "lean/GoldbachLean.lean",
+        "source": "lean/GoldbachLean.lean",
+        "sha256": "cb1f36c7b24ac05c0351bd93d6f560bc5adbdbdbd2b29c4d2d044a3998bc0937"
+      },
+      {
+        "path": "lean/GoldbachLean/Basic.lean",
+        "source": "lean/GoldbachLean/Basic.lean",
+        "sha256": "a88fef4d3efa63c9f9f5c948dd5ba1de3ea09d828ce8388ee83fa3d039e734a4"
+      },
+      {
+        "path": "lean/GoldbachLean/Cellmom.lean",
+        "source": "lean/GoldbachLean/Cellmom.lean",
+        "sha256": "30e1244596975f326fe84dfb068a52c2952165857882716dd9fcd6996676e937"
+      },
+      {
+        "path": "lean/GoldbachLean/Fixedclass.lean",
+        "source": "lean/GoldbachLean/Fixedclass.lean",
+        "sha256": "2b1fc3858838793a3015e3ad1afe51abb16458b04c1da09ed8c5f105d0ff3fe3"
+      },
+      {
+        "path": "lean/GoldbachLean/Guards.lean",
+        "source": "lean/GoldbachLean/Guards.lean",
+        "sha256": "ef552d80a861c60d80afdff1a8cf5d1ee510b577c50c6f27e0335f456ffb37ab"
+      },
+      {
+        "path": "lean/GoldbachLean/Layers.lean",
+        "source": "lean/GoldbachLean/Layers.lean",
+        "sha256": "72bbb15e25c536539a3e6814a62f6584021d0a16571507c113f916b2db87a2c1"
+      },
+      {
+        "path": "lean/GoldbachLean/Permnum.lean",
+        "source": "lean/GoldbachLean/Permnum.lean",
+        "sha256": "7cd4f034f0f61f0f56cd6a7e206ca625eba55de92ab739cf365e5089d77c8427"
+      },
+      {
+        "path": "lean/GoldbachLean/Scaleinv.lean",
+        "source": "lean/GoldbachLean/Scaleinv.lean",
+        "sha256": "5c3781ffb7399c69557f5443ded5b0ee80add098a34fe187a3378d3ac17d3c09"
+      },
+      {
+        "path": "lean/GoldbachLean/Statements.lean",
+        "source": "lean/GoldbachLean/Statements.lean",
+        "sha256": "6bd7b1b56b119067ea77e2c41ed82656b5c8250c4a3a1ba2885d398303f24b62"
+      },
+      {
+        "path": "lean/README.md",
+        "source": "lean/README.md",
+        "sha256": "5eec6417ee2cd1afb9561508feb12b843051c1bc470a7d012b631230443ec3d2"
+      },
+      {
+        "path": "lean/lake-manifest.json",
+        "source": "lean/lake-manifest.json",
+        "sha256": "e6ed1f3f7f41b9941bbde6986e355fb2a4606bfb181b3a3d5c74bd72e6236ea2"
+      },
+      {
+        "path": "lean/lakefile.toml",
+        "source": "lean/lakefile.toml",
+        "sha256": "6daa5295587c96876dac5a4c8d577a7cc7d222080bd5aecb2b10d56d086dc65f"
+      },
+      {
+        "path": "lean/lean-toolchain",
+        "source": "lean/lean-toolchain",
+        "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+      },
+      {
+        "path": "lean/axioms.txt",
+        "source": null,
+        "sha256": "319d62d7591d7e5d8cdfb4fe8528760cddb1bdb9c70c1550363887420bfa326b",
+        "note": "`#print axioms` output for this paper's statements. A build product: it differs between papers and nothing in this tree regenerates it without lake."
+      }
+    ],
+    "library": "lean/"
+  },
+  "generated_directories": [
+    "code",
+    "results"
+  ],
+  "editing_rule": "Edit the paper source here; edit evidence only at its artifact source, then run tools/packets.py build."
+}

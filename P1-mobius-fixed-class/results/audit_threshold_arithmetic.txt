@@ -101,4 +101,5 @@ V4  the verdict on [eq:onesided], each N against its own
   [prop:onesided] is doing the damage.
 
 ======================================================================
+V1 hold  V2 hold  V3 hold  V4 hold
 the sufficient condition's threshold moves with N's arithmetic and the sweep held it fixed

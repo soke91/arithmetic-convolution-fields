@@ -2,35 +2,20 @@ cff-version: 1.2.0
 title: Arithmetic convolution fields — reproduction packets
 message: >-
   If you use a packet from this repository, cite the paper in that
-  directory and this archive. Each paper directory is self-contained and
-  can be cited on its own; the paper's own reproducibility section names
-  the release its figures were computed in.
+  directory and this archive. Each paper directory is self-contained.
 type: software
 authors:
   - family-names: Lee
     given-names: Youngrok
     country: KR
 abstract: >-
-  Reproduction packets for papers on the fluctuation structure of
-  convolution sums of arithmetic functions, built around
-  C(N) = sum Lambda(n) mu(N-n) and Z(N) = C(N)/sqrt(V(N)). One directory
-  per paper, each holding the source, the compiled PDF, every script the
-  paper cites, the output those scripts produced, and — where the paper
-  has one — a Lean 4 development with its axiom report. A packet is
-  closed under what it consumes: no script reads a file that is not
-  present, and no import resolves outside the directory. What is
-  machine-checked is in every case the finite identities a proof runs
-  on, never the theorem the paper argues for; each paper says where its
-  formalisation stops and why. No paper here has had a reading by a
-  subject expert, and each says so.
+  Self-contained reproduction packets for papers on arithmetic convolution
+  fields, including paper sources, exact evidence code and saved outputs, and
+  packet-specific machine-readable provenance.
 keywords:
   - analytic number theory
-  - singular series
   - Moebius function
   - von Mangoldt function
   - Bombieri-Vinogradov
-  - variance
-  - permutation test
-  - Lean
-license: CC-BY-4.0
+  - reproducibility
 repository-code: https://github.com/soke91/arithmetic-convolution-fields
