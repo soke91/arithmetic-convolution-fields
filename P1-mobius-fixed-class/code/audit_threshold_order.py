@@ -216,7 +216,11 @@ def main():
     for nm, ok in (("Q1", q1), ("Q2", q2), ("Q3", q3)):
         say("  %s %s" % (nm, "HOLDS" if ok else "REFUTED"))
 
-    with open(OUT, "w", encoding="utf-8") as f:
+    # newline="\n" is not cosmetic. Without it Python's text mode writes CRLF
+    # on Windows and LF elsewhere, so the same script and the same numbers
+    # give a different SHA-256 -- and this file's hash is pinned in P1's
+    # PACKET.json, which is published.
+    with open(OUT, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(lines) + "\n")
     return 0 if (q1 and q2 and q3) else 1
 
