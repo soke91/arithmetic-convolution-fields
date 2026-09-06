@@ -3,8 +3,7 @@
 %       means of arithmetic fields, with an application to
 %       sum_{n<N} Lambda(n) mu(N-n).
 %
-%  Deployment version.  Written to deploy/SPEC.md.
-%  Compile:  pdflatex P4-coherent-cell-floor.tex   (twice)
+%  Compiles standalone with pdflatex, run twice.
 % =====================================================================
 \documentclass[11pt,a4paper]{article}
 
@@ -43,36 +42,41 @@ exact Rademacher-null variances and a permutation control}
 \begin{abstract}
 Let $Z(N)=C(N)/\sqrt{V(N)}$ with
 $C(N)=\sum_{n<N}\Lambda(n)\mu(N-n)$, and partition a band of even $N$
-into cells indexed by how many of $3,5,7,11,13$ divide $N$. Asking
-whether a cell mean departs from the band mean needs a reference scale
-for that contrast.
+into cells indexed by how many of $3,5,7,11,13$ divide $N$. Whether a
+cell mean departs from the band mean cannot be asked without a
+reference scale for that contrast, and the obvious one --- the sample
+deviation over the square root of the cell size --- turns out to be
+wrong here by a factor that grows with the band.
 
-We compute the scale exactly. Under the null replacing the $\mu(v)$ on
-their own support by independent Rademacher signs, the variance of any
-cell contrast is a doubly centred quadratic form in the field's
-covariance kernel and reduces to three convolutions
-(Lemma~\ref{lem:cellmom}). That $\mathrm{sd}/\sqrt{n_c}$ fails for
-correlated observations is standard; what is not is that here the
-kernel is exactly computable, that divisibility cells align with it,
-and that a uniformly random cell of the same size recovers the
-finite-population formula exactly (Lemma~\ref{lem:permfloor}) --- so
-the count-based scale is right for a random cell and wrong for these.
+Trying to measure that discrepancy produced an exact statement rather
+than an estimate. Under the null replacing the $\mu(v)$ on their own
+support by independent Rademacher signs, the variance of any cell
+contrast is a doubly centred quadratic form in the field's covariance
+kernel and reduces to three convolutions
+(Lemma~\ref{lem:cellmom}); a uniformly random cell of the same size
+recovers the finite-population formula exactly
+(Lemma~\ref{lem:permfloor}). That $\mathrm{sd}/\sqrt{n_c}$ fails for
+correlated observations is standard. What is not is that here the
+kernel is computable in closed form, so the correct scale can be
+written down rather than estimated, and that the divisibility cells
+align with it while a random cell does not.
+
 Measured over eight octaves to $1.6\cdot10^{7}$, the exact null
-standard deviation shrinks by $1.21$ where a count predicts $11.3$,
-and a label permutation preserving every cell size collapses it by
-factors $3.8$ to $105$.
+standard deviation shrinks by $1.21$ where a count predicts $11.3$, and
+a label permutation preserving every cell size collapses it by factors
+$3.8$ to $105$. For its size we offer a mechanism found the same way:
+the excess of the shift's singular series over same-cell pairs, whose
+main term is a rational number and carries no fitted parameter. On the
+partition that suggested it the agreement is \emph{post hoc}, and one
+rule registered there was refuted. The mechanism was then written down
+for a second, differently shaped partition and its predictions
+committed before that partition was measured; the exact measurement
+falls inside the registered interval at every cell. That transfer, not
+the fit on the first partition, is the evidence offered.
 
-For its size we offer a mechanism: the excess of the shift's singular
-series over same-cell pairs, whose main term is rational and carries no
-fitted parameter. On the partition that motivated it the agreement is
-\emph{post hoc} and one rule registered there was refuted. The
-mechanism was then written down for a second, differently shaped
-partition and its predictions committed before that partition was
-measured; the exact measurement falls inside the registered interval at
-every cell. That transfer, not the fit on the first partition, is the
-evidence offered.
-
-No distributional law for $Z$ is asserted, no Goldbach consequence is
+Every registered rule is reported with its verdict, including the
+thirteen the runs did not meet and the one recorded void. No
+distributional law for $Z$ is asserted, no Goldbach consequence is
 drawn, and the decay of the effect with $N$ is not determined here.
 \end{abstract}
 
@@ -1798,6 +1802,25 @@ Riemann's hypothesis}, Duke Math.\ J.\ \textbf{11} (1944), 267--275,
 \end{thebibliography}
 
 % =====================================================================
+\section*{Disclosure statement}
+
+No potential competing interest, financial or non-financial, was
+reported by the author. No funding was received for this work. An AI
+assistant was used in preparing it; what tool, how, and why is set out
+in Appendix~\ref{sec:repro}, together with what was checked by machine,
+what by computation, and what by neither.
+
+\section*{Data availability statement}
+
+The code behind every figure printed here, the output it produced, and
+the Lean~4 development are openly available at
+\texttt{https://github.com/soke91/arithmetic-convolution-fields}, in
+the directory \texttt{P4-coherent-cell-floor/}. The figures quoted are
+those of the release named in Appendix~\ref{sec:repro}. No data derived
+from human or animal subjects were used; every quantity here is
+computed from the integers.
+
+% =====================================================================
 \appendix
 \section{The scale of the normaliser}\label{sec:scale}
 
@@ -1853,7 +1876,7 @@ The code, the output it produced, and the Lean development are at
 
 \noindent in the directory \texttt{P4-coherent-cell-floor/}. That
 address is mutable. The code and output every figure here is read from
-are those of release \texttt{v1.0.0}, commit \texttt{035cffb}, and a
+are those of release \texttt{v1.0.1}, commit \texttt{b2f365d}, and a
 number checked against the branch head may have been recomputed since.
 The pin is on \texttt{code/} and \texttt{results/} and not on this
 document, which cannot cite a commit that contains it. Each entry
@@ -1919,9 +1942,24 @@ Script & Result file & Supports\\
 
 This work was done in close collaboration with an AI assistant, which
 carried much of the derivation and all of the computation. The author
-takes full responsibility for every claim made here. What follows says
-what was checked and by what, rather than asserting that it was
-checked.
+takes full responsibility for every claim made here.
+
+\emph{Which tool, and how.} The manuscript in its present form was
+prepared with Anthropic's Claude, model Opus~5, run through the Claude
+Code command-line interface. It was used to derive and check the
+algebraic identities, to write and run every script in the accompanying
+code, to write the Lean development, and to draft and revise this text.
+Earlier stages of the work, before the material reported here took its
+present shape, used earlier models of the same family; the repository
+does not record which, and this paper does not rely on anything from
+those stages that has not since been rederived and rerun. The reason
+for use is throughput on a body of computation and case analysis larger
+than the author would otherwise have carried out, and the cost of that
+choice is the one this note is about: what a reader can check does not
+depend on trusting the tool.
+
+What follows says what was checked and by what, rather than asserting
+that it was checked.
 
 \emph{Machine-verified.} Lemma~\ref{lem:cellmom}'s algebraic identity,
 Lemma~\ref{lem:permfloor}'s closed form and Lemma~\ref{lem:placebo}

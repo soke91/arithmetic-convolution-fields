@@ -2,8 +2,7 @@
 %  P2.  No weight extracts C(N): a no-go for the divisor-switch route,
 %       with the exact identities of its design space.
 %
-%  Deployment version.  Written to deploy/SPEC.md.
-%  Compile:  pdflatex P2-no-go-divisor-switch.tex   (twice)
+%  Compiles standalone with pdflatex, run twice.
 % =====================================================================
 \documentclass[11pt,a4paper]{article}
 
@@ -449,7 +448,14 @@ $1.875\cdot10^{-16}$, and
 \]
 falling on average; at the top $|T_1|/N=0.01425$ against
 $|T_{\log}|/N=0.1245$. Fitted against $\log N$ the flat sum decays as
-$N^{-0.3505}$ and $|T_{\log}|/N$ as $N^{-0.2658}$: the gap widens. (The
+$N^{-0.3505}$ and $|T_{\log}|/N$ as $N^{-0.2658}$: the gap widens.
+Every fitted exponent in this paper is one arithmetic family's. These
+$N$ are $2\cdot10^5\cdot2^{\,j}$ with $2\cdot10^5=2^6\cdot5^5$, so each
+has odd radical $5$, and the same doubling carries the $-0.3620$ below
+and the residual exponent of Measurement~\ref{meas:direct};
+\texttt{c02\_flatsum\_k1.txt} states the field for that reason. What
+these exponents do across radicals is not measured, and no step of the
+no-go rests on their values. (The
 neighbouring $-0.2696$ printed in the same run is the exponent of
 $|\sum_k(\log k)H(N;k)|/N$, which is a different sum --- the two differ
 by $C(N)B_{\log}(K)$ --- and not a second measurement of the same one.
@@ -891,7 +897,8 @@ small, which is a different thing.
 
 Below the threshold the statement is empty rather than false. For
 $\theta'<1/2$ the support bound $N^{\theta'-1/2-\delta}$ is under $1$
---- measured $0.5$ and $0.4$ at $\theta'=0.44$ --- so no weight meets
+--- the run prints $0.5$ and $0.4$ at $\theta'=0.44$ for $\delta=0$,
+which is the largest the bound can be --- so no weight meets
 the hypothesis at all, the delta included. That Theorem~\ref{thm:D}
 says nothing there is not a gap in it: it is the same
 Bombieri--Vinogradov reach that governs $\theta'>1/2$ throughout,
@@ -1297,7 +1304,79 @@ taken from its review and from two independent restatements.
 \end{thebibliography}
 
 % =====================================================================
+\section*{Disclosure statement}
+
+No potential competing interest, financial or non-financial, was
+reported by the author. No funding was received for this work. An AI
+assistant was used in preparing it; what tool, how, and why is set out
+in the appendix, together with what was machine-verified, what was
+checked by computation, and what was neither.
+
+\section*{Data availability statement}
+
+The code behind every figure printed here, the output it produced, and
+the Lean~4 development are openly available at
+\texttt{https://github.com/soke91/arithmetic-convolution-fields}, in the
+directory \texttt{P2-no-go-divisor-switch/}. Two percentages quoted in
+Measurement~\ref{meas:flatsum} are read off two printed columns of a
+cited result file rather than produced by a run, and that passage says
+which columns and at which $N$. No data derived from human or animal
+subjects were used; every quantity here is computed from the integers.
+
+% =====================================================================
 \appendix
+\section{Use of an AI assistant, and what checked what}
+
+This work was done in close collaboration with an AI assistant, which
+carried much of the derivation and all of the computation. The author
+takes full responsibility for every claim made here.
+
+\emph{Which tool, and how.} The manuscript in its present form was
+prepared with Anthropic's Claude, model Opus~5, run through the Claude
+Code command-line interface. It was used to derive and check the
+identities, to write and run every script in the accompanying code, to
+write the Lean development, and to draft and revise this text. Earlier
+stages used earlier models of the same family; the repository does not
+record which, and nothing is relied on from those stages that has not
+since been rederived and rerun.
+
+What follows says what was checked and by what, rather than asserting
+that it was checked.
+
+\emph{Machine-verified.} The finite rearrangements that lay out the
+design space are formalised in Lean~4 against Mathlib, in the file
+\texttt{lean/GoldbachLean/Layers.lean} of the code packet: the exchange
+of the double sum along its inner variable that
+Proposition~\ref{prop:layers} performs, the nonnegativity of the layers
+it produces, and the sense in which the two ends of
+Proposition~\ref{prop:flatsum} are one expression. Each depends on
+\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound} and
+on nothing else; the axiom report is in the packet. The Lean statements
+take $\Lambda$, $\mu$ and $\log$ as arbitrary functions, so what is
+verified is that these identities use no arithmetic property of them ---
+which is what makes them rearrangements rather than estimates.
+
+\textbf{The no-go itself is not machine-verified, and neither theorem of
+this paper has had a reading by a subject expert.}
+Theorem~\ref{thm:D} rests on Bombieri--Vinogradov, which Mathlib does
+not carry, so no part of it is formalised. What is formalised is the
+scaffolding, not the conclusion.
+
+\emph{Checked by computation.} Every figure quoted is produced by a
+named run in the accompanying code, with the two exceptions named in
+Measurement~\ref{meas:flatsum}, which are read off two printed columns
+of a cited file. A check in the build refuses a printed figure that no
+cited run produces. Forty-three rules carry a verdict across the
+fourteen cited runs, and every one is reported with it, including the
+ten the runs did not meet.
+
+\emph{Cross-read.} The proofs and the computations were additionally
+read by separate AI sessions working without sight of each other's
+findings, and several statements here are corrections those readings
+produced --- among them the reference against which the cross-$k$ gain
+is compared, which an earlier printing took to be a count of moduli. It
+is not a substitute for either of the checks named as absent above.
+
 \section{Reproducibility}\label{sec:repro}
 
 The code and the output it produced are at

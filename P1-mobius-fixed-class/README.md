@@ -42,11 +42,11 @@ script produces them, and the paper says so in the same place.
 
 ## What is not machine-checked
 
-Nothing here. Unlike the packet for the cell-mean paper in this
-repository, no statement in this one has a Lean development, and none
-has had a reading by a subject expert. The proofs are as given in the
-text. The paper states this in its own appendix rather than leaving it
-to be discovered here.
+Nothing here. Other packets in this repository carry a `lean/`
+directory; this one does not, no statement in this paper has a Lean
+development, and none has had a reading by a subject expert. The proofs
+are as given in the text. The paper states this in its own appendix
+rather than leaving it to be discovered here.
 
 ## Provenance
 

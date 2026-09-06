@@ -141,4 +141,4 @@ how two copies of an abstract actually drift.
 
 ## Status
 
-Not submitted and not published.
+Submitted, not published. The version here is the submitted one.

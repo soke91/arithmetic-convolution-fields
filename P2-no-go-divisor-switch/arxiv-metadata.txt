@@ -1,0 +1,86 @@
+arXiv submission metadata for P2-no-go-divisor-switch.tex
+==========================================================
+
+NOT YET SUBMITTED.  Blocked on a math.NT endorsement; see
+rules/open/07-arxiv-timing.md.  Goes up after P1, which it cites.
+
+The abstract field on the arXiv form is plain text: \ref and macros do
+not resolve there.  This is the paper's abstract with the references
+dropped and the mathematics written in the subset arXiv renders.
+
+
+TITLE
+-----
+No weight that Bombieri-Vinogradov reaches extracts
+sum_{n<N} Lambda(n) mu(N-n): a no-go for the divisor-switch route,
+with the exact identities of its design space
+
+
+PRIMARY CATEGORY
+----------------
+math.NT
+
+
+ABSTRACT (plain text)
+---------------------
+Let N be a large even integer and C(N) = sum_{n<N} Lambda(n) mu(N-n).
+The Huang-Li reduction of binary Goldbach to Elliott-Halberstam consumes
+its hypothesis through a Moebius-weighted correlation sum in the fixed
+class n = N (mod k), carrying a weight w_k. Two weights occur: w_k = 1,
+for which the sum is unconditionally small, and w_k = log k, for which
+it is equivalent to Goldbach itself. Is there a weight between them --
+one whose divisor sum is still cheap but whose main-term coefficient is
+still of size 1, which would therefore extract C(N) from
+Bombieri-Vinogradov alone?
+
+No such weight exists among those whose transform Bombieri-Vinogradov
+reaches. Writing b = mu * w, the two requirements pull apart: extraction
+needs mass in b at K = N^{theta'}, while the residual is accessible
+whenever b is supported below N^{theta'-1/2}, and the thresholds are
+separated by N^{1/2}. This turns into
+||b||_1 / |B_w| >> exp(c sqrt((1/2 + delta) log N)), which exceeds every
+power of log N and destroys the extraction even when the hard input is
+granted for free. The separation survives granting EH(N^{theta_E}) for
+any fixed theta_E < 1, so the obstruction is not a shortage of level.
+The polynomial family w_k = f(log k) lies outside the support hypothesis
+and is closed separately, by a different and weaker argument.
+
+What is not shown. The result is for one evaluation of the switch
+identity, the triangle inequality; an evaluation exploiting sign
+correlations among that identity's three terms is not excluded, and
+nothing here says such correlations are absent. Outside the reached
+transforms the statement is weaker and is marked as such. The switch
+identity itself is taken from a companion paper and not reproved here.
+
+The design space is laid out exactly first: six finite rearrangements
+and one consequence of them identify the per-modulus discrepancy as a
+dilate of a Moebius-prime correlation, show the signs mu(k) cancel out
+of the log k branch exactly, and exhibit the Goldbach count as a signed
+sum of nonnegative layers. These are what make the result a statement
+about a space rather than about two examples. All six are formalised in
+Lean 4 against Mathlib.
+
+Net progress toward Goldbach: zero. The value of a no-go of this kind is
+that it closes a design space rather than leaving it to be re-explored.
+
+
+COMMENTS FIELD
+--------------
+Code, output and a Lean 4 development at
+https://github.com/soke91/arithmetic-convolution-fields
+
+
+SUBMISSION FACTS
+----------------
+The six finite rearrangements are machine-checked; the no-go is not,
+and Mathlib does not carry Bombieri-Vinogradov.  No statement has had a
+reading by a subject expert.  The paper says all of this in its own
+appendix.
+
+arXiv requires text-to-text generative AI use to be reported consistent
+with subject standards.  The paper names the tool and version.
+
+The source uses amsmath, amssymb, amsthm, geometry and hyperref only.
+
+A submitted version is not removable: later versions replace it in
+display but v1 remains, and a withdrawal leaves a tombstone.

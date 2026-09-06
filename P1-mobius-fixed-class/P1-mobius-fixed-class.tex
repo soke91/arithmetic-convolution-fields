@@ -3,8 +3,7 @@
 %       not decompose, with an unconditional bound for a Mobius-
 %       weighted correlation sum in fixed residue classes.
 %
-%  Deployment version.  Written to deploy/SPEC.md.
-%  Compile:  pdflatex P1-mobius-fixed-class.tex   (twice)
+%  Compiles standalone with pdflatex, run twice.
 % =====================================================================
 \documentclass[11pt,a4paper]{article}
 
@@ -361,13 +360,15 @@ family where it is thinnest, is $\asymp N/\log N$
 \label{prop:nolog}
 Put
 \begin{equation}\label{eq:Bsum}
-  B(N)\;:=\;\sum_{\substack{k<K\\ (k,N)=1}}
+  B_\mu(N)\;:=\;\sum_{\substack{k<K\\ (k,N)=1}}
      \mu^2(k)\,(\log k)\,\bigl|\Emu(N;k)\bigr|,
 \end{equation}
 the restriction to squarefree $k$ being what the triangle inequality
 on \eqref{eq:E3} leaves, since $\mu(k)=0$ elsewhere. The letter is
-\cite{HL}'s; this $B$ is a different function from the mean-term factor
-$B(K)$ of \eqref{eq:split0}, which is never evaluated at $N$. This is
+\cite{HL}'s, who write it without a subscript; the subscript is added
+here for the reason given for $\AAA$ at \eqref{eq:AN} --- one symbol
+must not carry two meanings --- since the mean-term factor $B(K)$ of
+\eqref{eq:split0} is a different function of a smaller argument. This is
 sharper than the quantity \cite{HL} actually reach before appealing to
 $EH_\mu$, namely
 $\log N\sum_{k<K,(k,N)=1}|\Emu(N;k)|$, in which $\log k$ has been
@@ -375,7 +376,7 @@ raised to $\log N$; the proposition below holds for either, and a
 fortiori for theirs. Then binary Goldbach for all sufficiently large
 even $N$ follows from
 \begin{equation}\label{eq:nolog}
-  B(N)\;\le\;(1-\varepsilon)\,\SS(N)\bigl(1-\AAA(N)\bigr)N
+  B_\mu(N)\;\le\;(1-\varepsilon)\,\SS(N)\bigl(1-\AAA(N)\bigr)N
 \end{equation}
 for a single fixed $\varepsilon>0$. Since $\SS(N)(1-\AAA(N))$ is
 bounded away from $0$ except on the thin family of
@@ -383,11 +384,11 @@ Note~\ref{note:thresholdorder}, \eqref{eq:nolog} is a
 \emph{constant-factor}
 bound --- absolute values kept, and no saving in $\log N$ whatsoever
 --- where $EH_\mu(N^{\theta'})$ asks for $\ll_A N(\log N)^{-A}$ for
-every $A$. The two are not bounds on the same object: $B(N)$ fixes
+every $A$. The two are not bounds on the same object: $B_\mu(N)$ fixes
 $y=N$ and the class $a\equiv N$, restricts to squarefree $k$ with
 $(k,N)=1$, and carries the weight $\log k$, where \eqref{eq:EHmu}
 maximises over $y$ and over the classes first. The comparison runs one
-way --- each summand of $B(N)$ is at most $\log K$ times the
+way --- each summand of $B_\mu(N)$ is at most $\log K$ times the
 corresponding summand of \eqref{eq:EHmu}, so $EH_\mu(N^{\theta'})$
 implies \eqref{eq:nolog} and not conversely --- and what
 \eqref{eq:nolog} lowers is the strength, not the level.
@@ -1297,7 +1298,7 @@ whence
 \]
 the factor $1-1/(q_0(q_0-1))$ occurring in $\AAA(N)$ and every other
 factor being at most $1$. Note~\ref{note:thresholdorder} gives the
-true order, $\asymp N/(\log N\log\log N)$, on the family where the
+true order, $\asymp N/\log N$, on the family where the
 threshold is thinnest; the proof needs only some fixed power of
 $\log N$, because the two error terms are $O(N(\log N)^{-A-1})$ and
 $O_A(N(\log N)^{-A})$ with $A$ at our disposal. Taking $A=3$ makes
@@ -1343,9 +1344,9 @@ $1-\AAA(N)$ fall make $\SS(N)$ rise.
 \end{note}
 
 \begin{proof}[Proof of Proposition~\ref{prop:nolog}]
-From Theorem~\ref{thm:C}, $|E_3(\alpha)|\le B(N)$, and
+From Theorem~\ref{thm:C}, $|E_3(\alpha)|\le B_\mu(N)$, and
 $|C(N)|\le\AAA(N)N(1+o(1))$ as above:
-$\tilde r(N)\ge\SS(N)(1-\AAA(N))N(1+o(1))-B(N)
+$\tilde r(N)\ge\SS(N)(1-\AAA(N))N(1+o(1))-B_\mu(N)
 +O_A(N(\log N)^{-A})$. Substituting \eqref{eq:nolog} leaves
 $\tilde r(N)\ge\varepsilon\,\SS(N)(1-\AAA(N))N(1+o(1))
 +O_A(N(\log N)^{-A})$, which is the right-hand side reached in the
@@ -1400,12 +1401,12 @@ Goldbach count is largest
 
 \begin{measurement}[what the weakening relocates]\label{meas:relocate}
 At $\theta'=0.56$ and $N=2\cdot10^5$ through $3.2\cdot10^6$, the
-quantity $B(N)$ of \eqref{eq:Bsum} satisfies
+quantity $B_\mu(N)$ of \eqref{eq:Bsum} satisfies
 \[
-  B(N)/N\;=\;0.8086,\ 0.7395,\ 0.7303,\ 0.6547,\ 0.5916
+  B_\mu(N)/N\;=\;0.8086,\ 0.7395,\ 0.7303,\ 0.6547,\ 0.5916
 \]
 against a threshold of $0.3745N$, so the ratio
-$B(N)/(\SS(N)(1-\AAA(N))N)$ falls
+$B_\mu(N)/(\SS(N)(1-\AAA(N))N)$ falls
 $2.159$, $1.975$, $1.950$, $1.748$, $1.580$. The object
 Proposition~\ref{prop:nolog} constrains is therefore already within a
 factor $1.6$ of the threshold at the top of the accessible range, and
@@ -1428,7 +1429,7 @@ for all sufficiently large even $N$, but it is where the sweep sits
 relative to the condition it is measuring the margin of
 (\texttt{lab\_onesided\_demand.py}).
 
-What $B(N)$ is small \emph{because of} is not settled by any of this,
+What $B_\mu(N)$ is small \emph{because of} is not settled by any of this,
 and the control says so. Replacing $\mu(N-n)$ by a fair coin on the
 same support --- the same $\Lambda$, the same $K$, the same weights,
 only the sign on $N-n$ changed --- gives a \emph{smaller}
@@ -1487,7 +1488,7 @@ $\omega(m)$ is. The runs behind that reading are not
 in this packet, so no mechanism is asserted here --- what is visible is
 the constraint, not its consequence. At
 $N=2\cdot3^2\cdot5\cdot7\cdot11\cdot13\cdot17$ all $513$ terms of $E_3$
-are negative and $|E_3|=B(N)$ exactly --- no cancellation across $k$ at
+are negative and $|E_3|=B_\mu(N)$ exactly --- no cancellation across $k$ at
 all, against $442$ positive terms and $562$ negative ones at the swept
 $N$.
 
@@ -2151,14 +2152,43 @@ Rend. Accad. Naz. XL (5) \textbf{1(2)} (1975/76), 243--269 (1977).
 \end{thebibliography}
 
 % =====================================================================
+\section*{Disclosure statement}
+
+No potential competing interest, financial or non-financial, was
+reported by the author. No funding was received for this work. An AI
+assistant was used in preparing it; what tool, how, and why is set out
+in Appendix~\ref{sec:repro}'s preceding section, together with what was
+checked by computation and what was not checked at all.
+
+\section*{Data availability statement}
+
+The code behind every figure printed here and the output it produced
+are openly available at
+\texttt{https://github.com/soke91/arithmetic-convolution-fields}, in the
+directory \texttt{P1-mobius-fixed-class/}. One class of figure has no
+script and says so in Appendix~\ref{sec:repro}: the citation counts and
+the exponents quoted from other papers, which are read from those papers
+and from the databases named there. No data derived from human or animal
+subjects were used; every quantity here is computed from the integers.
+
+% =====================================================================
 \appendix
 \section{Use of an AI assistant, and what checked what}
 
 This work was done in close collaboration with an AI assistant, which
 carried much of the derivation and all of the computation. The author
-takes full responsibility for every claim made here. What follows says
-what was checked and by what, rather than asserting that it was
-checked.
+takes full responsibility for every claim made here.
+
+\emph{Which tool, and how.} The manuscript in its present form was
+prepared with Anthropic's Claude, model Opus~5, run through the Claude
+Code command-line interface. It was used to derive and check the
+identities, to write and run every script in the accompanying code, and
+to draft and revise this text. Earlier stages used earlier models of the
+same family; the repository does not record which, and nothing is relied
+on from those stages that has not since been rederived and rerun.
+
+What follows says what was checked and by what, rather than asserting
+that it was checked.
 
 \emph{Not machine-verified.} No statement in this paper has a
 machine-checked proof, and none has had a reading by a subject expert.

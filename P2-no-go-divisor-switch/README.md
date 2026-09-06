@@ -54,11 +54,36 @@ wrong one. The conclusion is unchanged — the measured `G` is an order of
 magnitude below the corrected reference too — and only the comparison
 moved.
 
-## What is not machine-checked
+## What is machine-checked, and what is not
 
-Nothing here. No statement in this paper has a Lean development, and
-none has had a reading by a subject expert. The proofs are as given in
-the text.
+The six finite rearrangements that lay out the design space are
+formalised in Lean 4 against Mathlib, in `lean/GoldbachLean/Layers.lean`.
+They take `Λ`, `μ` and `log` as arbitrary functions, so what is verified
+is that these identities use no arithmetic property of them — which is
+what makes them rearrangements rather than estimates. Every theorem in
+that file depends on `propext`, `Classical.choice` and `Quot.sound` and
+on nothing else; `lean/axioms.txt` is the report, and it covers the
+other papers' developments in this repository as well, since they are
+one library.
+
+`sorryAx` on a line of that report would mark a statement written out
+and left unproved. Where it appears it belongs to the cell-mean paper,
+which says so in its own text. No line of `Layers.lean` carries it.
+
+**The no-go itself is not machine-checked.** It rests on
+Bombieri–Vinogradov, which Mathlib does not carry, so no part of the
+theorem is formalised — only the identities that state what space the
+theorem is about. Neither theorem of this paper has had a reading by a
+subject expert.
+
+To check the Lean rather than take the report on trust:
+
+```
+cd lean && lake build
+```
+
+The toolchain is pinned in `lean-toolchain` and the Mathlib revision in
+`lake-manifest.json`.
 
 ## Provenance
 

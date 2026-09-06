@@ -1,3 +1,10 @@
+SUBMITTED 2026-09-06 to Experimental Mathematics (Taylor and Francis),
+submission ID 269877028, as a Research Article.  Under review.
+
+This file is the arXiv metadata, kept for the arXiv route, which is
+blocked on a math.NT endorsement.  The journal took the manuscript
+without one -- journals do not require arXiv.
+
 arXiv submission metadata for P4-coherent-cell-floor.tex
 =========================================================
 
@@ -29,34 +36,40 @@ ABSTRACT (plain text)
 ---------------------
 Let Z(N) = C(N)/sqrt(V(N)) with C(N) = sum_{n<N} Lambda(n) mu(N-n) and
 V(N) = sum_{v<N} mu^2(v) Lambda(N-v)^2, and partition a band of even N
-into cells indexed by how many of 3, 5, 7, 11, 13 divide N. Asking
-whether a cell mean departs from the band mean needs a reference scale
-for that contrast.
+into cells indexed by how many of 3, 5, 7, 11, 13 divide N. Whether a
+cell mean departs from the band mean cannot be asked without a
+reference scale for that contrast, and the obvious one -- the sample
+deviation over the square root of the cell size -- turns out to be
+wrong here by a factor that grows with the band.
 
-We compute the scale exactly. Under the null replacing the mu(v) on
-their own support by independent Rademacher signs, the variance of any
-cell contrast is a doubly centred quadratic form in the field's
-covariance kernel and reduces to three convolutions. That sd/sqrt(n_c)
-fails for correlated observations is standard; what is not is that here
-the kernel is exactly computable, that divisibility cells align with
-it, and that a uniformly random cell of the same size recovers the
-finite-population formula exactly -- so the count-based scale is right
-for a random cell and wrong for these. Measured over eight octaves to
-1.6 x 10^7, the exact null standard deviation shrinks by 1.21 where a
-count predicts 11.3, and a label permutation preserving every cell size
-collapses it by factors 3.8 to 105.
+Trying to measure that discrepancy produced an exact statement rather
+than an estimate. Under the null replacing the mu(v) on their own
+support by independent Rademacher signs, the variance of any cell
+contrast is a doubly centred quadratic form in the field's covariance
+kernel and reduces to three convolutions; a uniformly random cell of
+the same size recovers the finite-population formula exactly. That
+sd/sqrt(n_c) fails for correlated observations is standard. What is not
+is that here the kernel is computable in closed form, so the correct
+scale can be written down rather than estimated, and that the
+divisibility cells align with it while a random cell does not.
 
-For its size we offer a mechanism: the excess of the shift's singular
-series over same-cell pairs, whose main term is rational and carries no
-fitted parameter. On the partition that motivated it the agreement is
-post hoc and one rule registered there was refuted. The mechanism was
-then written down for a second, differently shaped partition and its
-predictions committed before that partition was measured; the exact
-measurement falls inside the registered interval at every cell. That
-transfer, not the fit on the first partition, is the evidence offered.
+Measured over eight octaves to 1.6 x 10^7, the exact null standard
+deviation shrinks by 1.21 where a count predicts 11.3, and a label
+permutation preserving every cell size collapses it by factors 3.8 to
+105. For its size we offer a mechanism found the same way: the excess
+of the shift's singular series over same-cell pairs, whose main term is
+a rational number and carries no fitted parameter. On the partition
+that suggested it the agreement is post hoc, and one rule registered
+there was refuted. The mechanism was then written down for a second,
+differently shaped partition and its predictions committed before that
+partition was measured; the exact measurement falls inside the
+registered interval at every cell. That transfer, not the fit on the
+first partition, is the evidence offered.
 
-No distributional law for Z is asserted, no Goldbach consequence is
-drawn, and the decay of the effect with N is not determined here.
+Every registered rule is reported with its verdict, including the
+thirteen the runs did not meet and the one recorded void. No
+distributional law for Z is asserted, no Goldbach consequence is drawn,
+and the decay of the effect with N is not determined here.
 
 
 COMMENTS FIELD
