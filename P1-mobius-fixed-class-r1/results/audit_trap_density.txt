@@ -1,0 +1,111 @@
+STATISTIC: the factor by which the density of Step 4's main
+           terms changes when the classes with (q,N) > 1 are
+           given the main term Tcut_m/phi(q) instead of being
+           discarded -- measured as c_bad(m)/c_good(m) from the
+           definitions, and against the exact rational product
+           over p | N; then that factor against N/phi(N), the
+           figure Note {#rem:trap} prints, and against S(N).
+FIELD: even N in {6, 30, 210, 2310, 30030, 510510, 9699690,
+       200000, 1048576, 1531530, 1600000}; m in {1,23,29,667},
+       all coprime to every N of the field; d-sum truncated at
+       D = 2*10^4 with e | m complete; S(N) as an Euler product
+       over p < 4*10^6.
+NULL: N/phi(N) itself.  It is the figure the note has been
+      printing with nothing behind it, and it is registered as
+      W1 so that this run either confirms it or names what
+      replaces it.
+DENOM: every relative gap printed is over the quantity it is
+       compared against, named in its column.
+
+W1/W2/W3/W4  the shift the trap applies to the density
+====================================================================
+  shift := c_bad(m) / c_good(m), the density with the
+  degenerate classes given a main term, over the density
+  with them restricted away.  Exact column is the rational
+  product over p | N; measured column is the truncated sum.
+
+  N          p | N                    exact       measured    N/phi(N)
+  ------------------------------------------------------------------------
+  6          2,3                      0.4166667   0.4166668   3.0000000
+  30         2,3,5                    0.3958333   0.3958334   3.7500000
+  210        2,3,5,7                  0.3864087   0.3864088   4.3750000
+  2310       2,3,5,7,11               0.3828959   0.3828959   4.8125000
+  30030      2,3,5,7,11,13            0.3804415   0.3804413   5.2135417
+  200000     2,5                      0.4750000   0.4750002   2.5000000
+  510510     2,3,5,7,11,13,17         0.3790428   0.3790426   5.5393880
+  1048576    2                        0.5000000   0.5000002   2.0000000
+  1531530    2,3,5,7,11,13,17         0.3790428   0.3790426   5.5393880
+  1600000    2,5                      0.4750000   0.4750002   2.5000000
+  9699690    2,3,5,7,11,13,17,19      0.3779345   0.3779342   5.8471318
+
+  largest spread of the shift across m at one N: 1.769e-07
+
+  -> W1 REFUTED
+  -> W2 HOLDS
+  -> W3 HOLDS
+  -> W4 HOLDS
+
+  W1 is the note's own figure and it is refuted.  The two
+  factors are not close and they do not even point the same
+  way: N/phi(N) > 1 at every even N, while the shift the
+  restriction actually removes is < 1 at every even N.  The
+  ratio between them at the primorials:
+    N = 6          shift 0.4166668   N/phi(N) 3.0000000   quotient 0.1388889
+    N = 30         shift 0.3958334   N/phi(N) 3.7500000   quotient 0.1055556
+    N = 210        shift 0.3864088   N/phi(N) 4.3750000   quotient 0.0883220
+    N = 2310       shift 0.3828959   N/phi(N) 4.8125000   quotient 0.0795628
+    N = 30030      shift 0.3804413   N/phi(N) 5.2135417   quotient 0.0729718
+    N = 200000     shift 0.4750002   N/phi(N) 2.5000000   quotient 0.1900001
+    N = 510510     shift 0.3790426   N/phi(N) 5.5393880   quotient 0.0684268
+    N = 1048576    shift 0.5000002   N/phi(N) 2.0000000   quotient 0.2500001
+    N = 1531530    shift 0.3790426   N/phi(N) 5.5393880   quotient 0.0684268
+    N = 1600000    shift 0.4750002   N/phi(N) 2.5000000   quotient 0.1900001
+    N = 9699690    shift 0.3779342   N/phi(N) 5.8471318   quotient 0.0646358
+
+W5  the truncation: the measured shift is a limit, so it must
+    settle as the d-sum lengthens
+====================================================================
+  N = 510510,  m = 23
+  D        shift            |shift - exact|
+  200      0.3784659024     5.769e-04
+  2000     0.3790334998     9.281e-06
+  20000    0.3790425814     1.992e-07
+  -> W5 HOLDS
+
+W6  what the trap does to the constant of Section {#sec:C}
+====================================================================
+  A(N) W_G(1) = -S(N) is the identity the log k branch runs on.
+  A(N) is the same Euler product with the p | N factors set to
+  1, so the trap multiplies A(N) by the shift above and the
+  identity is out by that factor.  Printed against S(N) so the
+  size of the apparent refutation is visible.
+
+  N          shift       S(N)        S(N)*shift  |gap|/S(N)
+  --------------------------------------------------------------
+  6          0.4166668   2.6406473   1.1002701   0.5833332
+  30         0.3958334   3.5208631   1.3936753   0.6041666
+  210        0.3864088   4.2250357   1.6325908   0.6135912
+  2310       0.3828959   4.6944841   1.7974986   0.6171041
+  30030      0.3804413   5.1212554   1.9483372   0.6195587
+  200000     0.4750002   1.7604315   0.8362053   0.5249998
+  510510     0.3790426   5.4626724   2.0705853   0.6209574
+  1048576    0.5000002   1.3203237   0.6601621   0.4999998
+  1531530    0.3790426   5.4626724   2.0705853   0.6209574
+  1600000    0.4750002   1.7604315   0.8362053   0.5249998
+  9699690    0.3779342   5.7840061   2.1859735   0.6220658
+
+  -> W6 HOLDS
+     the gap is never small: the trap does not perturb the
+     constant, it replaces it, and Section {#sec:C} would read
+     the difference as E_3 failing the identity.
+
+====================================================================
+W1 REFUTED  W2 hold  W3 hold  W4 hold  W5 hold  W6 hold
+REFUTED
+
+The exit is non-zero because W1 is refuted.  W1 was the
+note's printed figure N/phi(N) and it is not the shift.
+W2, W3, W4, W5, W6 hold, so the note's sentence -- that the
+restriction is not cosmetic and that the error is carried
+into the log k branch as an apparent refutation -- survives
+with the factor corrected to prod_{p|N} (1 - 1/(p(p-1))).

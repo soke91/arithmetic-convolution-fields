@@ -1,0 +1,294 @@
+STATISTIC: D_c = E_same,c[S_2] - E_all[S_2] with
+           S_2(h) = 2 C_2 prod_{p|h,p>2}(p-1)/(p-2) the
+           Hardy-Littlewood singular series of the shift, E_same,c
+           the mean over sampled pairs N != N' both in cell c and
+           E_all the mean over sampled pairs in the band; its
+           spread across three octaves and its fitted exponent in
+           N; and its correlation across depths with the exact
+           floor se_c of Lemma {#lem:cellmom}.
+DENOM: the spread is divided by D_c at that depth;
+NULL: an exact permutation null on M3. D_c itself is a
+      deterministic arithmetic functional of the cell with no
+      sign input, so Lemma {#lem:coin} does not bite on it; but
+      M3 is a correlation across depths between D_c and the
+      exact floor, and that needed a control which nothing
+      supplied. With six depths the null is enumerable: all 720
+      permutations of the depth labels are run and the observed
+      |r| is placed in that distribution. The sampling error of
+      the pair average is reported alongside.
+FIELD: octaves (1e6,2e6], (2e6,4e6], (4e6,8e6]; even N; cells
+       indexed by depth = #{p in 3,5,7,11,13 dividing N};
+       400000 sampled ordered pairs per cell and per band, numpy
+       default_rng seed 20260808; S_2 sieved to 8e6; se_c taken
+       from lab_mask_placebo.py at (2e6,4e6].
+
+building S_2(h) to 8000000 ...
+  2*C_2 = 1.320324;  S_2(2) = 1.320324;  S_2(6) = 2.640647  (should be 2*C_2 * 2)
+
+  octave              depth  n_c        E_same,c[S_2]   D_c          se(D_c)
+  ----------------------------------------------------------------------------
+  (  1000000,  2000000] 0      191808     2.300852        0.302874     0.001358
+  (  1000000,  2000000] 1      210988     2.044711        0.046733     0.001316
+  (  1000000,  2000000] 2      81787      2.410224        0.412246     0.001358
+  (  1000000,  2000000] 3      14250      3.052504        1.054526     0.001368
+  (  1000000,  2000000] 4      1134       3.940718        1.942740     0.001182
+  (  1000000,  2000000] 5      33         5.146191        3.148213     0.000132
+      E_all[S_2] = 1.997978
+  (  2000000,  4000000] 0      383617     2.300893        0.302138     0.001358
+  (  2000000,  4000000] 1      421978     2.045521        0.046766     0.001318
+  (  2000000,  4000000] 2      163568     2.411259        0.412504     0.001359
+  (  2000000,  4000000] 3      28507      3.050884        1.052129     0.001370
+  (  2000000,  4000000] 4      2263       3.944864        1.946109     0.001183
+  (  2000000,  4000000] 5      67         5.170053        3.171298     0.000162
+      E_all[S_2] = 1.998755
+  (  4000000,  8000000] 0      767233     2.299179        0.297616     0.001359
+  (  4000000,  8000000] 1      843955     2.044237        0.042674     0.001316
+  (  4000000,  8000000] 2      327142     2.413274        0.411711     0.001363
+  (  4000000,  8000000] 3      57007      3.051852        1.050289     0.001370
+  (  4000000,  8000000] 4      4530       3.943655        1.942092     0.001189
+  (  4000000,  8000000] 5      133        5.186774        3.185212     0.000170
+      E_all[S_2] = 2.001563
+
+M1  D_c at (2e6,4e6] by depth: 0.302138, 0.046766, 0.412504, 1.052129, 1.946109, 3.171298
+    positive for d>=1 and increasing in depth: False   REFUTED
+
+M2/M4  scale invariance
+  depth  D_c per octave                       spread   fitted exponent
+  0      0.302874, 0.302138, 0.297616         0.0175   +0.012633
+  1      0.046733, 0.046766, 0.042674         0.0902   +0.065546
+  2      0.412246, 0.412504, 0.411711         0.0019   +0.000936
+  3      1.054526, 1.052129, 1.050289         0.0040   +0.002904
+  4      1.942740, 1.946109, 1.942092         0.0021   +0.000241
+  5      3.148213, 3.171298, 3.185212         0.0117   -0.008428
+  M2 REFUTED   M4 REFUTED
+  NOTE. The registration reads "exceeds 0.02 ... by more than
+  three sampling standard errors"; the code applies the flat
+  0.02 with no allowance. Scored as registered instead:
+  depth  spread   3 se(spread)   0.02 + allowance   as registered
+  0      0.0175   0.0192         0.0392             hold
+  1      0.0902   0.1232         0.1432             hold
+  2      0.0019   0.0140         0.0340             hold
+  3      0.0040   0.0055         0.0255             hold
+  4      0.0021   0.0026         0.0226             hold
+  5      0.0117   0.0002         0.0202             hold
+  As registered M2 holds at 6 of 6 depths; as coded at 5.
+  The code is the stricter of the two. Which of them the
+  paper may call "as registered" is the registration's rule,
+  not the code's.
+  DIAGNOSTIC (post hoc). M2 and M4 fail only where D_c is small:
+  the spread across octaves is nearly the same size at every
+  depth while D_c itself grows, so the relative spread the
+  rule looks at is large only where D_c is small:
+  depth  spread across octaves   |D_c|      spread/|D_c|
+  0      0.005258                0.300876   0.0175
+  1      0.004092                0.045391   0.0902
+  2      0.000793                0.412153   0.0019
+  3      0.004237                1.052315   0.0040
+  4      0.004017                1.943647   0.0021
+  5      0.036999                3.168241   0.0117
+  Note also
+  that the pre-registration allowed three sampling standard
+  errors and the code applied the 2% band with no allowance --
+  the code is the stricter of the two and its verdict stands.
+  Re-sampling depths 0 and 1 ten times harder:
+    depth 0: 0.299231, 0.298312, 0.299596   spread 0.0043   exponent -0.000879
+    depth 1: 0.045937, 0.045186, 0.046982   spread 0.0390   exponent -0.016226
+
+M3  corr(se_c, D_c) across depths = 0.9805   (floor 0.8)   hold
+    se_c  = 0.12400, 0.04662, 0.14834, 0.24178, 0.33253, 0.43685
+    control: over all 720 permutations of the depth
+    labels, 1 reach |r| = 0.9805; the null median is
+    0.3475 and its 95th percentile 0.8084
+    -- the control lab_mask_placebo.py does not supply, since it permutes labels for z_c and not
+    for this pair.
+    (this null is the one declared in the NULL: heading above; it is registered, not post hoc)
+    se_c^2 / D_c = 0.05089, 0.04648, 0.05334, 0.05556, 0.05682, 0.06018
+    that ratio spans 0.04648 to 0.06018, a band of 25.4% about its
+    mean, while D_c itself moves by a factor 68 across the
+    same six cells. A quantity that merely falls with the
+    depth cannot produce a ratio flat in D_c.
+
+    POST HOC (not a registered rule; written after M1-M4 were
+    scored, and it lifts none of them). Var carries K's
+    diagonal and D_c does not -- the S_2 averages run over
+    pairs N != N'. The diagonal is (1 - n_c/n)/n_c, with no
+    partner in the denominator. At (2000000,4000000]:
+    depth  n_c        (1-p)/n_c    se_c^2         printed  matched
+    0      383617     1.6068e-06   1.537600e-02   0.05089  0.05089
+    1      421978     1.3698e-06   2.173611e-03   0.04648  0.04645
+    2      163568     5.1137e-06   2.200476e-02   0.05334  0.05333
+    3      28507      3.4079e-05   5.845757e-02   0.05556  0.05553
+    4      2263       4.4089e-04   1.105762e-01   0.05682  0.05659
+    5      67         1.4924e-02   1.908379e-01   0.06018  0.05547
+    width about the mean: printed 25.4%, matched 19.1%
+    monotone from depth 1 on: printed True, matched False
+    the diagonal is 7.82% of Var at the deepest cell; the
+    printed rise from depth 4 to 5 is +0.00336 against the
+    +0.004706 that the diagonal puts there -- the last step of
+    the monotone rise is the diagonal's.
+
+    Removing the diagonal is only half the convention. Var
+    divides the off-diagonal sum by n_c^2 while D_c's E_same
+    is a mean over the n_c(n_c-1) ordered pairs, so the
+    matched numerator carries a further n_c/(n_c-1):
+    depth  se_c^2/D_c   diagonal out   convention matched
+    0      0.05089      0.05089        0.05089
+    1      0.04648      0.04645        0.04645
+    2      0.05334      0.05333        0.05333
+    3      0.05556      0.05553        0.05553
+    4      0.05682      0.05659        0.05662
+    5      0.06018      0.05547        0.05631
+    width about the mean 19.1%, monotone from depth 1 on: False
+    the step from depth 4 to 5 is -0.00031
+
+    That was still not the convention. Var is the DOUBLY
+    CENTRED mean E_same,c[K] - 2 E_c,a[K] + E_all[K], so it is
+    three sums over three index sets with three different pair
+    counts -- n_c^2, n_c*n, n^2. No single scalar carries it to
+    D_c's convention. Each term has to lose its own diagonal and
+    be divided by its own count. K(N,N) = 1 makes that exact:
+    depth  printed    diag out   half-matched  fully matched
+    0      0.05089   0.05089    0.05089       0.05089
+    1      0.04648   0.04645    0.04645       0.04646
+    2      0.05334   0.05333    0.05333       0.05334
+    3      0.05556   0.05553    0.05553       0.05553
+    4      0.05682   0.05659    0.05662       0.05665
+    5      0.06018   0.05547    0.05631       0.05704
+    width 19.8%, monotone from depth 1 on: True, step 4->5 +0.00038
+    So the monotone rise SURVIVES a correct match; what
+    shrinks is its size. Two earlier readings of this row
+    over-corrected: removing only the diagonal gives
+    -0.00112 at the last step and scaling that by n_c/(n_c-1)
+    gives -0.00031, both negative, both wrong.
+    The same removal across scale, first octave to last:
+    depth  printed drift   matched drift
+    0         7.9%            7.9%
+    1         0.9%            0.8%
+    2         9.4%            9.4%
+    3         9.2%            9.1%
+    4         9.6%            9.1%
+    5        15.2%            4.9%
+    -- the deepest cell's drift is the one the diagonal
+    inflates; the shallow five barely move.
+
+    THE OTHER DIRECTION. The band above is measured across
+    DEPTHS at one octave. The same ratio across SCALE, from
+    this run's D_c and lab_cell_floor.txt's Var on the three
+    octaves both cover:
+    depth   (1e6,2e6]  (2e6,4e6]  (4e6,8e6]
+    0       0.05344      0.05089      0.04921       7.9% from first to last
+    1       0.04896      0.04648      0.04851       0.9% from first to last
+    2       0.05619      0.05335      0.05090       9.4% from first to last
+    3       0.05837      0.05556      0.05301       9.2% from first to last
+    4       0.05992      0.05682      0.05417       9.6% from first to last
+    5       0.06622      0.06018      0.05618       15.2% from first to last
+    So D_c fixes the ratio's DEPTH profile at a fixed scale
+    and not its scale dependence: the drift above is of the
+    same order as the 25.4%% band offered as flatness, and it
+    is in the direction that band does not cover. Depth 1 is
+    not monotone in it. This is a diagnostic, not a
+    registered rule -- it was formed after M1-M4 were scored
+    and it scores none of them.
+    rows formed: 6 of 6
+
+    POST HOC (not a registered rule; run after M1-M4 were
+    scored, and it lifts none of them). Var is doubly centred
+    and D_c is a two-term difference. The doubly centred
+    B_c[S_2] = E_same,c - 2 E_c,a + E_all at (2e6,4e6]:
+    depth  E_same     E_c,a      E_all      D_c        B_c         B_c/D_c
+    0      2.300893   1.999163   1.998755   0.302138   0.301323    0.9973
+    1      2.045521   1.997611   1.998755   0.046766   0.049054    1.0489
+    2      2.411259   1.999601   1.998755   0.412504   0.410811    0.9959
+    3      3.050884   2.001840   1.998755   1.052129   1.045960    0.9941
+    4      3.944864   2.002947   1.998755   1.946109   1.937725    0.9957
+    5      5.170053   2.000179   1.998755   3.171298   3.168450    0.9991
+    E_c,a[S_2] departs from E_all[S_2] by at most 0.004192 in
+    absolute value, so for this kernel the cross term IS the
+    band mean and the two-term D_c is the doubly centred one.
+    se_c^2 / B_c = 0.05103, 0.04431, 0.05356, 0.05589, 0.05706, 0.06023
+    band 29.7% about its mean, against 25.4% for D_c.
+    Whether the same holds for the kernel K is not this
+    file's to answer -- K's three terms are computed in
+    lab_mask_placebo.py, and that file reports it.
+    D_c   = 0.30214, 0.04677, 0.41250, 1.05213, 1.94611, 3.17130
+
+POST HOC (not a registered rule; run after M1-M4 were scored,
+and it lifts none of them). D_c over ALL pairs, by
+autocorrelation -- no sampling:
+  depth  D_c per octave (exact)                 spread   exponent
+  0      0.299327, 0.299343, 0.299352           0.0001   -0.000059
+  1      0.045971, 0.045982, 0.045989           0.0004   -0.000285
+  2      0.411765, 0.411833, 0.411842           0.0002   -0.000136
+  3      1.052027, 1.052025, 1.052266           0.0002   -0.000164
+  4      1.940173, 1.944120, 1.944437           0.0022   -0.001584
+  5      3.146340, 3.169998, 3.186735           0.0128   -0.009202
+  Against M2's cap of 2%: 6 of 6 hold.
+  Against M4's |e| < 0.01: 6 of 6 hold.
+  The two depths M2 and M4 refuse on the sampled D_c are the
+  two where the sampling error is the largest fraction of D_c.
+  Computed rather than sampled, both hold with orders to spare.
+  The registered verdicts stand as scored: they were scored on
+  the estimator this file registered, and this block does not
+  rescore them. What it separates is the estimator from the
+  quantity.
+
+    And the denominator of that drift is the SAMPLED D_c. The
+    exact D_c is computed above; dividing by it instead:
+    depth  sampled drift   exact drift
+    0         7.9%             9.5%
+    1         0.9%             9.6%
+    2         9.4%             9.5%
+    3         9.2%             9.6%
+    4         9.6%             9.8%
+    5        15.2%            15.3%
+    Depth 1's 0.9 per cent is the sampling estimator's: the
+    pair
+    average carries about four per cent of noise per octave
+    there, which is more than the drift it is said to show.
+
+POST HOC (not a registered rule; run after M1-M4 were scored,
+and scoring nothing) -- the scale drift of Q_cc n_c^-2 log N
+that Observation {#obs:coh} reads.
+
+    depth  f_lo/f_hi   g at lo     g at mid    g at hi     swing     diagonal
+    0         1.031    -0.003955   -0.006177   -0.007675   0.003721     0.05%
+    1         1.031    -0.003958   -0.006180   -0.007679   0.003721     0.04%
+    2         1.031    -0.003952   -0.006175   -0.007673   0.003721     0.09%
+    3         1.031    -0.004025   -0.006248   -0.007746   0.003721     0.42%
+    4         1.049    -0.006978   -0.009201   -0.010699   0.003721     4.01%
+    5         1.621    -0.088478   -0.090701   -0.092199   0.003721    70.53%
+    The diagonal column is (1/n_c) / (Q_cc/n_c^2) at the LOWEST
+    octave -- the share of the printed quantity carried by the
+    n_c terms N = N', for which K = 1 exactly. It is under half
+    a per cent at depths 0 to 3, an order below the 3 per cent
+    the ratio departs from 1 there, and 70.53 per cent at depth
+    5. The share and the ratio are NOT put in a ratio to each
+    other: that comparison needs the drift as a percentage, and
+    at depth 5 the two denominators give 1.14x and 1.84x -- one
+    reads as the diagonal explaining the break and the other as
+    the diagonal being twice too large for it.
+    1/(2 log N) is not one number over these octaves: it runs
+    from 0.0437 to 0.0307, a 42 per cent range. So b, a single fit
+    over all eight, cannot be compared to the single averaged
+    0.036038 without slack of that order.
+
+    -g/2 = b - 1/(2 log N) IDENTICALLY when Var/(Q_cc n_c^-2)
+    is constant in N, so comparing them tests nothing. The one
+    reading the residual supports is of that constancy:
+
+    depth  -slope/2    b - that     ratio spread
+    0      0.039408    -2.0e-05     0.00e+00
+    1      0.039410    +2.6e-04     0.00e+00
+    2      0.039407    +4.4e-05     1.00e-04
+    3      0.039443    +1.3e-04     4.00e-04
+    4      0.040920    +1.9e-03     9.40e-03
+    5      0.081670    +2.6e-02     1.65e-01
+    The identity is exact to 2e-05 where the ratio does not
+    move and misses by 2.6e-02 at depth 5 where the ratio
+    spreads 1.65e-01. So the deepest cell's break is that
+    ratio-constancy fails there. The diagonal share rises at
+    the same two depths and is not separable from it here.
+
+======================================================================
+M1 REFUTED  M2 REFUTED  M3 hold  M4 REFUTED
+REFUTED

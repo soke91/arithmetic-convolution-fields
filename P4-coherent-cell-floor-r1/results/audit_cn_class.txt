@@ -1,0 +1,74 @@
+STATISTIC: the first and second moments of
+           G(N) = C(N)/sqrt(V(N)) within each of the eight
+           classes of even N cut by which of (3, 5, 7) divide N,
+           against an ensemble of 32 sign patterns on mu's
+           support, compared by the largest |z| over classes
+           with each coin draw scored leave-one-out against the
+           rest, so each moment is one max-statistic and not
+           eight separate tests.
+FIELD: even N in (2^20, 2^21], 524288 of them, with Lambda and mu
+       sieved once to 2097152 and both convolutions taken by FFT
+       over the whole range. Averaged over signs the coin gives
+       E[G^2] = 1 in every class exactly, since V(N) is the exact
+       second moment at each N, so the null is no structure at
+       all rather than no difference between classes.
+SEED: the coin draws from numpy default_rng at seed 20260828; without
+      it the file does not reproduce its own control.
+
+READ audit_cn_kurt_drift.txt POINT cnkurt_20 0.41549
+  the band this run has to reproduce, read from that file
+PRINTBOUND audit_cn_class 3 0.00050000
+  8 classes from the primes (3, 5, 7), 32 fresh sign patterns
+sieving to 2097152, which is 2^21
+  transform length 8388608
+
+Z1  gate: the band and the class bookkeeping
+  whole-band excess kurtosis 0.41549 against its 0.41549
+  size-weighted class second moment 0.875667582379 against the whole band's 0.875667582379
+  Z1 hold   (cap: 3 decimals and 1e-09)
+
+      3|N 5|N 7|N        N      mean G   coin mean       z        E[G^2]   coin mean       z
+       0   0   0    239675    +0.01376    +0.01540   -0.00     +0.80803    +1.02249   -0.90
+POINT classm2_0 0.80803
+       1   0   0    119837    -0.00623    +0.03623   -0.09     +0.83798    +1.03152   -0.78
+POINT classm2_1 0.83798
+       0   1   0     59918    +0.15415    -0.02673    0.38     +0.81369    +1.06245   -0.63
+POINT classm2_2 0.81369
+       1   1   0     29960    -0.46174    +0.06202   -0.94     +1.16445    +1.05787    0.31
+POINT classm2_3 1.16445
+       0   0   1     39945    +0.09170    +0.01397    0.17     +0.79576    +1.05960   -0.95
+POINT classm2_4 0.79576
+       1   0   1     19973    -0.21246    +0.05929   -0.54     +0.91322    +1.03594   -0.49
+POINT classm2_5 0.91322
+       0   1   1      9987    +0.43997    -0.02564    0.87     +0.95176    +1.07534   -0.27
+POINT classm2_6 0.95176
+       1   1   1      4993    -1.70728    +0.10154   -3.20     +4.37497    +1.02257    9.01
+POINT classm2_7 4.37497
+SCALES 1
+
+Z2  does the second moment escape the coin?
+  real largest |z| 9.01; the coin draws' own largest run 0.54 to 6.46,
+  and 0 of 32 reach it
+TSTAT class_m2_maxz 9.01
+SPREAD class_m2_maxz 1.44093
+  Z2 hold   (cap: none of them)
+
+Z3  does the first moment?
+  real largest |z| 3.20; the coin draws' own largest run 0.35 to 3.17,
+  and 0 of 32 reach it
+TSTAT class_m1_maxz 3.20
+SPREAD class_m1_maxz 0.61153
+  Z3 hold   (cap: none of them)
+
+Z4  was the control needed?
+  the median coin draw's largest |z| over classes is 1.09 on the second
+  moment, and 1.34 on the first
+  Z4 REFUTED   (cap: above 1.5)
+
+======================================================================
+Z1 hold  Z2 hold  Z3 hold  Z4 REFUTED
+
+the last axis is not closed. Conditioning on which small primes divide
+N finds something independent signs on mu's support cannot make, and
+it is the one axis the coin was never able to follow -- its eps does
+not know N.

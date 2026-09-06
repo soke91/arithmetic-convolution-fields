@@ -1,0 +1,54 @@
+STATISTIC: (a) A(N) * sum_{m<=x} mu(m)lambda(m)1_{(m,N)=1}log m / m,
+           (b) sum_{k<K,(k,N)=1} mu(k) log k / phi(k),
+           (c) E_3(alpha) by direct enumeration over k<K=N^0.56,
+           each against -S(N), and against the two candidate
+           right-hand sides of Theorem {#thm:C}.
+FIELD: (a),(b) N = 10^6 and 4*10^6, truncations x,K in geometric
+       checkpoints up to 4*10^6 and N^0.56; (c) N = 2*10^5, 4*10^5,
+       8*10^5, 1.6*10^6, exact integer-sieved Lambda and mu.
+
+computing sieves to 4000000 ...
+
+P1 / P2  --  the two constants of Section {#sec:C}
+====================================================================
+
+N = 1000000   prime factors [2, 5]   S(N) = 1.760432   A(N) = 0.787275
+  x            A(N)*Gtilde(x)      target -S(N)   target +S(N)
+  15625        -1.766079            -1.760432      +1.760432
+  62500        -1.764160            -1.760432      +1.760432
+  250000       -1.761529            -1.760432      +1.760432
+  1000000      -1.758808            -1.760432      +1.760432
+  -> |A*Gt + S| = 0.001624   |A*Gt - S| = 3.519239   P1 HOLDS
+  K            B_log(K)            target -S(N)
+  35           -1.616529            -1.760432
+  143          -1.853387            -1.760432
+  572          -1.858631            -1.760432
+  2289         -1.806492            -1.760432
+  -> B_log(K) is negative   P2 HOLDS
+
+N = 4000000   prime factors [2, 5]   S(N) = 1.760432   A(N) = 0.787275
+  x            A(N)*Gtilde(x)      target -S(N)   target +S(N)
+  62500        -1.764160            -1.760432      +1.760432
+  250000       -1.761529            -1.760432      +1.760432
+  1000000      -1.758808            -1.760432      +1.760432
+  4000000      -1.760250            -1.760432      +1.760432
+  -> |A*Gt + S| = 0.000181   |A*Gt - S| = 3.520682   P1 HOLDS
+  K            B_log(K)            target -S(N)
+  77           -1.898230            -1.760432
+  311          -1.853382            -1.760432
+  1244         -1.831353            -1.760432
+  4978         -1.779105            -1.760432
+  -> B_log(K) is negative   P2 HOLDS
+
+P3  --  brute-force E_3 against the two candidate identities
+====================================================================
+  N          E_3            rt-S(N-C)      rt+S*N+S*C     C(N)
+  200000     -8.7539e+04    +3.6206e+03    +7.0779e+05    +1.9519e+02
+  400000     -1.5349e+05    -4.3267e+03    +1.4040e+06    +2.8706e+03
+  800000     -2.5373e+05    -5.0716e+03    +2.8116e+06    +3.6370e+03
+  1600000    -4.1732e+05    -1.7125e+03    +5.6317e+06    -3.8517e+03
+  -> P3 HOLDS
+
+====================================================================
+P1 hold   P2 hold   P3 hold
+finding stands: Section {#sec:C} item (i) has A(N)*Gtilde(1) = -S(N)

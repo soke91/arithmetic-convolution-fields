@@ -1,0 +1,76 @@
+STATISTIC: (a) |D(t) computed k-first minus D(t) computed
+           u-first| / N, the switch of [eq:switch]; (b) integer
+           mismatches between the stride-built sigma_K(u) and
+           divisor enumeration; (c) integer mismatches between
+           sum_{k|u,(k,N)=1} mu(k) and 1_{rad(u)|N}, Lemma
+           {#lem:complete}; (d) |D(t) - (P(t)-R(t))| / N, [eq:PR];
+           (e) |supp P| against the divisor count of rad(N), and
+           max_t |P(t)| against 2^omega(N) log N, [eq:P].
+FIELD: N = 2.5e4, 5e4, 1e5, 2e5, 4e5 with theta' = 0.56 so
+       K = N^0.56; t = 0.125, 0.25, 0.5, 0.75, 1.0 times N-1;
+       (b) 4000 uniformly sampled u per N without replacement,
+       seed 20260807; (c) every squarefree u < N; Lambda and mu
+       from an integer sieve, sums in float64.
+
+STATISTIC and FIELD are in the header of this file.
+
+N = 25000    K = 290    omega(N) = 2  rad(N) = 10         |supp P| = 4 (want 4)
+    S3 mismatches over all squarefree u<N : 0
+    S2 mismatches over 4000 sampled u        : 0
+      t          D (k-side)      D (u-side)      |diff|/N      P(t)-R(t)       |diff|/N
+      3124       -1.52936315e+02  -1.52936315e+02  1.14e-18  -1.52936315e+02  1.14e-18
+      6249       -3.10456498e+02  -3.10456498e+02  0.00e+00  -3.10456498e+02  0.00e+00
+      12499      -7.20380816e+02  -7.20380816e+02  0.00e+00  -7.20380816e+02  0.00e+00
+      18749      -1.42486017e+03  -1.42486017e+03  0.00e+00  -1.42486017e+03  0.00e+00
+      24999      -3.61266440e+03  -3.61266440e+03  5.46e-17  -3.61266440e+03  5.46e-17
+    max_t |P(t)| = 0.0000   cap 2^omega(N) log N = 40.5   ok
+
+N = 50000    K = 427    omega(N) = 2  rad(N) = 10         |supp P| = 4 (want 4)
+    S3 mismatches over all squarefree u<N : 0
+    S2 mismatches over 4000 sampled u        : 0
+      t          D (k-side)      D (u-side)      |diff|/N      P(t)-R(t)       |diff|/N
+      6249       -2.04495100e+02  -2.04495100e+02  2.84e-18  -2.04495100e+02  2.84e-18
+      12499      -5.73869360e+02  -5.73869360e+02  4.55e-18  -5.73869360e+02  4.55e-18
+      24999      -1.20312280e+03  -1.20312280e+03  1.36e-17  -1.20312280e+03  1.36e-17
+      37499      -2.36617297e+03  -2.36617297e+03  1.82e-17  -2.36617297e+03  1.82e-17
+      49999      -5.68908111e+03  -5.68908111e+03  1.82e-17  -5.68908111e+03  1.82e-17
+    max_t |P(t)| = 10.8198   cap 2^omega(N) log N = 43.3   ok
+
+N = 100000   K = 630    omega(N) = 2  rad(N) = 10         |supp P| = 4 (want 4)
+    S3 mismatches over all squarefree u<N : 0
+    S2 mismatches over 4000 sampled u        : 0
+      t          D (k-side)      D (u-side)      |diff|/N      P(t)-R(t)       |diff|/N
+      12499      -4.89365378e+02  -4.89365378e+02  5.12e-18  -4.89365378e+02  5.12e-18
+      24999      -8.44411828e+02  -8.44411828e+02  5.68e-18  -8.44411828e+02  5.68e-18
+      49999      -2.11516813e+03  -2.11516813e+03  1.36e-17  -2.11516813e+03  1.36e-17
+      74999      -3.64901378e+03  -3.64901378e+03  0.00e+00  -3.64901378e+03  0.00e+00
+      99999      -9.65481746e+03  -9.65481746e+03  3.64e-17  -9.65481746e+03  3.64e-17
+    max_t |P(t)| = 0.0000   cap 2^omega(N) log N = 46.1   ok
+
+N = 200000   K = 930    omega(N) = 2  rad(N) = 10         |supp P| = 4 (want 4)
+    S3 mismatches over all squarefree u<N : 0
+    S2 mismatches over 4000 sampled u        : 0
+      t          D (k-side)      D (u-side)      |diff|/N      P(t)-R(t)       |diff|/N
+      24999      -7.43057780e+02  -7.43057780e+02  5.68e-19  -7.43057780e+02  5.68e-19
+      49999      -1.56474456e+03  -1.56474456e+03  3.41e-18  -1.56474456e+03  3.41e-18
+      99999      -2.75950388e+03  -2.75950388e+03  9.09e-18  -2.75950388e+03  9.09e-18
+      149999     -5.56821559e+03  -5.56821559e+03  9.09e-18  -5.56821559e+03  9.09e-18
+      199999     -1.56865814e+04  -1.56865814e+04  2.73e-17  -1.56865814e+04  3.64e-17
+    max_t |P(t)| = 12.2061   cap 2^omega(N) log N = 48.8   ok
+
+N = 400000   K = 1371   omega(N) = 2  rad(N) = 10         |supp P| = 4 (want 4)
+    S3 mismatches over all squarefree u<N : 0
+    S2 mismatches over 4000 sampled u        : 0
+      t          D (k-side)      D (u-side)      |diff|/N      P(t)-R(t)       |diff|/N
+      49999      -6.61936069e+02  -6.61936069e+02  0.00e+00  -6.61936069e+02  0.00e+00
+      99999      -1.67428287e+03  -1.67428287e+03  1.14e-18  -1.67428287e+03  1.14e-18
+      199999     -3.84164595e+03  -3.84164595e+03  1.02e-17  -3.84164595e+03  1.02e-17
+      299999     -7.71575662e+03  -7.71575662e+03  1.59e-17  -7.71575662e+03  1.59e-17
+      399999     -2.47317309e+04  -2.47317309e+04  1.00e-16  -2.47317309e+04  1.00e-16
+    max_t |P(t)| = 0.0000   cap 2^omega(N) log N = 51.6   ok
+
+======================================================================
+worst |k-side - u-side| / N     = 1.00e-16   (tol 5e-10)
+worst |D - (P - R)| / N         = 1.00e-16   (tol 5e-10)
+S1 hold  S2 hold  S3 hold  S4 hold  S5 hold
+Step 1, [eq:PR], [eq:P] and Lemma {#lem:complete} stand

@@ -1,0 +1,108 @@
+STATISTIC: the excess kurtosis of G(N) = C(N)/sqrt(V(N)) over
+           even N in each of seven octaves, against an ensemble
+           of 32 sign patterns on mu's support recomputed over
+           the whole ladder, and the slope of that excess
+           kurtosis against log2 of the band midpoint.
+FIELD: even N in (2^b, 2^(b+1)] for b = 17..23, so N runs to
+       16777216, with Lambda and mu sieved once to that top and
+       both convolutions taken by FFT over the whole range, then
+       sliced per band. The gate re-measures rem:cnlaw's own
+       band, even N in (2000000, 4000000].
+SEED: the coin draws from numpy default_rng at seed 20260821; without
+      it the file does not reproduce its own control.
+
+READ audit_cn_law.txt POINT cnlaw_kurt 0.26422
+  the band this ladder has to reproduce, read from that file
+PRINTBOUND audit_cn_kurt_drift 3 0.00050000
+sieving to 16777216
+  transform length 67108864
+
+D1  does this run reproduce the band rem:cnlaw measured?
+  here 0.26422 against its 0.26422
+  D1 hold   (cap: 3 decimals)
+
+  drawing the coin 32 times over the whole ladder
+
+      b        band top     even N      real      coin mean     coin sd       z
+     17          262144      65536  +1.57158     -0.02103     0.04765   33.42
+POINT cnkurt_17 1.57158
+     18          524288     131072  +1.06049     -0.01529     0.02700   39.84
+POINT cnkurt_18 1.06049
+     19         1048576     262144  +0.69806     -0.01894     0.03465   20.70
+POINT cnkurt_19 0.69806
+     20         2097152     524288  +0.41549     -0.01824     0.02628   16.51
+POINT cnkurt_20 0.41549
+     21         4194304    1048576  +0.25305     -0.02025     0.02969    9.20
+POINT cnkurt_21 0.25305
+     22         8388608    2097152  +0.14257     -0.01523     0.02541    6.21
+POINT cnkurt_22 0.14257
+     23        16777216    4194304  +0.07411     -0.01376     0.01758    5.00
+POINT cnkurt_23 0.07411
+SCALES 7
+
+D2  is the separation there at every octave?
+  smallest |z| across the seven bands is 5.00
+TSTAT cnkurt_min_z 5.00
+SPREAD cnkurt_min_z 0.01758
+  D2 hold   (cap: |z| > 3 at every band)
+
+D3  does it drift with N?
+  excess kurtosis on log2(band midpoint): slope -0.24190 +- 0.03457, t = -7.00
+TSTAT cnkurt_slope -7.00
+SPREAD cnkurt_slope 6.00000
+  D3 hold   (cap: negative and |t| > 2)
+  over the seven octaves it runs +1.57158 to +0.07411
+  a power law in N would show as a straight line in log(kurtosis)
+  log(kurtosis) on log2 N: slope -0.50682 +- 0.01902, so kurtosis ~ N^-0.7312
+POINT cnkurt_power -0.73119
+
+D4  does the control sit at zero?
+  the coin's mean is furthest from zero at b = 23, at 4.43 of its own
+  standard error over 32 draws
+  D4 REFUTED   (cap: two standard errors)
+  Note on the unit. As first written the pre-registration put
+  the cap at two of the coin's own DRAW-TO-DRAW STANDARD
+  DEVIATIONS; the code applies two STANDARD ERRORS of the mean
+  over 32 draws, which
+  is sqrt(32) = 5.66 times stricter. In the registered unit the
+  worst band reads 0.78 sd and D4 would hold.
+  The code is the stricter of the two and its verdict stands:
+  the question D4 asks is whether the coin arm's MEAN is
+  distinguishable from zero, and the standard error of that
+  mean is what answers it. The registration named the wrong
+  unit for its own question. Loosening it now would lift a
+  refutation after the fact, which is the one direction a
+  pre-registration exists to forbid.
+  On 2026-09-04 the REGISTRATION WORDING was corrected to say
+  standard errors, with the old wording kept beside it in the
+  docstring. The code was not touched and D4's verdict did not
+  move. What changed is a unit written wrongly, not a cap
+  chosen after seeing the number.
+
+  NOT PRE-REGISTERED, forced by D4 breaking and by the
+  exponent itself. No cap above is changed.
+  (a) the control sits at -0.02103 to -0.01376 rather than zero, so the
+      power law is refitted on real minus the control's own mean:
+      kurtosis ~ N^-0.6953 against the raw fit's N^-0.7312
+POINT cnkurt_power_adj -0.69534
+  (b) a sum of n independent terms has excess kurtosis of order 1/n,
+      and this field has about N/log N terms, so independence would
+      give N^-1 up to logs. The measured exponent is not that:
+      -0.7312 against -1, a nominal 9.8 standard errors away.
+TSTAT cnkurt_vs_independent 9.80
+SPREAD cnkurt_vs_independent 0.02744
+      Nominal: the seven octaves come from one sieve and are not
+      independent samples, so the standard error is a lower bound
+      on the true one and no significance is claimed from it. What
+      the figure says is that the decay is visibly slower than the
+      independent-sum rate over the range measured.
+
+======================================================================
+D1 hold  D2 hold  D3 hold  D4 REFUTED
+
+the non-Gaussianity is real at every octave and it shrinks. So it is
+a finite-N effect, not yet a law: what rem:cnlaw found survives the
+coin at every scale reached and is on its way somewhere this
+measurement cannot name -- seven octaves cannot tell decay to zero
+from decay to a positive limit, and the limit is the question that
+replaces this one.

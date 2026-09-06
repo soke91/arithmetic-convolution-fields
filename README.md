@@ -12,9 +12,24 @@ directory can be read, run, or moved on its own.
 
 | directory | paper | status |
 |---|---|---|
-| [`P4-coherent-cell-floor/`](P4-coherent-cell-floor/) | Cell-mean fluctuations in an arithmetic convolution field: exact Rademacher-null variances and a permutation control | submitted |
-| [`P1-mobius-fixed-class/`](P1-mobius-fixed-class/) | A fixed class for the Möbius side | not submitted |
+| [`P4-coherent-cell-floor/`](P4-coherent-cell-floor/) | Cell-mean fluctuations in an arithmetic convolution field: exact Rademacher-null variances and a permutation control | submitted; **frozen** |
+| [`P4-coherent-cell-floor-r1/`](P4-coherent-cell-floor-r1/) | the same paper, corrected after submission | corrections not yet sent to the journal |
+| [`P1-mobius-fixed-class/`](P1-mobius-fixed-class/) | A fixed class for the Möbius side | superseded by `-r1` |
+| [`P1-mobius-fixed-class-r1/`](P1-mobius-fixed-class-r1/) | the same paper, corrected; **carries one unrepaired gap in its own proof, stated in its CORRECTIONS.md** | not submitted |
 | [`P2-no-go-divisor-switch/`](P2-no-go-divisor-switch/) | A no-go for the divisor-switch route | not submitted |
+
+**Why the `-r1` directories exist rather than an edit in place.** One of
+these papers is with a journal, and a paper under review has to stay
+citable as the thing that was reviewed; the other has been public long
+enough that a link to it should keep resolving to what it resolved to.
+So corrections go in a new directory and the old one is left alone.
+Each `-r1` carries a `CORRECTIONS.md` saying what changed, why, and --
+where a reported defect turned out not to be one -- why not.
+
+**One of the corrections is not a correction but an admission.** The
+fixed-class paper's `-r1` records a gap in the proof of its own main
+theorem that has been found and not repaired. It is written down rather
+than left for a reader to hit.
 
 A paper with a machine-checked component has a `lean/` directory and an
 axiom report inside it; a paper without one says so in its own appendix.
