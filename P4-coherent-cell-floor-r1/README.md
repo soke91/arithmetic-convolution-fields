@@ -1,5 +1,14 @@
 # P4-coherent-cell-floor reproduction packet
 
+## Where this appears publicly
+
+This packet publishes to **`P4-coherent-cell-floor-r1/`** in the public repository, not to a
+directory of its own name. P4-coherent-cell-floor/ in the public repository holds the bytes sent to Experimental Mathematics and is frozen; the working manuscript publishes to the revision directory beside it. Chosen 2026-09-06 to replace the first revision rather than add a second, because no link to it had been given out and it carried a correction that was itself wrong.
+
+There is no `P4-coherent-cell-floor-r1` directory in this tree and there is not meant to be:
+the public name is a property of publication, and this directory is the one
+place the content lives.
+
 Purpose: canonical working and public packet for `P4-coherent-cell-floor.tex`.
 
 Not in this file: ownership judgement or hashes; `PACKET.json` is authoritative for both.
