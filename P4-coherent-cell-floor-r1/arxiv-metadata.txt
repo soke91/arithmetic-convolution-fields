@@ -43,9 +43,11 @@ a factor that grows with the band.
 Under the null of independent Rademacher signs for the mu(v) on their
 support, the variance of any cell contrast is a doubly
 centred quadratic form in the covariance kernel and reduces to three
-convolutions: the exact Rademacher-null scale is written down, not
-estimated. A uniformly random cell of the same size recovers the
-finite-population formula exactly; the divisibility cells do not.
+explicitly computable terms built from finite correlations and weighted
+inner products: the exact Rademacher-null scale is written down, not
+estimated. For a uniformly random same-size cell, the permutation
+average of the sign-null variance equals the finite-population formula
+exactly; the divisibility cells do not.
 Measured over eight octaves to 1.6 x 10^7, the exact null standard
 deviation shrinks by 1.21 where a count predicts 11.3, and a label
 permutation preserving every cell size collapses it by factors 3.8 to
@@ -55,12 +57,14 @@ For its size we offer a descriptor: the excess D_c of the shift's
 singular series over same-cell pairs, whose main term is rational with
 no fitted parameter. That the residue structure determines D_c was
 committed for a second, differently shaped partition before it was
-measured; the exact measurement falls inside the registered interval
+measured; the exhaustive (non-sampled) measurement falls inside the
+registered interval
 at every cell, and that transfer is the evidence offered. That D_c in
 turn determines the null floor rests on a correlation of 0.9805 across
 six cells, computed after the fact and not transferred. Every
 registered rule is reported with its verdict, refuted ones included.
-No distributional law for Z and no Goldbach consequence is asserted,
+No Gaussian or limiting distributional law for Z and no Goldbach
+consequence is asserted,
 and the decay of the effect with N is not determined here.
 
 

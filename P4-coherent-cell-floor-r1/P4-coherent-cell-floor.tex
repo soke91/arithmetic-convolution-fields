@@ -50,8 +50,10 @@ the band.
 Under the null of independent Rademacher signs for the $\mu(v)$ on
 their support, the variance of any cell contrast is a
 doubly centred quadratic form in the covariance kernel and reduces to
-three convolutions: the exact Rademacher-null scale is written down,
-not estimated. A uniformly random cell of the same size recovers the
+three explicitly computable terms built from finite correlations and
+weighted inner products: the exact Rademacher-null scale is written
+down, not estimated. For a uniformly random same-size cell, the
+permutation average of the sign-null variance equals the
 finite-population formula exactly; the divisibility cells do not.
 Measured over eight octaves to $1.6\cdot10^{7}$, the exact null
 standard deviation shrinks by $1.21$ where a count predicts $11.3$,
@@ -62,12 +64,12 @@ For its size we offer a descriptor: the excess $D_c$ of the shift's
 singular series over same-cell pairs, whose main term is rational with
 no fitted parameter. That the residue structure determines $D_c$ was
 committed for a second, differently shaped partition before it was
-measured; the exact measurement falls inside the registered interval
+measured; the exhaustive (non-sampled) measurement falls inside the registered interval
 at every cell, and that transfer is the evidence offered. That $D_c$
 in turn determines the null floor rests on a correlation of $0.9805$
 across six cells, computed after the fact and not transferred. Every
 registered rule is reported with its verdict, refuted ones included.
-No distributional law for $Z$ and no Goldbach consequence is asserted,
+No Gaussian or limiting distributional law for $Z$ and no Goldbach consequence is asserted,
 and the decay of the effect with $N$ is not determined here.
 \end{abstract}
 
@@ -111,8 +113,9 @@ the independent formula is the design effect \cite{Kish}. What is not
 standard, and is what this paper supplies, is that for the field
 \eqref{eq:field} the covariance $\Sigma$ is \emph{exactly computable}
 under a sign null; that cells cut by divisibility align with it; that
-a uniformly random cell of the same size recovers the
-finite-population formula exactly; and that the size of the effect is
+for a uniformly random same-size cell, the permutation average of the
+sign-null variance equals the finite-population formula exactly; and
+that the size of the effect is
 predicted by an excess of the shift's singular series over same-cell
 pairs.
 
@@ -124,14 +127,16 @@ exactly under the sign null, as three convolution terms.
 \item Observation~\ref{obs:coh} takes up its decay: over the eight
 measured octaves the shallow cells are consistent with
 $(\log N)^{-1/2}$ and not with $n_c^{-1/2}$. The first is a heuristic
-read against a finite range, not a proved rate; what is established is
-that the count-based rate is wrong.
+read against a finite range, not a proved rate; what is established over
+the measured range is that count-based scaling does not describe the
+arithmetic-cell floor.
 \item Lemma~\ref{lem:placebo} is the control that separates a
 property of the cell \emph{sizes} from a property of the
 correspondence between cells and arithmetic.
-\item Measurement~\ref{meas:placebo} runs it, and finds that the
-effect survives while the floor itself does not --- so the floor is a
-second measurement of the same correspondence.
+\item Measurement~\ref{meas:placebo} runs it, and finds that neither the
+cell effect nor the arithmetic-cell floor is reproduced under the
+placebo; the floor itself collapses, so it is a second measurement of
+the same correspondence.
 \item Proposition~\ref{prop:scaleinv} shows the quantity predicting
 the floor's size is asymptotically scale-free: as the band grows it
 converges to a constant fixed by the cell's residue classes, so its
@@ -144,7 +149,7 @@ not vanish) and turns the proposition from a statement that the size
 does not drift into one that names it.
 \item Measurement~\ref{meas:secondcell} carries the same computation to
 a \emph{second} cell shape, predicting its profile before measuring it
-and measuring it exactly. The prediction holds where the rules could
+and then evaluating the finite pair average exhaustively. The prediction holds where the rules could
 score it, and the small
 correction it carries decomposes with no free parameter into a divisor
 deficit and a covariance --- the second of which is exactly zero at the
@@ -174,15 +179,19 @@ is asserted is the shape: at each of depths $0$, $1$ and $2$ the
 amplitude falls monotonically across all eight octaves, and no
 exponent is fitted to that fall. Whether the exponents differ by depth
 is not decided by the accessible range.
-\item \textbf{No distributional law for $Z$ is asserted.}
+\item \textbf{No Gaussian or limiting distributional law for $Z$ is asserted.}
 \item \textbf{No consequence for the Goldbach problem.} Nothing
 measured here bounds $C(N)$ in either direction. No sweep over
 parameterisations is carried out, and none is claimed.
 \item \textbf{That $D_c$ predicts the floor's size is measured, not
-derived.} The variance and $D_c$ are the same doubly centred mean of
-two kernels, and a constant ratio between them would follow if those
-two kernels differed across the band by a factor the centring leaves
-alone. No such statement is proved here. What is measured is the
+derived.} The exact doubly centred singular-series analogue of the
+variance is $B_c$, defined in \S\ref{sec:size}; $D_c$ itself is the
+two-term descriptor in \eqref{eq:Dc}. Measurement~\ref{meas:Dc}
+shows that $D_c$ and $B_c$ are close in the measured band because the
+cross average of the singular series is close to its band average. A
+constant ratio between the variance and $B_c$ would follow if the two
+kernels differed across the band by a factor the centring leaves alone.
+No such statement is proved here. What is measured is the
 ratio: its full width is $25.4\%$ of its mean, or $19.8\%$ once
 $\mathrm{se}_c^2$ is matched to $D_c$'s convention term by term ---
 matched that way the row is still monotone from depth~$1$ on, with a
@@ -265,10 +274,11 @@ independent signs,
   \;-\;\frac{2\,Q_{ca}}{n_c\,n}
   \;+\;\frac{Q_{aa}}{n^{2}},
 \end{equation}
-where $a$ denotes the whole band. Every term is one convolution of two
-explicit finite sequences: the identity is exact and no simulation is
-involved. Its numerical evaluation is a separate matter --- the
-convolutions below are carried out in double precision
+where $a$ denotes the whole band. The quantities $u_c$ are finite
+correlations of explicit sequences, and each $Q_{cd}$ is then an
+explicit weighted inner product; the identity is exact and no
+simulation is involved. Its numerical evaluation is a separate matter
+--- these finite operations are carried out in double precision
 (Appendix~\ref{sec:repro}), so each printed floor is this exact formula
 evaluated to floating-point accuracy and not an exact rational.
 \end{lemma}
@@ -283,13 +293,19 @@ Lemma~\ref{lem:contrast} for this $\Sigma$. That lemma then gives the
 three terms.
 \end{proof}
 
+For later use, write
+\[
+  \mathrm{se}_c:=\sqrt{\mathrm{Var}_\varepsilon(m_c-\overline m)},
+  \qquad
+  z_c:=\frac{m_c-\overline m}{\mathrm{se}_c}.
+\]
 Throughout, the \emph{null standard deviation} of a cell contrast means
-the square root of the quantity this lemma computes: the exact standard
-deviation of $m_c-\overline m$ under the Rademacher null, at the
-observed cell sizes and the observed support of $\mu^2$. It is a scale,
-not a tail bound. The lemma fixes it exactly, but no distributional law
-is claimed for $m_c-\overline m$, so no probability is attached to any
-multiple of it and none is quoted below.
+$\mathrm{se}_c$: the exact standard deviation of $m_c-\overline m$
+under the Rademacher null, at the observed cell sizes and the observed
+support of $\mu^2$. It is a scale, not a tail bound. The lemma fixes the
+scale exactly, but no Gaussian, limiting, or other calibrated tail law
+is invoked for $m_c-\overline m$; no probability is attached below to
+a multiple of $\mathrm{se}_c$ merely because it is such a multiple.
 
 \begin{note}[all three terms are needed]\label{note:threeterms}
 The substitution $u_c(v)\approx n_c/\sqrt V$, which gives the right
@@ -595,28 +611,29 @@ other question.
 \begin{proof}
 The permutation acts on labels only; the multiset
 $\{Z(N):N\ \text{in the band}\}$ and the multiset of cell sizes are
-both invariant, and the joint distribution of $(\ell\circ\pi,Z)$ is
-that of independent labels. That observation gives both halves: the
+both invariant, and the joint distribution of $(\ell\circ\pi,Z)$ is that of a uniform
+fixed-count relabelling, with the random relabelling independent of
+$Z$. That observation gives both halves: the
 first reads it as the law the statistic must have if it sees only
 those two invariants, the second as the reference law against which
 the true labelling is read. For the second, a statistic determined by the two
 invariant multisets takes one and the same value at every $\pi$.
 \end{proof}
 
-\begin{measurement}[the cell means are not zero]\label{meas:notzero}
+\begin{measurement}[the cell contrasts are not zero]\label{meas:notzero}
 Against the floor of Lemma~\ref{lem:cellmom}, computed from its closed
-form, the cell means of the field \eqref{eq:field} are not zero. Over
+form, the cell contrasts $m_c-\overline m$ of the field
+\eqref{eq:field} are not all zero. Over
 the eight octaves from $(6.25\cdot10^4,\,1.25\cdot10^5]$ to
 $(8\cdot10^6,\,1.6\cdot10^7]$, $\max_c|z_c|$ reads
 \[
   10.099,\ 10.954,\ 11.179,\ 12.968,\ 11.885,\ 11.026,\ 10.019,\ 9.064,
 \]
-No multiple-comparison threshold is asserted for these, and none can
-be: the packet carries no family size, no threshold and no null law
-for such a statement, and \S\ref{sec:notclaimed} declines the
-distributional law any threshold would need. What the numbers are is a maximum over
-cells of a standardised deviation against the closed-form null floor,
-reported as such. The signal is carried by the deep cells:
+No multiple-comparison threshold is asserted for these. The finite
+Rademacher sign ensemble does define a joint law, but this paper does
+not calibrate the tail of $\max_c|z_c|$ under that law. The numbers are
+therefore reported only as a maximum over cells of standardised
+deviations against the closed-form null floor. The signal is carried by the deep cells:
 at the top octave depths $3,4,5$ sit at $z=-1.55,\,-4.46,\,-9.06$
 while depths $0,1,2$ sit at $+0.04,\,+0.69,\,-0.06$
 (\texttt{lab\_cell\_floor.py}).
@@ -875,6 +892,20 @@ below is the off-diagonal one. Put
 \begin{equation}\label{eq:Dc}
   D_c\;:=\;E_{\mathrm{same},c}[\SS_2]-E_{\mathrm{all}}[\SS_2].
 \end{equation}
+For the exact doubly centred analogue, also write
+\[
+  E_{c,a}[\SS_2]
+  :=\frac{1}{n_c(n-1)}
+    \sum_{N\in c}\sum_{\substack{N'\in a\\N'\ne N}}\SS_2(N-N'),
+  \qquad
+  B_c:=E_{\mathrm{same},c}[\SS_2]-2E_{c,a}[\SS_2]
+       +E_{\mathrm{all}}[\SS_2].
+\]
+Thus $B_c$, not $D_c$, is the off-diagonal singular-series quantity
+with the same three-part centring as \eqref{eq:JKJ}. The two-term
+$D_c$ is retained as the descriptor used by the measurements below;
+Measurement~\ref{meas:Dc} quantifies how close it is to the doubly
+centred convention in the measured band.
 
 \begin{measurement}[the floor tracks $D_c$, including its shape]%
 \label{meas:Dc}
@@ -936,10 +967,12 @@ shrinks is its size} --- nine times smaller at the last step, and a
 rise of $23\%$ from depth~$1$ rather than $29\%$. Removing only the
 diagonal gives $-0.00112$ there and scaling that by $n_c/(n_c-1)$
 gives $-0.00031$; both are over-corrections and neither is the
-comparison to make. The two quantities
-are one functional of two kernels: \eqref{eq:JKJ} is the doubly
-centred mean $n_c^{-2}\sum J_cJ_cK$, and $D_c$ is that same mean with
-$K$ replaced by the singular series of the shift. The centring is not
+comparison to make. The exact doubly centred comparison is between two kernels:
+\eqref{eq:JKJ} is the doubly centred mean
+$n_c^{-2}\sum J_cJ_cK$, while $B_c$ is the corresponding off-diagonal
+doubly centred mean with $K$ replaced by the singular series of the
+shift. The descriptor $D_c$ in \eqref{eq:Dc} omits the cross-centering
+term and is therefore not literally the same functional. The centring is not
 cosmetic. For $K$ the cross term is not the band mean --- it runs
 $0.124636$ to $0.140049$ against $E_{\mathrm{all}}=0.128718$, and
 dropping it would misstate the variance by factors $0.469$ to $2.120$
@@ -1160,10 +1193,12 @@ All three parts of $\mathcal E$ have to be said. None of them depends
 on the cell: $\ell=B/2Q$ is a band parameter, the same at depth~$0$ and
 at depth~$5$. A cell-dependent bound would have to be an $O(1/n_c)$,
 and the counting below does not support one.
-Which part is the larger is settled in $B$ --- the divisor-sampling
-term exceeds the first by $B^{\eta}$ and the third by $2Q$ --- and is
-unsettled only in the implied constants, which the conclusion does not
-need. The $O(1/B)$ above is the error of the
+At the level of the displayed powers, the divisor-sampling bound is
+$B^{\eta}$ times the first, while
+$B^{\eta}/\ell=2Q\,B^{\eta-1}$, so the latter two bounds have the
+same asymptotic order for fixed $Q$. Their finite-band numerical sizes
+cannot be ordered without the unnamed implied constants, and the
+conclusion does not require such an ordering. The $O(1/B)$ above is the error of the
 envelope, not of the cell. A cell is not a random sample: it is a
 union of residue classes modulo $2Q$, and every $d$ here is coprime to
 $2Q$, so the count that served the envelope serves the cell as well ---
@@ -1184,11 +1219,10 @@ stronger form would need the $m^2$ class-wise errors to cancel rather
 than accumulate. Nothing here establishes that, and it is not claimed. This is the
 same $O(1/\ell)$ that the equidistribution above carries, arrived at by
 the same count of a cell against its residue classes; the two are one
-resolution seen twice and not two errors. Both are bounds rather than
-errors, and which of them dominates is settled in $B$ and unsettled
-only in the implied constants. Neither varies by cell. The conclusion
-needs no answer to that, only that both go to zero, and $\ell$ grows
-with the band.
+resolution seen twice and not two errors. Both are bounds rather than errors, and their finite-band numerical
+ordering is not supplied because the implied constants are unnamed.
+Neither varies by cell. The conclusion needs no ordering, only that
+both go to zero, and $\ell$ grows with the band.
 
 The last part is the two truncations, which Rankin's trick bounds.
 For $s>0$, $\sum_{d\le B}g(d)\le B^{s}\prod_{p>13}(1+\frac1{(p-2)p^{s}})$,
@@ -1465,7 +1499,7 @@ before the run.
 The sampled thirty-draw mean at depth~$2$ was $0.825796$, above T1's
 upper bound of $0.825521$ by about $1.2$ standard errors of that mean,
 and the sealed file records both that lean and that it was not
-decisive. The exact value is inside the interval. So that is one pass
+decisive. The exhaustive finite-sum value is inside the interval. So that is one pass
 against a stated lean --- not two, and not against a prediction of
 failure: the sealed file says ``leans, not decisive'' of the first and
 ``may fail'' of the second, and the second is void rather than passed.
@@ -1741,13 +1775,16 @@ second.
 \begin{itemize}
 \item Lemma~\ref{lem:cellmom}: the fluctuation of any cell mean under
 the sign null is exactly
-$Q_{cc}/n_c^2-2Q_{ca}/(n_cn)+Q_{aa}/n^2$; all three terms are needed
-and all three are one convolution each.
+$Q_{cc}/n_c^2-2Q_{ca}/(n_cn)+Q_{aa}/n^2$; all three terms are needed,
+and they are computed from explicit finite correlations and weighted
+inner products.
 
 \item Observation~\ref{obs:coh} and Note~\ref{note:notanerrorbar}:
-that quantity decays like $(\log N)^{-1/2}$ at the shallow cells,
-where Note~\ref{note:threeterms}'s fraction is constant, and not like
-$n_c^{-1/2}$ anywhere. The exponent itself is measured at all six
+over the eight measured octaves that quantity is consistent with
+$(\log N)^{-1/2}$ at the shallow cells, where
+Note~\ref{note:threeterms}'s fraction is constant, and is inconsistent
+with count-based $n_c^{-1/2}$ scaling over the same range. The exponent
+itself is measured at all six
 depths and the deepest fits $0.107306$, which the form does not
 predict. A
 count-based interval is narrower than the exact Rademacher-null scale
