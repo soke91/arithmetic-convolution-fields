@@ -14,17 +14,16 @@ directory can be read, run, or moved on its own.
 |---|---|---|
 | [`P4-coherent-cell-floor/`](P4-coherent-cell-floor/) | Cell-mean fluctuations in an arithmetic convolution field: exact Rademacher-null variances and a permutation control | submitted; **frozen** |
 | [`P4-coherent-cell-floor-r1/`](P4-coherent-cell-floor-r1/) | the same paper, corrected after submission | corrections not yet sent to the journal |
-| [`P1-mobius-fixed-class/`](P1-mobius-fixed-class/) | A fixed class for the Möbius side | superseded by `-r1` |
-| [`P1-mobius-fixed-class-r1/`](P1-mobius-fixed-class-r1/) | the same paper, corrected | not submitted |
+| [`P1-mobius-fixed-class/`](P1-mobius-fixed-class/) | A fixed class for the Möbius side | not submitted |
 | [`P2-no-go-divisor-switch/`](P2-no-go-divisor-switch/) | A no-go for the divisor-switch route | not submitted |
 
-**Why the `-r1` directories exist rather than an edit in place.** One of
-these papers is with a journal, and a paper under review has to stay
-citable as the thing that was reviewed; the other has been public long
-enough that a link to it should keep resolving to what it resolved to.
-So corrections go in a new directory and the old one is left alone.
-Each `-r1` carries a `CORRECTIONS.md` saying what changed, why, and --
-where a reported defect turned out not to be one -- why not.
+**Why one paper has an `-r1` directory and the others do not.** The
+cell-mean paper is with a journal, and a paper under review has to stay
+citable as the thing that was reviewed, so its corrections go in a new
+directory and the submitted one is left alone. Nothing else here has
+been submitted, so corrections to those go in place, as corrections to
+an unsubmitted preprint should. A `CORRECTIONS.md` says what changed,
+why, and -- where a reported defect turned out not to be one -- why not.
 
 **One of the corrections carries its own mistake, on purpose.** A gap
 found in the fixed-class paper's main proof was first recorded as

@@ -893,9 +893,30 @@ $(v_p(d),v_p(e))\in\{0,1\}^2$ contribute
 \]
 Hence $c(m)=\prod_{p\mid m}p^{-1}\cdot
 \prod_{p\nmid m,\ p\nmid N}(1-\tfrac{1}{p(p-1)})
-=m^{-1}\AAA(N)\lambda(m)$. The truncation error is the tail
-$\sum_{d>D_0}1/\varphi(md^2)\ll1/(\varphi(m)D_0)$ and similarly for
-$e$.
+=m^{-1}\AAA(N)\lambda(m)$.
+
+The two truncations are not the same and are done separately. For $d$,
+$\varphi(md^2)\ge\varphi(m)\varphi(d^2)=\varphi(m)\,d\,\varphi(d)$, so
+the tail is
+$\sum_{d>D_0}1/\varphi(md^2)\le\varphi(m)^{-1}\sum_{d>D_0}1/(d\varphi(d))
+\ll1/(\varphi(m)D_0)$, with an absolute constant, uniformly in $m$.
+
+For $e$ the sum is finite --- $e$ runs over divisors of $m$ --- so the
+omitted terms are the $e\mid m$ with $e>E_0$, of which there are up to
+$d(m)$, and a divisor factor appears that the $d$-tail does not have.
+Each such term is at most $1/\varphi(me)\le1/(\varphi(m)\varphi(e))$
+and $1/\varphi(e)\ll\log\log e/e\ll\log\log M/E_0$ there, so
+\begin{equation}\label{eq:etail}
+  \sum_{\substack{e\mid m\\ e>E_0}}\frac{1}{\varphi(m\lcm(d^2,e))}
+  \;\ll\;\frac{d(m)\log\log M}{\varphi(m)E_0}.
+\end{equation}
+The divisor factor is harmless where the lemma is used, but only
+because it is used inside a sum over $m$: $\sum_{m<M}d(m)/\varphi(m)
+\ll(\log M)^{2}$, and $E_0^{-1}=e^{-\sqrt{\log N}}$ beats every power
+of $\log N$. It would not be harmless against a single $m$, where
+$d(m)$ is $m^{o(1)}$ and exceeds $E_0$; the bound is stated as
+\eqref{eq:etail} rather than absorbed so that the place it is used has
+to carry the sum.
 \end{proof}
 
 The load-bearing line is the local factor. Equivalently, for squarefree
@@ -991,10 +1012,21 @@ $\ll Ne^{-c''\sqrt{\log N}}$ and $\ll N^{(3+\theta')/4}e^{C\sqrt{\log N}}$
 respectively. All three pieces are $\ll Ne^{-c\sqrt{\log N}}$ for
 $\theta'<1$, the first and the third being powers of $N$ below $N$
 itself. The truncation error carried by
-Lemma~\ref{lem:density} is $\ll\sum_{m<M}|\Tcut_m(t)|/(\varphi(m)D_0)$,
-and $\Tcut_m(t)\le N$, so with $\sum_{m<M}1/\varphi(m)\ll\log M$ it is
-$\ll N\log N/D_0=N\log N\,e^{-\sqrt{\log N}}
-\ll Ne^{-c\sqrt{\log N}}$ for every $c<1$. The size here is $N$ and not
+Lemma~\ref{lem:density} has two halves and $\Tcut_m(t)\le N$ in both.
+The $d$-half is $\ll\sum_{m<M}|\Tcut_m(t)|/(\varphi(m)D_0)$, so with
+$\sum_{m<M}1/\varphi(m)\ll\log M$ it is
+$\ll N\log N/D_0=N\log N\,e^{-\sqrt{\log N}}$. The $e$-half carries the
+divisor factor of \eqref{eq:etail}, and \emph{this} is where the sum
+over $m$ absorbs it:
+\[
+  \ll\frac{N\log\log M}{E_0}\sum_{m<M}\frac{d(m)}{\varphi(m)}
+  \;\ll\;\frac{N(\log M)^{2}\log\log M}{E_0}
+  \;=\;N(\log M)^{2}\log\log M\,e^{-\sqrt{\log N}} .
+\]
+Both are $\ll Ne^{-c\sqrt{\log N}}$ for every $c<1$, since
+$e^{-\sqrt{\log N}}$ beats every power of $\log N$; the $e$-half has
+two powers less room than the $d$-half and still has room to spare.
+The size here is $N$ and not
 $M$: the truncation is per term of the harmonic sum, and the terms are
 of the size of $N$.
 \end{proof}
@@ -1553,21 +1585,28 @@ M\"obius--logarithmic condition and reads the diagonal variant of
 \cite{Can} against the corrected rearrangement. All of that is prior to
 this section and is not repeated here.
 
-\textbf{What this section adds is the bound and what the bound is for.}
-A correction that keeps the moving truncation repairs the derivation
-\emph{from the inside}: the range $m\le\alpha$ never appears, so there
-is no term to bound, and that is the route \cite{Moya} takes. What
-follows is the \emph{outside} version: the published form is taken as
-it stands, the discrepancy is named $\Delta$, and it is bounded --- a
-step \cite{Moya} does not take, since on its route the term does not
-arise. The two are different kinds of work and neither replaces the
-other. The reason for taking the outside route here is not
-completeness: the term \emph{is} the difference between the two
-formulations, and having it bounded is what lets a theorem proved
-against the fixed cut transfer to the corrected one
-(Proposition~\ref{prop:movingcut}). Theorem~\ref{thm:A} is proved
-against the published form, and without $\Delta$ it would say nothing
-about the corrected one.
+\textbf{What this section adds is the term in closed form, its size,
+and the bound.} A correction that keeps the moving truncation repairs
+the derivation \emph{from the inside}: the range $m\le\alpha$ never
+appears, so there is no term at all, and that is the route \cite{Moya}
+takes. What follows is the \emph{outside} version: the published form
+is taken as it stands, the omitted region is written out as the single
+sum $\Delta$ of \eqref{eq:Delta}, its trivial bound
+$\Delta\ll N(\log N)^{2}$ is seen to exceed the target
+$O(N(\log N)^{-A})$ --- so that the region is not a boundary artefact
+that could be discarded --- and $\Delta$ is then bounded. None of those
+three steps is in \cite{Moya}, whose route does not produce a term to
+name, measure or bound; what that note establishes about the region is
+that it is not empty, which it does by an explicit small example rather
+than by a formula.
+
+The two are different kinds of work and neither replaces the other.
+The reason for taking the outside route here is not completeness: the
+term \emph{is} the difference between the two formulations, and having
+it bounded is what lets a theorem proved against the fixed cut transfer
+to the corrected one (Proposition~\ref{prop:movingcut}).
+Theorem~\ref{thm:A} is proved against the published form, and without
+$\Delta$ it would say nothing about the corrected one.
 
 The scope of the report has to be stated: we have worked from the arXiv
 version, and have checked the passage below in \textbf{both} v1 (May
@@ -1636,12 +1675,13 @@ $K(b^2,m)/b^{2}$, and
    \;\le\;\sum_{g\mid b^2}g\cdot\frac{\alpha}{g}
    \;=\;\alpha\,d(b^2).
 \]
-Hence, with $\Lambda\ll\log N$ and $K\alpha=N-1$,
+Hence, with $\Lambda\ll\log N$, the factor $\log m\le\log\alpha\ll\log
+N$ that $\Delta$ carries on the short variable, and $K\alpha=N-1$,
 \[
-  \ll\log N\sum_{b>B_1}\frac{K\alpha\,d(b^2)}{b^{2}}
-  \;\ll\;N\log N\sum_{b>B_1}\frac{d(b^2)}{b^{2}}
-  \;\ll\;\frac{N\log N\,(\log B_1)^{2}}{B_1}
-  \;\ll\;\frac{N(\log\log N)^{2}}{(\log N)^{A+3}},
+  \ll(\log N)^{2}\!\!\sum_{b>B_1}\frac{K\alpha\,d(b^2)}{b^{2}}
+  \;\ll\;N(\log N)^{2}\!\!\sum_{b>B_1}\frac{d(b^2)}{b^{2}}
+  \;\ll\;\frac{N(\log N)^{2}(\log B_1)^{2}}{B_1}
+  \;\ll\;\frac{N(\log\log N)^{2}}{(\log N)^{A+2}},
 \]
 which is $\ll_AN(\log N)^{-A}$. The last step is
 $\sum_{b>X}d(b^2)b^{-2}\ll(\log X)^2/X$, by partial summation from
@@ -1921,7 +1961,14 @@ Theorem~\ref{thm:A} removes an input at one of the two places that
 consume it.
 
 The search for a prior statement of it reaches as follows, and its
-boundary is given so that it can be checked. The forward citation
+boundary is given so that it can be checked. \textbf{One thing that
+boundary missed is now known, and naming it is the point of stating
+the boundary at all}: \cite{Moya} is deposited on Zenodo, cites
+\cite{HL}, and appears in none of the forward citation graphs read
+below, which index journal and arXiv records. It was found instead by
+asking a reader with no stake in the paper whether it was ready to
+submit. A search boundary drawn through citation graphs does not see a
+repository deposit, and this one did not. The forward citation
 graphs of \cite{MV17}, \cite{Vat19}, \cite{HL} and \cite{LiSP} were
 read in full in Semantic Scholar and OpenAlex in August 2026 --- $22$
 and $13$ records respectively for \cite{MV17}, $2$ for \cite{Vat19}
@@ -2028,7 +2075,12 @@ supported on primes all the way up to $K=N^{\theta'}$. A triply
 well-factorable sequence of level $N^{\vartheta}$ is by definition a
 combination of terms each factoring into three pieces of level at most
 $N^{\vartheta/3}$, so every such sequence, and every finite combination
-of them, vanishes at moduli above $N^{\vartheta/3}$. For $\theta'>1/2$
+of them, vanishes at every \emph{prime} modulus above
+$N^{\vartheta/3}$ --- at composite moduli it need not, since three
+factors of that size have product $N^{\vartheta}$; the vanishing is a
+statement about primes, which is what is used here and what
+\cite[Lemma on vanishing above the split point]{P6} proves. For
+$\theta'>1/2$
 and any $\vartheta\le1$ we have $\vartheta/3<1/2<\theta'$, so the
 primes $p$ with $N^{\vartheta/3}<p<N^{\theta'}$ lie in the support of
 $\lambda$ and outside that of every such combination. Hence $\lambda$
