@@ -40,13 +40,39 @@ from other papers in the literature section are read from those papers
 and from the two databases named there, on the date named there. No
 script produces them, and the paper says so in the same place.
 
-## What is not machine-checked
+## What is machine-checked, and what is not
 
-Nothing here. Other packets in this repository carry a `lean/`
-directory; this one does not, no statement in this paper has a Lean
-development, and none has had a reading by a subject expert. The proofs
-are as given in the text. The paper states this in its own appendix
-rather than leaving it to be discovered here.
+The finite rearrangements the argument runs on are formalised in Lean 4
+against Mathlib, in `lean/GoldbachLean/Fixedclass.lean`: that the
+subtracted mean term leaves the sum over moduli, the exchange and the
+reindexing that compose into the divisor switch, the split of the
+divisor sum into a complete sum minus a tail, and the factorisation
+`u = mk`. They are stated over arbitrary functions, so what is checked
+is that these steps use no arithmetic property of the arithmetic
+functions — which is what the paper's claim, that its two functionals
+differ in one factor and nothing else, rests on.
+
+Two of the statements there are meant to be contradicted rather than
+used. One exhibits a subtracted term depending on the modulus for which
+the first step fails; the other exhibits index sets carried onto each
+other by `n ↦ N − n` for which the switch still fails, so that the
+congruence-to-divisibility translation is seen to carry that step rather
+than the reindexing. A file with only the positive statements would not
+have said either.
+
+Every theorem in that file depends on `propext`, `Classical.choice` and
+`Quot.sound` and on nothing else; `lean/axioms.txt` is the report and
+`cd lean && lake build` reproduces it. The report covers the other
+papers' developments in this repository as well, since they are one
+library; where `sorryAx` appears it belongs to the cell-mean paper,
+which says so in its own text.
+
+**The theorem itself is not machine-checked.** It rests on
+Bombieri–Vinogradov, which Mathlib does not carry, and the truncation
+choice, the complete divisor sum and the degeneracy lemma are
+arithmetic and are not formalised either. No statement in this paper has
+had a reading by a subject expert. The paper states all of this in its
+own appendix rather than leaving it to be discovered here.
 
 ## Provenance
 

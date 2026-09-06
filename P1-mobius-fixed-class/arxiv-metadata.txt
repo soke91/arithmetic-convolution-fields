@@ -64,19 +64,24 @@ toward the Goldbach conjecture is zero. We also state plainly what is
 standard: the ingredients are classical and the mechanism -- a divisor
 switch onto a short variable, followed by Bombieri-Vinogradov -- is
 ordinary practice. What is offered is the application, the identity it
-makes visible, and the corrections both turn out to require.
+makes visible, and the corrections both turn out to require. The finite
+rearrangements the argument runs on are formalised in Lean 4 against
+Mathlib, over arbitrary functions, so that what is checked is that they
+use no arithmetic property of Lambda or mu.
 
 
 COMMENTS FIELD
 --------------
-Code and output at
+Code, output and a Lean 4 development at
 https://github.com/soke91/arithmetic-convolution-fields
 
 
 SUBMISSION FACTS
 ----------------
-No statement in this paper is machine-checked, and none has had a
-reading by a subject expert.  The paper says so in its own appendix.
+The finite rearrangements the argument runs on are machine-checked;
+the theorem is not, and Mathlib does not carry Bombieri-Vinogradov.
+No statement has had a reading by a subject expert.  The paper says
+all of this in its own appendix.
 
 arXiv requires text-to-text generative AI use to be reported consistent
 with subject standards.  The paper names the tool and version.

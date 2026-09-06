@@ -17,9 +17,11 @@ directory can be read, run, or moved on its own.
 | [`P2-no-go-divisor-switch/`](P2-no-go-divisor-switch/) | A no-go for the divisor-switch route | not submitted |
 
 A paper with a machine-checked component has a `lean/` directory and an
-axiom report inside it. A paper without one says so in its own appendix.
-No paper here has had a reading by a subject expert, and each says that
-too.
+axiom report inside it; a paper without one says so in its own appendix.
+What is machine-checked is in every case the finite identities a proof
+runs on, never the theorem the paper argues for, and each paper says
+where its formalisation stops and why. No paper here has had a
+reading by a subject expert, and each says that too.
 
 ## The object
 

@@ -95,7 +95,10 @@ what is standard: the ingredients of Theorem~\ref{thm:A} are classical
 and its mechanism --- a divisor switch that moves the work onto a
 short variable, followed by Bombieri--Vinogradov --- is ordinary
 practice. What is offered is the application, the identity it makes
-visible, and the corrections both turn out to require.
+visible, and the corrections both turn out to require. The finite
+rearrangements the argument runs on are formalised in Lean~4 against
+Mathlib, over arbitrary functions, so that what is checked is that they
+use no arithmetic property of $\Lambda$ or $\mu$.
 \end{abstract}
 
 % =====================================================================
@@ -2162,8 +2165,8 @@ checked by computation and what was not checked at all.
 
 \section*{Data availability statement}
 
-The code behind every figure printed here and the output it produced
-are openly available at
+The code behind every figure printed here, the output it produced, and
+the Lean~4 development are openly available at
 \texttt{https://github.com/soke91/arithmetic-convolution-fields}, in the
 directory \texttt{P1-mobius-fixed-class/}. One class of figure has no
 script and says so in Appendix~\ref{sec:repro}: the citation counts and
@@ -2190,9 +2193,35 @@ on from those stages that has not since been rederived and rerun.
 What follows says what was checked and by what, rather than asserting
 that it was checked.
 
-\emph{Not machine-verified.} No statement in this paper has a
-machine-checked proof, and none has had a reading by a subject expert.
-The proofs are as given in the text.
+\emph{Machine-verified.} The finite rearrangements the proof of
+Theorem~\ref{thm:A} runs on are formalised in Lean~4 against Mathlib,
+in the file \texttt{lean/GoldbachLean/Fixedclass.lean} of the code
+packet: that the subtracted mean term of \eqref{eq:split0} leaves the
+$k$-sum, the exchange and the reindexing that together make the divisor
+switch \eqref{eq:switch}, the split of $\sigma_K$ into a complete sum
+minus a tail that gives \eqref{eq:PR}, and the factorisation $u=mk$ of
+\eqref{eq:R1}. Each depends on \texttt{propext},
+\texttt{Classical.choice} and \texttt{Quot.sound} and on nothing else;
+the axiom report is in the packet. The statements take $\Lambda$, $\mu$,
+$\varphi$ and the weight as arbitrary functions, so what is verified is
+that these steps use no arithmetic property of them --- which is what
+licenses the claim that $E_3$ and $E_4$ differ in one factor and
+nothing else.
+
+Two of the formalised statements are there to be contradicted rather
+than used. One exhibits a subtracted term depending on $k$ for which
+\eqref{eq:split0} fails, so that the step is seen to rest on the
+$k$-independence of $C(t)$ and not on algebra alone; the other exhibits
+index sets carried onto each other by $n\mapsto N-n$ for which
+\eqref{eq:switch} still fails, so that the congruence-to-divisibility
+translation is seen to carry the step rather than the reindexing.
+
+\textbf{Theorem~\ref{thm:A} itself is not machine-verified, and no
+statement in this paper has had a reading by a subject expert.} It
+rests on Bombieri--Vinogradov, which Mathlib does not carry, so no part
+of it is formalised; \eqref{eq:trunc}, Lemma~\ref{lem:complete} and
+Lemma~\ref{lem:degen} are arithmetic and are not formalised either. The
+proofs are as given in the text.
 
 \emph{Checked by computation.} Every figure quoted is produced by a
 named run in the accompanying code, with the one exception recorded in
