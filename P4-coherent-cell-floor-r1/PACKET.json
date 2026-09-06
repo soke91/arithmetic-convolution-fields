@@ -9,13 +9,13 @@
   "paper_files": [
     {
       "path": "P4-coherent-cell-floor.tex",
-      "sha256": "94123d0480fd0b3ab9a5a7de8f940f7239877c1f5e900f4ad93a5f23b7b684f7",
+      "sha256": "acde0ef1bbff75e91fcc5fb073c91bdeedd25a3dc57beba03dc9473a4b9fccf0",
       "imported_from": "deploy/papers/P4-coherent-cell-floor.tex",
       "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
     },
     {
       "path": "P4-coherent-cell-floor.pdf",
-      "sha256": "cd852d18d4b75a442efd5336c838e2f24664dd52b49a071825fd1c7c52e37984",
+      "sha256": "90812b71812d851b7c6731b9d105cc8f9d936233dd39285a315a6772e718c79c",
       "imported_from": "deploy/papers/P4-coherent-cell-floor.pdf",
       "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
     },

@@ -1563,16 +1563,24 @@ single power reaches them.
 
 What the second cell shape measures, once the exponent is dropped, is
 \textbf{how tight Proposition~\ref{prop:scaleinv}'s own error term is}.
-At depth~$0$ the three measured terms are $5.68$, $4.36$ and $1.95$ per
-cent of the \emph{number} $1/\ell=1.05\cdot10^{-4}$, and complete
+At depth~$0$ the deficit, the covariance and the pattern weight --- in
+that order, which is not the table's --- are $5.68$, $4.36$ and $1.95$
+per cent of $1/\ell=1.05\cdot10^{-4}$, each first divided by
+$2C_2E_c[A_S]$. That constant is the deficit's own factor in the four-term
+decomposition above, so dividing returns $\Delta_c$ there; the other two
+carry $K$ and $2C_2$ instead, and are divided by the same constant only
+to put all three on one scale. Read straight off the table's entries
+the same three are $12.6$, $9.7$ and $4.3$ per cent. Complete
 cancellation of the class-wise errors --- what the diagonal class pairs
 alone would give, which the proof declines to claim --- would put the
-deficit at $4.03$. The proposition's bound is that number times an
-unnamed constant and a divisor sum above three, as the discussion after
-its proof records, so these are \emph{upper} bounds on the fraction of
-the bound the measurement realises: the bound is at least three times
-looser than the figures suggest, and the conclusion that it is loose
-survives a fortiori.
+deficit at $4.03$ per cent of $1/\ell$ on that same scale.
+The proposition's error term carries an unspecified implied constant
+and a divisor sum above three, as the discussion after its proof
+records. So the asymptotic statement is not quantitative enough, at
+this finite band, to turn these percentages into a certified fraction
+of its bound: they are reported as a comparison with the $1/\ell$ that
+appears in the proof, and not as the fraction of the bound the
+measurement realises.
 
 \textbf{The measured deficit exceeds the diagonal-only figure} at every
 multi-class cell, by $41$, $30$ and $16$ per cent at $m=48,\,44,\,12$,
@@ -1687,7 +1695,7 @@ spread across the three octaves runs from $0.0008$ at depth $2$ to
 $0.037$ at depth $5$, the last being the finite-cell drift of a
 cell of a few tens of elements, while $D_c$
 itself runs from $0.045$ to $3.17$, so the relative spread the exponent
-reads is large only where $D_c$ is. At ten times the sample the two
+reads is large only where $D_c$ is small. At ten times the sample the two
 move to $-0.000879$ and $-0.016226$, so depth~$0$ resolves to zero and
 depth~$1$ flips sign --- the signature of noise rather than of a trend.
 That resampling is post hoc: it was run after M2 and M4 had been
@@ -2098,8 +2106,9 @@ existed.
 
 Lemma~\ref{lem:contrast}, Lemma~\ref{lem:cellmom},
 Lemma~\ref{lem:placebo}, Lemma~\ref{lem:permfloor},
-Lemma~\ref{lem:envtv} and Proposition~\ref{prop:scaleinv} are proved
-and use no computation; those six are every proof in the paper.
+Lemma~\ref{lem:envtv}, Proposition~\ref{prop:scaleinv} and
+Proposition~\ref{prop:V} are proved and use no computation; those
+seven are every proof in the paper.
 Lemmas~\ref{lem:contrast} and~\ref{lem:envtv} use no arithmetic
 either: the first is a quadratic form in an arbitrary covariance, the
 second a summation bound for an arbitrary modulus, and neither is
@@ -2135,7 +2144,7 @@ and~\ref{note:numnull} and the \(\mathrm{se}_c\) row of
 Measurement~\ref{meas:Dc}. The width ratio $0.6455$ inside
 Note~\ref{note:floorsignal} is not that file's: it comes from
 \texttt{audit\_cn\_coin\_deep.py},
-the sixth run of the table above. Counting a named statement as
+the last run of the table above. Counting a named statement as
 resting on a run when it prints a figure that only that run produces,
 five rest on the first file --- Observation~\ref{obs:coh},
 Note~\ref{note:threeterms} and Measurements~\ref{meas:mc},
