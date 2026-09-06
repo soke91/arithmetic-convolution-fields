@@ -78,15 +78,17 @@ needs only a one-sided bound on $E_3$
 even $N$ measured, and hence, off the thin family where that threshold
 falls by a factor $\log N$, only a constant-factor bound where
 $EH_\mu$ is consumed with a saving of $(\log N)^A$ for every $A$
-(Proposition~\ref{prop:nolog}). We also record a defect in \cite{HL},
-reported to the authors independently and earlier by S.~Zheleznov:
-equation~(18) drops an $n$-dependent constraint present in the
-definition of $S_2(\alpha)$. The missing term is exhibited here and
-shown harmless under the hypotheses already assumed. The authors have
-since corrected the manuscript by keeping the constraint, so that the
-term does not arise there, and Theorem~\ref{thm:A} gives the bound
-against the corrected formulation as well
-(Proposition~\ref{prop:movingcut}).
+(Proposition~\ref{prop:nolog}). We also treat a defect in \cite{HL}
+that is not ours to report: equation~(18) drops an $n$-dependent
+constraint present in the definition of $S_2(\alpha)$, which
+S.~Zheleznov reported to the authors independently and earlier, and
+which Moya \cite{Moya} both exhibits by an exact finite counterexample
+and repairs under \cite{HL}'s own hypothesis by keeping the moving
+endpoint. What is done here is the other side of it: the missing term
+is \emph{bounded} against the published form and shown harmless under
+the hypotheses already assumed, which is what carries
+Theorem~\ref{thm:A}'s bound over to the corrected formulation the
+authors have since adopted (Proposition~\ref{prop:movingcut}).
 
 We state plainly what is not claimed. Theorem~\ref{thm:A} removes only
 the part of the demand that carries no Goldbach content, and the net
@@ -1530,22 +1532,42 @@ are closed in \cite{P2} by the weaker argument recorded above.
 \section{The correction \texorpdfstring{$\Delta$}{Delta} to
 equation~(18)}\label{sec:delta}
 
-The published form of equation~(18) drops a range. Two separate things
-follow and they carry different credit. \textbf{The defect is not
-claimed as new}: that the $n$-dependent restriction had been replaced
-by a fixed outer range was reported to the authors by S.~Zheleznov
-before this note was written, and they have since prepared a corrected
-manuscript. \textbf{The missing term and its treatment are what this
-section sets down}, and nothing on record attributes them elsewhere.
-The two are different kinds of work and neither replaces the other. A
-correction that keeps the moving truncation repairs the derivation
+The published form of equation~(18) drops a range. Several separate
+things follow and they carry different credit, and two of them are not
+ours.
+
+\textbf{The defect is not claimed as new}: that the $n$-dependent
+restriction had been replaced by a fixed outer range was reported to
+the authors by S.~Zheleznov before this note was written, and they have
+since prepared a corrected manuscript.
+
+\textbf{Neither is the repair from the inside, nor the demonstration
+that the omitted region is not empty.} Moya \cite{Moya}, in August
+2026, identifies the same missing moving cutoff, gives an exact finite
+counterexample showing that the displayed equation without it is not an
+identity, and shows that the published conditional theorem is
+recoverable under Huang--Li's own hypothesis, that hypothesis being
+uniform in the truncation variable and so controlling the moving
+endpoint directly. That note also formulates a moving-diagonal
+M\"obius--logarithmic condition and reads the diagonal variant of
+\cite{Can} against the corrected rearrangement. All of that is prior to
+this section and is not repeated here.
+
+\textbf{What this section adds is the bound and what the bound is for.}
+A correction that keeps the moving truncation repairs the derivation
 \emph{from the inside}: the range $m\le\alpha$ never appears, so there
-is no term to bound. What follows is the \emph{outside} version: the
-published form is taken as it stands, the discrepancy is named, and it
-is bounded. The second is not the first done again --- the term
-\emph{is} the difference between the two formulations, and that is what
-lets a theorem proved against the fixed cut transfer to the corrected
-one (Proposition~\ref{prop:movingcut}).
+is no term to bound, and that is the route \cite{Moya} takes. What
+follows is the \emph{outside} version: the published form is taken as
+it stands, the discrepancy is named $\Delta$, and it is bounded --- a
+step \cite{Moya} does not take, since on its route the term does not
+arise. The two are different kinds of work and neither replaces the
+other. The reason for taking the outside route here is not
+completeness: the term \emph{is} the difference between the two
+formulations, and having it bounded is what lets a theorem proved
+against the fixed cut transfer to the corrected one
+(Proposition~\ref{prop:movingcut}). Theorem~\ref{thm:A} is proved
+against the published form, and without $\Delta$ it would say nothing
+about the corrected one.
 
 The scope of the report has to be stated: we have worked from the arXiv
 version, and have checked the passage below in \textbf{both} v1 (May
@@ -2105,12 +2127,14 @@ divisor-switch route, with the exact identities of its design space},
 \texttt{P2-no-go-divisor-switch/} of the repository named in
 Appendix~\ref{sec:repro}, with its own code and output.
 
-\bibitem{P6} Y.~Lee, \emph{The coefficient is the obstruction: no
-known level of distribution past $1/2$ reaches the residual of the
-Huang--Li reduction}, 2026. Companion paper, not publicly archived at
-the time of writing. It is cited for a fuller treatment only; the
-argument that uses it in \S\ref{sec:lit} is given there in full and
-does not depend on it.
+\bibitem{P6} Y.~Lee, \emph{Two routes out of the Huang--Li reduction,
+and where each stops: no imported level of distribution and no
+positivity certificate bounds $\sum_{n<N}\Lambda(n)\mu(N-n)$}, 2026.
+Companion paper, in the directory
+\texttt{P6-external-routes/} of the repository named in
+Appendix~\ref{sec:repro}, with its own code and output. It is cited
+for a fuller treatment only; the argument that uses it in
+\S\ref{sec:lit} is given there in full and does not depend on it.
 
 \bibitem{Pan} C.-D.~Pan, \emph{A new attempt on Goldbach conjecture},
 Chinese Ann. Math. \textbf{3} (1982), no.~4, 555--560; MR681767,
@@ -2124,6 +2148,14 @@ zbMATH Open, 1983.
 \bibitem{Can} M.~Cantarini, \emph{Averages of diagonal
 Elliott--Halberstam problem twisted by M\"obius function with Sobolev
 and H\"older--Zygmund weights}, arXiv:2607.09110 [math.NT], 2026.
+
+\bibitem{Moya} R.~Moya, \emph{A moving-cut correction in the
+Huang--Li conditional Goldbach argument, and consequences for diagonal
+M\"obius-twisted Elliott--Halberstam hypotheses}, Zenodo, August 2026;
+DOI \texttt{10.5281/zenodo.21939906}. Identifies the missing moving
+cutoff in the change of order of summation, gives an exact finite
+counterexample, and repairs the argument under Huang--Li's original
+hypothesis by keeping the moving endpoint.
 
 \bibitem{HLi} H.~Li, \emph{Some discussions on the Goldbach
 conjecture}, arXiv:2306.17769 [math.NT], 2023.

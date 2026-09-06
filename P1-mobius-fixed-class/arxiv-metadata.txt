@@ -50,13 +50,17 @@ content, so every divisor switch must hand it back.
 We then locate the true strength of the surviving demand: Goldbach needs
 only a one-sided bound on E_3, at a threshold of order N over the even N
 measured, and hence, off the thin family where that threshold falls by a
-factor log N, only a constant-factor bound. We also record a defect in
-the Huang-Li manuscript, reported to the authors independently and
-earlier by S. Zheleznov: equation (18) drops an n-dependent constraint
-present in the definition of S_2(alpha). The missing term is exhibited
-here and shown harmless under the hypotheses already assumed. The
-authors have since corrected the manuscript by keeping the constraint,
-and the bound is given against the corrected formulation as well.
+factor log N, only a constant-factor bound. We also treat a defect in
+the Huang-Li manuscript that is not ours to report: equation (18) drops
+an n-dependent constraint present in the definition of S_2(alpha),
+which S. Zheleznov reported to the authors independently and earlier,
+and which R. Moya (Zenodo, August 2026, DOI 10.5281/zenodo.21939906)
+both exhibits by an exact finite counterexample and repairs under
+Huang-Li's own hypothesis by keeping the moving endpoint. What is done
+here is the other side of it: the missing term is bounded against the
+published form and shown harmless under the hypotheses already assumed,
+which is what carries the theorem's bound over to the corrected
+formulation the authors have since adopted.
 
 We state plainly what is not claimed. The theorem removes only the part
 of the demand that carries no Goldbach content, and the net progress
