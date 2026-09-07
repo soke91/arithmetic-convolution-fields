@@ -56,6 +56,12 @@
   "artifacts": [
     {
       "kind": "code",
+      "name": "_sieve_shared.py",
+      "source": "generations/v3/code/_sieve_shared.py",
+      "sha256": "25d70caa1782d0a4b8403861706f6389cf24ec8b16bf6f1597a46e527b43201c"
+    },
+    {
+      "kind": "code",
       "name": "audit_cellfloor_sdz.py",
       "source": "generations/v3/code/audit_cellfloor_sdz.py",
       "sha256": "364987a027b5f784de0243ee3768919571b876e87407c100d3b20d5be94990af"

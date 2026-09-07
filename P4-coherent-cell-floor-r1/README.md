@@ -14,7 +14,7 @@ Purpose: canonical working and public packet for `P4-coherent-cell-floor.tex`.
 Not in this file: ownership judgement or hashes; `PACKET.json` is authoritative for both.
 
 This directory is self-contained for paper reading and evidence reproduction. It
-contains 16 Python files and 16 committed result files. Files
+contains 17 Python files and 16 committed result files. Files
 under `code/` and `results/` are generated from the exact sources and hashes in
 `PACKET.json`; do not edit those copies.
 

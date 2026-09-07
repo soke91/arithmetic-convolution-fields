@@ -50,15 +50,15 @@
   "artifacts": [
     {
       "kind": "code",
+      "name": "_sieve_shared.py",
+      "source": "generations/v3/code/_sieve_shared.py",
+      "sha256": "25d70caa1782d0a4b8403861706f6389cf24ec8b16bf6f1597a46e527b43201c"
+    },
+    {
+      "kind": "code",
       "name": "audit_E3_constant.py",
       "source": "generations/v3/code/audit_E3_constant.py",
       "sha256": "3904df31eb1b07666f76e75613ca6fa6e978a5ef230ba359a6d1e49190335a35"
-    },
-    {
-      "kind": "results",
-      "name": "audit_E3_constant.txt",
-      "source": "generations/v3/results/audit_E3_constant.txt",
-      "sha256": "add778a3cb0d8494bb508ef0b114d5be4b829d29e6a559aa304738bc1989c090"
     },
     {
       "kind": "code",
@@ -67,22 +67,10 @@
       "sha256": "543beb445d26470928451e13b697b5aa1d1fc8c054f7ea0ec42a74849ae97fca"
     },
     {
-      "kind": "results",
-      "name": "audit_delta_bridge.txt",
-      "source": "generations/v3/results/audit_delta_bridge.txt",
-      "sha256": "cb69d73f4484d6d77a1970c7d03fc33631840de73513af908ec48e206ed0e84c"
-    },
-    {
       "kind": "code",
       "name": "audit_density_identity.py",
       "source": "generations/v3/code/audit_density_identity.py",
       "sha256": "f4d4219eac0f603ef686fe1be4b1f66a785d8d3228109bf3e42739f12fea0150"
-    },
-    {
-      "kind": "results",
-      "name": "audit_density_identity.txt",
-      "source": "generations/v3/results/audit_density_identity.txt",
-      "sha256": "3115a1f732fac7e559ae1605c9702aa9abba91406ef233b9887450dda8003e9f"
     },
     {
       "kind": "code",
@@ -91,22 +79,10 @@
       "sha256": "9613ef779c2234d0b5cb70d3979fc66d6eb60206ec001fd0196f6559e4cb5b1c"
     },
     {
-      "kind": "results",
-      "name": "audit_switch_identity.txt",
-      "source": "generations/v3/results/audit_switch_identity.txt",
-      "sha256": "df24f8d639dee1f2df73bc6d8eb3c6c39d7dc69e929fd4a56fffd725141c9b22"
-    },
-    {
       "kind": "code",
       "name": "audit_theta_halfline.py",
       "source": "generations/v3/code/audit_theta_halfline.py",
       "sha256": "134df2a953ae56ac10cd3b5d6b0d7042ebb91d4caa1de3bf07a4d029c09be9f3"
-    },
-    {
-      "kind": "results",
-      "name": "audit_theta_halfline.txt",
-      "source": "generations/v3/results/audit_theta_halfline.txt",
-      "sha256": "e03b8cf21ceaef625555158c2db6afd74804fcc25aea62ddb835ab9fd23097da"
     },
     {
       "kind": "code",
@@ -115,22 +91,10 @@
       "sha256": "2af98eb7b30845fdd398cc0aaef5820e0fa3ac902621ab6a37420bceffe53ddc"
     },
     {
-      "kind": "results",
-      "name": "audit_threshold_arithmetic.txt",
-      "source": "generations/v3/results/audit_threshold_arithmetic.txt",
-      "sha256": "5f00d8ac8ba65726bfd3056fab6bf3951c3f4de6fcd191338d7d463b74c6e24a"
-    },
-    {
       "kind": "code",
       "name": "audit_threshold_order.py",
       "source": "generations/v3/code/audit_threshold_order.py",
       "sha256": "6eef7d9863b9c4ea6277ffd3dbbf1b002a521dc83850f684fa719273f9f89219"
-    },
-    {
-      "kind": "results",
-      "name": "audit_threshold_order.txt",
-      "source": "generations/v3/results/audit_threshold_order.txt",
-      "sha256": "0f2a1b69a513e8d263883e3158671a9d6f406aca6d744ec447f19179d6490dbf"
     },
     {
       "kind": "code",
@@ -139,22 +103,10 @@
       "sha256": "ae226d0402e3d23fb54d323a2f067585765afa513d8b0f5f4fc28f90ff79fd53"
     },
     {
-      "kind": "results",
-      "name": "audit_trap_density.txt",
-      "source": "generations/v3/results/audit_trap_density.txt",
-      "sha256": "9d855c3223170c83e34669672afb9b84507893df0b97f91914d3532bd201f2be"
-    },
-    {
       "kind": "code",
       "name": "lab_level_coin_null.py",
       "source": "generations/v3/code/lab_level_coin_null.py",
       "sha256": "88d05612cbbe86f0e381846c9bbb8190e69805d415a70ad348204a9d396750d8"
-    },
-    {
-      "kind": "results",
-      "name": "lab_level_coin_null.txt",
-      "source": "generations/v3/results/lab_level_coin_null.txt",
-      "sha256": "335b6cb3444b744ce27679d99d06b87ac699b8b448c1473b78745cabd21f2d27"
     },
     {
       "kind": "code",
@@ -163,28 +115,82 @@
       "sha256": "d0bfb7df30a0b20742a18bfa2b4fbdde9e8418f7c270b23a6d5a7c069809b59c"
     },
     {
-      "kind": "results",
-      "name": "lab_onesided_demand.txt",
-      "source": "generations/v3/results/lab_onesided_demand.txt",
-      "sha256": "04bb48bf552b8639ed17b235df29e50398524a7f04709f993505cbe8829969b5"
-    },
-    {
       "kind": "code",
       "name": "lab_onesided_margin.py",
       "source": "generations/v3/code/lab_onesided_margin.py",
       "sha256": "06a217c18506d800e4e30da80175dece0bff78dfb6b4a1954fa581de3715eb60"
     },
     {
-      "kind": "results",
-      "name": "lab_onesided_margin.txt",
-      "source": "generations/v3/results/lab_onesided_margin.txt",
-      "sha256": "7ec08572bbea985a1bdff0477af3951aa793231efd91b4fec4962c7bb39f39e1"
-    },
-    {
       "kind": "code",
       "name": "lab_theta_sweep.py",
       "source": "generations/v3/code/lab_theta_sweep.py",
       "sha256": "31700335fd539a9c918c20c83dfe93d932457624f93396ab1b78bf56580be356"
+    },
+    {
+      "kind": "results",
+      "name": "audit_E3_constant.txt",
+      "source": "generations/v3/results/audit_E3_constant.txt",
+      "sha256": "add778a3cb0d8494bb508ef0b114d5be4b829d29e6a559aa304738bc1989c090"
+    },
+    {
+      "kind": "results",
+      "name": "audit_delta_bridge.txt",
+      "source": "generations/v3/results/audit_delta_bridge.txt",
+      "sha256": "cb69d73f4484d6d77a1970c7d03fc33631840de73513af908ec48e206ed0e84c"
+    },
+    {
+      "kind": "results",
+      "name": "audit_density_identity.txt",
+      "source": "generations/v3/results/audit_density_identity.txt",
+      "sha256": "3115a1f732fac7e559ae1605c9702aa9abba91406ef233b9887450dda8003e9f"
+    },
+    {
+      "kind": "results",
+      "name": "audit_switch_identity.txt",
+      "source": "generations/v3/results/audit_switch_identity.txt",
+      "sha256": "df24f8d639dee1f2df73bc6d8eb3c6c39d7dc69e929fd4a56fffd725141c9b22"
+    },
+    {
+      "kind": "results",
+      "name": "audit_theta_halfline.txt",
+      "source": "generations/v3/results/audit_theta_halfline.txt",
+      "sha256": "e03b8cf21ceaef625555158c2db6afd74804fcc25aea62ddb835ab9fd23097da"
+    },
+    {
+      "kind": "results",
+      "name": "audit_threshold_arithmetic.txt",
+      "source": "generations/v3/results/audit_threshold_arithmetic.txt",
+      "sha256": "5f00d8ac8ba65726bfd3056fab6bf3951c3f4de6fcd191338d7d463b74c6e24a"
+    },
+    {
+      "kind": "results",
+      "name": "audit_threshold_order.txt",
+      "source": "generations/v3/results/audit_threshold_order.txt",
+      "sha256": "0f2a1b69a513e8d263883e3158671a9d6f406aca6d744ec447f19179d6490dbf"
+    },
+    {
+      "kind": "results",
+      "name": "audit_trap_density.txt",
+      "source": "generations/v3/results/audit_trap_density.txt",
+      "sha256": "9d855c3223170c83e34669672afb9b84507893df0b97f91914d3532bd201f2be"
+    },
+    {
+      "kind": "results",
+      "name": "lab_level_coin_null.txt",
+      "source": "generations/v3/results/lab_level_coin_null.txt",
+      "sha256": "335b6cb3444b744ce27679d99d06b87ac699b8b448c1473b78745cabd21f2d27"
+    },
+    {
+      "kind": "results",
+      "name": "lab_onesided_demand.txt",
+      "source": "generations/v3/results/lab_onesided_demand.txt",
+      "sha256": "04bb48bf552b8639ed17b235df29e50398524a7f04709f993505cbe8829969b5"
+    },
+    {
+      "kind": "results",
+      "name": "lab_onesided_margin.txt",
+      "source": "generations/v3/results/lab_onesided_margin.txt",
+      "sha256": "7ec08572bbea985a1bdff0477af3951aa793231efd91b4fec4962c7bb39f39e1"
     },
     {
       "kind": "results",
