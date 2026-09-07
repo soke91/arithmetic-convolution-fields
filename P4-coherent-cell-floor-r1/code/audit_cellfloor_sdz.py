@@ -68,6 +68,8 @@ import os
 import sys
 
 import numpy as np
+from _sieve_shared import sieves as _shared_sieves
+from _sieve_shared import spf_upto as _shared_spf
 
 try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -99,22 +101,9 @@ def pow2(n):
 
 
 def sieve(n):
-    """Lambda, mu and the squarefree indicator to n."""
-    spf = np.zeros(n + 1, dtype=np.int32)
-    for i in range(2, int(n ** 0.5) + 1):
-        if spf[i] == 0:
-            spf[i * i::i] = np.where(spf[i * i::i] == 0, i, spf[i * i::i])
-    lam = np.zeros(n + 1, dtype=np.float64)
-    mu = np.zeros(n + 1, dtype=np.float64)
-    mu[1] = 1.0
-    for v in range(2, n + 1):
-        p = int(spf[v]) or v
-        w = v // p
-        mu[v] = 0.0 if w % p == 0 else -mu[w]
-        t = v
-        while t % p == 0:
-            t //= p
-        lam[v] = math.log(p) if t == 1 else 0.0
+    """정본 체에 위임한다 -- lib/goldbach/sieve.py 하나가 몸통이다."""
+    _, lam, mu = _shared_sieves(n)
+    mu = mu.astype(np.float64)
     return lam, mu, (mu != 0).astype(np.float64)
 
 

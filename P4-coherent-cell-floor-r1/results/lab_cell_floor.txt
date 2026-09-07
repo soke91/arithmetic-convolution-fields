@@ -102,6 +102,8 @@ C4  se ~ N^{-b} across the eight octaves
     depth 4: b = 0.042837   shrink over the range 1.231
     depth 5: b = 0.107306   shrink over the range 1.683
     1/(2<log N>) = 0.036038   published 0.0358   MISMATCH
+    least-squares slope of loglogN on logN over the same midpoints:
+      s_log = 0.0726390   s_log/2 = 0.0363195   against 1/(2<log N>) = 0.0360376
   C4 REFUTED
 
 C5  max_c |z_c| by octave

@@ -70,6 +70,8 @@ import os
 import sys
 
 import numpy as np
+from _sieve_shared import sieves as _shared_sieves
+from _sieve_shared import spf_upto as _shared_spf
 
 try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -84,27 +86,9 @@ TOL = 5e-10
 
 
 def sieves(n):
-    spf = np.zeros(n + 1, dtype=np.int64)
-    for p in range(2, n + 1):
-        if spf[p] == 0:
-            blk = spf[p::p]
-            spf[p::p] = np.where(blk == 0, p, blk)
-    mu = np.ones(n + 1, dtype=np.int64)
-    mu[0] = 0
-    for v in range(2, n + 1):
-        p = int(spf[v])
-        w = v // p
-        mu[v] = 0 if w % p == 0 else -mu[w]
-    lam = np.zeros(n + 1, dtype=np.float64)
-    for p in range(2, n + 1):
-        if int(spf[p]) != p:
-            continue
-        q, lg = p, math.log(p)
-        while q <= n:
-            lam[q] = lg
-            if q > n // p:
-                break
-            q *= p
+    """정본 체에 위임한다 -- lib/goldbach/sieve.py 하나가 몸통이다."""
+    _, lam, mu = _shared_sieves(n)
+    spf = _shared_spf(n, np.int64)
     return spf, mu, lam
 
 

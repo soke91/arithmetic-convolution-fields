@@ -9,15 +9,15 @@
   "paper_files": [
     {
       "path": "P1-mobius-fixed-class.tex",
-      "sha256": "c174a95fe2f8d0d1b13063e672bffeab19c099de57e467a4f05d56a4be69fb24",
-      "imported_from": "deploy/papers/P1-mobius-fixed-class.tex",
-      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+      "sha256": "18872f2729417610f74127e9f5dbf85902712ab56a4de26bddb75a2de44d6120",
+      "imported_from": "papers/P1-mobius-fixed-class/P1-mobius-fixed-class-small.tex; renamed 2026-09-07 as the canonical manuscript, header rewritten to name its role",
+      "source_commit": "working tree"
     },
     {
       "path": "P1-mobius-fixed-class.pdf",
-      "sha256": "0f8e6ee53c97b75e99563919814916018df7d5d8f63dd14f12272ba5f7449c57",
-      "imported_from": "deploy/papers/P1-mobius-fixed-class.pdf",
-      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+      "sha256": "d85a1147cffb0860f5f886965bc4a180e7843ee504f437c1fcb9af6b976bb3c6",
+      "imported_from": "papers/P1-mobius-fixed-class/P1-mobius-fixed-class-small.pdf; renamed 2026-09-07 as the canonical manuscript",
+      "source_commit": "working tree"
     },
     {
       "path": "arxiv-metadata.txt",
@@ -30,6 +30,18 @@
       "sha256": "8f486dc6fbbf7dad7450c4a334aa0d01db7d1b7865e7522dfaf0b7a7cdbb9e19",
       "imported_from": "github.com/soke91/arithmetic-convolution-fields/P1-mobius-fixed-class/CORRECTIONS.md",
       "source_commit": "d17b97e66b9e4da61ba3d58e9eb3c6960656756f"
+    },
+    {
+      "path": "P1-mobius-fixed-class-unsorted.tex",
+      "sha256": "4a6a71a0e33e36e70e1d57e82c2ce548b5e3fcd4b0bfadc8051ff695bec71872",
+      "imported_from": "papers/P1-mobius-fixed-class/P1-mobius-fixed-class.tex; renamed 2026-09-07, header rewritten to name its role",
+      "source_commit": "working tree"
+    },
+    {
+      "path": "P1-mobius-fixed-class-unsorted.pdf",
+      "sha256": "0f8e6ee53c97b75e99563919814916018df7d5d8f63dd14f12272ba5f7449c57",
+      "imported_from": "deploy/papers/P1-mobius-fixed-class.pdf; renamed 2026-09-07, bytes unchanged",
+      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
     }
   ],
   "projection_sources": [
@@ -40,7 +52,7 @@
       "kind": "code",
       "name": "audit_E3_constant.py",
       "source": "generations/v3/code/audit_E3_constant.py",
-      "sha256": "b124383267d2d988a53eef9f58720752cdd1c1e64cb81bf4718ceb8b7221204f"
+      "sha256": "3904df31eb1b07666f76e75613ca6fa6e978a5ef230ba359a6d1e49190335a35"
     },
     {
       "kind": "results",
@@ -52,7 +64,7 @@
       "kind": "code",
       "name": "audit_delta_bridge.py",
       "source": "generations/v3/code/audit_delta_bridge.py",
-      "sha256": "1d155ec6853bb40c31f5d78f0e12cf5ec1b37321c59a67aacabe28b3d1c3d192"
+      "sha256": "543beb445d26470928451e13b697b5aa1d1fc8c054f7ea0ec42a74849ae97fca"
     },
     {
       "kind": "results",
@@ -76,7 +88,7 @@
       "kind": "code",
       "name": "audit_switch_identity.py",
       "source": "generations/v3/code/audit_switch_identity.py",
-      "sha256": "c9f755b9f35cf846f5a88e69ef3aece08599f61e91d0d66d81ef3b4506cfd7eb"
+      "sha256": "9613ef779c2234d0b5cb70d3979fc66d6eb60206ec001fd0196f6559e4cb5b1c"
     },
     {
       "kind": "results",

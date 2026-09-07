@@ -68,6 +68,10 @@ import math
 import os
 import sys
 
+import numpy as np
+from _sieve_shared import sieves as _shared_sieves
+from _sieve_shared import spf_upto as _shared_spf
+
 try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 except Exception:
@@ -84,22 +88,9 @@ PUB_FRAC = {200000: 0.656, 400000: 0.702, 800000: 0.789}
 
 
 def sieve(n):
-    """mu, Lambda and the smallest prime factor up to n."""
-    spf = [0] * (n + 1)
-    for p in range(2, n + 1):
-        if spf[p] == 0:
-            for q in range(p, n + 1, p):
-                if spf[q] == 0:
-                    spf[q] = p
-    mu = [1] * (n + 1)
-    lam = [0.0] * (n + 1)
-    mu[0] = 0
-    for v in range(2, n + 1):
-        p = spf[v]
-        w = v // p
-        mu[v] = 0 if w % p == 0 else -mu[w]
-        lam[v] = math.log(p) if (w == 1 or spf[w] == p and _pure(w, p, spf)) \
-            else 0.0
+    """정본 체에 위임한다 -- lib/goldbach/sieve.py 하나가 몸통이다."""
+    _, lam, mu = _shared_sieves(n)
+    spf = _shared_spf(n, np.int64)
     return spf, mu, lam
 
 

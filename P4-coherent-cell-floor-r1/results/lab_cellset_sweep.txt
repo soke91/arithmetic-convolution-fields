@@ -1,0 +1,182 @@
+lab_cellset_sweep.py -- RESULT
+==============================================================================
+STATISTIC: D'_c = K E_same,c[A_S] - 2 per depth, over 19 sets S of odd
+           primes.  E_same,c is EXACT, by autocorrelation of the cell
+           indicator -- no sampling, no seed, no standard error.
+DENOM: n_c(n_c-1) ordered pairs, checked against the autocorrelation's
+       own total at every cell; a cell that fails is refused, not
+       reported (R3).
+NULL: none, and none is possible here.  The statistic is exact and
+      deterministic, so there is no distribution to draw from and the
+      tolerances R1 and R2 are absolute.  What stands in for a null is
+      that R1 and R2 were fixed before the run and that every set
+      attempted is reported, including the eight cells too thin to
+      score -- a sweep reporting only the sets that worked would carry
+      no information whatever its tolerances.
+module constants (G78): BAND=(2000000, 4000000) HMAX=2000000 CLIM=4000000 NC_FLOOR=1000 DIFF_TOL=0.01
+  BASELINE=(3, 5, 7, 11, 13) SECOND=(3, 5, 7)   sets attempted: 19
+
+C1 -- the residue construction against the paper's rationals, S = (3,5,7)
+------------------------------------------------------------------------------
+  depth 0 : computed 403/240        paper 403/240        match
+  depth 1 : computed 941/605        paper 941/605        match
+  depth 2 : computed 31/15          paper 31/15          match
+  depth 3 : computed 16/5           paper 16/5           match
+  residue counts m_c: 48, 44, 12, 1   (paper: 48, 44, 12, 1)
+
+  2 C_2 = 1.32032365;  band positions 1000000; transform length 2097152
+
+THE SWEEP
+------------------------------------------------------------------------------
+S = (3, 5)                 Q' = 15      K = 45/32        deepest cell n = 66667
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      533334     0.285131794     0.285156250     +2.446e-05     yes
+  1      399999     0.291635275     0.291666667     +3.139e-05     yes
+  2      66667      1.749843796     1.750000000     +1.562e-04     yes
+
+S = (3, 7)                 Q' = 21      K = 35/24        deepest cell n = 47619
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      571429     0.260393744     0.260416667     +2.292e-05     yes
+  1      380952     0.406217412     0.406250000     +3.259e-05     yes
+  2      47619      1.499784739     1.500000000     +2.153e-04     yes
+
+S = (5, 7)                 Q' = 35      K = 175/96       deepest cell n = 28571
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      685714     0.040634555     0.040653935     +1.938e-05     yes
+  1      285715     0.158290983     0.158333333     +4.235e-05     yes
+  2      28571      0.916310459     0.916666667     +3.562e-04     yes
+
+S = (3, 11)                Q' = 33      K = 297/200      deepest cell n = 30303
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      606061     0.252228286     0.252250000     +2.171e-05     yes
+  1      363636     0.566632843     0.566666667     +3.382e-05     yes
+  2      30303      1.299672798     1.300000000     +3.272e-04     yes
+
+S = (5, 11)                Q' = 55      K = 297/160      deepest cell n = 18182
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      727273     0.033262894     0.033281250     +1.836e-05     yes
+  1      254545     0.216790071     0.216836735     +4.666e-05     yes
+  2      18182      0.749460549     0.750000000     +5.395e-04     yes
+
+S = (7, 11)                Q' = 77      K = 77/40        deepest cell n = 12987
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      779221     0.011251319     0.011268519     +1.720e-05     yes
+  1      207792     0.125464370     0.125520833     +5.646e-05     yes
+  2      12987      0.565929167     0.566666667     +7.375e-04     yes
+
+S = (11, 13)               Q' = 143     K = 1573/800     deepest cell n = 6993
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      839161     0.003142498     0.003158565     +1.607e-05     yes
+  1      153846     0.077956267     0.078030303     +7.404e-05     yes
+  2      6993       0.382041698     0.383333333     +1.292e-03     yes
+
+S = (3, 5, 7)              Q' = 105     K = 175/128      deepest cell n = 9524
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      457143     0.295707753     0.295735677     +2.792e-05     yes
+  1      419048     0.126454301     0.126485021     +3.072e-05     yes
+  2      114285     0.825436443     0.825520833     +8.439e-05     yes
+  3      9524       2.374142099     2.375000000     +8.579e-04     yes
+
+S = (3, 5, 11)             Q' = 165     K = 891/640      deepest cell n = 6061
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      484849     0.287414951     0.287441406     +2.646e-05     yes
+  1      412121     0.173980416     0.174010597     +3.018e-05     yes
+  2      96969      0.980854813     0.980957031     +1.022e-04     yes
+  3      6061       2.123699026     2.125000000     +1.301e-03     yes
+
+S = (3, 5, 13)             Q' = 195     K = 715/512      deepest cell n = 5128
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      492309     0.286452582     0.286478678     +2.610e-05     yes
+  1      410254     0.189278367     0.189306641     +2.827e-05     yes
+  2      92309      1.046749745     1.046875000     +1.253e-04     yes
+  3      5128       2.060987704     2.062500000     +1.512e-03     yes
+
+S = (3, 7, 11)             Q' = 231     K = 231/160      deepest cell n = 4329
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      519481     0.262652285     0.262677083     +2.480e-05     yes
+  1      398268     0.240192709     0.240223299     +3.059e-05     yes
+  2      77922      0.887368277     0.887500000     +1.317e-04     yes
+  3      4329       1.848210526     1.850000000     +1.789e-03     yes
+
+S = (5, 7, 11)             Q' = 385     K = 231/128      deepest cell n = 2597
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      623377     0.042673617     0.042694589     +2.097e-05     yes
+  1      322077     0.082584456     0.082620643     +3.619e-05     yes
+  2      51949      0.478239492     0.478437500     +1.980e-04     yes
+  3      2597       1.205356777     1.208333333     +2.977e-03     yes
+
+S = (7, 11, 13)            Q' = 1001    K = 11011/5760   deepest cell n = 999
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      719281     0.012414086     0.012432447     +1.836e-05     yes
+  1      251748     0.065098462     0.065143972     +4.551e-05     yes
+  2      27972      0.315611953     0.315947421     +3.355e-04     yes
+  3      999        0.773527627     0.780555556     +7.028e-03     no (thin)
+
+S = (3, 5, 7, 11)          Q' = 1155    K = 693/512      deepest cell n = 866
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      415585     0.298001218     0.298031413     +3.019e-05     yes
+  1      422510     0.073875266     0.073903290     +2.802e-05     yes
+  2      141992     0.555393210     0.555477580     +8.437e-05     yes
+  3      19047      1.439986406     1.440340909     +3.545e-04     yes
+  4      866        2.806055543     2.812500000     +6.444e-03     no (thin)
+
+S = (3, 5, 7, 13)          Q' = 1365    K = 25025/18432  deepest cell n = 733
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      421979     0.297034442     0.297064228     +2.979e-05     yes
+  1      421976     0.080739183     0.080767596     +2.841e-05     yes
+  2      137731     0.584270643     0.584349536     +7.889e-05     yes
+  3      17581      1.488425576     1.488859954     +4.344e-04     yes
+  4      733        2.732128287     2.739583333     +7.455e-03     no (thin)
+
+S = (3, 5, 11, 13)         Q' = 2145    K = 14157/10240  deepest cell n = 466
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      447553     0.288736935     0.288765157     +2.822e-05     yes
+  1      417716     0.112041467     0.112071290     +2.982e-05     yes
+  2      121210     0.676160972     0.676225962     +6.499e-05     yes
+  3      13055      1.442032721     1.442761480     +7.288e-04     yes
+  4      466        2.457589875     2.468750000     +1.116e-02     no (thin)
+
+S = (5, 7, 11, 13)         Q' = 5005    K = 11011/6144   deepest cell n = 200
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      575425     0.043854324     0.043876704     +2.238e-05     yes
+  1      345254     0.048910184     0.048943330     +3.315e-05     yes
+  2      72728      0.313357707     0.313492063     +1.344e-04     yes
+  3      6393       0.768497056     0.769694010     +1.197e-03     yes
+  4      200        1.449926114     1.475694444     +2.577e-02     no (thin)
+
+S = (3, 5, 7, 11, 13)      Q' = 15015   K = 11011/8192   deepest cell n = 67
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      383617     0.299329093     0.299361292     +3.220e-05     yes
+  1      421978     0.045967725     0.045995800     +2.807e-05     yes
+  2      163568     0.411818983     0.411876345     +5.736e-05     yes
+  3      28507      1.052011432     1.052351279     +3.398e-04     yes
+  4      2263       1.944105673     1.946236123     +2.130e-03     yes
+  5      67         3.169983959     3.213541667     +4.356e-02     no (thin)
+
+S = (3, 5, 7, 11, 13, 17)  Q' = 255255  K = 2807805/2097152 deepest cell n = 4
+  depth  n_c        exact D'_c      main term       difference     scored
+  0      361051     0.299888907     0.299922660     +3.375e-05     yes
+  1      419722     0.031540662     0.031568638     +2.798e-05     yes
+  2      178768     0.331735411     0.331779395     +4.398e-05     yes
+  3      36452      0.850279398     0.850635596     +3.562e-04     yes
+  4      3807       1.531833496     1.532316726     +4.832e-04     yes
+  5      196        2.380863579     2.400489844     +1.963e-02     no (thin)
+  6      4          3.462672403     3.539388021     +7.672e-02     no (thin)
+
+REGISTERED RULES
+------------------------------------------------------------------------------
+  scored cells 70 ; reported but below NC_FLOOR 8 ; not computable 0 ; sets attempted 19
+  worst |main - exact| over scored cells = 2.9766e-03
+
+  C1  HOLD     the residue construction reproduces the paper's rationals at S = (3,5,7) -- a check, not a prediction
+  R1  HOLD     REGISTERED: |main - exact| < |exact| at every scored cell -- the closed form beats saying nothing
+  R2  HOLD     REGISTERED: |main - exact| < 0.01 at every scored cell (coarse on purpose; the question is transfer)
+  R3  HOLD     no cell was dropped for failing the pair-count rounding check
+
+INSTRUMENT CHECKS, not registered rules:  C1 hold  R3 hold
+REGISTERED RULES, SCORED:  R1 hold  R2 hold
+
+  R1 and R2 were registered before the run.  C1 and R3 are checks on the
+  instrument.  Cells below n_c = 1000 are printed with their counts and
+  excluded from scoring rather than dropped, because a set whose deepest
+  cell holds a handful of elements is not evidence either way.

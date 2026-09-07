@@ -67,6 +67,8 @@ import os
 import sys
 
 import numpy as np
+from _sieve_shared import sieves as _shared_sieves
+from _sieve_shared import spf_upto as _shared_spf
 
 try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -81,22 +83,9 @@ TWIN = None            # 2 * prod_{p>2} (1 - 1/(p-1)^2), computed below
 
 
 def sieve(n):
-    """mu[0..n], Lambda[0..n], smallest-prime-factor based."""
-    spf = np.zeros(n + 1, dtype=np.int64)
-    for p in range(2, n + 1):
-        if spf[p] == 0:
-            spf[p::p] = np.where(spf[p::p] == 0, p, spf[p::p])
-    mu = np.ones(n + 1, dtype=np.int64)
-    mu[0] = 0
-    lam = np.zeros(n + 1, dtype=np.float64)
-    for v in range(2, n + 1):
-        p = spf[v]
-        w = v // p
-        if w % p == 0:
-            mu[v] = 0
-        else:
-            mu[v] = -mu[w]
-        lam[v] = math.log(p) if (w == 1 or spf[w] == p and _ppow(v, p)) else 0.0
+    """정본 체에 위임한다 -- lib/goldbach/sieve.py 하나가 몸통이다."""
+    _, lam, mu = _shared_sieves(n)
+    spf = _shared_spf(n, np.int64)
     return mu, lam, spf
 
 

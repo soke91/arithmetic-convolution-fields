@@ -323,6 +323,18 @@ def main():
     c4 = c4 and okapp
     say("    1/(2<log N>) = %.6f   published 0.0358   %s"
         % (app, "ok" if okapp else "MISMATCH"))
+    # The quantity b is actually compared against is the least-squares slope of
+    # loglog N on log N over these same midpoints, not the derivative 1/log N
+    # evaluated at their mean.  The two differ in the fourth decimal, and the
+    # manuscript said the relation between them held "identically", which it
+    # does not.  Computed here rather than in the text so the number the paper
+    # quotes is one this run prints.
+    lx = np.array([math.log(0.5 * (lo + hi)) for lo, hi in OCTS])
+    ly = np.log(lx)
+    slog = float(np.polyfit(lx, ly, 1)[0])
+    say("    least-squares slope of loglogN on logN over the same midpoints:")
+    say("      s_log = %.7f   s_log/2 = %.7f   against 1/(2<log N>) = %.7f"
+        % (slog, slog / 2.0, app))
     say("  C4 %s" % ("hold" if c4 else "REFUTED"))
 
     say()

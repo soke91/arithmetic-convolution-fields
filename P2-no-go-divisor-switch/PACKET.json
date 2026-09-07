@@ -48,7 +48,7 @@
       "kind": "code",
       "name": "audit_circle_margin.py",
       "source": "generations/v3/code/audit_circle_margin.py",
-      "sha256": "d5987bfd970b33e044bf01332ec09366e815e5890c399996fd775f7fc2b82106"
+      "sha256": "6dcee199f280dc190d7853faf7a6b35671c30f041f5cbd63da586e218b5728d8"
     },
     {
       "kind": "results",
@@ -72,7 +72,7 @@
       "kind": "code",
       "name": "audit_nogo_scope.py",
       "source": "generations/v3/code/audit_nogo_scope.py",
-      "sha256": "3d1e46c458cc16aa502c71cd1eb5b81d0cd53640ff3298cd31fa6defb52c6f8f"
+      "sha256": "649a85c7523b680c12d738d9ff2a032436bf0018836a6c1ca9b9356b1eff7667"
     },
     {
       "kind": "results",
@@ -96,7 +96,7 @@
       "kind": "code",
       "name": "audit_squarefull_admitted.py",
       "source": "generations/v3/code/audit_squarefull_admitted.py",
-      "sha256": "1d157518f9aad2ad4e46c83776770f5493627772fa06903a80fd3a1cfe7a5c0e"
+      "sha256": "0e135138a5665eed83a2354f4f9355aed40fba3df9826ec5553c1b7b43439fe2"
     },
     {
       "kind": "results",

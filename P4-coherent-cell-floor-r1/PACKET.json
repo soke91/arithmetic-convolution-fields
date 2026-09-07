@@ -9,19 +9,19 @@
   "paper_files": [
     {
       "path": "P4-coherent-cell-floor.tex",
-      "sha256": "22b5268adaefdcf58dd69445bfc8322fdf2e9f6500a9f9339c7555f5cacc2d50",
-      "imported_from": "papers/P4-coherent-cell-floor/P4-coherent-cell-floor-small.tex",
-      "source_commit": "961816a127dda3e4f13770b6e5bba3e2ab4567c5"
+      "sha256": "9cfc0fb3b6848683c8ea6da078b910b46d5be52c3bbb50be4b479d96020a090e",
+      "imported_from": "papers/P4-coherent-cell-floor/P4-coherent-cell-floor-small.tex; renamed 2026-09-07 as the canonical manuscript, header rewritten to name its role",
+      "source_commit": "working tree"
     },
     {
       "path": "P4-coherent-cell-floor.pdf",
       "sha256": "ed786b628b4216d7b9d9f51af5829d128989ec9b33b446933b6f60a23cc0e729",
-      "imported_from": "papers/P4-coherent-cell-floor/P4-coherent-cell-floor-small.pdf",
-      "source_commit": "961816a127dda3e4f13770b6e5bba3e2ab4567c5"
+      "imported_from": "papers/P4-coherent-cell-floor/P4-coherent-cell-floor-small.pdf; renamed 2026-09-07 as the canonical manuscript",
+      "source_commit": "d88763d4cd"
     },
     {
       "path": "arxiv-metadata.txt",
-      "sha256": "924a2dc2748930b6b62c81780befd85c5a337c3fc531140dc4298294fbabfc7b",
+      "sha256": "abf12c60310a1d722975f298fab04ce450726eb0035d4e6f3e9bd66d68f974d2",
       "imported_from": "deploy/papers/P4-arxiv-metadata.txt",
       "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
     },
@@ -36,6 +36,18 @@
       "sha256": "a49b680cfb53750ce11695184cf58489817078fd851ba1201b1034de8b3e2a41",
       "imported_from": "written here 2026-09-06",
       "source_commit": "working tree"
+    },
+    {
+      "path": "P4-coherent-cell-floor-unsorted.tex",
+      "sha256": "d1390034623c4f16dddef857c5ba9ff3ec5bebfcccff6914f5c8513a812e4f69",
+      "imported_from": "papers/P4-coherent-cell-floor/P4-coherent-cell-floor.tex; renamed 2026-09-07, header rewritten to name its role",
+      "source_commit": "working tree"
+    },
+    {
+      "path": "P4-coherent-cell-floor-unsorted.pdf",
+      "sha256": "67bf196ae5f77ba4fa3ba91c8af8e5f34ad554477c3991616b2f18e186f55ff5",
+      "imported_from": "deploy/papers/P4-coherent-cell-floor.pdf; renamed 2026-09-07, bytes unchanged",
+      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
     }
   ],
   "projection_sources": [
@@ -46,13 +58,7 @@
       "kind": "code",
       "name": "audit_cellfloor_sdz.py",
       "source": "generations/v3/code/audit_cellfloor_sdz.py",
-      "sha256": "bce4bd89ca4e01ea4c8e5e821ad05f83c6f9cf13e727a317e9b78c14151250e0"
-    },
-    {
-      "kind": "results",
-      "name": "audit_cellfloor_sdz.txt",
-      "source": "generations/v3/results/audit_cellfloor_sdz.txt",
-      "sha256": "42bac229a58f3008d11aa9c21f5f347d01e8e363b570199e7c3c74c62ffeb1ef"
+      "sha256": "364987a027b5f784de0243ee3768919571b876e87407c100d3b20d5be94990af"
     },
     {
       "kind": "code",
@@ -61,22 +67,10 @@
       "sha256": "32b12645dd30dd008cc8c4aac93bd9513638bd0938f3a22daffc7f48f114e770"
     },
     {
-      "kind": "results",
-      "name": "audit_cn_class.txt",
-      "source": "generations/v3/results/audit_cn_class.txt",
-      "sha256": "879f7ac23d79a25e16881953005ce65eb1fe07f4369731885bff81a1d01bf0be"
-    },
-    {
       "kind": "code",
       "name": "audit_cn_coin_deep.py",
       "source": "generations/v3/code/audit_cn_coin_deep.py",
       "sha256": "81fe139283de5cff36ee8f8ffbf7f2976238a2a9961284a02fafd72259a3da5a"
-    },
-    {
-      "kind": "results",
-      "name": "audit_cn_coin_deep.txt",
-      "source": "generations/v3/results/audit_cn_coin_deep.txt",
-      "sha256": "c2cc83343d6b81553c524269e68669e5c86c605e4c8f1f23d332df6df963ffe2"
     },
     {
       "kind": "code",
@@ -85,22 +79,10 @@
       "sha256": "840cb70da3cdb6abb0b7b4c2d0c6042d33fdca5599b4850df45c5cbdd7f1c123"
     },
     {
-      "kind": "results",
-      "name": "audit_cn_kurt_drift.txt",
-      "source": "generations/v3/results/audit_cn_kurt_drift.txt",
-      "sha256": "345fd0f22e6c0280ec4c42055cfb5e30cf4cfde90b147acab1b479a0fbf8c915"
-    },
-    {
       "kind": "code",
       "name": "audit_cn_law.py",
       "source": "generations/v3/code/audit_cn_law.py",
       "sha256": "0a22fd3fd9463ab5c2e8119fdf05ff9613840866c80d31665bb7074f5914724f"
-    },
-    {
-      "kind": "results",
-      "name": "audit_cn_law.txt",
-      "source": "generations/v3/results/audit_cn_law.txt",
-      "sha256": "6ae3aa67b2d8b408dd32375aec1b5d7bd2cd887d3e86ffe7770ab397095a5ac5"
     },
     {
       "kind": "code",
@@ -109,22 +91,10 @@
       "sha256": "a5cfaed1b10e62c6102a924b3a9ec744028d3239bc98c8abf527bd3b382c8aa9"
     },
     {
-      "kind": "results",
-      "name": "audit_cn_multnull_deep.txt",
-      "source": "generations/v3/results/audit_cn_multnull_deep.txt",
-      "sha256": "a8530c36ccb6209fb3ccbb9d7b52dde003c45dba9789b2bb42048f533494adcb"
-    },
-    {
       "kind": "code",
       "name": "lab_cell_floor.py",
       "source": "generations/v3/code/lab_cell_floor.py",
-      "sha256": "e902d25f3c42e981fcbaf531c93ec973afbcf03e4514ff7f19f76d161b2414a8"
-    },
-    {
-      "kind": "results",
-      "name": "lab_cell_floor.txt",
-      "source": "generations/v3/results/lab_cell_floor.txt",
-      "sha256": "ccfcbd1732231894c4ff557c5bdab592aec869c3af652b6d06d7c7e7b2b63993"
+      "sha256": "45e3b67f771686e443db20883ec25db5ad68ec4550d14a4760a4ab12a2a1db85"
     },
     {
       "kind": "code",
@@ -133,22 +103,16 @@
       "sha256": "dc0ffd518bc4a8e61e5196a34c07829735a8466c8f33bd8428f677e4eb1b1c1c"
     },
     {
-      "kind": "results",
-      "name": "lab_cell_singular.txt",
-      "source": "generations/v3/results/lab_cell_singular.txt",
-      "sha256": "5f53ba824c4ec17e94b0467bb673d47c25f2b435abc1f73df0b3ff3a420a27b3"
-    },
-    {
       "kind": "code",
       "name": "lab_cellmom_montecarlo.py",
       "source": "generations/v3/code/lab_cellmom_montecarlo.py",
       "sha256": "2f0cb27b8eeb3fa55b1d2c73dad35ab8e740f3de4c58e768ef6659a476441ef8"
     },
     {
-      "kind": "results",
-      "name": "lab_cellmom_montecarlo.txt",
-      "source": "generations/v3/results/lab_cellmom_montecarlo.txt",
-      "sha256": "88572d96226d637c97e975c5ef613e549969a845a2af2b3d97a7024076180f1c"
+      "kind": "code",
+      "name": "lab_cellset_sweep.py",
+      "source": "generations/v3/code/lab_cellset_sweep.py",
+      "sha256": "67f58263bca72af56aefbd929e236914f63866be76ada07e25e0a717a6edcf43"
     },
     {
       "kind": "code",
@@ -157,22 +121,10 @@
       "sha256": "c387ee1a92669fe96daefc2ca1f7835b2367d8547a7fa54f4d68268edbafab2b"
     },
     {
-      "kind": "results",
-      "name": "lab_maincoef.txt",
-      "source": "generations/v3/results/lab_maincoef.txt",
-      "sha256": "31e8f9defad4bce922380dd2b9b63f6a559abc3306210a2078fae8de29b221ff"
-    },
-    {
       "kind": "code",
       "name": "lab_mask_placebo.py",
       "source": "generations/v3/code/lab_mask_placebo.py",
       "sha256": "c67361f5b42316d1f9e0be7617f603f6eb5914f009733944d80a20ebdad78e62"
-    },
-    {
-      "kind": "results",
-      "name": "lab_mask_placebo.txt",
-      "source": "generations/v3/results/lab_mask_placebo.txt",
-      "sha256": "dfd10975b5af13be45cc41a6210f04b1ff34ce88788308626de56baa011a47d3"
     },
     {
       "kind": "code",
@@ -181,22 +133,10 @@
       "sha256": "50e3541c65bc2a9f2a357299c3c698f7903487f852bcd5fbafaf9b26d481b8f6"
     },
     {
-      "kind": "results",
-      "name": "lab_secondcell.txt",
-      "source": "generations/v3/results/lab_secondcell.txt",
-      "sha256": "f6f9269d633d1b792939e4a86795ea23c82420dbf6664ae1f741fc9ad656736d"
-    },
-    {
       "kind": "code",
       "name": "lab_secondcell2.py",
       "source": "generations/v3/code/lab_secondcell2.py",
       "sha256": "bf1d6c57a05b857dd04e690fa9b71b0ea1cc9d4b9a62c36e01e44d7e25dfd5e7"
-    },
-    {
-      "kind": "results",
-      "name": "lab_secondcell2.txt",
-      "source": "generations/v3/results/lab_secondcell2.txt",
-      "sha256": "54c8363d724e577d0b2aa66dedb162cc940bd94ea8275bb3c7065fc11ee24e7f"
     },
     {
       "kind": "code",
@@ -205,16 +145,100 @@
       "sha256": "6d7b2868cd04543895f8a7fe964cf97a5baab2421d20f203f7d9a9f4a45db901"
     },
     {
-      "kind": "results",
-      "name": "lab_secondcell2_predict.txt",
-      "source": "generations/v3/results/lab_secondcell2_predict.txt",
-      "sha256": "b31daec0f808efe7bef3a88dfd909fa14e7fc6325e03d461c9d7eb511aec7133"
-    },
-    {
       "kind": "code",
       "name": "lab_secondcell_predict.py",
       "source": "generations/v3/code/lab_secondcell_predict.py",
       "sha256": "3d3f543f233a63a4a6650b96e707e5b9ced376a269f243fd9e0e17103e2896d2"
+    },
+    {
+      "kind": "results",
+      "name": "audit_cellfloor_sdz.txt",
+      "source": "generations/v3/results/audit_cellfloor_sdz.txt",
+      "sha256": "42bac229a58f3008d11aa9c21f5f347d01e8e363b570199e7c3c74c62ffeb1ef"
+    },
+    {
+      "kind": "results",
+      "name": "audit_cn_class.txt",
+      "source": "generations/v3/results/audit_cn_class.txt",
+      "sha256": "879f7ac23d79a25e16881953005ce65eb1fe07f4369731885bff81a1d01bf0be"
+    },
+    {
+      "kind": "results",
+      "name": "audit_cn_coin_deep.txt",
+      "source": "generations/v3/results/audit_cn_coin_deep.txt",
+      "sha256": "c2cc83343d6b81553c524269e68669e5c86c605e4c8f1f23d332df6df963ffe2"
+    },
+    {
+      "kind": "results",
+      "name": "audit_cn_kurt_drift.txt",
+      "source": "generations/v3/results/audit_cn_kurt_drift.txt",
+      "sha256": "345fd0f22e6c0280ec4c42055cfb5e30cf4cfde90b147acab1b479a0fbf8c915"
+    },
+    {
+      "kind": "results",
+      "name": "audit_cn_law.txt",
+      "source": "generations/v3/results/audit_cn_law.txt",
+      "sha256": "6ae3aa67b2d8b408dd32375aec1b5d7bd2cd887d3e86ffe7770ab397095a5ac5"
+    },
+    {
+      "kind": "results",
+      "name": "audit_cn_multnull_deep.txt",
+      "source": "generations/v3/results/audit_cn_multnull_deep.txt",
+      "sha256": "a8530c36ccb6209fb3ccbb9d7b52dde003c45dba9789b2bb42048f533494adcb"
+    },
+    {
+      "kind": "results",
+      "name": "lab_cell_floor.txt",
+      "source": "generations/v3/results/lab_cell_floor.txt",
+      "sha256": "a7c1c499ecc0111769de743599ed821f6463f91d686429e2cfbb1ae6ec525f96"
+    },
+    {
+      "kind": "results",
+      "name": "lab_cell_singular.txt",
+      "source": "generations/v3/results/lab_cell_singular.txt",
+      "sha256": "5f53ba824c4ec17e94b0467bb673d47c25f2b435abc1f73df0b3ff3a420a27b3"
+    },
+    {
+      "kind": "results",
+      "name": "lab_cellmom_montecarlo.txt",
+      "source": "generations/v3/results/lab_cellmom_montecarlo.txt",
+      "sha256": "88572d96226d637c97e975c5ef613e549969a845a2af2b3d97a7024076180f1c"
+    },
+    {
+      "kind": "results",
+      "name": "lab_cellset_sweep.txt",
+      "source": "generations/v3/results/lab_cellset_sweep.txt",
+      "sha256": "0037ae8f284184ed7efbd4b3bf6cd0f21a4fcf95acc49e6009ff65104a1afaf3"
+    },
+    {
+      "kind": "results",
+      "name": "lab_maincoef.txt",
+      "source": "generations/v3/results/lab_maincoef.txt",
+      "sha256": "31e8f9defad4bce922380dd2b9b63f6a559abc3306210a2078fae8de29b221ff"
+    },
+    {
+      "kind": "results",
+      "name": "lab_mask_placebo.txt",
+      "source": "generations/v3/results/lab_mask_placebo.txt",
+      "sha256": "dfd10975b5af13be45cc41a6210f04b1ff34ce88788308626de56baa011a47d3"
+    },
+    {
+      "kind": "results",
+      "name": "lab_secondcell.txt",
+      "source": "generations/v3/results/lab_secondcell.txt",
+      "sha256": "f6f9269d633d1b792939e4a86795ea23c82420dbf6664ae1f741fc9ad656736d"
+    },
+    {
+      "kind": "results",
+      "name": "lab_secondcell2.txt",
+      "source": "generations/v3/results/lab_secondcell2.txt",
+      "sha256": "54c8363d724e577d0b2aa66dedb162cc940bd94ea8275bb3c7065fc11ee24e7f"
+    },
+    {
+      "kind": "results",
+      "name": "lab_secondcell2_predict.txt",
+      "source": "generations/v3/results/lab_secondcell2_predict.txt",
+      "sha256": "b31daec0f808efe7bef3a88dfd909fa14e7fc6325e03d461c9d7eb511aec7133"
     },
     {
       "kind": "results",
@@ -311,5 +335,28 @@
     "results"
   ],
   "editing_rule": "Edit the paper source here; edit evidence only at its artifact source, then run tools/packets.py build.",
-  "public_directory_reason": "P4-coherent-cell-floor/ in the public repository holds the bytes sent to Experimental Mathematics and is frozen; the working manuscript publishes to the revision directory beside it. Chosen 2026-09-06 to replace the first revision rather than add a second, because no link to it had been given out and it carried a correction that was itself wrong."
+  "public_directory_reason": "P4-coherent-cell-floor/ in the public repository holds the bytes sent to Experimental Mathematics and is frozen; the working manuscript publishes to the revision directory beside it. Chosen 2026-09-06 to replace the first revision rather than add a second, because no link to it had been given out and it carried a correction that was itself wrong.",
+  "counted_runs": {
+    "why": "The runs the manuscript counts when it says how many registered rules carry a verdict. It is not every file in results/: lab_secondcell is named in the text and reported outside the total on purpose, and counting the directory instead of this list gave 55, 60 and 58 on three attempts, all wrong.",
+    "runs": [
+      "lab_cellmom_montecarlo",
+      "lab_cell_floor",
+      "lab_mask_placebo",
+      "lab_cell_singular",
+      "lab_maincoef",
+      "lab_secondcell2",
+      "lab_cellset_sweep",
+      "audit_cellfloor_sdz",
+      "audit_cn_coin_deep",
+      "lab_secondcell_predict",
+      "lab_secondcell2_predict"
+    ],
+    "excluded": {
+      "lab_secondcell": "its P1 is the fourteenth refutation, reported separately and deliberately outside the total",
+      "audit_cn_class": "not among the named runs",
+      "audit_cn_kurt_drift": "not among the named runs",
+      "audit_cn_law": "not among the named runs",
+      "audit_cn_multnull_deep": "not among the named runs"
+    }
+  }
 }

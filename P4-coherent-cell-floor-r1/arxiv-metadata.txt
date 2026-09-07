@@ -37,35 +37,32 @@ ABSTRACT (plain text)
 Let Z(N) = C(N)/sqrt(V(N)) with C(N) = sum_{n<N} Lambda(n) mu(N-n), and
 partition a band of even N into cells indexed by how many of 3, 5, 7,
 11, 13 divide N. Whether a cell mean departs from the band mean needs a
-reference scale, and the count-based one misses the null scale here by
-a factor that grows with the band.
+reference scale, and the count-based one misses it by a factor growing
+with the band.
 
 Under the null of independent Rademacher signs for the mu(v) on their
-support, the variance of any cell contrast is a doubly
-centred quadratic form in the covariance kernel and reduces to three
-explicitly computable terms built from finite correlations and weighted
-inner products: the exact Rademacher-null scale is written down, not
-estimated. For a uniformly random same-size cell, the permutation
-average of the sign-null variance equals the finite-population formula
-exactly; the divisibility cells do not.
-Measured over eight octaves to 1.6 x 10^7, the exact null standard
-deviation shrinks by 1.21 where a count predicts 11.3, and a label
-permutation preserving every cell size collapses it by factors 3.8 to
-105.
+support, the variance of any cell contrast is a doubly centred
+quadratic form in the covariance kernel and reduces to three computable
+terms built from finite correlations and weighted inner products: the
+exact null scale is written down, not estimated. For a uniformly random
+same-size cell, the permutation average of the sign-null variance
+equals the finite-population formula exactly; the divisibility cells do
+not. Measured over eight octaves to 1.6 x 10^7, the exact null standard
+deviation shrinks by 1.21 where a count predicts 11.3, and none of ten
+sampled label permutations preserving every cell size reproduced the
+floor; their collapse factors range from 3.8 to 105.
 
 For its size we offer a descriptor: the excess D_c of the shift's
 singular series over same-cell pairs, whose main term is rational with
-no fitted parameter. That the residue structure determines D_c was
-committed for a second, differently shaped partition before it was
-measured; the exhaustive (non-sampled) measurement falls inside the
-registered interval
-at every cell, and that transfer is the evidence offered. That D_c in
-turn determines the null floor rests on a correlation of 0.9805 across
-six cells, computed after the fact and not transferred. Every
-registered rule is reported with its verdict, refuted ones included.
-No Gaussian or limiting distributional law for Z and no Goldbach
-consequence is asserted,
-and the decay of the effect with N is not determined here.
+no fitted parameter. For a second, differently shaped partition, the
+exhaustive measurement at the three scored depths falls inside the
+interval computed from the residue main term. The fourth depth is an
+algebraic consistency check, not a scored interval. At this band, D_c
+tracks the null floor with correlation 0.9805 across six cells; this
+post hoc association was not transferred. Every registered rule is
+reported with its verdict, refuted ones included. No Gaussian or
+limiting distributional law for Z and no Goldbach consequence are
+asserted, and the decay of the effect with N is not determined here.
 
 
 COMMENTS FIELD
