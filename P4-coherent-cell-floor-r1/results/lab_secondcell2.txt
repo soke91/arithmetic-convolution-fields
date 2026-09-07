@@ -5,7 +5,7 @@ STATISTIC: E_same,c[S_2] over each cell of the second shape,
 DENOM: n_c(n_c-1) ordered pairs, checked against the
        autocorrelation's own total before any number is
        reported.
-NULL: the rules were registered in lab_secondcell2_predict.txt,
+NULL: the intervals are computed in lab_secondcell2_predict.txt,
       which carries an enumerated null on whether T1's
       intervals are cell-specific. The statistic here is exact,
       so the tolerances are absolute and no distribution
@@ -15,7 +15,7 @@ FIELD: band (2e6, 4e6]; even N; cells by depth over 3,5,7; S_2
        at length 2^21.
 
 SECOND CELL SHAPE, MEASURED EXACTLY.  S = 3, 5, 7, band (2000000, 4000000]
-rules T1, T2, T3 registered in lab_secondcell2_predict.txt
+intervals T1, T2, T3 read from lab_secondcell2_predict.txt
 predictions read from lab_secondcell_predict.txt
 
   2 C_2 = 1.32032365;  S_2(2) = 1.320324;  S_2(6) = 2.640647 (= 2 S_2(2))
@@ -298,8 +298,8 @@ POST HOC (after T1-T3 were scored; it rescores nothing).
   paper should carry the exponent as measured HERE, on a cell
   shape where m spans 48 to 1, and not lean on depth 4.
 
-DEPTH 3 -- consistency check, not a score, as the first seal
-recorded: the corrected prediction and the exact value are the
+DEPTH 3 -- consistency check, not a score: the corrected
+prediction and the exact value are the
 same finite sum.
     sealed corrected prediction  2.374142000
     exact                        2.374142099

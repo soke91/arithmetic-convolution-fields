@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-r"""P4 — the second cell shape, registered a SECOND time on an exact
-statistic.
+r"""P4 — the second cell shape: exact interval computation.
 
-WHY A SECOND REGISTRATION
+RELATION TO THE FIRST RUN
 
-The first (lab_secondcell_predict.py, sealed 3b1b7d1) was refuted.  It
+The first prediction artifact (lab_secondcell_predict.py) was refuted. It
 was refuted by luck, not by the prediction: its rule scored ONE random
 draw at each of three cells against a three-sigma cap, and the draw at
 depth 2 came out at +3.22 of a sampling error the run reported
-correctly -- thirty independent redraws centre on the sealed prediction
+correctly -- thirty independent redraws centre on the stored prediction
 at -0.25.  A cap of that shape is refused by chance about once in a
 hundred and twenty runs and this was that.
 
@@ -17,9 +16,9 @@ new registration on a statistic that carries no draw at all.
 
 WHAT CHANGES: THE STATISTIC, NOT THE PREDICTION
 
-The four predictions are unchanged and are READ from the first seal.
+The four predictions are unchanged and are READ from the first artifact.
 They are not recomputed here; a recomputation could drift from what was
-sealed and nothing would say so.
+stored and nothing would say so.
 
 The measurement changes from a sampled pair average to an EXACT one.
 A cell is a set of positions in the band, so
@@ -42,7 +41,7 @@ The prediction has two parts and they fail differently:
                 precisely what {#prop:scaleinv} declines to claim.
 
 At depth 3 (m = 1) the prediction and the measurement are the same sum
-and the comparison is a consistency check, as the first seal recorded.
+and the comparison is an algebraic consistency check.
 At depths 0 to 2 they are not: the prediction models the divisor part,
 the exact measurement computes it.  So the exact statistic separates
 the main term from the dilution model, which no sampled run could.
@@ -212,9 +211,9 @@ def read_sampled_mean():
 def main():
     corr, unc, ms, full = read_seal()
     if len(corr) != 4 or len(unc) != 4 or len(full) != 4:
-        say("the first seal was not readable -- refusing to register")
+        say("the first prediction artifact was not readable -- refusing to compute")
         return 1
-    say("READ FROM THE FIRST SEAL (%s), not recomputed:"
+    say("READ FROM THE FIRST PREDICTION ARTIFACT (%s), not recomputed:"
         % os.path.basename(SEAL))
     say()
     say("  depth  m     uncorrected   undiluted corr.  1/m corrected")
@@ -243,10 +242,10 @@ def main():
         say("It sits %+.6f above T1's upper bound, so the sampled evidence"
             % (sm - unc[2]))
         say("leans towards T1 FAILING at depth 2, and T3's alpha there is")
-        say("%s.  Recorded before the exact run so that a pass cannot"
+        say("%s. Recorded alongside the exact statistic; this packet does not"
             % ("undefined -- the measured value is above the main term"
                if sm >= unc[2] else "%.2f" % al))
-        say("later be read as having been expected.")
+        say("assert a historical ordering between the two artifacts.")
     say()
     say("NULL, enumerated here and not declined.  T1 asks whether the")
     say("exact value lands in a cell-specific interval.  If the three")
@@ -280,15 +279,16 @@ def main():
         "STATISTIC: the exact pair average of S_2 over each cell of the",
         "           second shape, by autocorrelation of the cell",
         "           indicator -- no sampling, no seed, no standard",
-        "           error.  Registered against predictions sealed in",
-        "           lab_secondcell_predict.txt at commit 3b1b7d1.",
+        "           error. Intervals are computed from predictions in",
+        "           lab_secondcell_predict.txt; this packet does not assert",
+        "           a historical ordering between the two artifacts.",
         "DENOM: the exact band average 2.",
         "NULL: an exact enumeration, run in this file. The statistic",
         "      being measured is exact, so the tolerances are absolute;",
         "      the null asks instead whether T1's intervals are",
         "      cell-specific, by enumerating all 6 relabellings of the",
         "      three depths.",
-        "FIELD: predictions read from the first seal; m = 48, 44, 12, 1;",
+        "FIELD: predictions read from the first artifact; m = 48, 44, 12, 1;",
         "       no measurement is made here.",
         "",
     ]

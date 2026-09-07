@@ -3,11 +3,11 @@ r"""P4 — the second cell shape, measured EXACTLY.
 
 WHAT THIS IS
 
-lab_secondcell2_predict.py registered T1, T2 and T3 on an exact
-statistic, before this file existed, and read its predictions from the
-first seal (lab_secondcell_predict.py, commit 3b1b7d1) rather than
-recomputing them.  This file makes the measurement and scores those
-three rules.
+lab_secondcell2_predict.py computes T1, T2 and T3 intervals on an exact
+statistic and reads its predictions from the first prediction artifact
+(lab_secondcell_predict.py) rather than recomputing them. This file makes
+the measurement and compares the three scored depths. The packet does not
+assert a historical ordering among these artifacts.
 
 There is no sampling here.  A cell is a set of positions in the band,
 so the pair average of S_2 over it is
@@ -112,15 +112,15 @@ def read_seal1():
 
 def main():
     if not os.path.exists(SEAL2):
-        say("the second registration is not present -- refusing to run")
+        say("the second interval artifact is not present -- refusing to run")
         return 1
     corr, unc, ms, full = read_seal1()
     if len(corr) != 4:
-        say("the first seal was not readable -- refusing to run")
+        say("the first prediction artifact was not readable -- refusing to run")
         return 1
     say("SECOND CELL SHAPE, MEASURED EXACTLY.  S = %s, band (%d, %d]"
         % (", ".join(str(p) for p in CELLP2), BAND[0], BAND[1]))
-    say("rules T1, T2, T3 registered in %s" % os.path.basename(SEAL2))
+    say("intervals T1, T2, T3 read from %s" % os.path.basename(SEAL2))
     say("predictions read from %s" % os.path.basename(SEAL1))
     say()
 
@@ -625,8 +625,8 @@ def main():
     say("  shape where m spans 48 to 1, and not lean on depth 4.")
     say()
 
-    say("DEPTH 3 -- consistency check, not a score, as the first seal")
-    say("recorded: the corrected prediction and the exact value are the")
+    say("DEPTH 3 -- consistency check, not a score: the corrected")
+    say("prediction and the exact value are the")
     say("same finite sum.")
     say("    sealed corrected prediction  %.9f" % corr[3])
     say("    exact                        %.9f" % Dc[3])
@@ -657,7 +657,7 @@ def main():
         "DENOM: n_c(n_c-1) ordered pairs, checked against the",
         "       autocorrelation's own total before any number is",
         "       reported.",
-        "NULL: the rules were registered in lab_secondcell2_predict.txt,",
+        "NULL: the intervals are computed in lab_secondcell2_predict.txt,",
         "      which carries an enumerated null on whether T1's",
         "      intervals are cell-specific. The statistic here is exact,",
         "      so the tolerances are absolute and no distribution",

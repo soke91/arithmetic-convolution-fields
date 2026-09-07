@@ -226,7 +226,7 @@
       {
         "path": "lean/GoldbachLean.lean",
         "source": "lean/GoldbachLean.lean",
-        "sha256": "cb1f36c7b24ac05c0351bd93d6f560bc5adbdbdbd2b29c4d2d044a3998bc0937"
+        "sha256": "55b5e9ef010c5c17c2d89d2cf07ce252885620895898d84d89ef5982c309b4a4"
       },
       {
         "path": "lean/GoldbachLean/Basic.lean",
@@ -269,9 +269,20 @@
         "sha256": "6bd7b1b56b119067ea77e2c41ed82656b5c8250c4a3a1ba2885d398303f24b62"
       },
       {
+        "path": "lean/GoldbachLean/WeightFloor.lean",
+        "source": "lean/GoldbachLean/WeightFloor.lean",
+        "sha256": "498853b326acf14772b54063db47617bf9a488e10d5dfd6cb99de7991e605873"
+      },
+      {
         "path": "lean/README.md",
         "source": "lean/README.md",
-        "sha256": "5eec6417ee2cd1afb9561508feb12b843051c1bc470a7d012b631230443ec3d2"
+        "sha256": "ccc5f0572657685869de9420c3273da22de2e22865feb3a1df7bfca35e864937"
+      },
+      {
+        "path": "lean/axioms.txt",
+        "source": null,
+        "sha256": "8680ee9b861dd52f6f6053f520c9a75824bc18227e02ec97ea5b8cb166991370",
+        "note": "`#print axioms` output for this paper's statements. A build product: it differs between papers and nothing in this tree regenerates it without lake."
       },
       {
         "path": "lean/lake-manifest.json",
@@ -287,12 +298,6 @@
         "path": "lean/lean-toolchain",
         "source": "lean/lean-toolchain",
         "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
-      },
-      {
-        "path": "lean/axioms.txt",
-        "source": null,
-        "sha256": "319d62d7591d7e5d8cdfb4fe8528760cddb1bdb9c70c1550363887420bfa326b",
-        "note": "`#print axioms` output for this paper's statements. A build product: it differs between papers and nothing in this tree regenerates it without lake."
       }
     ],
     "library": "lean/"

@@ -9,13 +9,13 @@
   "paper_files": [
     {
       "path": "P4-coherent-cell-floor.tex",
-      "sha256": "acde0ef1bbff75e91fcc5fb073c91bdeedd25a3dc57beba03dc9473a4b9fccf0",
+      "sha256": "30a8ac295ed08dfb26bd73a983ada8d0665c0f631598ba789d003ccdd8c31e59",
       "imported_from": "deploy/papers/P4-coherent-cell-floor.tex",
       "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
     },
     {
       "path": "P4-coherent-cell-floor.pdf",
-      "sha256": "90812b71812d851b7c6731b9d105cc8f9d936233dd39285a315a6772e718c79c",
+      "sha256": "faa8b6531ae929147281d46b13a262e7191c6bb23f3db16d1ce9d230dcc8d200",
       "imported_from": "deploy/papers/P4-coherent-cell-floor.pdf",
       "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
     },
@@ -27,9 +27,15 @@
     },
     {
       "path": "CORRECTIONS.md",
-      "sha256": "4603e50f2a9dd111a6d1bff775117fc7611d13434018d934bc6f2ad6df02fe2f",
+      "sha256": "61df226399b236a211a369271b06f94f5c7578f875a7c5324aa720ad4cb93d84",
       "imported_from": "written here 2026-09-06",
       "source_commit": "d17b97e66b9e4da61ba3d58e9eb3c6960656756f"
+    },
+    {
+      "path": "CLAIMS.json",
+      "sha256": "a49b680cfb53750ce11695184cf58489817078fd851ba1201b1034de8b3e2a41",
+      "imported_from": "written here 2026-09-06",
+      "source_commit": "working tree"
     }
   ],
   "projection_sources": [
@@ -184,25 +190,25 @@
       "kind": "code",
       "name": "lab_secondcell2.py",
       "source": "generations/v3/code/lab_secondcell2.py",
-      "sha256": "4d218cdd6bd282a27f05a4e1e8df3cd61aa234fa94b54934c0fed8be21c43c28"
+      "sha256": "bf1d6c57a05b857dd04e690fa9b71b0ea1cc9d4b9a62c36e01e44d7e25dfd5e7"
     },
     {
       "kind": "results",
       "name": "lab_secondcell2.txt",
       "source": "generations/v3/results/lab_secondcell2.txt",
-      "sha256": "d569683c85404d4c18dd6cd601a8d59df4288230815b14f0ecf54090ffa71094"
+      "sha256": "54c8363d724e577d0b2aa66dedb162cc940bd94ea8275bb3c7065fc11ee24e7f"
     },
     {
       "kind": "code",
       "name": "lab_secondcell2_predict.py",
       "source": "generations/v3/code/lab_secondcell2_predict.py",
-      "sha256": "0aea921dd05d029689d69d3fe0d975a3517ca571e5644aed4355a193a98ce6ea"
+      "sha256": "6d7b2868cd04543895f8a7fe964cf97a5baab2421d20f203f7d9a9f4a45db901"
     },
     {
       "kind": "results",
       "name": "lab_secondcell2_predict.txt",
       "source": "generations/v3/results/lab_secondcell2_predict.txt",
-      "sha256": "3b49dafd2c0ddb89954ea8f2909cbda567aa03bea4c3d10be8a108117071c13e"
+      "sha256": "b31daec0f808efe7bef3a88dfd909fa14e7fc6325e03d461c9d7eb511aec7133"
     },
     {
       "kind": "code",
@@ -224,7 +230,7 @@
       {
         "path": "lean/GoldbachLean.lean",
         "source": "lean/GoldbachLean.lean",
-        "sha256": "cb1f36c7b24ac05c0351bd93d6f560bc5adbdbdbd2b29c4d2d044a3998bc0937"
+        "sha256": "55b5e9ef010c5c17c2d89d2cf07ce252885620895898d84d89ef5982c309b4a4"
       },
       {
         "path": "lean/GoldbachLean/Basic.lean",
@@ -267,9 +273,20 @@
         "sha256": "6bd7b1b56b119067ea77e2c41ed82656b5c8250c4a3a1ba2885d398303f24b62"
       },
       {
+        "path": "lean/GoldbachLean/WeightFloor.lean",
+        "source": "lean/GoldbachLean/WeightFloor.lean",
+        "sha256": "498853b326acf14772b54063db47617bf9a488e10d5dfd6cb99de7991e605873"
+      },
+      {
         "path": "lean/README.md",
         "source": "lean/README.md",
-        "sha256": "5eec6417ee2cd1afb9561508feb12b843051c1bc470a7d012b631230443ec3d2"
+        "sha256": "ccc5f0572657685869de9420c3273da22de2e22865feb3a1df7bfca35e864937"
+      },
+      {
+        "path": "lean/axioms.txt",
+        "source": null,
+        "sha256": "ac2d6e6eed6ae75a2a589370506d082d8492414e16d3e7d89558490095de424c",
+        "note": "`#print axioms` output for this paper's statements. A build product: it differs between papers and nothing in this tree regenerates it without lake."
       },
       {
         "path": "lean/lake-manifest.json",
@@ -285,12 +302,6 @@
         "path": "lean/lean-toolchain",
         "source": "lean/lean-toolchain",
         "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
-      },
-      {
-        "path": "lean/axioms.txt",
-        "source": null,
-        "sha256": "5b9c0e27b47bacdabc2a2db7e90f7bd0bd425fb95b946510efb0c4ddc471017d",
-        "note": "`#print axioms` output for this paper's statements. A build product: it differs between papers and nothing in this tree regenerates it without lake."
       }
     ],
     "library": "lean/"

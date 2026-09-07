@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "paper_id": "P4-coherent-cell-floor",
+  "note": "Four fields decide what a headline sentence may say about a claim: what it asserts, what stands behind it, how that was checked, and whether the check ran before or after the number was seen. Qualifiers are filed under the register they excuse -- a hedge earned by a transfer does not excuse a word about mechanism. A register with no hedge listed is one this claim may not speak in. tools/checks/claim_check.py reads this against the % CLAIM: bindings in the source.",
+  "claims": [
+    {
+      "id": "C1",
+      "statement": "Under the null of independent Rademacher signs on the support of mu, the variance of any cell contrast is a doubly centred quadratic form in the covariance kernel and equals Q_cc/n_c^2 - 2Q_ca/(n_c n) + Q_aa/n^2.",
+      "evidence": "Lemma lem:cellmom, proved in the manuscript; the three terms are built from finite correlations and weighted inner products, and the identity is checked numerically against a Monte Carlo draw of the same null.",
+      "verification": "proof in the manuscript, plus lab_cellmom_montecarlo.py, which draws the sign null and compares",
+      "status": "proved",
+      "evidence_artifacts": ["lab_cellmom_montecarlo.py", "lab_cellmom_montecarlo.txt"],
+      "qualifiers": {
+        "determination": ["exactly", "in closed form", "written down", "explicit"]
+      },
+      "forbidden": ["estimated from the data", "an approximation to"]
+    },
+    {
+      "id": "C2",
+      "statement": "For a uniformly random cell of the same size, the permutation average of the sign-null variance equals the finite-population formula exactly.",
+      "evidence": "Lemma lem:permfloor, proved in the manuscript.",
+      "verification": "proof in the manuscript",
+      "status": "proved",
+      "evidence_artifacts": [],
+      "qualifiers": {
+        "determination": ["exactly", "identically", "in closed form"]
+      },
+      "forbidden": ["approximately"]
+    },
+    {
+      "id": "C3",
+      "statement": "The residue structure of a cell fixes the main term of D_c, the excess of the shift's singular series over same-cell pairs, as a rational number carrying no fitted parameter; on the second partition the exact measurements at the three scored depths fall inside the corresponding computed intervals.",
+      "evidence": "The main term computed in exact rational arithmetic reproduces the measured D_c profile at all six depths of the first partition. For the second partition, lab_secondcell2_predict.txt gives intervals at depths 0, 1 and 2, and lab_secondcell2.txt measures those three exact values within them; depth 3 is a consistency check, not a score.",
+      "verification": "lab_maincoef.py on the first partition; lab_secondcell2_predict.py computes the three intervals and lab_secondcell2.py measures the three scored depths",
+      "status": "measured",
+      "evidence_artifacts": ["lab_maincoef.txt", "lab_secondcell_predict.txt", "lab_secondcell.txt", "lab_secondcell2_predict.txt", "lab_secondcell2.txt"],
+      "qualifiers": {
+        "determination": ["rational", "no fitted parameter", "main term", "residue"]
+      },
+      "forbidden": ["confirms the mechanism", "validated mechanism"]
+    },
+    {
+      "id": "C4",
+      "statement": "At the measured band, D_c tracks the size of the Rademacher-null floor across the six depth cells with correlation 0.9805; this association is not shown to determine the floor or to transfer across scale or partitions.",
+      "evidence": "A correlation of 0.9805 between D_c and the floor across the six depth cells of the first partition, alongside measurements showing that D_c is not all of what fixes the floor's scale dependence.",
+      "verification": "lab_maincoef.py, computed after both quantities had been measured; no interval for this relation was registered before it was seen, and it was not carried to the second partition",
+      "status": "posthoc",
+      "evidence_artifacts": ["lab_maincoef.txt", "lab_cell_floor.txt"],
+      "qualifiers": {
+        "transfer": ["not transferred", "computed after the fact", "post hoc"],
+        "determination": ["rests on a correlation", "computed after the fact", "not transferred", "post hoc", "is strongly associated", "tracks", "suggests", "descriptor"]
+      },
+      "forbidden": ["validated mechanism", "prospectively predicted", "confirmed mechanism", "the mechanism was transferred"]
+    },
+    {
+      "id": "C5",
+      "statement": "Over the eight measured octaves to 1.6e7 the count-based reference scale misses the sign-null scale of these cells by a factor that grows with the band, and count-based n_c^{-1/2} scaling does not describe the arithmetic-cell floor.",
+      "evidence": "The exact null standard deviation shrinks by 1.21 where a count predicts 11.3; a count-based interval is narrower than the exact scale by 9.3 across a factor 128 in N, and by 7.3 to 158 at the top octave.",
+      "verification": "audit_cellfloor_sdz.py and lab_cell_floor.py over eight octaves; the comparison is between two computed scales, not between a scale and a fit",
+      "status": "measured",
+      "evidence_artifacts": ["audit_cellfloor_sdz.txt", "lab_cell_floor.txt"],
+      "qualifiers": {
+        "transfer": ["measured", "over the measured range", "over the eight measured octaves", "a count predicts", "count predicts", "consistent with"]
+      },
+      "forbidden": ["for all $N$", "at every band"]
+    },
+    {
+      "id": "C6",
+      "statement": "In ten sampled label permutations preserving every cell size, neither the measured cell effect nor the measured floor was reproduced; the sampled floor-collapse factors range from 3.8 to 105.",
+      "evidence": "lab_mask_placebo.py reports the ten sampled permutations and their floor-collapse factors. Lemma lem:placebo gives an identity for the permutation average of the variance, not a universal statement about every permutation.",
+      "verification": "Lemma lem:placebo states the permutation-average identity; lab_mask_placebo.py performs the ten sampled permutations",
+      "status": "measured",
+      "evidence_artifacts": ["lab_mask_placebo.txt", "lab_cell_singular.txt"],
+      "qualifiers": {
+        "transfer": ["measured", "under the placebo", "over the measured range", "is not reproduced", "collapses"]
+      },
+      "forbidden": ["for all $N$", "at every band"]
+    },
+    {
+      "id": "C7",
+      "statement": "D_c is asymptotically scale-free: as the band grows it converges to a constant fixed by the cell's residue classes, so its one-step exponent tends to zero wherever that constant is nonzero.",
+      "evidence": "Proposition prop:scaleinv, an asymptotic statement with two named error terms, O(1/ell) and O_eta(B^{eta-1}); the nonvanishing hypothesis is supplied by the exact rational main term of C3.",
+      "verification": "proof in the manuscript. It is the one labelled statement in the paper with neither a machine check nor a reading by a subject expert, and its hardest step is named in its own proof",
+      "status": "proved",
+      "evidence_artifacts": ["lab_maincoef.txt"],
+      "qualifiers": {
+        "determination": ["asymptotically", "in the limit", "not an identity", "no rate"],
+        "mechanism": ["asymptotically", "in the limit", "not an identity"]
+      },
+      "forbidden": ["exactly constant", "at every fixed band"]
+    }
+  ]
+}

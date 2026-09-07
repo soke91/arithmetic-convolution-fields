@@ -40,35 +40,47 @@ exact Rademacher-null variances and a permutation control}
 \maketitle
 
 \begin{abstract}
+% CLAIM:none
 Let $Z(N)=C(N)/\sqrt{V(N)}$ with
 $C(N)=\sum_{n<N}\Lambda(n)\mu(N-n)$, and partition a band of even $N$
-into cells indexed by how many of $3,5,7,11,13$ divide $N$. Whether a
+into cells indexed by how many of $3,5,7,11,13$ divide $N$.
+% CLAIM:C5
+Whether a
 cell mean departs from the band mean needs a reference scale, and the
-count-based one misses the null scale here by a factor that grows with
-the band.
+count-based one misses it by a factor growing with the band.
 
+% CLAIM:C1
 Under the null of independent Rademacher signs for the $\mu(v)$ on
 their support, the variance of any cell contrast is a
 doubly centred quadratic form in the covariance kernel and reduces to
-three explicitly computable terms built from finite correlations and
-weighted inner products: the exact Rademacher-null scale is written
-down, not estimated. For a uniformly random same-size cell, the
+three computable terms built from finite correlations and weighted
+inner products: the exact null scale is written down, not estimated.
+% CLAIM:C2
+For a uniformly random same-size cell, the
 permutation average of the sign-null variance equals the
 finite-population formula exactly; the divisibility cells do not.
+% CLAIM:C5,C6
 Measured over eight octaves to $1.6\cdot10^{7}$, the exact null
 standard deviation shrinks by $1.21$ where a count predicts $11.3$,
-and a label permutation preserving every cell size collapses it by
-factors $3.8$ to $105$.
+and none of ten sampled label permutations preserving every cell size
+reproduced the floor; their collapse factors range from $3.8$ to $105$.
 
+% CLAIM:C4
 For its size we offer a descriptor: the excess $D_c$ of the shift's
 singular series over same-cell pairs, whose main term is rational with
-no fitted parameter. That the residue structure determines $D_c$ was
-committed for a second, differently shaped partition before it was
-measured; the exhaustive (non-sampled) measurement falls inside the registered interval
-at every cell, and that transfer is the evidence offered. That $D_c$
-in turn determines the null floor rests on a correlation of $0.9805$
-across six cells, computed after the fact and not transferred. Every
+no fitted parameter.
+% CLAIM:C3
+For a second, differently shaped partition, the exhaustive measurement
+at the three scored depths falls inside the interval computed from the
+residue main term. The fourth
+depth is an algebraic consistency check, not a scored interval.
+% CLAIM:C4
+At this band, $D_c$ tracks the null floor with correlation $0.9805$
+across six cells; this post hoc association was not transferred.
+% CLAIM:none
+Every
 registered rule is reported with its verdict, refuted ones included.
+% CLAIM:none
 No Gaussian or limiting distributional law for $Z$ and no Goldbach consequence is asserted,
 and the decay of the effect with $N$ is not determined here.
 \end{abstract}
@@ -103,7 +115,13 @@ Partition the
 band into \emph{cells} indexed by \emph{depth} $d$, the number of
 $3,5,7,11,13$ dividing $N$. The question is whether
 $m_c-\overline m$, the difference between the cell mean of $Z$ and the
-band mean, is larger than chance.
+band mean, is larger than the sign null admits. \emph{Chance} is not
+the word for it and is not used below: that null replaces $\mu$ on its
+own support by independent signs and so discards its multiplicativity,
+and Note~\ref{note:floorsignal} reports an ensemble that keeps the
+multiplicativity as the wider of the two, with no transfer between them
+established here. Every standardised figure below is against the sign
+null.
 
 Answering it requires a reference scale for $m_c-\overline m$. The
 reflex is $\mathrm{sd}(Z)/\sqrt{n_c}$ with $n_c$ the cell count. That
@@ -122,35 +140,44 @@ pairs.
 \subsection{Results}
 
 \begin{itemize}
+% CLAIM:C1
 \item Lemma~\ref{lem:cellmom} gives $\mathrm{Var}(m_c-\overline m)$
-exactly under the sign null, as three convolution terms.
+exactly under the sign null, as three explicit terms built from finite
+correlations and weighted inner products.
+% CLAIM:C5
 \item Observation~\ref{obs:coh} takes up its decay: over the eight
 measured octaves the shallow cells are consistent with
 $(\log N)^{-1/2}$ and not with $n_c^{-1/2}$. The first is a heuristic
 read against a finite range, not a proved rate; what is established over
 the measured range is that count-based scaling does not describe the
 arithmetic-cell floor.
+% CLAIM:C6
 \item Lemma~\ref{lem:placebo} is the control that separates a
 property of the cell \emph{sizes} from a property of the
 correspondence between cells and arithmetic.
+% CLAIM:C6
 \item Measurement~\ref{meas:placebo} runs it, and finds that neither the
 cell effect nor the arithmetic-cell floor is reproduced under the
 placebo; the floor itself collapses, so it is a second measurement of
 the same correspondence.
-\item Proposition~\ref{prop:scaleinv} shows the quantity predicting
+% CLAIM:C7,C4
+\item Proposition~\ref{prop:scaleinv} shows the quantity offered for
 the floor's size is asymptotically scale-free: as the band grows it
 converges to a constant fixed by the cell's residue classes, so its
 one-step exponent tends to zero wherever that constant is nonzero.
+% CLAIM:C3,C7
 \item Measurement~\ref{meas:maincoef} computes that quantity's main
 term in exact rational arithmetic and finds it reproduces the measured
 profile at all six depths with no fitted parameter --- which both
 supplies the hypothesis the proposition needs (that the main term does
 not vanish) and turns the proposition from a statement that the size
 does not drift into one that names it.
+% CLAIM:C3
 \item Measurement~\ref{meas:secondcell} carries the same computation to
-a \emph{second} cell shape, predicting its profile before measuring it
-and then evaluating the finite pair average exhaustively. The prediction holds where the rules could
-score it, and the small
+a \emph{second} cell shape, computing its profile from the residues alone
+and then evaluating the finite pair average exhaustively. The computed
+intervals contain the exact values where the rules could
+score them, and the small
 correction it carries decomposes with no free parameter into a divisor
 deficit and a covariance --- the second of which is exactly zero at the
 only cell where the first was ever calibrated.
@@ -196,8 +223,8 @@ ratio: its full width is $25.4\%$ of its mean, or $19.8\%$ once
 $\mathrm{se}_c^2$ is matched to $D_c$'s convention term by term ---
 matched that way the row is still monotone from depth~$1$ on, with a
 last step nine times smaller than the printed one --- while
-$D_c$ moves by a factor $68$, and the correlation $0.9805$ has an exact enumeration null over
-all $720$ relabellings. That is one octave read across depths.
+$D_c$ moves by a factor $68$, and the correlation $0.9805$ carries an exact enumeration over
+all $720$ relabellings as its control. That is one octave read across depths.
 Read across scale instead, the same ratio drifts by about half as much
 again (Measurement~\ref{meas:Dc}), so what is measured is a depth profile at
 a fixed scale and $D_c$ is not all of what fixes the size.
@@ -264,10 +291,13 @@ the means of $Z$ over $c$ and over the band, and set
 \[
   u_c(v)\;=\;\sum_{N\in c}\frac{\Lambda(N-v)}{\sqrt{V(N)}},
   \qquad
-  Q_{cd}\;=\;\sum_v\mu^2(v)\,u_c(v)\,u_d(v).
+  Q_{cd}\;=\;\sum_{1\le v<N_{\max}}\mu^2(v)\,u_c(v)\,u_d(v),
 \]
-Then, when the $\mu(v)$ on the surviving support are replaced by
-independent signs,
+where $N_{\max}$ is the largest element of the band and
+$\Lambda(k)=0$ for $k\le0$, so that the inner sum runs over the $N$ of
+$c$ that exceed $v$ and the outer one over the squarefree $v$ below the
+band's top. Then, when the $\mu(v)$ on the surviving support are
+replaced by independent signs,
 \begin{equation}\label{eq:cellmom}
   \mathrm{Var}\bigl(m_c-\overline m\bigr)
   \;=\;\frac{Q_{cc}}{n_c^{2}}
@@ -410,15 +440,21 @@ top octave against $1\,687\,911$ at depth $1$
 
 \begin{observation}[coherent sums]\label{obs:coh}
 The null standard deviation of Lemma~\ref{lem:cellmom} does \emph{not} decay like
-$n_c^{-1/2}$. For fixed $v$, about $n_c/\log N$ of the terms of
-$u_c(v)$ are nonzero, each of size $\log N/\sqrt V$, so
-$u_c(v)\approx n_c/\sqrt V$ and
+$n_c^{-1/2}$. On average over the $v$ that carry weight, about
+$n_c/\log N$ of the terms of $u_c(v)$ are nonzero, each of size
+$\log N/\sqrt V$, so $u_c(v)\approx n_c/\sqrt V$ and
 \[
   \frac{Q_{cc}}{n_c^2}
   \;\approx\;\frac{\sum_v\mu^2(v)}{V}
   \;\asymp\;\frac{1}{\log N},
 \]
-independently of $n_c$; and by Note~\ref{note:threeterms} the variance
+independently of $n_c$. \emph{At a fixed $v$ this is false}: the band
+is even, so an even $v$ leaves $N-v$ even and $\Lambda(N-v)$ supported
+on powers of $2$ alone, and the cell's own primes impose further local
+obstructions. What the display uses is the sum over $v$, where those
+obstructions are the local densities being averaged; the heuristic is
+offered at that level and not at a single $v$. By
+Note~\ref{note:threeterms} the variance
 itself is a fixed fraction of this. So the standard error falls
 like $(\log N)^{-1/2}$ --- at the shallow cells, which is where
 Note~\ref{note:threeterms} says that fraction is constant. It
@@ -666,8 +702,10 @@ $p$-value, which ten draws cannot bound from above at all; the
 enumeration of Measurement~\ref{meas:Dc} below is the
 stronger instrument, and this one's limit is the sample's. The
 correlation between depth and $z_c$ is $-0.9106$ for the true
-labelling and $+0.0042$ on average under permutation. The null does
-not reproduce either true value, so by the second half of
+labelling and $+0.0042$ on average under permutation. None of the ten
+sampled permutations reproduced either true value --- which is a
+statement about the sample and not about the permutation law --- so by
+the second half of
 Lemma~\ref{lem:placebo} what is detected is the correspondence between
 cells and divisibility, not the cell sizes.
 
@@ -696,10 +734,12 @@ itself is narrower than the arithmetic it stands in for: an
 i.i.d. sign ensemble on this object measured $0.6455$ of the
 spread of a random \emph{multiplicative} one --- a model in the
 tradition of \cite{Wintner} --- at $512$ draws
-(\texttt{audit\_cn\_coin\_deep.py}).
+(\texttt{audit\_cn\_coin\_deep.py}). The run prints that ratio to five
+places and quotes no sampling uncertainty for it; at $512$ draws only
+the leading two figures are earned, and nothing below rests on more.
 That measurement rests on one band, one class family and one
 statistic, and its own registration says so: it is the second
-moment $E[G^2]$ on the classes cut by $3,5,7$ over
+moment $E[Z^2]$ --- the run writes $G$ for $Z$ --- on the classes cut by $3,5,7$ over
 $(2^{20},2^{21}]$, not the first-order $m_c-\overline m$ on the
 depths cut by $3,5,7,11,13$ over the octave read here. No map
 between the two is established anywhere, so the direction is
@@ -738,11 +778,13 @@ the variance under the sign null of Lemma~\ref{lem:cellmom} and
 $E_\pi$, $\mathrm{Var}_\pi$ for expectation and variance over $\pi$
 with the field $Z$ held fixed. Then
 \begin{equation}\label{eq:permfloor}
+  \tau_c^2\;:=\;
   E_\pi\,\mathrm{Var}_\varepsilon\bigl(m_{c^\pi}-\overline m\bigr)
   \;=\;\frac{n-n_c}{n_c\,(n-1)}\Bigl(1-\frac{Q_{aa}}{n^2}\Bigr),
 \end{equation}
 and, for the field as observed,
 \begin{equation}\label{eq:permnum}
+  \sigma_c^2\;:=\;
   \mathrm{Var}_\pi\bigl(m_{c^\pi}-\overline m\bigr)
   \;=\;\frac{n-n_c}{n_c\,(n-1)}\,s^2,
   \qquad
@@ -832,12 +874,12 @@ The exact floor of the arithmetic cell exceeds \eqref{eq:permfloor} by
 \[
 \begin{array}{r|cccccc}
  \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\\hline
- \mathrm{se}_c\big/\sqrt{\eqref{eq:permfloor}}
+ \mathrm{se}_c\big/\tau_c
    & 104.80 & 42.68 & 70.28 & 44.37 & 16.97 & 3.83
 \end{array}
 \]
 --- the factors quoted above, now read off a formula rather than off
-ten draws. Those ten draws stand to $\sqrt{\eqref{eq:permfloor}}$ in
+ten draws. Those ten draws stand to $\tau_c$ in
 the ratios $0.9968$, $1.0195$, $0.9991$, $1.0175$, $0.9992$,
 $1.0101$, and their variances to \eqref{eq:permfloor} itself in
 $0.9960$, $1.0420$, $0.9992$, $1.0379$, $0.9999$, $1.0216$; the
@@ -857,7 +899,7 @@ the same octave the true labelling's numerators sit at
  \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\\hline
  m_c-\overline m & +0.01325 & +0.05191 & -0.03432 & -0.58002
    & -1.99506 & -4.81664\\
- \bigl|m_c-\overline m\bigr|\big/\sqrt{\eqref{eq:permnum}}
+ \bigl|m_c-\overline m\bigr|\big/\sigma_c
    & 11.25 & 47.71 & 16.33 & 106.89 & 102.22 & 42.42
 \end{array}
 \]
@@ -930,8 +972,13 @@ the patterns and washes out. Depth is therefore a coarse index for
 $D_c$, and the floor follows the same coarse index
 (\texttt{lab\_cell\_singular.py}). The control is that run's own, and
 is an enumeration rather than a sample: over all $720$ permutations of
-the depth labels exactly one reaches $|r|=0.9805$, against a null
-median of $0.3475$ and a $95$th percentile of $0.8084$. The
+the depth labels exactly one reaches $|r|=0.9805$, against a median of
+$0.3475$ and a $95$th percentile of $0.8084$ over that set. Those are
+order statistics of the $720$ relabellings and not quantiles of a law:
+the depths are deterministic, no exchangeability of the labels is
+assumed, and what the enumeration measures is how much of the agreement
+is carried by which cell gets which number rather than by the shape of
+either row alone. The
 label permutation of Lemma~\ref{lem:placebo} does not supply it, since
 that one permutes the labels of $z_c$ and not of this pair.
 
@@ -1009,9 +1056,9 @@ quotient from its own $D_c$ and the variance row of
 \texttt{lab\_cell\_floor.txt}). So $D_c$ fixes the
 ratio's depth profile at a fixed scale and not its scale
 dependence, and the floor itself is not scale-invariant
-(Measurement~\ref{meas:exponent} fits it a nonzero
-exponent) while
-$D_c$ is: $D_c$ is therefore not all of what fixes the
+(Measurement~\ref{meas:exponent} fits it a nonzero exponent), while
+Proposition~\ref{prop:scaleinv} shows that $D_c$ is asymptotically
+scale-free: $D_c$ is therefore not all of what fixes the
 floor's size.
 \end{measurement}
 
@@ -1059,9 +1106,10 @@ modulo nothing.
 \label{prop:scaleinv}
 We establish an asymptotic statement and not an identity. Let
 $Q=3\cdot5\cdot7\cdot11\cdot13$, let $a$ be the even integers of an
-interval of length $B$, and put $\ell=B/2Q$, so that each residue
-class modulo $2Q$ meets $a$ in $\ell+O(1)$ terms. Let $R_c$ be a
-nonempty set of $m$ residue classes modulo $2Q$ and
+interval of length $B$, and put $\ell=B/2Q$, so that each of the $Q$
+\emph{even} residue classes modulo $2Q$ meets $a$ in $\ell+O(1)$ terms
+and each odd class meets it in none. Let $R_c$ be a
+nonempty set of $m$ even residue classes modulo $2Q$ and
 $c=\{N\in a:\ N\bmod 2Q\in R_c\}$ the cell they cut. Every depth cell
 is of this form --- depth fixes how many of the five primes divide
 $N$ and not the residues themselves, so $R_c$ is the set of classes
@@ -1092,9 +1140,14 @@ $B$ nor on where the interval sits. Then, with $D_c$ as in
 \end{equation}
 The implied constant in the first error term is absolute and those in
 the other two depend on $\eta$ alone; in particular none of them
-depends on the cell $c$, on $m$, on $n_c$, on $B$, or on the position
-of the interval, and the parameter set $\{3,5,7,11,13\}$ enters only
-through $Q$, fixed throughout. The $\eta$-dependence is not uniform as
+depends on $B$ or on the position of the interval, and the parameter
+set $\{3,5,7,11,13\}$ enters only through $Q$, fixed throughout. The
+first constant is absolute in the sense of being bounded over the cells
+and not of being one number for all of them: the rounding residue
+isolated in the proof carries a constant that varies by two orders of
+magnitude between depth~$0$ and depth~$4$, and it is the finiteness of
+the field --- $Q$ fixed, hence finitely many cells --- that makes the
+supremum a constant at all. Nothing below needs the stronger reading. The $\eta$-dependence is not uniform as
 $\eta\to0$ --- the constant comes from the Euler products of Rankin's
 bound in the proof and blows up there --- so $\eta$ is fixed in
 advance and the statement is one about each fixed $\eta$ separately.
@@ -1172,15 +1225,47 @@ $N$ inside a band of length $B$.
 
 The weight with which $h$ enters a pair average is not a function of
 $|h|$ alone. For $E_{\mathrm{same},c}$ it counts the $N\in c$ with
-$N-h\in c$, and membership of $c$ is fixed by $N\bmod Q$, so the count
-reads $h\bmod Q$ as well: if $3\mid h$ the shift preserves divisibility
-by $3$ and otherwise it does not. What is true, and what the argument
-uses, is that the weight factors --- a function of $h\bmod Q$, constant
-on each residue class, times an envelope in $|h|$. That envelope has
-total variation $O(1/B)$, and Lemma~\ref{lem:envtv} applied to it gives
-$P(d\mid h)=1/d+O(1/B)$ uniformly in $d\le B$. The mixture over
-classes is what the pattern weights supply. Every cell's pair law is such a
-mixture, whence
+$N-h\in c$, and membership of $c$ is fixed by $N\bmod 2Q$, so the count
+reads $h\bmod 2Q$ as well: if $3\mid h$ the shift preserves divisibility
+by $3$ and otherwise it does not. It does not, however, factor. Write
+$f_c(h)=\#\bigl(R_c\cap(R_c+h)\bigr)$ for the number of classes that a
+shift by $h$ keeps inside $R_c$. The $N$ of one such class that are
+admissible fill an interval of length $B-|h|$, which the class meets
+$(B-|h|)/2Q$ times up to the rounding at its two ends, so
+\[
+  W_c(h)\;=\;\#\{N\in c:\ N-h\in c\}
+  \;=\;f_c(h)\,\frac{B-|h|}{2Q}\;+\;\rho_c(h),
+  \qquad
+  |\rho_c(h)|\;\le\;f_c(h)\;\le\;m .
+\]
+The residue $\rho_c$ is that rounding summed over the surviving classes.
+It is additive rather than a further factor, and it is bounded
+independently of $B$.
+
+The unweighted ratio is $O(1/\ell)$, but the pair average carries
+$\rho_c(h)$ against $T(h)$, and $T$ is not uniformly bounded. The
+weighted residue is instead absorbed by the already displayed
+$O_\eta(B^{\eta-1})$ term. Indeed
+\[
+  T(h)=\sum_{d\mid h}g(d)\leq\tau(|h|),\qquad
+  \sum_{0<|h|<B}|\rho_c(h)|T(h)
+  \leq m\sum_{0<|h|<B}\tau(|h|)=O_\eta(mB^{1+\eta}).
+\]
+After division by the $m^2\ell^2$ ordered pairs of a cell, this is
+$O_\eta(B^{\eta-1})$ uniformly in the finitely many cells (with $Q$
+fixed). Thus no unweighted estimate is used after multiplication by
+$T$.
+
+What the argument uses is therefore the leading product, with the
+weighted $\rho_c$ contribution carried into $O_\eta(B^{\eta-1})$. Its
+second factor is an envelope in $|h|$:
+normalised to sum $1$ it is $(B-|h|)/Z$ with $Z=\sum_h(B-|h|)$, so
+consecutive values differ by $2/Z$ and there are $O(B)$ of those steps,
+whence total variation $O(1/B)$ --- with constant $4$ when $h$ runs over
+the even integers, since then $Z=B^2/2+O(B)$. Lemma~\ref{lem:envtv}
+applied to it gives $P(d\mid h)=1/d+O(1/B)$ uniformly in $d\le B$. The
+mixture over classes is what the pattern weights supply. Every cell's
+pair law is such a mixture, whence
 \[
   E[\SS_2]=2C_2\,E[A]\prod_{p>13}\Bigl(1+\frac1{p(p-2)}\Bigr)
   \;+\;\mathcal E,
@@ -1189,9 +1274,18 @@ mixture, whence
     +O_\eta\bigl(B^{\eta-1}\bigr)\ \ (\eta>0).
 \]
 
-All three parts of $\mathcal E$ have to be said. None of them depends
-on the cell: $\ell=B/2Q$ is a band parameter, the same at depth~$0$ and
-at depth~$5$. A cell-dependent bound would have to be an $O(1/n_c)$,
+The three parts of $\mathcal E$ are derived in the paragraphs that
+follow: the first from counting a cell against its residue classes, the
+second by summing that error against $g$, and the third from the weighted
+rounding residue and the two truncations of the divisor sum. They are
+stated here and justified there rather than the other way round, so that
+the shape of the answer is visible before the bookkeeping.
+
+All three parts of $\mathcal E$ have to be said. None of their
+\emph{rates} depends on the cell: $\ell=B/2Q$ is a band parameter, the
+same at depth~$0$ and at depth~$5$. The constants in front of them are
+the separate question answered above for the first --- bounded over the
+cells because $Q$ is fixed, and not one number for all of them. A cell-dependent bound would have to be an $O(1/n_c)$,
 and the counting below does not support one.
 At the level of the displayed powers, the divisor-sampling bound is
 $B^{\eta}$ times the first, while
@@ -1205,13 +1299,16 @@ $2Q$, so the count that served the envelope serves the cell as well ---
 taken with the cell's own parameters. A depth cell is $m$ classes, each
 meeting the band in $\ell=B/2Q$ terms, with $m\ell=n_c$; only the
 deepest cell of this field is a single class. Over one pair of classes
-the pairs with $d\mid h$ number $\ell^2/d+O(\ell)$, so over the $m^2$
+the pairs with $d\mid h$ number $\ell^2/d+O(\ell)$ --- the count is a
+tent summed along a progression, and its uniformity in $d$ is the
+paragraph on uniformity below --- so over the $m^2$
 pairs of classes the error is $O(m^2\ell)=O(n_c^2/\ell)$ and the
 proportion departs from $1/d$ by $O(1/\ell)=O(Q/B)$ --- uniformly in
 $d$, with no gain from the size of $d$. Summed against $g$ that is
 $\ell^{-1}\sum_{d\le B}g(d)$, which the Rankin bound below puts at
-$O_\eta(B^{\eta}/\ell)$; $\ell$ is a fixed multiple of $B$, so this is
-$O_\eta(B^{\eta-1})$ again.
+$O_\eta(B^{\eta}/\ell)$; $\ell$ is a fixed fraction of $B$ --- namely
+$B/2Q$ with $Q$ fixed, so that $B^{\eta}/\ell=2Q\,B^{\eta-1}$ as
+recorded above --- so this is $O_\eta(B^{\eta-1})$ again.
 
 The counting gives $O(1/\ell)$ and not $O(1/n_c)$, and the two differ
 by the factor $m$, which is large at every cell but the deepest. The
@@ -1333,10 +1430,13 @@ measured value}, depth~$0$ sits at $2.0$, and the sixth is depth~$5$ at
 $260.8$. Both of the last two are accounted for below and neither by a
 fitted quantity. Over all $720$ relabellings of the depth
 labels the count of cells agreeing within two sampling errors reaches
-the observed four twice, $p=2/720$; the six predictions span a factor
-of $70$, so a wrong pairing is refused by size alone, and what the null
-shows is that the agreement is carried by which cell gets which
-number.
+the observed four in two of them --- a fraction $2/720$ of the
+enumerated set, read as in Measurement~\ref{meas:Dc}'s control and not
+as a $p$-value under a law that produced the depths; the six
+predictions span a factor
+of $70$, so a wrong pairing is refused by size alone, and what the
+enumeration shows is that the agreement is carried by which cell gets
+which number.
 
 \textbf{Depth~$5$'s miss is not a residual but a computable quantity,
 and computing it is what the cell's structure allows.} That cell is a
@@ -1366,9 +1466,10 @@ of measured values, and the cited run prints both readings rather than
 one. What the comparison supports is the order of the effect, not an
 agreement to the second digit. \emph{So the largest of the six spreads is not
 a failure of scale invariance: it is the proposition's own error term,
-computed.} Both figures were predicted before this computation existed
-by an independent reading of the construction, which put the residual
-at $1.35$ per cent and claimed only the order for the spread.
+computed.} An independent reading of the construction reaches both
+figures without this computation, putting the residual at $1.35$ per
+cent and claiming only the order for the spread. The packet does not
+assert which was carried out first.
 
 The constant cuts the singular series at $13$, and an off-by-one in
 which primes are absorbed into $C_2$ would move it by $1/143$, or
@@ -1449,20 +1550,20 @@ quantity the claim holds; read as registered it does not, and it is
 recorded refuted.
 \end{measurement}
 
-\begin{measurement}[a second cell shape, predicted first]\label{meas:secondcell}
+\begin{measurement}[a second cell shape, computed from residues alone]\label{meas:secondcell}
 Everything above is a statement about one partition. The computation
 of Measurement~\ref{meas:maincoef} runs for any set of odd primes, so a
-second partition can be \emph{predicted before it is measured}, which
-the first can no longer be given.
+second partition can be \emph{computed without reference to its own
+measurement}, which the first can no longer be given.
 
 Cells indexed by depth over $S=(3,5,7)$, so $Q'=105$ and
 $\ell=B/2Q'$ is $9524$ at this octave against the first partition's
 $66.6$. The constant is $K=2\prod_{p\in S}p(p-2)/(p-1)^2=175/128$,
 exactly rational, and the predictions
-$K\,E_{\mathrm{same},c}[A_S]-2$ were computed and committed
-(\texttt{lab\_secondcell\_predict.py}) before any measurement of this
-partition existed. The measurement (\texttt{lab\_secondcell2.py},
-registered in \texttt{lab\_secondcell2\_predict.py}) is exact: a cell
+$K\,E_{\mathrm{same},c}[A_S]-2$ are computed from the residues alone
+(\texttt{lab\_secondcell\_predict.py}), taking no input from the
+measured partition. The measurement (\texttt{lab\_secondcell2.py},
+registered in \texttt{lab\_secondcell2\_predict.py}) is exhaustive: a cell
 is a set of
 positions in the band, so the pair average of $\SS_2$ over it is one
 autocorrelation of the cell indicator, with no sampling, no seed and no
@@ -1492,16 +1593,15 @@ gates, and the fitted exponent stays inside the spread the third rule
 allowed. \textbf{So the computation transfers to a cell shape it was
 not built on.} Depth~$3$ is a
 consistency check and not a score: there the prediction and the
-measurement are the same finite sum, as the registration recorded
-before the run.
+measurement are the same finite sum, as the registration records.
 
 \emph{One} rule was registered against the evidence then available.
 The sampled thirty-draw mean at depth~$2$ was $0.825796$, above T1's
 upper bound of $0.825521$ by about $1.2$ standard errors of that mean,
-and the sealed file records both that lean and that it was not
+and the registration file records both that lean and that it was not
 decisive. The exhaustive finite-sum value is inside the interval. So that is one pass
 against a stated lean --- not two, and not against a prediction of
-failure: the sealed file says ``leans, not decisive'' of the first and
+failure: the registration file says ``leans, not decisive'' of the first and
 ``may fail'' of the second, and the second is void rather than passed.
 
 \textbf{The correction the prediction carries should not be modelled at
@@ -1638,9 +1738,11 @@ question belongs before a rule is registered, not after it is scored.
 
 Of the proof's errors it is the cell-sized one that is worth reading
 against the measurement, and this is where the sizes belong. The
-divisor-sampling term does \emph{not} vary with the depth: it is
-$O_\eta(B^{\eta}/\ell)$ with $\ell=B/2Q$, one bound for every cell of
-an octave.
+divisor-sampling term's \emph{rate} does not vary with the depth: it is
+$O_\eta(B^{\eta}/\ell)$ with $\ell=B/2Q$, a band parameter, so one bound
+covers every cell of an octave. That the bound is uniform does not make
+the term itself constant across cells; what is fixed is the rate, and
+the constant in front of it is a separate question this does not settle.
 
 \textbf{No percentage can be read off it.} The term carries an implied
 constant that the proof does not name, and the per-$d$ error $O(1/\ell)$
@@ -1657,8 +1759,9 @@ What survives is the comparison's direction, and it survives a
 fortiori. The measurement caps the relative spread of $D_c$ across the
 three octaves at two per cent and finds spreads from $0.0001$ at
 depth~$0$ to $0.0128$ at depth~$5$; the proof's bound on the error at
-each octave is larger than that and unquantified. \textbf{So the
-proof's bound is weaker than the measurement at every cell.} It does
+each octave is unquantified, so it excludes nothing the measurement
+does not already exclude. \textbf{The proof's bound is weaker than the
+measurement at every cell.} It does
 not resolve what the exact spreads do, and nothing here should be read
 off it about which cell drifts and which does not. In particular it
 cannot be read against the sampled spreads to conclude that whatever
@@ -1767,7 +1870,7 @@ it does (\texttt{lab\_cell\_singular.py},
 Proposition~\ref{prop:scaleinv} settles one thing and deliberately not
 another. Whatever produces the decay of the effect with $N$, it is not
 the arithmetic excess that produces the floor's size, since that
-excess does not decay at all. The decay exponent of the effect itself
+excess does not decay to zero asymptotically. The decay exponent of the effect itself
 is not determined here. At the three shallowest depths no exponent is
 fitted, and the amplitude there is not uniformly below the floor
 across the range: at depth~$1$ it falls monotonically from $+2.71$ at
@@ -1781,12 +1884,14 @@ second.
 \section{Summary}
 
 \begin{itemize}
+% CLAIM:C1
 \item Lemma~\ref{lem:cellmom}: the fluctuation of any cell mean under
 the sign null is exactly
 $Q_{cc}/n_c^2-2Q_{ca}/(n_cn)+Q_{aa}/n^2$; all three terms are needed,
 and they are computed from explicit finite correlations and weighted
 inner products.
 
+% CLAIM:C5
 \item Observation~\ref{obs:coh} and Note~\ref{note:notanerrorbar}:
 over the eight measured octaves that quantity is consistent with
 $(\log N)^{-1/2}$ at the shallow cells, where
@@ -1800,6 +1905,7 @@ by a factor $9.3$ across a factor $128$ in $N$, and absolutely by
 factors of $7.3$ to $158$ at the top octave, the largest of them at the
 shallowest cell.
 
+% CLAIM:C6,C2
 \item Lemma~\ref{lem:placebo} and Measurement~\ref{meas:placebo}:
 neither the cell effect nor the floor is reproduced under label
 permutation, so both read the correspondence and not the cell sizes
@@ -1810,6 +1916,7 @@ to is the count-based bar (Lemma~\ref{lem:permfloor}), so the two
 floors are two questions and not a bracket; $z_c$ is quoted against
 the sign null throughout.
 
+% CLAIM:C7
 \item Proposition~\ref{prop:scaleinv}: what is established is an
 asymptotic statement, not an identity. $D_c$ equals a cell-determined
 constant up to $O(1/\ell)$ and $O_\eta(B^{\eta-1})$, both of which
@@ -1822,11 +1929,12 @@ that has had neither a machine check nor a reading by a subject
 expert, and its hardest step is named as such in its own proof.
 Two of the six depths are refused by the registered rules, and both
 refusals belong to the sampling estimator rather than to $D_c$: the
-same measurement computes $D_c$ exactly, by one autocorrelation per
+same measurement computes $D_c$ exhaustively, by one autocorrelation per
 cell, and done that way all six depths sit inside both registered
 caps, the shallow four by three orders. The verdicts stand as scored,
 on the estimator the run registered; Supplement~S1 gives them. It is the proposition's own error term, not a failure of it.
 
+% CLAIM:C3
 \item Measurement~\ref{meas:maincoef}: that quantity's main term is a
 finite rational over the residue classes the cells are unions of, it
 is nonzero at every depth --- which is the hypothesis
@@ -1834,21 +1942,25 @@ Proposition~\ref{prop:scaleinv} needs and does not otherwise have ---
 and multiplied by a constant with no fitted parameter it reproduces
 the measured profile, four of six inside two sampling errors across
 cells spanning a factor of $68$. \textbf{It is the only quantity here
-predicted from the arithmetic alone}: Lemma~\ref{lem:cellmom} also
+computed from the arithmetic alone}: Lemma~\ref{lem:cellmom} also
 gives a size in closed form, but from the field's own values, and this
 takes no input from the field at all. It is post hoc in timing. A registered rule of it was refuted: it named the worst
 relative deviation at the wrong cell, having been written on the
 unstandardised statistic while the standardisation was printed beside
 it.
 
-\item The mechanism --- coherence of $u_c(v)$ across the cell,
-\emph{together with} a cell correlated with the arithmetic that
-coherence comes from --- is generic. Sharing the arithmetic input is
+% CLAIM:C6,C2
+\item Two things are needed for the floor, and only the second is what
+the placebo removes: coherence of $u_c(v)$ across the cell, and a cell
+correlated with the arithmetic that coherence comes from. Nothing here
+shows that pair is special to this field, and nothing here shows it is
+not. Sharing the arithmetic input is
 not by itself enough: Lemma~\ref{lem:permfloor} gives a random cell of
 the same band a floor whose permutation average is exactly the
 count-based one, and that cell shares the input.
 \end{itemize}
 
+% CLAIM:none
 All preregistered checks, including the failed ones and the one
 recorded void, are reported with their verdicts in Supplement~S1
 (Appendix~\ref{sec:repro}). Several numerical patterns conjectured in
@@ -1928,8 +2040,9 @@ what by computation, and what by neither.
 The code behind every figure printed here, the output it produced, and
 the Lean~4 development are openly available at
 \texttt{https://github.com/soke91/arithmetic-convolution-fields}, in
-the directory \texttt{P4-coherent-cell-floor/}. The figures quoted are
-those of the release named in Appendix~\ref{sec:repro}. No data derived
+the directory \texttt{P4-coherent-cell-floor-r1/}. The figures quoted
+are pinned by the SHA-256 list in that directory, as
+Appendix~\ref{sec:repro} sets out. No data derived
 from human or animal subjects were used; every quantity here is
 computed from the integers.
 
@@ -1995,12 +2108,20 @@ The code, the output it produced, and the Lean development are at
 \texttt{https://github.com/soke91/arithmetic-convolution-fields}
 \end{center}
 
-\noindent in the directory \texttt{P4-coherent-cell-floor/}. That
-address is mutable. The code and output every figure here is read from
-are those of release \texttt{v1.0.1}, commit \texttt{b2f365d}, and a
-number checked against the branch head may have been recomputed since.
-The pin is on \texttt{code/} and \texttt{results/} and not on this
-document, which cannot cite a commit that contains it. Each entry
+\noindent in the directory \texttt{P4-coherent-cell-floor-r1/}, which
+holds this revision. The directory \texttt{P4-coherent-cell-floor/}
+beside it holds the version sent to the journal and is frozen, so a
+reader comparing the two is reading a revision against what was
+actually submitted rather than against a working copy. That address is
+mutable, and this revision is not in a tagged release: the tagged
+\texttt{v1.0.1}, commit \texttt{b2f365d}, predates the revision
+directory, and its second-cell scripts and outputs are not the ones
+read here. What pins the bytes travels with them instead ---
+\texttt{PACKET.json} in that directory carries a SHA-256 for each of
+the thirty files in \texttt{code/} and \texttt{results/}, so a figure
+can be checked against the exact source that produced it without
+resolving a tag. The pin is on those and not on this document, which
+cannot cite a hash that covers it. Each entry
 in the table below is run as
 \texttt{python code/<script>.py} from that directory, and each writes
 the file of the same name in \texttt{results/}. The scripts import only
@@ -2029,7 +2150,7 @@ behaviour and not a failure: a run whose own preregistered rule was
 refuted says so in its exit code as well as in its output, and the
 refutations are reported in Supplement~S1.
 
-The Lean development is in \texttt{P4-coherent-cell-floor/lean/}, with
+The Lean development is in \texttt{P4-coherent-cell-floor-r1/lean/}, with
 Mathlib pinned in \texttt{lake-manifest.json} and the toolchain in
 \texttt{lean-toolchain}; \texttt{lake build} reproduces
 \texttt{axioms.txt}, which is the axiom report quoted above.
@@ -2097,10 +2218,10 @@ and its convergence, is not.
 \emph{Checked by computation.} Every figure quoted is produced by a
 named run in the accompanying code, and a check in the build refuses a
 figure that no cited run prints. Every registered rule is reported with
-its verdict, including the thirteen the runs did not meet and the one
-recorded void. The predictions of Measurement~\ref{meas:secondcell} were
-committed to the repository before the measurement that scores them
-existed.
+its verdict, including the thirteen the ten named runs did not meet, the
+fourteenth recorded in a separate output, and the one recorded void. The packet preserves the second-cell prediction and
+measurement artifacts, but does not make a claim about their historical
+ordering.
 
 \subsection*{Supplement S1: what rests on what}
 
@@ -2199,7 +2320,9 @@ a different statistic. The control is not claimed for the others, and
 what the evidence files say is what stands.
 \subsection*{Supplement S1: the registered rules and their verdicts}
 
-Six of the ten runs record a rule their own output did not meet. The
+Six of the ten named runs record a rule their own output did not meet.
+The separately retained first second-cell output also records P1 as
+refuted. The
 unit of the count is the pair (run, label), because the labels are
 local to their files and repeat across them: \texttt{N1} names one
 rule in \texttt{lab\_cellmom\_montecarlo} and a different one in
@@ -2209,7 +2332,7 @@ different rules in \texttt{lab\_secondcell\_predict} and
 carry a verdict --- twenty-four hold, thirteen refuted, one void ---
 and one further label, W3, sits under the same registration heading as
 W1, W2 and W4 and is reported without a verdict, so thirty-nine labels
-are registered in all. The thirteen are named here because a
+are registered in all. The fourteen are named here because a
 reader who does not open the files would otherwise take the runs for
 clean, and because in every case what the rule asked for is not what
 the statement above says. The seventh,
@@ -2277,7 +2400,7 @@ disagreement. F1 and F2 hold. This run is cited here for the width
 ratio alone, and its two refutations are the reason that ratio is
 worth quoting.
 
-Seven of the thirteen refuted a prediction about a row this paper
+Seven of the fourteen concern a prediction about a row this paper
 prints --- its shape across depths (C3, M1, L4, W2) or its
 constancy across octaves (C2, M2, M4) --- and the statements
 above report what the rows do. Two more, F3 and F4, are about the
@@ -2286,9 +2409,12 @@ named above. A tenth, N3, registered which of six cells carries the
 worst deviation and named depth~$5$; its own file records the
 refutation together with the reason, that the rule was registered on
 an unstandardised quantity and so asked about a different question
-from the one it appears to ask. Nothing above rests on it. The other
-three
-did more than that, and are listed here because the count alone would
+from the one it appears to ask. P1 is the omitted fourteenth: the first
+second-cell run scored one sampled draw at three depths, and its
+depth-$2$ draw missed the registered three-standard-error cap. Its result
+file records it as refuted; it is the separate output noted above, not
+one of the ten named runs. Nothing above rests on that sampled rule.
+The other three did more than that, and are listed here because the count alone would
 hide them. W1 registered that the pair $(5.8,\,160)$ would be
 reproduced under one of two readings; it was not, and the pair this
 paper prints, in Note~\ref{note:notanerrorbar} and in the Summary, is

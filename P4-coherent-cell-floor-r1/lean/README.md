@@ -1,3 +1,12 @@
+<!--
+  This directory is the canonical source for the `lean/` copy inside the
+  P1, P2 and P4 packets: `packets.py build` mirrors every file here into all
+  three and the gate pins their SHA-256. Editing any file in `lean/` --- this
+  README included, boilerplate though it looks --- turns `P1` red on three
+  packets at once until `packets.py build` is run. Edit here, never in a
+  packet's copy, and rebuild in the same change.
+-->
+
 # goldbach-lean
 
 ## GitHub configuration
