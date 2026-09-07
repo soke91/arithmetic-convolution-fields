@@ -1,33 +1,24 @@
-% =====================================================================
-%  P4.  Cell-mean fluctuations: exact Rademacher-null variances for cell
-%       means of arithmetic fields, with an application to
-%       sum_{n<N} Lambda(n) mu(N-n).
-%
-%  Compiles standalone with pdflatex, run twice.
-% =====================================================================
+% Condensed submission version of P4-coherent-cell-floor.tex
 \documentclass[11pt,a4paper]{article}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage[margin=1in]{geometry}
-\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
-\newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \theoremstyle{definition}
-\newtheorem{observation}[theorem]{Observation}
 \newtheorem{measurement}[theorem]{Measurement}
 \theoremstyle{remark}
-\newtheorem{note}[theorem]{Note}
+\newtheorem{remark}[theorem]{Remark}
 
 \renewcommand{\SS}{\mathfrak{S}}
 \newcommand{\AAA}{\mathfrak{A}}
-
-% typographic slack: let TeX stretch a line rather than run into the margin
+\newcommand{\widehatD}{\widehat D}
 \emergencystretch=3em
 
 \title{Cell-mean fluctuations in an arithmetic convolution field:\\
@@ -40,2392 +31,906 @@ exact Rademacher-null variances and a permutation control}
 \maketitle
 
 \begin{abstract}
-% CLAIM:none
-Let $Z(N)=C(N)/\sqrt{V(N)}$ with
-$C(N)=\sum_{n<N}\Lambda(n)\mu(N-n)$, and partition a band of even $N$
-into cells indexed by how many of $3,5,7,11,13$ divide $N$.
-% CLAIM:C5
-Whether a
-cell mean departs from the band mean needs a reference scale, and the
-count-based one misses it by a factor growing with the band.
-
-% CLAIM:C1
-Under the null of independent Rademacher signs for the $\mu(v)$ on
-their support, the variance of any cell contrast is a
-doubly centred quadratic form in the covariance kernel and reduces to
-three computable terms built from finite correlations and weighted
-inner products: the exact null scale is written down, not estimated.
-% CLAIM:C2
-For a uniformly random same-size cell, the
-permutation average of the sign-null variance equals the
-finite-population formula exactly; the divisibility cells do not.
-% CLAIM:C5,C6
-Measured over eight octaves to $1.6\cdot10^{7}$, the exact null
-standard deviation shrinks by $1.21$ where a count predicts $11.3$,
-and none of ten sampled label permutations preserving every cell size
-reproduced the floor; their collapse factors range from $3.8$ to $105$.
-
-% CLAIM:C4
-For its size we offer a descriptor: the excess $D_c$ of the shift's
-singular series over same-cell pairs, whose main term is rational with
-no fitted parameter.
-% CLAIM:C3
-For a second, differently shaped partition, the exhaustive measurement
-at the three scored depths falls inside the interval computed from the
-residue main term. The fourth
-depth is an algebraic consistency check, not a scored interval.
-% CLAIM:C4
-At this band, $D_c$ tracks the null floor with correlation $0.9805$
-across six cells; this post hoc association was not transferred.
-% CLAIM:none
-Every
-registered rule is reported with its verdict, refuted ones included.
-% CLAIM:none
-No Gaussian or limiting distributional law for $Z$ and no Goldbach consequence is asserted,
-and the decay of the effect with $N$ is not determined here.
+Let
+\[
+ C(N)=\sum_{n<N}\Lambda(n)\mu(N-n),\qquad
+ Z(N)=C(N)/\sqrt{V(N)},
+\]
+where $V(N)$ is the conditional variance obtained by replacing the
+nonzero values of $\mu$ by independent Rademacher signs.  We partition
+a band of even $N$ according to how many of $3,5,7,11,13$ divide $N$.
+For every cell contrast, its Rademacher-null variance is an exactly
+computable, doubly centred quadratic form.  Its standard deviation does
+not follow the usual inverse-square-root cell-count scale: over eight
+octaves, at the three shallowest cells, it shrinks by a factor about
+$1.21$, whereas count scaling predicts $11.3$.  In contrast, averaging
+the sign-null variance over uniformly random same-size cells gives the
+finite-population formula exactly.  In one band, the arithmetic-cell
+floors exceed this permutation-averaged scale by factors from $3.8$ to
+$105$.  A finite residue-class quantity derived from the pair singular
+series captures the floor's profile across cells.  We prove that this
+quantity converges to a scale-free constant and compute its main term in
+exact rational arithmetic.  Computations for a second partition and a
+sweep over nineteen cell shapes provide further consistency checks.  No
+limiting law for $Z$, decay rate for the observed contrasts, or Goldbach
+consequence is asserted.
 \end{abstract}
 
-% =====================================================================
+\medskip
+\noindent\textbf{Keywords:}
+arithmetic convolution; M\"obius function; Rademacher model;
+permutation inference; singular series; experimental number theory.
+
+\medskip
+\noindent\textbf{2020 Mathematics Subject Classification:}
+Primary 11N36; Secondary 11N37, 11Y70, 60G50.
+
 \section{Introduction}
 
-\subsection{The setting}
-
-Let $N$ range over the even integers of a band, let
+For even $N$, define
 \begin{equation}\label{eq:field}
-  C(N)=\sum_{n<N}\Lambda(n)\mu(N-n),
-  \qquad
-  V(N)=\sum_{v<N}\mu^2(v)\Lambda(N-v)^2,
-  \qquad
-  Z(N)=\frac{C(N)}{\sqrt{V(N)}},
+ C(N)=\sum_{n<N}\Lambda(n)\mu(N-n),\qquad
+ V(N)=\sum_{v<N}\mu^2(v)\Lambda(N-v)^2,
+ \qquad Z(N)=\frac{C(N)}{\sqrt{V(N)}}.
 \end{equation}
-so that $Z$ has second moment $1$ under the null in which the $\mu(v)$
-on their own support are replaced by independent signs; the exact
-asymptotic $V(N)\sim\prod_{q\nmid N}(1-1/(q(q-1)))\,N\log N$ is
-Proposition~\ref{prop:V} in Appendix~\ref{sec:scale} and is quoted for
-scale only: no computation below uses it, every one dividing by $V(N)$
-as computed. The heuristic of Observation~\ref{obs:coh} does read the
-scale $N\log N$ off it, and nothing else here does. The field \eqref{eq:field} is the scalar to
-which the Huang--Li reduction of binary Goldbach reduces: their
-Theorem~1, with Corollary~1 drawing the Goldbach conclusion from it,
-turns on the equidistribution of $\Lambda(n)\mu(N-n)$ in arithmetic
-progressions \cite[Thm.~1, Cor.~1]{HL}. That is imported, not derived
-here, and used for nothing below, since
-\S\ref{sec:notclaimed} refuses the Goldbach consequence outright.
-Partition the
-band into \emph{cells} indexed by \emph{depth} $d$, the number of
-$3,5,7,11,13$ dividing $N$. The question is whether
-$m_c-\overline m$, the difference between the cell mean of $Z$ and the
-band mean, is larger than the sign null admits. \emph{Chance} is not
-the word for it and is not used below: that null replaces $\mu$ on its
-own support by independent signs and so discards its multiplicativity,
-and Note~\ref{note:floorsignal} reports an ensemble that keeps the
-multiplicativity as the wider of the two, with no transfer between them
-established here. Every standardised figure below is against the sign
-null.
+The field is related to a reduction used by Huang and Li in their work
+on binary Goldbach \cite[Thm.~1, Cor.~1]{HL}; that connection supplies
+motivation only.  Nothing below bounds $C(N)$ or yields a Goldbach
+consequence.
 
-Answering it requires a reference scale for $m_c-\overline m$. The
-reflex is $\mathrm{sd}(Z)/\sqrt{n_c}$ with $n_c$ the cell count. That
-the reflex fails for correlated observations is standard --- the
-variance of a weighted mean is $w^{\top}\Sigma w$, and the ratio to
-the independent formula is the design effect \cite{Kish}. What is not
-standard, and is what this paper supplies, is that for the field
-\eqref{eq:field} the covariance $\Sigma$ is \emph{exactly computable}
-under a sign null; that cells cut by divisibility align with it; that
-for a uniformly random same-size cell, the permutation average of the
-sign-null variance equals the finite-population formula exactly; and
-that the size of the effect is
-predicted by an excess of the shift's singular series over same-cell
-pairs.
-
-\subsection{Results}
-
-\begin{itemize}
-% CLAIM:C1
-\item Lemma~\ref{lem:cellmom} gives $\mathrm{Var}(m_c-\overline m)$
-exactly under the sign null, as three explicit terms built from finite
-correlations and weighted inner products.
-% CLAIM:C5
-\item Observation~\ref{obs:coh} takes up its decay: over the eight
-measured octaves the shallow cells are consistent with
-$(\log N)^{-1/2}$ and not with $n_c^{-1/2}$. The first is a heuristic
-read against a finite range, not a proved rate; what is established over
-the measured range is that count-based scaling does not describe the
-arithmetic-cell floor.
-% CLAIM:C6
-\item Lemma~\ref{lem:placebo} is the control that separates a
-property of the cell \emph{sizes} from a property of the
-correspondence between cells and arithmetic.
-% CLAIM:C6
-\item Measurement~\ref{meas:placebo} runs it, and finds that neither the
-cell effect nor the arithmetic-cell floor is reproduced under the
-placebo; the floor itself collapses, so it is a second measurement of
-the same correspondence.
-% CLAIM:C7,C4
-\item Proposition~\ref{prop:scaleinv} shows the quantity offered for
-the floor's size is asymptotically scale-free: as the band grows it
-converges to a constant fixed by the cell's residue classes, so its
-one-step exponent tends to zero wherever that constant is nonzero.
-% CLAIM:C3,C7
-\item Measurement~\ref{meas:maincoef} computes that quantity's main
-term in exact rational arithmetic and finds it reproduces the measured
-profile at all six depths with no fitted parameter --- which both
-supplies the hypothesis the proposition needs (that the main term does
-not vanish) and turns the proposition from a statement that the size
-does not drift into one that names it.
-% CLAIM:C3
-\item Measurement~\ref{meas:secondcell} carries the same computation to
-a \emph{second} cell shape, computing its profile from the residues alone
-and then evaluating the finite pair average exhaustively. The computed
-intervals contain the exact values where the rules could
-score them, and the small
-correction it carries decomposes with no free parameter into a divisor
-deficit and a covariance --- the second of which is exactly zero at the
-only cell where the first was ever calibrated.
-\end{itemize}
-
-\subsection{What is not claimed}\label{sec:notclaimed}
-
-\begin{itemize}
-\item \textbf{No decay exponent for the effect is quoted, and the
-shallow depths are not uniformly quiet.} That the amplitude at the
-three shallowest depths clears nothing at any measured scale cannot be
-read off two octaves, and the two whose per-depth amplitudes were
-printed are not the quietest two: one is the smallest of the eight and
-the other the third smallest.
-The run behind Measurement~\ref{meas:notzero} prints all eight, and at
-depth~$1$ the amplitude runs
+Fix a band $a$ of even integers and partition it into cells indexed by
+the \emph{depth} $d$, the number of primes in
 \[
-  +2.71,\ +2.18,\ +1.96,\ +1.72,\ +1.34,\ +1.11,\ +0.87,\ +0.69
+ \{3,5,7,11,13\}
 \]
-from $(6.25\cdot10^4,1.25\cdot10^5]$ up to
-$(8\cdot10^6,1.6\cdot10^7]$ --- the value at the smallest octave
-exceeding the $-1.55$ that depth~$3$ carries at the largest, where the
-paper calls the deep cells the signal. So no threshold separating
-``clears'' from ``does not'' is asserted at the shallow depths. What
-is asserted is the shape: at each of depths $0$, $1$ and $2$ the
-amplitude falls monotonically across all eight octaves, and no
-exponent is fitted to that fall. Whether the exponents differ by depth
-is not decided by the accessible range.
-\item \textbf{No Gaussian or limiting distributional law for $Z$ is asserted.}
-\item \textbf{No consequence for the Goldbach problem.} Nothing
-measured here bounds $C(N)$ in either direction. No sweep over
-parameterisations is carried out, and none is claimed.
-\item \textbf{That $D_c$ predicts the floor's size is measured, not
-derived.} The exact doubly centred singular-series analogue of the
-variance is $B_c$, defined in \S\ref{sec:size}; $D_c$ itself is the
-two-term descriptor in \eqref{eq:Dc}. Measurement~\ref{meas:Dc}
-shows that $D_c$ and $B_c$ are close in the measured band because the
-cross average of the singular series is close to its band average. A
-constant ratio between the variance and $B_c$ would follow if the two
-kernels differed across the band by a factor the centring leaves alone.
-No such statement is proved here. What is measured is the
-ratio: its full width is $25.4\%$ of its mean, or $19.8\%$ once
-$\mathrm{se}_c^2$ is matched to $D_c$'s convention term by term ---
-matched that way the row is still monotone from depth~$1$ on, with a
-last step nine times smaller than the printed one --- while
-$D_c$ moves by a factor $68$, and the correlation $0.9805$ carries an exact enumeration over
-all $720$ relabellings as its control. That is one octave read across depths.
-Read across scale instead, the same ratio drifts by about half as much
-again (Measurement~\ref{meas:Dc}), so what is measured is a depth profile at
-a fixed scale and $D_c$ is not all of what fixes the size.
-\eqref{eq:JKJ} is a difference of three means and not of two, and
-Measurement~\ref{meas:Dc} records what dropping the third would cost.
-\item \textbf{Observation~\ref{obs:coh} is offered for its form, not
-its constant.} Its heuristic is quantitatively loose by factors
-running from $2.49$ at depth $0$ to $6.20$ at depth $5$ --- the $2.5$
-is the shallowest cell, not the range, whose lower end is the $2.45$
-at depth~$1$; the exponent is confirmed
-directly instead.
+that divide $N$.  This choice is exploratory; computations for eighteen
+other prime sets are reported in Measurement~\ref{meas:sweep}.  If
+$m_c$ is the mean of $Z$ over a cell $c$ and $\overline m$ is its mean
+over the band, our first question is the appropriate reference scale
+for $m_c-\overline m$.
 
-\item \textbf{The statements here are not equally checked.} The
-derivation of Observation~\ref{obs:coh} and the statement of
-Lemma~\ref{lem:placebo} have had less scrutiny than the rest, and
-Proposition~\ref{prop:scaleinv} has had no reading by a subject
-expert. What was checked by what is set out in Supplement~S1
-(Appendix~\ref{sec:repro}).
-\end{itemize}
+The common scale $\operatorname{sd}(Z)/\sqrt{n_c}$, where $n_c$ is the
+cell size, treats the observations as self-averaging.  That assumption
+is inappropriate here because every $Z(N)$ reads the same underlying
+sequence $\mu(v)$; this is the usual design-effect issue for correlated
+observations \cite{Kish}.  Under the conditional null that preserves the
+support of $\mu^2$ and replaces its nonzero signs independently, the
+complete covariance matrix is exactly computable.  Consequently the
+variance of every cell contrast is also exactly computable.
 
-% =====================================================================
-\section{The floor, in closed form}\label{sec:floor}
+The paper has three main conclusions.  First, the cell floor is a
+three-term, doubly centred quadratic form and decreases much more slowly
+than cell-count scaling predicts.  Second, the permutation average of
+the variance for a uniformly random same-size cell is exactly the usual
+finite-population expression.  Thus the large floor is a property of
+the correspondence between the divisibility cells and the arithmetic
+kernel, not of cell size alone.  Third, a residue-class main term for
+the pair singular series describes the profile of this floor and is
+asymptotically scale-free.
 
-The identity this section rests on is not arithmetic. It is the
-statement that a cell contrast is a linear functional of the observation
-vector, so its variance is the quadratic form $w^{\!\top}\Sigma w$ in
-whatever covariance $\Sigma$ the observations carry. We state that first,
-in the generality in which it is true, and specialise afterwards.
+All standardised contrasts below use the conditional Rademacher null.
+This supplies an exact variance, not a Gaussian approximation or a
+calibrated tail law.  The null preserves the observed squarefree support
+of $\mu$ but discards its multiplicative dependence.  Thus the reported
+$z_c$ values quantify departure from this specific sign model and are
+not calibrated probabilities for the M\"obius function itself.  The
+numerical associations involving the observed field are descriptive,
+and the selected prime family is not treated as a preregistered choice.
 
-\begin{lemma}[contrast variance under an arbitrary kernel]\label{lem:contrast}
-Let $X=(X_N)_{N\in a}$ be any square-integrable random vector indexed by
-a finite set $a$ of size $n$, with covariance
-$\Sigma_{NN'}=\mathrm{Cov}(X_N,X_{N'})$. For $c\subseteq a$ of size
-$n_c\ge1$ let $m_c=n_c^{-1}\sum_{N\in c}X_N$ and
-$\overline m=m_a$. Writing
-$Q_{cd}=\sum_{N\in c}\sum_{N'\in d}\Sigma_{NN'}$,
+\section{The exact Rademacher-null floor}\label{sec:floor}
+
+We first record the elementary identity behind the calculation.
+
+\begin{lemma}[Contrast variance]\label{lem:contrast}
+Let $X=(X_N)_{N\in a}$ be a square-integrable random vector indexed by
+a finite set $a$ of size $n$, with covariance kernel
+$\Sigma_{NN'}$.  For $c\subseteq a$ of size $n_c\geq1$, put
+\[
+ m_c=\frac1{n_c}\sum_{N\in c}X_N,\qquad
+ \overline m=\frac1n\sum_{N\in a}X_N,\qquad
+ Q_{cd}=\sum_{N\in c}\sum_{N'\in d}\Sigma_{NN'}.
+\]
+Then
 \begin{equation}\label{eq:contrast}
-  \mathrm{Var}\bigl(m_c-\overline m\bigr)
-  \;=\;\frac{Q_{cc}}{n_c^{2}}
-  \;-\;\frac{2\,Q_{ca}}{n_c\,n}
-  \;+\;\frac{Q_{aa}}{n^{2}}.
+ \operatorname{Var}(m_c-\overline m)
+ =\frac{Q_{cc}}{n_c^2}-\frac{2Q_{ca}}{n_cn}+\frac{Q_{aa}}{n^2}.
 \end{equation}
 \end{lemma}
 
 \begin{proof}
-$m_c-\overline m=w^{\!\top}X$ with $w_N=n_c^{-1}\mathbf 1_{N\in c}-n^{-1}$,
-so the variance is $w^{\!\top}\Sigma w$. Expanding gives the four
-products of the two terms of $w$ against themselves; they collapse to
-three sums because the two cross terms are equal, $Q_{ac}=Q_{ca}$ by
-symmetry of $\Sigma$.
+Write $m_c-\overline m=w^{\top}X$, where
+$w_N=n_c^{-1}\mathbf 1_{N\in c}-n^{-1}$.  Hence
+\[
+\begin{aligned}
+ \operatorname{Var}(m_c-\overline m)
+ &=w^{\top}\Sigma w\\
+ &=\sum_{N,N'\in a}
+   \left(\frac{\mathbf1_{N\in c}}{n_c}-\frac1n\right)
+   \Sigma_{NN'}
+   \left(\frac{\mathbf1_{N'\in c}}{n_c}-\frac1n\right)\\
+ &=\frac{Q_{cc}}{n_c^2}
+   -\frac{Q_{ca}+Q_{ac}}{n_cn}
+   +\frac{Q_{aa}}{n^2}.
+\end{aligned}
+\]
+Since every covariance matrix is symmetric, $Q_{ac}=Q_{ca}$, and the
+last display is exactly \eqref{eq:contrast}.
 \end{proof}
 
-Nothing above uses independence, stationarity, or a distribution. What
-the null supplies is not the identity but the kernel: it makes $\Sigma$
-diagonal in a basis where it can be summed, and hence makes $Q_{cd}$
-computable rather than merely defined. That is the content of the next
-lemma, and it is where the arithmetic enters.
+Under the sign null, write
+$\mu(v)=\mu^2(v)\varepsilon(v)$, where the $\varepsilon(v)$ on the
+squarefree support are independent Rademacher variables.
 
-\begin{lemma}[exact cell moments]\label{lem:cellmom}
-Let $c$ be any set of $n_c$ of the even $N$ of a band of size $n$ ---
-the proof uses nothing beyond $c\subseteq a$, and in this paper the
-cells do partition the band --- let $m_c$ and $\overline m$ be
-the means of $Z$ over $c$ and over the band, and set
+\begin{lemma}[Exact cell moments]\label{lem:cellmom}
+Let $a$ be a band of $n$ even integers and $c\subseteq a$ a cell of
+size $n_c$.  Set
 \[
-  u_c(v)\;=\;\sum_{N\in c}\frac{\Lambda(N-v)}{\sqrt{V(N)}},
-  \qquad
-  Q_{cd}\;=\;\sum_{1\le v<N_{\max}}\mu^2(v)\,u_c(v)\,u_d(v),
+ u_c(v)=\sum_{N\in c}\frac{\Lambda(N-v)}{\sqrt{V(N)}},
+ \qquad
+ Q_{cd}=\sum_{1\leq v<N_{\max}}\mu^2(v)u_c(v)u_d(v),
 \]
-where $N_{\max}$ is the largest element of the band and
-$\Lambda(k)=0$ for $k\le0$, so that the inner sum runs over the $N$ of
-$c$ that exceed $v$ and the outer one over the squarefree $v$ below the
-band's top. Then, when the $\mu(v)$ on the surviving support are
-replaced by independent signs,
+where $\Lambda(k)=0$ for $k\leq0$.  Under the conditional Rademacher
+null,
 \begin{equation}\label{eq:cellmom}
-  \mathrm{Var}\bigl(m_c-\overline m\bigr)
-  \;=\;\frac{Q_{cc}}{n_c^{2}}
-  \;-\;\frac{2\,Q_{ca}}{n_c\,n}
-  \;+\;\frac{Q_{aa}}{n^{2}},
+ \operatorname{Var}_{\varepsilon}(m_c-\overline m)
+ =\frac{Q_{cc}}{n_c^2}-\frac{2Q_{ca}}{n_cn}+\frac{Q_{aa}}{n^2}.
 \end{equation}
-where $a$ denotes the whole band. The quantities $u_c$ are finite
-correlations of explicit sequences, and each $Q_{cd}$ is then an
-explicit weighted inner product; the identity is exact and no
-simulation is involved. Its numerical evaluation is a separate matter
---- these finite operations are carried out in double precision
-(Appendix~\ref{sec:repro}), so each printed floor is this exact formula
-evaluated to floating-point accuracy and not an exact rational.
+The identity is exact; its reported numerical evaluations use
+floating-point arithmetic.
 \end{lemma}
 
 \begin{proof}
-Under independent signs the covariance carries $\mu^4$, and $\mu^4=\mu^2$
-because $\mu$ takes only $0$ and $\pm1$; so
-$E[\mu^2(v)\varepsilon(v)\cdot\mu^2(v')\varepsilon(v')]
- =\mu^2(v)\delta_{vv'}$ and
-$\mathrm{Cov}(n_cm_c,n_dm_d)=Q_{cd}$ exactly, which is the $Q_{cd}$ of
-Lemma~\ref{lem:contrast} for this $\Sigma$. That lemma then gives the
-three terms.
+The null numerator is
+\[
+ C_{\varepsilon}(N)=\sum_v\mu^2(v)\varepsilon(v)\Lambda(N-v).
+\]
+Since $E[\varepsilon(v)\varepsilon(v')]=\delta_{vv'}$ and
+$\mu^4=\mu^2$,
+\[
+ \operatorname{Cov}_{\varepsilon}(Z(N),Z(N'))
+ =\frac{1}{\sqrt{V(N)V(N')}}
+   \sum_v\mu^2(v)\Lambda(N-v)\Lambda(N'-v).
+\]
+Therefore, for any two cells $c,d$,
+\[
+\begin{aligned}
+ \operatorname{Cov}_{\varepsilon}(n_cm_c,n_dm_d)
+ &=\sum_{N\in c}\sum_{N'\in d}
+   \operatorname{Cov}_{\varepsilon}(Z(N),Z(N'))\\
+ &=\sum_v\mu^2(v)
+   \left(\sum_{N\in c}\frac{\Lambda(N-v)}{\sqrt{V(N)}}\right)
+   \left(\sum_{N'\in d}\frac{\Lambda(N'-v)}{\sqrt{V(N')}}\right)\\
+ &=\sum_v\mu^2(v)u_c(v)u_d(v)=Q_{cd}.
+\end{aligned}
+\]
+Substitution of these three covariance sums into
+Lemma~\ref{lem:contrast} gives \eqref{eq:cellmom}.
 \end{proof}
 
-For later use, write
+Define the null floor and standardised contrast by
 \[
-  \mathrm{se}_c:=\sqrt{\mathrm{Var}_\varepsilon(m_c-\overline m)},
-  \qquad
-  z_c:=\frac{m_c-\overline m}{\mathrm{se}_c}.
+ \operatorname{se}_c
+ :=\sqrt{\operatorname{Var}_{\varepsilon}(m_c-\overline m)},
+ \qquad
+ z_c:=\frac{m_c-\overline m}{\operatorname{se}_c}.
 \]
-Throughout, the \emph{null standard deviation} of a cell contrast means
-$\mathrm{se}_c$: the exact standard deviation of $m_c-\overline m$
-under the Rademacher null, at the observed cell sizes and the observed
-support of $\mu^2$. It is a scale, not a tail bound. The lemma fixes the
-scale exactly, but no Gaussian, limiting, or other calibrated tail law
-is invoked for $m_c-\overline m$; no probability is attached below to
-a multiple of $\mathrm{se}_c$ merely because it is such a multiple.
+All three terms of \eqref{eq:cellmom} are essential.  The approximation
+$u_c(v)\approx n_c/\sqrt V$ gives the same leading contribution to each
+term, which cancels as $S-2S+S$.  The surviving quantity measures the
+departure of the cell kernel from proportionality with the band kernel.
 
-\begin{note}[all three terms are needed]\label{note:threeterms}
-The substitution $u_c(v)\approx n_c/\sqrt V$, which gives the right
-scale for $Q_{cc}/n_c^2$, is not specific to $c$; applied to all three
-terms it returns the same value $S$ for each and hence $S-2S+S=0$. So
-it cannot be used to estimate the variance of the difference. Exactly,
-the variance is smaller than $Q_{cc}/n_c^2$ by a factor that is
-constant \emph{in $N$} rather than noise --- constant for a fixed
-cell, not across cells: at one $N$ it reads $0.113$, $0.016$, $0.137$,
-$0.289$, $0.427$, $0.552$ from depth~$0$ to depth~$5$. That row is not
-monotone either --- its minimum $0.016$ sits at depth~$1$, a seventh of
-the value at depth~$0$ --- so the spread across cells is a factor $34$
-and not the factor $5$ that reading the two ends alone would give.
-Across the eight octaves it holds to four
-digits at depths $0$ and $1$ and to three at depths $2$ and $3$,
-drifts by $2.2\%$ at depth~$4$ and by
-$30\%$ at depth~$5$, whose cell grows from $2$ members at the lowest
-octave to $266$ at the highest: the
-constancy is a statement about the shallow cells, where there are
-enough $N$ for it to be one.
-\end{note}
-
-\begin{measurement}[the closed form, checked against simulation]%
-\label{meas:mc}
-The lemma does not need simulation, but simulation is the only thing
-that would catch an error in the formula, and every normalised cell
-mean below is divided by it. Run in the band $(10^5,2\cdot10^5]$ with
-$2000$ draws:
+\begin{measurement}[Closed form versus simulation]\label{meas:mc}
+In the band $(10^5,2\cdot10^5]$, a simulation with $2000$ independent
+sign draws gave
 \[
 \begin{array}{r|cccccc}
- \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\
- n_c & 19181 & 21097 & 8183 & 1421 & 115 & 3\\\hline
- \text{closed form} & 0.140080 & 0.052724 & 0.167579 & 0.273630
-   & 0.378073 & 0.639330\\
- \text{MC}/\text{closed} & 0.9920 & 0.9993
-   & 0.9918 & 1.0044 & 1.0157 & 1.0320
+ \text{depth} &0&1&2&3&4&5\\
+ n_c&19181&21097&8183&1421&115&3\\\hline
+ \text{closed form}&0.140080&0.052724&0.167579&0.273630&0.378073&0.639330\\
+ \text{MC}/\text{closed}&0.9920&0.9993&0.9918&1.0044&1.0157&1.0320
 \end{array}
 \]
---- worst deviation $0.0320$, at the depth whose cell holds three
-elements, and the six ratios straddle $1$ three and three.
-
-The six ratios are estimated from the \emph{same} draws, so their
-deviations are strongly correlated and their common sign would be one
-observation, not six. At $2000$ draws the Monte-Carlo precision is
-$1/\sqrt{2\cdot1999}=0.015815$, and the six deviations stand to it
-in $0.507,\,0.041,\,0.519,\,0.275,\,0.992,\,2.025$. Against that bar
-only the cell of three elements clears, and clearing it is not
-agreement.
-
-\textbf{That bar is a convention and not the precision.}
-$1/\sqrt{2(n-1)}$ is the Gaussian value of a delta-method
-approximation to the relative standard error of a sample standard
-deviation; it is not exact for any distribution, and the sampling
-variance of a sample standard deviation has no closed form here. What
-is exact is one level down: for the sample \emph{variance} of $n$
-independent draws the sampling variance is
-$n^{-1}(\mu_4-\tfrac{n-3}{n-1}\sigma^4)$, and $\mu_4$ is available,
-since each contrast is a weighted Rademacher sum
-$\sum_v a_v\varepsilon_v$ with
-$\mathbb E S^4=3(\sum a^2)^2-2\sum a^4$.
-
-Two things follow and only the second is used. The kurtosis is
-$3-2\sum a^4/(\sum a^2)^2$, below the Gaussian $3$ at every cell.
-So the approximation the bar comes from is, to leading order, an
-\emph{over}estimate, and it is one that varies from cell to cell since
-the weights do. The direction is what matters for the sentence above:
-a cell-specific bar is tighter, so ``only the cell of three clears''
-is a statement about the common bar and not about the cells. What the
-common bar supports is the weaker reading, that the deviations are
-small on the scale the draw count alone fixes. The cell-wise fourth
-moments are not computed here and no exact interval is claimed. That is one deviation
-of that size among six correlated estimates and it stays inside the
-registered cap of $0.05$, so it refutes nothing; what it shows is that
-the resolution and the disagreement sit at the same cell. Of the
-remaining five, four sit at $0.52$ of the bar or less, and depth~$4$
-sits at $0.992$ of it --- short by $0.8$ per cent of the bar, at the
-precision and not below it. At four cells the table resolves nothing,
-at one it sits at the bar, and at a number of draws small enough for
-the precision to exceed every deviation in the table it would resolve
-nothing at all. Two of the four rules
-registered in the result file score a $60$-draw quotation this
-paper does not make; the ratios of this paragraph are checked in a
-block marked post hoc there, and were not registered in advance.
-
-The structural constant of Note~\ref{note:threeterms} is visible
-directly: at the top octave of $1.6\cdot10^7$,
-$\mathrm{Var}/(Q_{cc}/n_c^2)$ is
-$0.113119,\,0.016302,\,0.288567,\,0.551516$ at depths $0,1,3,5$, and
-at a quarter of that $N$ the three shallow ratios agree to five
-decimals --- $0.113118,\,0.016303,\,0.288571$, the largest gap being
-$4\cdot10^{-6}$. Depth $5$ does not: it reads
-$0.557654$ there against $0.551516$ at the top, differing in the third
-digit, and it is much the smallest cell --- $266$ values of $N$ in the
-top octave against $1\,687\,911$ at depth $1$
-(\texttt{lab\_cellmom\_montecarlo.py} for the table,
-\texttt{lab\_cell\_floor.py} for this paragraph).
+The simulation is only a numerical check on the closed form.  Its
+largest relative discrepancy is $3.2\%$, at the cell containing three
+points.
 \end{measurement}
 
-% =====================================================================
-\section{The floor's uncertainty does not fall like a count}%
-\label{sec:coh}
+\section{Slow decay and the failure of count scaling}\label{sec:decay}
 
-\begin{observation}[coherent sums]\label{obs:coh}
-The null standard deviation of Lemma~\ref{lem:cellmom} does \emph{not} decay like
-$n_c^{-1/2}$. On average over the $v$ that carry weight, about
-$n_c/\log N$ of the terms of $u_c(v)$ are nonzero, each of size
-$\log N/\sqrt V$, so $u_c(v)\approx n_c/\sqrt V$ and
+On average over the $v$ carrying weight, about $n_c/\log N$ terms in
+$u_c(v)$ are nonzero, each of typical size $\log N/\sqrt V$.  This gives
+the heuristic
+\begin{equation}\label{eq:coherent}
+ \frac{Q_{cc}}{n_c^2}
+ \approx \frac{\sum_v\mu^2(v)}{V(N)}
+ \asymp \frac1{\log N},
+\end{equation}
+using $V(N)\asymp N\log N$; see Appendix~\ref{sec:normaliser}.
+The heuristic is an averaged statement and is false at a fixed $v$,
+where parity and local congruence obstructions matter.  It predicts the
+form of the decay, not its constant or its profile across cells.
+
+\begin{measurement}[Decay across eight octaves]\label{meas:decay}
+Fitting $\operatorname{se}_c\propto N^{-b}$ across the eight octaves
+from $(6.25\cdot10^4,1.25\cdot10^5]$ to
+$(8\cdot10^6,1.6\cdot10^7]$ gives
 \[
-  \frac{Q_{cc}}{n_c^2}
-  \;\approx\;\frac{\sum_v\mu^2(v)}{V}
-  \;\asymp\;\frac{1}{\log N},
+ b=0.039388,\ 0.039671,\ 0.039451
 \]
-independently of $n_c$. \emph{At a fixed $v$ this is false}: the band
-is even, so an even $v$ leaves $N-v$ even and $\Lambda(N-v)$ supported
-on powers of $2$ alone, and the cell's own primes impose further local
-obstructions. What the display uses is the sum over $v$, where those
-obstructions are the local densities being averaged; the heuristic is
-offered at that level and not at a single $v$. By
-Note~\ref{note:threeterms} the variance
-itself is a fixed fraction of this. So the standard error falls
-like $(\log N)^{-1/2}$ --- at the shallow cells, which is where
-Note~\ref{note:threeterms} says that fraction is constant. It
-does not extend to the deepest: the same note records a thirty per
-cent drift of the fraction at depth~$5$, and the exponent fitted there
---- $0.107306$, in the ungated rows of \texttt{lab\_cell\_floor.txt}
-rather than in Measurement~\ref{meas:exponent}, which prints the three
-gated depths --- is the largest of the six. That drift is not the
-whole of the break. Separately from it, and not confined to the
-smallest cell, $Q_{cc}/n_c^2$ does not follow $1\!/\!\log N$ at any
-depth. Over the eight octaves
-$Q_{cc}n_c^{-2}\log N$ would be constant if the form held. It falls,
-and its value at the lowest octave stands to its value at the highest
-in $1.031$ at each of depths~$0$ to~$3$, $1.049$ at depth~$4$ and
-$1.621$ at depth~$5$. \textbf{So the form is loose at every depth, and
-by about the same amount at the shallow five} --- but not at the
-deepest, where the drift is larger by an order of magnitude:
-$\log 1.621/\log 1.031$ is $15.8$. The uniformity claimed here is over
-depths~$0$ to~$4$ and no further, and depth~$5$ is the single-class
-cell that the rest of this section treats separately. The drift is quoted as that ratio and not as a
-percentage because a percentage needs a denominator: the two obvious
-choices differ by the ratio itself, which is immaterial at $1.03$ and
-is not at $1.62$. For the same reason no value is quoted for the
-fitted exponent $g$ of that quantity. Its
-\emph{sign} is negative at all six depths under
-each of the three octave abscissae --- the low endpoint, the midpoint,
-the high. Its \emph{value} moves between those three by $0.003721$ at
-every one of the six depths, the same number at all of them: the
-slope of $\log(Q_{cc}n_c^{-2})$ is untouched, since the abscissae
-differ by the constant $\log 2$, so the whole dependence is the shared
-$\log N$ factor and an additive term is what a constant swing looks
-like. Against $|g|$ that swing is most of the exponent where $|g|$ is
-small and four per cent at depth~$5$, which is why no value is
-quoted.
+at depths $0,1,2$.  These values are close to the logarithmic benchmark
+$0.0363$ over the same finite range and far from the count benchmark
+$1/2$.  Across the factor $128$ in the octave midpoints, the fitted
+floor therefore shrinks by about $1.21$, whereas $n_c^{-1/2}$ predicts
+$\sqrt{128}=11.3$.
 
-That drift is the measured exponent in another coordinate and not a
-second reading of it. Where the ratio $\mathrm{Var}/(Q_{cc}n_c^{-2})$
-is constant in $N$ --- its spread across the eight octaves is $0$ at
-depths~$0$ and~$1$ --- one has $-2b$ for the slope of
-$\log(Q_{cc}n_c^{-2})$ in $\log N$, while $g$ is that slope plus
-$1/\log N$; so $b=1/(2\log N)-g/2$ identically, and the two sides
-cannot disagree.
-Nothing in this paragraph should be read as the drift confirming the
-exponent.
-
-What the residual of that identity does read is the constancy of the
-ratio itself, since that is its only hypothesis, and it is there that
-the deepest cells separate. Half the negated slope is $0.039408$
-against the fitted $b=0.039388$ at depth~$0$, a difference of
-$2\cdot10^{-5}$ where the ratio does not move at all; at depth~$4$ the
-difference is $0.0019$ against a ratio spread of $0.0094$, and at
-depth~$5$ it is $0.026$ against a spread of $0.165$. So the break at
-the deepest cell is the failure of the ratio to hold fixed. The
-diagonal $1/n_c$ of $Q_{cc}n_c^{-2}$ rises across the same two
-depths --- its share is at most $0.42$ per cent at depths~$0$ to~$3$
-and $70.5$ per cent at depth~$5$, at the lowest octave --- and this
-measurement does not separate the two, so the diagonal is reported
-alongside the break and is not offered as its cause. The exponent is confirmed directly at all six depths and
-that confirmation, not the form, is what the paper rests on.
-\end{observation}
-
-The heuristic is quantitatively loose and is offered for the
-\emph{form} and not the constant: at $N=1.6\cdot10^7$,
+The approximation does not describe every depth uniformly.  The fitted
+exponent at depth $5$ is $0.107306$, where the cell contains only $266$
+points in the top octave.  At that octave the exact floors from depths
+$0$ to $5$ are
 \[
-\begin{array}{r|cccccc}
- \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\\hline
- Q_{cc}/n_c^2 & 0.123577 & 0.121208 & 0.146026 & 0.184159 & 0.235171
-   & 0.307074
+ 0.1182, 0.0445, 0.1414, 0.2305, 0.3169, 0.4115.
+\]
+They exceed $\operatorname{sd}(Z)/\sqrt{n_c}$ by factors approximately
+$158,62,124,84,33,7$, respectively.  Thus cell count does not describe
+either the scale dependence or the cross-cell profile.
+\end{measurement}
+
+For reference, the observed standardised contrasts satisfy
+\[
+ \max_c|z_c|=
+ 10.099,10.954,11.179,12.968,11.885,11.026,10.019,9.064
+\]
+over the eight octaves.  At the top octave the six depths give
+\[
+\begin{array}{r|rrrrrr}
+ \text{depth}&0&1&2&3&4&5\\\hline
+ z_c&0.04&0.69&-0.06&-1.55&-4.46&-9.06
 \end{array}
 \]
-against the heuristic's
-$\bigl(\sum_{v<N}\mu^2(v)\bigr)/V(N)=0.049540$
-(\texttt{lab\_cell\_floor.py}). The row is not monotone in the depth;
-its minimum is $0.121208$ at depth $1$.
+These are standardised descriptions; no Gaussian or
+multiple-comparison calibration is attached to them.
 
-\begin{measurement}[the exponent, fitted]\label{meas:exponent}
-The form is confirmed directly. Fitting $\mathrm{se}\propto N^{-b}$ to
-the exact floor across eight octaves gives
-$b=0.039451,\,0.039671,\,0.039388$ at depths $2,1,0$, against the
-$0.5$ that a count would give and against $0.036038$, the value of
-$1/(2\langle\log N\rangle)$ with $\langle\log N\rangle$ the mean of
-$\log N$ over the eight octave midpoints. Nothing turns on the third
-decimal: the point is that $0.039$ is near $0.036$ and nowhere near
-$0.5$ (\texttt{lab\_cell\_floor.py}).
-\end{measurement}
+\section{Permutation control}\label{sec:permutation}
 
-\begin{note}[a count is not the null standard deviation]\label{note:notanerrorbar}
-The consequence is not confined to this field. The fit runs over the
-eight octaves from $(6.25\cdot10^4,\,1.25\cdot10^5]$ to
-$(8\cdot10^6,\,1.6\cdot10^7]$, and the abscissa is the octave midpoint
---- which is what makes $1/(2\langle\log N\rangle)=0.036038$ come out,
-with $\langle\log N\rangle=13.8744$. The factor in $N$ is therefore
-$1.2\cdot10^7/93750=128$. Over it, $n_c^{-1/2}$ says the null
-standard deviation shrinks by $\sqrt{128}=11.3$; it shrinks by $128^{0.0395}=1.21$,
-against the $1.19$ that $(\log N)^{-1/2}$ predicts over the same
-factor. The result file prints the shrink itself only from depth~$3$
-on; at the three gated depths it is $128^b$ from the exponents printed
-there, which is the one step taken here. \textbf{An interval built
-from a count is therefore, against the exact Rademacher-null scale, a
-factor $11.3/1.21=9.3$ too narrow at the top of this range relative to
-the bottom}, and in absolute terms the discrepancy is larger still:
-at the top octave the exact floor exceeds
-$\mathrm{sd}(Z)/\sqrt{n_c}$ by factors of $7.3$ to $158$, with
-$\mathrm{sd}(Z)=0.924687$ over that octave --- and $0.929384$ over the
-whole fitted field, so the reading of $\mathrm{sd}$ barely moves the
-figures. The factor does \emph{not} grow with the cell. What moves with
-the cell is the floor itself, which reads $0.1182$, $0.0445$, $0.1414$,
-$0.2305$, $0.3169$, $0.4115$ from depth $0$ to depth $5$: it is not
-monotone --- depth~$1$ sits below depth~$0$, the same dip that
-Measurement~\ref{meas:Dc} reads in $D_c$ and in $\mathrm{se}_c$ --- and
-it grows from depth~$1$ onward. That movement is measured and not
-predicted by
-$Q_{cc}/n_c^2\asymp1/\log N$: that relation is a statement about $N$,
-carries no dependence on the cell, and so says nothing about how the
-floor moves across depths at one $N$. Section~\ref{sec:notclaimed}
-records the same thing from the other side --- the heuristic behind it
-is loose by a factor that is $2.49$ at depth~$0$ and rises to $6.20$ at
-depth~$5$, with its minimum $2.45$ at depth~$1$ rather than at either
-end. The factor
-also carries $\sqrt{n_c}$, and $n_c$ runs $1\,534\,466$,
-$1\,687\,911$, $654\,281$, $114\,017$, $9\,059$, $266$ across those
-depths, which is the larger movement. That row is not monotone either:
-its maximum is at depth~$1$, so the largest cell is the one where
-Measurement~\ref{meas:Dc} reads the smallest $D_c$ and the smallest
-floor. By depth the
-factor reads $158$, $62$, $124$, $84$, $33$, $7$
-(\texttt{audit\_cellfloor\_sdz.py}). The cause
-is that $u_c(v)$ is a coherent sum, not a self-averaging one, and that
-the cell is correlated with the arithmetic it sums. Coherence alone
-does not give it. A cell drawn at random from the same band is
-coherent in the same sense --- every $N$ reads the same $\mu$ and
-$\Lambda$ at the same $v$ --- but there $u_c(v)\approx(n_c/n)u_a(v)$
-and the three terms of \eqref{eq:cellmom} cancel to leading order, so
-Lemma~\ref{lem:permfloor} returns exactly $n_c^{-1/2}$, up to the
-finite-population factor, for the average over the permutation. What survives the cancellation is the
-departure from that proportionality, and only a cell correlated with
-the arithmetic produces one.
-\end{note}
-
-% =====================================================================
-\section{The control, and what running it shows}\label{sec:placebo}
-
-\begin{lemma}[the placebo key]\label{lem:placebo}
-Let the cells be indexed by a labelling $\ell(N)$, and let $\pi$ be a
-uniformly random permutation of the even integers in the band. This is
-a randomisation \emph{conditional on the observed cell counts}: the
-labels are not drawn independently, since the counts are held fixed,
-and the field $Z$ is held fixed with them --- the standard
-randomisation-inference setting \cite{LR}. Call a
-statistic \emph{cell-indexed} when it is a function of the pair
-$(\ell,Z)$ --- of which $N$ carry which label, and of the field.
-Replacing $\ell$ by
-$\ell\circ\pi$ preserves every cell size and leaves the field $Z$
-pointwise unchanged, while destroying the correspondence between cells
-and arithmetic. Any cell-indexed statistic determined by the multiset
-$\{Z(N)\}$ together with the cell sizes --- and so not by that
-correspondence --- has its distribution unchanged by the replacement,
-and is in fact constant under it. The converse fails, and the lemma
-does not assert it: $T(\ell,Z)=Z(N_0)$ at a fixed $N_0$ of the band is
-cell-indexed and invariant, since it does not read $\ell$ at all, yet
-the multiset and the sizes do not determine it. What the control gives
-is the direction stated, used below in contrapositive.
-The determining data need not be the sizes alone:
-$s^2/n_c$, with $s^2=n^{-1}\sum_N(Z(N)-\overline m)^2$ the variance of
-the field over the band, is invariant under the replacement and reads
-the field through $s^2$ --- and it is, up to a finite-population
-factor, the permutation null \eqref{eq:permnum} that
-Lemma~\ref{lem:permfloor} will give. Not the permuted floor
-\eqref{eq:permfloor} itself: that is the sign-null expectation of this
-one, carrying $E_\varepsilon s^2=1-Q_{aa}/n^2$ where this carries
-$s^2$; Note~\ref{note:collapse} reads both off the measured octave. Nor
-is the floor at a single $\pi$ determined by the two invariants:
-\eqref{eq:JKJ} reads $K$ on the subset actually drawn and $K$ is not
-constant across the band. What the invariants fix is the average over
-$\pi$, which is what \eqref{eq:permfloor} is --- and the control
-reports the ten-draw standard error of that average beside it.
-
-Conversely the replacement supplies a null. The law of a cell-indexed
-statistic under $\ell\circ\pi$ is its law under labels drawn
-independently of $Z$; and a statistic determined by the two
-invariants is constant under the replacement, so its null is a point
-mass. Hence a statistic whose true-labelling value that null does not
-reproduce is not determined by the two multisets, and what it reads is
-the pairing between them --- the correspondence the replacement
-destroys. That is the whole of what is claimed: which statistics are
-uninformative, not that the permutation law is the right null for any
-other question.
-\end{lemma}
-
-\begin{proof}
-The permutation acts on labels only; the multiset
-$\{Z(N):N\ \text{in the band}\}$ and the multiset of cell sizes are
-both invariant, and the joint distribution of $(\ell\circ\pi,Z)$ is that of a uniform
-fixed-count relabelling, with the random relabelling independent of
-$Z$. That observation gives both halves: the
-first reads it as the law the statistic must have if it sees only
-those two invariants, the second as the reference law against which
-the true labelling is read. For the second, a statistic determined by the two
-invariant multisets takes one and the same value at every $\pi$.
-\end{proof}
-
-\begin{measurement}[the cell contrasts are not zero]\label{meas:notzero}
-Against the floor of Lemma~\ref{lem:cellmom}, computed from its closed
-form, the cell contrasts $m_c-\overline m$ of the field
-\eqref{eq:field} are not all zero. Over
-the eight octaves from $(6.25\cdot10^4,\,1.25\cdot10^5]$ to
-$(8\cdot10^6,\,1.6\cdot10^7]$, $\max_c|z_c|$ reads
+Let $K(N,N')$ denote the covariance kernel in the proof of
+Lemma~\ref{lem:cellmom}.  Its diagonal is exactly one because
 \[
-  10.099,\ 10.954,\ 11.179,\ 12.968,\ 11.885,\ 11.026,\ 10.019,\ 9.064,
+ K(N,N)=\frac{\sum_v\mu^2(v)\Lambda(N-v)^2}{V(N)}=1.
 \]
-No multiple-comparison threshold is asserted for these. The finite
-Rademacher sign ensemble does define a joint law, but this paper does
-not calibrate the tail of $\max_c|z_c|$ under that law. The numbers are
-therefore reported only as a maximum over cells of standardised
-deviations against the closed-form null floor. The signal is carried by the deep cells:
-at the top octave depths $3,4,5$ sit at $z=-1.55,\,-4.46,\,-9.06$
-while depths $0,1,2$ sit at $+0.04,\,+0.69,\,-0.06$
-(\texttt{lab\_cell\_floor.py}).
-\end{measurement}
+This normalisation makes the average floor of a random cell explicit.
+The relabelling below is conditional on the observed field and cell
+sizes, as in standard randomisation inference \cite{LR}.
 
-\begin{measurement}[the placebo destroys the effect, and the floor
-with it]\label{meas:placebo}
-Run on the octave $(2\cdot10^6,\,4\cdot10^6]$, with cell sizes
-preserved exactly and the floor recomputed from scratch for each
-permutation:
-\[
-\begin{array}{r|cccccc}
- \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\
- n_c & 383617 & 421978 & 163568 & 28507 & 2263 & 67\\\hline
- z_c\ \text{(true)} & +0.1069 & +1.1133 & -0.2314 & -2.3990
-   & -5.9997 & -11.0258
-\end{array}
-\]
-against $\max_c|z_c|$ over ten uniformly random label permutations
-(\texttt{default\_rng} seed $20260808$) reading
-\[
-  0.9359,\ 1.6073,\ 1.9921,\ 1.5687,\ 2.1392,\
-  1.1216,\ 1.7178,\ 1.1348,\ 3.2040,\ 1.3192,
-\]
-mean $1.6741$, never above $3.3$. Ten is a sample and not an
-enumeration, and the true value ranking first among the eleven gives a
-Monte-Carlo $p$-value of $1/11$, which is the smallest this many
-permutations can produce. It is not a bound on the exact permutation
-$p$-value, which ten draws cannot bound from above at all; the
-enumeration of Measurement~\ref{meas:Dc} below is the
-stronger instrument, and this one's limit is the sample's. The
-correlation between depth and $z_c$ is $-0.9106$ for the true
-labelling and $+0.0042$ on average under permutation. None of the ten
-sampled permutations reproduced either true value --- which is a
-statement about the sample and not about the permutation law --- so by
-the second half of
-Lemma~\ref{lem:placebo} what is detected is the correspondence between
-cells and divisibility, not the cell sizes.
-
-The same run corrects a natural reading of Lemma~\ref{lem:cellmom}.
-One expects the floor $\mathrm{se}_c$ to be a property of the cell
-sizes, hence nearly invariant under permutation. It is not: the floor
-\textbf{collapses}, by factors from $3.8$ at depth $5$ to $105$ at
-depth $0$ --- $1.2400\cdot10^{-1}$ against $1.1794\cdot10^{-3}$ there
-(\texttt{lab\_mask\_placebo.py}).
-\end{measurement}
-
-\begin{note}[the floor is itself signal]\label{note:floorsignal}
-The mechanism of that collapse is the three-term structure of
-\eqref{eq:cellmom}. For a random subset of the band,
-$u_c(v)\approx(n_c/n)\,u_a(v)$, and then
-$Q_{cc}/n_c^2-2Q_{ca}/(n_cn)+Q_{aa}/n^2$ cancels to leading order,
-leaving only the fluctuation around proportionality. An arithmetic
-cell breaks that proportionality, and the floor is what is left over.
-\textbf{The exact floor is therefore not a noise level but a second
-measurement of the same correspondence.} It is not, however, a
-conservative version of some truer noise level. Lemma~\ref{lem:cellmom}
-is an identity: under the sign null the variance of the arithmetic
-cell's numerator \emph{is} the exact floor, so $z_c=-11$ at depth~$5$
-is exact under that null and not a discounted figure. The null
-itself is narrower than the arithmetic it stands in for: an
-i.i.d. sign ensemble on this object measured $0.6455$ of the
-spread of a random \emph{multiplicative} one --- a model in the
-tradition of \cite{Wintner} --- at $512$ draws
-(\texttt{audit\_cn\_coin\_deep.py}). The run prints that ratio to five
-places and quotes no sampling uncertainty for it; at $512$ draws only
-the leading two figures are earned, and nothing below rests on more.
-That measurement rests on one band, one class family and one
-statistic, and its own registration says so: it is the second
-moment $E[Z^2]$ --- the run writes $G$ for $Z$ --- on the classes cut by $3,5,7$ over
-$(2^{20},2^{21}]$, not the first-order $m_c-\overline m$ on the
-depths cut by $3,5,7,11,13$ over the octave read here. No map
-between the two is established anywhere, so the direction is
-measured and the size is not: an ensemble that shares $\mu$'s
-multiplicativity is the wider of the two, and how much of the
-$-11$ that would take back is not fixed by anything in this
-paper. The conclusions below survive the direction;
-the word \emph{calibrated} would not, and is not used.
-Dividing instead by
-the permuted floor \eqref{eq:permfloor}, which at depth~$5$ is
-$1.1403\cdot10^{-1}$, gives $z\approx-42$. The neighbouring question
---- the numerator against the permutation null \eqref{eq:permnum} ---
-has the exact answer $42.42$ (Note~\ref{note:numnull}), and the two
-sit close because \eqref{eq:permfloor} is \eqref{eq:permnum} averaged
-over the sign null. Reading them as one number quoted conservatively
-and boldly would be reading the count-based bar as the truth, and by
-Lemma~\ref{lem:permfloor} that bar is what \eqref{eq:permnum} is: at
-depth~$5$ it is $1.1356\cdot10^{-1}$, which is
-$\mathrm{sd}(Z)/\sqrt{n_c}$ to five figures. The ten draws averaged
-$1.1518\cdot10^{-1}$, and that number is a sample where the two
-displayed are not. The sign null is the one this paper's statements
-are quoted against, throughout. The result files cited here name
-it \texttt{lem:coin}, after the statement of the generation they
-were written in; that name means this sign null and no further
-statement, and it is the null the width comparison earlier in this
-note is about.
-\end{note}
-
-\begin{lemma}[the floor under the placebo, in closed form]%
-\label{lem:permfloor}
-Let $c$ be a cell of size $n_c$ in a band of size $n$, let $\pi$ be the
-uniformly random permutation of Lemma~\ref{lem:placebo}, and let
-$c^\pi$ be $c$ under the labelling $\ell\circ\pi$ --- a uniformly
-random $n_c$-subset of the band. Write $\mathrm{Var}_\varepsilon$ for
-the variance under the sign null of Lemma~\ref{lem:cellmom} and
-$E_\pi$, $\mathrm{Var}_\pi$ for expectation and variance over $\pi$
-with the field $Z$ held fixed. Then
+\begin{lemma}[Permutation-averaged floor]\label{lem:permfloor}
+Let $c^\pi$ be a uniformly random $n_c$-subset of a band $a$ of size
+$n$.  Then
 \begin{equation}\label{eq:permfloor}
-  \tau_c^2\;:=\;
-  E_\pi\,\mathrm{Var}_\varepsilon\bigl(m_{c^\pi}-\overline m\bigr)
-  \;=\;\frac{n-n_c}{n_c\,(n-1)}\Bigl(1-\frac{Q_{aa}}{n^2}\Bigr),
+ \tau_c^2
+ :=E_\pi\operatorname{Var}_{\varepsilon}(m_{c^\pi}-\overline m)
+ =\frac{n-n_c}{n_c(n-1)}
+   \left(1-\frac{Q_{aa}}{n^2}\right).
 \end{equation}
-and, for the field as observed,
+For the observed field held fixed,
 \begin{equation}\label{eq:permnum}
-  \sigma_c^2\;:=\;
-  \mathrm{Var}_\pi\bigl(m_{c^\pi}-\overline m\bigr)
-  \;=\;\frac{n-n_c}{n_c\,(n-1)}\,s^2,
-  \qquad
-  s^2=\frac1n\sum_N\bigl(Z(N)-\overline m\bigr)^2,
+ \operatorname{Var}_\pi(m_{c^\pi}-\overline m)
+ =\frac{n-n_c}{n_c(n-1)}s^2,\qquad
+ s^2=\frac1n\sum_N(Z(N)-\overline m)^2,
 \end{equation}
-with $E_\varepsilon s^2=1-Q_{aa}/n^2$. Neither right-hand side sees
-the cell beyond its size: $Q_{aa}$ is the one term of
-\eqref{eq:cellmom} that does not depend on $c$.
+and $E_\varepsilon s^2=1-Q_{aa}/n^2$.
 \end{lemma}
 
 \begin{proof}
-Put $g(N)=V(N)^{-1/2}$ and
-$K(N,N')=g(N)g(N')\sum_v\mu^2(v)\Lambda(N-v)\Lambda(N'-v)$, so that
-$K$ is the covariance of $Z$ under independent signs and
-$Q_{cd}=\sum_{N\in c}\sum_{N'\in d}K(N,N')$. The diagonal is
+Put $J_c(N)=\mathbf1_c(N)-n_c/n$.  Then
 \[
-  K(N,N)=\frac{\sum_v\mu^2(v)\Lambda(N-v)^2}{V(N)}=1,
+ \operatorname{Var}_{\varepsilon}(m_c-\overline m)
+ =\frac1{n_c^2}\sum_{N,N'}J_c(N)J_c(N')K(N,N').
 \]
-which is the normalisation of $Z$. It is worth saying why the equality
-survives the null. $V(N)=\sum_v\mu^2(v)\Lambda(N-v)^2$ is a function of
-the support of $\mu^2$ and of $\Lambda$ alone; the null replaces the
-signs $\mu(v)$ on that support and leaves the support itself fixed, so
-$V(N)$ is deterministic and unchanged, and the numerator above is
-literally $V(N)$. Every use of $K(N,N)=1$ below --- and the whole of
-this lemma rests on that diagonal --- is therefore exact rather than
-approximate. With
-$J_c(N)=\mathbf 1_c(N)-n_c/n$ one has
-$m_c-\overline m=n_c^{-1}\sum_NJ_c(N)Z(N)$, so
-\begin{equation}\label{eq:JKJ}
-  \mathrm{Var}_\varepsilon\bigl(m_c-\overline m\bigr)
-  =\frac1{n_c^2}\sum_{N,N'}J_c(N)J_c(N')K(N,N'),
-\end{equation}
-which is \eqref{eq:cellmom} with its three terms collected. Under
-$\pi$ the indicator of $c^\pi$ is that of a uniform $n_c$-subset, so
-with $p=n_c/n$, and since $E_\pi J_{c^\pi}=0$,
+For $p=n_c/n$ and a uniform fixed-size subset,
 \[
-  E_\pi\bigl[J_{c^\pi}(N)J_{c^\pi}(N')\bigr]
-  =p(1-p)\Bigl(\delta_{NN'}-\frac{1-\delta_{NN'}}{n-1}\Bigr).
+ E_\pi[J_{c^\pi}(N)J_{c^\pi}(N')]
+ =p(1-p)\left(\delta_{NN'}-
+ \frac{1-\delta_{NN'}}{n-1}\right).
 \]
-Taking $E_\pi$ of \eqref{eq:JKJ} and using $\sum_NK(N,N)=n$ and
-$\sum_{N\neq N'}K(N,N')=Q_{aa}-n$,
+Using $\sum_NK(N,N)=n$ and
+$\sum_{N\ne N'}K(N,N')=Q_{aa}-n$, we obtain
 \[
-  E_\pi\,\mathrm{Var}_\varepsilon
-  =\frac{p(1-p)}{n_c^2}\Bigl(n-\frac{Q_{aa}-n}{n-1}\Bigr)
-  =\frac{p(1-p)}{n_c^2}\cdot\frac{n^2-Q_{aa}}{n-1},
+\begin{aligned}
+ E_\pi\operatorname{Var}_{\varepsilon}(m_{c^\pi}-\overline m)
+ &=\frac{p(1-p)}{n_c^2}
+   \left(n-\frac{Q_{aa}-n}{n-1}\right)\\
+ &=\frac{p(1-p)}{n_c^2}\frac{n^2-Q_{aa}}{n-1}\\
+ &=\frac{n-n_c}{n_c(n-1)}
+   \left(1-\frac{Q_{aa}}{n^2}\right),
+\end{aligned}
 \]
-which is \eqref{eq:permfloor}. For \eqref{eq:permnum} repeat the
-computation with $K$ replaced by the fixed matrix
-$(Z(N)-\overline m)(Z(N')-\overline m)$: its diagonal sums to $ns^2$
-and its off-diagonal part to $-ns^2$, since $\sum_N(Z-\overline m)=0$.
-Finally
-$E_\varepsilon\sum_N(Z-\overline m)^2=n-Q_{aa}/n$. The two are one
-identity: by Fubini, \eqref{eq:permfloor} is \eqref{eq:permnum}
-averaged over the sign null --- the without-replacement variance of a
-sample mean, with the population variance replaced by its sign-null
-value.
+which is \eqref{eq:permfloor}.
+
+For the observed field, put $x_N=Z(N)-\overline m$.  Then
+\[
+ \sum_Nx_N^2=ns^2,\qquad
+ \sum_{N\ne N'}x_Nx_{N'}
+ =\left(\sum_Nx_N\right)^2-\sum_Nx_N^2=-ns^2.
+\]
+Repeating the preceding calculation with
+$K(N,N')=x_Nx_{N'}$ gives
+\[
+ \operatorname{Var}_\pi(m_{c^\pi}-\overline m)
+ =\frac{n-n_c}{n_c(n-1)}s^2,
+\]
+which is \eqref{eq:permnum}.  Finally,
+\[
+\begin{aligned}
+ E_\varepsilon s^2
+ &=\frac1n\sum_NE_\varepsilon Z(N)^2
+   -E_\varepsilon(\overline m)^2\\
+ &=1-\frac{Q_{aa}}{n^2},
+\end{aligned}
+\]
+because $E_\varepsilon Z(N)^2=K(N,N)=1$ and
+$E_\varepsilon(\overline m)^2=Q_{aa}/n^2$.
 \end{proof}
 
-\begin{note}[what the collapse is]\label{note:collapse}
-Lemma~\ref{lem:permfloor} makes the collapse of
-Measurement~\ref{meas:placebo} a computation. For a random cell the
-floor is, in average over the permutation of the variance, the
-without-replacement
-formula and nothing else: it decays like $n_c^{-1/2}$, which is exactly the count-based reflex this paper
-began by rejecting, with $\mathrm{sd}(Z)$ replaced by
-$(1-Q_{aa}/n^2)^{1/2}$ and a finite-population factor attached. That
-factor is $\sqrt{(n-n_c)/(n-1)}$ --- the standard finite-population
-correction for a sample mean drawn without replacement
-\cite{Cochran} --- and it is near $1$ only for a cell
-small against its band: at this octave, where $n=10^6$, the two
-shallow cells hold $383617$ and $421978$ of it and the factor reads
-$0.785$ and $0.760$, against $0.99997$ at depth~$5$. At the
-octave $(2\cdot10^6,4\cdot10^6]$, $n=1000000$ and
-$1-Q_{aa}/n^2=0.871282$ against $s^2=0.864029$, a ratio of
-$0.991676$. \textbf{So the count-based scale is the Rademacher-null
-scale for a random cell and is not for the arithmetic cells cut here}
---- the thesis of this paper is a statement about which cells, not
-about counts. The
-two halves are not equally supported: the first is
-Lemma~\ref{lem:permfloor} and holds for every uniformly random subset,
-the second is Measurement~\ref{meas:placebo} and covers the depth cells
-of one band. A cell cut some third way --- by an interval of the band,
-or by the size of $N$ --- is neither, and nothing here says the bar
-holds there.
+Thus the count-based scale is recovered exactly, up to the usual
+finite-population correction \cite{Cochran}, after averaging the
+variance over random same-size cells.  It is not recovered for the
+divisibility cells.
 
-The exact floor of the arithmetic cell exceeds \eqref{eq:permfloor} by
+\begin{measurement}[Arithmetic and permuted cells]\label{meas:placebo}
+In the octave $(2\cdot10^6,4\cdot10^6]$, the true labelling gives
 \[
 \begin{array}{r|cccccc}
- \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\\hline
- \mathrm{se}_c\big/\tau_c
-   & 104.80 & 42.68 & 70.28 & 44.37 & 16.97 & 3.83
+ \text{depth}&0&1&2&3&4&5\\
+ n_c&383617&421978&163568&28507&2263&67\\\hline
+ z_c&0.1069&1.1133&-0.2314&-2.3990&-5.9997&-11.0258
 \end{array}
 \]
---- the factors quoted above, now read off a formula rather than off
-ten draws. Those ten draws stand to $\tau_c$ in
-the ratios $0.9968$, $1.0195$, $0.9991$, $1.0175$, $0.9992$,
-$1.0101$, and their variances to \eqref{eq:permfloor} itself in
-$0.9960$, $1.0420$, $0.9992$, $1.0379$, $0.9999$, $1.0216$; the
-largest departure is $1.12$ of the draws' own standard error
-(\texttt{lab\_mask\_placebo.py}, L5). Ten draws and a formula agree,
-and it is the formula that is quoted.
-\end{note}
+Ten uniformly sampled fixed-count relabellings gave maxima
+\[
+ 0.9359,1.6073,1.9921,1.5687,2.1392,
+ 1.1216,1.7178,1.1348,3.2040,1.3192.
+\]
+This small sample provides descriptive rather than precise permutation
+inference: the smallest attainable Monte Carlo $p$-value is $1/11$.
 
-\begin{note}[the numerator's null is exact]\label{note:numnull}
-The second identity supplies what ten draws could not. Under
-$\ell\circ\pi$ the numerator $m_{c^\pi}-\overline m$ is the mean of a
-uniform $n_c$-subset of the fixed multiset $\{Z(N)\}$ minus its mean:
-mean $0$, variance \eqref{eq:permnum} exactly, no draw involved. At
-the same octave the true labelling's numerators sit at
+The exact comparison is between the arithmetic floor and
+\eqref{eq:permfloor}:
 \[
 \begin{array}{r|cccccc}
- \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\\hline
- m_c-\overline m & +0.01325 & +0.05191 & -0.03432 & -0.58002
-   & -1.99506 & -4.81664\\
- \bigl|m_c-\overline m\bigr|\big/\sigma_c
-   & 11.25 & 47.71 & 16.33 & 106.89 & 102.22 & 42.42
+ \text{depth}&0&1&2&3&4&5\\\hline
+ \operatorname{se}_c/\tau_c&104.80&42.68&70.28&44.37&16.97&3.83
 \end{array}
 \]
-standard deviations of the permutation null. Chebyshev's inequality,
-which needs nothing beyond \eqref{eq:permnum}, bounds the permutation
-$p$-value of the depth-$5$ numerator by $5.56\cdot10^{-4}$ and the
-union over the six cells by $1.28\cdot10^{-2}$. That replaces the
-$p\le1/11$ of Measurement~\ref{meas:placebo} by a computation
-\emph{for the numerator}. It does not do so for the ratio $z_c$: the
-permutation law of the denominator is not given here, and
-Measurement~\ref{meas:placebo}'s rank test remains the only statement
-about $\max_c|z_c|$ under permutation.
-\end{note}
-
-% =====================================================================
-\section{What predicts the floor's size}\label{sec:size}
-
-Write $\SS_2(h)$ for the Hardy--Littlewood singular series of the
-shift $h$ --- the local density of pairs $(p,p+h)$ --- and, for a cell
-$c$ in the band, put
-\[
-  E_{\mathrm{same},c}[\SS_2]
-  \;=\;\frac{1}{n_c(n_c-1)}\sum_{\substack{N,N'\in c\\ N\neq N'}}\SS_2(N-N'),
-  \qquad
-  E_{\mathrm{all}}[\SS_2]
-  \;=\;\frac{1}{n(n-1)}\sum_{\substack{N,N'\in a\\ N\neq N'}}\SS_2(N-N').
-\]
-Both sums run over \emph{ordered} pairs with the diagonal removed. The
-ordering is immaterial, since $\SS_2(-h)=\SS_2(h)$; the removal is not,
-since $\SS_2(0)$ is not defined, and every count and every denominator
-below is the off-diagonal one. Put
-\begin{equation}\label{eq:Dc}
-  D_c\;:=\;E_{\mathrm{same},c}[\SS_2]-E_{\mathrm{all}}[\SS_2].
-\end{equation}
-For the exact doubly centred analogue, also write
-\[
-  E_{c,a}[\SS_2]
-  :=\frac{1}{n_c(n-1)}
-    \sum_{N\in c}\sum_{\substack{N'\in a\\N'\ne N}}\SS_2(N-N'),
-  \qquad
-  B_c:=E_{\mathrm{same},c}[\SS_2]-2E_{c,a}[\SS_2]
-       +E_{\mathrm{all}}[\SS_2].
-\]
-Thus $B_c$, not $D_c$, is the off-diagonal singular-series quantity
-with the same three-part centring as \eqref{eq:JKJ}. The two-term
-$D_c$ is retained as the descriptor used by the measurements below;
-Measurement~\ref{meas:Dc} quantifies how close it is to the doubly
-centred convention in the measured band.
-
-\begin{measurement}[the floor tracks $D_c$, including its shape]%
-\label{meas:Dc}
-At the octave $(2\cdot10^6,\,4\cdot10^6]$:
-\[
-\begin{array}{r|cccccc}
- \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\\hline
- D_c & 0.302138 & 0.046766 & 0.412504 & 1.052129 & 1.946109
-   & 3.171298\\
- \mathrm{se}_c & 0.12400 & 0.04662 & 0.14834 & 0.24178 & 0.33253
-   & 0.43685
-\end{array}
-\]
-with correlation $0.9805$ across depths. Neither row is monotone: both
-dip at depth $1$, and that is the mechanism made visible. Depth $0$ is
-the cell on which \emph{none} of $3,5,7,11,13$ divides $N$, and
-excluding a class concentrates the shift just as fixing one does ---
-if $3\nmid N$ and $3\nmid N'$ then both lie in $\{1,2\}\bmod3$ and
-$3\mid h$ with probability $\tfrac12$ against $\tfrac13$ for a random
-pair. Both ends of the depth index concentrate $h$; depth $1$ mixes
-the patterns and washes out. Depth is therefore a coarse index for
-$D_c$, and the floor follows the same coarse index
-(\texttt{lab\_cell\_singular.py}). The control is that run's own, and
-is an enumeration rather than a sample: over all $720$ permutations of
-the depth labels exactly one reaches $|r|=0.9805$, against a median of
-$0.3475$ and a $95$th percentile of $0.8084$ over that set. Those are
-order statistics of the $720$ relabellings and not quantiles of a law:
-the depths are deterministic, no exchangeability of the labels is
-assumed, and what the enumeration measures is how much of the agreement
-is carried by which cell gets which number rather than by the shape of
-either row alone. The
-label permutation of Lemma~\ref{lem:placebo} does not supply it, since
-that one permutes the labels of $z_c$ and not of this pair.
-
-A correlation over six points cannot tell $\mathrm{se}_c$ from any
-other quantity that falls with the depth, and the cell count is one of
-those. The ratio settles it and needs no null: $\mathrm{se}_c^2/D_c$
-reads $0.05089$, $0.04648$, $0.05334$, $0.05556$, $0.05682$ and
-$0.06018$ --- a full width of $25.4\%$ of its mean, which is the
-figure the result file prints, and from depth~$1$ upward a monotone
-rise of $29\%$ over its smallest value --- while $D_c$ itself moves by
-a factor $68$ across the same six cells. That rise is not a property
-of the ratio. $\mathrm{se}_c^2$ carries the diagonal of $K$, where
-$K(N,N)=1$, and $D_c$ does not: its averages run over pairs $N\ne N'$,
-and $\SS_2(0)$ is not defined. The diagonal is
-$n_c^{-2}\sum_NJ_c(N)^2=(1-n_c/n)/n_c$ and has no partner in the
-denominator. At the deepest cell it is $7.82\%$ of $\mathrm{se}_c^2$,
-and what it contributes there, $+0.004706$, exceeds the whole printed
-rise from depth~$4$ to depth~$5$, $+0.00336$. That contribution is
-depth~$5$'s own share and not the step between the two depths; the
-cited run states it as such.
-
-No single factor carries $\mathrm{se}_c^2$ to $D_c$'s convention.
-\eqref{eq:JKJ} is the
-doubly centred mean $E_{\mathrm{same},c}[K]-2E_{c,a}[K]+E_{\mathrm{all}}[K]$,
-which is three sums over three index sets with three different pair
-counts --- $n_c^2$, $n_cn$, $n^2$. Each term has to lose its own
-diagonal and be divided by its own count, and $K(N,N)=1$ makes that
-exact. Done that way the row reads $0.05089$, $0.04646$, $0.05334$,
-$0.05553$, $0.05665$, $0.05704$: a full width of $19.8\%$ rather than
-$25.4\%$, monotone from depth~$1$ still, and a step from depth~$4$ to
-depth~$5$ of $+0.00038$. \textbf{The rise survives the match; what
-shrinks is its size} --- nine times smaller at the last step, and a
-rise of $23\%$ from depth~$1$ rather than $29\%$. Removing only the
-diagonal gives $-0.00112$ there and scaling that by $n_c/(n_c-1)$
-gives $-0.00031$; both are over-corrections and neither is the
-comparison to make. The exact doubly centred comparison is between two kernels:
-\eqref{eq:JKJ} is the doubly centred mean
-$n_c^{-2}\sum J_cJ_cK$, while $B_c$ is the corresponding off-diagonal
-doubly centred mean with $K$ replaced by the singular series of the
-shift. The descriptor $D_c$ in \eqref{eq:Dc} omits the cross-centering
-term and is therefore not literally the same functional. The centring is not
-cosmetic. For $K$ the cross term is not the band mean --- it runs
-$0.124636$ to $0.140049$ against $E_{\mathrm{all}}=0.128718$, and
-dropping it would misstate the variance by factors $0.469$ to $2.120$
-across these six depths (\texttt{lab\_mask\_placebo.py}). For the
-singular series it is: $E_{c,a}$ departs from $E_{\mathrm{all}}$ by at
-most $0.004192$, so the two-term difference \eqref{eq:Dc} and the
-doubly centred form agree to within one per cent at five of the six
-depths --- the largest of those five being $0.59\%$ at depth~$3$ ---
-and to within five per cent at depth~$1$, where $D_c$ is
-smallest (\texttt{lab\_cell\_singular.py}). Both bands quoted here have
-the same numerator, the three-term variance $\mathrm{se}_c^2$, and
-differ only in the denominator: against $D_c$ as \eqref{eq:Dc} defines
-it the band is the $25.4\%$ above, and against the doubly centred
-$B_c$ it is $29.7\%$.
-A near-constant ratio through the origin is what would follow if $K$
-and the singular series differed across the band by a factor that the
-double centring leaves alone. That is not proved here: the ratio is
-measured, not derived. What the measurement does settle is the
-alternative it was taken against --- a quantity that merely decreases
-with the depth produces no such ratio. What it does not settle
-is the other direction. The band is read across depths at one
-octave; across scale the same ratio falls over the three octaves on
-which $D_c$ is measured. Divided by the sampled $D_c$ it reads
-$7.9\%$, $0.9\%$, $9.4\%$, $9.2\%$, $9.6\%$, $15.2\%$, and the
-$0.9\%$ at depth~$1$ was read here as that depth being the exception.
-It is not: divided by the $D_c$ this measurement computes over all
-pairs, the six read $9.5\%$, $9.6\%$, $9.5\%$, $9.6\%$, $9.8\%$,
-$15.3\%$. \textbf{The exception was the estimator's} --- at depth~$1$
-the pair average carries more noise per octave than the drift it was
-said to show. What remains is a drift of about half the matched width
-at five of the six cells and rather more at the deepest. Both inputs are printed here
-(\texttt{lab\_cell\_singular.py}, which forms the
-quotient from its own $D_c$ and the variance row of
-\texttt{lab\_cell\_floor.txt}). So $D_c$ fixes the
-ratio's depth profile at a fixed scale and not its scale
-dependence, and the floor itself is not scale-invariant
-(Measurement~\ref{meas:exponent} fits it a nonzero exponent), while
-Proposition~\ref{prop:scaleinv} shows that $D_c$ is asymptotically
-scale-free: $D_c$ is therefore not all of what fixes the
-floor's size.
+The permutation average depends on a cell only through its size, whereas
+the arithmetic floor depends on which integers carry the label.  The
+contrast therefore isolates the correspondence between the cells and
+the arithmetic covariance kernel.
 \end{measurement}
 
-The proof of the proposition below sums a weight along an arithmetic
-progression. What it needs of the weight is only bounded variation, and
-that is worth isolating, because it is the one step where the shape of
-the weight --- as opposed to its arithmetic --- does any work.
-
-\begin{lemma}[summing along a progression against an envelope]%
-\label{lem:envtv}
-Let $w:\mathbb Z\to\mathbb R$ be supported on $|h|<B$ with total
-variation $\mathrm{TV}(w)=\sum_h|w(h+1)-w(h)|$, and let $q\ge1$,
-$a\in\mathbb Z$. Then
+For the fixed observed numerator, \eqref{eq:permnum} also gives an exact
+variance without sampling.  At the same octave,
 \[
-  \sum_{h\equiv a\ (q)} w(h)
-  \;=\;\frac1q\sum_h w(h)\;+\;O\bigl(\mathrm{TV}(w)\bigr),
+\begin{array}{r|cccccc}
+ \text{depth}&0&1&2&3&4&5\\\hline
+ |m_c-\overline m|/\sigma_c&11.25&47.71&16.33&106.89&102.22&42.42
+\end{array}
 \]
-with an absolute implied constant --- in particular uniform in $q$, in
-$a$, and in $B$.
+where $\sigma_c^2$ denotes the right-hand side of
+\eqref{eq:permnum}.  Chebyshev's inequality bounds the two-sided
+permutation probability for the depth-$5$ numerator by
+$5.56\cdot10^{-4}$ and the union of the six cellwise events by
+$1.28\cdot10^{-2}$.  These bounds concern the numerator, not the ratio
+$z_c$, whose denominator changes under relabelling.
+
+\section{A singular-series descriptor}\label{sec:descriptor}
+
+For nonzero $h$, let $\SS_2(h)$ be the Hardy--Littlewood singular series
+for a prime pair separated by $h$.  Define ordered off-diagonal pair
+averages by
+\[
+ E_{\mathrm{same},c}[\SS_2]
+ =\frac1{n_c(n_c-1)}
+   \sum_{\substack{N,N'\in c\\N\ne N'}}\SS_2(N-N'),
+\]
+\[
+ E_{\mathrm{all}}[\SS_2]
+ =\frac1{n(n-1)}
+   \sum_{\substack{N,N'\in a\\N\ne N'}}\SS_2(N-N'),
+\]
+and
+\begin{equation}\label{eq:Dc}
+ D_c=E_{\mathrm{same},c}[\SS_2]-E_{\mathrm{all}}[\SS_2].
+\end{equation}
+The exact three-term analogue of the centred covariance form is
+\[
+ B_c=E_{\mathrm{same},c}[\SS_2]
+     -2E_{c,a}[\SS_2]+E_{\mathrm{all}}[\SS_2],
+\]
+where
+\[
+ E_{c,a}[\SS_2]=\frac1{n_c(n-1)}
+ \sum_{N\in c}\sum_{\substack{N'\in a\\N'\ne N}}\SS_2(N-N').
+\]
+The two-term $D_c$ is used as a descriptor, not asserted to equal the
+variance kernel.
+
+\begin{measurement}[Cross-cell profile]\label{meas:Dc}
+At the octave $(2\cdot10^6,4\cdot10^6]$, a sample of $400000$ pairs per
+cell gives the estimator $\widehatD_c$:
+\[
+\begin{array}{r|cccccc}
+ \text{depth}&0&1&2&3&4&5\\\hline
+ \widehatD_c&0.302138&0.046766&0.412504&1.052129&1.946109&3.171298\\
+ \operatorname{se}_c&0.12400&0.04662&0.14834&0.24178&0.33253&0.43685
+\end{array}
+\]
+The correlation across the six cells is $0.9805$.  This association is
+post hoc and descriptive.  Its useful feature is not the correlation
+alone but the scale comparison: $\operatorname{se}_c^2/\widehatD_c$
+ranges from $0.04648$ to $0.06018$, while $\widehatD_c$ itself varies by
+a factor about $68$.  After matching diagonal and centring conventions
+term by term, the ratio has a full width $19.8\%$ of its mean.
+\end{measurement}
+
+We next show that $D_c$ has a scale-free residue-class main term.
+
+\begin{lemma}[Progression sum against an envelope]\label{lem:envtv}
+Let $w:\mathbb Z\to\mathbb R$ have finite support and total variation
+$\operatorname{TV}(w)=\sum_h|w(h+1)-w(h)|$.  For every $q\geq1$ and
+$a\in\mathbb Z$,
+\[
+ \sum_{h\equiv a\ (q)}w(h)
+ =\frac1q\sum_hw(h)+O(\operatorname{TV}(w)),
+\]
+with an absolute implied constant.
 \end{lemma}
 
 \begin{proof}
-Partition all of $\mathbb Z$ --- not the support --- into the blocks
-$I_j$ of $q$ consecutive integers determined by $a$, and let $h_j$ be
-the representative of the class in $I_j$. Every block is then complete,
-and all but finitely many meet the support not at all and contribute
-zero to both sides. So
+Partition $\mathbb Z$ into consecutive blocks of length $q$, each with
+one representative $h_j$ in the class $a\pmod q$.  If $I_j$ is the
+$j$th block, then
 \[
-  \sum_{h\equiv a\,(q)}w(h)-\frac1q\sum_h w(h)
-  \;=\;\sum_j\Bigl[w(h_j)-\frac1q\sum_{h\in I_j}w(h)\Bigr]
-  \;=\;\sum_j\frac1q\sum_{h\in I_j}\bigl[w(h_j)-w(h)\bigr],
+\begin{aligned}
+ \sum_{h\equiv a\,(q)}w(h)-\frac1q\sum_hw(h)
+ &=\sum_j\left(w(h_j)-\frac1q\sum_{h\in I_j}w(h)\right)\\
+ &=\sum_j\frac1q\sum_{h\in I_j}\bigl(w(h_j)-w(h)\bigr).
+\end{aligned}
 \]
-and $|w(h_j)-w(h)|\le V_j$ for every $h\in I_j$, where $V_j$ is the
-variation of $w$ within $I_j$. The inner average is therefore at most
-$V_j$, and the $V_j$ are sums of $|w(h+1)-w(h)|$ over disjoint sets of
-$h$, so $\sum_j V_j\le\mathrm{TV}(w)$. The implied constant is $1$.
+Let $V_j$ be the variation of $w$ within $I_j$.  For every
+$h\in I_j$, $|w(h_j)-w(h)|\leq V_j$, and hence the absolute value of
+the last display is at most
+\[
+ \sum_jV_j\leq\sum_h|w(h+1)-w(h)|=\operatorname{TV}(w).
+\]
+This proves the stated estimate with implied constant $1$.
 \end{proof}
 
-Nothing in it is arithmetic: $q$ is arbitrary, and the bound does not
-improve with $q$ nor degrade with it. That is exactly why it survives
-the primes comparable to the band length, which are equidistributed
-modulo nothing.
-
-\begin{proposition}[the size mechanism, asymptotically scale-free]%
-\label{prop:scaleinv}
-We establish an asymptotic statement and not an identity. Let
-$Q=3\cdot5\cdot7\cdot11\cdot13$, let $a$ be the even integers of an
-interval of length $B$, and put $\ell=B/2Q$, so that each of the $Q$
-\emph{even} residue classes modulo $2Q$ meets $a$ in $\ell+O(1)$ terms
-and each odd class meets it in none. Let $R_c$ be a
-nonempty set of $m$ even residue classes modulo $2Q$ and
-$c=\{N\in a:\ N\bmod 2Q\in R_c\}$ the cell they cut. Every depth cell
-is of this form --- depth fixes how many of the five primes divide
-$N$ and not the residues themselves, so $R_c$ is the set of classes
-of the $\binom{5}{d}$ divisibility patterns of depth $d$ --- and $a$
-itself is the case in which $R_c$ is all $Q$ even classes. Write
+\begin{proposition}[Scale-free main term]\label{prop:scaleinv}
+Let
+$Q=3\cdot5\cdot7\cdot11\cdot13$, let $a$ be the even integers in an
+interval of length $B$, and put $\ell=B/(2Q)$.  Let $R_c$ be a nonempty
+set of $m$ even residue classes modulo $2Q$, and let $c$ be their union
+inside the band.  Define
 \[
-  A(h)=\prod_{2<p\mid h,\ p\le13}\Bigl(1+\frac1{p-2}\Bigr),
-  \qquad
-  C_2=\prod_{p>2}\frac{p(p-2)}{(p-1)^2},
-  \qquad
-  \kappa=2C_2\prod_{p>13}\Bigl(1+\frac1{p(p-2)}\Bigr),
+ A(h)=\prod_{\substack{2<p\mid h\\p\leq13}}
+       \left(1+\frac1{p-2}\right),
+ \qquad
+ C_2=\prod_{p>2}\frac{p(p-2)}{(p-1)^2},
 \]
-so that $A$ is a function of $h\bmod Q$, and put
 \[
-  \mathcal A_c=\frac1{m^2}\sum_{r,r'\in R_c}A(r-r'),
-  \qquad
-  \mathcal A_a=\frac1{Q^2}\sum_{r,r'}A(r-r'),
+ \kappa=2C_2\prod_{p>13}\left(1+\frac1{p(p-2)}\right),
 \]
-the second sum over all pairs of even classes modulo $2Q$. These are
-rational numbers determined by $R_c$ alone: they depend neither on
-$B$ nor on where the interval sits. Then, with $D_c$ as in
-\eqref{eq:Dc} and for every fixed $\eta\in(0,1)$,
+and
+\[
+ \mathcal A_c=\frac1{m^2}\sum_{r,r'\in R_c}A(r-r'),
+ \qquad
+ \mathcal A_a=\frac1{Q^2}\sum_{r,r'}A(r-r'),
+\]
+where the second sum is over all even residue classes modulo $2Q$.
+Then, for every fixed $\eta\in(0,1)$,
 \begin{equation}\label{eq:scaleinv}
-  D_c\;=\;\kappa\,(\mathcal A_c-\mathcal A_a)
-  \;+\;O\Bigl(\frac1\ell\Bigr)
-  \;+\;O_\eta\Bigl(\frac{B^{\eta}}{\ell}\Bigr)
-  \;+\;O_\eta\bigl(B^{\eta-1}\bigr).
+ D_c=\kappa(\mathcal A_c-\mathcal A_a)
+ +O(\ell^{-1})+O_\eta(B^\eta/\ell)+O_\eta(B^{\eta-1}).
 \end{equation}
-The implied constant in the first error term is absolute and those in
-the other two depend on $\eta$ alone; in particular none of them
-depends on $B$ or on the position of the interval, and the parameter
-set $\{3,5,7,11,13\}$ enters only through $Q$, fixed throughout. The
-first constant is absolute in the sense of being bounded over the cells
-and not of being one number for all of them: the rounding residue
-isolated in the proof carries a constant that varies by two orders of
-magnitude between depth~$0$ and depth~$4$, and it is the finiteness of
-the field --- $Q$ fixed, hence finitely many cells --- that makes the
-supremum a constant at all. Nothing below needs the stronger reading. The $\eta$-dependence is not uniform as
-$\eta\to0$ --- the constant comes from the Euler products of Rankin's
-bound in the proof and blows up there --- so $\eta$ is fixed in
-advance and the statement is one about each fixed $\eta$ separately.
-
-Consequently $D_c\to\kappa(\mathcal A_c-\mathcal A_a)$ as
-$B\to\infty$ with $R_c$ held fixed. Writing $D_c(B)$ for the value of
-\eqref{eq:Dc} in a band of length $B$, define the one-step exponent
-\begin{equation}\label{eq:ec}
-  e_c(B)\;=\;-\,\frac{\log\bigl|D_c(2B)/D_c(B)\bigr|}{\log 2}.
-\end{equation}
-Where $\mathcal A_c\neq\mathcal A_a$ the convergence gives
-$e_c(B)\to0$; where $\mathcal A_c=\mathcal A_a$ it gives only
-$D_c\to0$ and predicts no exponent. No rate is claimed for either
-limit, and nothing here asserts equality at a fixed band.
-Measurement~\ref{meas:maincoef} writes $\mathcal A_c$ and
-$\mathcal A_a$ as $E_{\mathrm{same},c}[A]$ and $E_{\mathrm{all}}[A]$,
-and Measurement~\ref{meas:secondcell} writes the first
-$E^{\mathrm{ex}}_c[A_S]$; the pair average of $A$ over the cell itself
-differs from $\mathcal A_c$ by the first error term.
+The constants are uniform over the finitely many depth cells and over
+the position of the interval.  Consequently
+\[
+ D_c\longrightarrow\kappa(\mathcal A_c-\mathcal A_a).
+\]
+If this limit is nonzero, the one-step exponent
+\[
+ e_c(B)=-\frac{\log|D_c(2B)/D_c(B)|}{\log2}
+\]
+tends to zero.
 \end{proposition}
 
 \begin{proof}
-For $N,N'$ in a band, $\SS_2(N-N')$ depends on $N-N'$ only through the
-local factors at primes dividing $h=N-N'$. Depth does \emph{not} fix
-the residue of $N$ modulo each of $3,5,7,11,13$ --- it fixes only how
-many of them divide $N$, so a depth-$d$ cell is the union of the
-$\binom{5}{d}$ divisibility patterns of that size, and
-Measurement~\ref{meas:Dc} records the mixing this causes. What the
-argument needs is weaker and does hold: each pattern fixes, at each of
-the five primes, the admissible residue set, so within a pattern the
-law of $h$ modulo each of them is determined; and, the even $N$ of a
-band being equidistributed modulo $3\cdot5\cdot7\cdot11\cdot13$ to
-$O(1/\ell)$ per class, the joint residue-class structure within a
-pattern is determined by the product modulus. The word is meant in the
-Chinese-remainder sense and not the probabilistic one: the admissible
-set modulo $3\cdot5\cdot7\cdot11\cdot13$ is the product of the
-admissible sets at the five primes, so the joint law modulo the product
-is determined and not only the five marginals. No independence of
-random variables is asserted or used. The weights with
-which the patterns enter a depth cell are their densities among the
-even $N$ of the band, which are the same at every scale. The induced
-law of $h$ modulo those primes is therefore determined by the cell
-alone up to the resolution of the cell itself. That resolution is
-$O(1/\ell)$ and not $O(1/n_c)$: a depth cell meets each joint residue
-class in about $\ell=B/2Q$ terms, and it is that count, not the cell's
-total, that the empirical law of the residues is read from. The same
-counting governs the divisor sampling below --- the resolution is
-$O(1/\ell)$ for both and not $O(1/n_c)$ --- and no cancellation is
-claimed for either.
-
-Write $Q=3\cdot5\cdot7\cdot11\cdot13$ and split
-$\SS_2(h)=2C_2\,A(h)\,T(h)$, where
-$A(h)=\prod_{2<p\mid h,\ p\le13}(1+\frac1{p-2})$ is a function of
-$h\bmod Q$ and $T(h)=\prod_{p\mid h,\ p>13}(1+\frac1{p-2})$ carries
-everything above $13$. What has to be shown is that $T$ contributes
-the same factor to both averages of \eqref{eq:Dc}, whatever the cell.
-That is the hardest step of the proof and not a hypothesis readable
-off the construction. It is not enough that each prime above $13$ is
-separately equidistributed: $\SS_2$ reads them all at once, and the
-primes comparable to the band length are equidistributed modulo
-nothing.
-
-Expand $T$ over divisors. Writing $g(d)=\prod_{p\mid d}\frac1{p-2}$
-and letting $d$ run over the squarefree integers all of whose prime
-factors exceed $13$, $T(h)=\sum_{d\mid h}g(d)$. Every such $d$ is
-coprime to $2Q$; and the shifts that occur are $h=N-N'$ with both $N$
-even, so they lie in classes modulo $2Q$ and not modulo $Q$. For a
-residue $a$ modulo $2Q$ the Chinese remainder theorem gives
+For even nonzero $h$ write
 \[
-  \#\{h:0<|h|<B,\ h\equiv a\ (2Q),\ d\mid h\}
-  =\frac{B}{Qd}+O(1),
+ \SS_2(h)=2C_2A(h)T(h),\qquad
+ T(h)=\prod_{\substack{p\mid h\\p>13}}
+       \left(1+\frac1{p-2}\right).
 \]
-and $d>B$ divides no $h$ of the band at all, since $h=N-N'$ with both
-$N$ inside a band of length $B$.
-
-The weight with which $h$ enters a pair average is not a function of
-$|h|$ alone. For $E_{\mathrm{same},c}$ it counts the $N\in c$ with
-$N-h\in c$, and membership of $c$ is fixed by $N\bmod 2Q$, so the count
-reads $h\bmod 2Q$ as well: if $3\mid h$ the shift preserves divisibility
-by $3$ and otherwise it does not. It does not, however, factor. Write
-$f_c(h)=\#\bigl(R_c\cap(R_c+h)\bigr)$ for the number of classes that a
-shift by $h$ keeps inside $R_c$. The $N$ of one such class that are
-admissible fill an interval of length $B-|h|$, which the class meets
-$(B-|h|)/2Q$ times up to the rounding at its two ends, so
+Expanding the second product gives
 \[
-  W_c(h)\;=\;\#\{N\in c:\ N-h\in c\}
-  \;=\;f_c(h)\,\frac{B-|h|}{2Q}\;+\;\rho_c(h),
-  \qquad
-  |\rho_c(h)|\;\le\;f_c(h)\;\le\;m .
+ T(h)=\sum_{d\mid h}g(d),\qquad
+ g(d)=\prod_{p\mid d}\frac1{p-2},
 \]
-The residue $\rho_c$ is that rounding summed over the surviving classes.
-It is additive rather than a further factor, and it is bounded
-independently of $B$.
+where $d$ is squarefree and all its prime factors exceed $13$.
+Every such $d$ is coprime to $2Q$.
 
-The unweighted ratio is $O(1/\ell)$, but the pair average carries
-$\rho_c(h)$ against $T(h)$, and $T$ is not uniformly bounded. The
-weighted residue is instead absorbed by the already displayed
-$O_\eta(B^{\eta-1})$ term. Indeed
+Write
 \[
-  T(h)=\sum_{d\mid h}g(d)\leq\tau(|h|),\qquad
-  \sum_{0<|h|<B}|\rho_c(h)|T(h)
-  \leq m\sum_{0<|h|<B}\tau(|h|)=O_\eta(mB^{1+\eta}).
+ f_c(h)=\#\bigl(R_c\cap(R_c+h)\bigr),
+ \qquad
+ W_c(h)=\#\{N\in c:N-h\in c\}.
 \]
-After division by the $m^2\ell^2$ ordered pairs of a cell, this is
-$O_\eta(B^{\eta-1})$ uniformly in the finitely many cells (with $Q$
-fixed). Thus no unweighted estimate is used after multiplication by
-$T$.
-
-What the argument uses is therefore the leading product, with the
-weighted $\rho_c$ contribution carried into $O_\eta(B^{\eta-1})$. Its
-second factor is an envelope in $|h|$:
-normalised to sum $1$ it is $(B-|h|)/Z$ with $Z=\sum_h(B-|h|)$, so
-consecutive values differ by $2/Z$ and there are $O(B)$ of those steps,
-whence total variation $O(1/B)$ --- with constant $4$ when $h$ runs over
-the even integers, since then $Z=B^2/2+O(B)$. Lemma~\ref{lem:envtv}
-applied to it gives $P(d\mid h)=1/d+O(1/B)$ uniformly in $d\le B$. The
-mixture over classes is what the pattern weights supply. Every cell's
-pair law is such a mixture, whence
+For each residue class counted by $f_c(h)$, the admissible $N$ fill an
+interval of length $B-|h|$.  Hence
+\begin{equation}\label{eq:pair-envelope}
+ W_c(h)=f_c(h)\frac{B-|h|}{2Q}+\rho_c(h),
+ \qquad |\rho_c(h)|\leq f_c(h)\leq m.
+\end{equation}
+Also $n_c=m\ell+O(m)$, so
+$n_c(n_c-1)=m^2\ell^2(1+O(\ell^{-1}))$.  The first term in
+\eqref{eq:pair-envelope}, after normalisation, is a mixture of triangular
+envelopes indexed by pairs of residue classes.  Each such envelope has
+total variation $O(B^{-1})$.  Since $(d,2Q)=1$, the Chinese remainder
+theorem and Lemma~\ref{lem:envtv} give
 \[
-  E[\SS_2]=2C_2\,E[A]\prod_{p>13}\Bigl(1+\frac1{p(p-2)}\Bigr)
-  \;+\;\mathcal E,
-  \qquad
-  \mathcal E=O(1/\ell)+O_\eta\bigl(B^{\eta}/\ell\bigr)
-    +O_\eta\bigl(B^{\eta-1}\bigr)\ \ (\eta>0).
+ P(d\mid h)=\frac1d+O(B^{-1})
+\]
+uniformly for $d\leq B$ within each admissible residue-class pair.  The
+replacement of the exact class counts by $m\ell$ contributes
+$O(\ell^{-1})$.  Summing the per-$d$ discrepancy against $g(d)$
+contributes
+\[
+ O\!\left(\frac1\ell\sum_{d\leq B}g(d)\right)
+ =O_\eta(B^\eta/\ell).
 \]
 
-The three parts of $\mathcal E$ are derived in the paragraphs that
-follow: the first from counting a cell against its residue classes, the
-second by summing that error against $g$, and the third from the weighted
-rounding residue and the two truncations of the divisor sum. They are
-stated here and justified there rather than the other way round, so that
-the shape of the answer is visible before the bookkeeping.
-
-All three parts of $\mathcal E$ have to be said. None of their
-\emph{rates} depends on the cell: $\ell=B/2Q$ is a band parameter, the
-same at depth~$0$ and at depth~$5$. The constants in front of them are
-the separate question answered above for the first --- bounded over the
-cells because $Q$ is fixed, and not one number for all of them. A cell-dependent bound would have to be an $O(1/n_c)$,
-and the counting below does not support one.
-At the level of the displayed powers, the divisor-sampling bound is
-$B^{\eta}$ times the first, while
-$B^{\eta}/\ell=2Q\,B^{\eta-1}$, so the latter two bounds have the
-same asymptotic order for fixed $Q$. Their finite-band numerical sizes
-cannot be ordered without the unnamed implied constants, and the
-conclusion does not require such an ordering. The $O(1/B)$ above is the error of the
-envelope, not of the cell. A cell is not a random sample: it is a
-union of residue classes modulo $2Q$, and every $d$ here is coprime to
-$2Q$, so the count that served the envelope serves the cell as well ---
-taken with the cell's own parameters. A depth cell is $m$ classes, each
-meeting the band in $\ell=B/2Q$ terms, with $m\ell=n_c$; only the
-deepest cell of this field is a single class. Over one pair of classes
-the pairs with $d\mid h$ number $\ell^2/d+O(\ell)$ --- the count is a
-tent summed along a progression, and its uniformity in $d$ is the
-paragraph on uniformity below --- so over the $m^2$
-pairs of classes the error is $O(m^2\ell)=O(n_c^2/\ell)$ and the
-proportion departs from $1/d$ by $O(1/\ell)=O(Q/B)$ --- uniformly in
-$d$, with no gain from the size of $d$. Summed against $g$ that is
-$\ell^{-1}\sum_{d\le B}g(d)$, which the Rankin bound below puts at
-$O_\eta(B^{\eta}/\ell)$; $\ell$ is a fixed fraction of $B$ --- namely
-$B/2Q$ with $Q$ fixed, so that $B^{\eta}/\ell=2Q\,B^{\eta-1}$ as
-recorded above --- so this is $O_\eta(B^{\eta-1})$ again.
-
-The counting gives $O(1/\ell)$ and not $O(1/n_c)$, and the two differ
-by the factor $m$, which is large at every cell but the deepest. The
-stronger form would need the $m^2$ class-wise errors to cancel rather
-than accumulate. Nothing here establishes that, and it is not claimed. This is the
-same $O(1/\ell)$ that the equidistribution above carries, arrived at by
-the same count of a cell against its residue classes; the two are one
-resolution seen twice and not two errors. Both are bounds rather than errors, and their finite-band numerical
-ordering is not supplied because the implied constants are unnamed.
-Neither varies by cell. The conclusion needs no ordering, only that
-both go to zero, and $\ell$ grows with the band.
-
-The last part is the two truncations, which Rankin's trick bounds.
-For $s>0$, $\sum_{d\le B}g(d)\le B^{s}\prod_{p>13}(1+\frac1{(p-2)p^{s}})$,
-the product converging because $\sum_p p^{-1-s}$ does; this is
-$O_\eta(B^{\eta})$ at $s=\eta$, and reaches $O_\eta(B^{\eta-1})$ only
-after the per-$d$ error $O(1/B)$ multiplies it. For $t<1$,
-$\sum_{d>B}g(d)/d\le B^{-t}\prod_{p>13}(1+\frac1{(p-2)p^{1-t}})$, the
-product converging because $\sum_p p^{-2+t}$ does; at $t=1-\eta$ this
-is $O_\eta(B^{\eta-1})$ directly. The two reach the same order by
-different routes, and the two exponents cannot be collapsed into one:
-with $s=t$ the bounds read $B^{s-1}$ and $B^{-s}$, which meet only at
-$s=\tfrac12$, and $B^{-1/2}$ is far weaker than $B^{\eta-1}$. Nor does
-$\eta$ pay to be taken small without limit: $\log$ of the product is
-of order $\log(1\!/\!\eta)$, so the bound is best near
-$\eta=1/\!\log B$ and worsens on either side of it. The two exponents
-stay two, but at $s=\eta$ and $t=1-\eta$ the two \emph{products}
-coincide: both read $\prod_{p>13}(1+\frac1{(p-2)p^{\eta}})$, and the
-two convergence criteria both reduce to $\sum_p p^{-1-\eta}$. There is
-one $\eta$-constant in this proof, not two.
-
-Every constant here is uniform in the cell, which is what lets
-$\mathcal E$ be one bound for a whole band. $A$ is exactly constant on
-each pair of residue classes modulo $2Q$ --- $h$ is fixed there --- and
-is bounded by $\prod_{2<p\le13}(1+\frac1{p-2})=128/33$, a number with
-no cell in it. On one class pair the ordered pairs $(i,j)$ in
-$[0,\ell)^2$ with $i-j$ in a fixed class modulo $d$ number
-$\ell^2/d+O(\ell)$ with an absolute constant, since the difference
-count is a tent of total variation $2\ell$. And the $m^2$ class pairs
-divide out identically against $n_c^2=m^2\ell^2$: the same relative
-error appears at $m=5760$ and at $m=1$. Nothing in the bound names the
-cell's pattern set.
-
-What is \emph{not} uniform is $\mathcal E/D_c$, and it is that ratio
-the exponent needs. At the octave Measurement~\ref{meas:scaleinv}
-reads, $D_c$ runs from $0.046766$ at depth~$1$ to $3.171298$ at
-depth~$5$, a factor of $67.8$; one and the same $\mathcal E$ therefore
-buys $67.8$ times less at the first than at the last, at every band.
-So the proposition is not equally informative at the six cells, and
-depth~$1$ is the cell where it says least --- the same depth whose main
-term the proof cannot certify is nonzero.
-
-The factor the primes above $13$ contribute is therefore one and the
-same constant $\kappa/2C_2$ in both averages, and it leaves the
-difference of the two pair averages of $A$. Each of those is the
-average of a function of $h\bmod Q$ over the pairs of a union of
-residue classes, and the classes meet the band in $\ell+O(1)$ terms
-each, so each pair average is $\mathcal A_c$, respectively
-$\mathcal A_a$, up to $O(1/\ell)$ with an absolute constant, $A$ being
-bounded by $128/33$. Hence
+The divisor errors and the tail are controlled by Rankin's trick:
 \[
-  D_c=\kappa\,(\mathcal A_c-\mathcal A_a)+\mathcal E,
+\begin{aligned}
+ \sum_{d\leq B}g(d)
+ &\leq B^\eta
+   \prod_{p>13}\left(1+\frac1{(p-2)p^\eta}\right)
+   =O_\eta(B^\eta),\\
+ \sum_{d>B}\frac{g(d)}d
+ &\leq B^{\eta-1}
+   \prod_{p>13}\left(1+\frac1{(p-2)p^\eta}\right)
+   =O_\eta(B^{\eta-1}).
+\end{aligned}
 \]
-which is \eqref{eq:scaleinv}. The main term is fixed by $R_c$ and is
-the same at every scale, so \eqref{eq:Dc} converges to it. Convergence
-is additive and an exponent is multiplicative: if the limit is nonzero
-then $D_c(2B)/D_c(B)\to1$ and the one-step exponent \eqref{eq:ec}
-tends to $0$, while if $\mathcal A_c=\mathcal A_a$ the proposition
-says only that $D_c\to0$ and predicts no exponent at all. No derivative
-is taken anywhere: $D_c$ is defined band by band, and what the
-convergence controls is the ratio of consecutive bands, which is what
-\eqref{eq:ec} reads. The difference $\mathcal A_c-\mathcal A_a$ is a
-finite sum of rationals over the residues modulo $2Q$ and the pattern
-weights, so it is decidable cell by cell without any measurement.
-Measurement~\ref{meas:maincoef} decides it: the difference is a
-nonzero rational at all six depths, so the exponent this proposition
-predicts is defined at all six.
+It remains to control the rounding term in
+\eqref{eq:pair-envelope}.  Since $T(h)\leq\tau(|h|)$,
+\[
+ \sum_{0<|h|<B}|\rho_c(h)|T(h)
+ \leq m\sum_{0<|h|<B}\tau(|h|)
+ =O_\eta(mB^{1+\eta}).
+\]
+After division by $n_c(n_c-1)$ this is
+$O_\eta(B^{\eta-1})$, uniformly over the finitely many cells because
+$Q$ is fixed and $1\leq m\leq Q$.  Thus the primes above $13$
+contribute, uniformly over each residue-class pair,
+\[
+ \prod_{p>13}\left(1+\frac1{p(p-2)}\right)
+\]
+up to the errors in \eqref{eq:scaleinv}.
+
+Finally, $A(h)$ is constant on each pair of residue classes modulo
+$2Q$.  Averaging those pairs over the cell and over the whole band gives
+$\mathcal A_c$ and $\mathcal A_a$, respectively, up to
+$O(\ell^{-1})$.  Consequently
+\[
+ E_{\mathrm{same},c}[\SS_2]
+ =\kappa\mathcal A_c
+  +O(\ell^{-1})+O_\eta(B^\eta/\ell)
+  +O_\eta(B^{\eta-1}),
+\]
+and the identical calculation for the full band gives
+\[
+ E_{\mathrm{all}}[\SS_2]
+ =\kappa\mathcal A_a
+  +O(\ell^{-1})+O_\eta(B^\eta/\ell)
+  +O_\eta(B^{\eta-1}).
+\]
+Subtracting these two identities yields \eqref{eq:scaleinv}.  Since all
+three error terms tend to zero for fixed $\eta\in(0,1)$, a nonzero
+limiting constant gives
+\[
+ \frac{D_c(2B)}{D_c(B)}\longrightarrow1,
+ \qquad
+ e_c(B)=-\frac{\log|D_c(2B)/D_c(B)|}{\log2}\longrightarrow0.
+\]
 \end{proof}
 
-\begin{measurement}[the main term, computed]\label{meas:maincoef}
-$A(h)$ depends only on which of $3,5,7,11,13$ divide $h$, a cell is a
-union of residue classes modulo $2Q$, and $p\mid h$ for $h$ between two
-classes exactly when the two agree modulo $p$. So
-$E_{\mathrm{same},c}[A]-E_{\mathrm{all}}[A]$ is a finite double sum
-over pattern pairs weighted by $m(S)=\prod_{p\notin S}(p-1)$, and it is
-computed in exact rational arithmetic
-(\texttt{lab\_maincoef.py}): $635653709/2854051200$,
-$10743253/313945632$, $318004704/1037775739$, $296100736/378194817$,
-$13823072/9546537$ and $78976/33033$ at depths $0$ to $5$. \textbf{None
-is zero}, which is the hypothesis the proof needs. At depth~$5$ the
-cell is a single class, so $Q$ divides every shift in it and
-$E_{\mathrm{same},c}[A]$ is exactly
-$\prod_{2<p\le13}(1+\frac1{p-2})=128/33$.
+\section{Finite computations}\label{sec:computations}
 
-Multiplied by $2C_2\prod_{p>13}(1+\frac1{p(p-2)})$ --- a constant with
-no fitted parameter in it, and one that is not irrational: the same
-term-by-term cancellation that gives $E_\infty[\SS_2]=2$ below reduces
-it to
+Because $A(h)$ depends only on the residue of $h$ modulo $Q$, the main
+term in Proposition~\ref{prop:scaleinv} is a finite rational sum.
+Moreover,
+\begin{equation}\label{eq:kappa}
+ \kappa
+ =2\prod_{p\in\{3,5,7,11,13\}}\frac{p(p-2)}{(p-1)^2}
+ =\frac{11011}{8192}.
+\end{equation}
+
+\begin{measurement}[Residue main term]\label{meas:maincoef}
+The exact rational values of $\mathcal A_c-\mathcal A_a$ at depths
+$0$ through $5$ are
 \[
-  2C_2\prod_{p>13}\Bigl(1+\frac1{p(p-2)}\Bigr)
-  \;=\;2\prod_{p\in\{3,5,7,11,13\}}\frac{p(p-2)}{(p-1)^2}
-  \;=\;\frac{11011}{8192}\;=\;1.3441162109375
+ \frac{635653709}{2854051200},\quad
+ \frac{10743253}{313945632},\quad
+ \frac{318004704}{1037775739},\quad
+ \frac{296100736}{378194817},\quad
+ \frac{13823072}{9546537},\quad
+ \frac{78976}{33033}.
 \]
-exactly --- these predict $D_c$ at the octave
-$(2\cdot10^6,4\cdot10^6]$:
+All are nonzero.  Multiplying by \eqref{eq:kappa} gives
 \[
 \begin{array}{r|cccccc}
- \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\\hline
- \text{predicted} & 0.299361 & 0.045996 & 0.411876 & 1.052351
-   & 1.946236 & 3.213542\\
- \text{measured} & 0.302138 & 0.046766 & 0.412504 & 1.052129
-   & 1.946109 & 3.171298\\
- \text{residual}/\mathrm{se} & 2.0 & 0.6 & 0.5 & 0.2 & 0.1 & 260.8
+ \text{depth}&0&1&2&3&4&5\\\hline
+ \text{main term}&0.299361&0.045996&0.411876&1.052351&1.946236&3.213542\\
+ \widehatD_c&0.302138&0.046766&0.412504&1.052129&1.946109&3.171298\\
+ \text{residual/MCSE}&2.0&0.6&0.5&0.2&0.1&260.8
 \end{array}
 \]
-Six numbers are predicted from none, across cells spanning a factor of
-$68$. \emph{Four of the six sit inside two sampling errors of the
-measured value}, depth~$0$ sits at $2.0$, and the sixth is depth~$5$ at
-$260.8$. Both of the last two are accounted for below and neither by a
-fitted quantity. Over all $720$ relabellings of the depth
-labels the count of cells agreeing within two sampling errors reaches
-the observed four in two of them --- a fraction $2/720$ of the
-enumerated set, read as in Measurement~\ref{meas:Dc}'s control and not
-as a $p$-value under a law that produced the depths; the six
-predictions span a factor
-of $70$, so a wrong pairing is refused by size alone, and what the
-enumeration shows is that the agreement is carried by which cell gets
-which number.
+Here MCSE is the pair-sampling standard error, not the null floor
+$\operatorname{se}_c$.  Four depths lie within two MCSEs; depth $0$ is
+at the displayed boundary.  At depth $5$, the cell is a single residue
+class and contains $67$ points.  Every shift is $2Qk$ with
+$0<|k|<67$, so the missing tail of the divisor expansion is explicitly
+computable.  Its contribution is $0.043558$, compared with the observed
+residual $0.042244$.
 
-\textbf{Depth~$5$'s miss is not a residual but a computable quantity,
-and computing it is what the cell's structure allows.} That cell is a
-single residue class modulo $2Q$, hence an arithmetic progression
-segment $N_0+2Qi$; every same-cell shift is $h=2Qk$ with $0<|k|<n_c$;
-and every $d$ in the divisor expansion is coprime to $2Q$, so $d\mid h$
-exactly when $d\mid k$. \emph{No $d\ge n_c$ divides any same-cell shift
-at all}, while the Euler factor sums over every $d$. The resulting
-deficit is a finite sum, $\Delta=8.505279\cdot10^{-3}$ at $n_c=67$, and
-$2C_2\cdot\tfrac{128}{33}\cdot\Delta=0.043558$ against an observed
-residual of $0.042244$ --- agreement to $3.1$ per cent, from a
-computation with no free parameter and no asymptotics. It takes
-depth~$5$ from $260.8$ sampling errors to $8.1$.
-
-Calling that miss ``the size of $1/\ell$'' would instead be the reading
-the discussion below withdraws, and unfalsifiable besides: with an
-unnamed implied constant no discrepancy could refuse it.
-
-\textbf{It is also the same quantity Measurement~\ref{meas:scaleinv}
-records as depth~$5$'s spread.} $\Delta$ falls with $n_c$ --- it is
-$1.297902\cdot10^{-2}$, $8.505279\cdot10^{-3}$ and
-$5.208268\cdot10^{-3}$ at $n_c=34,67,134$ --- so it induces a drift in
-$D_5$ across the three octaves of $1.24$ per cent, against the $1.28$
-that measurement finds. \emph{The two are not on one denominator}: the
-first is taken over the uncorrected prediction, the second over a mean
-of measured values, and the cited run prints both readings rather than
-one. What the comparison supports is the order of the effect, not an
-agreement to the second digit. \emph{So the largest of the six spreads is not
-a failure of scale invariance: it is the proposition's own error term,
-computed.} An independent reading of the construction reaches both
-figures without this computation, putting the residual at $1.35$ per
-cent and claiming only the order for the spread. The packet does not
-assert which was carried out first.
-
-The constant cuts the singular series at $13$, and an off-by-one in
-which primes are absorbed into $C_2$ would move it by $1/143$, or
-$0.70$ per cent. It is not there: such an error is a uniform
-multiplicative factor, and one of that size would show at $11.5$
-sampling errors at depth~$4$ alone.
-
-\textbf{The band average has a limiting value in closed form, and the
-run estimated it instead.} Write $E_{\mathrm{all},B}$ for the pair
-average over the band of length $B$ --- the quantity
-\eqref{eq:Dc} subtracts --- and $E_\infty$ for its limit. The average
-of the singular series over shifts is classical \cite{Gallagher}, and
-the error term in it has been sharpened since \cite{Pintz}; what is
-needed here is only the leading constant. That constant is $1$ when the
-average is taken over \emph{all} shifts, and the average needed here is
-twice it. The reason is that $\SS_2(h)=0$ for odd $h$ --- the local
-factor at $2$ vanishes, since $n$ and $n+h$ cannot both be odd primes
-above $2$ --- while every shift occurring here is even, $h=N-N'$ with
-$N$ and $N'$ both even. Averaging a function that vanishes on half the
-integers over the half where it does not doubles its mean. Taking
-$P(p\mid h)=1/p$ for every odd $p$ gives
-$E_\infty[\SS_2]=2C_2\prod_{p>2}(p-1)^2/(p(p-2))$, and
-$C_2=\prod_{p>2}p(p-2)/(p-1)^2$ is the reciprocal of that product term
-by term, so
+For the full residue set, the same Euler-factor calculation gives
+$\kappa\mathcal A_a=2$; thus the limiting whole-band average of
+$\SS_2$ over even shifts is $2$, consistently with the classical
+average of the singular series \cite{Gallagher,Pintz}.
+Writing
 \[
-  E_\infty[\SS_2]=2 .
+ D'_c=E_{\mathrm{same},c}[\SS_2]-2
 \]
-\emph{This is a limiting value and not the band's own average}, which is
-$1.999986$ at the band Measurement~\ref{meas:secondcell} reads; the two
-differ by $1.4\cdot10^{-5}$, and that difference is the band's
-equidistribution error, discussed there.
-
-The run's $E_{\mathrm{all},B}$, recoverable from its own table as
-$E_{\mathrm{same},c}-D_c$ and the same number in all six rows, is
-$1.998755$: low against the limit by $1.2\cdot10^{-3}$, which is a
-hundred times the finite-band difference and is therefore the
-\emph{sampling} error of that average. It is a single additive offset
-shared by every $D_c$, since each is $E_{\mathrm{same},c}$ minus that
-one number; it is one sampling error at five cells and eight at the
-sixth, because depth~$5$'s $4422$ pairs are enumerable where $10^{12}$
-are not. It is not a truncated prime product: the sieve here runs over
-every prime to $8\cdot10^6$, and a truncation would in any case leave
-depth~$5$ exact, every same-cell shift there being free of prime
-factors above $61$.
-
-Substituting the limiting value for the sampled one --- writing
-$D'_c:=E_{\mathrm{same},c}[\SS_2]-2$, which is \eqref{eq:Dc} only up to
-the band's own $1.4\cdot10^{-5}$ --- the prediction reads
-$\tfrac{11011}{8192}E_{\mathrm{same},c}[A]-2$, one estimated input
-fewer, and
-the row closes:
+removes the common sampling error in the estimated band average.  With
+the depth-$5$ finite-divisor correction included, the comparison becomes
 \[
 \begin{array}{r|cccccc}
- \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\\hline
- D'_c=E_{\mathrm{same},c}-2 & 0.300893 & 0.045521 & 0.411259 & 1.050884
-   & 1.944864 & 3.170053\\
- \text{predicted} & 0.299361 & 0.045996 & 0.411876 & 1.052351
-   & 1.946236 & 3.169984\\
- \text{residual}/\mathrm{se} & -1.13 & +0.36 & +0.45 & +1.07 & +1.16
-   & -0.43
+ \text{depth}&0&1&2&3&4&5\\\hline
+ D'_c&0.300893&0.045521&0.411259&1.050884&1.944864&3.170053\\
+ \text{prediction}&0.299361&0.045996&0.411876&1.052351&1.946236&3.169984\\
+ \text{residual/MCSE}&-1.13&0.36&0.45&1.07&1.16&-0.43
 \end{array}
 \]
-\textbf{All six sit inside $1.2$ sampling errors, and nothing is
-fitted}: the $2$ is a theorem, the depth-$5$ entry carries the finite
-divisor deficit above, and the constant is the singular series' own.
-Depth~$5$ has gone from $260.8$ to $-0.43$.
-
-The computation is post hoc as to timing: it was written after the
-$D_c$ row was measured. It is not a fit --- the difference is forced by
-the residue structure and the constant by the definition of the
-singular series --- but a registered rule of it was refuted. The rule
-predicted the worst relative deviation at depth~$5$; it is at depth~$1$
-($1.65$ per cent). \textbf{The rule was written on the wrong
-statistic}: the measured $D_c$ is a sampled estimator whose sampling
-error this repository already prints beside it, and against that error
-depth~$1$ is $0.6$ and depth~$5$ is $260.8$. Read on the right
-quantity the claim holds; read as registered it does not, and it is
-recorded refuted.
+All entries lie within $1.2$ pair-sampling standard errors.  This
+finite-band refinement was obtained post hoc; it is an explicit
+calculation rather than a fitted correction.
 \end{measurement}
 
-\begin{measurement}[a second cell shape, computed from residues alone]\label{meas:secondcell}
-Everything above is a statement about one partition. The computation
-of Measurement~\ref{meas:maincoef} runs for any set of odd primes, so a
-second partition can be \emph{computed without reference to its own
-measurement}, which the first can no longer be given.
-
-Cells indexed by depth over $S=(3,5,7)$, so $Q'=105$ and
-$\ell=B/2Q'$ is $9524$ at this octave against the first partition's
-$66.6$. The constant is $K=2\prod_{p\in S}p(p-2)/(p-1)^2=175/128$,
-exactly rational, and the predictions
-$K\,E_{\mathrm{same},c}[A_S]-2$ are computed from the residues alone
-(\texttt{lab\_secondcell\_predict.py}), taking no input from the
-measured partition. The measurement (\texttt{lab\_secondcell2.py},
-registered in \texttt{lab\_secondcell2\_predict.py}) is exhaustive: a cell
-is a set of
-positions in the band, so the pair average of $\SS_2$ over it is one
-autocorrelation of the cell indicator, with no sampling, no seed and no
-standard error. The pair counts reproduce $n_c(n_c-1)$ exactly at all
-four cells.
+\begin{measurement}[A second cell shape]\label{meas:secondcell}
+For the depth partition generated by $S=(3,5,7)$, the modulus is
+$Q'=105$ and
+\[
+ K=2\prod_{p\in S}\frac{p(p-2)}{(p-1)^2}=\frac{175}{128}.
+\]
+The pair averages were evaluated exhaustively by autocorrelation, so the
+row labelled exact has no pair-sampling error:
 \[
 \begin{array}{r|cccc}
- \text{depth} & 0 & 1 & 2 & 3\\\hline
- m & 48 & 44 & 12 & 1\\
- \text{main term, uncorrected} & 0.295736 & 0.126485 & 0.825521 & 2.375000\\
- \text{fully corrected} & 0.295286 & 0.126068 & 0.824967 & 2.374142\\
- \text{predicted, }1/m\text{ corrected} & 0.295726 & 0.126476 & 0.825475 & 2.374142\\
- \text{exact} & 0.295708 & 0.126454 & 0.825436 & 2.374142\\
- \text{difference} & -0.000018 & -0.000022 & -0.000039 & -10^{-7}
+ \text{depth}&0&1&2&3\\\hline
+ m&48&44&12&1\\
+ \text{main term}&0.295736&0.126485&0.825521&2.375000\\
+ \text{corrected lower endpoint}&0.295286&0.126068&0.824967&2.374142\\
+ \text{exact}&0.295708&0.126454&0.825436&2.374142
 \end{array}
 \]
-The first two rows are the endpoints T1 gates on and are printed so
-that the rule can be checked from the table rather than from the file:
-the deficit is negative, so the interval at each depth is
-$[\text{fully corrected},\,\text{uncorrected}]$. The row the third line
-predicts is neither endpoint --- it is the $1/m$ diluted correction,
-which is what T2 scores.
-Of the three registered rules two hold and one is void. The exact
-value lies between the main term and the fully corrected prediction at
-all three of the cells where the two differ, which is the rule that
-gates, and the fitted exponent stays inside the spread the third rule
-allowed. \textbf{So the computation transfers to a cell shape it was
-not built on.} Depth~$3$ is a
-consistency check and not a score: there the prediction and the
-measurement are the same finite sum, as the registration records.
-
-\emph{One} rule was registered against the evidence then available.
-The sampled thirty-draw mean at depth~$2$ was $0.825796$, above T1's
-upper bound of $0.825521$ by about $1.2$ standard errors of that mean,
-and the registration file records both that lean and that it was not
-decisive. The exhaustive finite-sum value is inside the interval. So that is one pass
-against a stated lean --- not two, and not against a prediction of
-failure: the registration file says ``leans, not decisive'' of the first and
-``may fail'' of the second, and the second is void rather than passed.
-
-\textbf{The correction the prediction carries should not be modelled at
-all, and this measurement is what shows it.} The prediction diluted the
-divisor deficit by $m$, the number of residue classes a cell unions.
-Fitting an exponent instead, $(\text{undiluted})/m^{\alpha}$, gives
-$0.715$, $0.689$ and $0.756$ at $m=48,\,44,\,12$. The registration
-fixed in advance that a value strictly between $0$ and $1$ says the
-model is wrong rather than that the exponent is that value, so
-\textbf{no exponent is claimed}: a dilution exists and $1/m$ is not
-it.
-
-It does not need to. The deficit is the same autocorrelation with
-$T=\prod_{p\mid h,\,p>7}(p-1)/(p-2)$ in place of $\SS_2$, so it is
-computed rather than fitted --- and computing it exposes a fourth term
-that no fit could have separated:
-\[
-  D'_c=\underbrace{K\,E^{\mathrm{ex}}_{c}[A_S]-2}_{\text{main term}}
-        +\underbrace{K\bigl(E_c[A_S]-E^{\mathrm{ex}}_{c}[A_S]\bigr)}
-          _{\text{pattern weight}}
-        -\underbrace{2C_2E_c[A_S]\Delta_c}_{\text{divisor deficit}}
-        +\underbrace{2C_2\mathrm{Cov}_c(A_S,T)}_{\text{covariance}},
-\]
-where $E^{\mathrm{ex}}_c$ is the exact rational the prediction is built
-from and $E_c$ the measured pair average.
-\[
-\begin{array}{r|cccc}
- \text{depth} & 0 & 1 & 2 & 3\\\hline
- \text{main term} & 0.2957357 & 0.1264850 & 0.8255208 & 2.3750000\\
- \text{pattern weight} & -4.55\cdot10^{-6} & -6.75\cdot10^{-6}
-   & -3.99\cdot10^{-6} & 0\\
- \text{deficit} & -1.32\cdot10^{-5} & -1.23\cdot10^{-5}
-   & -5.35\cdot10^{-5} & -8.58\cdot10^{-4}\\
- \text{covariance} & -1.02\cdot10^{-5} & -1.17\cdot10^{-5}
-   & -2.69\cdot10^{-5} & 0\\
- \text{sum} & 0.2957078 & 0.1264543 & 0.8254364 & 2.3741421
-\end{array}
-\]
-and the sum reproduces the measured value at every cell. No exponent
-and no free parameter survive anywhere in it.
-
-The pattern-weight term is the departure of the empirical class weights
-from the idealised ones --- which is
-Proposition~\ref{prop:scaleinv}'s \emph{other} error term, the
-equidistribution one, measured here for the first time --- and the
-covariance is the failure of $E[A_ST]$ to factor; \textbf{both are
-exactly zero at a single-class cell, which is the only kind either
-partition ever calibrated the deficit on}, so a fitted exponent was
-carrying two quantities that cannot appear where it was calibrated.
-
-\textbf{No power law in $m$ fits these three}, which is a firmer
-reason to drop the exponent than the absence of a mechanism. The
-exponent implied between $m=48$ and $m=44$ is $0.04$ against $0.91$
-between $m=44$ and $m=12$; the deficits at the first pair are in the
-ratio $1.004$ where a power fitted to the second requires $1.083$. The
-measurement is exact, so that is not noise. A monotone dependence on
-$m$ is not excluded --- three points cannot exclude one --- but no
-single power reaches them.
-
-What the second cell shape measures, once the exponent is dropped, is
-\textbf{how tight Proposition~\ref{prop:scaleinv}'s own error term is}.
-At depth~$0$ the deficit, the covariance and the pattern weight --- in
-that order, which is not the table's --- are $5.68$, $4.36$ and $1.95$
-per cent of $1/\ell=1.05\cdot10^{-4}$, each first divided by
-$2C_2E_c[A_S]$. That constant is the deficit's own factor in the four-term
-decomposition above, so dividing returns $\Delta_c$ there; the other two
-carry $K$ and $2C_2$ instead, and are divided by the same constant only
-to put all three on one scale. Read straight off the table's entries
-the same three are $12.6$, $9.7$ and $4.3$ per cent. Complete
-cancellation of the class-wise errors --- what the diagonal class pairs
-alone would give, which the proof declines to claim --- would put the
-deficit at $4.03$ per cent of $1/\ell$ on that same scale.
-The proposition's error term carries an unspecified implied constant
-and a divisor sum above three, as the discussion after its proof
-records. So the asymptotic statement is not quantitative enough, at
-this finite band, to turn these percentages into a certified fraction
-of its bound: they are reported as a comparison with the $1/\ell$ that
-appears in the proof, and not as the fraction of the bound the
-measurement realises.
-
-\textbf{The measured deficit exceeds the diagonal-only figure} at every
-multi-class cell, by $41$, $30$ and $16$ per cent at $m=48,\,44,\,12$,
-so the off-diagonal pairs add deficit rather than cancelling it. Those
-three are quoted and not summarised: an eight per cent change in $m$
-between the first two moves the excess by thirty-eight, so the excess
-is no more a function of $m$ than the deficit is.
-
-One caution belongs with those numbers, and it turns into a check. The
-registration fixed $D'_c=E_{\mathrm{same},c}[\SS_2]-2$, and the rules
-are scored on that convention; but $2$ is the \emph{limiting} value
-$E_\infty$, while \eqref{eq:Dc} subtracts the band's own average
-$E_{\mathrm{all},B}$, which is $1.999986$ here. The two differ by
-$1.39\cdot10^{-5}$, \emph{larger than two of the four terms above}, so
-$D'_c$ and $D_c$ are two quantities under one name at this band size.
-Substituting the band's own average removes that same
-$1.39\cdot10^{-5}$ at every cell --- half the departure from the main
-term at depth~$0$ and under two per cent of it at depth~$3$, since a
-constant offset cannot take a fixed share off departures spanning a
-factor of thirty. \textbf{T1 holds under both conventions}, so no
-verdict turns on the choice; the margin at depth~$0$ is
-$1.40\cdot10^{-5}$ against a shift of $1.39\cdot10^{-5}$, which is thin
-enough that another systematic of the same size would break it.
-
-\textbf{And the band's own departure decomposes into the same three
-terms, at a cell where the main term is known in advance to be zero.}
-The band is all $105$ classes modulo $2Q'$, so it is a cell of this
-partition --- the one with $m=105$ --- and
-$K\,E^{\mathrm{ex}}[A_S]-2=(175/128)(256/175)-2=0$ exactly. Its
-$-1.38928\cdot10^{-5}$ is then $-2.37\cdot10^{-6}$ of pattern weight,
-$-5.83\cdot10^{-6}$ of divisor deficit and $-5.69\cdot10^{-6}$ of
-covariance, summing to the measured value to one part in $10^{10}$.
-It is the only check here whose answer was fixed before the
-computation.
-
-Because no exponent is claimed, \emph{nothing here is to be applied to
-the first partition's row}. That row is the main term with no
-correction of any kind. A correction computed the way this measurement
-computes one would move its depth-$4$ entry, whose cell unions
-$34$ classes; the entry is quoted uncorrected and the correction is not
-transported, since a law fitted on one partition and applied to another
-is exactly the transport this measurement was built to test rather than
-to assume.
-
-\textbf{The rule that tested the $1/m$ dilution is recorded neither
-held nor refuted, but \emph{void}}, and the reason is worth more than
-the rule. Its tolerance was $10^{-4}$; the models it had to separate
-differ by $1.8$ to $4.6\cdot10^{-5}$ at these $m$, so both pass it. A
-test the alternative also passes carries no evidence in either
-direction, and filing it as held would be worse than filing it as
-refuted, since a held rule is counted as support and there is none. The
-tolerance was set without asking what it had to discriminate; that
-question belongs before a rule is registered, not after it is scored.
+At the three multiclass depths the exact value lies between the residue
+main term and the fully corrected endpoint; the single-class depth is an
+algebraic consistency check.  The exact difference from the main term
+decomposes into a residue-weight error, a finite-divisor deficit, and a
+covariance between the low-prime factor $A_S$ and the remaining Euler
+factor.  No fitted parameter is required.  We regard this as a
+second-shape consistency check, not a documented temporal holdout.
 \end{measurement}
 
-Of the proof's errors it is the cell-sized one that is worth reading
-against the measurement, and this is where the sizes belong. The
-divisor-sampling term's \emph{rate} does not vary with the depth: it is
-$O_\eta(B^{\eta}/\ell)$ with $\ell=B/2Q$, a band parameter, so one bound
-covers every cell of an octave. That the bound is uniform does not make
-the term itself constant across cells; what is fixed is the rate, and
-the constant in front of it is a separate question this does not settle.
-
-\textbf{No percentage can be read off it.} The term carries an implied
-constant that the proof does not name, and the per-$d$ error $O(1/\ell)$
-enters summed against $g$, so the bound is $\ell^{-1}\sum_{d<B}g(d)$
-and that divisor sum is not $O(1)$ --- it grows like $\log B$, and at
-$B=2\cdot10^6$ the single and double prime terms alone put it above
-three. Reading the term as $1/\ell$, which at that octave is one and a
-half per cent, is that bound with both the constant and the divisor
-sum set to $1$, and it cannot then be compared with the two per cent
-that Measurement~\ref{meas:scaleinv} registers as its cap: the proof
-supplies no cap for such a comparison to use.
-
-What survives is the comparison's direction, and it survives a
-fortiori. The measurement caps the relative spread of $D_c$ across the
-three octaves at two per cent and finds spreads from $0.0001$ at
-depth~$0$ to $0.0128$ at depth~$5$; the proof's bound on the error at
-each octave is unquantified, so it excludes nothing the measurement
-does not already exclude. \textbf{The proof's bound is weaker than the
-measurement at every cell.} It does
-not resolve what the exact spreads do, and nothing here should be read
-off it about which cell drifts and which does not. In particular it
-cannot be read against the sampled spreads to conclude that whatever
-moves the two refused depths is not an error term of this proof: the
-sampled spreads are the estimator's, the refusals with them, and the
-quantity's own spreads are the ones above.
-
-\begin{measurement}[the exponent, measured]\label{meas:scaleinv}
-The exponent is discrete, and it is defined by ratios and not by a
-derivative: it is the one-step exponent $e_c(B)$ of \eqref{eq:ec},
-with $D_c(B)$ the value of \eqref{eq:Dc} computed in the band of
-length $B$, the sign being fixed by the convention $|D_c|\sim B^{-e}$,
-so that a positive $e$ means a decaying $D_c$. The $e$ tabulated below
-is minus the least-squares slope of $\log|D_c|$ against $\log B$ over
-the three
-octaves. Their abscissae are the octave midpoints, spaced by exactly
-$\log 2$, so that quantity is the mean of the two one-step exponents;
-nothing is fitted that the ratios do not already determine.
-
-Measured over $(10^6,2\cdot10^6]$, $(2\cdot10^6,4\cdot10^6]$ and
-$(4\cdot10^6,8\cdot10^6]$ at $400000$ sampled pairs per cell, the
-exponents are
-\[
-\begin{array}{r|cccccc}
- \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\\hline
- e & +0.012633 & +0.065546 & +0.000936 & +0.002904 & +0.000241
-   & -0.008428
-\end{array}
-\]
---- zero to three decimals at depth $4$, within $0.003$ at depths $2$
-and $3$, and $-0.008$ at depth $5$, against $+0.013$ and $+0.066$ at
-depths $0$ and $1$. The two large ones are where $D_c$ is small: the
-spread across the three octaves runs from $0.0008$ at depth $2$ to
-$0.037$ at depth $5$, the last being the finite-cell drift of a
-cell of a few tens of elements, while $D_c$
-itself runs from $0.045$ to $3.17$, so the relative spread the exponent
-reads is large only where $D_c$ is small. At ten times the sample the two
-move to $-0.000879$ and $-0.016226$, so depth~$0$ resolves to zero and
-depth~$1$ flips sign --- the signature of noise rather than of a trend.
-That resampling is post hoc: it was run after M2 and M4 had been
-scored, and it does not lift either verdict. At the higher sample
-depth~$1$ still reads $e=-0.016226$ against M4's $|e|<0.01$ and a
-spread of $0.0390$ against M2's two per cent, so both stay refused
-as the code scores them.
-
-The registration's own wording and the code's scoring of it differ, and
-this paper reports the stricter --- the code's --- throughout.
-Supplement~S1 gives both readings and the verdicts each produces.
-
-Sampling was not necessary. $D_c$ is a deterministic functional of the
-cell, and the sum over all ordered pairs off the diagonal is one
-autocorrelation per cell:
-$\sum_{N\neq N'\in c}\SS_2(N-N')
-=\sum_{h\neq0}\SS_2(h)\,(\mathbf 1_c\star\mathbf 1_c)(h)$, the
-diagonal being excluded on both sides because $\SS_2(0)$ is undefined;
-what is dropped is the term $(\mathbf 1_c\star\mathbf 1_c)(0)=n_c$.
-Computed that way
-the six read
-\[
-\begin{array}{r|cccccc}
- \text{depth} & 0 & 1 & 2 & 3 & 4 & 5\\\hline
- \text{spread} & 0.0001 & 0.0004 & 0.0002 & 0.0002 & 0.0022 & 0.0128\\
- e & -0.000059 & -0.000285 & -0.000136 & -0.000164 & -0.001584
-   & -0.009202
-\end{array}
-\]
---- \textbf{six of six inside M2's two per cent and six of six inside
-M4's $|e|<0.01$}, the shallow four by three orders. The two depths the
-registered rules refuse are the two where the sampling error is the
-largest fraction of $D_c$, and the refusals are a property of that
-estimator and not of $D_c$. The verdicts stand as scored, on the
-estimator the run registered. The deepest cell keeps the largest
-spread, $1.28$ per cent, which Measurement~\ref{meas:maincoef}
-computes as $1.24$ on its own denominator --- the divisor deficit of a
-cell of a few tens of elements, and the only one of the six that the
-estimator was reading rather than adding to. Supplement~S1 records the
-registered rules, what each was scored on, and where in the result
-files each refusal can be reproduced.
-
-The sampling error of the pair average runs $0.001183$ to $0.001370$
-at depths $0$ to $4$ --- $0.001358$ at depth~$0$, and lowest at
-depth~$4$, where the cell is smallest --- and $0.000162$ at
-depth~$5$, so at depth~$1$, where
-$D_c=0.046766$ is six times smaller than any other, that error is the
-largest fraction of $D_c$ anywhere in the table. That is what the
-refusals at depth~$1$ rest on, and the exact computation above says so
-in the other direction: remove the estimator and the spread there is
-$0.0004$. Depth~$0$ is refused by the exponent rule alone and not by
-this: there the sampling error is $0.45\%$ of $D_c$, and what fails is
-$e=+0.012633$ against $|e|<0.01$, which the tenfold resampling
-resolves to $-0.000879$ and the exact computation to $-0.000059$.
-Depth~$1$ is quiet under
-the sign null ($z=+1.11$ in Measurement~\ref{meas:placebo}; in
-absolute value the third smallest of the six, behind depth~$0$'s
-$+0.1069$ and depth~$2$'s $-0.2314$), but that is a
-statement about the sign null: under the permutation null of
-Note~\ref{note:numnull}, which this paper calls the stronger
-instrument, the same cell reads $47.71$ --- third of the six, behind
-the $106.89$ and $102.22$ at depths~$3$ and~$4$, and above the $42.42$
-at depth~$5$ that the paper calls the signal. The cell is therefore not one that
-carries no effect, and the two refusals are not excused by saying
-it does (\texttt{lab\_cell\_singular.py},
-\texttt{lab\_mask\_placebo.py}).
+\begin{measurement}[Nineteen cell shapes]\label{meas:sweep}
+The same computation was applied to every pair and triple from
+$\{3,5,7,11,13\}$ that the band resolves, four quadruples, the full
+five-prime set, and that set with $17$ adjoined.  Among $70$ cells with
+$n_c\geq1000$, every residue main term differs from the exhaustive value
+by less than $0.01$ and by less than the magnitude of the exact value;
+the largest absolute difference is $2.9766\cdot10^{-3}$.  Eight smaller
+cells were reported but not scored.  All $70$ scored differences have
+the same sign: the main term exceeds the exact value.  This is empirical
+consistency across cell shapes, not a proof of the sign.
 \end{measurement}
 
-Proposition~\ref{prop:scaleinv} settles one thing and deliberately not
-another. Whatever produces the decay of the effect with $N$, it is not
-the arithmetic excess that produces the floor's size, since that
-excess does not decay to zero asymptotically. The decay exponent of the effect itself
-is not determined here. At the three shallowest depths no exponent is
-fitted, and the amplitude there is not uniformly below the floor
-across the range: at depth~$1$ it falls monotonically from $+2.71$ at
-the smallest octave to $+0.69$ at the largest, and two octaves cannot
-settle it unless they are the two smallest. The floor test asks of each scale separately whether
-the amplitude is present; whether it is falling is a question about
-the scales together, and failing the first does not answer the
-second.
+Exhaustive autocorrelation also separates the deterministic $D_c$ from
+its sampled estimator.  Over three consecutive octaves the relative
+spreads of the six exact $D_c$ values are
+\[
+ 0.0001, 0.0004, 0.0002, 0.0002, 0.0022, 0.0128,
+\]
+and the corresponding fitted exponents are
+\[
+ -0.000059, -0.000285, -0.000136, -0.000164,
+ -0.001584, -0.009202.
+\]
+These finite computations agree with the scale-free conclusion of
+Proposition~\ref{prop:scaleinv}; they do not supply a convergence rate.
 
-% =====================================================================
-\section{Summary}
+\section{Computational methods and reproducibility}\label{sec:repro}
 
-\begin{itemize}
-% CLAIM:C1
-\item Lemma~\ref{lem:cellmom}: the fluctuation of any cell mean under
-the sign null is exactly
-$Q_{cc}/n_c^2-2Q_{ca}/(n_cn)+Q_{aa}/n^2$; all three terms are needed,
-and they are computed from explicit finite correlations and weighted
-inner products.
+The computations were run with Python~3.12.10 and NumPy~2.2.5.  Except
+for the rational residue calculations identified below, numerical sums
+used double precision.  The repository packet contains the source,
+captured outputs, and SHA-256 digests.  From the packet directory a run
+has the form
+\begin{center}
+ \path{python code/<script>.py}.
+\end{center}
+The principal correspondence between results and scripts is:
+\begin{center}
+\begin{tabular}{p{0.30\textwidth}p{0.59\textwidth}}
+\textbf{Result} & \textbf{Implementation}\\\hline
+Lemma~\ref{lem:cellmom} check &
+ \path{lab_cellmom_montecarlo.py}; 2000 sign draws\\
+Eight-octave floors &
+ \path{lab_cell_floor.py}; exact quadratic form in double precision\\
+Permutation control &
+ \path{lab_mask_placebo.py}; 10 fixed-count relabellings,
+ seed 20260808\\
+$\widehatD_c$ profile &
+ \path{lab_cell_singular.py}; 400000 sampled ordered pairs per cell\\
+Residue main term &
+ \path{lab_maincoef.py}; exact rational arithmetic\\
+Second cell shape &
+ \path{lab_secondcell2.py}; exhaustive autocorrelation\\
+Nineteen-shape sweep &
+ \path{lab_cellset_sweep.py}; exhaustive computation
+\end{tabular}
+\end{center}
+The distinction between sampled and exhaustive values is maintained in
+the notation: $D_c$ denotes the deterministic off-diagonal pair average,
+whereas $\widehatD_c$ denotes its sampled estimator.  Likewise, MCSE in
+Measurement~\ref{meas:maincoef} is a pair-sampling standard error and is
+not the Rademacher-null floor $\operatorname{se}_c$.
 
-% CLAIM:C5
-\item Observation~\ref{obs:coh} and Note~\ref{note:notanerrorbar}:
-over the eight measured octaves that quantity is consistent with
-$(\log N)^{-1/2}$ at the shallow cells, where
-Note~\ref{note:threeterms}'s fraction is constant, and is inconsistent
-with count-based $n_c^{-1/2}$ scaling over the same range. The exponent
-itself is measured at all six
-depths and the deepest fits $0.107306$, which the form does not
-predict. A
-count-based interval is narrower than the exact Rademacher-null scale
-by a factor $9.3$ across a factor $128$ in $N$, and absolutely by
-factors of $7.3$ to $158$ at the top octave, the largest of them at the
-shallowest cell.
+The Lean~4 development formalises the algebraic identities underlying
+the exact cell variance and permutation formula.  Its toolchain and
+Mathlib dependency are pinned by \path{lean-toolchain} and
+\path{lake-manifest.json}, and the axiom report is stored in
+\path{lean/axioms.txt}.  Proposition~\ref{prop:scaleinv}, including its
+analytic Euler-product and error estimates, is not machine-verified.
 
-% CLAIM:C6,C2
-\item Lemma~\ref{lem:placebo} and Measurement~\ref{meas:placebo}:
-neither the cell effect nor the floor is reproduced under label
-permutation, so both read the correspondence and not the cell sizes
---- the floor least expectedly, since one expects a floor to be a
-property of the sizes. The floor
-is a second measurement of the same correspondence. What it collapses
-to is the count-based bar (Lemma~\ref{lem:permfloor}), so the two
-floors are two questions and not a bracket; $z_c$ is quoted against
-the sign null throughout.
+\section{Conclusion}
 
-% CLAIM:C7
-\item Proposition~\ref{prop:scaleinv}: what is established is an
-asymptotic statement, not an identity. $D_c$ equals a cell-determined
-constant up to $O(1/\ell)$ and $O_\eta(B^{\eta-1})$, both of which
-vanish with the band and neither of which carries a named implied
-constant; so no rate and no percentage may be read from it, and its
-consequence --- that this quantity is not what makes the effect decay
---- holds in the limit and not at any fixed band. The argument is
-given in \S\ref{sec:size}. It is the one labelled statement here
-that has had neither a machine check nor a reading by a subject
-expert, and its hardest step is named as such in its own proof.
-Two of the six depths are refused by the registered rules, and both
-refusals belong to the sampling estimator rather than to $D_c$: the
-same measurement computes $D_c$ exhaustively, by one autocorrelation per
-cell, and done that way all six depths sit inside both registered
-caps, the shallow four by three orders. The verdicts stand as scored,
-on the estimator the run registered; Supplement~S1 gives them. It is the proposition's own error term, not a failure of it.
+The conditional Rademacher null makes the covariance of the convolution
+field explicit.  The variance of a cell contrast is therefore the exact
+three-term form \eqref{eq:cellmom}, rather than a count-based standard
+error.  For the divisibility cells studied here the resulting floor is
+large and slowly varying, while its average over uniformly random
+same-size cells reduces exactly to the finite-population formula.
 
-% CLAIM:C3
-\item Measurement~\ref{meas:maincoef}: that quantity's main term is a
-finite rational over the residue classes the cells are unions of, it
-is nonzero at every depth --- which is the hypothesis
-Proposition~\ref{prop:scaleinv} needs and does not otherwise have ---
-and multiplied by a constant with no fitted parameter it reproduces
-the measured profile, four of six inside two sampling errors across
-cells spanning a factor of $68$. \textbf{It is the only quantity here
-computed from the arithmetic alone}: Lemma~\ref{lem:cellmom} also
-gives a size in closed form, but from the field's own values, and this
-takes no input from the field at all. It is post hoc in timing. A registered rule of it was refuted: it named the worst
-relative deviation at the wrong cell, having been written on the
-unstandardised statistic while the standardisation was printed beside
-it.
+The excess pair singular series $D_c$ describes much of the floor's
+cross-cell profile.  Its residue-class main term is rational and
+asymptotically scale-free, and finite computations show the same
+mechanism across additional cell shapes.  The observed association
+between $D_c$ and the floor remains descriptive: no equality between the
+two kernels is proved, the cell family was selected exploratorily, and
+no limiting distribution or decay law for the observed contrasts is
+claimed.
 
-% CLAIM:C6,C2
-\item Two things are needed for the floor, and only the second is what
-the placebo removes: coherence of $u_c(v)$ across the cell, and a cell
-correlated with the arithmetic that coherence comes from. Nothing here
-shows that pair is special to this field, and nothing here shows it is
-not. Sharing the arithmetic input is
-not by itself enough: Lemma~\ref{lem:permfloor} gives a random cell of
-the same band a floor whose permutation average is exactly the
-count-based one, and that cell shares the input.
-\end{itemize}
-
-% CLAIM:none
-All preregistered checks, including the failed ones and the one
-recorded void, are reported with their verdicts in Supplement~S1
-(Appendix~\ref{sec:repro}). Several numerical patterns conjectured in
-the course of the work were rejected there; none is used as an
-assumption in anything stated above.
-
-% =====================================================================
-\begin{thebibliography}{99}
-
-\bibitem{HL} J.-J.~Huang and H.~Li, \emph{On the connection between
-the Goldbach conjecture and the Elliott--Halberstam conjecture},
-arXiv:2005.03811 [math.NT]; v1 (May 2020), v2 (August 2022). Also
-published in a Springer volume,
-\texttt{doi:10.1007/978-3-030-67996-5\_17}. References here are to the
-arXiv version, which we have read, and not to the published version,
-which we have not.
-
-\bibitem{Mir49} L.~Mirsky, \emph{The number of representations of an
-integer as the sum of a prime and a $k$-free integer}, Amer.\ Math.\
-Monthly \textbf{56} (1949), 17--19. Theorem~1, taken at $k=2$: the
-count is $\prod_{p\nmid n}(1-p^{1-k}/(p-1))\operatorname{Li}n
-+O(n/\log^Hn)$ for every $H>0$, whose local factor at $k=2$ is the
-$1-1/(p(p-1))$ used above.
-
-\bibitem{Gallagher} P.~X.~Gallagher, \emph{On the distribution of
-primes in short intervals}, Mathematika \textbf{23} (1976), 4--9;
-corrigendum, Mathematika \textbf{28} (1981), 86. What is used here is
-the theorem on the average of the singular series over $k$-tuples. We
-have not obtained the original; the statement is used in the form
-in which \cite{Pintz} states and reproves it.
-
-\bibitem{Pintz} J.~Pintz, \emph{On the singular series in the prime
-$k$-tuple conjecture}, arXiv:1004.1084v1 [math.NT], 2010. What is used
-above is Theorem~1, $\SS_{\mathcal H}(H)=1+O(\varepsilon)$ for
-$H\ge\exp(k^{1/\varepsilon})$, applied with $\mathcal H$ a single
-element: there $\SS(\mathcal H)=1$ and
-$\SS(\mathcal H\cup\{h\})$ is the singular series of the shift, so the
-average over shifts tends to $1$. Equation~(1.5),
-$\sum_{|H|=k,\,H\subset[1,H]}\SS(H)\sim H^{k}$, is Gallagher's global
-average and is \emph{not} what is used: its $k=1$ case is the sum over
-singletons, and a singleton has $\SS=1$ identically, so that case is
-an identity carrying no information about shifts. The paper itself
-draws the distinction, noting that $\SS_{\mathcal H}(H)\to1$ ``yields
-more information about the singular series than the global average''.
-\S1 also records $\SS(\mathcal H\cup\{h\})=0$ for odd $h$, which is
-the vanishing that makes the average over even shifts twice the
-average over all.
-
-\bibitem{Cochran} W.~G.~Cochran, \emph{Sampling Techniques}, 3rd ed.,
-Wiley, 1977. (Finite-population correction for the variance of a
-sample mean without replacement.)
-
-\bibitem{Kish} L.~Kish, \emph{Survey Sampling}, Wiley, 1965. (Design
-effect and effective sample size for correlated observations.)
-
-\bibitem{LR} E.~L.~Lehmann and J.~P.~Romano, \emph{Testing Statistical
-Hypotheses}, 3rd ed., Springer, 2005. (Permutation and randomisation
-tests conditional on the observed configuration.)
-
-\bibitem{Wintner} A.~Wintner, \emph{Random factorizations and
-Riemann's hypothesis}, Duke Math.\ J.\ \textbf{11} (1944), 267--275,
-\texttt{doi:10.1215/S0012-7094-44-01122-1}.
-
-\end{thebibliography}
-
-% =====================================================================
 \section*{Disclosure statement}
 
 No potential competing interest, financial or non-financial, was
-reported by the author. No funding was received for this work. An AI
-assistant was used in preparing it; what tool, how, and why is set out
-in Appendix~\ref{sec:repro}, together with what was checked by machine,
-what by computation, and what by neither.
+reported by the author.  No funding was received.  An AI assistant was
+used in the derivation, computation, formalisation, and preparation of
+the manuscript; the author takes responsibility for all claims.
 
 \section*{Data availability statement}
 
-The code behind every figure printed here, the output it produced, and
-the Lean~4 development are openly available at
-\texttt{https://github.com/soke91/arithmetic-convolution-fields}, in
-the directory \texttt{P4-coherent-cell-floor-r1/}. The figures quoted
-are pinned by the SHA-256 list in that directory, as
-Appendix~\ref{sec:repro} sets out. No data derived
-from human or animal subjects were used; every quantity here is
-computed from the integers.
+Code, result files, and the Lean~4 development are available at
+\url{https://github.com/soke91/arithmetic-convolution-fields} in the
+directory \texttt{P4-coherent-cell-floor-r1/}.  The packet contains
+SHA-256 hashes for the computational artifacts.  Numerical results used
+double precision except where exact rational arithmetic is stated.
 
-% =====================================================================
 \appendix
-\section{The scale of the normaliser}\label{sec:scale}
+\section{The normalising scale}\label{sec:normaliser}
 
-Observation~\ref{obs:coh}'s heuristic reads the scale $N\log N$ off the
-asymptotic size of $V(N)$. That asymptotic is stated and proved here so
-that this paper depends on no unpublished manuscript; nothing else in
-the paper uses it, every computation dividing by $V(N)$ as computed.
-
-\begin{proposition}[the scale of $V$]\label{prop:V}
-Let $V(N)=\sum_{v<N}\mu^2(v)\Lambda(N-v)^2$ and
-$W(N)=\sum_{w<N}\Lambda(w)^2$, and put
-$\AAA(N)=\prod_{q\nmid N}\bigl(1-1/(q(q-1))\bigr)$. Then
-$V(N)=W(N)\AAA(N)(1+o(1))$, and hence $V(N)\sim\AAA(N)\,N\log N$, the
-second form using $W(N)\sim N\log N$.
+\begin{proposition}\label{prop:V}
+Let
+\[
+ W(N)=\sum_{w<N}\Lambda(w)^2,\qquad
+ \AAA(N)=\prod_{q\nmid N}\left(1-\frac1{q(q-1)}\right).
+\]
+Then
+\[
+ V(N)=W(N)\AAA(N)(1+o(1))
+ \sim \AAA(N)N\log N.
+\]
 \end{proposition}
 
 \begin{proof}
-$\Lambda(w)^2$ is supported on prime powers with weight $(\log p)^2$,
-so with $w=N-v$,
+Since $\Lambda(w)^2$ is supported on prime powers,
 \[
-  V(N)=\sum_{p^k<N}(\log p)^2\mu^2(N-p^k)
-      =\sum_{p<N}(\log p)^2\mu^2(N-p)+O(\sqrt N\log^2N),
+ V(N)=\sum_{p<N}(\log p)^2\mu^2(N-p)
+      +O(\sqrt N\log^2N).
 \]
-a $(\log p)^2$-weighted count of squarefree shifted primes. Its local
-density at a prime $q$ is $1$ when $q\mid N$ --- there $q^2\mid N-p$
-forces $q\mid p$, hence $p=q$, a single term --- and
-$1-1/\varphi(q^2)=1-1/(q(q-1))$ when $q\nmid N$, the bad class
-$p\equiv N\ (\mathrm{mod}\ q^2)$ being a unit class. The count is then
-Mirsky's theorem on squarefree values of shifted primes
-\cite{Mir49}, a statement at the endpoint $x=N$. The weight needs no
-uniform-in-$x$ partial summation, but the cut has to move: for
-\emph{fixed} $\varepsilon$ the ratio $(\log p)^2/(\log N)^2$ on
-$p>N^{1-\varepsilon}$ lies in $((1-\varepsilon)^2,1]$ and does not
-tend to $1$, so that choice gives $(1+O(\varepsilon))$ and not
-$(1+o(1))$. Take instead $\varepsilon=\varepsilon(N)\to0$ slowly
-enough that $\varepsilon\log N/\log\log N\to\infty$ ---
-$\varepsilon=1/\log\log N$ serves. Then
-$(1-\varepsilon)^2=1+o(1)$, so $(\log p)^2=(1+o(1))(\log N)^2$ on
-$p>N^{1-\varepsilon}$, while
-$\pi(N^{1-\varepsilon})=o(N/\log N)$ still
-absorbs the smaller primes whatever their weight, so the weight is
-$(1+o(1))(\log N)^2$ on all but $o(N/\log N)$ of the terms. The second
-form follows from $W(N)\sim N\log N$, which is partial summation from
-$\theta(x)\sim x$ and is the only analytic input either form takes.
+For a prime $q\nmid N$, the forbidden unit class
+$p\equiv N\pmod{q^2}$ contributes the local factor
+$1-1/\varphi(q^2)=1-1/(q(q-1))$.  If $q\mid N$, the condition
+$q^2\mid N-p$ forces the exceptional prime $p=q$, giving local density
+$1$.  Mirsky's theorem on squarefree shifted primes \cite{Mir49}
+therefore supplies the factor $\AAA(N)$.  This product is bounded below
+by the positive product over all primes, uniformly in $N$.
+More explicitly, if
+\[
+ R(N)=\sum_{p<N}\mu^2(N-p),
+\]
+then Mirsky's theorem gives
+\[
+ R(N)=\AAA(N)\operatorname{Li}(N)+o\!\left(\frac N{\log N}\right).
+\]
+
+To insert the weight, take
+$\varepsilon(N)=1/\log\log N$.  The contribution of the primes below
+$N^{1-\varepsilon}$ is bounded by
+\[
+ (\log N)^2\pi(N^{1-\varepsilon})=o(N\log N).
+\]
+On the remaining range,
+$(\log p)^2=(1+o(1))(\log N)^2$, uniformly in $p$.  Hence
+\[
+\begin{aligned}
+ V(N)
+ &=(1+o(1))(\log N)^2R(N)+o(N\log N)\\
+ &=(1+o(1))\AAA(N)N\log N.
+\end{aligned}
+\]
+Finally, partial summation from $\theta(x)\sim x$ gives
+$W(N)\sim N\log N$.  Dividing the last display by this asymptotic
+yields $V(N)=W(N)\AAA(N)(1+o(1))$.
 \end{proof}
 
-\noindent
-The local factor here is $\AAA$ and not the Hardy--Littlewood singular
-series $\SS$: both depend on $N$ only through the primes dividing it,
-but $\SS$ through a product \emph{over} those primes and $\AAA$ through
-a product over the primes \emph{not} among them, so a substitution of
-one for the other is easy to make and hard to see.
+\begin{thebibliography}{99}
 
-\section{Reproducibility}\label{sec:repro}
+\bibitem{HL}
+J.-J.~Huang and H.~Li,
+\emph{On the connection between the Goldbach conjecture and the
+Elliott--Halberstam conjecture}, arXiv:2005.03811 [math.NT], 2022;
+also published in a Springer volume,
+\url{https://doi.org/10.1007/978-3-030-67996-5_17}.
 
-The code, the output it produced, and the Lean development are at
+\bibitem{Mir49}
+L.~Mirsky,
+\emph{The number of representations of an integer as the sum of a
+prime and a $k$-free integer},
+Amer. Math. Monthly \textbf{56} (1949), 17--19.
 
-\begin{center}
-\texttt{https://github.com/soke91/arithmetic-convolution-fields}
-\end{center}
+\bibitem{Gallagher}
+P.~X.~Gallagher,
+\emph{On the distribution of primes in short intervals},
+Mathematika \textbf{23} (1976), 4--9; corrigendum,
+Mathematika \textbf{28} (1981), 86.
 
-\noindent in the directory \texttt{P4-coherent-cell-floor-r1/}, which
-holds this revision. The directory \texttt{P4-coherent-cell-floor/}
-beside it holds the version sent to the journal and is frozen, so a
-reader comparing the two is reading a revision against what was
-actually submitted rather than against a working copy. That address is
-mutable, and this revision is not in a tagged release: the tagged
-\texttt{v1.0.1}, commit \texttt{b2f365d}, predates the revision
-directory, and its second-cell scripts and outputs are not the ones
-read here. What pins the bytes travels with them instead ---
-\texttt{PACKET.json} in that directory carries a SHA-256 for each of
-the thirty files in \texttt{code/} and \texttt{results/}, so a figure
-can be checked against the exact source that produced it without
-resolving a tag. The pin is on those and not on this document, which
-cannot cite a hash that covers it. Each entry
-in the table below is run as
-\texttt{python code/<script>.py} from that directory, and each writes
-the file of the same name in \texttt{results/}. The scripts import only
-the standard library and NumPy; they never import one another. Five of
-them do read a result file that another script produces, so the packet
-carries those producers too and the order matters:
-\texttt{lab\_cell\_singular} reads \texttt{lab\_cell\_floor} and
-\texttt{lab\_mask\_placebo}; \texttt{lab\_secondcell2\_predict} reads
-\texttt{lab\_secondcell} and \texttt{lab\_secondcell\_predict};
-\texttt{lab\_secondcell2} reads both \texttt{predict} files;
-\texttt{lab\_maincoef} reads \texttt{lab\_cell\_singular} and
-\texttt{lab\_secondcell2}; and \texttt{audit\_cn\_coin\_deep} reads
-\texttt{audit\_cn\_class} and \texttt{audit\_cn\_multnull\_deep}. Run in
-that order, every input exists before the script that reads it.
+\bibitem{Pintz}
+J.~Pintz,
+\emph{On the singular series in the prime $k$-tuple conjecture},
+arXiv:1004.1084 [math.NT], 2010.
 
-The figures printed here were produced under Python~3.12.10 and
-NumPy~2.2.5. \texttt{lab\_maincoef.py} and the two \texttt{predict}
-files compute in exact rational arithmetic and their output is
-reproducible bit for bit on any platform; the rest compute in double
-precision, where a different BLAS may move the last printed digit of a
-summed quantity. No figure quoted in this paper is stated to more
-digits than that distinction supports.
+\bibitem{Cochran}
+W.~G.~Cochran,
+\emph{Sampling Techniques}, 3rd ed., Wiley, 1977.
 
-Four of the runs exit with a nonzero status. That is their registered
-behaviour and not a failure: a run whose own preregistered rule was
-refuted says so in its exit code as well as in its output, and the
-refutations are reported in Supplement~S1.
+\bibitem{Kish}
+L.~Kish,
+\emph{Survey Sampling}, Wiley, 1965.
 
-The Lean development is in \texttt{P4-coherent-cell-floor-r1/lean/}, with
-Mathlib pinned in \texttt{lake-manifest.json} and the toolchain in
-\texttt{lean-toolchain}; \texttt{lake build} reproduces
-\texttt{axioms.txt}, which is the axiom report quoted above.
+\bibitem{LR}
+E.~L.~Lehmann and J.~P.~Romano,
+\emph{Testing Statistical Hypotheses}, 3rd ed., Springer, 2005.
 
-\begin{center}
-\begin{tabular}{lll}
-\hline
-Script & Result file & Supports\\
-\hline
-\texttt{lab\_cellmom\_montecarlo.py} &
- \texttt{lab\_cellmom\_montecarlo.txt} & Measurement~\ref{meas:mc}\\
-\texttt{lab\_cell\_floor.py} & \texttt{lab\_cell\_floor.txt}
- & Measurement~\ref{meas:exponent}\\
-\texttt{lab\_mask\_placebo.py} & \texttt{lab\_mask\_placebo.txt}
- & Measurement~\ref{meas:placebo}\\
-\texttt{lab\_cell\_singular.py} & \texttt{lab\_cell\_singular.txt}
- & Measurements~\ref{meas:scaleinv},~\ref{meas:Dc}\\
-\texttt{lab\_maincoef.py} & \texttt{lab\_maincoef.txt}
- & Measurement~\ref{meas:maincoef}\\
-\texttt{lab\_secondcell2.py} & \texttt{lab\_secondcell2.txt}
- & Measurement~\ref{meas:secondcell}\\
-\texttt{audit\_cellfloor\_sdz.py} & \texttt{audit\_cellfloor\_sdz.txt}
- & Note~\ref{note:notanerrorbar}\\
-\texttt{audit\_cn\_coin\_deep.py} & \texttt{audit\_cn\_coin\_deep.txt}
- & Note~\ref{note:floorsignal}'s $0.6455$\\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection*{Use of an AI assistant, and what checked what}
-
-This work was done in close collaboration with an AI assistant, which
-carried much of the derivation and all of the computation. The author
-takes full responsibility for every claim made here.
-
-\emph{Which tool, and how.} The manuscript in its present form was
-prepared with Anthropic's Claude, model Opus~5, run through the Claude
-Code command-line interface. It was used to derive and check the
-algebraic identities, to write and run every script in the accompanying
-code, to write the Lean development, and to draft and revise this text.
-Earlier stages of the work, before the material reported here took its
-present shape, used earlier models of the same family; the repository
-does not record which, and this paper does not rely on anything from
-those stages that has not since been rederived and rerun. The reason
-for use is throughput on a body of computation and case analysis larger
-than the author would otherwise have carried out, and the cost of that
-choice is the one this note is about: what a reader can check does not
-depend on trusting the tool.
-
-What follows says what was checked and by what, rather than asserting
-that it was checked.
-
-\emph{Machine-verified.} Lemma~\ref{lem:cellmom}'s algebraic identity,
-Lemma~\ref{lem:permfloor}'s closed form and Lemma~\ref{lem:placebo}
-are proved in Lean~4 against Mathlib; the axiom report is in the code
-packet and each depends on \texttt{propext}, \texttt{Classical.choice}
-and \texttt{Quot.sound} and on nothing else. \textbf{Proposition~\ref{prop:scaleinv}
-is not machine-verified and has had no reading by a subject expert.}
-Its statement is written out in Lean and left unproved, so the axiom
-report carries \texttt{sorryAx} on that line and the absence is
-checkable rather than a matter of trust. The finite half of its
-argument is verified separately; the analytic half, the Euler product
-and its convergence, is not.
-
-\emph{Checked by computation.} Every figure quoted is produced by a
-named run in the accompanying code, and a check in the build refuses a
-figure that no cited run prints. Every registered rule is reported with
-its verdict, including the thirteen the ten named runs did not meet, the
-fourteenth recorded in a separate output, and the one recorded void. The packet preserves the second-cell prediction and
-measurement artifacts, but does not make a claim about their historical
-ordering.
-
-\subsection*{Supplement S1: what rests on what}
-
-Lemma~\ref{lem:contrast}, Lemma~\ref{lem:cellmom},
-Lemma~\ref{lem:placebo}, Lemma~\ref{lem:permfloor},
-Lemma~\ref{lem:envtv}, Proposition~\ref{prop:scaleinv} and
-Proposition~\ref{prop:V} are proved and use no computation; those
-seven are every proof in the paper.
-Lemmas~\ref{lem:contrast} and~\ref{lem:envtv} use no arithmetic
-either: the first is a quadratic form in an arbitrary covariance, the
-second a summation bound for an arbitrary modulus, and neither is
-among the statements formalised in Lean.
-The scripts were written against the manuscript of the generation they
-belong to and their headings name its statements, not this paper's:
-\texttt{prop:coh}, \texttt{prop:placebo}, \texttt{rem:floorsignal} and
-\texttt{rem:sdzrange} are Observation~\ref{obs:coh},
-Lemma~\ref{lem:placebo}, Note~\ref{note:floorsignal} and
-Note~\ref{note:notanerrorbar} under earlier names, and
-\texttt{lem:coin} is the sign null, as Note~\ref{note:numnull}
-records. \texttt{rem:copiedfloor}, \texttt{rem:levelmeas},
-\texttt{rem:mcratios} and \texttt{rem:cncoindeep} are four further
-statements of that manuscript which this paper does not carry; the
-runs are cited here for their numbers and nothing above rests on
-those four.
-The Supports column names one statement per run and there are more.
-\texttt{lab\_cell\_floor.py} also carries
-Measurement~\ref{meas:notzero}, the paragraph of
-Measurement~\ref{meas:mc} that reads
-Note~\ref{note:threeterms}'s structural constant at the top octave
---- the one that measurement itself ends by attributing to this file
---- the table of
-Observation~\ref{obs:coh}, Notes~\ref{note:threeterms}
-and~\ref{note:notanerrorbar}, and two items of
-\S\ref{sec:notclaimed} --- the one on the shallow depths not being
-uniformly quiet, and the one on Observation~\ref{obs:coh}'s looseness
-factors, whose two inputs are that file's $Q_{cc}/n_c^2$ row and its
-heuristic $0.049540$.
-\texttt{lab\_mask\_placebo.py} also carries
-Notes~\ref{note:floorsignal}, ~\ref{note:collapse}
-and~\ref{note:numnull} and the \(\mathrm{se}_c\) row of
-Measurement~\ref{meas:Dc}. The width ratio $0.6455$ inside
-Note~\ref{note:floorsignal} is not that file's: it comes from
-\texttt{audit\_cn\_coin\_deep.py},
-the last run of the table above. Counting a named statement as
-resting on a run when it prints a figure that only that run produces,
-five rest on the first file --- Observation~\ref{obs:coh},
-Note~\ref{note:threeterms} and Measurements~\ref{meas:mc},
-\ref{meas:exponent} and~\ref{meas:notzero} --- and six on the second:
-Measurement~\ref{meas:placebo}, Notes~\ref{note:floorsignal},
-\ref{note:collapse} and~\ref{note:numnull}, the $\mathrm{se}_c$ row of
-Measurement~\ref{meas:Dc}, and the sign-null amplitudes that
-Measurement~\ref{meas:scaleinv} reads off it. The unit is stated because
-the count turns on it: counting the items of \S\ref{sec:notclaimed} and
-the paragraphs that carry no figure of their own alongside the named
-statements would make the first eight. Under a unit that can be checked
-the two numbers are five and six.
-The measurements state the band, the cell index and the statistic they
-were taken of, and each was run with its decision rule fixed in
-advance. Two qualifications belong beside that sentence.
-The first is that not every registered rule can fail. N3 of
-Measurement~\ref{meas:mc} reads the Monte-Carlo precision at the
-smaller draw count against the figure an earlier printing quoted; the
-precision is a function of the draw count alone, and the draw count is
-a constant of the script, so N3 evaluates the same arithmetic on every
-run and cannot be refuted by any input. It is an identity, and it is
-counted among the registered rules below.
-The second is that one registration block carries text written after
-its run. The heading of \texttt{lab\_mask\_placebo.py} reads ``written
-before this script was run'', and L5 inside it argues for its own cap
-by citing the factors $3.8$ to $105$ that the run produced, while L4
-records in the same block what the run failed to test. The rules
-themselves were fixed first --- what came later is the reasoning
-printed beside them --- but a reader who takes the heading literally
-is reading two layers as one.
-One quantity a measurement leans on carries no rule of its
-own: the spread of $\mathrm{se}_c^2/D_c$ that
-Measurement~\ref{meas:Dc} calls settling --- $25.4\%$ as printed,
-$19.8\%$ under the matched convention. The $19.1\%$ that the cited
-file also prints is the diagonal-out row, which is an over-correction
-and which that measurement withdraws. What is registered there is
-M3, the correlation; the ratio came out of the same run and is gated
-by nothing. The enumeration over all $720$ relabellings that scores M3
-\emph{is} registered --- that file declares it in its heading --- and
-the ten-fold resampling of Measurement~\ref{meas:scaleinv} is post hoc
-and says so. The permutation control of Lemma~\ref{lem:placebo} was
-\emph{not} run against each cell-indexed claim. It was run once: ten
-label permutations on the single octave $(2\cdot10^6,\,4\cdot10^6]$,
-with the cells indexed by depth. Of the six cell-indexed measurements
-the rest carry no control by \emph{that} permutation ---
-Measurement~\ref{meas:Dc} carries its own, an enumeration over all
-$720$ orderings of the depth labels --- and two of the cited files say
-so where they say it best --- one records that the placebo ``is not
-run here'', and the other that the control the placebo file supplies
-is not the control that statement needs, since it permutes labels for
-a different statistic. The control is not claimed for the others, and
-what the evidence files say is what stands.
-\subsection*{Supplement S1: the registered rules and their verdicts}
-
-Six of the ten named runs record a rule their own output did not meet.
-The separately retained first second-cell output also records P1 as
-refuted. The
-unit of the count is the pair (run, label), because the labels are
-local to their files and repeat across them: \texttt{N1} names one
-rule in \texttt{lab\_cellmom\_montecarlo} and a different one in
-\texttt{lab\_maincoef}, and \texttt{F1} and \texttt{F2} likewise name
-different rules in \texttt{lab\_secondcell\_predict} and
-\texttt{audit\_cn\_coin\_deep}. Under that unit thirty-eight rules
-carry a verdict --- twenty-four hold, thirteen refuted, one void ---
-and one further label, W3, sits under the same registration heading as
-W1, W2 and W4 and is reported without a verdict, so thirty-nine labels
-are registered in all. The fourteen are named here because a
-reader who does not open the files would otherwise take the runs for
-clean, and because in every case what the rule asked for is not what
-the statement above says. The seventh,
-\texttt{lab\_cellmom\_montecarlo}, met all four of its rules, and
-two of those four score a $60$-draw quotation that an earlier printing
-of this work made and this paper does not: the table above is at
-$2000$ draws, and the precision Measurement~\ref{meas:mc} reasons from
-is computed in the text rather than gated by any rule of that file.
-The ratios that measurement states are checked in a block the file
-marks post hoc.
-
-\texttt{lab\_cell\_floor} registered that the fitted exponent $b$ in
-$\mathrm{se}\sim N^{-b}$ over the eight octaves, and the quantity
-$1/(2\langle\log N\rangle)$ beside it, would match the values published
-earlier (C4); that the row of $Q_{cc}/n_c^2$ would have minimum
-$0.124$ and maximum $0.307$ at the top octave (C3); and that the four
-ratios of C1 would behave the same way at the octave
-$(2\cdot10^6,4\cdot10^6]$ (C2). C4 is refuted by one line of four: the
-three fitted $b$ agree with what was published, and
-$1/(2\langle\log N\rangle)$ comes out $0.036038$ against a published
-$0.0358$ --- the value used in this paper is the new one, and nothing
-above turns on the third decimal. C3 is refuted on its minimum, which
-measures $0.121208$ against the registered $0.124$: the row's minimum
-sits at depth~1 rather than at depth~0, so the published figure was
-reading the wrong end. Two of C3's three clauses fail, not one: the
-maximum holds at $0.307074$ against the registered $0.307$, but the
-heuristic reads $0.049540$ against $0.049$, which is $0.000540$ away
-and so outside the $0.0005$ the rule allowed --- it fails as
-registered, by a margin smaller than the last digit of the published
-value it was registered against. C2 is
-refuted at depth~$5$ alone, which reads $0.557654$ at that octave
-against $0.551516$ at the top; that is the sentence in
-Measurement~\ref{meas:mc} which says depth~$5$ does not.
-\texttt{lab\_cell\_singular}
-registered four things and three fail: that $D_c$ is positive and
-increasing in the depth (M1); that it is invariant across octaves ---
-a spread within two per cent (M2) and a fitted exponent with
-$|e|<0.01$ (M4), a threshold its result file does not print; and that
-the floor tracks $D_c$ across depths, a correlation above $0.8$ (M3),
-which holds at $0.9805$ and is the control
-Measurement~\ref{meas:Dc} rests on. Only M1 is about the depth, and its failure is the
-sentence in Measurement~\ref{meas:Dc} that neither row is monotone;
-M2 and M4 are about scale and fail only where $D_c$ is small, as
-recorded above.
-\texttt{lab\_mask\_placebo} registered that the floor would survive
-permutation within a tenth (L3) --- it does not, the collapse being
-the subject of Measurement~\ref{meas:placebo} and the reason
-Note~\ref{note:floorsignal} and Lemma~\ref{lem:permfloor} were
-written --- and two things at once as L4: that
-the true labelling's $z_c$ is monotone decreasing in depth, and that
-under permutation the rank correlation between depth and $z_c$ has
-$|\mathrm{mean}|<0.3$. L4 is refuted on the first --- $z$ rises by
-$1.0065$ from depth~$0$ to depth~$1$ --- while the second holds, the
-permuted mean Spearman being $-0.0114$ against a true $-0.9429$. \texttt{audit\_cellfloor\_sdz}
-registered that its printed pair would be reproduced under one of two
-readings (W1) and that the ratio would grow with the cell (W2); neither
-does, and the convention that settles W1 is stated in
-Note~\ref{note:notanerrorbar}. \texttt{audit\_cn\_coin\_deep}
-registered four things about the two sign ensembles and two fail:
-F3 asked the i.i.d. ensemble to cover the true value at the
-deepest cell and no draw of it does, and F4 asked the two nulls to
-agree in width within a factor $1.5$ and they do not --- the
-$0.6455$ that Note~\ref{note:floorsignal} quotes is that
-disagreement. F1 and F2 hold. This run is cited here for the width
-ratio alone, and its two refutations are the reason that ratio is
-worth quoting.
-
-Seven of the fourteen concern a prediction about a row this paper
-prints --- its shape across depths (C3, M1, L4, W2) or its
-constancy across octaves (C2, M2, M4) --- and the statements
-above report what the rows do. Two more, F3 and F4, are about the
-sign null's own reach rather than about this field, and are
-named above. A tenth, N3, registered which of six cells carries the
-worst deviation and named depth~$5$; its own file records the
-refutation together with the reason, that the rule was registered on
-an unstandardised quantity and so asked about a different question
-from the one it appears to ask. P1 is the omitted fourteenth: the first
-second-cell run scored one sampled draw at three depths, and its
-depth-$2$ draw missed the registered three-standard-error cap. Its result
-file records it as refuted; it is the separate output noted above, not
-one of the ten named runs. Nothing above rests on that sampled rule.
-The other three did more than that, and are listed here because the count alone would
-hide them. W1 registered that the pair $(5.8,\,160)$ would be
-reproduced under one of two readings; it was not, and the pair this
-paper prints, in Note~\ref{note:notanerrorbar} and in the Summary, is
-$(7.3,\,158)$, the measured one. C4 likewise changed a number this
-paper prints: $1/(2\langle\log N\rangle)$ measures $0.036038$ against
-the published $0.0358$, and it is the measured value that appears in
-Measurement~\ref{meas:exponent} and in
-Note~\ref{note:notanerrorbar}. L3 registered no shape at all but a
-size --- that the floor would survive permutation within a tenth ---
-and its refutation is what \S\ref{sec:placebo} was written around:
-Note~\ref{note:floorsignal}, Lemma~\ref{lem:permfloor} and
-Note~\ref{note:collapse} all follow from it.
+\end{thebibliography}
 
 \end{document}

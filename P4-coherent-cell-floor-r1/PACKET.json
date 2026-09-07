@@ -9,15 +9,15 @@
   "paper_files": [
     {
       "path": "P4-coherent-cell-floor.tex",
-      "sha256": "30a8ac295ed08dfb26bd73a983ada8d0665c0f631598ba789d003ccdd8c31e59",
-      "imported_from": "deploy/papers/P4-coherent-cell-floor.tex",
-      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+      "sha256": "22b5268adaefdcf58dd69445bfc8322fdf2e9f6500a9f9339c7555f5cacc2d50",
+      "imported_from": "papers/P4-coherent-cell-floor/P4-coherent-cell-floor-small.tex",
+      "source_commit": "961816a127dda3e4f13770b6e5bba3e2ab4567c5"
     },
     {
       "path": "P4-coherent-cell-floor.pdf",
-      "sha256": "faa8b6531ae929147281d46b13a262e7191c6bb23f3db16d1ce9d230dcc8d200",
-      "imported_from": "deploy/papers/P4-coherent-cell-floor.pdf",
-      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+      "sha256": "ed786b628b4216d7b9d9f51af5829d128989ec9b33b446933b6f60a23cc0e729",
+      "imported_from": "papers/P4-coherent-cell-floor/P4-coherent-cell-floor-small.pdf",
+      "source_commit": "961816a127dda3e4f13770b6e5bba3e2ab4567c5"
     },
     {
       "path": "arxiv-metadata.txt",
