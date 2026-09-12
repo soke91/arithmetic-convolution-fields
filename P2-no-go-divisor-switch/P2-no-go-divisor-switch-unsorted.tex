@@ -1,10 +1,10 @@
 % =====================================================================
-%  P2.  A scoped no-go for termwise Bombieri--Vinogradov extraction,
+%  P2.  No weight extracts C(N): a no-go for the divisor-switch route,
 %       with the exact identities of its design space.
 %
-%  Canonical manuscript (was P2-no-go-divisor-switch-small.tex until
-%  2026-09-12).  P2-no-go-divisor-switch-unsorted.tex is the earlier
-%  draft, kept beside it.
+%  NOT the canonical manuscript.  This is the unsorted version: the
+%  earlier draft, kept beside the canonical one as its record.
+%  P2-no-go-divisor-switch.tex is the canonical manuscript.
 %
 %  Compiles standalone with pdflatex, run twice.
 % =====================================================================
@@ -35,8 +35,10 @@
 % typographic slack: let TeX stretch a line rather than run into the margin
 \emergencystretch=3em
 
-\title{A support-based obstruction to termwise Bombieri--Vinogradov
-extraction in a M\"obius--prime convolution}
+\title{No weight that Bombieri--Vinogradov reaches extracts
+$\sum_{n<N}\Lambda(n)\mu(N-n)$:\\
+a no-go for the divisor-switch route,\\
+with the exact identities of its design space}
 \author{Youngrok Lee\\
 \small Independent researcher, Republic of Korea}
 \date{}
@@ -46,57 +48,51 @@ extraction in a M\"obius--prime convolution}
 
 \begin{abstract}
 Let $N$ be a large even integer and
-$C(N)=\sum_{n<N}\Lambda(n)\mu(N-n)$.  In the Huang--Li reduction of
-binary Goldbach to Elliott--Halberstam \cite{HL}, two related
-M\"obius-weighted fixed-class sums occur: a flat branch, which is
-unconditionally small in the regime of \cite{P1}, and a logarithmic
-branch tied to Huang--Li's residual relation.  This raises a natural
-design question: can an intermediate weight make the divisor-switched
-residual accessible to Bombieri--Vinogradov while retaining a
-non-negligible coefficient of $C(N)$?
+$C(N)=\sum_{n<N}\Lambda(n)\mu(N-n)$. The Huang--Li reduction of binary
+Goldbach to Elliott--Halberstam \cite{HL} consumes its hypothesis
+through a M\"obius-weighted correlation sum in the fixed class
+$n\equiv N\ (k)$, carrying a weight $w_k$. Two weights occur: $w_k=1$,
+for which the sum is unconditionally small, and $w_k=\log k$, for which
+it is equivalent to Goldbach itself \cite{P1}. Is there a weight
+between them --- one whose divisor sum is still cheap but whose
+main-term coefficient is still of size $1$, which would therefore
+extract $C(N)$ from Bombieri--Vinogradov alone?
 
-For the standard \emph{termwise} Bombieri--Vinogradov evaluation, the
-answer is no on the stated low-transform support class.  Write
-$b=\mu*w$.  If $b$ is supported on
-$d\le N^{\theta'-1/2-\delta}$, then the residual is controlled termwise,
-but the extraction coefficient satisfies
-\[
- \frac{\|b\|_1}{|B_w|}
- \gg \exp\!\left(c_1\sqrt{(\tfrac12+\delta)\log N}\right).
-\]
-The loss exceeds every fixed power of $\log N$.  The same support-based
-triangle-inequality argument under a level
-$EH(N^{\theta_E})$, with fixed $1-\theta'<\theta_E<1$ and an arbitrarily
-small fixed power slack in the support, retains an exponential loss at
-least as large as the one governed by $N^{1-\theta_E}$.
+No such weight exists among those whose transform
+Bombieri--Vinogradov reaches. Writing $b=\mu*w$, the two requirements
+pull apart: extraction needs mass in $b$ at $K=N^{\theta'}$, while the
+residual is accessible whenever $b$ is supported below
+$N^{\theta'-1/2}$, and the thresholds are separated by $N^{1/2}$.
+Theorem~\ref{thm:D} turns that into
+$\lVert b\rVert_1/\lvert B_w\rvert\gg\exp(c_1\sqrt{(\frac12+\delta)\log
+N})$, which exceeds every power of $\log N$ and destroys the extraction
+\emph{even when the hard input is granted for free}.
+Theorem~\ref{thm:Dprime} shows the separation survives granting
+$EH(N^{\theta_E})$ for any fixed $\theta_E<1$, so the obstruction is
+not a shortage of level. The polynomial family $w_k=f(\log k)$ lies
+outside the support hypothesis and is closed separately, by a different
+and weaker argument.
 
-The scope is essential.  The support condition is sufficient for the
-termwise progression estimate; it is not proved necessary, and
-cancellation among the $b_d$ or among the three terms of the switch
-identity is not excluded.  Polynomial weights lie outside the support
-class and are analysed only structurally: monomials give nonnegative
-complete parts, while general tuning leads back to prime-pair moments
-not estimated here.  No impossibility theorem is claimed for all
-polynomial weights.
+\emph{What is not shown.} The result is for one evaluation of the
+switch identity, the triangle inequality; an evaluation exploiting sign
+correlations among that identity's three terms is not excluded, and
+nothing here says such correlations are absent. Outside the reached
+transforms the statement is weaker and is marked as such. The switch
+identity itself is taken from \cite{P1} and not reproved here, so half
+of Theorem~\ref{thm:D} is conditional on it.
 
-The arbitrary-weight switch identity needed for the no-go is proved
-directly here, so the main theorem does not depend on importing an
-unstated generalisation from the companion paper.  Six finite
-rearrangements describe the surrounding design space; the appendix
-states precisely which algebraic scaffolding is formalised in Lean~4.
-No new bound for $C(N)$ or for Goldbach is obtained.  The result closes
-one explicit triangle-inequality evaluation, not the underlying
-correlation problem.
+The design space is laid out exactly first: six finite rearrangements
+and one consequence of them identify the per-modulus discrepancy as a
+dilate of a M\"obius--prime correlation, show the signs $\mu(k)$ cancel
+out of the $\log k$ branch exactly, and exhibit the Goldbach count as a
+signed sum of nonnegative layers. These are what make the result a
+statement about a space rather than about two examples. All six are
+formalised in Lean~4 against Mathlib.
+
+Net progress toward Goldbach: zero. The value of a no-go of this kind
+is that it closes a design space rather than leaving it to be
+re-explored.
 \end{abstract}
-
-\medskip
-\noindent\textbf{Keywords:}
-divisor switching; Bombieri--Vinogradov theorem; M\"obius function;
-Elliott--Halberstam conjecture; Goldbach problem.
-
-\medskip
-\noindent\textbf{2020 Mathematics Subject Classification:}
-Primary 11N13; Secondary 11N35, 11P32.
 
 % =====================================================================
 \section{Introduction}
@@ -110,36 +106,24 @@ $K=N^{\theta'}$. Put
   \qquad
   A(N;k)=\sum_{\substack{n<N\\ n\equiv N\ (k)}}\Lambda(n)\mu(N-n),
 \end{equation}
-and
-\[
-  \tilde r(N):=\sum_{n<N}\Lambda(n)\Lambda(N-n),\qquad
-  r_{\mathbb P}(N):=\sum_{\substack{p+q=N\\p,q\ {\rm prime}}}\log p\,\log q .
-\]
-The first is the standard von-Mangoldt convolution, not literally the
-prime--prime count: the terms in which at least one variable is a proper
-prime power contribute $O(N^{1/2}\log^2N)$, so
-$\tilde r(N)=r_{\mathbb P}(N)+O(N^{1/2}\log^2N)$.  Thus a positive
-lower bound for $\tilde r(N)$ with margin $\gg N^{1/2}\log^2N$ implies
-binary Goldbach, whereas bare positivity of $\tilde r(N)$ does not.
-For a weight $w:\mathbb N\to\mathbb R$ put
+and $\tilde r(N)=\sum_{n<N}\Lambda(n)\Lambda(N-n)$ for the prime-pair
+sum, so that $\tilde r(N)>0$ for all large even $N$ is binary
+Goldbach. For a weight $w:\mathbb N\to\mathbb R$ put
 \begin{equation}\label{eq:Tw}
   T_w \;=\;\sum_{\substack{k<K\\ (k,N)=1}}\mu(k)\,w_k
      \Bigl[A(N;k)-\frac{C(N)}{\varphi(k)}\Bigr].
 \end{equation}
 The functional $E_3$ of \cite{HL} is $T_w$ at $w_k=\log k$; $E_4$ is
 not $T_w$ at $w_k=1$ but is obtained from it by partial summation, an
-inner factor $\log(N-n)$ separating the two \cite[Corollary~2]{P1}. $E_4$ is
-unconditionally $\ll_A N(\log N)^{-A}$, while the $E_3$ identity is
-equivalent, at the stated error scale, to Huang--Li's equation~(22)
-\cite{P1}.  This paper studies the part of the intervening weight space
-for which the switch residual can be controlled \emph{termwise} by
-Bombieri--Vinogradov, and records what remains open.  A sufficient
-support condition for that termwise control is
-$b=\mu*w$ supported below $N^{\theta'-1/2-\delta}$ for some
-$\delta>0$.  The polynomial family --- including $w_k=\log k$ itself --- is
-discussed separately by a weaker structural argument and is not ruled
-out.  Weights that lie neither in the low-support class nor in that
-polynomial family are not treated here.
+inner factor $\log(N-n)$ separating the two \cite[Corollary on the collapse]{P1}. $E_4$ is
+unconditionally $\ll_A N(\log N)^{-A}$, and $E_3$ is, by an
+unconditional identity, equivalent to Huang--Li's equation~(22) and
+hence already gives binary Goldbach \cite{P1}. This paper closes the
+part of the space between the two weights that its input reaches, and
+records what is left open. What is reached is the weights whose
+transform $b=\mu*w$ is supported below $N^{\theta'-1/2}$; the
+polynomial family is closed separately and by a weaker argument, and
+the rest --- including $w_k=\log k$ itself --- is closed nowhere here.
 \S\ref{sec:notclaimed} says which is which.
 
 Throughout, $\varphi$ is Euler's function, $\rad(u)=\prod_{p\mid u}p$,
@@ -147,7 +131,7 @@ $c,c_1,\dots$ are positive constants depending at most on the
 parameters each statement fixes ($\theta'$, $\delta$, $\theta_E$) and
 not on $N$, and
 \begin{equation}\label{eq:AN}
-  \AAA(N)=\prod_{\substack{p\ {\rm prime}\\p\nmid N}}\Bigl(1-\frac{1}{p(p-1)}\Bigr),
+  \AAA(N)=\prod_{q\,\nmid\,N}\Bigl(1-\frac{1}{q(q-1)}\Bigr),
   \qquad
   \SS(N)=2\prod_{p>2}\Bigl(1-\tfrac{1}{(p-1)^2}\Bigr)
           \prod_{\substack{p\mid N\\ p>2}}\Bigl(1+\tfrac{1}{p-2}\Bigr).
@@ -163,105 +147,65 @@ determined by $w$. Put
   \qquad
   \|b\|_1:=\sum_{u<N}|b_u| .
 \end{equation}
-The arbitrary-weight switch needed below is short enough to prove here.
-This removes a dependence that would otherwise be easy to misread: the
-companion paper \cite{P1} proves the flat and logarithmic branches, but
-does not state the following arbitrary-weight identity as its Theorem~C.
-The external inputs used later are instead the decay
-$\rho_n(x)\ll e^{-c_1\sqrt{\log x}}$ from Huang--Li's Lemma~1, the
-Bombieri--Vinogradov theorem in the form of \cite{MoV}, the logarithmic
-residual relation of \cite{P1} used in Proposition~\ref{prop:direct},
-and Vaughan's lower bound for $\|S_\Lambda\|_1$ \cite{Vau88}, used in
-Proposition~\ref{prop:E}.
+Running the divisor switch of \cite{P1} with the weight $w$ gives the
+identity below. Its derivation is \cite{P1}'s and is not repeated
+here; every negative conclusion of this paper is read off it, so a
+reader checking this paper alone should treat it as a hypothesis taken
+from outside. It is not the only one. The others, each used where it is
+named, are: the bound $\rho_n(x)\ll e^{-c_1\sqrt{\log x}}$ of
+Huang--Li's Lemma~1, on which Lemma~\ref{lem:extract} turns;
+\cite{P1}'s residual identity and Bombieri--Vinogradov in the form of
+\cite{MoV}, both inside Lemma~\ref{lem:bv}; \cite{P1}'s theorem on the
+identity, used in Proposition~\ref{prop:direct}; and Vaughan's
+$\|S_\Lambda\|_1\gg N^{1/2}$ \cite{Vau88}, used in
+Proposition~\ref{prop:E}. What is
+particular to \eqref{eq:extract} is that it is the one every negative
+conclusion passes through.
 
-\begin{lemma}\label{lem:Gb}
-For squarefree $u$,
-\[
-  \sum_{k\mid u}\mu(k)w_k=\mu(u)\,b_u .
-\]
-\end{lemma}
-
-\begin{proof}
-Since $w_k=\sum_{d\mid k}b_d$ and $u$ is squarefree,
-\[
- \sum_{k\mid u}\mu(k)w_k
- =\sum_{d\mid u}b_d\,\mu(d)\sum_{j\mid(u/d)}\mu(j)
- =\mu(u)b_u ,
-\]
-using $(d,u/d)=1$.
-\end{proof}
-
-\begin{proposition}[the weighted switch]\label{prop:weightedswitch}
-Put
-\[
- \mathcal R_w:=
- \sum_{u<N}\Lambda(N-u)\mu(u)
- \sum_{\substack{k\mid u\\k\ge K\\(k,N)=1}}\mu(k)w_k .
-\]
-Then, uniformly for arbitrary real weights,
+Which of the four is load-bearing is a different question from which
+is most used, and the answer is not \eqref{eq:extract}. If
+\eqref{eq:extract} were wrong, \eqref{eq:loss} would survive --- its
+proof uses Lemma~\ref{lem:extract} and not the switch identity --- and
+what would die is the step from \eqref{eq:loss} to a bound on
+$|C(N)|$. If Bombieri--Vinogradov reached higher moduli than assumed,
+the loss factor would shrink but not vanish, and
+Theorem~\ref{thm:Dprime} already measures that. The $\rho$ decay is the
+one whose failure takes several statements at once:
+Lemma~\ref{lem:extract} turns on it, hence \eqref{eq:loss} and with it
+Theorem~\ref{thm:D}, Theorem~\ref{thm:Dprime} and
+Proposition~\ref{prop:Dpp}(i); and Proposition~\ref{prop:direct}'s rate
+$B_{\log}(K)+\SS(N)\ll e^{-c_1\sqrt{\log K}}\log K$ is the same bound
+applied to $\rho_N$, so \eqref{eq:directcond} goes too. That is the
+single most expensive dependence here, and it is not checked in this
+packet --- Measurement~\ref{meas:extract} checks
+Lemma~\ref{lem:extract} as an identity at $b=\delta_{d_0}$, which
+tests the algebra and not the decay.
 \begin{equation}\label{eq:extract}
-  B_w C(N)=
-  \sum_{u<N}\Lambda(N-u)\mu^2(u)b_u
-  -\mathcal R_w-T_w
-  +O\!\left(\|b\|_1N^{o(1)}\right).
+  B_w\cdot C(N)\;=\;
+  \underbrace{\sum_{u<N}\Lambda(N-u)\mu^2(u)\,b_u}_{\text{complete part}}
+  \;-\;\underbrace{\mathcal R_w}_{\text{residual}}
+  \;-\;\underbrace{T_w}_{\text{the object itself}}
+  \;+\;O\!\left(N^{o(1)}\right),
 \end{equation}
-Moreover
-\[
- \mathcal R_w=
- \sum_{m<N/K}\mu(m)
- \sum_{\substack{k\ge K,\ mk<N\\(k,mN)=1}}
-   \mu^2(k)w_k\,\Lambda(N-mk),
-\]
-so expanding $w_k=\sum_{d\mid k}b_d$ gives
-$\mathcal R_w=\sum_d b_d\mathcal R^{(d)}$.
-\end{proposition}
+the complete part being evaluated by Lemma~\ref{lem:Gb} below, which
+identifies $b$ as exactly the complete divisor transform. The three
+named terms are not defined here in the same way: the complete part
+and $T_w$ are written out above and below, while $\mathcal R_w$ is the
+residual of \cite{P1}'s switch, and its formula is not reproduced in
+this paper. What is used of it is only what
+Lemma~\ref{lem:bv} states --- that expanding $w_k=\sum_{d\mid k}b_d$
+splits it as $\sum_db_d\mathcal R^{(d)}$ with each
+$\mathcal R^{(d)}$ a sum of $\Lambda$ over progressions to moduli $md$.
+A reader wanting the residual itself has to open \cite{P1}.
 
-\begin{proof}
-Write
-\[
- D_w:=\sum_{\substack{k<K\\(k,N)=1}}\mu(k)w_kA(N;k),
- \qquad T_w=D_w-B_wC(N).
-\]
-Since $k\mid N-n$ in $A(N;k)$, the finite change of variables
-$u=N-n$ gives
-\[
- D_w=\sum_{u<N}\Lambda(N-u)\mu(u)
-      \sum_{\substack{k\mid u\\k<K\\(k,N)=1}}\mu(k)w_k .
-\]
-Complete the divisor sum and subtract its tail.  The tail is
-$\mathcal R_w$.  If $(u,N)=1$, Lemma~\ref{lem:Gb} turns the complete
-sum into $\mu(u)b_u$, hence its contribution is
-$\Lambda(N-u)\mu^2(u)b_u$.
-
-It remains only to account for squarefree $u$ with $(u,N)>1$.
-If $\Lambda(N-u)\ne0$ and a prime $p$ divides $(u,N)$, then
-$p\mid N-u$, so $N-u$ must be a power of $p$.  Thus the exceptional
-$u$ lie among $u=N-p^a$ with $p\mid N$; there are $N^{o(1)}$ of them.
-For each such $u$,
-\[
- \sum_{k\mid u}|w_k|
- \le \sum_{k\mid u}\sum_{d\mid k}|b_d|
- \le \tau(u)\|b\|_1=N^{o(1)}\|b\|_1,
-\]
-and $\Lambda(N-u)\ll\log N$.  This proves the homogeneous error term
-in \eqref{eq:extract}.  Finally write $u=mk$ in the tail.  The factor
-$\mu(u)$ forces $u$ squarefree, hence $(m,k)=1$ and
-$\mu(u)\mu(k)=\mu(m)\mu^2(k)$, giving the displayed formula for
-$\mathcal R_w$.
-\end{proof}
-
-The loss theorem below depends most sensitively on the decay of
-$\rho_n(x)$, not on an unproved generalisation of the switch.  The
-measurement of Lemma~\ref{lem:extract} checks its factorisation
-identity for single-divisor weights; it does not verify the analytic
-decay estimate.
 \begin{note}[the third term is not a remainder]\label{note:Tw}
-The term $T_w$ in \eqref{eq:extract} is \eqref{eq:Tw} itself.  It
-must remain explicit in the structural identity: at $w=\log$ it
-\emph{is} $E_3$, which
-\cite[Theorem~3]{P1} evaluates as
-$\tilde r(N)-\SS(N)(N-C(N))+O_A(N(\log N)^{-A})$. Deleting it from the identity changes the two sides by $T_w$
-itself --- the two sides then differ by
+The term $T_w$ in \eqref{eq:extract} is \eqref{eq:Tw} itself, and it
+cannot be absorbed into the $O(N^{o(1)})$: at $w=\log$ it \emph{is}
+$E_3$, which
+\cite[Theorem on the identity]{P1} evaluates as
+$\tilde r(N)-\SS(N)(N-C(N))+O_A(N(\log N)^{-A})$. Writing
+\eqref{eq:extract} without it turns
+a rearrangement into a false statement --- the two sides then differ by
 $0.44N$, $0.38N$, $0.32N$ at $N=2\cdot10^5,\,4\cdot10^5,\,8\cdot10^5$
 with $\theta'=0.56$, which are exactly the measured values of
 $|T_{\log}|/N$ at those $N$, read from the run
@@ -274,30 +218,33 @@ not a bound; the use made of it here is only the lower one, that
 $|T_{\log}|$ stays above $0.12N$ throughout. The $w=1$ case of the same
 collection, $T_1=\sum H-C(N)B(K)$, is checked numerically and holds to
 a worst relative error $1.875\cdot10^{-16}$
-(\texttt{lab\_weight\_gap.py}).  The homogeneous exceptional-set
-error in Proposition~\ref{prop:weightedswitch} is deliberately crude
-for arbitrary weights; for $w=\log$ its norm bound is not the device
-used to measure $T_{\log}$.
+(\texttt{lab\_weight\_gap.py}); \eqref{eq:extract} itself is not
+checked numerically anywhere here.
 
 Keeping it explicit is what makes Theorem~\ref{thm:D} say something.
-The identity by itself yields nothing about $C(N)$.  The flat weight
-$w=1$ is the case for which \cite[Theorem~1]{P1}
-supplies the required strong bound on $T_w$.  The theorem below grants
-the corresponding \emph{homogeneous} bound for a general admissible
-weight and shows that the stated triangle-inequality extraction still
-loses all fixed log powers.
+The identity by itself yields nothing about $C(N)$: an unconditional
+bound on $T_w$ is exactly what the whole problem asks for, and the only
+weight for which one is known is $w=1$, by \cite[Theorem on the flat branch]{P1}. The
+theorem below therefore \emph{grants} the bound on $T_w$ and shows the
+extraction fails anyway.
 \end{note}
+
+\begin{lemma}\label{lem:Gb}
+For squarefree $u$, $\sum_{k\mid u}\mu(k)w_k=\mu(u)\,b_u$.
+\end{lemma}
+
+\begin{proof}
+$\sum_{k\mid u}\mu(k)\sum_{d\mid k}b_d
+ =\sum_{d\mid u}b_d\,\mu(d)\sum_{j\mid(u/d)}\mu(j)
+ =\sum_{d\mid u}b_d\,\mu(d)\,[\,u/d=1\,]=\mu(u)b_u$,
+using $(d,u/d)=1$ for squarefree $u$.
+\end{proof}
 
 The two known cases are the two ends of this space: $w=1$ gives
 $b=\delta_1$, $\|b\|_1=1$ and (Huang--Li's Lemma~1)
 $B_w\ll e^{-c\sqrt{\log K}}$; while $w=\log$ gives $b=\Lambda$,
-$\|b\|_1\asymp N$ --- the complete part is the prime-supported sum
-$\sum_{p<N}\Lambda(N-p)\log p$, differing from $\tilde r(N)$ only by
-proper-prime-power terms --- and
-$B_w=-\SS(N)+O(e^{-c\sqrt{\log K}}\log K)$ in the regime used below.
-For even $N$, $\SS(N)$ is bounded below by a positive absolute constant
-(and may grow slowly with the prime factors of $N$), so this coefficient is
-not exponentially damped.
+$\|b\|_1\asymp N$ --- the complete part \emph{is} the binary Goldbach
+sum --- and $B_w\to-\SS(N)\asymp1$.
 
 \subsection{Results}
 
@@ -306,23 +253,20 @@ the per-modulus discrepancy is a dilate (Proposition~\ref{prop:dilate}),
 the signs $\mu(k)$ cancel exactly on the $\log k$ branch
 (Proposition~\ref{prop:posweights}), both known weights are the same
 sum of dilated walls with different weights
-(Proposition~\ref{prop:flatsum}), the untruncated logarithmic object is the
-prime-supported weighted pair sum of Proposition~\ref{prop:untrunc},
-which differs from $\tilde r(N)$ only by proper-prime-power terms and
-is therefore a signed sum of nonnegative layers
+(Proposition~\ref{prop:flatsum}), the untruncated object is the
+Goldbach count itself (Proposition~\ref{prop:untrunc}), which is
+therefore a signed sum of nonnegative layers
 (Proposition~\ref{prop:layers}) over Bombieri--Vinogradov
 moduli carrying no M\"obius (Proposition~\ref{prop:combined}); and
 the wall cancels out of the count entirely
 (Proposition~\ref{prop:direct}).
 
-Section~\ref{sec:nogo} proves the scoped no-go: Lemmas~\ref{lem:extract}
-and~\ref{lem:bv} are the two opposing estimates,
-Theorem~\ref{thm:D} is their consequence for the termwise
-Bombieri--Vinogradov support class, and
-Theorem~\ref{thm:Dprime} gives the corresponding loss at higher fixed
-levels of distribution.  Section~\ref{sec:Dpp} records what the same
-argument does and does not say about polynomial weights, which lie
-outside the support hypothesis of Theorem~\ref{thm:D}. Section~\ref{sec:circle}
+Section~\ref{sec:nogo} proves the no-go: Lemmas~\ref{lem:extract}
+and~\ref{lem:bv} are the two opposing constraints,
+Theorem~\ref{thm:D} is their consequence, and
+Theorem~\ref{thm:Dprime} shows it survives Elliott--Halberstam.
+Section~\ref{sec:Dpp} closes polynomial weights, which lie outside
+the hypothesis of Theorem~\ref{thm:D}. Section~\ref{sec:circle}
 records the position of the circle method.
 
 \subsection{What is not claimed}\label{sec:notclaimed}
@@ -330,10 +274,8 @@ records the position of the circle method.
 \begin{itemize}
 \item \textbf{This is a no-go for one method, and for the part of its
 weight space that method can evaluate.} Theorem~\ref{thm:D}
-closes the \emph{termwise, triangle-inequality} divisor-switch
-evaluation on the explicit support class in its statement.  It does
-not prove that this support condition characterises every weight that
-Bombieri--Vinogradov could conceivably help evaluate. Of the weights
+closes divisor switching with Bombieri--Vinogradov as the only input,
+for every weight whose transform that input reaches. Of the weights
 outside that hypothesis, the polynomial family $w_k=f(\log k)$ is
 addressed by Proposition~\ref{prop:Dpp}, whose (ii) is a statement of
 what is not known rather than an impossibility; the weights that are
@@ -343,12 +285,11 @@ claim to be, an obstruction to other methods --- in particular it says
 nothing about the spectral large sieve of \cite{Li23}.
 
 \item \textbf{The genre is classical.} Bombieri's asymptotic sieve
-\cite{Bom76} is a central formulation of the parity obstruction: strong
-distributional sieve information by itself does not in general distinguish
-the parity of the number of prime factors.  It motivates a statement of
-this shape, but it is not cited here as a theorem about every possible
-choice of weight. What is added here is the precise quantitative form for
-this particular route (Note~\ref{note:bombieri}).
+\cite{Bom76} shows that sieve weights alone cannot detect primes,
+however chosen, and the parity obstruction it isolates is the reason
+one expects a statement of this shape. What is added here is the
+precise quantitative form for this route
+(Note~\ref{note:bombieri}).
 
 \item \textbf{Proposition~\ref{prop:E} is about two pairings, not
 about the circle method.} What is shown is that the $(2,2)$ and
@@ -371,19 +312,6 @@ Proposition~\ref{prop:direct} is the exception: it carries an
 $O_A(N(\log N)^{-A})$ and uses an asymptotic bound on $|C(N)|$, so it
 is a consequence of the rearrangements rather than one of them.
 \end{itemize}
-
-\subsection{Related work}
-The present obstruction is methodological rather than a new parity theorem.
-Bombieri's asymptotic sieve is the classical background for this viewpoint
-\cite{Bom76}.  Two recent works concern the same Huang--Li setting from
-other directions.  Cantarini studies weighted diagonal M\"obius-twisted
-Elliott--Halberstam averages under GRH and a weak Gonek--Hejhal hypothesis,
-with Sobolev and H\"older--Zygmund weights \cite{Cantarini}; those
-conditional average estimates are different from the support/extraction
-tradeoff proved here.  Moya identifies and repairs the moving-cut omission
-in the published Huang--Li rearrangement \cite{Moya}.  The weighted switch
-used below is proved directly in Proposition~\ref{prop:weightedswitch}, so
-the no-go theorem does not depend on the unrepaired moving-cut identity.
 
 % =====================================================================
 \section{The design space, exactly}\label{sec:identities}
@@ -408,12 +336,12 @@ $EH_\mu$ is consumed where one M\"obius argument \emph{divides} the
 other, but the per-modulus discrepancy is $\mu(k)$ times a sum in
 which the two arguments are related by a \emph{difference}, at scale
 $N/k$. The two couplings are not two fields; they are the same field
-seen before and after the switch. It also suggests the source of the difficulty on the $\mu$ side:
+seen before and after the switch. It also explains why $\mu$ is the
+noisier of the two inputs in progressions: for $\mu$,
 $|A(N;k)|=|H(N;k)|$ is a M\"obius--prime correlation of length $N/k$
-with no pointwise cancellation supplied by the identity itself.  For
-comparison only, an independent-sign model for
-$\sum_m\Lambda(N-mk)\varepsilon(mk)$ has square-root-scale cancellation;
-that model is heuristic and is not used in any proof.
+and nothing makes it small, whereas for a random sign pattern
+$\varepsilon$ the sum $\sum_m\Lambda(N-mk)\varepsilon(mk)$ is a sum of
+independent signs and exhibits square-root cancellation.
 
 \begin{proposition}[the weights are nonnegative]\label{prop:posweights}
 Substituting \eqref{eq:dilate} into $T_{\log}$ and using $\mu(k)^2=1$
@@ -436,11 +364,10 @@ that \eqref{eq:dilate} extracts from the progression sum, and what is
 left is a sum of dilated M\"obius--prime correlations with
 \emph{nonnegative} weights $\mu^2(k)\log k$. Huang--Li discard the
 $\mu(k)$ by the triangle inequality; on the $w_k=1$ branch keeping
-them is what makes the unconditional theorem of \cite[Theorem~1]{P1} possible; on
+them is what makes the unconditional theorem of \cite{P1} possible; on
 the $\log k$ branch they are not there to keep. Whatever smallness
 $T_{\log}$ has must therefore come from the signs of $H(N;k)$ across
-$k$.  On the finite ranges measured below that cancellation is modest
-relative to the independent-sign reference. Writing
+$k$. It does not come from there, and the amount is measured. Writing
 $G=\sum_k(\log k)|H|\big/\bigl|\sum_k(\log k)H\bigr|$ for the gain that
 cancellation across dilations buys, $G$ reads $1.834$, $1.804$,
 $2.207$, $2.588$ and $2.789$ over $N=2\cdot10^5$ to $3.2\cdot10^6$,
@@ -507,15 +434,13 @@ what this note asserts --- the restriction is load-bearing and not
 cosmetic (\texttt{audit\_squarefull\_admitted.py}).
 \end{note}
 
-Since $B_1\ll e^{-c\sqrt{\log K}}$ makes the subtracted mean
-negligible, the unconditional theorem of \cite[Theorem~1]{P1} says that the
-\emph{flat} sum of dilated walls is $\ll_A N(\log N)^{-A}$.  On the
-logarithmic branch, $B_{\log}(K)=-\SS(N)+o(1)$ and the corresponding
-weighted wall sum is the open object: Proposition~\ref{prop:direct}
-shows that an $o(N)$ bound for that signed sum gives
-$\tilde r(N)=\SS(N)N+o(N)$.  Thus the visible change between the
-settled flat branch and this open signed sum is the factor $\log k$
-inside the same nonnegative outer weights $\mu^2(k)w_k$.
+Since $B_1\ll e^{-c\sqrt{\log K}}$ kills the second term while
+$B_{\log}\to-\SS(N)$ does not, the unconditional theorem of \cite{P1}
+says exactly that the \emph{flat} sum of dilated walls is
+$\ll_AN(\log N)^{-A}$, and the Goldbach problem says the same sum
+weighted by $\log k$ is not small. Everything between what is proved
+and what is open is the factor $\log k$ inside a positively weighted
+sum of the same terms.
 
 \begin{measurement}[the two ends, measured]\label{meas:flatsum}
 Over $N=2\cdot10^5$ to $2.56\cdot10^7$ by doubling, at
@@ -575,10 +500,8 @@ restriction,
    \;=\;-\sum_{n<N}\Lambda(n)\,\mu(N-n)\Lambda(N-n)
    \;=\;\sum_{p<N}\Lambda(N-p)\log p .
 \end{equation}
-Thus the untruncated object is the prime-supported weighted sum on
-the right.  It differs from $\tilde r(N)$ by
-$O(N^{1/2}\log^2N)$, coming from proper prime powers in the second
-variable.
+So the untruncated object \emph{is} $\tilde r(N)$, up to its
+prime-power part.
 \end{proposition}
 
 \begin{proof}
@@ -590,12 +513,10 @@ holds because $\mu(u)\Lambda(u)=-\log p$ at $u=p$ prime and vanishes
 at every higher prime power.
 \end{proof}
 
-Proposition~\ref{prop:untrunc} is not a decoration: it says that the
-untruncated $w=\log$ object is an exact rearrangement of the
-prime-supported part of $\tilde r(N)$, with only the explicit
-$O(N^{1/2}\log^2N)$ proper-prime-power discrepancy separating the two.
-Thus the substantial new difficulty in the switched expression is the
-truncation at $K$, not an unquantified algebraic remainder.
+Proposition~\ref{prop:untrunc} is not a decoration: it says that
+\eqref{eq:flatsum} with $w=\log$ is a \emph{rearrangement} of
+$\tilde r(N)$ rather than an approximation waiting for an estimate,
+so all of its content is in the truncation at $K$.
 
 \begin{proposition}[the count as signed layers]\label{prop:layers}
 Cutting the same double sum along the inner variable of
@@ -606,9 +527,9 @@ Cutting the same double sum along the inner variable of
   L(N;m):=\!\!\sum_{\substack{k<N/m,\ (k,m)=1\\ \mu(k)\neq0}}\!\!
             (\log k)\,\Lambda(N-mk),
 \end{equation}
-and every $L(N;m)$ is nonnegative. With Proposition~\ref{prop:untrunc}, this prime-supported weighted
-pair sum is therefore an alternating sum, signed by $\mu$, of
-nonnegative layers.
+and every $L(N;m)$ is nonnegative. With
+Proposition~\ref{prop:untrunc}, the Goldbach count is therefore an
+alternating sum, signed by $\mu$, of nonnegative layers.
 \end{proposition}
 
 \begin{proof}
@@ -638,8 +559,8 @@ progression: the surviving $(j,m)=1$ unfolds by M\"obius, $j=ej'$ with
 $e\mid m$, into progressions to moduli $md^2e$. Only squarefree $e$
 survive $\mu(e)$, so $e\mid\rad(m)$ and $L_2$ is a signed sum of at
 most $2^{\omega(m)}$ Bombieri--Vinogradov objects with moduli running
-up to $md^2\rad(m)=m^2d^2$, since $m$ is squarefree in the
-sum. What the squarefree condition bought is that none of them
+up to $md^2\rad(m)$ --- equal to $m^2d^2$ exactly when $m$ is
+squarefree. What the squarefree condition bought is that none of them
 carries a $\mu$; what it did not buy is a single modulus.
 \end{proposition}
 
@@ -691,7 +612,7 @@ claimed, and this statistic does not measure one
 
 \begin{proposition}[the wall cancels out of the count]%
 \label{prop:direct}
-Substituting \eqref{eq:posweights} into the identity of \cite[Theorem~3]{P1},
+Substituting \eqref{eq:posweights} into the identity of \cite[Theorem on the identity]{P1},
 the two occurrences of $C(N)$ carry opposite signs and cancel:
 \begin{equation}\label{eq:direct}
   \tilde r(N)\;=\;\SS(N)N
@@ -699,57 +620,42 @@ the two occurrences of $C(N)$ carry opposite signs and cancel:
    \;-\;C(N)\bigl(B_{\log}(K)+\SS(N)\bigr)
    \;+\;O_A\!\left(\frac{N}{(\log N)^{A}}\right).
 \end{equation}
-Since, for $K=N^{\theta'}$,
-$B_{\log}(K)+\SS(N)\ll e^{-c_1\sqrt{\log K}}\log K$, the quantity
-$C(N)$ enters the displayed identity only through a coefficient tending
-to zero in this regime.
+Since $B_{\log}(K)\to-\SS(N)$, the quantity $C(N)$ enters the Goldbach
+count only through the vanishing factor $B_{\log}(K)+\SS(N)$.
 Consequently
 \begin{equation}\label{eq:directcond}
   \sum_{\substack{k<K\\(k,N)=1}}\mu^2(k)(\log k)\bigl|H(N;k)\bigr|
    \;\le\;(1-\varepsilon)\,\SS(N)\,N
 \end{equation}
-implies
-\[
-  \tilde r(N)\ge \varepsilon\SS(N)N+o(N),
-\]
-and hence $r_{\mathbb P}(N)>0$ for all sufficiently large even $N$.
-Thus \eqref{eq:directcond} is a sufficient condition for binary
-Goldbach.
+suffices for $\tilde r(N)>0$, for all large even $N$.
 \end{proposition}
 
 \begin{proof}
-The infinite coefficient and the truncation error are the one input here
-that \eqref{eq:direct} does not itself supply. With
-$F(s)=\prod_{p\nmid N}\bigl(1-\tfrac{p^{-s}}{p-1}\bigr)$ one has, after
-continuation to the origin,
-$B_{\log}(\infty)=-F'(0)$.  Writing
-$F(s)=G(s)\zeta(s+1)^{-1}$ gives $G(0)=\SS(N)$ and hence
-$B_{\log}(\infty)=-\SS(N)$.  Huang--Li's Lemma~1, applied to
-$\rho_N$ and summed by parts against $\log k$ on the tail $k\ge K$,
-gives the quantitative form actually used:
-$B_{\log}(K)+\SS(N)\ll e^{-c_1\sqrt{\log K}}\log K=o(1)$ for
-$K=N^{\theta'}$ with fixed $\theta'$.
+The limit $B_{\log}(K)\to-\SS(N)$ is the one thing here that
+\eqref{eq:direct} does not supply, so it is proved. With
+$F(s)=\prod_{p\nmid N}\bigl(1-\tfrac{p^{-s}}{p-1}\bigr)$ one has
+$B_{\log}(\infty)=-F'(0)$, and $F(s)=G(s)\zeta(s+1)^{-1}$ with
+$G(0)=\SS(N)$, so $F'(0)=G(0)=\SS(N)$ and the limit is $-\SS(N)$. The
+rate is Huang--Li's Lemma~1 in the same form used above, applied to
+$\rho_N$ and summed by parts against $\log k$ over $k\ge K$, the
+partial summation being where the extra factor comes from:
+$B_{\log}(K)+\SS(N)\ll e^{-c_1\sqrt{\log K}}\log K$, which is $o(1)$
+uniformly in $N$ once $K=N^{\theta'}$ with $\theta'$ fixed.
 
-Given that, \eqref{eq:directcond}, \eqref{eq:direct} and the trivial
-bound $|C(N)|\le\psi(N)\ll N$ give
-\[
-  \tilde r(N)\ge\varepsilon\SS(N)N+o(N).
-\]
-For even $N$ one has $\SS(N)\ge2\prod_{p>2}(1-(p-1)^{-2})>0$, so the
-right-hand side is $\gg_\varepsilon N$.  The relation
-$\tilde r(N)=r_{\mathbb P}(N)+O(N^{1/2}\log^2N)$ from the introduction
-then gives $r_{\mathbb P}(N)>0$ for all sufficiently large even $N$.
+Given that, the claim is immediate from \eqref{eq:direct} and
+$|C(N)|\le\psi(N)\ll N$, the trivial bound, which is all that is needed
+because the factor multiplying it is the $o(1)$ just bounded rather
+than $\SS(N)$.
 \end{proof}
 
 \begin{note}[what the cancellation buys, and what it does not]
 Condition~\eqref{eq:directcond} has the same shape as the
-constant-factor condition of \cite[Proposition~6]{P1}: a bound at level
+constant-factor condition of \cite[Proposition on the constant-factor demand]{P1}: a bound at level
 $N^{\theta'}$, with no saving in $\log N$. Nothing has moved off the
 level axis. What has changed is the threshold constant, from
-$\SS(N)(1-\AAA(N))$ to $\SS(N)$.  The change removes the collapsing
-factor $1-\AAA(N)$ and hence the strongest arithmetic sensitivity tied
-to that factor; $\SS(N)$ itself still depends on the prime divisors of
-$N$ and is not claimed to be constant. This is
+$\SS(N)(1-\AAA(N))$ to $\SS(N)$, and the change removes the arithmetic
+sensitivity along with the slack, because the two were the same thing:
+$1-\AAA(N)$ collapses at primorials, and $\SS(N)$ does not. This is
 offered as a weaker sufficient condition, proved from two identities.
 It is not offered as something computation confirms: at accessible $N$
 the unspecified $O_A$ term of \eqref{eq:direct} is numerically the
@@ -767,7 +673,7 @@ $2.1519,\,1.9105,\,1.9175,\,1.7720,\,1.5691$ for the same numerator
 against the old threshold, $B_H(N)/(\SS(N)(1-\AAA(N))N)$, which is
 above $1$ throughout. \emph{The numerator is held fixed across the two
 lists}; only the threshold constant moves, which is the whole of the
-comparison. (For the numerator of \cite[Proposition~6]{P1}, which keeps the
+comparison. (For the numerator of \cite[the constant-factor inequality]{P1}, which keeps the
 subtracted mean inside the absolute value and so is a different sum,
 the old ratio reads $2.1591,\,1.9747,\,1.9500,\,1.7483,\,1.5798$ ---
 the same conclusion, a different quantity.) Across a
@@ -781,8 +687,8 @@ the only factor between them. The residual coupling is
 negligible at these $N$: $|B_{\log}+\SS|/\SS$ stays under $0.0383$ and
 $|C(N)(B_{\log}+\SS)|/N$ never exceeds $3.315\cdot10^{-4}$, four
 orders below $\SS(N)$. The residual of \eqref{eq:direct} decays as
-$N^{-0.2794}$ with correlation $-0.99930$ and is extrapolated by the fitted power law to reach $2\%$ of $N$
-near $N=10^{10.16}$
+$N^{-0.2794}$ with correlation $-0.99930$ and falls to $2\%$ of $N$
+only near $N=10^{10.16}$
 (\texttt{lab\_direct\_route.py}, \texttt{lab\_direct\_identity.py};
 the two lists held to one numerator, and the third quantity in the
 parenthesis, are recomputed side by side in
@@ -827,260 +733,85 @@ and $n=dN\le N^{3/2}$, so $\log n\asymp\log x$ holds throughout the
 range it uses. The same applies to Theorem~\ref{thm:Dprime}.
 \end{note}
 
-\begin{lemma}[weighted maximal Bombieri--Vinogradov]\label{lem:weightedBV}
-For every $A,B>0$ there is $C=C(A,B)$ such that, with
-\[
- \mathcal E_q(N):=\max_{y\le N}\max_{(a,q)=1}
- \left|\sum_{\substack{n\le y\\ n\equiv a\ (q)}}\Lambda(n)
-             -\frac{y}{\varphi(q)}\right|,
-\]
-one has
-\[
- \sum_{q\le Q}\tau_3(q)^B\mathcal E_q(N)
- \ll_{A,B}\frac{N}{(\log N)^A}
- \qquad
- \bigl(Q\le N^{1/2}(\log N)^{-C}\bigr).
-\]
+\begin{lemma}[BV-accessibility]\label{lem:bv}
+Expanding $w_k=\sum_{d\mid k}b_d$ inside the residual gives
+$\mathcal R_w=\sum_db_d\,\mathcal R^{(d)}$, where $\mathcal R^{(d)}$
+is a sum of $\Lambda$ over progressions to moduli $md$ with
+$m<N^{1-\theta'}$. Bombieri--Vinogradov bounds each
+$\mathcal R^{(d)}\ll_AN(\log N)^{-A}$ provided
+$d\le N^{1/2-\delta}/N^{1-\theta'}=N^{\theta'-1/2-\delta}$; hence, on
+that support, $\mathcal R_w\ll_A\|b\|_1\,N(\log N)^{-A}$.
 \end{lemma}
 
 \begin{proof}
-This is a standard weighted consequence of the maximal
-Bombieri--Vinogradov theorem; see, for example,
-\cite[\S20.2]{MoV2}.  By Cauchy--Schwarz,
-\[
- \sum_{q\le Q}\tau_3(q)^B\mathcal E_q
- \le
- \left(\sum_{q\le Q}\tau_3(q)^{2B}\mathcal E_q\right)^{1/2}
- \left(\sum_{q\le Q}\mathcal E_q\right)^{1/2}.
-\]
-The trivial estimate
-$\mathcal E_q\ll (N/\varphi(q))\log N$ and the standard mean-value
-bounds for fixed powers of the divisor function give
-\[
- \sum_{q\le Q}\tau_3(q)^{2B}\mathcal E_q
- \ll_B N(\log N)^{C_1(B)}.
-\]
-The maximal Bombieri--Vinogradov theorem gives, for every $D>0$, a
-constant $C_2(D)$ such that
-\[
- \sum_{q\le Q}\mathcal E_q
- \ll_D\frac{N}{(\log N)^D}
- \qquad
- \bigl(Q\le N^{1/2}(\log N)^{-C_2(D)}\bigr).
-\]
-Taking $D=2A+C_1(B)+2$ and enlarging the logarithmic modulus loss if
-necessary proves the lemma.  No distribution theorem stronger than the
-usual Bombieri--Vinogradov theorem is used.
-\end{proof}
-
-\begin{lemma}[termwise BV accessibility]\label{lem:bv}
-Expanding $w_k=\sum_{d\mid k}b_d$ in the residual of
-Proposition~\ref{prop:weightedswitch} gives
-$\mathcal R_w=\sum_db_d\,\mathcal R^{(d)}$.  For every fixed
-$\delta>0$ and every $A>0$,
-\[
-  \mathcal R_w\ll_{A,\delta,\theta'}\|b\|_1\,
-  \frac{N}{(\log N)^A}
-\]
-whenever $b$ is supported on
-$d\le N^{\theta'-1/2-\delta}$.
-\end{lemma}
-
-\begin{proof}
-If $d$ is not squarefree or $(d,N)>1$, then $\mathcal R^{(d)}=0$.
-Otherwise write $k=d\ell$, put $K_d:=K/d$, and then put $r=md$.
-Because the residual already has $(k,mN)=1$, one has $(m,d)=1$ and
-$\mu(m)=\mu(d)\mu(r)$.  Hence
-\[
- \mathcal R^{(d)}
- =\mu(d)\!\sum_{\substack{r<N/K_d\\d\mid r}}
- \mu(r)
- \sum_{\substack{\ell\ge K_d,\ r\ell<N\\(\ell,rN)=1}}
- \mu^2(\ell)\Lambda(N-r\ell).
-\]
-The support hypothesis gives
-$K_d\ge N^{1/2+\delta}$ and
-$R_d:=N/K_d\le N^{1/2-\delta}$.
-
-We first dispose of the non-coprime prime classes.  If
-$(\ell,N)>1$ and $\Lambda(N-r\ell)\ne0$, choose
-$p\mid(\ell,N)$.  Then $p\mid N-r\ell$; hence
-$N-r\ell=p^\nu$ for some $p\mid N$.  There are
-$\ll(\log N)^2$ such prime powers, and for each one the pairs
-$(r,\ell)$ with $r\ell=N-p^\nu$ number at most $\tau(N-p^\nu)$.
-Thus these terms contribute $O(N^{o(1)})$, uniformly in $d$.  We may
-therefore replace $(\ell,rN)=1$ by $(\ell,r)=1$ at this cost.
-
-Now insert
-\[
- \mu^2(\ell)=\sum_{a^2\mid\ell}\mu(a),
- \qquad
- \mathbf 1_{(\ell,r)=1}=\sum_{e\mid(\ell,r)}\mu(e),
-\]
-and truncate both auxiliary variables at
-$Y:=\exp(\sqrt{\log N})$.  The discarded $a>Y$ terms are bounded,
-after dropping the restriction $d\mid r$, by
-\[
- \ll \log N\sum_{r<R_d}\sum_{Y<a\le\sqrt{N/r}}
-       \left(\frac{N}{ra^2}+1\right)
- \ll \frac{N(\log N)^2}{Y}+\sqrt{NR_d}\log N.
-\]
-For $e>Y$ (where $e\mid r$ and $r$ is squarefree), the same positive
-progression count gives
-\[
- \ll
- \frac{N(\log N)^3\log\log N}{Y}
- +R_dY(\log N)^2.
-\]
-Both bounds are $\ll_A N(\log N)^{-A}$ for every fixed $A$.
-In the remaining range the prime variable
-$n=N-r\ell$ lies in a residue class $n\equiv N\pmod q$ with
-\[
- q=r\lcm(a^2,e)
- \le R_dY^3
- \le N^{1/2-\delta/2}
-\]
-for all sufficiently large $N$.
-
-If $(q,N)>1$ and $\Lambda(n)\ne0$, then any prime
-$p\mid(q,N)$ also divides $n$, so again $n=p^j$ with $p\mid N$.
-The number of such $n$ is $\ll(\log N)^2$.  For a fixed $n$, a
-triple $(r,a,e)$ contributing to such a class satisfies
-$r\lcm(a^2,e)\mid N-n$, hence there are at most
-$\tau(N-n)^3=N^{o(1)}$ possibilities.  Thus the non-coprime moduli
-also contribute only $O(N^{o(1)})$, uniformly in $d$.
-
-For the remaining classes, a modulus $q$ arises from at most
-$\sum_{r\mid q}\tau(q/r)^2\le\tau_3(q)^3$ triples
-$(r,a,e)$.  Lemma~\ref{lem:weightedBV}, with $B=3$, therefore gives
-the total progression error $O_A(N(\log N)^{-A})$, uniformly in $d$.
-
-It remains to bound the progression main term.  For squarefree
-$r$ with $(r,N)=1$ define the full density
-\[
- c(r):=\sum_{a\ge1}\sum_{e\mid r}
- \frac{\mu(a)\mu(e)\mathbf 1_{(a,N)=1}}
-      {\varphi\!\left(r\lcm(a^2,e)\right)}.
-\]
-This Euler product is elementary.  If $p\nmid r$, its local factor is
-$1-1/\varphi(p^2)=1-1/(p(p-1))$ for $p\nmid N$, and is $1$ for
-$p\mid N$.  If $p\mid r$ (hence $p\nmid N$), the four choices
-$(v_p(a),v_p(e))\in\{0,1\}^2$ contribute
-\[
- \frac1{p-1}-\frac1{p(p-1)}-\frac1{p^2(p-1)}
- +\frac1{p^2(p-1)}=\frac1p.
-\]
-Consequently
-\[
- c(r)=\AAA(N)\frac{\lambda(r)}r,
- \qquad
- \lambda(r)=\prod_{p\mid r}
- \left(1-\frac1{p(p-1)}\right)^{-1}.
-\]
-The truncated density differs from $c(r)$ by
-\[
- O\!\left(\frac{\tau(r)}{\varphi(r)Y}\right)
- +O\!\left(\frac{\tau(r)\log\log(3R_d)}{\varphi(r)Y}\right).
-\]
-Indeed, for $a>Y$ use that $r\lcm(a^2,e)$ is a multiple of $ra^2$;
-for $e>Y$ sum first over $a$ and compare prime by prime with
-$\varphi(re)$.  Since $r=md$, $(m,d)=1$, and $d$ is odd squarefree,
-$\tau(d)/\varphi(d)\le1$, while
-$\sum_{m<M}\tau(m)/\varphi(m)\ll(\log M)^2$.  After multiplication by
-$N-mK\le N$, the total density-truncation error is therefore
-$\ll N(\log N)^3\log\log N/Y$, below every fixed log-power target.
-
-Since $r=md$ and $(m,dN)=1$, multiplicativity gives the remaining main
-term
-\[
- \AAA(N)\frac{\lambda(d)}d
- \sum_{\substack{m<N/K\\(m,dN)=1}}
- \frac{\mu(m)\lambda(m)}m\,(N-mK).
-\]
-To see the required cancellation without importing another weighted
-switch, set
-\[
- G_{d,N}(x):=
- \sum_{\substack{m\le x\\(m,dN)=1}}
- \frac{\mu(m)\lambda(m)}m.
-\]
-The Dirichlet series of
-$\mu(m)\lambda(m)\mathbf 1_{(m,dN)=1}$ factors as
-$\zeta(s)^{-1}H_{d,N}(s)$.  Writing its coefficients as
-$\mu*h_{d,N}$, the local factors satisfy
-$h_{d,N}(p^j)=1$ for $p\mid dN$ and
-$h_{d,N}(p^j)=1-\lambda(p)=O(p^{-2})$ otherwise.  The classical
-zero-free-region estimate
-$\sum_{a\le y}\mu(a)/a\ll e^{-c\sqrt{\log y}}$; see, for
-example, \cite{MoV}.  It then gives, after splitting the convolution at $b=\sqrt x$,
-\[
- G_{d,N}(x)\ll
- \frac{dN}{\varphi(dN)}e^{-c\sqrt{\log x}}
- +x^{-1/4}e^{C\sqrt{\log(dN)}}.
-\]
-Here $dN\le N^{3/2}$ and $M=N/K=N^{1-\theta'}$ is a fixed
-power of $N$.  Put
-$x_0=\exp(4C\sqrt{\log(dN)})=N^{o(1)}$ uniformly in $d$.
-On $[1,x_0]$ use $|G_{d,N}(x)|\ll\log x$; on $[x_0,M]$ use the
-last display.  Abel summation against $N-mK$ yields
-\[
- Kx_0\log x_0
- +N\log\log N\,e^{-c'\sqrt{\log M}}
- +KM^{3/4}e^{C\sqrt{\log(dN)}}
- \ll_A \frac{N}{(\log N)^A}.
-\]
-The bounded prefactor $\lambda(d)/d$ does not change the estimate.
-Combining the progression error, the main term, the truncation tails
-and the degenerate classes gives
-$\mathcal R^{(d)}\ll_A N(\log N)^{-A}$ uniformly in $d$.
-Summing with weights $|b_d|$ proves the lemma.
+The residual of the switch is \cite[the residual identity]{P1}, which after unfolding
+$\mu^2$ and the coprimality condition, every term is a sum of
+$\Lambda$ over a progression to modulus $q=m\lcm(d'^2,e')$ with
+$m<N^{1-\theta'}$ and auxiliary divisors $d',e'$ at most a fixed power
+of $\log N$ --- written with primes to keep them apart from the $d$
+that indexes $b_d$;
+Bombieri--Vinogradov is applied in the form of \cite{MoV}.
+Inserting the extra divisor $d\mid k$ multiplies the modulus by $d$,
+so the level condition $q\le N^{1/2-\delta}$ reads
+$d\le N^{1/2-\delta}/\bigl(m\lcm(d'^2,e')\bigr)$; since
+$\lcm(d'^2,e')\ll(\log N)^{O(1)}$, that factor is absorbed into any
+$\delta>0$ and the stated bound on $d$ follows. Summing the $\ll_AN(\log N)^{-A}$ over the support of
+$b$ with the trivial weight $|b_d|$ gives the claim.
 \end{proof}
 
 The two lemmas pull in opposite directions. Lemma~\ref{lem:extract}
 says $B_w$ is controlled by the part of $b$ sitting \emph{at} the
 truncation point $K$: mass at $d\le K^{1-\varepsilon}$ is damped by
 $e^{-c\sqrt{\varepsilon\log K}}$. Lemma~\ref{lem:bv} says the residual is
-reachable \emph{by this termwise use of Bombieri--Vinogradov} when $b$
-lives below $N^{\theta'-1/2}$; it does not say that a $b$ living higher
-puts the residual out of reach.  Within this sufficient support class,
-the extraction coefficient is damped across a factor $N^{1/2}$.
+reachable when $b$ lives \emph{below} $N^{\theta'-1/2}$; it does not
+say that a $b$ living higher puts the residual out of reach, and
+nothing here does. The two thresholds are separated by a factor
+$N^{1/2}$.
 
 \subsection{The theorem}
 
-\begin{theorem}[loss in the termwise BV/triangle-inequality extraction]\label{thm:D}
-Fix $\theta'\in(1/2,1)$ and $0<\delta<\theta'-\tfrac12$.  Let $w=w_N$
-be a real weight with transform $b=\mu*w$, supported in
-\[
-  1\le d\le D:=N^{\theta'-1/2-\delta}.
-\]
-This support condition is a sufficient condition for the
-\emph{termwise} Bombieri--Vinogradov estimate of
-Lemma~\ref{lem:bv}; it is not asserted to be necessary.  If $B_w\ne0$,
-then
+\begin{theorem}[no weight this input reaches extracts
+$C(N)$]\label{thm:D}
+Fix $\theta'\in(1/2,1)$ and $0<\delta<\theta'-\tfrac12$, and let $w$
+be any weight
+whose transform $b=\mu*w$ is supported in
+$[1,\,N^{\theta'-1/2-\delta}]$ --- the range in which the residual is
+accessible to Bombieri--Vinogradov. (For $\delta\ge\theta'-\tfrac12$
+that range admits at most $b=b_1\delta_1$ --- only at
+$\delta=\theta'-\tfrac12$, and nothing above it --- and the statement, though true,
+is nearly empty.) Then
 \begin{equation}\label{eq:loss}
   \frac{\|b\|_1}{|B_w|}\;\gg\;
    \exp\!\left(c_1\sqrt{(\tfrac12+\delta)\log N}\right).
 \end{equation}
-If, in addition, one grants the homogeneous bound
-\[
-  |T_w|\ll_A \|b\|_1\,\frac{N}{(\log N)^A}
-  \qquad\text{for every fixed }A>0,
-\]
-then the triangle-inequality evaluation of \eqref{eq:extract} gives only
+Consequently, \emph{even granted} $T_w\ll_A N(\log N)^{-A}$ for every
+$A>0$ --- which is what \cite[Theorem on the flat branch]{P1} supplies unconditionally at
+$w=1$, and the most that $EH_\mu$ would supply for a general $w$ ---
+identity \eqref{eq:extract} yields no bound on $|C(N)|$ better than
 \[
   |C(N)|\;\le\;\frac{\|b\|_1}{|B_w|}
-     \cdot O_A\!\left(\frac{N}{(\log N)^{A}}\right).
+     \cdot O_A\!\left(\frac{N}{(\log N)^{A}}\right),
 \]
-Because the prefactor in this particular majorant is larger than every
-fixed power of $\log N$, these inequalities, with any fixed choice of
-$A$, do not by themselves imply a fixed log-power saving for $C(N)$.
+whose prefactor \eqref{eq:loss} bounds below by
+$\exp(c_1\sqrt{(\frac12+\delta)\log N})$, which exceeds every power of
+$\log N$. So the route delivers no saving of any power of
+$\log N$: no weight satisfying the hypothesis above extracts
+$C(N)$ by divisor switching, not even when the hard input is given
+for free.
 
-The scope is part of the conclusion.  Weights outside the support
-hypothesis are not covered.  Nor are evaluations that exploit
-cancellation among the $b_d$, or cancellation among the complete term,
-$\mathcal R_w$ and $T_w$ in \eqref{eq:extract}.  The theorem closes the
-two triangle-inequality steps just displayed, not every possible use of
-the switch identity.
+Two limits on that, both in the statement because they belong there.
+Weights outside the hypothesis are not covered; Proposition~\ref{prop:Dpp}
+treats the polynomial ones, and by a weaker argument. And what is
+closed is the absolute-value route, at both of the two places it is
+taken: $\|b\|_1$ enters \eqref{eq:loss} by bounding
+$\sum_d|b_d|/\varphi(d)\,|\rho_{dN}|$ termwise, and the three terms on
+the right of \eqref{eq:extract} are then bounded separately. Neither
+step is a property of the identity; both are the triangle inequality,
+and $\|b\|_1$ is the budget that inequality spends. An evaluation that
+uses sign correlations --- among the $b_d$ in the first step, or among
+the complete term, the residual and $T_w$ in the second --- does not
+factor through either, and is not excluded here. Nothing in this paper
+says such correlations are absent.
 \end{theorem}
 
 \begin{proof}
@@ -1088,42 +819,40 @@ By Lemma~\ref{lem:extract} and $\varphi(d)\ge1$,
 \[
   |B_w|\le\sum_{d\le D}\frac{|b_d|}{\varphi(d)}
     \left|\rho_{dN}\!\left(\frac Kd\right)\right|
-  \le\|b\|_1\max_{d\le D}\left|\rho_{dN}\!\left(\frac Kd\right)\right|.
+  \le\|b\|_1\max_{d\le D}\left|\rho_{dN}\!\left(\frac Kd\right)\right|
+  \ll\|b\|_1\,e^{-c_1\sqrt{\log(K/D)}},
 \]
-Here $K/D=N^{1/2+\delta}$, while
-$dN\le N^{\theta'+1/2-\delta}$, so the hypothesis
-$\log(dN)\ll\log(K/d)$ of Lemma~\ref{lem:extract} holds uniformly.
-Thus
-\[
-  |B_w|\ll
-  \|b\|_1 e^{-c_1\sqrt{(\frac12+\delta)\log N}},
-\]
-which is \eqref{eq:loss}.
+with $D=N^{\theta'-1/2-\delta}$, so that $K/D=N^{1/2+\delta}$. This is
+\eqref{eq:loss}.
 
-The weighted switch \eqref{eq:extract} is homogeneous in $b$.  Its
-complete part satisfies
+For the second assertion, $\|b\|_1$ and $|B_w|$ are each homogeneous of
+degree one in $w$, so their ratio is scale invariant and one may
+normalise $\|b\|_1=1$; that invariance is what makes the normalisation
+free. It is the scale at which the two thresholds are compared. Solve
+\eqref{eq:extract} for $C(N)$ and bound the three terms on the right.
+The complete part is $\ll\log N$ by Lemma~\ref{lem:Gb} and
+$\Lambda\ll\log N$; the residual is $\ll_AN(\log N)^{-A}$ by
+Lemma~\ref{lem:bv}, the support hypothesis on $b$ being exactly what
+that lemma needs; and $T_w\ll_AN(\log N)^{-A}$ is the granted
+hypothesis. The last two dominate the first, so
 \[
- \left|\sum_{u<N}\Lambda(N-u)\mu^2(u)b_u\right|
- \le(\log N)\|b\|_1,
+  |C(N)|\;\le\;\frac{1}{|B_w|}
+     \cdot O_A\!\left(\frac{N}{(\log N)^{A}}\right)
+  \;=\;\frac{\|b\|_1}{|B_w|}
+     \cdot O_A\!\left(\frac{N}{(\log N)^{A}}\right).
 \]
-the switch error is $O(\|b\|_1N^{o(1)})$ by
-Proposition~\ref{prop:weightedswitch}, and the residual is
-\[
- |\mathcal R_w|\ll_A
- \|b\|_1\,\frac{N}{(\log N)^A}
-\]
-by Lemma~\ref{lem:bv}.  Add the granted bound on $T_w$ and divide by
-$|B_w|$.  Since $N^{o(1)}\ll_A N(\log N)^{-A}$ for every fixed $A$
-after weakening the exponent if necessary, the displayed upper bound
-for $|C(N)|$ follows.
-
-Finally, \eqref{eq:loss} is a lower bound on the coefficient appearing
-in this \emph{particular majorant}; it is not a lower bound for $C(N)$.
-Consequently the displayed chain of termwise estimates, for any fixed
-choice of $A$, cannot on its own certify a fixed log-power saving.  This
-is the limited methodological obstruction asserted here; it does not
-exclude a sharper estimate using cancellation discarded by the triangle
-inequality.
+This is the bound the route produces, and it is the displayed one.
+What \eqref{eq:loss} adds is a lower bound on its prefactor: the
+prefactor is $\gg\exp(c_1\sqrt{(\frac12+\delta)\log N})$, which
+exceeds every power of $\log N$, so no choice of $w$ in the design
+space turns the displayed bound into a saving of a power of $\log N$.
+The inequality is not run in the other direction --- \eqref{eq:loss}
+bounds the prefactor below and so cannot be substituted into an upper
+bound for $|C(N)|$; what it establishes is that the one evaluation this
+route offers --- the triangle inequality applied to \eqref{eq:extract}
+with the bound on $T_w$ granted --- gives nothing better than the
+stated ratio. It says nothing about evaluations that do not factor
+through that inequality.
 \end{proof}
 
 \begin{note}[why granting $T_w$ is the right form]\label{note:granting}
@@ -1132,19 +861,18 @@ strong: \eqref{eq:extract} could then be satisfied by $T_w$ alone being
 large, and it says nothing about $C(N)$ at all. Granting it isolates
 what the design space actually fails at. The failure is not a shortage
 of input --- the input is handed over --- but the arithmetic of two
-thresholds that lie a factor $N^{1/2}$ apart. Theorem~\ref{thm:Dprime} shows that the same support-based loss persists
-throughout its nonempty fixed-level range $1-\theta' < \theta_E<1$.
+thresholds that lie a factor $N^{1/2}$ apart. That is why raising the
+level does not help either (Theorem~\ref{thm:Dprime}).
 \end{note}
 
-The loss factor is $\exp(c_1\sqrt{(\frac12+\delta)\log N})$, and the
-$1/2$ records the square-root separation between the truncation scale
-$N^{\theta'}$ governing the extraction coefficient and the lower support
-scale $N^{\theta'-1/2}$ sufficient for this termwise
-Bombieri--Vinogradov control of the residual.
+The loss factor is $\exp(c_1\sqrt{(\frac12+\delta)\log N})$, and the $1/2$ in the
+exponent is literally the exponent of the $\sqrt N$ barrier: it is the
+gap between where a weight must live to see $C(N)$ (at $N^{\theta'}$,
+the truncation point) and where it may live for
+Bombieri--Vinogradov to close its residual (below $N^{\theta'-1/2}$).
 The two known weights exhibit the two endpoints of this space;
-Theorem~\ref{thm:D} shows that on the low-support class admitted by
-this termwise argument the extraction coefficient is exponentially damped
-relative to $\|b\|_1$.
+Theorem~\ref{thm:D} shows the interior is empty where its
+hypothesis reaches, and shows why.
 
 \begin{note}[which branch the no-go covers]\label{note:nogoscope}
 The two endpoints are not on the same side of Theorem~\ref{thm:D}'s
@@ -1157,7 +885,7 @@ $[1,N^{\theta'-1/2-\delta}]$, and
   \qquad
   w_k=\log k\ \Longrightarrow\ b=\mu*\log=\Lambda ,
 \]
-by M\"obius inversion. The delta is inside the hypothesis
+verified elementwise to $d\le4000$. The delta is inside the hypothesis
 for any positive bound; the support of $\Lambda$ runs to the truncation
 point, measured at $1369$ and $2971$ against bounds $2.2$ and $2.4$ at
 $\theta'=0.56$. Those bounds are $N^{\theta'-1/2}$, the $\delta=0$
@@ -1166,11 +894,11 @@ $\delta>0$ makes them smaller and the gap wider, so the comparison is
 stated in the direction least favourable to it.
 So Theorem~\ref{thm:D} covers the \emph{flat} branch
 and not the $\log$ one --- the flat branch being the one
-\cite[Theorem~1]{P1} settles unconditionally, and the $\log$ branch the
-one left open. That is consistent rather than circular: what fails here is the displayed \emph{termwise triangle-inequality}
-extraction of $C(N)$ on the stated support class, while
-\cite[Theorem~1]{P1} does not extract $C(N)$; it shows
-the weighting is small, which is a different thing.
+\cite[Theorem on the flat branch]{P1} settles unconditionally, and the $\log$ branch the
+one left open. That is consistent rather than circular: what is
+forbidden here is \emph{extracting} $C(N)$ from a weighting, and
+\cite[Theorem on the flat branch]{P1} does not extract $C(N)$; it shows the weighting is
+small, which is a different thing.
 
 Below the threshold the statement is empty rather than false. For
 $\theta'<1/2$ the support bound $N^{\theta'-1/2-\delta}$ is under $1$
@@ -1185,89 +913,65 @@ appearing here in the theorem's own hypothesis
 
 \begin{note}[relation to Bombieri's asymptotic sieve]\label{note:bombieri}
 The genre of Theorem~\ref{thm:D} is classical. Bombieri's asymptotic
-sieve \cite{Bom76} is a central reference for the parity obstruction in
-sieve theory, and it motivates looking for a quantitative obstruction
-of this shape.  Theorem~\ref{thm:D} makes only the narrower statement
-proved here: within the termwise triangle-inequality evaluation, the
-loss is quantified by the separation between the support allowed by
-the progression estimate and the scale at which the extraction
-coefficient ceases to be exponentially damped.  The same power-scale loss persists throughout the nonempty range
-$1-\theta'<\theta_E<1$ of Theorem~\ref{thm:Dprime}, rather than only
-at Bombieri--Vinogradov level. The reason the statement is
+sieve \cite{Bom76} shows that sieve weights alone cannot detect
+primes, however the weights are chosen, and the parity obstruction it
+isolates is the reason one expects a statement of this shape. What
+Theorem~\ref{thm:D} adds is not the phenomenon but its precise form
+here: the obstruction is quantified as a separation of $N^{1/2}$
+between two thresholds, it is specific to the divisor-switch route,
+and it survives granting the full Elliott--Halberstam conjecture
+rather than merely Bombieri--Vinogradov. The reason the statement is
 worth making is narrow but real: without it, the $\log k$ weight looks
 like one member of a family of candidate consumptions, and the
-identity of \cite[Theorem~3]{P1} then looks like an accident of one
+identity of \cite[Theorem on the identity]{P1} then looks like an accident of one
 choice of weight rather than a property of the route.
 \end{note}
 
-\subsection{The support-based loss under higher distribution}
+\subsection{The no-go survives Elliott--Halberstam}
 
 The obvious objection to Theorem~\ref{thm:D} is that
 Bombieri--Vinogradov is not the only available input: Huang--Li's
 Theorem~1 itself \emph{assumes} $EH$ for $\Lambda$ at level
-$N^{\theta}$.  Raising the assumed level does not remove the same
-support-based loss at any fixed level below $1$, as the next theorem
-states.
+$N^{\theta}$. Raising the assumed level does not help.
 
-For the next statement, $EH(N^{\theta_E})$ means the maximal
-level-of-distribution estimate: for every $A>0$,
-\[
- \sum_{q\le N^{\theta_E}}
- \max_{y\le N}\max_{(a,q)=1}
- \left|\sum_{\substack{n\le y\\n\equiv a\ (q)}}\Lambda(n)
-       -\frac{y}{\varphi(q)}\right|
- \ll_A \frac{N}{(\log N)^A}.
-\]
-As in Lemma~\ref{lem:weightedBV}, this implies the corresponding
-fixed divisor-weight version after sacrificing an arbitrarily large
-power of $\log N$.
-
-\begin{theorem}[the same support argument under higher distribution]
-\label{thm:Dprime}
-Suppose $\Lambda$ satisfies a level-of-distribution estimate
-$EH(N^{\theta_E})$ for some fixed $\theta_E\in(0,1)$.  Fix
-$\eta>0$ with
-$\theta_E-(1-\theta')-\eta>0$.  The same \emph{termwise} progression
-argument controls the residual whenever
-\[
-  b_d=0\qquad
-  \bigl(d>N^{\theta_E-(1-\theta')-\eta}\bigr).
-\]
-For weights in that support class with $B_w\ne0$,
+\begin{theorem}\label{thm:Dprime}
+Suppose $\Lambda$ has level of distribution $\theta_E\in(0,1)$, i.e.
+$EH(N^{\theta_E})$ holds. Then the residual is accessible only for $b$
+supported on $d\le N^{\theta_E-(1-\theta')}$, while extraction still
+requires mass at $d\asymp K=N^{\theta'}$; the two thresholds are
+separated by $N^{1-\theta_E}$, and
 \[
   \frac{\|b\|_1}{|B_w|}\;\gg\;
-  \exp\!\left(c_1\sqrt{(1-\theta_E+\eta)\log N}\right),
+  \exp\!\left(c_1\sqrt{(1-\theta_E)\log N}\right),
 \]
-and hence, a fortiori, by
-$\exp(c_1\sqrt{(1-\theta_E)\log N})$.  Thus this support-based
-triangle-inequality evaluation retains a loss larger than every fixed
-power of $\log N$ for each fixed $\theta_E<1$.  No necessity statement
-for the support condition is claimed.
+which exceeds every power of $\log N$ for each fixed $\theta_E<1$. On
+$\theta_E\le1-\theta'$ the support condition admits no $d\ge1$ and the
+statement is vacuous, so what is established is the range
+$\theta_E\in(1-\theta',1)$.
 \end{theorem}
 
 \begin{proof}
-With $k=d\ell$ the short variable has size $m<N^{1-\theta'}$, while
-the auxiliary factors in the progression modulus are subpolynomial
-(and may be taken polylogarithmic for any prescribed log-power error).
-The fixed power slack $N^{-\eta}$ therefore puts all resulting moduli
-inside $N^{\theta_E}$ for large $N$.  This gives the residual estimate
-by the same argument as Lemma~\ref{lem:bv}.  For
-$D=N^{\theta_E-(1-\theta')-\eta}$,
-\[
-  \frac KD
-  =N^{1-\theta_E+\eta}.
-\]
-Lemma~\ref{lem:extract}, exactly as in Theorem~\ref{thm:D}, gives the
-displayed ratio.
+Identical to Theorem~\ref{thm:D} with $N^{1/2-\delta}$ replaced by
+$N^{\theta_E}$: the residual's moduli are $md$ with $m<N^{1-\theta'}$,
+so $d\le N^{\theta_E}/N^{1-\theta'}$, whence
+$K/D=N^{\theta'}/N^{\theta_E-1+\theta'}=N^{1-\theta_E}$, and
+Lemma~\ref{lem:extract} gives the ratio.
+
+This asks $\theta_E>1-\theta'$. Below that the support bound
+$N^{\theta_E-(1-\theta')}$ is under $1$, so no $d\ge1$ meets it and the
+hypothesis on $b$ is empty --- in the same way
+Note~\ref{note:nogoscope} records for Theorem~\ref{thm:D}. The
+displayed exponent is therefore established on $\theta_E>1-\theta'$ and
+the statement is vacuous below; for $\theta'>1/2$ the region left out
+is $\theta_E<1/2$, beneath what Bombieri--Vinogradov already gives.
 \end{proof}
 
-For every fixed $\theta_E>1-\theta'$ one may choose such an $\eta$,
-so the loss persists at every fixed level below $1$ supplied by the
-usual Elliott--Halberstam conjecture.  At the formal power-scale
-endpoint $\theta_E=1$ the factor $N^{1-\theta_E}$ disappears, but the
-theorem neither assumes nor analyses that endpoint; auxiliary factors
-still require slack.  Nothing here rules out a different evaluation of
-the same residual that exploits cancellation across the transform.
+Closing the gap would require $\theta_E=1$ exactly: equidistribution
+of $\Lambda$ in progressions to moduli of size $N$ itself, where each
+progression contains $O(1)$ terms and the statement carries no
+information. So the route stays closed \emph{even granting the full
+Elliott--Halberstam conjecture} --- it needs not a stronger level but
+a different mechanism.
 
 \begin{measurement}[the load-bearing lemma, checked as an identity]%
 \label{meas:extract}
@@ -1280,10 +984,10 @@ to $N$, the brute-force $B_w$ over $k<K$ and the factorised
 $\mu(d_0)\varphi(d_0)^{-1}\rho_{d_0N}(K/d_0)$ agree to
 $6.505\cdot10^{-18}$, the worst case being $d_0=33$.
 
-The finite sweep illustrates the tradeoff in the lemma.  Values of
-$|B_w|\varphi(d_0)$ become large when $K/d_0$ is small, while they are
-strongly damped on the Bombieri--Vinogradov support range used by
-Theorem~\ref{thm:D}: for these
+The size behaves as the lemma predicts. The quantity
+$|B_w|\varphi(d_0)$ is of order $1$ only when $K/d_0=O(1)$, i.e. only
+when the weight's transform sits at the truncation point, and is
+damped throughout the range Bombieri--Vinogradov admits: for these
 parameters $N^{\theta'-1/2}=3$, and over $d_0\le3$ the largest value
 attained is $0.004145$. The value is not a function of $K/d_0$ alone
 --- $\rho_{d_0N}$ carries the condition $(j,d_0N)=1$, so it depends on
@@ -1315,9 +1019,8 @@ $\lfloor K/d_0\rfloor\ge10066$, where the maximum is $0.004145$.
 \texorpdfstring{$\mu*\log^D=\Lambda_D$}{mu * log\^{}D = Lambda\_D}}%
 \label{sec:Dpp}
 
-Theorem~\ref{thm:D} closes the stated termwise
-Bombieri--Vinogradov/triangle-inequality evaluation when the transform
-$b=\mu*w$ is supported sufficiently low.  That support hypothesis
+Theorem~\ref{thm:D} closes the weights whose transform $b=\mu*w$ is
+supported low enough for Bombieri--Vinogradov. That hypothesis
 excludes the most natural family of all, $w_k=f(\log k)$ with $f$ a
 polynomial, whose transform is spread over every scale. For those the
 structure is explicit:
@@ -1346,31 +1049,23 @@ Lemma~1): no extraction.
 \item[(ii)] If $f$ is a single monomial $x^D$, $D\ge1$, then every
 term of $\mathrm{CP}_D$ is nonnegative, since $\Lambda\ge0$ and
 $\Lambda_D\ge0$; so $\mathrm{CP}_D\ge0$ and \emph{no cancellation is
-available inside it}. No lower bound of the required size is obtained here. At $D=1$ the complete
-part is
-\[
-  \mathrm{CP}_1(N)=\sum_{p<N}\Lambda(N-p)\log p,
-\]
-which differs from the prime--prime weighted Goldbach count only by
-proper-prime-power terms of size $O(N^{1/2}\log^2N)$.  A uniform lower
-bound $\mathrm{CP}_1(N)\gg N$ would therefore imply Goldbach for all
-large even $N$, while a full asymptotic is of Hardy--Littlewood type.
-Neither is known here.  Nonnegativity alone does not show that
-$\mathrm{CP}_D$ is large, nor does it show that it is not $o(N)$.
-\item[(iii)] To obtain cancellation by combining different monomials one would
-need coefficients of opposite sign.  Determining a tuning from leading
-terms would require information about the prime-supported moments
-\[
-  \sum_{p<N}\Lambda(N-p)(\log p)^j ,
-\]
-including the $j=1$ case above.  Those asymptotics are not supplied by
-the present method.  Thus the most direct leading-term tuning is
-circular with respect to the prime-pair information one hoped to avoid;
-this does not exclude every possible polynomial mechanism.
+available inside it}. Classical sieve upper bounds are expected to give
+$\mathrm{CP}_D\ll N(\log N)^{D-1}$; that bound is quoted as standard,
+is not proved here, and nothing below rests on it. A matching lower
+bound is not
+available: at $D=1$ the sum is exactly the binary Goldbach sum
+$\sum_{p<N}\Lambda(N-p)\log p$, whose order is the assertion to be
+proved. So $\mathrm{CP}_D$ is not known to be $o(N)$, and at $D=1$
+deciding whether it is would settle Goldbach.
+\item[(iii)] Cancellation therefore requires coefficients of opposite
+sign, i.e. tuning $c_1$ against $c_2,\dots$; but the ratio that would
+have to be matched involves the asymptotics of the $r=1$ pieces
+$\sum_{p<N}\Lambda(N-p)\log^jp$, whose order is unknown for every
+$j\ge1$ and which at $j=1$ \emph{is} the binary Goldbach sum. The
+tuning is circular.
 \end{enumerate}
-Consequently this section does not produce a polynomial weight whose
-complete part is both classically controlled and useful for extraction.
-It does not prove that no such polynomial weight exists.
+Consequently no polynomial weight makes the complete part a
+classically known object.
 \end{proposition}
 
 \begin{proof}
@@ -1382,35 +1077,29 @@ $r$-fold difference of a function whose $r$-th derivative
 $D(D-1)\cdots(D-r+1)x^{D-r}$ is nonnegative is itself nonnegative;
 convexity alone would give this only for $r\le2$. Every summand of
 \eqref{eq:CPD} is then a product of nonnegative factors, so no
-cancellation is available and $\mathrm{CP}_D\ge0$. What (ii)
-establishes is only the absence of internal sign cancellation for a
-monomial complete part. No lower bound of the required order is claimed:
-the $r=1$ piece is a prime-plus-prime-power count,
-and at $D=1$ it is the whole of $\mathrm{CP}_1$.  After subtracting the
-$O(N^{1/2}\log^2N)$ proper-prime-power contribution, a linear lower
-bound would imply a genuine prime--prime representation.  For (iii),
-the direct leading-term tuning would require asymptotics for the same
-prime-supported moments, so that particular calibration uses
-information not provided here.
+cancellation is available and $\mathrm{CP}_D\ge0$. The upper bound
+quoted in the statement is the classical sieve upper bound for
+prime-plus-almost-prime sums applied to each $r$-piece; it is not
+proved here and (ii) does not use it --- what closes (ii) is
+nonnegativity together with the absence of a matching lower bound.
+No lower bound of the same order is claimed:
+the $r=1$ piece is a prime-plus-prime count, on which the sieve gives
+none --- that is the parity obstruction of Note~\ref{note:bombieri} ---
+and at $D=1$ it is the whole of $\mathrm{CP}_1$. For
+(iii), a degree-$D$ tuning has $D$ free coefficients and the
+constraint that must be solved is an identity between the leading
+asymptotics of the $r$-pieces; the $r=1$ piece with $D=1$ is
+$\sum_{p<N}\Lambda(N-p)\log p$, whose asymptotic is the assertion to
+be proved.
 \end{proof}
 
 \begin{note}[the canonical tuning moves the wrong way]
 Since $b=\mu*w$ we have $w=\mathbf 1*b$ and hence
-$B(s)=W(s)/\zeta(s)$. Put $t=s-1$. For $f(x)=x^2+cx$,
-$W(s)=\zeta''(s)-c\zeta'(s)$, and the Laurent expansions at $s=1$ give
-\[
-  B(s)=\frac{2}{t^2}+\frac{c-2\gamma}{t}+O(1).
-\]
-Thus the coefficient of the double pole is independent of $c$: a
-quadratic tuning can change the simple-pole coefficient but cannot
-remove the leading pole. Equivalently, in the formal Perron residue the
-main terms are
-\[
-  2x\log x+(c-2-2\gamma)x,
-\]
-so the canonical choice $c=2+2\gamma$ cancels the $x$ term, not the
-$x\log x$ term. This observation concerns the mean of $b$; the complete
-part depends instead on its correlation with $\Lambda(N-\cdot)$.
+$B(s)=W(s)/\zeta(s)$. That series has a \emph{double} pole at $s=1$
+for every degree-$2$ $f$, so no such $f$ removes it and $b$ cannot be
+made mean-zero; the most a degree-$2$ tuning can do is kill the
+second-order term. With $f=x^2+cx$ one has $W=\zeta''-c\zeta'$, and
+neither $\zeta''$ nor $\zeta'$ carries a $(s-1)^{-1}$ term.
 
 Which way it moves is measured, and the title is not rhetorical. At
 $N=10^6$ the untuned $\mathrm{CP}$ is $39.8793\,N$; the canonical
@@ -1424,8 +1113,7 @@ correlation with $\Lambda(N-\cdot)$, not its mean.
 \end{note}
 
 \begin{measurement}[the two pieces are the same order]\label{meas:poly}
-Nonnegativity, and not a separation of scales, is what establishes
-the limited statement in (ii).
+Nonnegativity, and not a separation of scales, is what closes (ii).
 At $N=10^6,\,4\cdot10^6,\,1.6\cdot10^7$ the two pieces of
 $\mathrm{CP}_2$ are the same order:
 \[
@@ -1450,10 +1138,11 @@ $N$ has the same prime support $\{2,5\}$ in each case
 \section{Both standard pairings have zero margin on
 \texorpdfstring{$C(N)$}{C(N)}}\label{sec:circle}
 
-Since the preceding no-go concerns only the explicit termwise
-Bombieri--Vinogradov support class, and the polynomial discussion is
-weaker still, it is useful to record the position of two global
-H\"older pairings for the other classical representation. Write
+Since the switch is closed over the part of its design space
+Bombieri--Vinogradov evaluates, and of the remainder only the
+polynomial weights are reached, in the weaker sense of
+Proposition~\ref{prop:Dpp}, it is worth
+recording the exact position of the other classical mechanism. Write
 \[
   C(N)=\int_0^1S_\Lambda(\alpha)\,S_\mu(\alpha)\,e(-N\alpha)\,d\alpha,
 \]
@@ -1465,8 +1154,9 @@ where
 \]
 
 \begin{proposition}[zero margin]\label{prop:E}
-Two natural \emph{global} H\"older pairings for this integral ---
-$(2,2)$ and $(\infty,1)$ --- lie at or above the trivial bound $|C(N)|\le\psi(N)\sim N$:
+The two pairings a circle-method estimate of this integral normally uses
+--- $(2,2)$ and $(\infty,1)$ --- lie at or above the
+trivial bound $|C(N)|\le\psi(N)\sim N$:
 \begin{enumerate}
 \item[(i)] $\|S_\Lambda\|_2\|S_\mu\|_2
    =\bigl(\sum_{n\le N}\Lambda(n)^2\bigr)^{1/2}
@@ -1499,37 +1189,32 @@ $\|S_\Lambda\|_1\gg N^{1/2}$ that (ii) uses is a theorem of Vaughan
 The classical uniform bound $S_\mu(\alpha)\ll_AN(\log N)^{-A}$, due to
 Davenport and quoted here as standard rather than proved, is
 therefore useless here: it is a saving over $N$, whereas the pairing
-needs a bound at the scale $N^{1/2}$, which Parseval forbids. For the global $(\infty,1)$ pairing, this is a zero-margin
-obstruction: improving Davenport's uniform bound while retaining the
-same global pairing cannot cross the Parseval floor.  A major/minor-arc
-decomposition with bilinear treatment is a different mechanism and is
-not ruled out here.
+needs a bound at the scale $N^{1/2}$, which Parseval forbids. This is
+the parity obstruction in circle-method language --- \emph{the binary
+problem sits exactly at the trivial bound with no margin} --- and it
+is why the method that settles the ternary problem cannot be pushed to
+the binary one by any sharpening of the M\"obius input.
 
 \begin{measurement}[the constants]\label{meas:circle}
-Evaluated by FFT on a $4N$-point grid at
-$N=2^{14},\dots,2^{20}$.  The table is a sampled diagnostic: the
-continuous norms in Proposition~\ref{prop:E} are the theorem-level
-objects and no proof uses the numerical rows below.
+Computed by exact FFT on a $4N$-point grid at
+$N=2^{14},\dots,2^{20}$:
 \[
 \begin{array}{r|cccc}
  N & 2^{14} & 2^{16} & 2^{18} & 2^{20}\\\hline
  \|S_\mu\|_2/\sqrt N & 0.7798 & 0.7797 & 0.7797 & 0.7797\\
- \max_{\alpha\in(4N)^{-1}\mathbb Z/\mathbb Z}|S_\mu(\alpha)|/\sqrt N
-   & 3.058 & 2.742 & 2.853 & 2.801\\
- (4N)^{-1}\sum_{j<4N}|S_\Lambda(j/(4N))|/\sqrt N
-   & 1.946 & 2.084 & 2.219 & 2.346\\
+ \sup|S_\mu|/\sqrt N & 3.058 & 2.742 & 2.853 & 2.801\\
+ \|S_\Lambda\|_1/\sqrt N & 1.946 & 2.084 & 2.219 & 2.346\\
  \text{(i) bound}/N & 2.297 & 2.473 & 2.639 & 2.795\\
- N/\bigl((\text{grid max }|S_\mu|)(\text{grid mean }|S_\Lambda|)\bigr)
-  & 0.168 & 0.175 & 0.158 & 0.152
+ N/\bigl(\sup|S_\mu|\,\|S_\Lambda\|_1\bigr) & 0.168 & 0.175 & 0.158
+  & 0.152
 \end{array}
 \]
 The first row reproduces $\sqrt{6/\pi^2}=0.779697$ to four significant
 figures --- the entries before rounding are $0.779764$, $0.779725$,
 $0.779686$, $0.779699$ --- confirming
-the discrete Parseval normalization; the last row is only the
-corresponding grid diagnostic for route~(ii), not an evaluation of the
-continuous product in Proposition~\ref{prop:E}.  It sits near $0.16$
-and falls over the last three abscissae. Route~(i) diverges from the trivial bound like
+the computation; the last row --- the margin that route~(ii) would
+need to exceed $1$ --- sits near $0.16$ and falls over the last three
+abscissae. Route~(i) diverges from the trivial bound like
 $(\log N)^{1/2}$, as predicted. For reference the object itself is
 small: $C(N)/N=-0.0105,\,0.0001,\,0.0059,\,0.0032$ at these $N$
 (\texttt{audit\_circle\_margin.py}).
@@ -1547,96 +1232,79 @@ Propositions~\ref{prop:dilate}, \ref{prop:posweights},
 Proposition~\ref{prop:direct} a consequence of them rather than one of
 them: the per-modulus
 discrepancy is a dilate, the signs $\mu(k)$ cancel on the $\log k$
-branch, and the untruncated object is a prime-supported weighted pair
-sum differing from $\tilde r(N)$ only by proper-prime-power terms.
+branch, and the untruncated object is the Goldbach count itself.
 
-\item Theorem~\ref{thm:D}: on the explicit low-support class where
-the residual is controlled termwise by Bombieri--Vinogradov, the
-displayed triangle-inequality extraction incurs a prefactor larger than
-every fixed power of $\log N$, even when a homogeneous strong bound for
-$T_w$ is granted.  Thus that majorant does not certify a fixed
-log-power saving for $C(N)$.  This is not a necessity theorem for the
-support condition, and evaluations through sign correlations are not
-excluded.  The quantified prefactor is
-$\exp(c_1\sqrt{(\frac12+\delta)\log N})$ up to the implicit constant.
+\item Theorem~\ref{thm:D}: no weight whose transform is
+Bombieri--Vinogradov-accessible extracts $C(N)$ by the evaluation this
+route offers, and this holds even
+when the bound on the switch identity's third term $T_w$ --- the object
+the whole problem is about --- is granted for free. What is closed is
+the triangle-inequality evaluation; an evaluation through sign
+correlations among the identity's three terms is not. The loss is
+$\exp(c_1\sqrt{(\frac12+\delta)\log N})$, and the $1/2$ is the exponent of the
+square-root barrier.
 
-\item Theorem~\ref{thm:Dprime}: with any fixed power slack in
-the support, the separation survives $EH(N^{\theta_E})$ for every fixed
-$\theta_E\in(1-\theta',1)$.  The power-scale factor
-$N^{1-\theta_E}$ can vanish only at the formal endpoint
-$\theta_E=1$, which the theorem does not analyse.
+\item Theorem~\ref{thm:Dprime}: the separation survives
+$EH(N^{\theta_E})$ for every fixed $\theta_E<1$ at which the
+hypothesis is non-empty, that is on $\theta_E\in(1-\theta',1)$.
+Closing it would require $\theta_E=1$, where the statement is vacuous.
 
 \item Proposition~\ref{prop:Dpp}: polynomial weights, which lie
-outside the hypothesis of Theorem~\ref{thm:D}, are analysed through
-nonnegativity of $\Lambda_D$ and the circularity of the most direct
-leading-term tuning.  Their complete part is not proved to be $o(N)$ or
-to have a useful lower bound.  This is a statement about what remains
-open, not an impossibility theorem; weights that are neither in the
-low-support class nor polynomial are not treated here.
+outside the hypothesis of Theorem~\ref{thm:D}, are met by
+nonnegativity of $\Lambda_D$ and by circularity of the tuning ---
+which leaves their complete part not known to be $o(N)$ rather
+than shown to be large. That is a statement about what is not
+known and not an impossibility, and the weights that are neither
+reached by the hypothesis nor polynomial are closed nowhere here.
 
-\item Proposition~\ref{prop:E}: two natural global H\"older pairings
-for $C(N)$ have zero margin, with Parseval supplying the floor.  A
-major/minor-arc decomposition with bilinear treatment is a different
-mechanism and is not addressed.
+\item Proposition~\ref{prop:E}: the two pairings a circle-method
+estimate of $C(N)$ normally uses have zero margin, with Parseval
+supplying the floor. A bilinear treatment of the minor arcs is a
+different mechanism and is not addressed.
 
-\item No new bound for $C(N)$, and hence no new Goldbach theorem, is
-obtained.  What is closed is one explicit support-based
-triangle-inequality evaluation, not the full weight space.
+\item Net progress toward Goldbach: zero. What is closed is a design
+space, so that it need not be re-explored.
 \end{itemize}
 
 % =====================================================================
 \begin{thebibliography}{99}
 
-\bibitem{Cantarini} M.~Cantarini,
-\emph{Averages of diagonal Elliott--Halberstam problem twisted by
-M\"obius function with Sobolev and H\"older--Zygmund weights},
-arXiv:2607.09110 [math.NT], 2026.
-
 \bibitem{Bom76} E.~Bombieri, \emph{The asymptotic sieve},
 Rend. Accad. Naz. XL (5) \textbf{1(2)} (1975/76), 243--269 (1977).
 
 \bibitem{GY} D.~Goldston and C.~Y{\i}ld{\i}r{\i}m,
-\emph{Higher correlations of divisor sums related to primes~I:
-Triple correlations}, Integers \textbf{3} (2003), A5.
+\emph{Higher correlations of divisor sums related to primes~I},
+Integers \textbf{3} (2003), A5.
 
-\bibitem{HL} J.-J.~Huang and H.~Li,
-\emph{On the connection between the Goldbach conjecture and the
-Elliott--Halberstam conjecture}, in \emph{Combinatorial and Additive
-Number Theory IV}, Springer Proc. Math. Stat. \textbf{347} (2021),
-323--346; arXiv:2005.03811 [math.NT].
+\bibitem{HL} J.-J.~Huang and H.~Li, \emph{On the connection between
+the Goldbach conjecture and the Elliott--Halberstam conjecture},
+arXiv:2005.03811 [math.NT]; v1 (May 2020), v2 (August 2022). Also
+published in a Springer volume,
+\texttt{doi:10.1007/978-3-030-67996-5\_17}. References here are to the
+arXiv version, which we have read, and not to the published version,
+which we have not.
 
 \bibitem{Li23} J.~D.~Lichtman (with an appendix by S.~Drappeau),
 \emph{Primes in arithmetic progressions to large moduli, and Goldbach
 beyond the square-root barrier}, arXiv:2309.08522 [math.NT], 2023.
-
-\bibitem{Moya} R.~Moya,
-\emph{A moving-cut correction to the Huang--Li conditional Goldbach
-argument: consequences for diagonal M\"obius-twisted Elliott--Halberstam
-hypotheses}, Zenodo, 2026, doi:10.5281/zenodo.21939906.
 
 \bibitem{MoV} H.~L.~Montgomery and R.~C.~Vaughan,
 \emph{Multiplicative number theory~I: classical theory}, Cambridge
 Studies in Advanced Mathematics \textbf{97}, Cambridge University
 Press, 2007.
 
-\bibitem{MoV2} H.~L.~Montgomery and R.~C.~Vaughan,
-\emph{Multiplicative number theory~II: primes and sieves}, Cambridge
-University Press, 2026; see Chapter~20, ``Primes in Arithmetic
-Progressions: III.''
-
-\bibitem{P1} Y.~Lee,
-\emph{A fixed-class M\"obius-weighted estimate and a residual relation in
-the Huang--Li Goldbach reduction}, 2026. Companion paper in the
-directory \texttt{P1-mobius-fixed-class/} of the repository named in
-Appendix~\ref{sec:repro}. Its Theorem~1 gives the flat fixed-class
-estimate, Corollary~2 the corresponding $E_4$ consequence, Theorem~3
-the logarithmic residual relation, and Proposition~6 the
-absolute-value sufficient condition cited here. The arbitrary-weight
-switch Proposition~\ref{prop:weightedswitch} is proved directly in the
-present paper.
+\bibitem{P1} Y.~Lee, \emph{The Huang--Li reduction of Goldbach to
+Elliott--Halberstam does not decompose, with an unconditional bound for
+a M\"obius-weighted correlation sum in fixed residue classes}, 2026.
+Companion paper, in the directory \texttt{P1-mobius-fixed-class/} of
+the repository named in Appendix~\ref{sec:repro}, with its own code and
+output. The switch identity \eqref{eq:extract} is its Theorem~C and is
+not reproved here.
 
 \bibitem{Vau88} R.~C.~Vaughan, \emph{The $L^1$ mean of exponential
-sums over primes}, Bull. London Math. Soc. \textbf{20} (1988), 121--123.
+sums over primes}, Bull. London Math. Soc. \textbf{20} (1988),
+121--123. Not consulted in the original; the statement used here is
+taken from its review and from two independent restatements.
 
 \end{thebibliography}
 
@@ -1644,12 +1312,10 @@ sums over primes}, Bull. London Math. Soc. \textbf{20} (1988), 121--123.
 \section*{Disclosure statement}
 
 No potential competing interest, financial or non-financial, was
-reported by the author. No funding was received for this work.
-Generative-AI systems were used for derivation assistance, computation,
-formalisation, and drafting and revision of the manuscript. The
-appendix records the tools and the limits of the computational and
-formal checks. The author reviewed the final mathematical statements
-and takes responsibility for all claims.
+reported by the author. No funding was received for this work. An AI
+assistant was used in preparing it; what tool, how, and why is set out
+in the appendix, together with what was machine-verified, what was
+checked by computation, and what was neither.
 
 \section*{Data availability statement}
 
@@ -1666,27 +1332,21 @@ subjects were used; every quantity here is computed from the integers.
 \appendix
 \section{Use of an AI assistant, and what checked what}
 
-Generative-AI systems were used extensively during the development of
-this work, including derivation assistance, code generation and
-execution, formalisation, and drafting and revision. These tools are
-not authors. The author reviewed the final mathematical statements,
-computational outputs cited in the text, and generated revisions, and
-takes responsibility for every claim made here.
+This work was done in close collaboration with an AI assistant, which
+carried much of the derivation and all of the computation. The author
+takes full responsibility for every claim made here.
 
-\emph{Which tool, and how.} The initial manuscript and computational
-development were prepared with Anthropic's Claude, model Opus~5, run
-through the Claude Code command-line interface. It was used to derive
-and check identities, to write and run the scripts in the accompanying
-code, to write the Lean development, and to draft and revise the text.
-A later mathematical audit and revision used OpenAI ChatGPT
-(GPT--5.6 Sol) to check the scope of the no-go claim, the homogeneity of
-the weighted switch, prime-power bookkeeping, cross-references, and
-LaTeX compilation. Earlier stages used earlier Claude-family models;
-the repository does not record which. The author takes responsibility
-for the final statements and for checking the generated revisions.
+\emph{Which tool, and how.} The manuscript in its present form was
+prepared with Anthropic's Claude, model Opus~5, run through the Claude
+Code command-line interface. It was used to derive and check the
+identities, to write and run every script in the accompanying code, to
+write the Lean development, and to draft and revise this text. Earlier
+stages used earlier models of the same family; the repository does not
+record which, and nothing is relied on from those stages that has not
+since been rederived and rerun.
 
-The list below distinguishes the kinds of checks actually performed and
-their limits.
+What follows says what was checked and by what, rather than asserting
+that it was checked.
 
 \emph{Machine-verified.} The finite rearrangements that lay out the
 design space are formalised in Lean~4 against Mathlib, in the file
@@ -1701,11 +1361,11 @@ take $\Lambda$, $\mu$ and $\log$ as arbitrary functions, so what is
 verified is that these identities use no arithmetic property of them ---
 which is what makes them rearrangements rather than estimates.
 
-\emph{Not machine-verified.} Theorem~\ref{thm:D} rests on
-Bombieri--Vinogradov, which is not part of the Lean development used
-here, so the analytic no-go theorem is not formalised. What is
-formalised is the finite algebraic scaffolding, not the analytic
-conclusion.
+\textbf{The no-go itself is not machine-verified, and neither theorem of
+this paper has had a reading by a subject expert.}
+Theorem~\ref{thm:D} rests on Bombieri--Vinogradov, which Mathlib does
+not carry, so no part of it is formalised. What is formalised is the
+scaffolding, not the conclusion.
 
 \emph{Checked by computation.} Every figure quoted is produced by a
 named run in the accompanying code, with the two exceptions named in
@@ -1746,10 +1406,10 @@ before \texttt{lab\_combined\_modulus}; the rest are independent of each
 other.
 
 \emph{A nonzero exit status is not a failure.} These runs carry
-preregistered diagnostic rules, and a run whose rule was refuted records
-that outcome in both its exit code and its stored output. The complete
-rule ledger, including negative outcomes, is retained in the repository
-release rather than reproduced in full here.
+preregistered rules, and a run whose own rule was refuted says so in its
+exit code as well as in its output. Eight of the fourteen runs named
+below record such a refutation, and all eight are named in
+\S\ref{sec:notclaimed}.
 
 \begin{center}
 \small
@@ -1798,13 +1458,48 @@ it carries an $O_A(N(\log N)^{-A})$ --- so what is verified there is
 its identity part and not the error term. The measurements record
 sizes over the ranges stated in each statement.
 
-The stored audit ledger includes negative as well as positive diagnostic
-outcomes. Eight of the fourteen cited runs refute at least one of their
-own preregistered checks; none of those checks is used as a premise of a
-proof. One finite-range diagnostic concerns the convergence
-$B_{\log}(K)+\SS(N)\to0$ used in Proposition~\ref{prop:direct}; its
-failure records only that the sampled range does not display the
-asymptotic rate. The exact rule statements, numerical outcomes, and exit
-codes are preserved in the cited result files for auditability.
+Eight of the fourteen runs record a pre-registered rule their own
+output did not meet, and this paper reported none of them by name.
+They are:
+\texttt{audit\_extraction\_tradeoff} (two rules, one of them the damping
+claim itself --- above $\lfloor K/d_0\rfloor=1000$ the maximum is
+$0.062792$ against a registered cap of $0.05$; the range
+Theorem~\ref{thm:D} uses is $\lfloor K/d_0\rfloor\ge10066$, where the
+maximum is $0.004145$, so the theorem is untouched and the registered
+cap was set too tight);
+\texttt{lab\_combined\_modulus} (two rules), whose control with the sign
+of $\mu(d)$ randomised has a \emph{smaller} median deficit than $\mu$
+at three of its four $N$, including the two largest --- $0.0454$
+against $0.0547$ and $0.0342$ against $0.0733$ --- and a smaller
+minimum at every one, so that measurement does not separate $\mu$ from
+a sign pattern at all in the range it covers, and what makes the far
+pairs negligible is their size rather than their signs;
+\texttt{lab\_direct\_route} (two rules), residual $0.2076$ against a
+registered $0.20$; its randomised-sign control is inverted in the same
+way, the coin residuals having median $0.0157$ against $\mu$'s
+$0.2076$ --- smaller by a factor $13.2$ --- and that run's own
+diagnostic records that the null as designed tests nothing, since for
+a coin $\sum(\log k)H_\varepsilon$ and $\tilde r-\SS N$ are separately
+near zero and their difference is small for a reason unconnected with
+the cancellation;
+\texttt{lab\_positive\_weights}, top-decile share near $35\%$ against a
+registered $40\%$;
+\texttt{lab\_direct\_identity} and \texttt{lab\_layer\_decomposition},
+each on a rule about how much mass sits below the truncation;
+\texttt{audit\_nogo\_scope}, whose rule TD3 asked one hypothesis to
+cover both $b=\mu*1$ and $b=\mu*\log$ and it covers neither, which is
+what Note~\ref{note:nogoscope} says in words;
+and \texttt{audit\_squarefull\_admitted}, whose V3 asked the note after
+Proposition~\ref{prop:flatsum} to reproduce its own printed
+three-decimal figures and one of them was a double rounding, corrected
+above to what that run reads.
+Of the eight, \texttt{lab\_direct\_route}'s Y1 is the one that bears on
+a statement: it is the convergence
+$B_{\log}(K)+\SS(N)\to0$ that Proposition~\ref{prop:direct} uses, and
+what its failure records is that the run does not exhibit the rate at
+its own $N$, not that the limit is false. The other seven change no
+statement above --- each was checked --- and the reason for recording
+all of them here is that a reader who does not open the files would
+otherwise take the runs for clean.
 
 \end{document}

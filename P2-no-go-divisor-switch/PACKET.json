@@ -9,20 +9,32 @@
   "paper_files": [
     {
       "path": "P2-no-go-divisor-switch.tex",
-      "sha256": "51570fa89c71109edea3b1ca45aed8de0da20978b7a52b3c6800fead0552bfb5",
-      "imported_from": "deploy/papers/P2-no-go-divisor-switch.tex",
-      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+      "sha256": "4377f15aed1c419990aa2a7aa15da64bbf6bb00ea3632213b4e92c50ffc68643",
+      "imported_from": "papers/P2-no-go-divisor-switch/P2-no-go-divisor-switch-small.tex; renamed 2026-09-12 as the canonical manuscript, header rewritten to name its role",
+      "source_commit": "working tree"
     },
     {
       "path": "P2-no-go-divisor-switch.pdf",
-      "sha256": "770ccb96858a09b0328ffec15690cc485e6e504eddd5466d2063a78f89fca6a8",
-      "imported_from": "deploy/papers/P2-no-go-divisor-switch.pdf",
-      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+      "sha256": "775b1c0ebc95df0179a8b9b8809acdd9eb61e27bc7878f42ee8bafc50a60d47c",
+      "imported_from": "papers/P2-no-go-divisor-switch/P2-no-go-divisor-switch-small.pdf; renamed 2026-09-12 as the canonical manuscript",
+      "source_commit": "working tree"
     },
     {
       "path": "arxiv-metadata.txt",
       "sha256": "f8c5ebb890df7bb4ee74ce4c7c0e5e81ed8fe024b920b3e86ab7436901ce123d",
       "imported_from": "deploy/papers/P2-arxiv-metadata.txt",
+      "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
+    },
+    {
+      "path": "P2-no-go-divisor-switch-unsorted.tex",
+      "sha256": "1085b60ff80707f91d2cd76b86e7cb4e84b8f6917e3ccd61d733811363269a4a",
+      "imported_from": "deploy/papers/P2-no-go-divisor-switch.tex; renamed 2026-09-12, header rewritten to name its role",
+      "source_commit": "working tree"
+    },
+    {
+      "path": "P2-no-go-divisor-switch-unsorted.pdf",
+      "sha256": "770ccb96858a09b0328ffec15690cc485e6e504eddd5466d2063a78f89fca6a8",
+      "imported_from": "deploy/papers/P2-no-go-divisor-switch.pdf; renamed 2026-09-12, bytes unchanged",
       "source_commit": "ed455b7d108ef6d9428b7868c4a51837a9e1c5e0"
     }
   ],

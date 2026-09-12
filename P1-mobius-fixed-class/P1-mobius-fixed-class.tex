@@ -44,9 +44,9 @@
 
 \begin{abstract}
 Huang and Li \cite{HL} obtain a conditional binary Goldbach conclusion for
-sufficiently large even integers from a M\"obius-twisted
-Elliott--Halberstam hypothesis.  In their
-Section~3 that hypothesis is used to control two signed fixed-class terms,
+sufficiently large even integers from the Elliott--Halberstam conjecture
+together with a M\"obius-twisted variant.  In their Section~3 the
+M\"obius-twisted hypothesis is used to control two signed fixed-class terms,
 $E_4(\alpha)$ and $E_3(\alpha)$.  In the regime corresponding to their
 corollary, we prove that the fixed-class sum underlying $E_4$ is
 $\ll_A N(\log N)^{-A}$ for every $A>0$, uniformly in the truncation
@@ -170,18 +170,32 @@ In the Corollary-1 regime, for every $A>0$,
  E_3(\alpha)=\widetilde r(N)-\SS(N)\bigl(N-C(N)\bigr)
  +O_A\!\left(\frac{N}{(\log N)^A}\right).
 \end{equation}
-Consequently the estimate
-$E_3(\alpha)\ll_A N(\log N)^{-A}$ used in the Huang--Li argument is,
-at the same error scale, equivalent to their equation~(22).  Together
-with the subsequent bound for the remaining correlation used by
-Huang--Li, this relation yields binary Goldbach for sufficiently large
-even $N$.  Under that estimate,
-$\widetilde r(N)\sim\SS(N)N$ if and only if $C(N)=o(N)$.
 \end{theorem}
+
+\begin{corollary}[conditional consequences]\label{cor:Cconseq}
+Assume in addition that
+\[
+ E_3(\alpha)\ll_A N(\log N)^{-A}
+\]
+for every $A>0$.  This is the remaining input in the Huang--Li
+$E_3/E_4$ decomposition and is not proved here.  Then
+\eqref{eq:Crelation} is, at the same error scale, equivalent to their
+equation~(22).  Together with the unconditional Bombieri--Vinogradov
+estimate used by Huang--Li,
+\[
+ |C(N)|\le U(N),\qquad
+ U(N)=\AAA(N)N+O_B\!\left(N(\log N)^{-B}\right),
+\]
+it yields binary Goldbach for all sufficiently large even $N$.
+Under the same additional estimate,
+$\widetilde r(N)\sim\SS(N)N$ if and only if $C(N)=o(N)$.
+\end{corollary}
 
 Theorem~\ref{thm:C} is specific to the logarithmic weight occurring in
 this reduction: completing the divisor sum invokes
-$\mu*\log=\Lambda$ and reproduces $\widetilde r(N)$.  We do not claim
+$\mu*\log=\Lambda$ and reproduces $\widetilde r(N)$.  Corollary~\ref{cor:Cconseq}
+is only a conditional consequence of the additional $E_3$ estimate;
+that estimate is not supplied by Theorem~\ref{thm:C}.  We do not claim
 that every alternative smoothing or reformulation is covered by this
 calculation.
 
@@ -286,7 +300,9 @@ By \eqref{eq:Emu},
         \sum_{\substack{n\le t\\ n\equiv N\ (k)}}\Lambda(n)\mu(N-n),
 \end{equation}
 where $B(K)=\sum_{k<K,(k,N)=1}\mu(k)/\varphi(k)$. Huang--Li's Lemma~1
-(a form of Goldston--Y{\i}ld{\i}r{\i}m \cite{GY}) gives
+(a form of Goldston--Y{\i}ld{\i}r{\i}m \cite{GY}) gives the same
+bound with $k\le K$; if $K$ is an integer the endpoint difference is
+$O(K^{-1+o(1)})$ and is absorbed. Hence
 $B(K)\ll e^{-c_1\sqrt{\log K}}$, and trivially
 $|C(t)|\le\sum_{n<N}\Lambda(n)\ll N$. Hence
 \begin{equation}\label{eq:meanterm}
@@ -396,11 +412,13 @@ so it collapses to $\mathbf 1_{(k,m)=1}$. In the third block the
 $d$-sum is truncated and must be bounded as such; no cancellation from
 the complete identity for $\mu^2(k)$ is used below.
 
-\emph{Tail $d>D_0$.} Such terms have $d^2\mid k$, hence
+\emph{Tail $d>D_0$.} Such terms have $d^2\mid k$ and $mk<N$, so
+necessarily $d\le\sqrt{k}<\sqrt{N/m}$.  Also
 $n=N-mk\equiv N\pmod{md^2}$; the number of $n\le N$ in that
-progression is $\ll N/(md^2)+1$ and each $\Lambda\ll\log N$. Summing,
+progression is $\ll N/(md^2)+1$ and each $\Lambda\ll\log N$. Hence
 \[
-  \ll\log N\sum_{m<M}\sum_{d>D_0}\Bigl(\frac{N}{md^2}+1\Bigr)
+  \ll\log N\sum_{m<M}\sum_{D_0<d\le\sqrt{N/m}}
+       \Bigl(\frac{N}{md^2}+1\Bigr)
   \ll\frac{N(\log N)^2}{D_0}+\sqrt{NM}\log N,
 \]
 which is
@@ -472,7 +490,7 @@ applied.
 \subsection{Step 5: Bombieri--Vinogradov}
 
 \begin{lemma}[$\tau$-weighted Bombieri--Vinogradov]\label{lem:BV}
-For all $A,B>0$ there is $C=C(A,B)$ such that for
+For all $A,B>0$ there is $C=C(A,B)$ such that, for
 $Q\le N^{1/2}(\log N)^{-C}$,
 \[
   \sum_{q\le Q}\tau_3(q)^{B}\ \max_{y\le N}\ \max_{(a,q)=1}
@@ -482,34 +500,38 @@ $Q\le N^{1/2}(\log N)^{-C}$,
 \end{lemma}
 
 \begin{proof}
-Write $\mathcal E_q$ for the inner maximum. By Cauchy--Schwarz,
+This is a standard weighted consequence of the maximal
+Bombieri--Vinogradov theorem; see, for example,
+\cite[\S20.2]{MoV2}.  Put
 \[
-  \sum_q\tau_3^B\mathcal E_q
-  \;\le\;\Bigl(\sum_q\tau_3^{2B}\mathcal E_q\Bigr)^{1/2}
-         \Bigl(\sum_q\mathcal E_q\Bigr)^{1/2}.
+ \mathcal E_q:=\max_{y\le N}\max_{(a,q)=1}
+ \Bigl|\psi(y;q,a)-\frac{y}{\varphi(q)}\Bigr|.
 \]
-For the first factor use the trivial bound
-$\mathcal E_q\ll(N/\varphi(q))\log N$, giving $\ll N(\log N)^{C_1(B)}$;
-for the second use Bombieri--Vinogradov \cite{MoV2} with exponent
-$A'=2A+C_1(B)$. That theorem is stated for
-$N^{1/2}(\log N)^{-A'}\le Q'\le N^{1/2}$, a window closed below as well
-as above, whereas the $Q$ here lies beneath it. The gap is closed by
-monotonicity: the summand is non-negative, so for $Q\le Q'$ one has
-$\sum_{q\le Q}\mathcal E_q\le\sum_{q\le Q'}\mathcal E_q$. Take
-$Q'=N^{1/2}(\log N)^{-(A'+3)}$ and apply the theorem with the exponent
-$A'+3$ in place of $A'$, for which that $Q'$ is the lower endpoint of
-the window and not a point beneath it. What the theorem then gives is
-its own conclusion at that $Q'$, namely
+By Cauchy--Schwarz,
 \[
-  \sum_{q\le Q'}\mathcal E_q\;\ll\;N^{1/2}Q'(\log N)^{3}
-  \;=\;N(\log N)^{-(A'+3)}(\log N)^{3}\;=\;N(\log N)^{-A'} .
+ \sum_{q\le Q}\tau_3(q)^B\mathcal E_q
+ \le
+ \Bigl(\sum_{q\le Q}\tau_3(q)^{2B}\mathcal E_q\Bigr)^{1/2}
+ \Bigl(\sum_{q\le Q}\mathcal E_q\Bigr)^{1/2}.
 \]
-The exponent in the theorem's range condition is not the exponent of
-its conclusion: the conclusion is $x^{1/2}Q(\log x)^{3}$, and the
-free parameter only opens the window far enough down to admit this
-$Q'$. That is why $A'+3$ is chosen and why the saving that comes back
-is $A'$ and not $A'+3$. The constant promised in the statement is
-$C=A'+3=2A+C_1(B)+3$.
+The trivial estimate
+$\mathcal E_q\ll (N/\varphi(q))\log N$ and the standard mean-value
+bounds for fixed powers of the divisor function give
+\[
+ \sum_{q\le Q}\tau_3(q)^{2B}\mathcal E_q
+ \ll_B N(\log N)^{C_1(B)}.
+\]
+On the other hand, the maximal Bombieri--Vinogradov theorem gives, for
+every $D>0$, a constant $C_2(D)$ such that
+\[
+ \sum_{q\le Q}\mathcal E_q\ll_D \frac{N}{(\log N)^D}
+ \qquad
+ \bigl(Q\le N^{1/2}(\log N)^{-C_2(D)}\bigr).
+\]
+Taking $D=2A+C_1(B)+2$ and increasing the modulus exponent if necessary
+proves the stated estimate.  No strengthened distribution theorem is
+being used here; only the usual Bombieri--Vinogradov theorem with an
+arbitrarily large logarithmic saving.
 \end{proof}
 
 
@@ -644,18 +666,22 @@ $\displaystyle\sup_{1\le t<N}|\mathrm{MT}(t)|\ll Ne^{-c\sqrt{\log N}}$.
 \end{proposition}
 
 \begin{proof}
-By Lemma~\ref{lem:density},
-$\mathrm{MT}(t)=\AAA(N)\sum_{m<M}\frac{f(m)}{m}\Tcut_m(t)
-+O(N\log N/D_0)$ with $\Tcut_m(t)$ as in \eqref{eq:Tm}. Put
-$m_0:=(N-t)/K$, so $\Tcut_m(t)=t$ for $m\le m_0$ and
-$\Tcut_m(t)=N-mK$ for
-$m>m_0$; in particular $x\mapsto\Tcut_x(t)$ is non-increasing, is
-constant on $[1,m_0]$, has derivative $-K$ on $(m_0,M)$, and
-$\Tcut_M(t)=0$. Abel summation against $G$ of Lemma~\ref{lem:mu} gives
+By Lemma~\ref{lem:density}, write
+\[
+\mathrm{MT}(t)=\AAA(N)\sum_{m<M}\frac{f(m)}{m}\Tcut_m(t)
++\mathcal E_{\mathrm{tr}}(t),
+\]
+with $\Tcut_m(t)$ as in \eqref{eq:Tm}.  The truncation term
+$\mathcal E_{\mathrm{tr}}(t)$ is estimated from the two errors in
+\eqref{eq:ctrunc} below. Put $m_0:=(N-t)/K$ and $m_*:=\max(1,m_0)$.  On the interval
+$[1,M]$, the function $x\mapsto\Tcut_x(t)$ is constant where
+$x<m_0$, has derivative $-K$ where $x>m_0$, and satisfies
+$\Tcut_M(t)=0$.  Since the summation starts at $m=1$, Abel summation
+against $G$ of Lemma~\ref{lem:mu} gives
 \[
   \sum_{m<M}\frac{f(m)}{m}\Tcut_m(t)
-  = G(M)\,\Tcut_M(t)+K\!\int_{m_0}^{M}\!G(x)\,dx
-  = K\!\int_{m_0}^{M}\!G(x)\,dx .
+  = G(M)\,\Tcut_M(t)+K\!\int_{m_*}^{M}\!G(x)\,dx
+  = K\!\int_{m_*}^{M}\!G(x)\,dx .
 \]
 Hence, uniformly in $t$,
 \[
@@ -676,16 +702,16 @@ and with $KM=N$, $\log M\asymp\log N$ and $M\asymp N^{1-\theta'}$ the two are
 $\ll Ne^{-c''\sqrt{\log N}}$ and $\ll N^{(3+\theta')/4}e^{C\sqrt{\log N}}$
 respectively. All three pieces are $\ll Ne^{-c\sqrt{\log N}}$ for
 $\theta'<1$, the first and the third being powers of $N$ below $N$
-itself. The truncation error carried by
-Lemma~\ref{lem:density} has two halves and $\Tcut_m(t)\le N$ in both.
-Using \eqref{eq:ctrunc} and $\Tcut_m(t)\le N$, the two halves are
+itself. The truncation term introduced above has two halves.  Using
+\eqref{eq:ctrunc} and $\Tcut_m(t)\le N$ in both gives
 \[
+ |\mathcal E_{\mathrm{tr}}(t)|
  \ll \frac{N}{D_0}\sum_{m<M}\frac{d(m)}{\varphi(m)}
  +\frac{N\log\log M}{E_0}
    \sum_{m<M}\frac{d(m)}{\varphi(m)}
  \ll N(\log M)^2(1+\log\log M)e^{-\sqrt{\log N}}.
 \]
-Thus both are $\ll Ne^{-c\sqrt{\log N}}$ for every fixed $c<1$.
+Thus $\mathcal E_{\mathrm{tr}}(t)\ll Ne^{-c\sqrt{\log N}}$ for every fixed $c<1$.
 The size here is $N$ and not
 $M$: the truncation is per term of the harmonic sum, and the terms are
 of the size of $N$.
@@ -774,9 +800,11 @@ $-\log p$; prime powers $u=p^\ell$, $\ell\ge2$, have $\mu(u)=0$. So
 the complete piece equals
 \begin{equation}\label{eq:goldbachback}
   \sum_{p<N}\Lambda(N-p)\log p\;+\;O\bigl(N^{o(1)}\log^2N\bigr)
-  \;=\;\sum_{n<N}\Lambda(n)\Lambda(N-n)+O\bigl(N^{1/2+\varepsilon}\bigr),
+  \;=\;\sum_{n<N}\Lambda(n)\Lambda(N-n)
+       +O\bigl(N^{1/2}\log^2N\bigr),
 \end{equation}
-the binary Goldbach sum itself.
+the von--Mangoldt Goldbach convolution, up to the displayed
+proper-prime-power error.
 
 Two further terms have to be evaluated, and neither vanishes.
 
@@ -801,12 +829,18 @@ $\ll\log N$, which leaves that lemma's $O(N^{o(1)})$ where it was, and
 in the two truncation tails of Step~4 the factor $\log N$ standing for
 $\max\Lambda$ becomes $(\log N)^2$, so those tails read
 $\ll N(\log N)^{3}e^{-\sqrt{\log N}}+N^{1-\theta'/2}(\log N)^2$ and
-$\ll N(\log N)^{4}e^{-\sqrt{\log N}}+M(\log N)^2$, still
-$\ll Ne^{-c\sqrt{\log N}}$ for every $c<1$. The moduli are the same
+\[
+ \ll N(\log N)^4\log\log N\,e^{-\sqrt{\log N}}
+      +M e^{\sqrt{\log N}}(\log N)^3,
+\]
+still $\ll Ne^{-c\sqrt{\log N}}$ for every fixed $c<1$. The moduli are the same
 moduli, so \eqref{eq:level} is untouched.
 
 Step~5 is where the factor costs something, and it costs exactly one
-$\log N$. Fix $m$ and write
+$\log N$.  If $\Tcut_m(t)<1$, the original inner sum is empty; such an
+endpoint case can occur for at most one integer $m$, and its omitted
+main-term contribution is $O(N^{o(1)})$.  We therefore restrict here to
+$\Tcut_m(t)\ge1$. Fix $m$ and write
 $\psi_w(y;q,a)=\sum_{n\le y,\ n\equiv a\,(q)}\Lambda(n)w_m(n)$. On
 $1\le n\le\Tcut_m(t)$ one has $N-n\ge mK$, so $w_m\ge\log K>0$, and
 $w_m$ decreases with $-w_m'(y)=1/(N-y)\ge0$; Abel summation gives
@@ -833,12 +867,25 @@ $\varphi(q)^{-1}\bigl(w_m(\Tcut_m)\Tcut_m+\int_1^{\Tcut_m}y(N-y)^{-1}dy
 again by parts; the $w_m(1)$ is $\ll\log N$ per class and, over the
 $\ll MD_0E_0N^{o(1)}$ triples, is $\ll N^{1-\theta'+o(1)}$. Step~6 is
 unchanged, the density $c(m)$ of Lemma~\ref{lem:density} being a
-property of the modulus and not of the weight, and its truncation
-error contributes $\ll N\log N\sum_{m<M}(\varphi(m)D_0)^{-1}\ll
-N(\log N)^{2}D_0^{-1}$. Substituting $v=N-y$ in
-$\int_1^{\Tcut_m}w_m(y)\,dy$ and taking $t=N$, where
-$N-\Tcut_m=mK$, the outcome is the main term
-$\AAA(N)\sum_{m<M}\mu(m)\lambda(m)m^{-1}\int_{mK}^{N}\log(v/m)\,dv$.
+property of the modulus and not of the weight.  Here the weighted
+integral is $\ll N\log N$, so the two truncation errors in
+\eqref{eq:ctrunc} contribute together
+\[
+  \ll N\log N\left(
+       \frac{1}{D_0}\sum_{m<M}\frac{d(m)}{\varphi(m)}
+       +\frac{\log\log M}{E_0}\sum_{m<M}\frac{d(m)}{\varphi(m)}
+       \right)
+  \ll N(\log N)^3(1+\log\log M)e^{-\sqrt{\log N}},
+\]
+which is $\ll Ne^{-c\sqrt{\log N}}$ for every fixed $c<1$.
+Substituting $v=N-y$ in
+$\int_1^{\Tcut_m}w_m(y)\,dy$ and taking the actual endpoint
+$t=N-1$, for which $\Tcut_m=N-mK$ (since $mK\ge K>1$ for large
+$N$), the outcome is the main term
+\[
+  \AAA(N)\sum_{m<M}\frac{\mu(m)\lambda(m)}{m}
+  \int_{mK}^{N}\log(v/m)\,dv.
+\]
 Substituting $v=mt$ evaluates the integral as
 $N\log(N/m)-N-mK\log K+mK$.  The cancellation estimates must be
 used here with the same small-$x$ qualification as in
@@ -891,11 +938,14 @@ at $p\nmid N$, and as $p/(p-1)$ at $p\mid N$.
      \frac{\mu(k)\log k}{\varphi(k)}
   \;=\;-\SS(N)+O\bigl(e^{-c\sqrt{\log K}}\log K\bigr),
 \]
-which is exactly Huang--Li's Lemma~1: subtracting
+which follows from Huang--Li's Lemma~1: subtracting
 $\sum_{k\le K,\,(k,N)=1}\mu(k)\varphi(k)^{-1}\log(K/k)
  =\SS(N)+O(e^{-c_1\sqrt{\log K}})$ from
 $\log K\cdot\sum_{k\le K,\,(k,N)=1}\mu(k)/\varphi(k)
- =O(\log K\,e^{-c_1\sqrt{\log K}})$ gives the claim. The coprimality
+ =O(\log K\,e^{-c_1\sqrt{\log K}})$ gives the claim.  If $K$
+is an integer, replacing $k\le K$ by the defining range $k<K$ changes
+this by one term of size $K^{-1+o(1)}\log K$, which is absorbed by the
+same error. The coprimality
 condition is carried throughout: without it the limiting constant is
 not $\SS(N)$. Independently:
 with $f(s)=\prod_{p\nmid N}\bigl(1-\frac{p^{-s}}{p-1}\bigr)$ one has
@@ -921,10 +971,21 @@ $\AAA(N)<1$.  The Bombieri--Vinogradov estimate used by Huang--Li and
 recalled in the proof of Proposition~\ref{prop:onesided} gives
 $|C(N)|\le U(N)=\AAA(N)N+O_B(N(\log N)^{-B})$, while the least prime
 $q_0\nmid N$ satisfies $q_0\ll\log N$ and hence
-$1-\AAA(N)\gg(\log N)^{-2}$.  Choosing the error exponents in (22)
-and in $U(N)$ larger than $2$ therefore makes $\tilde r(N)>0$ for all
-sufficiently large even $N$.  This is the binary Goldbach implication
-used here.  Moreover, since
+$1-\AAA(N)\gg(\log N)^{-2}$.  Choosing the error exponents in (22) and in $U(N)$ larger than $2$
+therefore gives the quantitative lower bound
+\[
+ \widetilde r(N)\gg \frac{N}{(\log N)^2}.
+\]
+On the other hand,
+\[
+ \widetilde r(N)=
+ \sum_{\substack{p+q=N\\ p,q\ {\rm prime}}}\log p\,\log q
+ +O\bigl(N^{1/2}\log^2N\bigr),
+\]
+because the omitted terms have at least one proper prime power.  The
+error is $o(N(\log N)^{-2})$, so the prime--prime weighted sum is
+positive for all sufficiently large even $N$.  This is the binary
+Goldbach implication used here.  Moreover, since
 $\SS(N)\ge2\prod_{p>2}(1-(p-1)^{-2})\gg1$, equation~(22) gives
 $\tilde r(N)\sim\SS(N)N$ if and only if $C(N)=o(N)$; that latter
 condition is not proved here. \qed
@@ -959,7 +1020,10 @@ The least prime $q_0\nmid N$ satisfies $q_0\ll\log N$, hence
 \]
 Substituting \eqref{eq:onesided} and taking $A,B>2$ leaves a positive
 main term of size at least a fixed multiple of $N(\log N)^{-2}$ for
-all sufficiently large $N$.  Thus $\widetilde r(N)>0$.
+all sufficiently large $N$.  Since the contribution to
+$\widetilde r(N)$ from terms with a proper prime power is
+$O(N^{1/2}\log^2N)=o(N(\log N)^{-2})$, the prime--prime weighted
+Goldbach sum is positive.  Hence binary Goldbach follows.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:nolog}]
@@ -968,8 +1032,23 @@ Since $|E_3(\alpha)|\le B_\mu(N)$, the same calculation gives
  \widetilde r(N)\ge \SS(N)(1-\AAA(N))N-B_\mu(N)
  +o\!\left(\SS(N)(1-\AAA(N))N\right).
 \]
-Equation~\eqref{eq:nolog} therefore implies $\widetilde r(N)>0$ for
-all sufficiently large even $N$.
+Equation~\eqref{eq:nolog} leaves a positive margin
+$\gg_\varepsilon N(\log N)^{-2}$.  As above, this dominates the
+$O(N^{1/2}\log^2N)$ proper-prime-power contribution, so the
+prime--prime weighted Goldbach sum is positive for all sufficiently
+large even $N$.
+
+Finally, the full hypothesis $EH_\mu(N^{\theta'})$ gives, for every
+$L>0$,
+\[
+ B_\mu(N)\le (\log K)
+ \sum_{\substack{k<K\\(k,N)=1}}|\Emu(N;k)|
+ \ll_L \frac{N}{(\log N)^{L-1}}.
+\]
+Taking $L>3$ and using
+$\SS(N)(1-\AAA(N))N\gg N(\log N)^{-2}$ shows that
+\eqref{eq:nolog} holds eventually, for example with any fixed
+$0<\varepsilon<1$ after increasing $N$.
 \end{proof}
 
 % =====================================================================
@@ -1017,9 +1096,9 @@ $\log(k/(N-n))=-\log m$, so
     \sum_{\substack{k<(N-1)/\alpha\\ (k,m)=1}}\mu^2(k)\,\Lambda(N-mk).
 \end{equation}
 (The term $m=1$ drops out since $\log1=0$.) The trivial bound is
-$\Delta\ll N(\log N)^2$, which exceeds the target
-$O(N(\log N)^{-A})$, so $\Delta$ is not negligible and needs its own
-treatment.
+$\Delta\ll N(\log N)^2$, which is far above the target
+$O(N(\log N)^{-A})$.  Thus the trivial estimate does not make
+$\Delta$ negligible, and the term needs its own treatment.
 
 It does close, by the machinery already used above and under
 hypotheses Huang--Li already assume. Indeed $\Delta$ has exactly the
@@ -1063,8 +1142,10 @@ Counting on the pair removes any extra distributional input from this
 tail estimate. Bounding each
 progression separately by $N/[m,b^2]+1$ with $[m,b^2]\ge b^2$ drops the
 factor $1/m$ and drops the constraint that an admissible $k$ exists at
-all; the resulting $+1$ then contributes $\alpha\sqrt N\log N$.
-That crude estimate would therefore require $\alpha<\sqrt N$; the
+all; with the factors $\Lambda\ll\log N$ and
+$\log m\ll\log N$, the resulting $+1$ then contributes
+$\ll\alpha\sqrt N(\log N)^2$.  That crude estimate would therefore
+require $\alpha<\sqrt N$ up to logarithmic factors; the
 pair count above avoids this auxiliary restriction. What is left is the progression main term.  For fixed $m$ the $k$-range
 has length $K=(N-1)/\alpha$, hence the corresponding $n=N-mk$ interval
 has length $mK$.  Multiplying this by the local density
@@ -1171,9 +1252,10 @@ $(k,mN)=1$, and the $(k,N)=1$ that is left over after \eqref{eq:mu2mk}
 is discarded by Lemma~\ref{lem:degen} at a cost of $O(N^{o(1)})$, as at
 \eqref{eq:R1}.
 
-For $\Xi_{\mathrm{mean}}$, since $n>Y_k$ iff
-$k>R_n:=\lceil(N-n)/\alpha\rceil-1$, exchanging gives
-$\Xi_{\mathrm{mean}}=\sum_{n<N}a_n(\rho_N(K-1)-\rho_N(R_n))$, where
+For $\Xi_{\mathrm{mean}}$, put $K_-:=\lceil K\rceil-1$, so that
+for integer $k$ the condition $k<K$ is exactly $k\le K_-$. Since
+$n>Y_k$ iff $k>R_n:=\lceil(N-n)/\alpha\rceil-1$, exchanging gives
+$\Xi_{\mathrm{mean}}=\sum_{n<N}a_n(\rho_N(K_-)-\rho_N(R_n))$, where
 \[
   \rho_N(R):=\sum_{\substack{d\le R\\ (d,N)=1}}\frac{\mu(d)}{\varphi(d)}
   \;\ll\;e^{-c_1\sqrt{\log R}}
@@ -1182,10 +1264,13 @@ $\Xi_{\mathrm{mean}}=\sum_{n<N}a_n(\rho_N(K-1)-\rho_N(R_n))$, where
 by \cite[Lemma~1]{HL}, a form of \cite[Lemma~2.1]{GY} --- the
 hypothesis $\log N\ll\log R$ is part of the statement and is checked
 below --- and $a_n=\Lambda(n)\mu(N-n)$. Split at $N-n=H$ with
-$H:=2N^{1-\theta'/2}$. On $N-n\le H$ use $|\rho_N|\ll1$ and
-$\sum_{N-H\le n<N}|a_n|\ll H\log N$, which is $\ll_AN(\log N)^{-A}$
-since $1-\theta'/2<1$. On $N-n>H$ one has $R_n\ge N^{\theta'/2}$, so
-both arguments of $\rho_N$ meet its hypothesis against $n=N$ and both
+$H:=2N^{1-\theta'/2}$. On $N-n\le H$ use the elementary bound
+$|\rho_N(R)|\le\sum_{d\le R}1/\varphi(d)\ll\log(2+R)\ll\log N$
+and $\sum_{N-H\le n<N}|a_n|\ll H\log N$.  This contributes
+$\ll H(\log N)^2\ll_AN(\log N)^{-A}$ since
+$1-\theta'/2<1$. On $N-n>H$ one has $R_n\ge N^{\theta'/2}$, so
+both arguments $K_-\asymp K$ and $R_n$ of $\rho_N$ meet its hypothesis
+against $N$, and both
 terms are $\ll e^{-c\sqrt{\theta'\log N}}$; with
 $\sum_{n<N}|a_n|\ll N$ this is $\ll_AN(\log N)^{-A}$ as well.
 \end{proof}
@@ -1198,6 +1283,17 @@ the shifted-prime setting, and Huang--Li \cite{HL} adapt it to the
 Goldbach shift.  Theorem~\ref{thm:C} claims no novelty for that chain;
 it keeps the surviving $E_3$ term explicit.  The fixed-class feature is
 also present in \cite{MV17,HL}.
+
+More recently, Cantarini \cite{Cantarini} studies weighted averages of
+the diagonal M\"obius-twisted Elliott--Halberstam problem, under GRH and
+additional hypotheses, for Sobolev and H\"older--Zygmund weights.  That
+work concerns weighted diagonal averages over moduli.  The present
+Theorem~\ref{thm:A} instead exploits the particular signed fixed-class
+combination occurring in Huang--Li's $E_4$ term and, in the
+Corollary-1 regime, obtains its required bound unconditionally from
+divisor switching and Bombieri--Vinogradov.  We make no claim that this
+mechanism supplies a corresponding bound for the full diagonal
+$EH_\mu$ average studied there.
 
 The moving-cut defect is not claimed as new: Moya \cite{Moya} records
 it and repairs the original argument under Huang--Li's hypotheses.
@@ -1226,11 +1322,16 @@ the parity problem}, J. Number Theory \textbf{180} (2017), 643--659.
 Studies in Advanced Mathematics \textbf{97}, Cambridge University
 Press, 2007.
 
+\bibitem{Cantarini} M.~Cantarini,
+\emph{Averages of diagonal Elliott--Halberstam problem twisted by
+M\"obius function with Sobolev and H\"older--Zygmund weights},
+arXiv:2607.09110 [math.NT], July 2026.
+
 \bibitem{MoV2} H.~L.~Montgomery and R.~C.~Vaughan,
 \emph{Multiplicative number theory~II: primes and sieves}, Cambridge
 Studies in Advanced Mathematics \textbf{218}, Cambridge University
-Press, 2025. The Bombieri--Vinogradov theorem used here is \S20.2,
-Theorem~20.2.
+Press, 2026.  The maximal Bombieri--Vinogradov theorem used here is
+from \S20.2.
 
 \bibitem{Moya} R.~Moya, \emph{A Moving-Cut Correction to the
 Huang--Li Conditional Goldbach Argument: Consequences for Diagonal
@@ -1243,14 +1344,14 @@ moving-endpoint repair under Huang--Li's original hypothesis.
 % =====================================================================
 \paragraph{Disclosure statement.} No potential competing interest, financial or non-financial, was
 reported by the author. No funding was received for this work. AI-assisted
-drafting and computational-audit details are reported in the Supplementary
-Material; no computation is used as a premise of a proof.
+drafting and computational auditing were used in preparing the manuscript;
+no computation or AI-generated output is used as a premise of a proof.
 
-\paragraph{Data availability statement.} The code, stored outputs, and Lean~4 development are openly available at
+\paragraph{Data availability statement.} The audit code, stored outputs, and Lean~4 development accompanying this
+manuscript are openly available at
 \url{https://github.com/soke91/arithmetic-convolution-fields}, in the
-directory \texttt{P1-mobius-fixed-class/}. The Supplementary Material
-describes the audit scripts and the numerical checks. No data derived from
-human or animal subjects were used.
+directory \texttt{P1-mobius-fixed-class/}. No data derived from human or
+animal subjects were used.
 
 % =====================================================================
 \end{document}

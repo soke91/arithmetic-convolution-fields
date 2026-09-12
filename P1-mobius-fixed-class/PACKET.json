@@ -9,14 +9,14 @@
   "paper_files": [
     {
       "path": "P1-mobius-fixed-class.tex",
-      "sha256": "18872f2729417610f74127e9f5dbf85902712ab56a4de26bddb75a2de44d6120",
-      "imported_from": "papers/P1-mobius-fixed-class/P1-mobius-fixed-class-small.tex; renamed 2026-09-07 as the canonical manuscript, header rewritten to name its role",
+      "sha256": "7e1319c0c35fef16c1ea4dbe0527665a3c1bb2ecee24704e4d2e3652b4aed128",
+      "imported_from": "papers/P1-mobius-fixed-class/P1-mobius-fixed-class-small.tex; renamed 2026-09-07 as the canonical manuscript, header rewritten to name its role; revised 2026-09-08 in the working tree (paper session), hash re-pinned 2026-09-12 at publication",
       "source_commit": "working tree"
     },
     {
       "path": "P1-mobius-fixed-class.pdf",
-      "sha256": "d85a1147cffb0860f5f886965bc4a180e7843ee504f437c1fcb9af6b976bb3c6",
-      "imported_from": "papers/P1-mobius-fixed-class/P1-mobius-fixed-class-small.pdf; renamed 2026-09-07 as the canonical manuscript",
+      "sha256": "1cd7124e9ead8fb082a50d2f80d955741595429c9cfc4015a1a354f809dcc698",
+      "imported_from": "papers/P1-mobius-fixed-class/P1-mobius-fixed-class-small.pdf; renamed 2026-09-07 as the canonical manuscript; revised 2026-09-08 in the working tree (paper session), hash re-pinned 2026-09-12 at publication",
       "source_commit": "working tree"
     },
     {
