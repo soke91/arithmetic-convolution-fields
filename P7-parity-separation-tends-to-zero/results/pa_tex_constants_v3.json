@@ -1,8 +1,8 @@
 {
  "tex": {
   "path": "paper\\kappa_tends_to_zero.tex",
-  "sha256": "29abfef997e972be15ee0a8017e374879518a460778666f0bdd6bd38eba58260",
-  "bytes": 94251,
+  "sha256": "ad6fbdc652d575e3b8a12a58aedcdf0b52e5142e17fdbb8f3e18fca9fe1661a2",
+  "bytes": 94606,
   "body_lines": 1477,
   "occurrences": 140,
   "references": 26
@@ -107,7 +107,7 @@
   {
    "name": "A1",
    "holds": true,
-   "detail": "paper\\kappa_tends_to_zero.tex: 94251 bytes, 1601 lines (1477 in the body before the bibliography), SHA-256 29abfef997e972be15ee0a8017e374879518a460778666f0bdd6bd38eba58260; 140 literal occurrences, 26 of them inside \\cite[...] or a version string"
+   "detail": "paper\\kappa_tends_to_zero.tex: 94606 bytes, 1601 lines (1477 in the body before the bibliography), SHA-256 ad6fbdc652d575e3b8a12a58aedcdf0b52e5142e17fdbb8f3e18fca9fe1661a2; 140 literal occurrences, 26 of them inside \\cite[...] or a version string"
   },
   {
    "name": "A2",

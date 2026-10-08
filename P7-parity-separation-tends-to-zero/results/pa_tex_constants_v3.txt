@@ -2,7 +2,7 @@ pa_tex_constants_v3 -- every numeric literal in the current manuscript
 source: paper\kappa_tends_to_zero.tex
 clauses A1-A2, K1-K5, G1-G4, X1-X3, B1, N1, R1, W1-W2, Z1, D1, Q1 in the header
 
-A1   HOLDS    paper\kappa_tends_to_zero.tex: 94251 bytes, 1601 lines (1477 in the body before the bibliography), SHA-256 29abfef997e972be15ee0a8017e374879518a460778666f0bdd6bd38eba58260; 140 literal occurrences, 26 of them inside \cite[...] or a version string
+A1   HOLDS    paper\kappa_tends_to_zero.tex: 94606 bytes, 1601 lines (1477 in the body before the bibliography), SHA-256 ad6fbdc652d575e3b8a12a58aedcdf0b52e5142e17fdbb8f3e18fca9fe1661a2; 140 literal occurrences, 26 of them inside \cite[...] or a version string
 
 the seven certificates, both rational bounds recomputed from the stored vectors
 A2   HOLDS    certificate rows == cell rows and e/N agree at 2^16 yes, 2^18 yes, 2^20 yes, 2^22 yes, 2^24 yes, 2^26 yes, 2^28 yes

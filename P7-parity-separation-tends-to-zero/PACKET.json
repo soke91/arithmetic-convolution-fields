@@ -3,21 +3,21 @@
   "paper_id": "P7-parity-separation-tends-to-zero",
   "public_directory": "P7-parity-separation-tends-to-zero",
   "public_repository": "https://github.com/soke91/arithmetic-convolution-fields",
-  "source_snapshot": "77caeb9d7c11a9db573c8a1aae19bc233ee0632e",
+  "source_snapshot": "1e0c1e2a57d830ee9b1d0ed054ffab5dc53807bb",
   "paper_source": "P7-parity-separation-tends-to-zero.tex",
   "paper_pdf": "P7-parity-separation-tends-to-zero.pdf",
   "paper_files": [
     {
       "path": "P7-parity-separation-tends-to-zero.tex",
-      "sha256": "29abfef997e972be15ee0a8017e374879518a460778666f0bdd6bd38eba58260",
+      "sha256": "ad6fbdc652d575e3b8a12a58aedcdf0b52e5142e17fdbb8f3e18fca9fe1661a2",
       "imported_from": "generations/v3/paper/kappa_tends_to_zero.tex",
-      "source_commit": "77caeb9d7c11a9db573c8a1aae19bc233ee0632e"
+      "source_commit": "1e0c1e2a57d830ee9b1d0ed054ffab5dc53807bb"
     },
     {
       "path": "P7-parity-separation-tends-to-zero.pdf",
-      "sha256": "313c1a573dcc4cf43797f8ff2dcf2bd87b39020f0fd6ae7ab43fea68a83c8595",
+      "sha256": "3742ed35def2b708308ea2a8ce09786b3fda0245b06254095cd41179fa67b2dc",
       "imported_from": "pdflatex x3 of the .tex in ghcr.io/xu-cheng/texlive-small (errors 0, warnings 0, undefined 0, overfull 0, underfull 0, 25 pp.)",
-      "source_commit": "77caeb9d7c11a9db573c8a1aae19bc233ee0632e"
+      "source_commit": "1e0c1e2a57d830ee9b1d0ed054ffab5dc53807bb"
     }
   ],
   "env_files": [
@@ -617,13 +617,13 @@
       "kind": "results",
       "name": "pa_tex_constants_v3.txt",
       "source": "generations/v3/results/pa_tex_constants_v3.txt",
-      "sha256": "4c2db8f3b14740278477d62d1302795cf09791cf52d3041f179429544b003bbf"
+      "sha256": "ca08b53f3b2c8d1e87edf83ea4ffead5cb5b726c98f8a9b16b3ef48a64f9df44"
     },
     {
       "kind": "results",
       "name": "pa_tex_constants_v3.json",
       "source": "generations/v3/results/pa_tex_constants_v3.json",
-      "sha256": "1bde31de5386b6ad791a9858b04d265ee62bdd95e3a7fa7c3042685391b8b279"
+      "sha256": "acd5b78a7e4c2c19aa1965f6fb99775cc093958cd73b7a848b6ff35716184cf3"
     },
     {
       "kind": "results",
