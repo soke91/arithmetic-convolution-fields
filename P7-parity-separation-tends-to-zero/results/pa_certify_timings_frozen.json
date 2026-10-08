@@ -1,7 +1,7 @@
 {
  "what": "The authors' timing record for `pa_certify.py --verify` over the seven advertised cells.  FROZEN: no step of the reproduction writes this file, so a reader's own run cannot overwrite the figures the paper quotes.  A reader's run lands in pa_certify.{txt,json} instead, and the constants checker reports it beside these without scoring it.",
  "command": "python code/pa_certify.py --verify",
- "verifier_sha256": "e377c999ed61844d2f4099275036ee8a8bf228511ef7f2390867ac323ae2b57c",
+ "verifier_sha256": "a6aa7ab322eaa204bc19b1a9859b6f872cbe7bb744e0779f37eccf330406ab55",
  "threads": 4,
  "cells": [
   16,
@@ -12,27 +12,27 @@
   26,
   28
  ],
- "wall_s": 79.7,
+ "wall_s": 73.2,
  "per_cell_s": {
-  "16": 7.4,
+  "16": 3.6,
   "18": 0.1,
-  "20": 0.1,
-  "22": 0.5,
-  "24": 3.1,
-  "26": 12.0,
-  "28": 56.4
+  "20": 0.2,
+  "22": 0.6,
+  "24": 4.1,
+  "26": 13.2,
+  "28": 51.4
  },
- "five_small_cells_s": 11.2,
- "cell_2e26_s": 12.0,
- "cell_2e28_s": 56.4,
- "parts_sum_s": 79.6,
+ "five_small_cells_s": 8.6,
+ "cell_2e26_s": 13.2,
+ "cell_2e28_s": 51.4,
+ "parts_sum_s": 73.2,
  "verdict": "FAILS: none ; CERTIFICATES: VALID",
  "compiler_cache": "empty (a first run)",
  "repeat_runs_warm_wall_s": [
-  66.5,
-  66.6
+  73.9,
+  68.1
  ],
- "verify_lower30_s": 247.5,
+ "verify_lower30_s": 230.3,
  "hardware": {
   "cpu": "11th Gen Intel Core i5-11500 @ 2.70GHz",
   "cores": "6 physical, 12 logical",
@@ -42,5 +42,5 @@
   "numpy": "2.5.3",
   "numba": "0.67.0"
  },
- "note": "Times on other hardware differ; the band rebuild at 2^28 dominates the total.  This is a FIRST run of these bytes, with an empty compiler cache, which is what a reader gets: the 2^16 cell takes 7.4 s here against 0.8 s in a repeat run with the cache warm, so the one-time compilation of the int64 kernels is about 6.6 s of it, and the five small cells together come to 11.2 s here against 3.9 s warm.  The repeat runs took 66.5 s and 66.6 s in total.  The total is set by the 2^28 band rebuild, whose run-to-run variation on this machine (48.8 to 56.4 s across these three runs) is larger than the compilation the warm runs save.  The machine was NOT idle while these runs were taken: between 5.6 and 7.5 of its twelve logical processors were busy with unrelated work throughout -- other sessions on this shared machine -- while the verifier itself averaged about 1.3, so these figures carry that load.  Read them as that machine's scale, not as a constant; what reproduces exactly is the arithmetic, not the clock.  A first cold run of these same bytes came to 70.7 s with its three parts summing to 70.5, which this record's own breakdown tolerance of 0.2 s rejects by a floating-point hair; it was discarded and the run above taken in its place, under heavier load from the other sessions.  Nothing but the clock differed."
+ "note": "PROCEDURE, FIXED.  The record is ONE run of the command with an empty compiler cache -- a first run, which is what a reader gets -- and no run is chosen over another: nothing is discarded, no figure is averaged, and arithmetic between the rounded components is never a reason to set a measurement aside.  The other runs of the same command on the same machine are reported here as an observed range, so the spread is read off this record rather than from any rule for selecting among runs.  The machine is polled before the run and the run waits up to half an hour for it to go quiet; if it does not, the run is taken anyway and the load is disclosed below.\nWHAT THESE FIGURES ARE.  The cold run above took 73.2 s: 8.6 s for the five cells e <= 24 together, 13.2 s at 2^26 and 51.4 s at 2^28, summing to 73.2 under the one-decimal rounding this record and the manuscript both print.  The two runs with the cache warm came to 73.9 s and 68.1 s.  The 2^28 band rebuild sets the total, and across these three runs it moved between 51.4 and 55.3 s -- more than the one-time kernel compilation the warm runs save: the 2^16 cell takes 3.6 s here against 0.7 s warm, and the five small cells together 8.6 s here against 4.0 s warm.  Re-establishing the 2^30 lower endpoint took 230.3 s.\nTHE LOAD, DISCLOSED.  The machine was polled every two minutes for half an hour before the cold run and never went quiet: the samples ran from 3.4 to 7.4 of its twelve logical processors busy with unrelated work from other sessions.  During the three runs between 6.2 and 6.7 of the twelve were busy with that work, while the verifier itself averaged about 1.4.  The figures carry that load, which is why they are reported as a range and are to be read as this machine's scale under load and not as a constant.  Times on other hardware differ; what reproduces exactly is the arithmetic, not the clock."
 }

@@ -6,7 +6,7 @@
   the upper bound of Lemma 7(ii); the exactness on Y-smooth rows with the row identity (18) of
   Lemma 10; the large-prime removal at d = 1, which is Lemma 22; the Bonferroni identity used
   in Lemma 15 and the exact size of its truncation error; the parity split and the ratio bound
-  (24); and the containment Ax in K_Q for x >= 0, the cone (5).
+  (26); and the containment Ax in K_Q for x >= 0, the cone (5).
 
   WHAT IS HERE AND WHAT IS NOT.  The paper's analytic estimates -- Mertens
   (M1)-(M3), the effective prime number theorem (P), the effective Moebius bound (L), Rankin's
@@ -50,7 +50,7 @@ Five groups of statements.
 3. **Bonferroni** (the identity used in Lemma 15 of the paper): `bonferroni`,
    `bonferroni_error_eq`,
    `bonferroni_error_le`.
-4. **Parity split** (the split and the ratio bound (24) of the paper): `parity_split`,
+4. **Parity split** (the split and the ratio bound (26) of the paper): `parity_split`,
    `par_ratio`.
 5. **The cone step** (`Ax` in the cone (5) of the paper for `x >= 0`): `infDist_coneHull_le`.
 -/
@@ -70,7 +70,7 @@ def Smooth (Q m : ℕ) : Prop := ∀ p ∈ m.primeFactors, p ≤ Q
 instance decidableSmooth (Q m : ℕ) : Decidable (Smooth Q m) :=
   inferInstanceAs (Decidable (∀ p ∈ m.primeFactors, p ≤ Q))
 
-/-! ## §1 Lemma 1 --- at most one prime factor above `Q`
+/-! ## §1 Lemma 7 --- at most one prime factor above `Q`
 
 Lemma 7 of the paper is the reason the theorem holds for **every** `N` and not
 only on the ladder `N = 2^e`.  Only the upper bound `N < (Q+1)^2` is used; the
@@ -476,7 +476,7 @@ theorem mert_eq_smoothMert_sub {N Q : ℕ} (hN : N < (Q + 1) ^ 2) :
   ring
 
 /-- **Lemma 22 of the paper, second form.**  `A(N) = M(N) + Σ_{Q<p≤N} M(N/p)`:  for
-`p > Q` the inner `A` is an unrestricted `M`, because `N/p ≤ Q` by Lemma 1(ii).
+`p > Q` the inner `A` is an unrestricted `M`, because `N/p ≤ Q` by Lemma 7(ii).
 This is what makes the identity elementary. -/
 theorem smoothMert_eq_add {N Q : ℕ} (hN : N < (Q + 1) ^ 2) :
     smoothMert Q N = mert N
@@ -632,7 +632,7 @@ theorem moebius_class_sign {a b : ℕ} (hco : Nat.Coprime a b)
     moebius_eq_neg_one_pow_omega ha, ← mul_assoc, ← pow_add,
     Even.neg_one_pow ⟨cardDistinctFactors a, rfl⟩, one_mul]
 
-/-- **The split, the first half of (24) of the paper.**  `{B_a, R_a} = {(U_a + M_a)/2, (U_a − M_a)/2}`,
+/-- **The split, the first half of (26) of the paper.**  `{B_a, R_a} = {(U_a + M_a)/2, (U_a − M_a)/2}`,
 which is which being set by the parity of `ω(a)`. -/
 theorem parity_split {U M B R : ℝ} (hU : B + R = U) (hM : B - R = M ∨ R - B = M) :
     (B = (U + M) / 2 ∧ R = (U - M) / 2) ∨ (B = (U - M) / 2 ∧ R = (U + M) / 2) := by
@@ -640,7 +640,7 @@ theorem parity_split {U M B R : ℝ} (hU : B + R = U) (hM : B - R = M ∨ R - B 
   · exact Or.inl ⟨by linarith, by linarith⟩
   · exact Or.inr ⟨by linarith, by linarith⟩
 
-/-- **The ratio bound (24) of the paper.**  If `|M_a| < U_a` then `B_a > 0` --- no retained class is
+/-- **The ratio bound (26) of the paper.**  If `|M_a| < U_a` then `B_a > 0` --- no retained class is
 dead --- and `R_a/B_a ≤ (U_a + |M_a|)/(U_a − |M_a|)`. -/
 theorem par_ratio {U M B R : ℝ} (hU : B + R = U) (hM : B - R = M ∨ R - B = M)
     (h : |M| < U) : 0 < B ∧ R / B ≤ (U + |M|) / (U - |M|) := by

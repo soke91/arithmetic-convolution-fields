@@ -47,7 +47,7 @@ the pair is tight at the optimum, and only the ROUNDING to integers costs anythi
 THE SCALES ARE SIZED, AND THE int64 KERNELS ARE GUARDED BY THE ACTUAL INTEGER SUMS
 
 `K` and `D` are powers of ten SIZED so the two int64 kernels have room (`scales`).  Sizing is not a
-proof, and for the primal the advertised bound was not even true -- see the CHANGE NOTE.  So
+proof, and for the primal the sizing bound is false at every stored cell (below).  So
 before either kernel runs, the quantity that actually bounds its accumulator is computed as a PYTHON
 INTEGER from the very vector that will be passed in, and the kernel runs only if it fits:
 
@@ -85,9 +85,7 @@ maximum.
 So C2 is stated below in terms of the ACTUAL sums, C4 validates every index and C5 the stored
 fields, `abs` is applied after the conversion to Python integers, every float-to-int64 cast is
 bounded first, and the divisor count over `rows x cols` is a `prange` kernel rather than a dense
-matrix.  Every guard and every check below was run
-against all seven stored certificates BEFORE it was registered, and all of them pass.  This job
-rewrites no stored certificate.
+matrix.  Every guard and every clause below holds on all seven stored certificates.
 
 Floats are used ONLY to propose `lambda` and `q`.  Every number that appears in a verdict is computed
 from the integers, and `--verify` recomputes all of it from the packet's own files with no solver.
@@ -100,18 +98,18 @@ WHERE THE FLOAT OPTIMUM COMES FROM, per size (the finder's input only)
            dual `w` and the primal support (`y_support` are indices into vB, `y_values` the weights)
            at KKT `1.7e-16`, `1.0e-15`, `3.1e-15`.  No solve is needed, and at `2^20` this avoids the
            700 s dense run that `conedual_exact_kappa_small_cells_20.txt` records.
-  26, 28   `pa_certify_big.py`, from a colgen separator that carries its primal.  An earlier
-           version of this text said this could not be done; `conedual_colgen.py` was then made
-           to store `y_support`/`y_values` and it became the same storage-and-rounding step.
+  26, 28   `pa_certify_big.py`, from a colgen separator that carries its primal: `conedual_colgen.py`
+           stores `y_support`/`y_values` beside the dual, so these two cells are the same
+           storage-and-rounding step as the three above.
 
 EXACT ARITHMETIC WITHOUT A PYTHON LOOP
 
 Squared norms and inner products that can exceed int64 are taken in numpy OBJECT dtype
 (`np.sum(v.astype(object)**2)`): arbitrary-precision Python integers, elementwise, with no explicit
-Python loop over rows -- the rule in the project's compute rules forbids the loop, not the big integers.  Where
+Python loop over rows: what is avoided is the Python loop, not the big integers.  Where
 int64 suffices the magnitude is bounded first and clause C2 checks it.
 
-COMPUTE RULES (the project's compute rules, both sections read before this file was written)
+HOW THE WORK IS DONE
 
   Cells are LOADED (`from cell_cache import load`) for `rows`, `c_vB`, `c_vR`, `N`, `Q`, `thr`.  The
   band is not cached (cell_cache says so), so it is rebuilt exactly as `cell_cache._build` does -- one
@@ -124,20 +122,16 @@ COMPUTE RULES (the project's compute rules, both sections read before this file 
 
   THREADS, the one rule, and it is the code's: `nth = max(1, min(ACF_THREADS or 4, 8, numba's own
   thread count))`.  So the DEFAULT is 4 and the CAP is 8 -- `ACF_THREADS=8` is honoured, `ACF_THREADS=16`
-  is clamped to 8, which is this machine's limit in the project's compute rules -- and numba's count
-  clamps it further on a smaller machine (a 4-core reader gets 4).  Every measurement in
+  is clamped to 8 -- and numba's count
+  clamps it further on a smaller machine (a 4-core reader gets 4).  The cap is this machine's limit.  Every measurement in
   `results/pa_certify_timings_frozen.json` and in section 11 was taken at the default 4, which is also
-  what the reproduction notes tell a reader to set.  (This paragraph used to say "threads capped at 4",
-  which the code never did.)
+  what the reproduction notes tell a reader to set.
 
-  DEVIATION, declared: all of this runs on this machine although `2^20`-`2^28` are at or above the `2^20`
-  threshold.  Safe here by the governing criterion -- this machine's remit is readouts and short jobs: the
-  largest cell rebuilds its band in about half a minute at a peak near 4 GB and every run of this
-  file finishes in minutes, while nothing here iterates or solves.  The whole seven-cell
-  `--verify` is measured and its wall time reported.
+  COST.  The largest cell rebuilds its band in about half a minute at a peak near 4 GB, and every run
+  of this file finishes in minutes; nothing here iterates or solves.  The whole seven-cell `--verify`
+  is measured and its wall time reported.
 
-CLAUSES.  No literal below is edited after any output of the revision that
-introduced it; every "voids" is enforced in code, not in prose.
+CLAUSES.  Every "voids" below is enforced in code, not in prose.
 
   C0  CONTROL.  The cell is ESTABLISHED, not read: `N = 2^e`, `Q = floor(sqrt N)`, `q1` the least
       prime above `Q` and `thr = floor(N/q1)` are derived here from `e` alone, and the COMPLETE list of
@@ -187,9 +181,7 @@ introduced it; every "voids" is enforced in code, not in prose.
       failure -- because a run that opens the selected certificates alone cannot speak for the packet's
       contents: a damaged certificate outside the selection is never read.  The announcement and the
       final `CERTIFICATES:` line of such a run are scoped to the selected cells, and the record carries
-      `completeness_checked: false`.  (Before this was so, `--verify --cells 16` printed "every
-      advertised certificate re-checked" and an unqualified `CERTIFICATES: VALID` beside an invalid
-      `2^28` file it had not opened.)
+      `completeness_checked: false`.  Only `--verify` with no `--cells` speaks for the packet.
   C9  CONTROL.  The only float -> integer decision left in the shipped path -- the canonical sieve's
       loop bound `int(limit ** 0.5)`, and `cell_cache._build`'s `int(N ** 0.5)` and `int(q1 ** 0.5)` --
       equals `math.isqrt` at EVERY integer below `2^31`, which is every limit this path can sieve.  The
@@ -216,7 +208,10 @@ introduced it; every "voids" is enforced in code, not in prose.
       unsigned vector, would be converted into the integer vector the clauses expect and pass as it.
   L3  (`--verify-lower30`).  `theta_lambda >= 0` on EVERY even column of the rebuilt `2^30` band; `J`,
       `H`, `D_p` recompute from the stored vector; `c6^2 H D_p < J^2 10^12`; `c6` is MAXIMAL; and that
-      inequality is equivalent to `kappa^2 > (c6/10^6)^2`.  No upper endpoint is claimed at `2^30`.
+      integer inequality is equivalent to `J^2/(H D_p) > (c6/10^6)^2`, which IMPLIES
+      `kappa^2 > (c6/10^6)^2` because `J^2/(H D_p) <= kappa^2` is the left half of `eq:cert`.  The
+      implication is one way: this clause checks the equivalence it can check exactly, in integers, and
+      the bound on `kappa` follows from it.  No upper endpoint is claimed at `2^30`.
   L4  REPRODUCTION (`--verify-lower30`).  The certificate's `J`, `H`, `D_p` and `c6` are the four
       integers the solver run's ledger records and the paper prints, digit for digit.  A rebuild at a
       different rounding scale certifies the same cell with different valid integers; this is the clause
@@ -601,8 +596,8 @@ def k_fit(cols, qs, rows, out):
 def k_coldiv(cols, rows, out):
     """out[j] = #{i : rows[i] | cols[j]}.  prange over columns; each writes its own slot.
 
-    This is C2's cross-check of `k_fit` -- `sum_d fit_d = sum_j q_j * out[j]` -- and replaces the
-    dense `rows x cols` broadcast an earlier version built (594 MB at 2^26).
+    This is C2's cross-check of `k_fit` -- `sum_d fit_d = sum_j q_j * out[j]` -- computed without a
+    dense `rows x cols` broadcast, which would allocate about 594 MB at 2^26.
     """
     for j in prange(cols.size):
         c = cols[j]
@@ -624,9 +619,9 @@ def pow10_at_most(limit: int) -> int:
 
 def scales(nrows: int, R: int):
     """the STARTING scales: K sized by nrows (|lambda_d| <= K, so sum_d |lambda_d| <= nrows*K) and D
-    sized by R.  Sizing is not a proof -- the `(R+1)*D` bound once advertised for the primal is false
-    at every stored cell (see the changelog above) -- so the callers below reduce the scale by
-    factors of ten until the ACTUAL integer sum fits, and clause C2 reports the sums it used.
+    sized by R.  Sizing is not a proof -- the `(R+1)*D` bound on the primal sum is false at every
+    stored cell -- so the callers below reduce the scale by factors of ten until the ACTUAL integer sum
+    fits, and clause C2 reports the sums it used.
     """
     return pow10_at_most(SAFE // max(1, nrows)), pow10_at_most(SAFE // max(1, R + 1))
 
@@ -1412,7 +1407,7 @@ def lower30_verify():
            ("J > 0", J > 0),
            ("c6^2 H D_p < J^2 10^12", c6 * c6 * H * Dp < J * J * 10 ** 12),
            ("c6 is maximal", not ((c6 + 1) ** 2 * H * Dp < J * J * 10 ** 12)),
-           ("equivalent to kappa^2 > (c6/10^6)^2",
+           ("equivalent to J^2/(H D_p) > (c6/10^6)^2, which implies kappa^2 > (c6/10^6)^2",
             (Fraction(J * J, H * Dp) > Fraction(c6, 10 ** 6) ** 2)
             == (c6 * c6 * H * Dp < J * J * 10 ** 12))]
     bad = [k for k, v in chk if not v]

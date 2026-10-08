@@ -766,7 +766,7 @@ def evaluate(e, T, ref14):
 
 def main(argv):
     cells = tuple(int(a) for a in argv if a.isdigit()) or CELLS
-    # the launcher's NUMBA_NUM_THREADS is the grant's cap and wins over ACF_THREADS
+    # NUMBA_NUM_THREADS, when set, caps the thread count and wins over ACF_THREADS
     nth = max(1, min(NTHREAD, 16, int(numba.config.NUMBA_NUM_THREADS)))
     set_num_threads(nth)
     say("conedual_pole_term -- the s = 0 pole term (clauses in the file header)")

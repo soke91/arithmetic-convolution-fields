@@ -223,7 +223,7 @@ def clause(name, val, lit, nota, n, desc, mantissa=False):
     ok = which != "neither"
     if not ok:
         BAD.append(name)
-    # D1 only speaks when the two renderings actually differ (an earlier version lacked this guard)
+    # D1 only speaks when the two renderings actually differ
     if ok and not mantissa and t != r and which != want:
         MISM.append((name, lit, nota, which, t, r))
     REC.append(dict(name=name, form=desc, value=mp.nstr(mp.mpf(val), 25), literal=lit,
@@ -524,10 +524,9 @@ def main() -> int:
     say()
     tex = None
     # The packet's own paper source is looked for FIRST, and nothing outside the directory this script
-    # sits in is consulted at all.  An earlier version tried a path in another repository before the
-    # local one, so inside a distributed copy these checks could silently read a different manuscript
-    # from the one shipped beside them.  Two candidates only: the packet layout (the .tex beside
-    # `code/`) and the working layout (`../paper/`).
+    # sits in is consulted at all: looking elsewhere first would let a distributed copy read a different
+    # manuscript from the one shipped beside it.  Two candidates only: the packet layout (the .tex
+    # beside `code/`) and the working layout (`../paper/`).
     for cand_p in (os.path.join(os.path.dirname(HERE),
                                 "P7-parity-separation-tends-to-zero.tex"),
                    os.path.join(os.path.dirname(HERE), "paper", "kappa_tends_to_zero.tex")):
@@ -564,7 +563,7 @@ def main() -> int:
     say("D1: %s" % ("%d rendering mismatch(es)" % len(MISM) if MISM else "clean"))
 
     with io.open(OUTJ, "w", encoding="utf-8", newline="\n") as f:
-        json.dump(dict(dps=mp.mp.dps, source="generations/v3/paper/kappa_tends_to_zero.tex",
+        json.dump(dict(dps=mp.mp.dps, source="P7-parity-separation-tends-to-zero.tex",
                        clauses=REC, failures=BAD,
                        display_mismatches=[dict(name=n, literal=l, notation=no, matches=w,
                                                 trunc=t, round=r) for n, l, no, w, t, r in MISM],

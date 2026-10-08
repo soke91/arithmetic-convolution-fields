@@ -12,7 +12,7 @@ under `code/` and `results/` are generated from the exact sources and hashes in
 ## Reproduce
 
 The certificates of §11 are **verified** from the files in this directory with no solver (steps 1–4),
-and step 3 checks every number §11 prints against them. The four construction bounds (`0.6982` …
+and step 3 checks every number §11 and Appendix A print against them. The four construction bounds (`0.6982` …
 `0.5841`) are recomputed exactly from integer class counts only in the optional step 5 (clause `P5`),
 which also re-derives certificates from solver output and so calls a solver (SciPy's nonnegative
 least squares at `2^16` and `2^18`); in steps 1–4 those four bounds are compared with a stored record. Run the commands from **this
@@ -45,8 +45,8 @@ prints the number it used.
 
 **Which steps write which files.** Each of steps 1, 2, 3 and 4 rewrites its own record under
 `results/`; step 5 also rewrites the certificates it re-derives. The authors' timing record
-`results/pa_certify_timings_frozen.json` is written by **no** step: it is the frozen measurement §11
-quotes, and your own runs land beside it.
+`results/pa_certify_timings_frozen.json` is written by **no** step: it is the frozen measurement
+Appendix A quotes, and your own runs land beside it.
 
 | step | writes |
 |---|---|
@@ -97,7 +97,7 @@ rebuilt and compared against the cached row counts element for element (C1); eve
 and well formed (C5); every stored index validated before it indexes anything (C4); both int64 kernels
 guarded by the actual integer bound on their accumulator (C2); then `θ_λ ≥ 0` swept over **every**
 even-`ω` column of the whole band, `⟨c_𝓞, λ⟩ < 0`, `q ≥ 0`, and both rational bounds of `eq:cert`
-recomputed and matched against the stored values. Expected: `FAILS: none`. On the authors' machine (below) a first run takes about 80 s for all seven cells; `results/pa_certify_timings_frozen.json` holds that run's breakdown, the hardware, and what the figures do and do not reproduce.
+recomputed and matched against the stored values. Expected: `FAILS: none`. On the authors' machine (below) a first run takes about 73 s for all seven cells; `results/pa_certify_timings_frozen.json` holds that run's breakdown, the hardware, and what the figures do and do not reproduce.
 
 C0 is what binds the answer to the question. Without it, a larger cell's cache and certificate
 relabelled as a smaller cell's pass every other check on their own valid data, and the larger cell's
@@ -133,7 +133,7 @@ python code/pa_certify.py --verify-lower30
 `results/pa_cert_2e30_lower.npz` holds the **repaired integral** dual `λ` at `2^30` with `rows`, `J`,
 `H`, `D_p` and `c₆`. This step rebuilds the `2^30` band, sweeps `θ_λ ≥ 0` over every even-`ω` column of
 it, recomputes `J = −⟨c_𝓞,λ⟩`, `H = ‖λ‖²` and `D_p = ‖P‖²` from the stored vector, and checks
-`c₆²·H·D_p < J²·10¹²` with `c₆` maximal — which is `κ(2^30) > c₆/10⁶ = 0.017787`. No upper endpoint is
+`c₆²·H·D_p < J²·10¹²` with `c₆` maximal — equivalently `J²/(H·D_p) > (c₆/10⁶)²`, which **implies** `κ(2^30) > c₆/10⁶ = 0.017787` because `J²/(H·D_p) ≤ κ²` is the left half of the certificate inequality; the implication runs one way. No upper endpoint is
 claimed at `2^30`. Four integers satisfying an inequality prove nothing on their own; the stored `λ` and
 this sweep are what make them the right integers.
 
@@ -144,14 +144,31 @@ integers this step recomputes are the ones §11 prints — `J = 4401612119558212
 the same separator at another scale would certify the same cell with different valid integers; `L4` is
 what keeps the stored certificate the one the paper's numbers come from.
 
-On the authors' machine (below): **247.5 s** in the frozen timing record
+On the authors' machine (below): **230.3 s** in the frozen timing record
 (`results/pa_certify_timings_frozen.json`, field `verify_lower30_s`) — most of it the band rebuild, then
 the sweep. The band at `2^30` is the cost; budget a few minutes and about 16 GB of memory (the memory
 figure was observed when the certificate was built and is not part of a shipped record).
 `python code/pa_certify.py --make-lower30` rebuilds the certificate itself from the stored separator
 (a few minutes), and writes `results/pa_cert_2e30_lower.npz` as well as its own record.
 
-**3. Re-check the numbers §11 prints** against the certificates and the frozen records:
+**One guard in that constructor is an argument rather than a test, and the manuscript now carries the
+argument.** Every kernel the *checks* run — steps 1, 2 and 4 — is preceded by a test of the actual
+integer bound on its accumulator (`C2`, and `L2` on the `2^30` path), and that is unconditional. In
+`--make-lower30`, which is a constructor and not a check, `Σ_d |λ_d| ≤ 2⁶²` is tested before the first
+`θ_λ` sweep and again after the `d = 1` repair, but **not** between the repair and the second sweep. It
+needs no test there, and Appendix A of the manuscript proves why: write `A` and `B` for the sums of the
+positive and of the absolute negative coordinates, so that the quantity guarded before the first sweep is
+`Σ_d |λ_d| = A + B`; the first coordinate is zero at that point, and the repair amount `ρ` is the negated
+minimum of `θ_λ` over the even-`ω` columns, each value of which is a signed subset sum of the
+coordinates and so at least `−B`, hence `0 ≤ ρ ≤ B`. After the repair every partial sum the kernel forms
+is `ρ` plus a signed subset sum of the remaining coordinates, so it lies between `−B` and `A + B` — in
+magnitude bounded by the very `A + B` that was guarded. The site is `lower30_build` in
+`code/pa_certify.py`; the certifier for the seven two-sided cells, `two_sided` in the same file, does
+guard its repaired vector before its second sweep, so the exception is this one constructor's alone and
+nothing a reader runs in steps 1–4 rests on it.
+
+**3. Re-check the numbers the manuscript prints** (§11's table and figures, and Appendix A's
+runtimes) against the certificates and the frozen records:
 
 ```text
 python code/pa_tex_constants_v3.py
@@ -162,12 +179,18 @@ occurrence in the body — decimals, `\,`-grouped integers and integers of five 
 clause that recomputes it, by a declared quotation from a cited source, or as a reference inside
 `\cite[...]`. It does **not** parse ordinary small integers wherever they appear; what it does check
 beyond that inventory is each table row's own exponent label against the cell whose certificate produced
-that row's endpoints, and the exponent and `Y` lists §11 names outside the table (K6). The seven
+that row's endpoints, and the exponent and `Y` lists §11 names outside the table (K6). It also reads
+the *relation* of every inequality it anchors — the table's two bound columns and their header, each
+row's two-sided seven-decimal statement, the `2^30` lower bound, the two bounds on the largest widths
+and the construction's four — and tests the direction that relation asserts against the certified
+rationals: a printed `<` turned into a `>` is rejected even though the digits are untouched (K7). The
+seven
 intervals are recomputed from the certificates themselves, as is the `2^30` four-integer inequality
 including `c₆`'s maximality and `D_p` recomputed from the `2^30` cell.
 
 Clause `R1` is the one claim here about a measurement rather than arithmetic: it compares the four
-timings §11 prints with `results/pa_certify_timings_frozen.json`, the frozen record of the authors' run,
+timings **Appendix A** prints with `results/pa_certify_timings_frozen.json`, the frozen record of the
+authors' run,
 and requires that record to name the SHA-256 of the verifier shipped here. If you have run step 1, your
 own times are reported beside them and deliberately not scored.
 
@@ -177,9 +200,11 @@ names of the two record files it wrote; its exit code is `0` exactly when every 
 otherwise.
 
 **What this step does not do.** It checks the manuscript's numbers against the certificates and the
-stored records -- that every figure §11 prints is the one the stored data gives, under the rounding the
-text declares. It does **not** check that a certificate is valid: nothing in it sweeps a dual over the
-band or tests a feasibility condition. `FAILS: none` here therefore says that the paper's digits match
+stored records -- that every figure §11 and Appendix A print is the one the stored data gives, under the
+rounding the text declares. It does **not** check that a certificate is valid: nothing in it sweeps a dual over the
+band or tests a feasibility condition. And it does not validate the prose or the mathematics around the
+numbers: the digits, and the relations printed between them, are checked; the sentences they sit in are
+not. `FAILS: none` here therefore says that the paper's digits match
 the evidence, not that the evidence certifies anything. Step 1 is what establishes the seven two-sided
 certificates and step 2 the `2^30` lower endpoint; a number is worth no more than the step that
 established it.
@@ -233,7 +258,7 @@ target, a number printed elsewhere, the published `eq:certint` integers, a file-
 fail, and both are expected; they occur only in the optional construction runs of step 5 -- the
 mandatory verification runs (steps 1 and 4) report no diagnostic failure. `pa_certify.py`'s `P3` compares the stored *nine-decimal* float
 optima `0.172389352` and `0.140860454` for containment in *twelve-decimal* intervals, and a nine-decimal
-rounding need not lie inside one — §11 says so in a parenthesis. `pa_certify_big.py`'s `P2` at `2^28`
+rounding need not lie inside one — Appendix A says so in a parenthesis. `pa_certify_big.py`'s `P2` at `2^28`
 asks for a width below `10⁻⁶` where the width is `1.2·10⁻⁵`; §11 claims only `10⁻⁴` at that size. Both
 are clauses being refuted and recorded, and neither touches a certificate: the certified intervals are
 reproduced unchanged either way. The `FAILS:` line above the verdict still names every failing clause of
@@ -282,7 +307,7 @@ are not part of this packet; their records are `results/conedual_colgen_2e{26,28
 
 ## The authors' machine
 
-The timings quoted above and in §11 were measured on:
+The timings quoted above and in Appendix A were measured on:
 
 | | |
 |---|---|
@@ -294,7 +319,7 @@ The timings quoted above and in §11 were measured on:
 
 Times on other hardware differ; the band rebuild dominates every figure.
 
-## What backs each §11 claim
+## What backs each claim of §11 and Appendix A
 
 | claim | files |
 |---|---|
@@ -305,7 +330,7 @@ Times on other hardware differ; the band rebuild dominates every figure.
 | the verifier | `code/pa_certify.py`, `code/pa_certify_big.py` |
 | the constants checker | `code/pa_tex_constants_v3.py`, and `code/pa_tex_constants_v2.py`, which it imports and re-runs |
 | their library imports | `code/cell_cache.py` and `code/_sieve_shared.py`, over `lib/goldbach/sieve.py` — the canonical sieve, whose bytes the cache fingerprint hashes |
-| the timings §11 prints | `results/pa_certify_timings_frozen.json` — frozen, written by no step, with the hardware above. `results/pa_certify.{txt,json}` and `pa_certify_big.{txt,json}` are where your own runs land |
+| the timings Appendix A prints | `results/pa_certify_timings_frozen.json` — frozen, written by no step, with the hardware above. `results/pa_certify.{txt,json}` and `pa_certify_big.{txt,json}` are where your own runs land |
 | the construction's `0.6982, 0.6130, 0.6088, 0.5841` | `code/pa_certify.py` step 5, whose clause `P5` prints the exact rational bound at each of the four sizes, rounds it **upward** at four decimals and reports *valid and tight*. Also `results/conedual_parity_domination.{txt,json}`, the float sweep the sizes came from — note it prints `0.6981` and `0.6087` at `2^16` and `2^20`, which are those same bounds rounded to **nearest**; the paper rounds upward, deliberately, because only an upper bound is a bound |
 | the `e ≤ 20` float optima and the `e = 22…28` ledgers the older clauses read | `results/conedual_separator_mass.txt`, `conedual_exact_kappa_small_cells{,_20}.txt`, `conedual_colgen_2e{22,24,26,28}_{n0b,n28}.{txt,json}` |
 | re-deriving the certificates (step 5) | `results/conedual_exact_dual_2e{20,22,24}.npz`; `results/conedual_colgen_sep_2e26_{pa9,n0b}.npz` and `conedual_colgen_sep_2e28_{pa9,n28}.npz` — the frozen pairing §11 records, primal and dual from different runs at the two largest cells |
@@ -328,7 +353,7 @@ Artifact-level source paths and SHA-256 digests are in `PACKET.json`.
 
 ## Formalization
 
-Status: `library-in-packet`. A standalone Lean 4 / mathlib v4.33.1 project (lean/), sourced from generations/v3/lean_kappa/: 29 theorems on the exact finite steps (one-large-prime identity, identity (E), Bonferroni, parity split, cone step), no sorry, axioms in lean/axioms.txt. The analytic estimates and the main theorem are not formalized.
+Status: `library-in-packet`. A standalone Lean 4 / mathlib v4.33.1 project (lean/): 29 theorems on the exact finite steps (one-large-prime identity, identity (E), Bonferroni, parity split, cone step), no sorry, axioms in lean/axioms.txt. The analytic estimates and the main theorem are not formalized.
 
 The presence of a Lean directory does not mean the paper's main theorem is
 machine-checked; consult the manuscript appendix and the files themselves for

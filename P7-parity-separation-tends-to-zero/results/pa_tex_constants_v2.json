@@ -1,6 +1,6 @@
 {
  "dps": 40,
- "source": "generations/v3/paper/kappa_tends_to_zero.tex",
+ "source": "P7-parity-separation-tends-to-zero.tex",
  "clauses": [
   {
    "name": "V1",

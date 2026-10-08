@@ -58,9 +58,10 @@ prove that
 \[
   \kappa(N)\ \ll_{A}\ (\log Q)^{-A}\qquad\text{for every fixed }A>0;
 \]
-in particular $\kappa(N)\to0$. The quantitative form of this, with a free parameter $\beta\ge4$, is an
-explicit two-term bound; at $\beta=6$ it reads $\kappa(N)\le(2.01317+\eps)/(\log Q\sqrt{\log\log Q})$ for
-all sufficiently large $N$, which we record as an example rather than as an optimal constant. The proof is
+in particular $\kappa(N)\to0$. The quantitative form of this, with a parameter $\beta\ge4$ fixed before
+$N$ grows, is a two-term bound whose leading coefficients are evaluated and whose threshold of validity
+is not: at $\beta=6$ it reads $\kappa(N)\le(2.01317+\eps)/(\log Q\sqrt{\log\log Q})$ for all
+sufficiently large $N$, the constant being recorded as an example rather than as an optimal one. The proof is
 a direct positive construction: explicit nonnegative weights on the even-$\omega$ columns, grouped by the
 small-prime part $a_{Y}(\ell)=\prod_{p\mid\ell,\,p\le Y}p$ and truncated at $a_{Y}(\ell)\le\sqrt Q$. The
 one arithmetic input it needs is that, after fixing the small-prime part, the two $\omega$-parities of the
@@ -68,10 +69,14 @@ rough cofactor occur in bounded ratio; we prove this. The elementary observation
 estimate is that $N<q_{1}^{2}$, so an integer $n\le N$ has at most one prime factor exceeding $Q$; the
 classical large-prime removal is then exact with no upper cutoff on the cofactor, and the required signed
 two-cutoff estimate follows from a quantitative prime number theorem together with the matching M\"obius
-bound. The result is effective in principle, but the implicit constants and numerical thresholds are not
-evaluated. The bound is an upper bound only: it says nothing about whether $\kappa(N)$ is positive, nor
-whether the rate is optimal.
+bound. The result is effective in principle, but the constant implied by $\ll_{A}$ is not evaluated. The
+bound is an upper bound only: it says nothing about whether $\kappa(N)$ is positive, nor whether the
+rate is optimal.
 \end{abstract}
+
+{\small\noindent 2020 Mathematics Subject Classification: 11N35 (primary); 11N36, 11N25,
+90C05 (secondary). Keywords: parity problem, divisor weights, convex cones, linear programming
+duality, certified computation.\par}
 
 \section{Introduction}\label{sec:intro}
 
@@ -175,9 +180,7 @@ problem --- a nonnegative least-squares problem in the primal form \eqref{eq:kap
 problem in the dual form of Proposition~\ref{prop:dual} --- whose constraints are divisor-sum inequalities
 together with a Euclidean norm bound, and the classical parity phenomenon
 \cite[ch.~16]{OperaDeCribro} concerns a different object, namely what main terms a sieve can produce
-without resolving the parity of $\omega$. No implication in either direction between
-Theorem~\ref{thm:main} and the classical obstruction is claimed, and none is used. The word ``parity''
-appears here for orientation and as the name of the constant, and for nothing more.
+without resolving the parity of $\omega$.
 
 \subsection{Results}\label{sec:results}
 
@@ -190,8 +193,9 @@ In particular $\kappa(N)\to0$: by \eqref{eq:kappale1} the optimal nonnegative re
 uniform baseline by more than any fixed power of $\log Q$.
 \end{theorem}
 
-Theorem~\ref{thm:main} is the main result. It comes from one quantitative estimate carrying a free
-parameter $\beta$, which we state next; Theorem~\ref{thm:main} follows by letting $\beta$ grow with $A$.
+Theorem~\ref{thm:main} is the main result. It comes from one quantitative estimate carrying a parameter
+$\beta$, fixed before $N$ grows, which we state next; Theorem~\ref{thm:main} follows by letting $\beta$
+grow with $A$.
 
 \begin{theorem}\label{thm:quant}
 Let $\beta\ge4$ be fixed and put $Y=L^{\beta}$. For every $\eps>0$ there is an $N_{0}(\beta,\eps)$ such
@@ -206,8 +210,10 @@ claimed uniformly in $\beta$.
 \end{theorem}
 
 The first term decides the rate, the second is smaller than every power of $1/L$ but carries a large
-constant. Theorem~\ref{thm:main} is the case $\beta=2A+4$. Taking instead $\beta=6$ turns the first term
-into a clean numerical statement, which we record as a concrete example and not as an optimal constant.
+constant. Theorem~\ref{thm:main} is the case $\beta=2A+4$. Taking instead $\beta=6$ evaluates both
+leading coefficients, giving a two-term bound with numerical constants and an unevaluated threshold of
+validity $N_{0}(6,\eps)$ (\S\ref{sec:effectivity}); we record it as a concrete example and not as an
+optimal constant.
 
 \begin{corollary}\label{cor:beta6}
 Put
@@ -225,13 +231,34 @@ For every $\eps>0$ and all sufficiently large $N$,
 \end{corollary}
 
 The displayed decimal $2.01317$ exceeds $c_{1}$, as an upper bound requires; $c_{1}$ comes from the choice
-$\beta=6$ and we make no claim that it is optimal. The threshold in Theorem~\ref{thm:quant} merges those
+$\beta=6$. The threshold in Theorem~\ref{thm:quant} merges those
 of Proposition~\ref{prop:norm}, Theorem~\ref{thm:reduction} and Theorem~\ref{thm:PC}; see
 \S\ref{sec:effectivity} for what is and is not known about it.
 
-Every statement above is an upper bound on $\kappa(N)$. None of them asserts that $\kappa(N)>0$, and none
-says anything about whether the rate is optimal; \S\ref{sec:numerics} reports what is known at computable
-sizes.
+\paragraph{Scope: what is proved, and what is not.}\label{par:scope}
+Both halves are stated here once and are not repeated elsewhere.
+
+What is proved is a statement about one explicit finite convex problem. On the level-$Q$ incidence cone
+$K_{Q}$ of \eqref{eq:kappa}, nonnegative reweighting of the even-$\omega$ columns beats the uniform
+baseline \eqref{eq:kappale1} by more than any fixed power of $\log Q$ (Theorem~\ref{thm:main}); the
+weights that do it are explicit \eqref{eq:X}, grouping the columns by small-prime part and reproducing
+the retained classes of every $Y$-smooth row exactly; and the bound is reduced to, and then proved
+from, one statement about M\"obius sums over friable integers. And at seven computable sizes
+$\kappa(N)$ is located in certified rational intervals, with a certified lower bound at an eighth
+(\S\ref{sec:numerics}).
+
+What is not proved: the paper is not a breakthrough on the parity barrier of
+sieve theory, and it is not a statement about primes. The parity of $\omega$ splits the band and carries
+the construction and the proof; the parity obstruction of sieve theory is a different statement, about
+sifted sets and primes rather than about this cone, and no implication in either direction between
+Theorem~\ref{thm:main} and the obstruction cited in \S\ref{sec:orientation} is claimed or used. Every
+statement above is an
+upper bound on $\kappa(N)$; none of them asserts that $\kappa(N)>0$, and none says anything about
+whether the rate is optimal. Every bound is proved for \emph{fixed} $\beta$, and nothing is claimed
+uniformly in a growing $\beta$ (Remark~\ref{rem:fixedbeta}). The theorem is effective in principle,
+but no numerical threshold and no useful finite-size estimate has been evaluated --- which is not to
+say that none exists (\S\ref{sec:effectivity}). \S\ref{sec:numerics} reports what is known at
+computable sizes, and none of it bears on Theorem~\ref{thm:main}.
 
 \subsection{Method}\label{sec:method}
 The proof exhibits a feasible point of $K_{Q}$ close to $t$. Fix a parameter $\beta\ge4$ and put
@@ -326,8 +353,11 @@ studied objects; we record this so that no novelty is read into them.
 
 \begin{itemize}
 \item $U(X)$ in \eqref{eq:UM} is the squarefree analogue of the two-cutoff count
-$\Theta(x,y,z)=\#\{n\le x:\text{all prime factors in }(z,y]\}$ studied by Saias \cite{SaiasI}, continued in
-\cite{SaiasII}; both count unrestricted integers. For the unrestricted analogue, specialising the modulus
+$\Theta(x,y,z)=\#\{n\le x:\text{all prime factors in }(z,y]\}$. That count was first studied by
+Friedlander \cite{Friedlander}, who for fixed values of the two ratios of logarithms obtained an
+asymptotic whose factor is defined by a system of differential-difference equations; sharper estimates are due
+to Saias \cite{SaiasI}, continued in \cite{SaiasII} (for this ordering see
+\cite[\S7]{HildebrandTenenbaum}). All of them count unrestricted integers. For the unrestricted analogue, specialising the modulus
 in \cite[(1.4)]{TenenbaumCribler} to the primorial through $Y$ compares the sifted friable count with
 $\Psi(x,y)$, whose size is given by \cite[Thm.~1.1]{HildebrandTenenbaum}; passing to squarefree integers
 requires a further adjustment. Lemma~\ref{lem:U} is a weak consequence.
@@ -336,10 +366,11 @@ $\Psi(x,y)=x\,u^{-(1+o(1))u}$ as $y$ and $u=\log x/\log y$ tend to infinity, uni
 $u\le y^{1-\eps}$ --- a range strictly containing the one used here.
 \item Lemma~\ref{lem:phi} is the Buchstab asymptotic restricted to $u\to\infty$; see
 \cite[ch.~III.6]{TenenbaumBook}.
-\item The convolution identity behind Lemma~\ref{lem:roughmob}, and the method of combining it with the
-prime number theorem, are explicit in Alladi \cite[\S3, (3.1)--(3.4)]{AlladiJNT}, whose object is the
-M\"obius sum over
-integers free of small prime factors. His companion paper \cite{AlladiTAMS} treats the M\"obius sum over
+\item The convolution identity behind Lemma~\ref{lem:roughmob}, and its combination with the prime
+number theorem, are proved here.  Their object --- the M\"obius sum over integers free of small prime
+factors --- is the subject of Alladi \cite{AlladiJNT}, which is cited as a whole for that object and
+for the tradition this argument belongs to; no locator is printed and no claim is made about where
+inside that paper a particular method appears. His companion paper \cite{AlladiTAMS} treats the M\"obius sum over
 \emph{friable} integers, the object of \S\ref{sec:norm}; the two papers are easily conflated.
 \item The asymptotic $P_{1}=-N/(\log N)^{2}+O(N/(\log N)^{3})$ of \S\ref{sec:norm} is such a friable
 M\"obius sum, at $u=\log N/\log Q\to2$. For it in the form used here see de la Bret\`eche and Tenenbaum
@@ -364,11 +395,7 @@ M\"obius bound (L). We have not located a published
 form of Theorem~\ref{thm:signed} in the uniformity used here, and we claim no novelty for it: the
 surrounding machinery is standard and we have not settled the question.
 
-What the paper does \emph{not} claim should be said plainly here. It is not a breakthrough on the parity
-barrier of sieve theory, and it is not a statement about primes. It proves the relative approximation
-performance of nonnegative reweighting on one specific arithmetic incidence cone: that the optimum beats
-the uniform baseline \eqref{eq:kappale1} by more than any fixed power of $\log Q$. It is an upper bound
-only, and says nothing about the positivity of $\kappa(N)$ or about the optimality of the rate.
+What the paper does and does not claim is stated once in \S\ref{par:scope} and is not restated here.
 
 \section{Notation, inputs, and elementary lemmas}\label{sec:setting}
 
@@ -532,8 +559,11 @@ and
   \delta=\frac1R\#\{n\in\vR:a_{Y}(n)>\sqrt Q\}.
 \end{equation}
 For every \emph{retained} class $a\le\sqrt Q$, Hypothesis~\ref{hyp:PC} implies
-$B_{a}=0\Rightarrow R_{a}=0$: such a class with $B_{a}=0<R_{a}$ would make \eqref{eq:X} undefined, which
-is what its second clause guards against. Classes with $a>\sqrt Q$ are discarded outright and are not
+$B_{a}=0\Rightarrow R_{a}=0$, since $R_{a}\le C\,B_{a}$ at $B_{a}=0$ forces $R_{a}=0$: that is the
+whole of the hypothesis, one inequality. It matters here
+because \eqref{eq:X} is defined for a retained class with $B_{a}=0<R_{a}$, which it weights by zero,
+but then nothing reproduces that class's odd mass, which survives as the dead-class term of
+\eqref{eq:Eid} below. Classes with $a>\sqrt Q$ are discarded outright and are not
 constrained by Hypothesis~\ref{hyp:PC}. By Theorem~\ref{thm:PC} no retained class with $B_{a}=0<R_{a}$
 occurs once $L$ is large.
 
@@ -557,9 +587,8 @@ and under Hypothesis~\ref{hyp:PC} the second sum vanishes, so
   e_{d}=\frac1R\#\{n\in\vR:d\mid n,\ a_{Y}(n)>\sqrt Q\}\in[0,\min(\delta,t_{d})].
 \end{equation}
 In particular, \emph{under Hypothesis~\ref{hyp:PC}}, $e_{1}=\delta$: on the row $d=1$ the error is then
-exactly the discarded odd mass. Unconditionally, \eqref{eq:Eid} at $d=1$ gives $e_{1}$ as the discarded
-mass \emph{plus} the mass of the retained classes with $B_{a}=0$, which is what
-Hypothesis~\ref{hyp:PC} removes.
+exactly the discarded odd mass. Unconditionally, \eqref{eq:Eid} at $d=1$ adds to that the mass of the
+retained classes with $B_{a}=0$.
 \end{lemma}
 
 \begin{proof}
@@ -922,8 +951,9 @@ Uniformly for $X\in[Q^{3/2},N]$,
 Apply Lemma~\ref{lem:1LP} and split the prime sum at $X/p=Z_{0}$. First
 $|M_{Y}(X)|\ll X(\log L)^{-4}$ by Lemma~\ref{lem:roughmob}, as $X\ge Q^{3/2}\gg Z_{0}$. Next, for
 $Q<p\le X/Z_{0}$, Lemma~\ref{lem:roughmob} with $A_{0}=4$ gives $|M_{Y}(X/p)|\ll(X/p)(\log L)^{-4}$, while
-by (M2) with Lemma~\ref{lem:elem}(iii) one has $\sum_{Q<p\le X}1/p=\log(\log X/\log Q)+O(1/L)=O(1)$
-uniformly --- an $O(1)$, not $\log2+o(1)$, since at $X=Q^{3/2}$ the limit is $\log(3/2)$ --- so this block
+by (M2) with Lemma~\ref{lem:elem}(iii) one has $\sum_{Q<p\le X}1/p=\log(\log X/\log Q)+O(1/L)$
+uniformly, which since $X\le N$ is at most $\log2+o(1)$, the limit at $X=Q^{3/2}$ being $\log(3/2)$;
+only the resulting $O(1)$ is used, so this block
 is $\ll X(\log L)^{-4}$. Finally, for $X/Z_{0}<p\le X$ use $|M_{Y}(z)|\le z$ and \eqref{eq:short}, which
 gives at most $(\frac23+o(1))X(\log L)^{-3}$.
 \end{proof}
@@ -1168,28 +1198,26 @@ $\eps>0$ was arbitrary the second stated bound follows as well. \qed
 The window $\beta\ge4$ is what \eqref{eq:t1} permits: at $\beta=4$ the exponent $2-\beta/2$ vanishes and
 the first term is $4\sqrt{15/\pi^{2}}/(2\sqrt{\log L})=2.4656\ldots/\sqrt{\log L}$, still $o(1)$. The
 constant $c_{1}$ of Corollary~\ref{cor:beta6} is thus an artefact of one choice of $\beta$, which is why
-Theorem~\ref{thm:main} and not the numerical form is stated as the main result. Note also that every
-bound here is proved for \emph{fixed} $\beta$; letting $\beta$ grow with $N$ would require a fresh
-uniformity analysis of Lemmas~\ref{lem:phi}, \ref{lem:psi} and \ref{lem:roughmob} and of
-Theorem~\ref{thm:PC}, which we do not carry out.
+Theorem~\ref{thm:main} and not the numerical form is stated as the main result. Note also that letting $\beta$ grow with $N$
+(\S\ref{par:scope}) would require a fresh uniformity analysis of Lemmas~\ref{lem:phi},
+\ref{lem:psi} and \ref{lem:roughmob} and of Theorem~\ref{thm:PC}, which we do not carry out.
 \end{remark}
 
 \section{Effectivity}\label{sec:effectivity}
 
 Every input is effective: (M1)--(M3), (C) and \eqref{eq:Q2} with explicit constants, and (P), (L) with
 effective $(C_{\pi},c_{\pi})$, $(C_{M},c_{M})$ from the de la Vall\'ee Poussin zero-free region. No
-Siegel-type or zero-density input is used, so Theorem~\ref{thm:main} is effective in principle. The
-implicit constants and numerical thresholds are not evaluated here. (The numbers $c_{1}$, $c_{2}$ of
-Corollary~\ref{cor:beta6} are of course evaluated; what is not is the implied constant in
-Theorem~\ref{thm:main} and the threshold beyond which any of these bounds holds.) Two thresholds should
+Siegel-type or zero-density input is used, so Theorem~\ref{thm:main} is effective in principle. What is
+not evaluated here is the threshold of validity: Corollary~\ref{cor:beta6}'s leading coefficients
+$c_{1}$, $c_{2}$ are evaluated, while the constant implied by $\ll_{A}$ in Theorem~\ref{thm:main} and the
+threshold beyond which any of these bounds holds are not. Two thresholds should
 be kept apart. The \emph{normalisation} threshold, the point beyond which Proposition~\ref{prop:norm}
 holds, is determined by $(C_{M},c_{M},C_{\pi},c_{\pi})$ through Lemma~\ref{lem:moments}, where the
 explicit shape $\Lambda_{2}=O(1)+4C_{M}\cdot11!\,c_{M}^{-12}$ already appears, and we make no attempt to
 optimise it. The \emph{overall} threshold $N_{0}(\beta,\eps)$ of Theorem~\ref{thm:quant} is larger: it
 merges that one with the thresholds of Theorem~\ref{thm:reduction} and Theorem~\ref{thm:PC}, and it
 depends in addition on the fixed $\beta$ and on the requested $\eps$, neither of which enters the
-normalisation. The accurate statement is that \emph{no numerical threshold and no useful finite-size
-estimate has been evaluated}, not that none exists.
+normalisation.
 
 Two features of the argument make such an evaluation unrewarding at present, and we record them because
 they bound what a computation could show.
@@ -1250,12 +1278,11 @@ Several of these are \emph{generic conditional} lemmas rather than statements ab
 paper. The row identity is proved for an arbitrary finite set of squarefree integers; the parity split
 and its ratio bound take the two class-count identities as hypotheses, for a supplied inventory of
 classes, and derive the algebra from them; the cone lemma assumes a nonnegative coefficient vector.
-That is the stronger form to prove, and it is deliberate --- but it also means the development does not
-contain a formal definition of $\kappa(N)$ for the band \eqref{eq:band}, nor a theorem about it.
-\emph{Instantiating these lemmas at the paper's actual arithmetic model --- constructing that band
+That is the stronger form to prove, and it is deliberate --- but it also means the development contains
+no formal definition of $\kappa(N)$ for the band \eqref{eq:band} and no theorem about it:
+\emph{instantiating these lemmas at the paper's actual arithmetic model --- constructing that band
 inside Lean, discharging the count identities for it, and assembling the instances --- is not part of
-the formal development}, and we claim no more than the generic statements and the instances the file
-itself proves.
+the formal development}.
 
 \emph{The analytic inputs and estimates are not formalized and are not claimed to be}: Mertens' three
 theorems, the effective prime number theorem (P), the effective M\"obius bound (L), Rankin's trick, the
@@ -1287,8 +1314,8 @@ $c_{\vR}$ are. Hence $\dist_{2}(c_{\vR},K_{Q})^{2}=\|c_{\vR}-\pi\|_{2}^{2}$ is r
 $\kappa(N)^{2}$ for every $N$ for which $\kappa(N)$ is defined, and both endpoints of an
 interval for $\kappa(N)$ can in principle be certified in exact arithmetic. That has been carried out:
 both endpoints are certified at every size reached, $N=2^{16},2^{18},\dots,2^{28}$, and at $N=2^{30}$
-the lower endpoint is. This section states the inequality the certificates verify, the checks that were
-run, and the intervals.
+the lower endpoint is. This section states the inequality the certificates verify and the intervals;
+the verification itself is Appendix~\ref{app:verify}.
 
 A pair of certificates suffices. Write $P=c_{\vB}-c_{\vR}$, so that $\kappa(N)=\dist_{2}(c_{\vR},K_{Q})/\|P\|_{2}$
 by \eqref{eq:Rfree}. Let $q\ge0$ be an integral vector and $D\ge1$ an integer (a rational primal $q/D$),
@@ -1308,25 +1335,36 @@ and it is the pass that was run at every size below.
 of it is a certificate until it has been rounded to integers and re-checked. The primal is taken to be
 $D\,y$ rounded componentwise to the nearest integer and then clamped at $0$, for a per-cell integer
 $D$; the clamp keeps $q\ge0$, and the result leaves the right-hand side of \eqref{eq:cert} an exact
-rational. At the seven sizes with a two-sided certificate the dual is built from the residual $r=c_{\vR}-Ay$ of the solver's primal, for which $-r$ is dual feasible at the optimum:
+rational. At the five smaller two-sided sizes the dual is built from the residual $r=c_{\vR}-Ay$ of the solver's primal, for which $-r$ is dual feasible at the optimum:
 $\lambda$ is $-r$ scaled by $K/\max_{d}|r_{d}|$, for a per-cell integer $K$, and rounded componentwise to the nearest integer, so
-that $\max_{d}|\lambda_{d}|\le K$; the lower-endpoint certificate at $2^{30}$ is built differently and
-is described separately below. Rounding can make
+that $\max_{d}|\lambda_{d}|\le K$. At the two largest no residual is formed. There the column
+generation stores a floating dual $w$ with $\langle c_{\vR},w\rangle>0$, already repaired row-wise
+before it was saved --- each column whose divisor sum exceeds a threshold is lowered through its
+divisor row of least $t_{d}$, never through the row $d=1$, by the largest amount the columns assigned
+to that row require, and the threshold kept is the one giving the best floating bound --- and
+$\lambda$ is that $-w$, scaled and rounded in the same way. The stored primal is taken from the round
+achieving the best upper bound and the stored dual from the round achieving the best lower bound, so
+the two halves need not come from the same round, let alone the same vector. The lower-endpoint
+certificate at $2^{30}$ is built differently again and
+is described in Appendix~\ref{app:verify}. Rounding can make
 $\theta_{\lambda}$ negative on a few columns. It is
-repaired at the row $d=1$: since $1\mid\ell$ for every $\ell$, replacing $\lambda_{1}$ by
-$\lambda_{1}+r$ adds $r$ to $\theta_{\lambda}(\ell)$ at every column at once, so
-$r=\max(0,-\min_{\ell\in\vB}\theta_{\lambda}(\ell))$ restores feasibility everywhere in one step. The
+repaired at the row $d=1$ by a scalar amount $\rho$, which the residual vector $r$ above does not
+name: since $1\mid\ell$ for every $\ell$, replacing $\lambda_{1}$ by
+$\lambda_{1}+\rho$ adds $\rho$ to $\theta_{\lambda}(\ell)$ at every column at once, so
+$\rho=\max(0,-\min_{\ell\in\vB}\theta_{\lambda}(\ell))$ restores feasibility everywhere in one step. The
 repair costs something when it does anything at all: since $c_{\vR}(1)=R$ it moves
-$\langle c_{\vR},\lambda\rangle$ towards $0$ by $rR$, and it changes $\|\lambda\|_{2}^{2}$ by
-$2r\lambda_{1}+r^{2}$, a strict increase exactly when $r>0$ \emph{and} the pre-repair $\lambda_{1}$ exceeds $-r/2$. Both
-conditions matter: the second, which for the stored coordinate $\lambda_{1}+r$ reads $\lambda_{1}+r>r/2$, holds in every certificate stored here, at all
-eight sizes, but the first can fail --- a rounded dual that is already feasible has $r=0$ and a vacuous
+$\langle c_{\vR},\lambda\rangle$ towards $0$ by $\rho R$, and it changes $\|\lambda\|_{2}^{2}$ by
+$2\rho\lambda_{1}+\rho^{2}$, a strict increase exactly when $\rho>0$ \emph{and} the pre-repair $\lambda_{1}$ exceeds $-\rho/2$. Both
+conditions matter: the second, which for the stored coordinate $\lambda_{1}+\rho$ reads $\lambda_{1}+\rho>\rho/2$, holds in every certificate stored here, at all
+eight sizes, but the first can fail --- a rounded dual that is already feasible has $\rho=0$ and a vacuous
 repair, as at $e=20$, where $\min_{\ell\in\vB}\theta_{\lambda}(\ell)$ is already positive. So the
-certified lower endpoint is at most the solver's floating value, and below it where $r>0$: an
+certified lower endpoint is at most the solver's recorded floating optimum --- a nine-decimal ledger
+value at the two smallest sizes and, at the next three, the floating optimum stored in the same file
+as the dual; those five are the sizes at which the diagnostic clause of Appendix~\ref{app:verify}
+compares a stored float against the interval, and at the two largest it compares none --- and
+below it where $\rho>0$: an
 observation about these certificates, not a property of the repair. The repair needs no new
-solve, and the vector stored in the certificate is the repaired one, already feasible as stored. $K$ and
-$D$ are chosen per cell so that the integer kernels evaluating \eqref{eq:cert} cannot overflow, and the
-totals they produce are checked against exact big-integer arithmetic.
+solve, and the vector stored in the certificate is the repaired one, already feasible as stored.
 
 \paragraph{The certified intervals.} For the seven two-sided cells listed below, both bounds of \eqref{eq:cert} were evaluated in exact integer
 arithmetic; at $2^{30}$ only a certified lower bound is available (described below). The endpoints below are the square roots of the two rational bounds that \eqref{eq:cert} gives for $\kappa^{2}$,
@@ -1359,43 +1397,14 @@ taken from different vectors, each verified on its own. That pairing is what the
 record, and it is frozen: the numbers above are not to be refreshed from a later re-solve without being
 re-certified and re-stated.
 
-\paragraph{The verifier.} Each certificate is stored as the two integral vectors together with the
-integers they need, and is re-checked by \texttt{pa\_certify.py\ -{}-verify}, which finds and re-checks
-every stored certificate; the two largest were produced by \texttt{pa\_certify\_big.py}, which verifies
-them too. What the check derives for itself, from the exponent $e$ alone, is the cell: $N=2^{e}$,
-$Q=\lfloor\sqrt N\rfloor$, $q_{1}$, $\thr$, and the complete list of squarefree $d\le Q$ from a
-M\"obius sieve. It then refuses to proceed unless the cached cell and the stored certificate agree with
-that derivation in all five, so a certificate cannot be verified against a cell other than the one it
-names. From there the band is rebuilt from scratch and $|\vB|$, $|\vR|$, $c_{\vB}$, $c_{\vR}$ compared
-against the cached row counts element for element; $\theta_{\lambda}\ge0$ is swept over \emph{every}
-even-$\omega$ column of the whole band; $\langle c_{\vR},\lambda\rangle<0$ and $q\ge0$ are confirmed;
-and both rational bounds of \eqref{eq:cert} are recomputed. Every stored index is validated before it
-indexes anything and independently of the cached band --- rows in $[1,Q]$, strictly increasing and
-squarefree; columns in $(\thr,N]$, distinct, squarefree, $\Pp\le Q$ and of even $\omega$ --- both
-integer kernels are guarded by the actual integer sums of the vectors passed to them, and the run
-requires the full advertised inventory of seven cells, so a missing certificate fails rather than
-quietly shrinking the claim. The stored arrays must also be integer arrays whose values are preserved
-by conversion to signed $64$-bit integers; a fractional or value-changing representation is rejected
-rather than converted. What is \emph{read} rather than re-derived is the stored pair of integral
-vectors itself, which is the object being certified, and the cached per-row counts, which are compared
-against the fresh rebuild rather than trusted.
-
-It is cheap: one run re-checks all
-seven certificates in $79.7$ s at four threads on the authors' machine (times on other hardware
-differ) --- $11.2$ s for the five cells $e\le24$
-together, $12.0$ s at $e=26$ and $56.4$ s at $e=28$, band rebuild included --- so solving dominates the
-cost of these numbers by a wide margin. Certification is not free: re-checking the seven two-sided
-certificates takes about a minute, and re-establishing the $2^{30}$ lower endpoint takes a few minutes,
-the band rebuild dominating both. The machine is specified with the figures in
-the reproduction packet's frozen timing record, which no reproduction step overwrites; a first run pays
-a one-time kernel compilation inside the smallest cell, and the total moves by a few per cent between
-runs on a shared machine, so these figures locate the cost and are not reproducible to the digit as the
-arithmetic is. (One recorded clause of the checking script compares a stored
-nine-decimal float optimum with the certified interval and reports a mismatch at $e=16,18$; a
-nine-decimal rounding need not lie inside a twelve-decimal interval, and nothing in the certificates
-depends on that comparison. The check reports that diagnostic separately from the validity of the
-certificates, so an expected mismatch of this kind is not reported as, and cannot be mistaken for, a
-certificate that failed to verify.)
+\paragraph{The verifier.} The stored certificates are verified in exact integer arithmetic by the
+packet's verifier: every decision the check makes is an exact integer or rational comparison --- it
+re-derives the cell from the exponent alone, rebuilds the band from scratch, sweeps the dual
+feasibility condition over \emph{every} even-$\omega$ column of the whole band, and recomputes both
+rational bounds of \eqref{eq:cert}. Appendix~\ref{app:verify} gives those checks in full, together
+with the overflow guards, the format and index validation, the one floating-point step and the
+measured cost; the packet named in the data availability statement carries the verifier, its run
+commands and the frozen timing record, and its README says which outputs belong to which run.
 
 \paragraph{$e=30$: the lower endpoint only.} At $N=2^{30}$ the band has $|\vB|=86\,592\,333$ and
 $|\vR|=89\,520\,933$, and only the left half of \eqref{eq:cert} has been evaluated. Writing
@@ -1419,33 +1428,7 @@ it: four integers satisfying an inequality prove nothing on their own. What make
 $\theta_{\lambda}\ge0$ on every even-$\omega$ column of the whole band, exactly as at the smaller
 sizes. The packet ships that $\lambda$ --- the repaired integral vector itself, not the solver's
 floating separator --- with the four integers beside it.
-
-This $\lambda$ is \emph{not} built by the normalisation used at the seven two-sided cells, and the
-difference matters for anyone comparing the stored vector with the stored separator. Here the solver's
-$w$, which the separator holds with $\langle c_{\vR},w\rangle>0$, is rounded componentwise at the
-\emph{fixed} scale of \eqref{eq:certint}: $\lambda=\lfloor-10^{12}w\rceil$, the sign being what makes
-$\langle c_{\vR},\lambda\rangle<0$ and hence $J>0$. The coordinate at $d=1$ is then \emph{discarded},
-set to zero, and rebuilt by the repair, so that $\lambda_{1}$ is exactly the $r$ of the previous
-paragraph and nothing else. Two consequences are worth stating. The scale is not chosen to fill the
-integer range: $10^{12}$ is the scale at which the four integers of \eqref{eq:certint} were computed, so
-a certificate built this way reproduces the $J$ and $H$ printed above digit for digit instead of
-certifying the same bound with different valid integers --- and $\sum_{d}|\lambda_{d}|$ is checked
-against the accumulator bound at that scale rather than assumed to fit it. And because
-$\max_{d}|\lambda_{d}|$ is here governed by $w$ and the scale rather than set to $K$, it is not the
-quantity the seven smaller certificates bound; a reader should expect the stored separator's
-$\max_{d}|w_{d}|$ and the certified vector's $\max_{d}|\lambda_{d}|$ to differ by that factor of
-$10^{12}$ and not by anything else.
-
-The check re-establishes the inequality from the stored vector
-alone: deriving the cell, rebuilding the band, sweeping every even-$\omega$ column, recomputing $J$,
-$H$ and $D_{p}$ from it and confirming that $c_{6}$ is maximal. Its stored arrays are
-held to the same format requirement as the others --- integer arrays whose values survive conversion to
-signed $64$-bit integers, a fractional or value-changing representation being rejected. No solver is
-involved, and every decision the check makes is an exact integer or rational comparison, with the
-integer kernels
-guarded beforehand by the actual integer sums passed to them; floating-point arithmetic does occur in
-the surrounding machinery --- loading the cached arrays and the printed diagnostics, where no verdict depends on it, and
-one square root setting a loop bound in the sieve, whose truncation the verifier checks to coincide with the exact integer square root on the whole range where the sieve is used. No integral primal was
+No integral primal was
 produced at $2^{30}$, so no upper endpoint is claimed there; the restricted master reports
 $\kappa(2^{30})\approx0.01779$, which is a solver value and not certified.
 
@@ -1466,14 +1449,120 @@ over the eight sizes, from $0.0768$ at $2^{16}$ to $0.0834$ at $2^{30}$ --- belo
 below the limiting $0.0932720\ldots$ --- so that $N/R$ decreases from $13.03$ to $11.99$, approaching
 $10.7213\ldots$ from above and not yet near it. There is no conflict: both
 statements of Proposition~\ref{prop:norm} are asymptotic, and a quantity converging to a limit from
-above may lie on either side of a weaker constant at any finite point. It is a further illustration of
-how far these sizes are from the range in which the paper's estimates take hold.
+above may lie on either side of a weaker constant at any finite point.
+
 
 The code, the stored primal and dual vectors, and the run commands are in the repository named in the data
-availability statement. We stress that none of this bears on Theorem~\ref{thm:main}: every size reached
+availability statement. None of it bears on Theorem~\ref{thm:main} (\S\ref{par:scope}): every size reached
 here lies far below the range in which the hypotheses of \S\ref{sec:counting} take hold, so none of these
 computations can support or contradict it, and the numbers are reported only because $\kappa(N)$ is a
 finite conic distance whose size a reader may wish to know.
+
+\appendix
+
+\section{Verification of the certificates}\label{app:verify}
+
+This appendix records what the check of \S\ref{sec:numerics} does: the cell binding, the format and
+index validation, the cache handling, the overflow guards, the one floating-point step and its check,
+the measured cost, and the separate construction of the lower-endpoint certificate at the largest
+size. Nothing here is needed to read the theorems or \eqref{eq:cert}; it is the account a reader
+reproducing the numbers needs.
+
+\paragraph{The verifier.} Each certificate is stored as the two integral vectors together with the
+integers they need, and is re-checked by \texttt{pa\_certify.py\ -{}-verify}, which finds and re-checks
+every stored certificate; the two largest were produced by \texttt{pa\_certify\_big.py}, which verifies
+them too. What the check derives for itself, from the exponent $e$ alone, is the cell: $N=2^{e}$,
+$Q=\lfloor\sqrt N\rfloor$, $q_{1}$, $\thr$, and the complete list of squarefree $d\le Q$ from a
+M\"obius sieve. It then refuses to proceed unless the cached cell and the stored certificate agree with
+that derivation in all five, so a certificate cannot be verified against a cell other than the one it
+names. From there the band is rebuilt from scratch and $|\vB|$, $|\vR|$, $c_{\vB}$, $c_{\vR}$ compared
+against the cached row counts element for element; $\theta_{\lambda}\ge0$ is swept over \emph{every}
+even-$\omega$ column of the whole band; $\langle c_{\vR},\lambda\rangle<0$ and $q\ge0$ are confirmed;
+and both rational bounds of \eqref{eq:cert} are recomputed. Every stored index is validated before it
+indexes anything and independently of the cached band --- rows in $[1,Q]$, strictly increasing and
+squarefree; columns in $(\thr,N]$, distinct, squarefree, $\Pp\le Q$ and of even $\omega$ --- both
+integer kernels are guarded by the actual integer sums of the vectors passed to them, and the run
+requires the full advertised inventory of seven cells, so a missing certificate fails rather than
+quietly shrinking the claim. The stored arrays must also be integer arrays whose values are preserved
+by conversion to signed $64$-bit integers; a fractional or value-changing representation is rejected
+rather than converted. What is \emph{read} rather than re-derived is the stored pair of integral
+vectors itself, which is the object being certified, and the cached per-row counts, which are compared
+against the fresh rebuild rather than trusted.
+
+$K$ and
+$D$ are chosen per cell so that the integer kernels evaluating \eqref{eq:cert} cannot overflow, and the
+totals they produce are checked against exact big-integer arithmetic.
+
+The packet distinguishes a \emph{verification} run, which reads stored certificates and re-checks
+them, from a \emph{construction} run, which re-derives and rewrites them; each run announces which it
+is, and only the first is a packet check.
+
+It is cheap: one run re-checks all
+seven certificates in $73.2$ s at four threads on the authors' machine (times on other hardware
+differ) --- $8.6$ s for the five cells $e\le24$
+together, $13.2$ s at $e=26$ and $51.4$ s at $e=28$, band rebuild included --- so solving dominates the
+cost of these numbers by a wide margin. Re-establishing the $2^{30}$ lower endpoint takes a few minutes
+more, the band rebuild dominating there too. The machine is specified with the figures in
+the reproduction packet's frozen timing record, which no reproduction step overwrites. The procedure
+behind the figures is fixed and the record states it: they are the wall times of one run of the
+command, with an empty compiler cache --- a first run, which is what a reader gets, and which pays a
+one-time kernel compilation inside the smallest cell --- and the record carries beside them the
+totals of the other runs of that command taken on the same machine, cold and with the cache warm, so
+that the spread is read off the record and not from any rule for choosing among runs. That spread is
+not small: the machine was not idle while any of the runs were taken, carrying unrelated work from
+other sessions throughout, and the band rebuild at the largest cell, which sets the total, varies
+between runs by more than the compilation the warm runs save. These figures therefore locate the cost
+on that machine and are not reproducible to the digit as the arithmetic is.
+
+\paragraph{Two comparisons that are not certificate conditions.} The scripts record two checks beside
+\eqref{eq:cert}, reported apart from validity and relied on by nothing. One is a rounding consistency
+check: it holds a stored nine-decimal float optimum against the certified interval, and at $e=16,18$
+the float lies outside it, a nine-decimal rounding having no reason to lie inside a twelve-decimal
+interval. The other is an
+internal target: the script behind the two largest certificates asks for a width below $10^{-6}$,
+which holds at $2^{26}$ and not at $2^{28}$, where the width is the one printed above --- larger than
+the target and inside the $10^{-4}$ claimed there. An unmet target says that the column generation
+stopped further from the optimum than was hoped for, not that the certificate is defective: a
+certified width is whatever the stored pair gives, and both endpoints are verified in exact arithmetic
+either way. The exit codes report certificate validity alone, so neither comparison can be mistaken
+for a certificate that failed to verify.
+
+\paragraph{The lower certificate at $2^{30}$.} Its $\lambda$ is \emph{not} built by the normalisation used at the seven two-sided cells, and the
+difference matters for anyone comparing the stored vector with the stored separator. Here the solver's
+$w$, which the separator holds with $\langle c_{\vR},w\rangle>0$, is rounded componentwise at the
+\emph{fixed} scale of \eqref{eq:certint}: $\lambda=\lfloor-10^{12}w\rceil$, the sign being what makes
+$\langle c_{\vR},\lambda\rangle<0$ and hence $J>0$. The coordinate at $d=1$ is then \emph{discarded},
+set to zero, and rebuilt by the repair, so that $\lambda_{1}$ is exactly the $\rho$ of the repair
+described in \S\ref{sec:numerics} and nothing else. Two consequences are worth stating. The scale is not chosen to fill the
+integer range: $10^{12}$ is the scale at which the four integers of \eqref{eq:certint} were computed, so
+a certificate built this way reproduces the $J$ and $H$ printed above digit for digit instead of
+certifying the same bound with different valid integers --- and $\sum_{d}|\lambda_{d}|$ is checked
+against the accumulator bound at that scale rather than assumed to fit it. And because
+$\max_{d}|\lambda_{d}|$ is here governed by $w$ and the scale rather than set to $K$, it is not the
+quantity the seven smaller certificates bound; a reader should expect the stored separator's
+$\max_{d}|w_{d}|$ and the certified vector's $\max_{d}|\lambda_{d}|$ to differ by that factor of
+$10^{12}$, up to the componentwise rounding and the rebuilt coordinate at $d=1$.
+
+In this constructor --- not in the check, which guards before every kernel it runs --- the sweep that
+follows the repair is not preceded by a fresh guard, and does not need one. Write $A$ and $B$ for the
+sums of the positive and of the absolute negative coordinates of $\lambda$, so that the quantity
+guarded before the first sweep is $\sum_{d}|\lambda_{d}|=A+B$. The first coordinate is zero at that
+point, and the repair amount $\rho$ is the negated minimum of $\theta_{\lambda}$ over the even-$\omega$
+columns, each value of which is a signed subset sum of the coordinates and so at least $-B$; hence
+$0\le\rho\le B$. After the repair every partial sum the kernel forms is $\rho$ plus a signed subset sum
+of the remaining coordinates, so it lies between $\rho-B$ and $\rho+A$, hence between $-B$ and $A+B$:
+in magnitude it is bounded by the very $A+B$ that was guarded. The vector is in addition required to
+satisfy the guard again after the repair, so the certificate that leaves the constructor meets the
+blanket condition too.
+
+The check re-establishes the inequality from the stored vector
+alone: deriving the cell, rebuilding the band, sweeping every even-$\omega$ column, recomputing $J$,
+$H$ and $D_{p}$ from it and confirming that $c_{6}$ is maximal. Its stored arrays are
+held to the same format requirement as the others, and no solver is involved: every decision the check
+makes is an exact integer or rational comparison, with the integer kernels guarded as above by the
+actual integer sums passed to them. Floating-point arithmetic does occur in
+the surrounding machinery --- loading the cached arrays and the printed diagnostics, where no verdict depends on it, and
+one square root setting a loop bound in the sieve, whose truncation the verifier checks to coincide with the exact integer square root on the whole range where the sieve is used.
 
 \begin{thebibliography}{99}
 
@@ -1519,6 +1608,11 @@ C.~S.~Franze,
 \emph{Sifting limits for the $\Lambda^{2}\Lambda^{-}$ sieve},
 J. Number Theory \textbf{131} (2011), 1962--1982.
 
+\bibitem{Friedlander}
+J.~B.~Friedlander,
+\emph{Integers free from large and small primes},
+Proc. London Math. Soc. (3) \textbf{33} (1976), 565--576.
+
 \bibitem{OperaDeCribro}
 J.~Friedlander and H.~Iwaniec,
 \emph{Opera de Cribro},
@@ -1557,7 +1651,8 @@ Acta Arith. \textbf{63} (1993), 287--312.
 \bibitem{Soltan}
 V.~Soltan,
 \emph{Moreau-type characterizations of polar cones},
-\texttt{arXiv:1810.04206}, 2018.
+Linear Algebra Appl. \textbf{567} (2019), 45--62;
+preprint \texttt{arXiv:1810.04206}, 2018, whose numbering the theorem cited above follows.
 
 \bibitem{TenenbaumCribler}
 G.~Tenenbaum,

@@ -45,8 +45,7 @@ arithmetic for anything that can exceed int64, and `K`, `D` chosen per cell from
 (C2).  `--verify` is `pa_certify.verify_one`, unchanged.
 
 MEMORY at `2^28` (N = 268,435,456): the band rebuild peaks at `7N` bytes = 1.88 GB and the theta
-accumulator is int64 `N+1` = 2.15 GB, so about 4 GB, inside the grant's 32 GB and far from the 10 GB
-intermediate cap (nothing is written but the certificate).
+accumulator is int64 `N+1` = 2.15 GB, so about 4 GB, well within a 32 GB machine, and nothing is written but the certificate.
 
 WHERE THE GUARDS LIVE.  The int64 hardening is in `pa_certify.py`, which this file reuses
 wholesale, so C2 is restated here to match it and C4/C5 are inherited as well.  `store_if_better`
@@ -105,9 +104,9 @@ introduced it; every "voids" is enforced in code, not in prose.
       `pa_cert_2e<e>.npz` is written only if none is there, or this run's `[lower^2, upper^2]` lies
       INSIDE the stored one and is strictly smaller on at least one side -- compared as the exact
       rationals the file stores, not as rounded widths, so two intervals that merely cross leave the
-      stored certificate in place.  (An earlier version overwrote the `2^18` certificate, width
-      `10^-12`, with a `2.6e-4` one.)  This cannot fail -- it is enforced, not checked -- and the run
-      says which happened, with both enclosures.
+      stored certificate in place -- a `10^-12` enclosure is never replaced by a `2.6e-4` one.  This
+      cannot fail -- it is enforced, not checked -- and the run says which happened, with both
+      enclosures.
 
   NOT REGISTERED: a seven-decimal width.  The width is whatever the colgen's primal and the repaired
   dual give; P2 asks for six decimals and this run's own record states what was reached.
@@ -298,15 +297,14 @@ def store_if_better(c):
 
     Comparing twelve-decimal widths instead, as this once did, is weaker in two ways: two intervals
     with the same rounded width can enclose different things, and an interval that is narrower after
-    rounding can still extend past the stored one on one side.  The guard exists because an earlier
-    version overwrote the 2^18 certificate (width 1e-12) with its own 2.6e-4 one; the clause it
-    enforces (C7) is stated in exact rationals and now the code is too.  Returns (bytes, kept) with
-    kept False when the stored certificate wins.
+    rounding can still extend past the stored one on one side.  The guard enforces C7 in the exact
+    rationals the clause is stated in: a 1e-12 enclosure is never replaced by a 2.6e-4 one.  Returns
+    (bytes, kept) with kept False when the stored certificate wins.
 
-    A stored certificate that cannot be read is also KEPT, not overwritten.  An earlier version
-    swallowed the exception and fell through to the write, so a damaged packet file would have been
-    replaced silently by whatever this run happened to produce -- the wrong direction for a packet,
-    and the same mistake in kind as letting a malformed field pass.
+    A stored certificate that cannot be read is also KEPT, not overwritten: an exception here must not
+    fall through to the write, or a damaged packet file would be replaced silently by whatever this run
+    produced -- the wrong direction for a packet, and the same mistake in kind as letting a malformed
+    field pass.
     """
     p = PC.cert_path(c["e"])
     if os.path.exists(p):

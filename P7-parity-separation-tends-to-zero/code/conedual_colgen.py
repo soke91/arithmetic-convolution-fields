@@ -128,19 +128,10 @@ import scipy.sparse as sp               # noqa: E402
 from numba import njit, prange, set_num_threads   # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-# `regnote.py` sits beside this script in a reproduction packet; in the working repository it is the
-# vendored copy under publication/vendor/, found by walking up.  No path outside the tree is consulted.
-_d = os.path.dirname(os.path.abspath(__file__))
-_regdir = None
-while _regdir is None:
-    for _c in (_d, os.path.join(_d, "publication", "vendor")):
-        if os.path.isfile(os.path.join(_c, "regnote.py")):
-            _regdir = _c
-            break
-    if _regdir is None:
-        if os.path.dirname(_d) == _d:
-            raise ImportError("regnote.py not found beside this script or under publication/vendor above it")
-        _d = os.path.dirname(_d)
+# `regnote.py` sits beside this script.
+_regdir = os.path.dirname(os.path.abspath(__file__))
+if not os.path.isfile(os.path.join(_regdir, "regnote.py")):
+    raise ImportError("regnote.py must sit beside this script")
 if _regdir not in sys.path:
     sys.path.insert(0, _regdir)
 from regnote import Note, fdown, fup    # noqa: E402
