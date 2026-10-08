@@ -1,0 +1,32 @@
+a8_norm_lower -- (NORM) re-derived at d = 1 (clauses in the header)
+threads 4; this machine, seconds (every array below 2^24 and no cell is rebuilt: cell_cache.load)
+2^16 Q=256 q1=257 thr=255  R p_1=-617  C1 dev=0  C2 rel=4.04e-15   R p_1/main=1.1580 (ref 1.1580, 2nd-order pred 1.3741)
+      J_0=0.008472 vs 1/log N=0.090168 | m_0(Y)=0.004550 m_1(Y)=-0.975399 | elem/main=0.1295 | signed delta/main=+0.0318 | triangle/main=4.183   0 s
+2^18 Q=512 q1=521 thr=503  R p_1=-2069  C1 dev=0  C2 rel=7.91e-15   R p_1/main=1.2286 (ref 1.2286, 2nd-order pred 1.3237)
+      J_0=0.003419 vs 1/log N=0.080150 | m_0(Y)=-0.006521 m_1(Y)=-1.040025 | elem/main=0.3052 | signed delta/main=+0.0373 | triangle/main=3.280   0 s
+2^20 Q=1024 q1=1031 thr=1017  R p_1=-6604  C1 dev=0  C2 rel=2.23e-15   R p_1/main=1.2104 (ref 1.2104, 2nd-order pred 1.2849)
+      J_0=0.002423 vs 1/log N=0.072135 | m_0(Y)=0.001439 m_1(Y)=-0.990491 | elem/main=0.0788 | signed delta/main=-0.0197 | triangle/main=2.527   0 s
+2^22 Q=2048 q1=2053 thr=2043  R p_1=-22243  C1 dev=0  C2 rel=3.96e-15   R p_1/main=1.2332 (ref 1.2332, 2nd-order pred 1.2543)
+      J_0=0.000850 vs 1/log N=0.065577 | m_0(Y)=0.002808 m_1(Y)=-0.978454 | elem/main=0.0814 | signed delta/main=-0.0047 | triangle/main=1.951   0 s
+2^24 Q=4096 q1=4099 thr=4093  R p_1=-73912  C1 dev=0  C2 rel=4.13e-15   R p_1/main=1.2192 (ref 1.2192, 2nd-order pred 1.2295)
+      J_0=0.000525 vs 1/log N=0.060112 | m_0(Y)=-0.003873 m_1(Y)=-1.032260 | elem/main=0.1712 | signed delta/main=+0.0057 | triangle/main=1.463   1 s
+
+C1  identity (1) deviation, as integers, at every cell: HOLDS   (0, 0, 0, 0, 0)
+C2  identity (2) relative deviation: HOLDS   (4.0e-15, 7.9e-15, 2.2e-15, 4.0e-15, 4.1e-15)   tol 1e-11
+
+R1  R p_1/main rounded to 4 dp equals the published comparison values: HOLDS
+    mine 1.1580, 1.2286, 1.2104, 1.2332, 1.2192
+    ref  1.1580, 1.2286, 1.2104, 1.2332, 1.2192
+P1  |J_0| < 1/log N at every cell: HOLDS   (ratios 0.094, 0.043, 0.034, 0.013, 0.009)
+P2  |M(N)|+|M(thr)|(1+pi(Q)) < 0.50 main at every cell: HOLDS   (0.1295, 0.3052, 0.0788, 0.0814, 0.1712)
+P3a |signed delta sum| < 0.05 main at every cell: HOLDS   (+0.0318, +0.0373, -0.0197, -0.0047, +0.0057)
+P3b triangle sum |delta| > main at 2^24: HOLDS   (4.183, 3.280, 2.527, 1.951, 1.463)
+P4  R p_1 < 0 and ratio in (1.10, 1.26) at every cell: HOLDS   (1.1580, 1.2286, 1.2104, 1.2332, 1.2192)
+
+the lower bound the proof delivers, against the cell:  |p_1| vs N/(9 R L^2)
+  e |        |p_1| |  N/(9 R L^2) | ratio | the (1/5)(N/R)L^-2 bound | ratio
+ 16 |      0.12264 |    0.0470709 |  2.61 |           0.0847276 |  1.45
+ 18 |    0.0996916 |    0.0360628 |  2.76 |           0.0649131 |  1.54
+ 20 |    0.0790425 |    0.0290242 |  2.72 |           0.0522435 |  1.51
+ 22 |    0.0658472 |    0.0237315 |  2.77 |           0.0427167 |  1.54
+ 24 |    0.0540388 |    0.0196995 |  2.74 |           0.0354591 |  1.52

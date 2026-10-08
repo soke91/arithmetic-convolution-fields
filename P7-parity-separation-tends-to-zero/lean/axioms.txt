@@ -1,0 +1,41 @@
+# axioms.txt -- beside KappaZero.lean
+#
+# Output of the `#print axioms` block at the end of KappaZero.lean.
+# Produced by:  lake env lean --threads=4 KappaZero.lean   (run from this directory)
+# Toolchain leanprover/lean4:v4.33.1, mathlib rev v4.33.1, exit 0, no errors, no warnings.
+# Elaboration cost is reported with the run that produced this list.
+#
+# NO theorem carries `sorryAx`.  Every line below is one of the two clean axiom
+# sets: [propext, Classical.choice, Quot.sound] (mathlib's standard three) or the
+# shorter [propext, Quot.sound].  A `sorryAx` anywhere would mean the statement on
+# that line is NOT proved.
+#
+'KappaZero.sqrt_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.card_filter_lt_primeFactors_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.not_sq_dvd_of_lt' depends on axioms: [propext, Quot.sound]
+'KappaZero.thr_le_of_lt' depends on axioms: [propext, Quot.sound]
+'KappaZero.smallPart_dvd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.dvd_smallPart_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.tRow_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.AxRow_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.identity_E' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.primeCount_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.smoothMert_eq_mert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.bigPrime_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.bigPrime_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.smooth_div_bigPrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.mert_eq_smoothMert_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.smoothMert_eq_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.sum_mert_div' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.one_large_prime_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.one_large_prime_identity_at_50' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.sqrt_fifty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.moebius_eq_neg_one_pow_omega' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.moebius_class_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.parity_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.par_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.infDist_coneHull_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.infDist_coneHull_le_euclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.bonferroni' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.bonferroni_error_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'KappaZero.bonferroni_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]

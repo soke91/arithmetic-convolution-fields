@@ -1,0 +1,70 @@
+pa_certify_big -- eq:cert from a colgen separator that carries its primal
+threads 4 (ACF_THREADS or 4, capped at 8 and at numba's own count); the int64 kernels are guarded by the ACTUAL integer sums of the vectors passed to them (clause C2)
+
+C9   HOLDS    the float square root used as an integer bound (lib/goldbach/sieve.py's int(limit**0.5), cell_cache's int(N**0.5) and int(q1**0.5)) equals math.isqrt at EVERY integer below 2^31: all 46341 isqrt levels checked at both ends, vectorised yes and with Python's own scalar operator yes -- so these floats cannot move a bound, and the exact N, Q, q1, thr and row list C0 derives are what every verdict rests on
+
+VERIFY MODE -- every advertised certificate re-checked from the packet's own files
+cells: 2^16, 2^18, 2^20, 2^22, 2^24, 2^26, 2^28
+C8   HOLDS    inventory is exactly the 7 advertised cells: present 2^16, 2^18, 2^20, 2^22, 2^24, 2^26, 2^28
+
+C5   HOLDS    2^16 stored fields of pa_cert_2e16.npz: all 32 checks pass (integer dtype, rank, and every value held unchanged by signed int64)
+C0   HOLDS    2^16 cell derived here and compared with the cache: N = 65536, Q = 256, q1 = 257, thr = 255, 157 squarefree rows -- all 5 agree
+C1   HOLDS    2^16 band rebuilt in 0.0 s: |vB| 4414/4414, |vR| 5031/5031, c_vB and c_vR element for element EQUAL
+C0   HOLDS    2^16 stored certificate bound to the derived cell: e = 16, N = 65536, 157 rows -- all 3 agree
+C4   HOLDS    2^16 stored indices validated before use, independently of code: all 12 checks pass (157 rows in [1,256], 147 columns in (255,65536])
+C2   HOLDS    2^16 stored vectors guarded before the kernels: sum_d |lambda_d| = 4.8676e+17 = 0.106*2^62, max_d |lambda_d| = 1.0000e+16; sum_j q_j = 5.0616e+17 = 0.110*2^62, max_j q_j = 1.1069e+16, q >= 0 True; |lambda| = |rows| True, D = 100000000000000 >= 1 True
+V16  HOLDS    2^16 re-verified from the stored npz: all 6 exact checks pass ; 0.172389351665 <= kappa <= 0.172389351666 (theta min 0, width 1.00e-12)
+           (2^16 re-verified in 0.6 s, band rebuild included)
+C5   HOLDS    2^18 stored fields of pa_cert_2e18.npz: all 32 checks pass (integer dtype, rank, and every value held unchanged by signed int64)
+C0   HOLDS    2^18 cell derived here and compared with the cache: N = 262144, Q = 512, q1 = 521, thr = 503, 314 squarefree rows -- all 5 agree
+C1   HOLDS    2^18 band rebuilt in 0.0 s: |vB| 18685/18685, |vR| 20754/20754, c_vB and c_vR element for element EQUAL
+C0   HOLDS    2^18 stored certificate bound to the derived cell: e = 18, N = 262144, 314 rows -- all 3 agree
+C4   HOLDS    2^18 stored indices validated before use, independently of code: all 12 checks pass (314 rows in [1,512], 301 columns in (503,262144])
+C2   HOLDS    2^18 stored vectors guarded before the kernels: sum_d |lambda_d| = 8.0912e+17 = 0.175*2^62, max_d |lambda_d| = 1.0000e+16; sum_j q_j = 2.0814e+18 = 0.451*2^62, max_j q_j = 2.5827e+16, q >= 0 True; |lambda| = |rows| True, D = 100000000000000 >= 1 True
+V18  HOLDS    2^18 re-verified from the stored npz: all 6 exact checks pass ; 0.140860453831 <= kappa <= 0.140860453832 (theta min 0, width 1.00e-12)
+           (2^18 re-verified in 0.0 s, band rebuild included)
+C5   HOLDS    2^20 stored fields of pa_cert_2e20.npz: all 32 checks pass (integer dtype, rank, and every value held unchanged by signed int64)
+C0   HOLDS    2^20 cell derived here and compared with the cache: N = 1048576, Q = 1024, q1 = 1031, thr = 1017, 624 squarefree rows -- all 5 agree
+C1   HOLDS    2^20 band rebuilt in 0.1 s: |vB| 76946/76946, |vR| 83550/83550, c_vB and c_vR element for element EQUAL
+C0   HOLDS    2^20 stored certificate bound to the derived cell: e = 20, N = 1048576, 624 rows -- all 3 agree
+C4   HOLDS    2^20 stored indices validated before use, independently of code: all 12 checks pass (624 rows in [1,1024], 609 columns in (1017,1048576])
+C2   HOLDS    2^20 stored vectors guarded before the kernels: sum_d |lambda_d| = 1.0905e+17 = 0.024*2^62, max_d |lambda_d| = 1.0000e+15; sum_j q_j = 8.3653e+17 = 0.181*2^62, max_j q_j = 5.5857e+15, q >= 0 True; |lambda| = |rows| True, D = 10000000000000 >= 1 True
+V20  HOLDS    2^20 re-verified from the stored npz: all 6 exact checks pass ; 0.105542708383 <= kappa <= 0.105542708385 (theta min 55, width 2.00e-12)
+           (2^20 re-verified in 0.1 s, band rebuild included)
+C5   HOLDS    2^22 stored fields of pa_cert_2e22.npz: all 32 checks pass (integer dtype, rank, and every value held unchanged by signed int64)
+C0   HOLDS    2^22 cell derived here and compared with the cache: N = 4194304, Q = 2048, q1 = 2053, thr = 2043, 1245 squarefree rows -- all 5 agree
+C1   HOLDS    2^22 band rebuilt in 0.4 s: |vB| 315554/315554, |vR| 337797/337797, c_vB and c_vR element for element EQUAL
+C0   HOLDS    2^22 stored certificate bound to the derived cell: e = 22, N = 4194304, 1245 rows -- all 3 agree
+C4   HOLDS    2^22 stored indices validated before use, independently of code: all 12 checks pass (1245 rows in [1,2048], 1222 columns in (2043,4194304])
+C2   HOLDS    2^22 stored vectors guarded before the kernels: sum_d |lambda_d| = 1.7853e+17 = 0.039*2^62, max_d |lambda_d| = 1.0000e+15; sum_j q_j = 3.3797e+18 = 0.733*2^62, max_j q_j = 1.2051e+16, q >= 0 True; |lambda| = |rows| True, D = 10000000000000 >= 1 True
+V22  HOLDS    2^22 re-verified from the stored npz: all 6 exact checks pass ; 0.076331197680 <= kappa <= 0.076331197683 (theta min 0, width 3.00e-12)
+           (2^22 re-verified in 0.6 s, band rebuild included)
+C5   HOLDS    2^24 stored fields of pa_cert_2e24.npz: all 32 checks pass (integer dtype, rank, and every value held unchanged by signed int64)
+C0   HOLDS    2^24 cell derived here and compared with the cache: N = 16777216, Q = 4096, q1 = 4099, thr = 4093, 2491 squarefree rows -- all 5 agree
+C1   HOLDS    2^24 band rebuilt in 1.6 s: |vB| 1293845/1293845, |vR| 1367757/1367757, c_vB and c_vR element for element EQUAL
+C0   HOLDS    2^24 stored certificate bound to the derived cell: e = 24, N = 16777216, 2491 rows -- all 3 agree
+C4   HOLDS    2^24 stored indices validated before use, independently of code: all 12 checks pass (2491 rows in [1,4096], 2462 columns in (4093,16777216])
+C2   HOLDS    2^24 stored vectors guarded before the kernels: sum_d |lambda_d| = 3.0960e+17 = 0.067*2^62, max_d |lambda_d| = 1.0000e+15; sum_j q_j = 1.3680e+18 = 0.297*2^62, max_j q_j = 2.4169e+15, q >= 0 True; |lambda| = |rows| True, D = 1000000000000 >= 1 True
+V24  HOLDS    2^24 re-verified from the stored npz: all 6 exact checks pass ; 0.052762952627 <= kappa <= 0.052762952635 (theta min 0, width 8.00e-12)
+           (2^24 re-verified in 2.7 s, band rebuild included)
+C5   HOLDS    2^26 stored fields of pa_cert_2e26.npz: all 32 checks pass (integer dtype, rank, and every value held unchanged by signed int64)
+C0   HOLDS    2^26 cell derived here and compared with the cache: N = 67108864, Q = 8192, q1 = 8209, thr = 8175, 4982 squarefree rows -- all 5 agree
+C1   HOLDS    2^26 band rebuilt in 7.4 s: |vB| 5258985/5258985, |vR| 5508942/5508942, c_vB and c_vR element for element EQUAL
+C0   HOLDS    2^26 stored certificate bound to the derived cell: e = 26, N = 67108864, 4982 rows -- all 3 agree
+C4   HOLDS    2^26 stored indices validated before use, independently of code: all 12 checks pass (4982 rows in [1,8192], 14914 columns in (8175,67108864])
+C2   HOLDS    2^26 stored vectors guarded before the kernels: sum_d |lambda_d| = 4.0087e+16 = 0.009*2^62, max_d |lambda_d| = 1.0000e+14; sum_j q_j = 5.5095e+17 = 0.119*2^62, max_j q_j = 4.5492e+14, q >= 0 True; |lambda| = |rows| True, D = 100000000000 >= 1 True
+V26  HOLDS    2^26 re-verified from the stored npz: all 6 exact checks pass ; 0.034622922800 <= kappa <= 0.034623479647 (theta min 0, width 5.57e-07)
+           (2^26 re-verified in 11.9 s, band rebuild included)
+C5   HOLDS    2^28 stored fields of pa_cert_2e28.npz: all 32 checks pass (integer dtype, rank, and every value held unchanged by signed int64)
+C0   HOLDS    2^28 cell derived here and compared with the cache: N = 268435456, Q = 16384, q1 = 16411, thr = 16357, 9962 squarefree rows -- all 5 agree
+C1   HOLDS    2^28 band rebuilt in 40.1 s: |vB| 21392222/21392222, |vR| 22243991/22243991, c_vB and c_vR element for element EQUAL
+C0   HOLDS    2^28 stored certificate bound to the derived cell: e = 28, N = 268435456, 9962 rows -- all 3 agree
+C4   HOLDS    2^28 stored indices validated before use, independently of code: all 12 checks pass (9962 rows in [1,16384], 10771 columns in (16357,268435456])
+C2   HOLDS    2^28 stored vectors guarded before the kernels: sum_d |lambda_d| = 7.6008e+16 = 0.016*2^62, max_d |lambda_d| = 1.0000e+14; sum_j q_j = 2.2245e+18 = 0.482*2^62, max_j q_j = 2.0304e+15, q >= 0 True; |lambda| = |rows| True, D = 100000000000 >= 1 True
+V28  HOLDS    2^28 re-verified from the stored npz: all 6 exact checks pass ; 0.024526262835 <= kappa <= 0.024538226032 (theta min 0, width 1.20e-05)
+           (2^28 re-verified in 62.0 s, band rebuild included)
+
+verify wall 78.0 s
+FAILS: none
+CERTIFICATES: VALID
+DIAGNOSTICS: none

@@ -1,0 +1,69 @@
+conedual_separator_mass -- direction 1 (clauses in the file header)
+cells [16, 18, 26]   threads 4   DEN = 10^12   tight tol 1e-09
+
+====================================================================================================
+2^16  Q=256    rows=157   |vB|=4414      |vR|=5031       ||p||_2=0.202904477  c(Q)=0.105909453  c(Q)/||p||=0.521967
+      kappa enclosure carried as comparand: [0.1723894, 0.1723894]
+      C0 band rebuilt: |vB| 4414 vs nB 4414, |vR| 5031 vs nR 5031 -> EQUAL
+      A exact dual: 4414 distinct columns of 4414; NNLS support 147; dist=0.034978571  kappa=0.172389352
+      C1 kappa vs comparand 0.1723894: |diff| 4.833e-08 <= 1.724e-06 -> HOLDS
+      contact set: max|theta_u| over columns 3.797e-01; tight columns 1886 of 4414
+      tight semiprime graph: 1307 edges, 2 components, largest 53, largest NONBIPARTITE component 53 of pi(Q)=54
+      C certified interval: L=0.034978571  U=0.034978581  eps = sqrt(2(1-L/U)) = 0.000749   (||v||_2=1.678937)
+      u_{Q,1} = -0.173943 ;  <v,u_Q> = +0.733943  in  [+0.732686, +0.735200]
+      D=1     sqrt(H_D)=0.173943  H_D=0.030256 in [0.029996, 0.030517] ;  ||v_<=D||=1.00000 ||v_>D||=1.34864 ;  (II) bracket term = 1.52333
+      D=6     sqrt(H_D)=0.271955  H_D=0.073960 in [0.073553, 0.074367] ;  ||v_<=D||=1.60078 ||v_>D||=0.50629 ;  (II) bracket term = 0.94283
+      D=30    sqrt(H_D)=0.502114  H_D=0.252119 in [0.251367, 0.252871] ;  ||v_<=D||=1.66222 ||v_>D||=0.23634 ;  (II) bracket term = 1.07221
+      D=210   sqrt(H_D)=0.955891  H_D=0.913728 in [0.912297, 0.915160] ;  ||v_<=D||=1.67848 ||v_>D||=0.03910 ;  (II) bracket term = 1.64480
+      D=1000  sqrt(H_D)=1.000000  H_D=1.000000 in [0.998503, 1.000000] ;  ||v_<=D||=1.67894 ||v_>D||=0.00000 ;  (II) bracket term = 1.67894
+      mechanism: u_p / (-u_1/2) for p <= 30: 2:1.000  3:1.000  5:1.000  7:1.000  11:1.000  13:1.000  17:1.000  19:1.000  23:0.982  29:1.000
+      proved ceiling u_1^2 <= 4/k with k=53: 0.030256 <= 0.075472 -> HOLDS
+      1 s
+
+====================================================================================================
+2^18  Q=512    rows=314   |vB|=18685     |vR|=20754      ||p||_2=0.163823260  c(Q)=0.081141340  c(Q)/||p||=0.495298
+      kappa enclosure carried as comparand: [0.1408605, 0.1408605]
+      C0 band rebuilt: |vB| 18685 vs nB 18685, |vR| 20754 vs nR 20754 -> EQUAL
+      A exact dual: 18685 distinct columns of 18685; NNLS support 301; dist=0.023076219  kappa=0.140860454
+      C1 kappa vs comparand 0.1408605: |diff| 4.617e-08 <= 1.409e-06 -> HOLDS
+      contact set: max|theta_u| over columns 2.528e-01; tight columns 6197 of 18685
+      tight semiprime graph: 4417 edges, 2 components, largest 96, largest NONBIPARTITE component 96 of pi(Q)=97
+      C certified interval: L=0.023076219  U=0.023076226  eps = sqrt(2(1-L/U)) = 0.000810   (||v||_2=1.680076)
+      u_{Q,1} = -0.125249 ;  <v,u_Q> = +0.583915  in  [+0.582555, +0.585276]
+      D=1     sqrt(H_D)=0.125249  H_D=0.015687 in [0.015485, 0.015891] ;  ||v_<=D||=1.00000 ||v_>D||=1.35006 ;  (II) bracket term = 1.47612
+      D=6     sqrt(H_D)=0.201815  H_D=0.040729 in [0.040403, 0.041057] ;  ||v_<=D||=1.60078 ||v_>D||=0.51005 ;  (II) bracket term = 0.83441
+      D=30    sqrt(H_D)=0.364180  H_D=0.132627 in [0.132038, 0.133218] ;  ||v_<=D||=1.66222 ||v_>D||=0.24430 ;  (II) bracket term = 0.85099
+      D=210   sqrt(H_D)=0.765034  H_D=0.585277 in [0.584039, 0.586517] ;  ||v_<=D||=1.67848 ||v_>D||=0.07316 ;  (II) bracket term = 1.35861
+      D=1000  sqrt(H_D)=1.000000  H_D=1.000000 in [0.998381, 1.000000] ;  ||v_<=D||=1.68008 ||v_>D||=0.00000 ;  (II) bracket term = 1.68008
+      mechanism: u_p / (-u_1/2) for p <= 30: 2:1.000  3:1.000  5:1.000  7:1.000  11:1.000  13:1.000  17:1.000  19:1.000  23:1.000  29:1.000
+      proved ceiling u_1^2 <= 4/k with k=96: 0.015687 <= 0.041667 -> HOLDS
+      9 s
+
+====================================================================================================
+2^26  Q=8192   rows=4982  |vB|=5258985   |vR|=5508942    ||p||_2=0.082860619  c(Q)=0.037507150  c(Q)/||p||=0.452654
+      kappa enclosure carried as comparand: [0.0345030, 0.0348050]
+      separator conedual_colgen_sep_2e26_n0b.npz          M = 1000000603706 CITED from conedual_s1_evidence (K_Q^o certified there)
+          C3 integers vs s1_evidence: M 1000000603706  J 463809741913557021 vs 463809741913557021  S 1088810738001557124 vs 1088810738001557124 -> EQUAL
+          kappa_2(W) = 463809741913557021/sqrt(861230759619453932349773954 * 208368826252) = 0.034622923 ;  npz bound 0.034622923 ;  C2 -> HOLDS
+      C certified interval: L=0.002868877  U=0.002883964  eps = sqrt(2(1-L/U)) = 0.102287   (||v||_2=1.681125)
+      u_{Q,1} = -0.034075 ;  <v,u_Q> = +0.138548  in  [-0.033410, +0.310506]
+      D=1     sqrt(H_D)=0.034075  H_D=0.001161 in [0.000000, 0.018595] ;  ||v_<=D||=1.00000 ||v_>D||=1.35136 ;  (II) bracket term = 1.48773
+      D=6     sqrt(H_D)=0.044034  H_D=0.001939 in [0.000000, 0.021410] ;  ||v_<=D||=1.60078 ||v_>D||=0.51350 ;  (II) bracket term = 0.74773
+      D=30    sqrt(H_D)=0.079327  H_D=0.006293 in [0.000000, 0.032984] ;  ||v_<=D||=1.66222 ||v_>D||=0.25142 ;  (II) bracket term = 0.55330
+      D=210   sqrt(H_D)=0.215028  H_D=0.046237 in [0.012711, 0.100689] ;  ||v_<=D||=1.67848 ||v_>D||=0.09424 ;  (II) bracket term = 0.62685
+      D=1000  sqrt(H_D)=0.441437  H_D=0.194866 in [0.115022, 0.295636] ;  ||v_<=D||=1.68062 ||v_>D||=0.04125 ;  (II) bracket term = 0.95504
+      0 s
+
+====================================================================================================
+C0  HOLDS
+C1  HOLDS
+C2  HOLDS
+C3  HOLDS
+C4  HOLDS
+P1  HOLDS
+P2  FAILS/REFUTED
+P3  FAILS/REFUTED
+P4  HOLDS
+P5  HOLDS
+
+VERDICT  C0 HOLDS | C1 HOLDS | C2 HOLDS | C3 HOLDS | C4 HOLDS | P1 HOLDS | P2 FAILS | P3 FAILS | P4 HOLDS | P5 HOLDS

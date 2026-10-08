@@ -1,0 +1,15 @@
+{
+ "N": 4194304,
+ "Q": 2048,
+ "q1": 2053,
+ "thr": 2043,
+ "nB": 315554,
+ "nR": 337797,
+ "version": 1,
+ "e": 22,
+ "fingerprint": "ec1d3e13361913ab",
+ "rows_count": 1245,
+ "cr_sum": 2749450,
+ "build_seconds": 0.8,
+ "threads": 4
+}

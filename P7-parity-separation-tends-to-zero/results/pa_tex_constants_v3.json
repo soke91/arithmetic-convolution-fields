@@ -1,0 +1,234 @@
+{
+ "tex": {
+  "path": "paper\\kappa_tends_to_zero.tex",
+  "sha256": "29abfef997e972be15ee0a8017e374879518a460778666f0bdd6bd38eba58260",
+  "bytes": 94251,
+  "body_lines": 1477,
+  "occurrences": 140,
+  "references": 26
+ },
+ "certificates": [
+  {
+   "e": 16,
+   "lower": "0.172389351665",
+   "upper": "0.172389351666",
+   "lower7": "0.1723893",
+   "upper7": "0.1723894",
+   "width": "1/1000000000000",
+   "lower2": "60704958450604861369780183879290703081/2042693907196122975957133770157367207034",
+   "upper2": "61935943873248064366731294898473/2084116000000000000000000000000000",
+   "rows": 157,
+   "cols": 147
+  },
+  {
+   "e": 18,
+   "lower": "0.140860453831",
+   "upper": "0.140860453832",
+   "lower7": "0.1408604",
+   "upper7": "0.1408605",
+   "width": "1/1000000000000",
+   "lower2": "613425366412975868094503498417575390129/30916018920814906154426196294662118717828",
+   "upper2": "764560162487739632412672673142783/38533060000000000000000000000000000",
+   "rows": 314,
+   "cols": 301
+  },
+  {
+   "e": 20,
+   "lower": "0.105542708383",
+   "upper": "0.105542708385",
+   "lower7": "0.1055427",
+   "upper7": "0.1055428",
+   "width": "1/500000000000",
+   "lower2": "38184868047143599420532651471823012864/3427952732874921027041625120551512105775",
+   "upper2": "28806668446499315938735723406029/2586047900000000000000000000000000",
+   "rows": 624,
+   "cols": 609
+  },
+  {
+   "e": 22,
+   "lower": "0.076331197680",
+   "upper": "0.076331197683",
+   "lower7": "0.0763311",
+   "upper7": "0.0763312",
+   "width": "3/1000000000000",
+   "lower2": "112315477450256700429271292805725150700/19276822751519154767283026419103242273943",
+   "upper2": "7079764041970601531313378554551/1215107300000000000000000000000000",
+   "rows": 1245,
+   "cols": 1222
+  },
+  {
+   "e": 24,
+   "lower": "0.052762952627",
+   "upper": "0.052762952635",
+   "lower7": "0.0527629",
+   "upper7": "0.0527630",
+   "width": "1/125000000000",
+   "lower2": "335146145016799201374287464260736654801/120386017228494551883384881956888930330535",
+   "upper2": "9742993343717705419269779898041/3499727452200000000000000000000000",
+   "rows": 2491,
+   "cols": 2462
+  },
+  {
+   "e": 26,
+   "lower": "0.034622922800",
+   "upper": "0.034623479647",
+   "lower7": "0.0346229",
+   "upper7": "0.0346235",
+   "width": "556847/1000000000000",
+   "lower2": "34458144660552429564635708556038531881/28745140459408787316207579456931476445769",
+   "upper2": "2497894948123246870068929256879/2083688262520000000000000000000000",
+   "rows": 4982,
+   "cols": 14914
+  },
+  {
+   "e": 28,
+   "lower": "0.024526262835",
+   "upper": "0.024538226032",
+   "lower7": "0.0245262",
+   "upper7": "0.0245383",
+   "width": "11963197/1000000000000",
+   "lower2": "108897806199069349194005560484473798215/181032427353943170603455889571450927503779",
+   "upper2": "15080699827489063916398728424271/25045815121050000000000000000000000",
+   "rows": 9962,
+   "cols": 10771
+  }
+ ],
+ "v2": {
+  "clauses": 52,
+  "fails": [],
+  "mismatches": [],
+  "absent_literals": [
+   "10868",
+   "132.5",
+   "3767"
+  ]
+ },
+ "clauses": [
+  {
+   "name": "A1",
+   "holds": true,
+   "detail": "paper\\kappa_tends_to_zero.tex: 94251 bytes, 1601 lines (1477 in the body before the bibliography), SHA-256 29abfef997e972be15ee0a8017e374879518a460778666f0bdd6bd38eba58260; 140 literal occurrences, 26 of them inside \\cite[...] or a version string"
+  },
+  {
+   "name": "A2",
+   "holds": true,
+   "detail": "certificate rows == cell rows and e/N agree at 2^16 yes, 2^18 yes, 2^20 yes, 2^22 yes, 2^24 yes, 2^26 yes, 2^28 yes"
+  },
+  {
+   "name": "K1",
+   "holds": true,
+   "detail": "twelve-decimal endpoints recomputed from pa_cert_2e*.npz and found in the table: 2^16 0.172389351665,0.172389351666 on L1337; 2^18 0.140860453831,0.140860453832 on L1338; 2^20 0.105542708383,0.105542708385 on L1339; 2^22 0.076331197680,0.076331197683 on L1340; 2^24 0.052762952627,0.052762952635 on L1341; 2^26 0.034622922800,0.034623479647 on L1342; 2^28 0.024526262835,0.024538226032 on L1343"
+  },
+  {
+   "name": "K2",
+   "holds": true,
+   "detail": "seven-decimal column, both rounding routes agreeing: 2^16 [0.1723893,0.1723894] on L1337, routes agree; 2^18 [0.1408604,0.1408605] on L1338, routes agree; 2^20 [0.1055427,0.1055428] on L1339, routes agree; 2^22 [0.0763311,0.0763312] on L1340, routes agree; 2^24 [0.0527629,0.0527630] on L1341, routes agree; 2^26 [0.0346229,0.0346235] on L1342, routes agree; 2^28 [0.0245262,0.0245383] on L1343, routes agree"
+  },
+  {
+   "name": "K6",
+   "holds": true,
+   "detail": "table rows carry their own exponent and the endpoints of that cell (L1337 label 16, L1338 label 18, L1339 label 20, L1340 label 22, L1341 label 24, L1342 label 26, L1343 label 28); the exponents and Y values section 11 names outside the table are present (all 7)"
+  },
+  {
+   "name": "K3",
+   "holds": true,
+   "detail": "the seven widths, each rounded to one decimal and not understating: 2^16 width*10^12 = 1.0 -> 1.0|1.0 ok; 2^18 width*10^12 = 1.0 -> 1.0|1.0 ok; 2^20 width*10^12 = 2.0 -> 2.0|2.0 ok; 2^22 width*10^12 = 3.0 -> 3.0|3.0 ok; 2^24 width*10^12 = 8.0 -> 8.0|8.0 ok; 2^26 width*10^7 = 5.56847 -> 5.6|5.6 ok; 2^28 width*10^5 = 1.1963197 -> 1.2|1.2 ok"
+  },
+  {
+   "name": "K4",
+   "holds": true,
+   "detail": "precision in the sense of the width: 10^-7 < 5.5685e-07 < 10^-6 at 2^26 and 10^-5 < 1.1963e-05 < 10^-4 at 2^28, so six and four decimals; for the record the endpoints share only 5 and 4 leading decimals"
+  },
+  {
+   "name": "K5",
+   "holds": true,
+   "detail": "the complete even-column counts: 2^16 nB 4414 vs 4\\,414 on L1351 ok; 2^18 nB 18685 vs 18\\,685 on L1352 ok; 2^20 nB 76946 vs 76\\,946 on L1352 ok"
+  },
+  {
+   "name": "G1",
+   "holds": true,
+   "detail": "2^30 band from cell_cache: |vB| = 86592333 vs 86\\,592\\,333 (L1400), |vR| = 89520933 vs 89\\,520\\,933 (L1401)"
+  },
+  {
+   "name": "G2",
+   "holds": true,
+   "detail": "the four integers of conedual_colgen_2e30_n30b.json: J = 4401612119558212802 > 0, H = 2015370564893177546709684150, D_p = 30382600959846, c_6 = 17787; D_p recomputed from the 2^30 cell = 30382600959846 MATCHES; all four printed on L1411-1412 yes"
+  },
+  {
+   "name": "G3",
+   "holds": true,
+   "detail": "eq:certint: c_6^2 H D_p < J^2*10^12 holds; c_6+1 = 17788 fails it yes (so c_6 is maximal); equivalent to lower^2 > (c_6/10^6)^2 yes; printed bound 0.017787 on L1414 yes"
+  },
+  {
+   "name": "G4",
+   "holds": true,
+   "detail": "the solver value: stored ub = 0.0177897 -> 0.01779 vs 0.01779 on L1450 ok; section 11 starts at L1267 and contains \\approx on L1450 (must be that line alone)"
+  },
+  {
+   "name": "G5",
+   "holds": true,
+   "detail": "the 2^30 dual as section 11 describes it, recomputed from pa_cert_2e30_lower.npz and conedual_colgen_sep_2e30_n30b.npz: the cell's, the certificate's and the separator's rows agree yes and the first row is d = 1 yes; lambda_d = round(-10^12 w_d) at all 19919 rows but d = 1 yes (0 mismatches); at d = 1 the rounded 1000000000000 was discarded and the stored 1000003321703 is the repair yes; <c_O,w> = 4.401909e+06 > 0 while <c_O,lambda> = -4401612119558212802 = -J < 0 yes; sum_d |lambda_d| = 4387926452425380 <= 2^62 yes; max|lambda| = 2864799143437 and max|w| = 2.8647991434368354 are attained at the same row d = 2310 and differ by the scale alone yes; the four statements printed on L1425, L1426, L1433, L1436 yes"
+  },
+  {
+   "name": "X1",
+   "holds": true,
+   "detail": "L* = 3766.52004701, truncated at 2 dp = 3766.52 vs 3766.52\\ldots on L1202 ok"
+  },
+  {
+   "name": "X2",
+   "holds": true,
+   "detail": "2L*/log2 = 10867.879586453, truncated at 2 dp = 10867.87 vs 10867.87\\ldots on L1203 ok; the rounded value 10867.88 (which an earlier draft printed there under \\ldots) no longer occurs in the source yes"
+  },
+  {
+   "name": "X3",
+   "holds": true,
+   "detail": "the two sufficient thresholds, rounded upward: 2L6/log2 = 49.0484209676 -> 49.05 on L1211, 2L12/log2 = 132.508084906 -> 132.51 on L1212; each printed figure >= its crossing yes; the one-decimal 132.5 is below the crossing and absent from the source yes"
+  },
+  {
+   "name": "B1",
+   "holds": true,
+   "detail": "1/v - log v: value 1 at v = 1, -0.19314718056 at v = 2, truncated at 4 dp = -0.1931 vs -0.1931\\ldots on L756; derivative negative across [1,2] yes"
+  },
+  {
+   "name": "N1",
+   "holds": true,
+   "detail": "log X >= 1.5 L from X >= Q^{3/2}: 3/2 = 1.5 exactly, printed on L697 and L791"
+  },
+  {
+   "name": "N2",
+   "holds": true,
+   "detail": "the density remark over 8 cells (2^16..2^30), from cell_cache row counts: R/N 0.076767 -> 0.083373 vs 0.0768/0.0834 on L1465, N/R 13.0264 -> 11.9943 vs 13.03/11.99 on L1466, limit truncated 10.7213 vs 10.7213 on L1467; digits ok, on their lines yes; R/N strictly increasing yes and < 0.09 throughout yes; N/R strictly decreasing yes and above the limit throughout yes"
+  },
+  {
+   "name": "R1",
+   "holds": true,
+   "detail": "section 11 prints 79.7 / 11.2 / 12.0 / 56.4 s against the frozen record's 79.7 / 11.2 / 12.0 / 56.4 s (11th Gen Intel Core i5-11500 @ 2.70GHz, 6 physical, 12 logical, 4 threads): digits ok, each on its line yes; the three parts sum to 79.6 against the printed total 79.7 yes; the superseded 16.3/7.6/31.4 are gone yes; the hardware is named in the text yes; the record's verifier SHA-256 is the shipped pa_certify.py's yes (e377c999ed61); this machine's own run of step 1 recorded wall 66.7 s, e<=24 3.9 s, 2^26 11.3 s, 2^28 51.5 s -- reported, not scored"
+  },
+  {
+   "name": "W1",
+   "holds": true,
+   "detail": "v2's 52 clauses re-run against the current tree: 0 fail, 0 notation mismatches"
+  },
+  {
+   "name": "W2",
+   "holds": true,
+   "detail": "v2 literals no longer printed: 10868, 132.5, 3767 -- all in the recorded removed list yes"
+  },
+  {
+   "name": "Q1",
+   "holds": true,
+   "detail": "constants quoted from a cited source, checked for presence and attribution only (Trudgian's 0.2795, 6.455 and x >= 229; Rosser-Schoenfeld's 1.25506): 0.2795 L432 (Trudgian Thm. 2, the explicit li-error coefficient) present; 6.455 L432 (Trudgian Thm. 2, the exponent's denominator) present; 6.455 L436 (the same constant, in the deduction v2's V14a checks) present; 1.25506 L419 (Rosser-Schoenfeld (3.6), the Chebyshev coefficient) present"
+  },
+  {
+   "name": "Z1",
+   "holds": true,
+   "detail": "coverage of the 114 non-reference literal occurrences: 65 by the clauses above (4 of them quoted), 49 by v2, 0 left over -- 65 + 49 + 0 = 114 checks out. Those occurrences occupy 64 distinct (literal, line) pairs here and 48 at v2, because 2 literals printed twice on one line (1.0@L1346, 34260449@L1220). Left over none; claimed but not in the .tex none; delegated to a v2 clause that did not run none"
+  },
+  {
+   "name": "D1",
+   "holds": true,
+   "detail": "literals whose rendering disagrees with the notation the source declares: none"
+  }
+ ],
+ "fails": []
+}

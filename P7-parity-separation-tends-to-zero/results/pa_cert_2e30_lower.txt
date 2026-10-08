@@ -1,0 +1,19 @@
+pa_certify -- exact-arithmetic certificates for section 11 (clauses in the header)
+threads 4 (ACF_THREADS or 4, capped at 8 and at numba's own count); the int64 kernels are guarded by the ACTUAL integer sums of the vectors passed to them (clause C2)
+
+C9   HOLDS    the float square root used as an integer bound (lib/goldbach/sieve.py's int(limit**0.5), cell_cache's int(N**0.5) and int(q1**0.5)) equals math.isqrt at EVERY integer below 2^31: all 46341 isqrt levels checked at both ends, vectorised yes and with Python's own scalar operator yes -- so these floats cannot move a bound, and the exact N, Q, q1, thr and row list C0 derives are what every verdict rests on
+
+2^30, ONE SIDE ONLY -- the lower endpoint from a stored integral dual
+the band at 2^30 is rebuilt here; expect several minutes and a few GB
+
+C0   HOLDS    2^30 cell derived here and compared with the cache: N = 1073741824, Q = 32768, q1 = 32771, thr = 32765, 19920 squarefree rows -- all 5 agree
+C1   HOLDS    2^30 band rebuilt in 147.7 s: |vB| 86592333/86592333, |vR| 89520933/89520933, c_vB and c_vR element for element EQUAL
+L2   HOLDS    2^30 stored integral dual bound to the derived cell (its format having been refused or accepted first): all 5 checks pass
+L3   HOLDS    2^30 lower endpoint re-established: all 8 checks pass ; kappa(2^30) > 17787/10^6 = 0.017787  (theta min 0, sweep 48 s, band 148 s)
+L4   HOLDS    2^30 the certificate carries the published four integers of conedual_colgen_2e30_n30b.json: J, H, D_p and c6 all agree
+
+wall 247.5 s
+FAILS: none
+re-established the 2^30 lower endpoint; wrote pa_cert_2e30_lower.txt and pa_cert_2e30_lower.json
+CERTIFICATES: VALID for 2^30 (the lower endpoint only); completeness not checked
+DIAGNOSTICS: none

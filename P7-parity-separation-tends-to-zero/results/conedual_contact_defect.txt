@@ -1,0 +1,199 @@
+conedual_contact_defect -- the averaged normalised contact defect (clauses in the header)
+cells [16, 18, 22, 24, 26, 28]   threads 4   TOL_TIGHT 1e-09   fibre bases a <= 30
+
+==========================================================================================================
+2^16 Q=256    rows=157   pi(Q)=54    |P_Q|=23     kappa CITED [0.1723894, 0.1723894]
+      band rebuilt: |vB| 4414 vs nB 4414, |vR| 5031 vs nR 5031 -> EQUAL
+      exact dual, integer-repaired: M = 173943132187 ; C1 max(theta_n - M) == 0 -> True
+      C1 certified kappa_2(W) = 175977191518914/sqrt(999999999999461891205231 * 1042058) = 0.172389352 in CITED [0.1723894, 0.1723894] -> HOLDS
+      L=0.034978571  U=0.034978581  eps = sqrt(2(1-L/U)) = 0.000749 ;  u_1 = -0.17394313 ;  |P_Q| = 23
+      C3 zeta transform vs direct divisor sums on 157 rows: worst |dev| 5.55e-17, slack 0.000 -> HOLDS
+      route (I): <v,u_cert> = +0.73394305 ;  certified interval [+0.73268573, +0.73520036] ;  (-<v,u_Q>)_+ = 0 (certified)
+      F0: 253 pairs, Delta0 = mean delta = 1.000e-12, max 1.000e-12, exact-contact fraction 1.0000
+      P1 (PROVED) |u_1| = 0.17394313 <= 2/sqrt(|P_Q|) + Delta0 = 0.41702883 + 1.000e-12 = 0.41702883 -> HOLDS
+      base identity u_1 + 2 mean_{P_Q} u_q = -Delta0 : -0.17394313 + 2(+0.08697157) = -1.000e-12 vs -1.000e-12
+      fibres a <= 30: 19 bases ; worst Delta1 (odd omega) = 1.566e-03 ; worst Delta2 (even) = 8.275e-02
+          a=1    F2 omega=0  n=1219    mean delta=2.955e-05  max=1.566e-03  exact frac=0.9811  |sum_{s|a}u_s|=1.739e-01
+          a=2    F1 omega=1  n=23      mean delta=1.000e-12  max=1.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=8.697e-02
+          a=3    F1 omega=1  n=23      mean delta=1.000e-12  max=1.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=8.697e-02
+          a=5    F1 omega=1  n=23      mean delta=1.000e-12  max=1.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=8.697e-02
+          a=6    F2 omega=2  n=253     mean delta=1.091e-12  max=2.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=1.450e-01
+          a=7    F1 omega=1  n=23      mean delta=1.000e-12  max=1.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=8.697e-02
+          a=10   F2 omega=2  n=161     mean delta=1.100e-02  max=4.820e-02  exact frac=0.5714  |sum_{s|a}u_s|=1.276e-01
+          a=11   F1 omega=1  n=23      mean delta=1.000e-12  max=1.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=8.697e-02
+          a=13   F1 omega=1  n=23      mean delta=1.000e-12  max=1.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=8.697e-02
+          a=14   F2 omega=2  n=115     mean delta=4.098e-02  max=1.113e-01  exact frac=0.4000  |sum_{s|a}u_s|=1.102e-01
+          a=15   F2 omega=2  n=115     mean delta=8.275e-02  max=1.251e-01  exact frac=0.2000  |sum_{s|a}u_s|=1.273e-01
+          a=17   F1 omega=1  n=23      mean delta=1.000e-12  max=1.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=8.697e-02
+      global: (1/R_1) sum_vB delta = -(kappa||p|| + <u,p>) = 3.386518e-02  <=  ||p||(1-kappa) = 1.679259e-01
+              => proved ceiling Delta0 <= R_1 * that / |F0| = 0.6734  (measured 1.000e-12)
+      C4 global defect by band sweep = 3.386518e-02 vs row identity 3.386518e-02 : rel dev 2.69e-13 -> HOLDS
+      graph (P5, tol 1e-9): 1307 tight edges of 1355 admissible, 2 components, largest 53 of pi(Q)=54, largest NON-BIPARTITE 53, classes (30,23) ; isolated primes 1 [23]
+      odd-cycle base (graph): non-bipartite component k = 53 -> |u_1| <= 2/sqrt(k) + 2 max|s_p| = 0.274721 + 3.132e-03 ; measured |u_1| = 0.17394313
+      2 s
+
+==========================================================================================================
+2^18 Q=512    rows=314   pi(Q)=97    |P_Q|=43     kappa CITED [0.1408600, 0.1408605]
+      band rebuilt: |vB| 18685 vs nB 18685, |vR| 20754 vs nR 20754 -> EQUAL
+      exact dual, integer-repaired: M = 125249493972 ; C1 max(theta_n - M) == 0 -> True
+      C1 certified kappa_2(W) = 478923844363648/sqrt(999999999997816480070085 * 11559918) = 0.140860454 in CITED [0.1408600, 0.1408605] -> HOLDS
+      L=0.023076219  U=0.023076226  eps = sqrt(2(1-L/U)) = 0.000810 ;  u_1 = -0.12524949 ;  |P_Q| = 43
+      C3 zeta transform vs direct divisor sums on 183 rows: worst |dev| 5.55e-17, slack 0.000 -> HOLDS
+      route (I): <v,u_cert> = +0.58391549 ;  certified interval [+0.58255502, +0.58527596] ;  (-<v,u_Q>)_+ = 0 (certified)
+      F0: 903 pairs, Delta0 = mean delta = 2.000e-12, max 2.000e-12, exact-contact fraction 1.0000
+      P1 (PROVED) |u_1| = 0.12524949 <= 2/sqrt(|P_Q|) + Delta0 = 0.30499714 + 2.000e-12 = 0.30499714 -> HOLDS
+      base identity u_1 + 2 mean_{P_Q} u_q = -Delta0 : -0.12524949 + 2(+0.06262475) = -2.000e-12 vs -2.000e-12
+      fibres a <= 30: 19 bases ; worst Delta1 (odd omega) = 2.000e-12 ; worst Delta2 (even) = 3.898e-02
+          a=1    F2 omega=0  n=4128    mean delta=1.324e-05  max=1.271e-03  exact frac=0.9896  |sum_{s|a}u_s|=1.252e-01
+          a=2    F1 omega=1  n=43      mean delta=2.000e-12  max=2.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=6.262e-02
+          a=3    F1 omega=1  n=43      mean delta=2.000e-12  max=2.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=6.262e-02
+          a=5    F1 omega=1  n=43      mean delta=2.000e-12  max=2.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=6.262e-02
+          a=6    F2 omega=2  n=903     mean delta=2.857e-12  max=4.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=1.152e-01
+          a=7    F1 omega=1  n=43      mean delta=2.000e-12  max=2.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=6.262e-02
+          a=10   F2 omega=2  n=559     mean delta=1.133e-02  max=2.581e-02  exact frac=0.3077  |sum_{s|a}u_s|=1.015e-01
+          a=11   F1 omega=1  n=43      mean delta=2.000e-12  max=2.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=6.262e-02
+          a=13   F1 omega=1  n=43      mean delta=2.000e-12  max=2.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=6.262e-02
+          a=14   F2 omega=2  n=387     mean delta=2.822e-02  max=5.210e-02  exact frac=0.2222  |sum_{s|a}u_s|=9.259e-02
+          a=15   F2 omega=2  n=387     mean delta=2.019e-02  max=5.928e-02  exact frac=0.5556  |sum_{s|a}u_s|=6.613e-02
+          a=17   F1 omega=1  n=43      mean delta=2.000e-12  max=2.000e-12  exact frac=1.0000  |sum_{s|a}u_s|=6.262e-02
+      global: (1/R_1) sum_vB delta = -(kappa||p|| + <u,p>) = 2.380900e-02  <=  ||p||(1-kappa) = 1.407470e-01
+              => proved ceiling Delta0 <= R_1 * that / |F0| = 0.5472  (measured 2.000e-12)
+      C4 global defect by band sweep = 2.380900e-02 vs row identity 2.380900e-02 : rel dev 1.09e-12 -> HOLDS
+      graph (P5, tol 1e-9): 4417 tight edges of 4507 admissible, 2 components, largest 96 of pi(Q)=97, largest NON-BIPARTITE 96, classes (53,43) ; isolated primes 1 [31]
+      odd-cycle base (graph): non-bipartite component k = 96 -> |u_1| <= 2/sqrt(k) + 2 max|s_p| = 0.204124 + 2.543e-03 ; measured |u_1| = 0.12524949
+      10 s
+
+==========================================================================================================
+2^22 Q=2048   rows=1245  pi(Q)=309   |P_Q|=137    kappa CITED [0.0763310, 0.0763313]
+      separator conedual_colgen_sep_2e22_n0b.npz         M = 1000000000001 CITED (K_Q^o certified in conedual_s1_evidence)
+      C2 integers J EQUAL S EQUAL ; kappa_2(W) = 0.076331047 vs npz 0.076331047 -> HOLDS
+      L=0.008735853  U=0.008735882  eps = sqrt(2(1-L/U)) = 0.002575 ;  u_1 = -0.05807795 ;  |P_Q| = 137
+      C3 zeta transform vs direct divisor sums on 183 rows: worst |dev| 1.39e-17, slack 0.000 -> HOLDS
+      route (I): <v,u_cert> = +0.34495817 ;  certified interval [+0.34062930, +0.34928703] ;  (-<v,u_Q>)_+ = 0 (certified)
+      F0: 9316 pairs, Delta0 = mean delta = 1.288e-08, max 1.288e-08, exact-contact fraction 0.0000
+      P1 (PROVED) |u_1| = 0.05807795 <= 2/sqrt(|P_Q|) + Delta0 = 0.17087153 + 1.288e-08 = 0.17087154 -> HOLDS
+      base identity u_1 + 2 mean_{P_Q} u_q = -Delta0 : -0.05807795 + 2(+0.02903897) = -1.288e-08 vs -1.288e-08
+      fibres a <= 30: 19 bases ; worst Delta1 (odd omega) = 7.449e-03 ; worst Delta2 (even) = 1.469e-02
+          a=1    F2 omega=0  n=42196   mean delta=1.179e-08  max=1.382e-08  exact frac=0.0000  |sum_{s|a}u_s|=5.808e-02
+          a=2    F1 omega=1  n=137     mean delta=4.616e-09  max=4.616e-09  exact frac=0.0000  |sum_{s|a}u_s|=2.904e-02
+          a=3    F1 omega=1  n=137     mean delta=1.192e-08  max=1.192e-08  exact frac=0.0000  |sum_{s|a}u_s|=2.904e-02
+          a=5    F1 omega=1  n=137     mean delta=2.227e-09  max=2.227e-09  exact frac=0.0000  |sum_{s|a}u_s|=2.904e-02
+          a=6    F2 omega=2  n=9042    mean delta=2.817e-04  max=7.449e-03  exact frac=0.0000  |sum_{s|a}u_s|=5.808e-02
+          a=7    F1 omega=1  n=137     mean delta=7.301e-09  max=7.301e-09  exact frac=0.0000  |sum_{s|a}u_s|=2.904e-02
+          a=10   F2 omega=2  n=6028    mean delta=1.379e-03  max=1.147e-02  exact frac=0.0000  |sum_{s|a}u_s|=5.036e-02
+          a=11   F1 omega=1  n=137     mean delta=6.936e-09  max=6.936e-09  exact frac=0.0000  |sum_{s|a}u_s|=2.904e-02
+          a=13   F1 omega=1  n=137     mean delta=7.986e-09  max=7.986e-09  exact frac=0.0000  |sum_{s|a}u_s|=2.904e-02
+          a=14   F2 omega=2  n=4384    mean delta=8.680e-03  max=2.564e-02  exact frac=0.0000  |sum_{s|a}u_s|=4.712e-02
+          a=15   F2 omega=2  n=4110    mean delta=1.469e-02  max=4.085e-02  exact frac=0.0000  |sum_{s|a}u_s|=4.739e-02
+          a=17   F1 omega=1  n=137     mean delta=5.981e-09  max=5.981e-09  exact frac=0.0000  |sum_{s|a}u_s|=2.904e-02
+      global: (1/R_1) sum_vB delta = -(kappa||p|| + <u,p>) = 1.342028e-02  <=  ||p||(1-kappa) = 1.057111e-01
+              => proved ceiling Delta0 <= R_1 * that / |F0| = 0.4866  (measured 1.288e-08)
+      graph (P5, tol 1e-9): 56 tight edges of 47011 admissible, 254 components, largest 51 of pi(Q)=309, largest NON-BIPARTITE 0, classes (1,50) ; isolated primes 252 [2, 3, 7, 11, 13, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83]
+      graph (D1, tol* = 1.3e-07): 47011 tight edges of 47011 admissible, 1 components, largest 309 of pi(Q)=309, largest NON-BIPARTITE 309, classes (172,137) ; isolated primes 0 []
+      odd-cycle base (graph_adaptive): non-bipartite component k = 309 -> |u_1| <= 2/sqrt(k) + 2 max|s_p| = 0.113776 + 1.476e-08 ; measured |u_1| = 0.05807795
+      0 s
+
+==========================================================================================================
+2^24 Q=4096   rows=2491  pi(Q)=564   |P_Q|=255    kappa CITED [0.0527620, 0.0527630]
+      separator conedual_colgen_sep_2e24_n0b.npz         M = 1000001113767 CITED (K_Q^o certified in conedual_s1_evidence)
+      C2 integers J EQUAL S EQUAL ; kappa_2(W) = 0.052762385 vs npz 0.052762385 -> HOLDS
+      L=0.005102906  U=0.005102966  eps = sqrt(2(1-L/U)) = 0.004829 ;  u_1 = -0.04028556 ;  |P_Q| = 255
+      C3 zeta transform vs direct divisor sums on 183 rows: worst |dev| 1.39e-17, slack 0.000 -> HOLDS
+      route (I): <v,u_cert> = +0.26551056 ;  certified interval [+0.25739195, +0.27362918] ;  (-<v,u_Q>)_+ = 0 (certified)
+      F0: 32385 pairs, Delta0 = mean delta = 4.877e-08, max 7.158e-08, exact-contact fraction 0.0000
+      P1 (PROVED) |u_1| = 0.04028556 <= 2/sqrt(|P_Q|) + Delta0 = 0.12524486 + 4.877e-08 = 0.12524491 -> HOLDS
+      base identity u_1 + 2 mean_{P_Q} u_q = -Delta0 : -0.04028556 + 2(+0.02014276) = -4.877e-08 vs -4.877e-08
+      fibres a <= 30: 19 bases ; worst Delta1 (odd omega) = 5.709e-03 ; worst Delta2 (even) = 9.645e-03
+          a=1    F2 omega=0  n=143565  mean delta=1.059e-05  max=1.963e-04  exact frac=0.0000  |sum_{s|a}u_s|=4.029e-02
+          a=2    F1 omega=1  n=255     mean delta=1.985e-08  max=3.205e-08  exact frac=0.0000  |sum_{s|a}u_s|=2.014e-02
+          a=3    F1 omega=1  n=255     mean delta=4.033e-08  max=5.253e-08  exact frac=0.0000  |sum_{s|a}u_s|=2.014e-02
+          a=5    F1 omega=1  n=255     mean delta=4.965e-08  max=6.185e-08  exact frac=0.0000  |sum_{s|a}u_s|=2.014e-02
+          a=6    F2 omega=2  n=30855   mean delta=1.778e-04  max=5.709e-03  exact frac=0.0000  |sum_{s|a}u_s|=4.029e-02
+          a=7    F1 omega=1  n=255     mean delta=5.416e-08  max=6.636e-08  exact frac=0.0000  |sum_{s|a}u_s|=2.014e-02
+          a=10   F2 omega=2  n=19890   mean delta=5.927e-04  max=7.761e-03  exact frac=0.0001  |sum_{s|a}u_s|=3.579e-02
+          a=11   F1 omega=1  n=255     mean delta=5.231e-08  max=6.452e-08  exact frac=0.0000  |sum_{s|a}u_s|=2.014e-02
+          a=13   F1 omega=1  n=255     mean delta=6.110e-08  max=7.330e-08  exact frac=0.0000  |sum_{s|a}u_s|=2.014e-02
+          a=14   F2 omega=2  n=15045   mean delta=4.089e-03  max=1.501e-02  exact frac=0.0000  |sum_{s|a}u_s|=3.375e-02
+          a=15   F2 omega=2  n=14280   mean delta=9.316e-03  max=2.684e-02  exact frac=0.0000  |sum_{s|a}u_s|=3.337e-02
+          a=17   F1 omega=1  n=255     mean delta=4.918e-08  max=6.138e-08  exact frac=0.0000  |sum_{s|a}u_s|=2.014e-02
+      global: (1/R_1) sum_vB delta = -(kappa||p|| + <u,p>) = 9.969597e-03  <=  ||p||(1-kappa) = 9.161195e-02
+              => proved ceiling Delta0 <= R_1 * that / |F0| = 0.4211  (measured 4.877e-08)
+      graph (P5, tol 1e-9): 0 tight edges of 157660 admissible, 0 components, largest 0 of pi(Q)=564, largest NON-BIPARTITE 0, classes (0,0) ; isolated primes 564 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71]
+      graph (D1, tol* = 7.2e-07): 126176 tight edges of 157660 admissible, 61 components, largest 504 of pi(Q)=564, largest NON-BIPARTITE 504, classes (249,255) ; isolated primes 60 [53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149]
+      odd-cycle base (graph_adaptive): non-bipartite component k = 504 -> |u_1| <= 2/sqrt(k) + 2 max|s_p| = 0.089087 + 3.925e-04 ; measured |u_1| = 0.04028556
+      0 s
+
+==========================================================================================================
+2^26 Q=8192   rows=4982  pi(Q)=1028  |P_Q|=464    kappa CITED [0.0346220, 0.0346234]
+      separator conedual_colgen_sep_2e26_n0b.npz         M = 1000000603706 CITED (K_Q^o certified in conedual_s1_evidence)
+      C2 integers J EQUAL S EQUAL ; kappa_2(W) = 0.034622923 vs npz 0.034622923 -> HOLDS
+      C5 vs the stored kappa_2(W) 0.0346229227995222: rel dev 0.00e+00 -> HOLDS
+      L=0.002868877  U=0.002868916  eps = sqrt(2(1-L/U)) = 0.005250 ;  u_1 = -0.03407536 ;  |P_Q| = 464
+      C3 zeta transform vs direct divisor sums on 183 rows: worst |dev| 6.94e-18, slack 0.000 -> HOLDS
+      route (I): <v,u_cert> = +0.13854779 ;  certified interval [+0.12972145, +0.14737413] ;  (-<v,u_Q>)_+ = 0 (certified)
+      F0: 107416 pairs, Delta0 = mean delta = 6.320e-08, max 7.818e-08, exact-contact fraction 0.0000
+      P1 (PROVED) |u_1| = 0.03407536 <= 2/sqrt(|P_Q|) + Delta0 = 0.09284767 + 6.320e-08 = 0.09284773 -> HOLDS
+      base identity u_1 + 2 mean_{P_Q} u_q = -Delta0 : -0.03407536 + 2(+0.01703765) = -6.320e-08 vs -6.320e-08
+      fibres a <= 30: 19 bases ; worst Delta1 (odd omega) = 3.066e-02 ; worst Delta2 (even) = 5.562e-03
+          a=1    F2 omega=0  n=476528  mean delta=1.218e-04  max=3.066e-02  exact frac=0.0000  |sum_{s|a}u_s|=3.408e-02
+          a=2    F1 omega=1  n=464     mean delta=3.066e-02  max=3.066e-02  exact frac=0.0000  |sum_{s|a}u_s|=4.770e-02
+          a=3    F1 omega=1  n=464     mean delta=4.824e-08  max=5.573e-08  exact frac=0.0000  |sum_{s|a}u_s|=1.704e-02
+          a=5    F1 omega=1  n=464     mean delta=3.188e-08  max=3.937e-08  exact frac=0.0000  |sum_{s|a}u_s|=1.704e-02
+          a=6    F2 omega=2  n=100224  mean delta=4.495e-06  max=7.917e-04  exact frac=0.0000  |sum_{s|a}u_s|=3.408e-02
+          a=7    F1 omega=1  n=464     mean delta=4.408e-08  max=5.157e-08  exact frac=0.0000  |sum_{s|a}u_s|=1.704e-02
+          a=10   F2 omega=2  n=64496   mean delta=7.300e-05  max=2.239e-03  exact frac=0.0050  |sum_{s|a}u_s|=3.408e-02
+          a=11   F1 omega=1  n=464     mean delta=4.794e-08  max=5.542e-08  exact frac=0.0000  |sum_{s|a}u_s|=1.704e-02
+          a=13   F1 omega=1  n=464     mean delta=3.510e-08  max=4.259e-08  exact frac=0.0000  |sum_{s|a}u_s|=1.704e-02
+          a=14   F2 omega=2  n=48256   mean delta=1.139e-03  max=9.390e-03  exact frac=0.0000  |sum_{s|a}u_s|=3.360e-02
+          a=15   F2 omega=2  n=45472   mean delta=5.181e-03  max=1.461e-02  exact frac=0.0000  |sum_{s|a}u_s|=2.713e-02
+          a=17   F1 omega=1  n=464     mean delta=4.081e-08  max=4.830e-08  exact frac=0.0000  |sum_{s|a}u_s|=1.704e-02
+      global: (1/R_1) sum_vB delta = -(kappa||p|| + <u,p>) = 6.734796e-03  <=  ||p||(1-kappa) = 7.999174e-02
+              => proved ceiling Delta0 <= R_1 * that / |F0| = 0.3454  (measured 6.320e-08)
+      graph (P5, tol 1e-9): 54 tight edges of 525716 admissible, 974 components, largest 55 of pi(Q)=1028, largest NON-BIPARTITE 0, classes (1,54) ; isolated primes 973 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 47, 53, 59, 61, 67, 71, 73]
+      graph (D1, tol* = 7.8e-07): 413022 tight edges of 525716 admissible, 119 components, largest 910 of pi(Q)=1028, largest NON-BIPARTITE 910, classes (280,630) ; isolated primes 118 [2, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151]
+      odd-cycle base (graph_adaptive): non-bipartite component k = 910 -> |u_1| <= 2/sqrt(k) + 2 max|s_p| = 0.066299 + 6.132e-02 ; measured |u_1| = 0.03407536
+      0 s
+
+==========================================================================================================
+2^28 Q=16384  rows=9962  pi(Q)=1900  |P_Q|=872    kappa CITED [0.0245260, 0.0245279]
+      separator conedual_colgen_sep_2e28_n28.npz         M = 1000001741817 CITED (K_Q^o certified in conedual_s1_evidence)
+      C2 integers J EQUAL S EQUAL ; kappa_2(W) = 0.024526263 vs npz 0.024526263 -> HOLDS
+      L=0.001744963  U=0.001745080  eps = sqrt(2(1-L/U)) = 0.011554 ;  u_1 = -0.02700510 ;  |P_Q| = 872
+      C3 zeta transform vs direct divisor sums on 183 rows: worst |dev| 3.47e-18, slack 0.000 -> HOLDS
+      route (I): <v,u_cert> = +0.07170262 ;  certified interval [+0.05227854, +0.09112670] ;  (-<v,u_Q>)_+ = 0 (certified)
+      F0: 379756 pairs, Delta0 = mean delta = 1.304e-07, max 1.987e-07, exact-contact fraction 0.0000
+      P1 (PROVED) |u_1| = 0.02700510 <= 2/sqrt(|P_Q|) + Delta0 = 0.06772855 + 1.304e-07 = 0.06772868 -> HOLDS
+      base identity u_1 + 2 mean_{P_Q} u_q = -Delta0 : -0.02700510 + 2(+0.01350248) = -1.304e-07 vs -1.304e-07
+      fibres a <= 30: 19 bases ; worst Delta1 (odd omega) = 2.701e-02 ; worst Delta2 (even) = 3.144e-03
+          a=1    F2 omega=0  n=1655928 mean delta=1.488e-04  max=2.701e-02  exact frac=0.0000  |sum_{s|a}u_s|=2.701e-02
+          a=2    F1 omega=1  n=872     mean delta=2.701e-02  max=2.701e-02  exact frac=0.0000  |sum_{s|a}u_s|=4.051e-02
+          a=3    F1 omega=1  n=872     mean delta=1.687e-02  max=1.687e-02  exact frac=0.0000  |sum_{s|a}u_s|=3.038e-02
+          a=5    F1 omega=1  n=872     mean delta=7.098e-08  max=1.064e-07  exact frac=0.0000  |sum_{s|a}u_s|=1.350e-02
+          a=6    F2 omega=2  n=345312  mean delta=1.496e-06  max=1.099e-04  exact frac=0.0000  |sum_{s|a}u_s|=2.701e-02
+          a=7    F1 omega=1  n=872     mean delta=8.078e-08  max=1.162e-07  exact frac=0.0000  |sum_{s|a}u_s|=1.350e-02
+          a=10   F2 omega=2  n=224104  mean delta=3.320e-05  max=4.438e-04  exact frac=0.0000  |sum_{s|a}u_s|=2.701e-02
+          a=11   F1 omega=1  n=872     mean delta=7.752e-08  max=1.130e-07  exact frac=0.0000  |sum_{s|a}u_s|=1.350e-02
+          a=13   F1 omega=1  n=872     mean delta=5.074e-08  max=8.618e-08  exact frac=0.0000  |sum_{s|a}u_s|=1.350e-02
+          a=14   F2 omega=2  n=165680  mean delta=3.660e-04  max=4.037e-03  exact frac=0.0000  |sum_{s|a}u_s|=2.701e-02
+          a=15   F2 omega=2  n=156960  mean delta=2.951e-03  max=6.941e-03  exact frac=0.0000  |sum_{s|a}u_s|=2.416e-02
+          a=17   F1 omega=1  n=872     mean delta=6.730e-08  max=1.027e-07  exact frac=0.0000  |sum_{s|a}u_s|=1.350e-02
+      global: (1/R_1) sum_vB delta = -(kappa||p|| + <u,p>) = 4.608372e-03  <=  ||p||(1-kappa) = 6.940176e-02
+              => proved ceiling Delta0 <= R_1 * that / |F0| = 0.2699  (measured 1.304e-07)
+      graph (P5, tol 1e-9): 39 tight edges of 1799889 admissible, 1861 components, largest 40 of pi(Q)=1900, largest NON-BIPARTITE 0, classes (1,39) ; isolated primes 1860 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73]
+      graph (D1, tol* = 2.0e-06): 1386533 tight edges of 1799889 admissible, 235 components, largest 1666 of pi(Q)=1900, largest NON-BIPARTITE 1666, classes (228,1438) ; isolated primes 234 [2, 3, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139]
+      odd-cycle base (graph_adaptive): non-bipartite component k = 1666 -> |u_1| <= 2/sqrt(k) + 2 max|s_p| = 0.049000 + 5.401e-02 ; measured |u_1| = 0.02700510
+      1 s
+
+==========================================================================================================
+C1  HOLDS
+C2  HOLDS
+C3  HOLDS
+C4  HOLDS
+C5  HOLDS
+P1  HOLDS
+P2  HOLDS
+P3  FAILS/REFUTED
+P4  HOLDS
+P5  FAILS/REFUTED
+
+VERDICT  C1 HOLDS | C2 HOLDS | C3 HOLDS | C4 HOLDS | C5 HOLDS | P1 HOLDS | P2 HOLDS | P3 FAILS | P4 HOLDS | P5 FAILS

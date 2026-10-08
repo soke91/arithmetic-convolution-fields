@@ -1,0 +1,750 @@
+{
+  "schema_version": 1,
+  "paper_id": "P7-parity-separation-tends-to-zero",
+  "public_directory": "P7-parity-separation-tends-to-zero",
+  "public_repository": "https://github.com/soke91/arithmetic-convolution-fields",
+  "source_snapshot": "77caeb9d7c11a9db573c8a1aae19bc233ee0632e",
+  "paper_source": "P7-parity-separation-tends-to-zero.tex",
+  "paper_pdf": "P7-parity-separation-tends-to-zero.pdf",
+  "paper_files": [
+    {
+      "path": "P7-parity-separation-tends-to-zero.tex",
+      "sha256": "29abfef997e972be15ee0a8017e374879518a460778666f0bdd6bd38eba58260",
+      "imported_from": "generations/v3/paper/kappa_tends_to_zero.tex",
+      "source_commit": "77caeb9d7c11a9db573c8a1aae19bc233ee0632e"
+    },
+    {
+      "path": "P7-parity-separation-tends-to-zero.pdf",
+      "sha256": "313c1a573dcc4cf43797f8ff2dcf2bd87b39020f0fd6ae7ab43fea68a83c8595",
+      "imported_from": "pdflatex x3 of the .tex in ghcr.io/xu-cheng/texlive-small (errors 0, warnings 0, undefined 0, overfull 0, underfull 0, 25 pp.)",
+      "source_commit": "77caeb9d7c11a9db573c8a1aae19bc233ee0632e"
+    }
+  ],
+  "env_files": [
+    {
+      "path": "requirements.txt",
+      "source": "generations/v3/packaging/requirements.txt",
+      "sha256": "3cddd2255e6c02a755416c80878a334d07c3107b327b74abe1ad5f84f25ae366"
+    }
+  ],
+  "projection_sources": [
+    "generations/v3/paper/kappa_tends_to_zero.tex"
+  ],
+  "artifacts": [
+    {
+      "kind": "code",
+      "name": "a8_norm_lower.py",
+      "source": "generations/v3/code/a8_norm_lower.py",
+      "sha256": "9eb363d80dd15fa5dfa8c82603615f723e4f63c4d45bb788abe59df623de5f5d"
+    },
+    {
+      "kind": "code",
+      "name": "conedual_parity_domination.py",
+      "source": "generations/v3/code/conedual_parity_domination.py",
+      "sha256": "80f30e525be9f51f555712e12ab7d30f7c56647e3e7686c4fc0ef064d3ec2f1d"
+    },
+    {
+      "kind": "code",
+      "name": "conedual_cstar_sweep.py",
+      "source": "generations/v3/code/conedual_cstar_sweep.py",
+      "sha256": "8b311116b8bc784a52f0d57c62664320ae3a3cc317b8bfb2dd9ac9ee6678db43"
+    },
+    {
+      "kind": "code",
+      "name": "conedual_colgen.py",
+      "source": "generations/v3/code/conedual_colgen.py",
+      "sha256": "8c3873408d7035b29df5f927097d2b23e430940411f5c66607ea7680af3f6793"
+    },
+    {
+      "kind": "code",
+      "name": "cell_cache.py",
+      "source": "generations/v3/code/cell_cache.py",
+      "sha256": "f7da6f9c39ed884554e6e2ad7fa4059bb14d0b1e7f6e14ba83fe5f47440998bf"
+    },
+    {
+      "kind": "code",
+      "name": "_sieve_shared.py",
+      "source": "generations/v3/code/_sieve_shared.py",
+      "sha256": "dbe8117f4723e41748a259679087eb5f7755e674421117c6db143d1e5ad86449"
+    },
+    {
+      "kind": "code",
+      "name": "conedual_kappa_explicit_target.py",
+      "source": "generations/v3/code/conedual_kappa_explicit_target.py",
+      "sha256": "cacd2cfe9e9313b96d8d02ff2d66c811ad7156e6fce93a40ee9c4ae63468fb7b"
+    },
+    {
+      "kind": "code",
+      "name": "conedual_pole_term.py",
+      "source": "generations/v3/code/conedual_pole_term.py",
+      "sha256": "bb10cfe1caa1f5c3d65e429c6105269c92fc0e5afbda0bc37109dc817340d664"
+    },
+    {
+      "kind": "code",
+      "name": "conedual_the_four_odd_rows.py",
+      "source": "generations/v3/code/conedual_the_four_odd_rows.py",
+      "sha256": "2268f7caae7c38ce788f73c8386177ba1ebc582ddfc6f5d77aab6fa34772e019"
+    },
+    {
+      "kind": "code",
+      "name": "gramint_kappa_certify.py",
+      "source": "generations/v3/code/gramint_kappa_certify.py",
+      "sha256": "2574a068afceabc1c5165798e1e6fdc7265acea598c0f148fd66a8bd14b655f3"
+    },
+    {
+      "kind": "code",
+      "name": "conedual_exact_kappa_small_cells.py",
+      "source": "generations/v3/code/conedual_exact_kappa_small_cells.py",
+      "sha256": "c1f454fbac89333c2b79a09204c899f9cc1d15793c913c61fec832db0c6dcaaf"
+    },
+    {
+      "kind": "code",
+      "name": "conedual_separator_mass.py",
+      "source": "generations/v3/code/conedual_separator_mass.py",
+      "sha256": "d8ba6b1b2016e6bde3626df84999a3695d288b4cd88f8ac20fcb1845acdc35cf"
+    },
+    {
+      "kind": "code",
+      "name": "conedual_contact_defect.py",
+      "source": "generations/v3/code/conedual_contact_defect.py",
+      "sha256": "c3d9811acd8af09cdb80ac0e5fd62aae8363ef0833892a9e17fd2dfb46a76574"
+    },
+    {
+      "kind": "lib",
+      "name": "goldbach/__init__.py",
+      "source": "lib/goldbach/__init__.py",
+      "sha256": "a3f6bab7e8f7941078e266bc1bfabae8b2c7732be7e3f37ef6c79c4e6006083b"
+    },
+    {
+      "kind": "lib",
+      "name": "goldbach/sieve.py",
+      "source": "lib/goldbach/sieve.py",
+      "sha256": "1510ace7efb48591afdf381541dc7c7fa770db73afa1fd7a26edc5ddac11459c"
+    },
+    {
+      "kind": "results",
+      "name": "a8_norm_lower.txt",
+      "source": "generations/v3/results/a8_norm_lower.txt",
+      "sha256": "d3895a636f2c755f9210eeb21824911dd63c316e02c14e5f22df10ec12a04607"
+    },
+    {
+      "kind": "results",
+      "name": "a8_norm_lower.json",
+      "source": "generations/v3/results/a8_norm_lower.json",
+      "sha256": "308fd8a491e02b4a87cbb5d6f2789d82f0944414b99ad7f9a094f09fc7127df2"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_parity_domination.txt",
+      "source": "generations/v3/results/conedual_parity_domination.txt",
+      "sha256": "02fdf235296b27d185f250ec959cb844de24480d419f7cf434f4a2f5bb3b18c6"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_parity_domination.json",
+      "source": "generations/v3/results/conedual_parity_domination.json",
+      "sha256": "0d7bcb522b6911d89f58a318cfce3f61cfa5872ef8de2b6b362a924c495744df"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e22_n0b.txt",
+      "source": "generations/v3/results/conedual_colgen_2e22_n0b.txt",
+      "sha256": "84efe631213abc31dfc56295ee6d4f6560daeb4b8b63ed2903fc472d493a466d"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e22_n0b.json",
+      "source": "generations/v3/results/conedual_colgen_2e22_n0b.json",
+      "sha256": "d6c55ba0760c39ee9a33b1781b5e0b44c880b54cc178de0aadf69736d4753b76"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e24_n0b.txt",
+      "source": "generations/v3/results/conedual_colgen_2e24_n0b.txt",
+      "sha256": "0be64711ab250aad794528055f95b10f6a0add8107100ba46b5548ef006e4ade"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e24_n0b.json",
+      "source": "generations/v3/results/conedual_colgen_2e24_n0b.json",
+      "sha256": "54a609fbf5ecbd2cfe863ee66eb30042c23c9b761dc9bee851ca0f10755f505e"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e26_n0b.txt",
+      "source": "generations/v3/results/conedual_colgen_2e26_n0b.txt",
+      "sha256": "49f3fdd7e537f42101916467eaf0377daaa4c6f780d97f2678f6e046784fafdc"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e26_n0b.json",
+      "source": "generations/v3/results/conedual_colgen_2e26_n0b.json",
+      "sha256": "8f6f51e284444692ed26f043cb79879176064ddf48bd4d87d104ee13d9802e88"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e28_n28.txt",
+      "source": "generations/v3/results/conedual_colgen_2e28_n28.txt",
+      "sha256": "722c61db62fbfdaf8acd6bcb11c4746df59a0f0a27cff9b71c4095ac84fc84a4"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e28_n28.json",
+      "source": "generations/v3/results/conedual_colgen_2e28_n28.json",
+      "sha256": "5db9cd01bea7536414a0b5ef684c9d92d758cef05ab06ff88b3ee988517bf90b"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_sep_2e22_n0b.npz",
+      "source": "generations/v3/results/conedual_colgen_sep_2e22_n0b.npz",
+      "sha256": "c222ba6f84ec7e06fa05371c04d1a5070b12e19649db7a7a23825ace94105518"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_sep_2e24_n0b.npz",
+      "source": "generations/v3/results/conedual_colgen_sep_2e24_n0b.npz",
+      "sha256": "38e39cb7b6785874247461bb0a22a53cd509903fe2328e16f5033406228e7289"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_sep_2e26_n0b.npz",
+      "source": "generations/v3/results/conedual_colgen_sep_2e26_n0b.npz",
+      "sha256": "f2791902eee08f2af812e5b3ef9531b14551fe813cc2b65c4e782342652278d6"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_sep_2e28_n28.npz",
+      "source": "generations/v3/results/conedual_colgen_sep_2e28_n28.npz",
+      "sha256": "02ed7c53c305a9249b1d742d09705948b23e3b3eb0f5ca87b84275df8ff89bac"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_exact_kappa_small_cells.txt",
+      "source": "generations/v3/results/conedual_exact_kappa_small_cells.txt",
+      "sha256": "064914bdb8fc3f6641629aed121f15726a80706ba9b89ae698a3d10a0c6dd14b"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_exact_kappa_small_cells_20.txt",
+      "source": "generations/v3/results/conedual_exact_kappa_small_cells_20.txt",
+      "sha256": "9bc0bacd43523f927e6b0fe75ebc00e63721d40623fb2def9b346867399fede4"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_separator_mass.txt",
+      "source": "generations/v3/results/conedual_separator_mass.txt",
+      "sha256": "2aa1effb6dab64459264adad47a5a9eac672666004385d3755f509742e5f26aa"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_contact_defect.txt",
+      "source": "generations/v3/results/conedual_contact_defect.txt",
+      "sha256": "57e56b78256dd30262fbe216d2f692dd7b1a88fd0fa63a716e98734cb07f0295"
+    },
+    {
+      "kind": "results",
+      "name": "gramint_kappa_certify_ledger.json",
+      "source": "generations/v3/results/gramint_kappa_certify_ledger.json",
+      "sha256": "c37fadef8f35f2f9114ae4accf74a084ba49adfe189a079df02b3ee3bf2ae718"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e16/cb.npy",
+      "source": "generations/v3/results/cell_cache_2e16/cb.npy",
+      "sha256": "4183452c26b7fe3d0962e492a084a6c8cb95c81f812a3f3c56f00a4b902f1e09"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e16/cr.npy",
+      "source": "generations/v3/results/cell_cache_2e16/cr.npy",
+      "sha256": "afcf978664d329e515d06f500981dd89acaecaa82da6ed26d680b55193b75b4e"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e16/meta.json",
+      "source": "generations/v3/results/cell_cache_2e16/meta.json",
+      "sha256": "8be6bebf1295189eb4c4a36258a1d46c6bdaba1ec6c91a03db50b58fba75545e"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e16/rom.npy",
+      "source": "generations/v3/results/cell_cache_2e16/rom.npy",
+      "sha256": "7417d60e67985d8257121965affdddc06d6a09eadaff513307ba2feaf9dd41ac"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e16/rows.npy",
+      "source": "generations/v3/results/cell_cache_2e16/rows.npy",
+      "sha256": "821dbd5e46a567317a216e1fe538ff05ee9249d85cc49c361ad8743c5c7a12fe"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e18/cb.npy",
+      "source": "generations/v3/results/cell_cache_2e18/cb.npy",
+      "sha256": "4034b082fa0dbf1dd9088131b1c97f8f8e1c67544b1ff83258c4aeff32b2f46d"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e18/cr.npy",
+      "source": "generations/v3/results/cell_cache_2e18/cr.npy",
+      "sha256": "4e6b56a2d5d5f003cea534105d66f04a02e9b47b905261c133f68bc940b0b1d0"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e18/meta.json",
+      "source": "generations/v3/results/cell_cache_2e18/meta.json",
+      "sha256": "d3632a0bb8e50804808cab52adb0e334fe9118e1df6106ce6eaf02f5890b2482"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e18/rom.npy",
+      "source": "generations/v3/results/cell_cache_2e18/rom.npy",
+      "sha256": "81bca9dbef0fb7113ceb1e430f768f9b79f14f3df097c289a39a3b1a59ce6254"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e18/rows.npy",
+      "source": "generations/v3/results/cell_cache_2e18/rows.npy",
+      "sha256": "686de97020ad645513e1c4a5636f24cbab61836d99bb1f35603f109cf432e494"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e20/cb.npy",
+      "source": "generations/v3/results/cell_cache_2e20/cb.npy",
+      "sha256": "c2c7c2adc8d7bb4a56cd86edb2036824d1c85b5cabbfd878e5e16feff9d6e545"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e20/cr.npy",
+      "source": "generations/v3/results/cell_cache_2e20/cr.npy",
+      "sha256": "9f7c02cdd386900c2ea6d1b09de44b6a0239704aa3b28e9d237428b88f88cc41"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e20/meta.json",
+      "source": "generations/v3/results/cell_cache_2e20/meta.json",
+      "sha256": "c0254e26d49ac2fc1fe0f4458f8561328ff38a098ebd6f3389d6c67761ea3c14"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e20/rom.npy",
+      "source": "generations/v3/results/cell_cache_2e20/rom.npy",
+      "sha256": "32dcbf11a95fc42fc476ca60eba56c22c0bbd13a4eedeb5663989e275e12a1b1"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e20/rows.npy",
+      "source": "generations/v3/results/cell_cache_2e20/rows.npy",
+      "sha256": "9c0db8ca64ac1260303f4cf4ff96660423a977dd8051c181d54abbc62ed348e2"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e22/cb.npy",
+      "source": "generations/v3/results/cell_cache_2e22/cb.npy",
+      "sha256": "f40b08f720b89842780a4c41490f412620b363a248cd716ff97926b5693b76db"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e22/cr.npy",
+      "source": "generations/v3/results/cell_cache_2e22/cr.npy",
+      "sha256": "61e21347f40427be27873f44c166c793abf814f4776f8d892b6ea988c4e89254"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e22/meta.json",
+      "source": "generations/v3/results/cell_cache_2e22/meta.json",
+      "sha256": "ea56f921e8726a24e7fe7aa2df488a0d5a63fe106046ca4ba58834f8e995238e"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e22/rom.npy",
+      "source": "generations/v3/results/cell_cache_2e22/rom.npy",
+      "sha256": "ac82ba52006ec80a7c071f4ef5fcbc5b3b55058a096d6918aae2c40cf1eb8934"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e22/rows.npy",
+      "source": "generations/v3/results/cell_cache_2e22/rows.npy",
+      "sha256": "65ed2aae0dd8c336a684fe894f5d8edd809b6ca5c9e1b05bf7c4a7ee86c22a97"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e24/cb.npy",
+      "source": "generations/v3/results/cell_cache_2e24/cb.npy",
+      "sha256": "47560ba840a414c6afb148729f3da04402bfca4cba010fb592a30da35f332ae5"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e24/cr.npy",
+      "source": "generations/v3/results/cell_cache_2e24/cr.npy",
+      "sha256": "90679aeb556d151515791ed3b31e9437c0e38c1d6666eea2ec0c65f775f59bd8"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e24/meta.json",
+      "source": "generations/v3/results/cell_cache_2e24/meta.json",
+      "sha256": "c3de1810949724bd03ebd6034b82730e4c612fd71339c0b9b784b4629e94c33d"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e24/rom.npy",
+      "source": "generations/v3/results/cell_cache_2e24/rom.npy",
+      "sha256": "d2c33409da0a5bad7a8ca18769711c56a740405107b6b192dabc560a0ebbcfa1"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e24/rows.npy",
+      "source": "generations/v3/results/cell_cache_2e24/rows.npy",
+      "sha256": "be0cfe5fcce08dd3ac04f0bdcf26d66f787f9e24e74a7c2d619b2a0b197f2136"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e26/cb.npy",
+      "source": "generations/v3/results/cell_cache_2e26/cb.npy",
+      "sha256": "f877a0e15129b318a05f2f54988ab6c8b3b8090d154d80e4f31328e3cf6792e8"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e26/cr.npy",
+      "source": "generations/v3/results/cell_cache_2e26/cr.npy",
+      "sha256": "8017a2b859377f6416417cc515cffea15a8a33ca1e801361054f0cf053c6a2c3"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e26/meta.json",
+      "source": "generations/v3/results/cell_cache_2e26/meta.json",
+      "sha256": "afb9d94a8874f54d34cb1c5de15a6c0cc61df622ee53d767a2f78bba1c85026e"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e26/rom.npy",
+      "source": "generations/v3/results/cell_cache_2e26/rom.npy",
+      "sha256": "d0f49071d0ff939fd124cb07bf04a8ef30d1b86471a3c19dfd2b69822212c63c"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e26/rows.npy",
+      "source": "generations/v3/results/cell_cache_2e26/rows.npy",
+      "sha256": "c2fe1ffaac50c554a7292b41f24bef9a96ef4c14bf1bff27fc4d6a7e9ce42382"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e28/cb.npy",
+      "source": "generations/v3/results/cell_cache_2e28/cb.npy",
+      "sha256": "ff3dee2b99e3b7df0fcdb7748bf1ab744940e33e7490b3f821a9bc3d278e4074"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e28/cr.npy",
+      "source": "generations/v3/results/cell_cache_2e28/cr.npy",
+      "sha256": "df110b3a77b6672ad76e296bd725e85bab29cc6f4e083ca13a7f78466dfe6230"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e28/meta.json",
+      "source": "generations/v3/results/cell_cache_2e28/meta.json",
+      "sha256": "fc07f5e56753c424f9256b7cdd0560fbc9430bfc3ba80ddec781007eeee51672"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e28/rom.npy",
+      "source": "generations/v3/results/cell_cache_2e28/rom.npy",
+      "sha256": "6ab1a7ef787b368a06156589b4f8cae9a28aec079233dbf49034f7b1f6e661a4"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e28/rows.npy",
+      "source": "generations/v3/results/cell_cache_2e28/rows.npy",
+      "sha256": "594a327af3780faa1d2887ffa637438b46e511230934df07b3df7a07b373058b"
+    },
+    {
+      "kind": "code",
+      "name": "regnote.py",
+      "source": "publication/vendor/regnote.py",
+      "sha256": "82238235b155f92c1da0b8303001b614f09ac00da418d6bea1ad06b96ad01759"
+    },
+    {
+      "kind": "code",
+      "name": "pa_tex_constants_v2.py",
+      "source": "generations/v3/code/pa_tex_constants_v2.py",
+      "sha256": "ee3d778a4bafe825571c548513cfe4db272d002702282c83301c4fbfe963b8c9"
+    },
+    {
+      "kind": "code",
+      "name": "pa_certify.py",
+      "source": "generations/v3/code/pa_certify.py",
+      "sha256": "e377c999ed61844d2f4099275036ee8a8bf228511ef7f2390867ac323ae2b57c"
+    },
+    {
+      "kind": "code",
+      "name": "pa_certify_big.py",
+      "source": "generations/v3/code/pa_certify_big.py",
+      "sha256": "05784fe78e1481c4161b3d6181ba1de6ddb903f1a0705b8b2ca75761ac1b1578"
+    },
+    {
+      "kind": "code",
+      "name": "pa_tex_constants_v3.py",
+      "source": "generations/v3/code/pa_tex_constants_v3.py",
+      "sha256": "53f67cd4d6fcb4f8f98f7709a2ae50a8c22fc7aa5dc1c1ef10e78caeb638f978"
+    },
+    {
+      "kind": "results",
+      "name": "pa_tex_constants_v2.txt",
+      "source": "generations/v3/results/pa_tex_constants_v2.txt",
+      "sha256": "7f06e74088bffc5627bb9c2257098a8698ae758bcbfcd128ac3751a008e455ab"
+    },
+    {
+      "kind": "results",
+      "name": "pa_tex_constants_v2.json",
+      "source": "generations/v3/results/pa_tex_constants_v2.json",
+      "sha256": "48afbd96a18f40d412c88ec8b92fcba68df8fba127f9834df2cc157c1dfcdbe9"
+    },
+    {
+      "kind": "results",
+      "name": "pa_cert_2e16.npz",
+      "source": "generations/v3/results/pa_cert_2e16.npz",
+      "sha256": "67c97c92f8e8b5222595436d3a78776f53a37954b034756b9fe5754b310e3bb8"
+    },
+    {
+      "kind": "results",
+      "name": "pa_cert_2e18.npz",
+      "source": "generations/v3/results/pa_cert_2e18.npz",
+      "sha256": "8827f662e284e3ce6ad1139bb9849180a2562041c75fb597438ef1394630218e"
+    },
+    {
+      "kind": "results",
+      "name": "pa_cert_2e20.npz",
+      "source": "generations/v3/results/pa_cert_2e20.npz",
+      "sha256": "3301fbb99eafb9a70fd0a01afab776dbdf026591385c01475d0c5be6ecd9c302"
+    },
+    {
+      "kind": "results",
+      "name": "pa_cert_2e22.npz",
+      "source": "generations/v3/results/pa_cert_2e22.npz",
+      "sha256": "4a7faa9087b4f9b376cc1f8f2634fadfd9759c25b5393f2a650bcfcb82cc3b58"
+    },
+    {
+      "kind": "results",
+      "name": "pa_cert_2e24.npz",
+      "source": "generations/v3/results/pa_cert_2e24.npz",
+      "sha256": "73896c9c872dcc494fb9987882841a19a1062584eeaf364417d3d88b42f05253"
+    },
+    {
+      "kind": "results",
+      "name": "pa_cert_2e26.npz",
+      "source": "generations/v3/results/pa_cert_2e26.npz",
+      "sha256": "0f87b1d9fbae6a5ae1d83813b312bbaaeb30d4e10b07bdf7eb8d7859df15acf4"
+    },
+    {
+      "kind": "results",
+      "name": "pa_cert_2e28.npz",
+      "source": "generations/v3/results/pa_cert_2e28.npz",
+      "sha256": "4577e6470b44d987dc111ea58250e33bab280f4dbefd01dd26e741fa5da278a3"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e30/cb.npy",
+      "source": "generations/v3/results/cell_cache_2e30/cb.npy",
+      "sha256": "551bf9d9dc281949839cae1dac7a4533c61ca50730b1d6d3919e77659aea22b7"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e30/cr.npy",
+      "source": "generations/v3/results/cell_cache_2e30/cr.npy",
+      "sha256": "94959302e1e561759ee05e187587e60d5510e3578267ccd1c2fbeef1f8c1a114"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e30/meta.json",
+      "source": "generations/v3/results/cell_cache_2e30/meta.json",
+      "sha256": "95e22cc8d21ee81978fb05bfec6cdf7fd806f6c44453affb0ea623ad2d3eb834"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e30/rom.npy",
+      "source": "generations/v3/results/cell_cache_2e30/rom.npy",
+      "sha256": "fd8702bcd4a6497ed5c5189467f99e02113eadefad476f0b7b42837d6b3cc979"
+    },
+    {
+      "kind": "results",
+      "name": "cell_cache_2e30/rows.npy",
+      "source": "generations/v3/results/cell_cache_2e30/rows.npy",
+      "sha256": "dbcbc00c891c56434a009fa854a824a001b08269bbcaa85ab022c573bf16d181"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e30_n30b.json",
+      "source": "generations/v3/results/conedual_colgen_2e30_n30b.json",
+      "sha256": "d310566da179f39ad45a49e9113f3eef0c0f432079a5317e1324c2953abc0b93"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e30_n30b.txt",
+      "source": "generations/v3/results/conedual_colgen_2e30_n30b.txt",
+      "sha256": "46ae8d82c48ddb9b85198df37211037d53781498e01ad9ff7fddb01d6693abc1"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_sep_2e30_n30b.npz",
+      "source": "generations/v3/results/conedual_colgen_sep_2e30_n30b.npz",
+      "sha256": "772686b6db4accc1196d537626a134cd2d2fabe39f1e8be201549328c29f501d"
+    },
+    {
+      "kind": "results",
+      "name": "pa_certify.txt",
+      "source": "generations/v3/results/pa_certify.txt",
+      "sha256": "4296786938507e096210f7cbf68db652687c61e21b3d5e5c50e195bff5b2707f"
+    },
+    {
+      "kind": "results",
+      "name": "pa_certify.json",
+      "source": "generations/v3/results/pa_certify.json",
+      "sha256": "9c32d01408e761adc11daab6b24a219632816d79999e4465c89eb7570793ce42"
+    },
+    {
+      "kind": "results",
+      "name": "pa_certify_big.txt",
+      "source": "generations/v3/results/pa_certify_big.txt",
+      "sha256": "0b95a5b1401adf80be31ba4217552fb17782ed5d793545fbd266cac06df473f6"
+    },
+    {
+      "kind": "results",
+      "name": "pa_certify_big.json",
+      "source": "generations/v3/results/pa_certify_big.json",
+      "sha256": "f480aefade652b8674b91a5aa6f52d2027ef3fce14e4d8a7e938cef8eb1e037e"
+    },
+    {
+      "kind": "results",
+      "name": "pa_tex_constants_v3.txt",
+      "source": "generations/v3/results/pa_tex_constants_v3.txt",
+      "sha256": "4c2db8f3b14740278477d62d1302795cf09791cf52d3041f179429544b003bbf"
+    },
+    {
+      "kind": "results",
+      "name": "pa_tex_constants_v3.json",
+      "source": "generations/v3/results/pa_tex_constants_v3.json",
+      "sha256": "1bde31de5386b6ad791a9858b04d265ee62bdd95e3a7fa7c3042685391b8b279"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_exact_dual_2e20.npz",
+      "source": "generations/v3/results/conedual_exact_dual_2e20.npz",
+      "sha256": "6ff729c1ca1f029d2359ba8174a9eac9f7f512d9dfa55ad97137ad9c6f50f01e"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_exact_dual_2e22.npz",
+      "source": "generations/v3/results/conedual_exact_dual_2e22.npz",
+      "sha256": "14d1709cc9a774499d068b1bda06657382c4f8c5511f492e106686cc540086d9"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_exact_dual_2e24.npz",
+      "source": "generations/v3/results/conedual_exact_dual_2e24.npz",
+      "sha256": "6dc4708e3a12cc4b1cecf0a56e9805025e49f6e1d0ac6a182a24cdd00179c001"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_sep_2e26_pa9.npz",
+      "source": "generations/v3/results/conedual_colgen_sep_2e26_pa9.npz",
+      "sha256": "7164cc269bc1bc5e57e9f83bf8033813fc696250aaa54b31009f060cb2575e2f"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_sep_2e28_pa9.npz",
+      "source": "generations/v3/results/conedual_colgen_sep_2e28_pa9.npz",
+      "sha256": "af2beaa726b3533f452f3d72192fbfaceb2569b2d87210cbef6bb41e3ac08987"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e26_pa9.txt",
+      "source": "generations/v3/results/conedual_colgen_2e26_pa9.txt",
+      "sha256": "c91f54d7171a7e11c1d4017147c0005c545f4dd8b1b9532bbcffd7fa59344c53"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e26_pa9.json",
+      "source": "generations/v3/results/conedual_colgen_2e26_pa9.json",
+      "sha256": "eea2c5ff92eee4d95a8f5cc03b2381a5f7ee3f62f552eb28caeb609de00741fa"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e28_pa9.txt",
+      "source": "generations/v3/results/conedual_colgen_2e28_pa9.txt",
+      "sha256": "e6ece5e1fb2f85ab83b195a65f055c4f0ba1891e6f4c51a208629cc3bae929fa"
+    },
+    {
+      "kind": "results",
+      "name": "conedual_colgen_2e28_pa9.json",
+      "source": "generations/v3/results/conedual_colgen_2e28_pa9.json",
+      "sha256": "3ebb4ddeffcfcc722d4bad0cee7da08cb1497436862d043f8b37cfd212f966fe"
+    },
+    {
+      "kind": "results",
+      "name": "pa_cert_2e30_lower.npz",
+      "source": "generations/v3/results/pa_cert_2e30_lower.npz",
+      "sha256": "3d4d276b67c2b7454574f86079fd245e91782fede721295525cf189355978248"
+    },
+    {
+      "kind": "results",
+      "name": "pa_cert_2e30_lower.txt",
+      "source": "generations/v3/results/pa_cert_2e30_lower.txt",
+      "sha256": "64c71c0b6a2e34a94db0562ff0404f139d6caa18bc47b9660538163c80f9a7e5"
+    },
+    {
+      "kind": "results",
+      "name": "pa_cert_2e30_lower.json",
+      "source": "generations/v3/results/pa_cert_2e30_lower.json",
+      "sha256": "3c7cd61bb48e19a6a1191aa9854ca9f078514cf77a4ef23ae1639394d44b3d1d"
+    },
+    {
+      "kind": "results",
+      "name": "pa_certify_timings_frozen.json",
+      "source": "generations/v3/results/pa_certify_timings_frozen.json",
+      "sha256": "e9deb1eeefeea95fbd5466b39680436d1f5a6b784f930a1ec3a583c50fd8f399"
+    }
+  ],
+  "formalization": {
+    "status": "library-in-packet",
+    "note": "A standalone Lean 4 / mathlib v4.33.1 project (lean/), sourced from generations/v3/lean_kappa/: 29 theorems on the exact finite steps (one-large-prime identity, identity (E), Bonferroni, parity split, cone step), no sorry, axioms in lean/axioms.txt. The analytic estimates and the main theorem are not formalized.",
+    "files": [
+      {
+        "path": "lean/KappaZero.lean",
+        "source": "generations/v3/lean_kappa/KappaZero.lean",
+        "sha256": "29c63c6bb0e4899af7b98fcc04de51d6dd7bcd8fa3a3aa8cebd10493043f0abb"
+      },
+      {
+        "path": "lean/axioms.txt",
+        "source": "generations/v3/lean_kappa/axioms.txt",
+        "sha256": "e5e2926fa3f0f96d49b7e3b074060fa3546ce87e93001dc668ae84bbd2fcd53b"
+      },
+      {
+        "path": "lean/lakefile.toml",
+        "source": "generations/v3/lean_kappa/lakefile.toml",
+        "sha256": "6d527d15bb56543a475351d478505170eff718b21c069883b591011d1410b232"
+      },
+      {
+        "path": "lean/lean-toolchain",
+        "source": "generations/v3/lean_kappa/lean-toolchain",
+        "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+      },
+      {
+        "path": "lean/lake-manifest.json",
+        "source": "generations/v3/lean_kappa/lake-manifest.json",
+        "sha256": "447e98fd7a426dc55134556e18a43c8d87153e0f6df0e593f81f6c6c29f9a4a8"
+      },
+      {
+        "path": "lean/README.md",
+        "source": "generations/v3/lean_kappa/README.md",
+        "sha256": "b71a732e977354723803f07c09ed373186ff1b3a0bbaa0d38c1d15e6e42ac642"
+      }
+    ]
+  },
+  "generated_directories": [
+    "code",
+    "results",
+    "lib"
+  ],
+  "editing_rule": "Edit the paper source here; edit evidence only at its artifact source, then run tools/packets.py build.",
+  "readme_reproduce": "The certificates of §11 are **verified** from the files in this directory with no solver (steps 1–4),\nand step 3 checks every number §11 prints against them. The four construction bounds (`0.6982` …\n`0.5841`) are recomputed exactly from integer class counts only in the optional step 5 (clause `P5`),\nwhich also re-derives certificates from solver output and so calls a solver (SciPy's nonnegative\nleast squares at `2^16` and `2^18`); in steps 1–4 those four bounds are compared with a stored record. Run the commands from **this\ndirectory** — the scripts locate `results/`, `lib/` and the manuscript relative to themselves, so the\npacket is self-contained and nothing points outside it.\n\n**The environment, and how to create it.** `requirements.txt` beside this file pins the versions the\nruns reported here were made with:\n\n```text\npython -m venv .venv\n.venv\\Scripts\\activate                 # Windows\n. .venv/bin/activate                   # POSIX\npython -m pip install -r requirements.txt\n```\n\n**Tested with CPython 3.11.0** on Windows 10 (x86-64) with exactly those pins — numpy 2.4.6,\nnumba 0.68.0, llvmlite 0.50.0, scipy 1.17.1, mpmath 1.4.1, psutil 7.2.2 — in a virtual environment\ncreated that way in a directory outside the repository, which is where the \"outside the repository\"\nruns the records mention were made. Python 3.12 also works: the authors' own machine runs 3.12.10 with\nnumpy 2.5.3 and numba 0.67.0, and that is the combination the timing record names. Nothing needs a GPU,\nand nothing needs network access once the environment exists. Which step needs what: numpy and numba in\nevery step, mpmath in step 3, scipy in step 5 only; psutil in none of them (the column-generation\nscript that is not part of these steps records memory with it).\n\n**Threads: one rule.** Each verifier takes `ACF_THREADS` if it is set, defaults to **4**, and caps the\nresult at **8** — and at numba's own thread count, so a four-core machine gets four. Every figure quoted\nhere was measured at the default 4, so `ACF_THREADS=4` is what to set to compare timings. Each run\nprints the number it used.\n\n**Which steps write which files.** Each of steps 1, 2, 3 and 4 rewrites its own record under\n`results/`; step 5 also rewrites the certificates it re-derives. The authors' timing record\n`results/pa_certify_timings_frozen.json` is written by **no** step: it is the frozen measurement §11\nquotes, and your own runs land beside it.\n\n| step | writes |\n|---|---|\n| 1 | `results/pa_certify.{txt,json}` |\n| 2 | `results/pa_cert_2e30_lower.{txt,json}` |\n| 3 | `results/pa_tex_constants_v3.{txt,json}` |\n| 4 | `results/pa_certify_big.{txt,json}` |\n| 5 | the above, plus `results/pa_cert_2e*.npz` for the cells it re-derives |\n\n**What the steps write besides those records**, because \"its own record\" is not the whole truth:\n\n* **Bytecode and compiled-kernel caches inside this directory.** Python writes `.pyc` files under\n  `code/__pycache__/` and `lib/goldbach/__pycache__/`; numba writes the verifier's compiled kernels\n  beside them (`code/__pycache__/pa_certify.k_theta-*.nbi` and `.nbc`, and the same for the other\n  three kernels). These are caches: deleting them costs the next run a few seconds of compilation and\n  changes no result.\n* **A compiled-kernel cache in your temporary directory.** The cell loader sets `NUMBA_CACHE_DIR` to\n  `numba_cache_acf` under `%TEMP%` (`$TMPDIR` elsewhere) unless you set that variable yourself, and its\n  row-count kernel is cached there.\n* **One further JSON in the temporary directory, in step 3 only.** The constants checker re-runs the\n  older checker it supersedes, and redirects that run's JSON to\n  `pa_tex_constants_v2_rerun_by_v3.json` under `%TEMP%`, so that `results/pa_tex_constants_v2.json`\n  keeps the authors' run of it. Nothing of step 3 overwrites that stored file.\n* **The cells, but only if they are refused, and never under `ACF_NO_CACHE=1`.**\n  `code/cell_cache.py` validates `results/cell_cache_2e<e>/` against a fingerprint of the build code\n  and of the canonical sieve, and prints `CACHE USED` or `CACHE NOT USED (reason)` on every load. On a\n  hit it writes nothing. If it refuses a cache because the files are missing or damaged, it rebuilds\n  that cell and **replaces the directory**, which costs minutes at the larger sizes. If instead you set\n  `ACF_NO_CACHE=1`, it rebuilds the cell and **returns it without saving**: the shipped directory is\n  left exactly as it is, and the next run rebuilds again. That is the setting to use to check the\n  shipped cells against a fresh build without touching them. A plain run of the steps below prints\n  `CACHE USED` and leaves the cells byte for byte as they are.\n\nNothing else is written: no file outside this directory and your temporary directory, and no network\naccess at any point.\n\n**1. Re-check all seven two-sided certificates** (exact integer arithmetic, each band rebuilt):\n\n```text\npython code/pa_certify.py --verify\n```\n\nPer cell it re-establishes, in this order: the **cell itself** — `N = 2^e`, `Q = ⌊√N⌋`, `q₁` the least\nprime above `Q`, `thr = ⌊N/q₁⌋` and the complete list of squarefree `d ≤ Q` are all derived from `e`\nalone, and a cache or certificate whose values differ is refused (C0); the inventory is exactly the\nseven advertised cells, so a missing certificate fails rather than shrinking the claim (C6); the band\nrebuilt and compared against the cached row counts element for element (C1); every stored field present\nand well formed (C5); every stored index validated before it indexes anything (C4); both int64 kernels\nguarded by the actual integer bound on their accumulator (C2); then `θ_λ ≥ 0` swept over **every**\neven-`ω` column of the whole band, `⟨c_𝓞, λ⟩ < 0`, `q ≥ 0`, and both rational bounds of `eq:cert`\nrecomputed and matched against the stored values. Expected: `FAILS: none`. On the authors' machine (below) a first run takes about 80 s for all seven cells; `results/pa_certify_timings_frozen.json` holds that run's breakdown, the hardware, and what the figures do and do not reproduce.\n\nC0 is what binds the answer to the question. Without it, a larger cell's cache and certificate\nrelabelled as a smaller cell's pass every other check on their own valid data, and the larger cell's\ninterval is reported as the smaller cell's.\n\n**No verdict rests on a floating-point square root.** Three places in the shipped code take an integer\nbound from a float: the canonical sieve's loop bound `int(limit ** 0.5)` (`lib/goldbach/sieve.py`), and\n`code/cell_cache.py`'s `Q = int(N ** 0.5)` and its trial division of `q₁` up to `int(q₁ ** 0.5)`. Two\nthings make them harmless, and the run states both rather than asking you to assume either.\n\nFirst, nothing a cache computed is believed: `C0` re-derives `N`, `Q`, `q₁`, `thr` and the complete row\nlist from `e` alone, in integer arithmetic with `math.isqrt`, and a cache or certificate disagreeing in\nany of the five is refused and the cell voided. Those exact integers are what every later clause uses.\n\nSecond, clause `C9` settles the float itself, over the whole range this code can sieve: `int(L ** 0.5)`\nequals `math.isqrt(L)` for **every** integer `L < 2³¹`. That is checked, not sampled — both maps are\nnon-decreasing in `L`, so agreeing at the two ends of each `isqrt` level settles the level, and the\n46,341 levels cover the range; the check is run both vectorised and with the scalar operator the sieve\nitself evaluates.\n\nThe three lines are not rewritten with `math.isqrt`, deliberately. `code/cell_cache.py`'s cache\nfingerprint hashes the **bytes of the sieve** together with the source of its own build function, so\nediting either discards every cached cell in this packet — including `2^28` and `2^30`, which cost\nminutes and about 16 GB to rebuild. The check above establishes what the edit would have established,\nwithout invalidating the cells the packet ships.\n\n**2. Re-establish the `2^30` lower endpoint** from a stored integral dual:\n\n```text\npython code/pa_certify.py --verify-lower30\n```\n\n`results/pa_cert_2e30_lower.npz` holds the **repaired integral** dual `λ` at `2^30` with `rows`, `J`,\n`H`, `D_p` and `c₆`. This step rebuilds the `2^30` band, sweeps `θ_λ ≥ 0` over every even-`ω` column of\nit, recomputes `J = −⟨c_𝓞,λ⟩`, `H = ‖λ‖²` and `D_p = ‖P‖²` from the stored vector, and checks\n`c₆²·H·D_p < J²·10¹²` with `c₆` maximal — which is `κ(2^30) > c₆/10⁶ = 0.017787`. No upper endpoint is\nclaimed at `2^30`. Four integers satisfying an inequality prove nothing on their own; the stored `λ` and\nthis sweep are what make them the right integers.\n\n`λ` is the separator rounded at `10¹²`, which is the scale the published integers are at, so the four\nintegers this step recomputes are the ones §11 prints — `J = 4401612119558212802`,\n`H = 2015370564893177546709684150`, `D_p = 30382600959846`, `c₆ = 17787` — digit for digit, and clause\n`L4` compares them with the solver run's own ledger `results/conedual_colgen_2e30_n30b.json`. Rounding\nthe same separator at another scale would certify the same cell with different valid integers; `L4` is\nwhat keeps the stored certificate the one the paper's numbers come from.\n\nOn the authors' machine (below): **247.5 s** in the frozen timing record\n(`results/pa_certify_timings_frozen.json`, field `verify_lower30_s`) — most of it the band rebuild, then\nthe sweep. The band at `2^30` is the cost; budget a few minutes and about 16 GB of memory (the memory\nfigure was observed when the certificate was built and is not part of a shipped record).\n`python code/pa_certify.py --make-lower30` rebuilds the certificate itself from the stored separator\n(a few minutes), and writes `results/pa_cert_2e30_lower.npz` as well as its own record.\n\n**3. Re-check the numbers §11 prints** against the certificates and the frozen records:\n\n```text\npython code/pa_tex_constants_v3.py\n```\n\n2.4 s. It tokenises `P7-parity-separation-tends-to-zero.tex` and accounts for every numeric literal\noccurrence in the body — decimals, `\\,`-grouped integers and integers of five digits or more — by a\nclause that recomputes it, by a declared quotation from a cited source, or as a reference inside\n`\\cite[...]`. It does **not** parse ordinary small integers wherever they appear; what it does check\nbeyond that inventory is each table row's own exponent label against the cell whose certificate produced\nthat row's endpoints, and the exponent and `Y` lists §11 names outside the table (K6). The seven\nintervals are recomputed from the certificates themselves, as is the `2^30` four-integer inequality\nincluding `c₆`'s maximality and `D_p` recomputed from the `2^30` cell.\n\nClause `R1` is the one claim here about a measurement rather than arithmetic: it compares the four\ntimings §11 prints with `results/pa_certify_timings_frozen.json`, the frozen record of the authors' run,\nand requires that record to name the SHA-256 of the verifier shipped here. If you have run step 1, your\nown times are reported beside them and deliberately not scored.\n\n**Its output and exit code.** This step is not a certificate verifier and prints no `CERTIFICATES:`\nline. It ends with a `FAILS:` line listing every clause that fails (`FAILS: none` when all hold) and the\nnames of the two record files it wrote; its exit code is `0` exactly when every clause holds and `1`\notherwise.\n\n**What this step does not do.** It checks the manuscript's numbers against the certificates and the\nstored records -- that every figure §11 prints is the one the stored data gives, under the rounding the\ntext declares. It does **not** check that a certificate is valid: nothing in it sweeps a dual over the\nband or tests a feasibility condition. `FAILS: none` here therefore says that the paper's digits match\nthe evidence, not that the evidence certifies anything. Step 1 is what establishes the seven two-sided\ncertificates and step 2 the `2^30` lower endpoint; a number is worth no more than the step that\nestablished it.\n\n**4. The same seven certificates through the wrapper** that produced the two largest:\n\n```text\npython code/pa_certify_big.py --verify\n```\n\nThis step runs **every check step 1 runs** — the cell derivation `C0`, the band rebuild `C1`, the field\nand index checks `C5`/`C4`, the accumulator guards `C2`, the per-cell re-verification `V<e>`, the\nsquare-root clause `C9` and the inventory clause (`C8` here, `C6` there) — because the per-cell work is\n`pa_certify.py`'s own code called from this file, and `C9` is `pa_certify.py`'s own function called from\nit too. The wrapper omits no check of the verifier it wraps; what differs is only which separator and\ndual the two largest cells were built from, which is why this file exists.\n\n**5. Re-derive a certificate from its solver output** (optional; the only step that rewrites\n`results/pa_cert_2e*.npz`). At `e = 16,18` the primal is re-derived by a dense nonnegative least squares\nover the complete column set and the dual from its residual; at `e = 20,22,24` both come from the stored\nexact duals:\n\n```text\npython code/pa_certify.py --cells 16 18 20 22 24\n```\n\nAt `e = 26,28` the primal and the dual come from different runs, so each cell names its own pair:\n\n```text\npython code/pa_certify_big.py --cells 26 --sep-tag _pa9 --dual-tag _n0b\npython code/pa_certify_big.py --cells 28 --sep-tag _pa9 --dual-tag _n28\n```\n\n**What a run reports, and what its exit code means.** Every **verifier** command — `pa_certify.py` and\n`pa_certify_big.py`, in steps 1, 2, 4 and 5 — ends with two machine-readable lines:\n\n```text\nCERTIFICATES: VALID\nDIAGNOSTICS: P3 fails (expected: it compares a nine-decimal rounded float optimum with a twelve-decimal exact interval, which need not contain it -- section 11 says so in a parenthesis)\n```\n\nThe first line is the verdict on the certificates themselves, and **the exit code reports that line\nalone**: `0` when every certification clause holds, `1` when one does not, with the failing clause named\non the line. Certification is what establishes a certificate — the cell is the one `e` names and is\nintact (`C0`, `C1`, `C5`, `C6`), the exact integer arithmetic behind the bound is sound and every stored\nfield is the integer it claims to be (`C2`, `C3`, `C4`, the `V<e>` re-verifications, `L0`–`L4` at\n`2^30`), the certificate is feasible and two-sided (`P1`, and `P5` for the construction's own bounds).\n\nThe second line lists the clauses that compare a certificate with something *outside* it: a width\ntarget, a number printed elsewhere, the published `eq:certint` integers, a file-size budget. Two of them\nfail, and both are expected; they occur only in the optional construction runs of step 5 -- the\nmandatory verification runs (steps 1 and 4) report no diagnostic failure. `pa_certify.py`'s `P3` compares the stored *nine-decimal* float\noptima `0.172389352` and `0.140860454` for containment in *twelve-decimal* intervals, and a nine-decimal\nrounding need not lie inside one — §11 says so in a parenthesis. `pa_certify_big.py`'s `P2` at `2^28`\nasks for a width below `10⁻⁶` where the width is `1.2·10⁻⁵`; §11 claims only `10⁻⁴` at that size. Both\nare clauses being refuted and recorded, and neither touches a certificate: the certified intervals are\nreproduced unchanged either way. The `FAILS:` line above the verdict still names every failing clause of\neither kind, and the JSON record carries `certificates_valid`, `certification_fails` and\n`diagnostic_fails`.\n\n**Verification mode and construction mode make different claims, and each run says which it is in.**\nSteps 1, 2 and 4 are **verification**: they open the stored files and re-establish what those files\nclaim, writing nothing but their own records. Step 5 is **construction**: it re-derives certificates and\nwrites them, and its output therefore mixes the certification clauses with the construction's own\ndiagnostics (`P2`–`P6` here are about targets, printed numbers and file sizes, not about the stored\nevidence). A construction run opens the cells it was given and runs no completeness clause, so it is not\na packet check and does not claim to be one. Each run announces its mode near the beginning of its output, after the title, the thread\nsetting and clause `C9` (`VERIFY MODE …` / `CONSTRUCTION MODE …`).\n\n**Only a run with no `--cells` speaks for the packet's contents.** The verdict line says what the run\ncovers, and it is the one place to read that from:\n\n```text\nCERTIFICATES: VALID                                                   step 1 or 4, no --cells\nCERTIFICATES: VALID for 2^16 only; completeness not checked           --verify --cells 16\nCERTIFICATES: VALID for 2^30 (the lower endpoint only); completeness not checked    step 2\nCERTIFICATES: VALID for the cells built (2^16, …); completeness not checked         step 5\n```\n\nWith `--cells` naming anything other than the advertised set, a verification run opens the selected\ncertificates and **no others** — a damaged certificate outside the selection is never read — so the\ncompleteness clause (`C6` in `pa_certify.py`, `C8` in `pa_certify_big.py`) reports **`NOT RUN`** instead\nof passing, a `NOT RUN:` line appears beside `FAILS:`, and the record carries\n`completeness_checked: false` with `clauses_not_run`. A line beginning `CERTIFICATES: VALID` therefore\nmeans \"valid, for what this run examined\", and the rest of the line says what that was. A scoped run is not a check of the packet.\n\nAt `e = 26,28` a re-derived certificate replaces the stored one only if its enclosure lies **inside**\nthe stored one and is strictly smaller on at least one side, compared as the exact squared rationals the\nfiles store -- not as rounded widths. So a replacement can never lose any part of the stored enclosure,\nand two enclosures that merely cross (a better lower endpoint bought with a worse upper one) leave the\nstored certificate in place. The run prints both enclosures and which one it kept. At `e ≤ 24` it is written unconditionally; on\nthe run that produced this packet all five came back byte-identical, but they need not: the dense least\nsquares at `2^16` is reproducible within one process while its residual can differ by one unit in the\nlast place between runs, which moves one coordinate of the rounded dual. The certified interval is\nstable under that, so step 3 still passes afterwards.\n\nThe column-generation runs that produced the `e = 26,28,30` separators are hours on eight threads and\nare not part of this packet; their records are `results/conedual_colgen_2e{26,28}_pa9.*` and\n`results/conedual_colgen_2e30_n30b.*`.\n\n## The authors' machine\n\nThe timings quoted above and in §11 were measured on:\n\n| | |\n|---|---|\n| CPU | 11th Gen Intel Core i5-11500 @ 2.70 GHz, 6 physical / 12 logical cores |\n| RAM | 63.9 GB |\n| OS | Windows 10 Pro, build 10.0.19045 |\n| Python | 3.12.10, numpy 2.5.3, numba 0.67.0 |\n| threads | 4 (`ACF_THREADS=4`) |\n\nTimes on other hardware differ; the band rebuild dominates every figure.\n\n## What backs each §11 claim\n\n| claim | files |\n|---|---|\n| the seven certified intervals | `results/pa_cert_2e{16,18,20,22,24,26,28}.npz` — each the two integral vectors plus `D` and the four big rationals |\n| the `2^30` lower endpoint | `results/pa_cert_2e30_lower.npz` — the repaired integral dual `λ` with `rows`, `J`, `H`, `D_p`, `c₆`, rounded at the scale the published integers are at; re-established by step 2, which also compares the four integers with the solver ledger |\n| the `2^30` band sizes \\|𝓔\\|, \\|𝓞\\| and the solver's uncertified value | `results/conedual_colgen_2e30_n30b.json` and its `.txt` transcript, with `results/conedual_colgen_sep_2e30_n30b.npz`, the float separator the integral dual was rounded and repaired from |\n| the cells every check is run against | `results/cell_cache_2e{16,18,20,22,24,26,28,30}/` — `rows.npy`, `cb.npy`, `cr.npy`, `rom.npy`, `meta.json`. Clause C0 derives `N`, `Q`, `q₁`, `thr` and the complete row list independently and refuses a cache that disagrees, so these are checked, not trusted |\n| the verifier | `code/pa_certify.py`, `code/pa_certify_big.py` |\n| the constants checker | `code/pa_tex_constants_v3.py`, and `code/pa_tex_constants_v2.py`, which it imports and re-runs |\n| their library imports | `code/cell_cache.py` and `code/_sieve_shared.py`, over `lib/goldbach/sieve.py` — the canonical sieve, whose bytes the cache fingerprint hashes |\n| the timings §11 prints | `results/pa_certify_timings_frozen.json` — frozen, written by no step, with the hardware above. `results/pa_certify.{txt,json}` and `pa_certify_big.{txt,json}` are where your own runs land |\n| the construction's `0.6982, 0.6130, 0.6088, 0.5841` | `code/pa_certify.py` step 5, whose clause `P5` prints the exact rational bound at each of the four sizes, rounds it **upward** at four decimals and reports *valid and tight*. Also `results/conedual_parity_domination.{txt,json}`, the float sweep the sizes came from — note it prints `0.6981` and `0.6087` at `2^16` and `2^20`, which are those same bounds rounded to **nearest**; the paper rounds upward, deliberately, because only an upper bound is a bound |\n| the `e ≤ 20` float optima and the `e = 22…28` ledgers the older clauses read | `results/conedual_separator_mass.txt`, `conedual_exact_kappa_small_cells{,_20}.txt`, `conedual_colgen_2e{22,24,26,28}_{n0b,n28}.{txt,json}` |\n| re-deriving the certificates (step 5) | `results/conedual_exact_dual_2e{20,22,24}.npz`; `results/conedual_colgen_sep_2e26_{pa9,n0b}.npz` and `conedual_colgen_sep_2e28_{pa9,n28}.npz` — the frozen pairing §11 records, primal and dual from different runs at the two largest cells |\n| the manuscript the checker reads | `P7-parity-separation-tends-to-zero.tex` in this directory. The checker looks here first and consults nothing outside this directory |\n| the Lean development | `lean/` — from that directory, `lake env lean KappaZero.lean` with the toolchain `lean-toolchain` names; `lean/axioms.txt` is the stored `#print axioms` output |\n| provenance of every file above | `PACKET.json`: the source path and SHA-256 of each artifact, which `tools/packets.py check` enforces in the repository this packet is built from |\n\nA release tag for this packet must name a commit that **contains this directory as shipped**;\n`source_snapshot` and the artifacts' `source_commit` record where the artifact sources were read from in\nthe working repository and are not that tag.\n\nSome scripts deliberately exit nonzero when a clause is refuted. The output, not a blanket\nzero-exit convention, records that verdict.\n\n**Transcript note.** In the seven column-generation transcripts `results/conedual_colgen_2e*.txt` one printed line naming an unpublished working document was shortened to what the current code prints (`clauses K0-K4; not reimplemented here`), and one stored line of `results/gramint_kappa_certify_ledger.json` names the machine generically. No number in any file was changed."
+}

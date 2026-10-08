@@ -1,0 +1,26 @@
+# The environment this packet was reproduced in, pinned.
+#
+# Tested with CPython 3.11.0 on Windows 10 (x86-64).  Every run reported in the packet's records as
+# made "outside the repository" was made in a virtual environment holding exactly these versions.
+#
+#     python -m venv .venv
+#     .venv\Scripts\activate                 (Windows)
+#     . .venv/bin/activate                   (POSIX)
+#     python -m pip install -r requirements.txt
+#
+# What each one is for:
+#   numpy     every step: the arrays, the exact integer object arithmetic, the npz readers
+#   numba     every step: the parallel kernels that rebuild the band and sweep the dual
+#   llvmlite  numba's own compiler backend; pinned because numba's wheels are tied to its version
+#   mpmath    the constants checker (README step 3) only: high-precision decimal rounding
+#   scipy     README step 5 only: the dense nonnegative least squares that re-derives a primal
+#   psutil    not imported by any README step; the column-generation script records memory with it
+#
+# Other versions will usually work -- nothing here depends on a version-specific behaviour -- but
+# these are the ones the records were produced with, and a pin is what makes a record checkable.
+llvmlite==0.50.0
+mpmath==1.4.1
+numba==0.68.0
+numpy==2.4.6
+psutil==7.2.2
+scipy==1.17.1

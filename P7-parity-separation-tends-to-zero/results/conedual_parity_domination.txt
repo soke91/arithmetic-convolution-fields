@@ -1,0 +1,171 @@
+conedual_parity_domination -- the rough-cofactor parity-domination construction (clauses in header)
+cells [16, 18, 20, 22]   threads 4   cutoff A = floor(sqrt(Q))   scored run
+
+================================================================================================================
+2^16  Q=256    rows=157   |vB|=4414      |vR|=5031       L=log Q=5.5452  A=floor(sqrt Q)=16  L^6=2.91e+04
+      C1 band rebuilt vs cache: |vB| 4414/4414, |vR| 5031/5031, c_B and c_R element for element -> HOLDS
+      ||p||_2 = 0.202904477 vs literal 0.202904477 -> C4 HOLDS ; ||t||_2 = 1.213704 ; x=0 would give ||t||/||p|| = 5.9817 ; certified kappa = 0.172389352
+      normalisation: ||p||_2 >= (1/5)(N/R_1)L^-2 = 0.084728  (holds: True)
+      Y=2       |a|=2      keep(a<=A)=2     dead=0   R_a/B_a in [0.8314, 1.3950] max at a=1      u_eff=16.00 delta=0.000e+00 (scale exp(-L/2logY) nan)
+              resid=0.164615  kappa_ub=resid/||p||=0.8113  [smooth rows 2: 0.000000 | rough rows 155: 0.164615]  C2 dev 8.3e-14 HOLDS  C3 HOLDS
+      Y=3       |a|=4      keep(a<=A)=4     dead=0   R_a/B_a in [0.5550, 1.4843] max at a=1      u_eff=10.09 delta=0.000e+00 (scale exp(-L/2logY) 8.0e-02)
+              resid=0.141654  kappa_ub=resid/||p||=0.6981  [smooth rows 4: 0.000000 | rough rows 153: 0.141654]  C2 dev 6.0e-15 HOLDS  C3 HOLDS
+      Y=5       |a|=8      keep(a<=A)=7     dead=0   R_a/B_a in [0.2120, 3.0000] max at a=5      u_eff=5.89 delta=4.214e-02 (scale exp(-L/2logY) 1.8e-01)
+              resid=0.257720  kappa_ub=resid/||p||=1.2702  [smooth rows 8: 0.119186 | rough rows 149: 0.228504]  C2 dev 5.1e-14 HOLDS  C3 HOLDS
+      Y=6       |a|=8      keep(a<=A)=7     dead=0   R_a/B_a in [0.2120, 3.0000] max at a=5      u_eff=5.29 delta=4.214e-02 (scale exp(-L/2logY) 2.1e-01)
+              resid=0.257720  kappa_ub=resid/||p||=1.2702  [smooth rows 8: 0.119186 | rough rows 149: 0.228504]  C2 dev 5.1e-14 HOLDS  C3 HOLDS
+      Y=7       |a|=16     keep(a<=A)=9     dead=0   R_a/B_a in [0.1419, 6.8235] max at a=7      u_eff=4.70 delta=9.879e-02 (scale exp(-L/2logY) 2.4e-01)
+              resid=0.366489  kappa_ub=resid/||p||=1.8062  [smooth rows 16: 0.218824 | rough rows 141: 0.293990]  C2 dev 1.2e-14 HOLDS  C3 HOLDS
+      Y=11      |a|=32     keep(a<=A)=10    dead=0   R_a/B_a in [0.1017, 9.4821] max at a=7      u_eff=3.81 delta=1.507e-01 (scale exp(-L/2logY) 3.1e-01)
+              resid=0.389665  kappa_ub=resid/||p||=1.9204  [smooth rows 26: 0.288313 | rough rows 131: 0.262135]  C2 dev 2.8e-14 HOLDS  C3 HOLDS
+      Y=13      |a|=64     keep(a<=A)=11    dead=0   R_a/B_a in [0.0812, 13.2391] max at a=5      u_eff=3.70 delta=2.027e-01 (scale exp(-L/2logY) 3.4e-01)
+              resid=0.402748  kappa_ub=resid/||p||=1.9849  [smooth rows 36: 0.350234 | rough rows 121: 0.198852]  C2 dev 1.9e-14 HOLDS  C3 HOLDS
+      Y=16      |a|=64     keep(a<=A)=11    dead=0   R_a/B_a in [0.0812, 13.2391] max at a=5      u_eff=3.42 delta=2.027e-01 (scale exp(-L/2logY) 3.7e-01)
+              resid=0.402748  kappa_ub=resid/||p||=1.9849  [smooth rows 36: 0.350234 | rough rows 121: 0.198852]  C2 dev 1.9e-14 HOLDS  C3 HOLDS
+      Y=19      |a|=214    keep(a<=A)=11    dead=0   R_a/B_a in [0.0734, 28.6129] max at a=2      u_eff=3.53 delta=3.661e-01 (scale exp(-L/2logY) 3.9e-01)
+              resid=0.552004  kappa_ub=resid/||p||=2.7205  [smooth rows 56: 0.517219 | rough rows 101: 0.192853]  C2 dev 1.4e-14 HOLDS  C3 HOLDS
+      Y=30      |a|=490    keep(a<=A)=11    dead=0   R_a/B_a in [0.0085, 34.6957] max at a=2      u_eff=3.06 delta=4.810e-01 (scale exp(-L/2logY) 4.4e-01)
+              resid=0.670537  kappa_ub=resid/||p||=3.3047  [smooth rows 70: 0.638549 | rough rows 87: 0.204635]  C2 dev 2.2e-14 HOLDS  C3 HOLDS
+      Y=31      |a|=670    keep(a<=A)=11    dead=0   R_a/B_a in [0.0011, 32.8261] max at a=2      u_eff=3.03 delta=5.287e-01 (scale exp(-L/2logY) 4.5e-01)
+              resid=0.716008  kappa_ub=resid/||p||=3.5288  [smooth rows 76: 0.689754 | rough rows 81: 0.192108]  C2 dev 1.1e-14 HOLDS  C3 HOLDS
+      Y=50      |a|=1560   keep(a<=A)=11    dead=0   R_a/B_a in [0.0000, 25.7826] max at a=2      u_eff=2.66 delta=6.855e-01 (scale exp(-L/2logY) 4.9e-01)
+              resid=0.872059  kappa_ub=resid/||p||=4.2979  [smooth rows 94: 0.857821 | rough rows 63: 0.156938]  C2 dev 1.2e-15 HOLDS  C3 HOLDS
+      Y=100     |a|=4004   keep(a<=A)=11    dead=3   R_a/B_a in [0.0000, 14.5000] max at a=6      u_eff=2.02 delta=9.012e-01 (scale exp(-L/2logY) 5.5e-01)
+              resid=1.122819  kappa_ub=resid/||p||=5.5337  [smooth rows 122: 1.116394 | rough rows 35: 0.119943]  C2 dev 1.7e-02 NOT APPLICABLE (dead retained class)  C3 HOLDS
+      Y=171     |a|=6999   keep(a<=A)=11    dead=4   R_a/B_a in [0.0000, 0.2000] max at a=2      u_eff=2.02 delta=9.875e-01 (scale exp(-L/2logY) 5.8e-01)
+              resid=1.213041  kappa_ub=resid/||p||=5.9784  [smooth rows 142: 1.210867 | rough rows 15: 0.072604]  C2 dev 1.2e-02 NOT APPLICABLE (dead retained class)  C3 HOLDS
+      Y=29073   |a|=9445   keep(a<=A)=0     dead=0   R_a/B_a in [n/a, n/a] max at a=-1     u_eff=nan delta=1.000e+00 (scale exp(-L/2logY) 7.6e-01)
+              resid=1.213704  kappa_ub=resid/||p||=5.9817  [smooth rows 157: 1.213704 | rough rows 0: 0.000000]  C2 dev 0.0e+00 HOLDS  C3 HOLDS
+      BEST over Y: Y=3 gives kappa <= 0.6981  (certified kappa = 0.172389352 ; factor 4.0 above)
+      1.6 s
+================================================================================================================
+2^18  Q=512    rows=314   |vB|=18685     |vR|=20754      L=log Q=6.2383  A=floor(sqrt Q)=22  L^6=5.89e+04
+      C1 band rebuilt vs cache: |vB| 18685/18685, |vR| 20754/20754, c_B and c_R element for element -> HOLDS
+      ||p||_2 = 0.163823260 vs literal 0.163823260 -> C4 HOLDS ; ||t||_2 = 1.194895 ; x=0 would give ||t||/||p|| = 7.2938 ; certified kappa = 0.140860454
+      normalisation: ||p||_2 >= (1/5)(N/R_1)L^-2 = 0.064913  (holds: True)
+      Y=2       |a|=2      keep(a<=A)=2     dead=0   R_a/B_a in [0.8082, 1.3523] max at a=1      u_eff=18.00 delta=0.000e+00 (scale exp(-L/2logY) nan)
+              resid=0.145648  kappa_ub=resid/||p||=0.8891  [smooth rows 2: 0.000000 | rough rows 312: 0.145648]  C2 dev 2.4e-13 HOLDS  C3 HOLDS
+      Y=3       |a|=4      keep(a<=A)=4     dead=0   R_a/B_a in [0.7977, 1.5984] max at a=1      u_eff=11.36 delta=0.000e+00 (scale exp(-L/2logY) 5.8e-02)
+              resid=0.100418  kappa_ub=resid/||p||=0.6130  [smooth rows 4: 0.000000 | rough rows 310: 0.100418]  C2 dev 1.0e-13 HOLDS  C3 HOLDS
+      Y=5       |a|=8      keep(a<=A)=7     dead=0   R_a/B_a in [0.3003, 1.7570] max at a=5      u_eff=6.75 delta=4.062e-02 (scale exp(-L/2logY) 1.4e-01)
+              resid=0.161176  kappa_ub=resid/||p||=0.9838  [smooth rows 8: 0.114887 | rough rows 306: 0.113043]  C2 dev 1.1e-13 HOLDS  C3 HOLDS
+      Y=6       |a|=8      keep(a<=A)=7     dead=0   R_a/B_a in [0.3003, 1.7570] max at a=5      u_eff=6.07 delta=4.062e-02 (scale exp(-L/2logY) 1.8e-01)
+              resid=0.161176  kappa_ub=resid/||p||=0.9838  [smooth rows 8: 0.114887 | rough rows 306: 0.113043]  C2 dev 1.1e-13 HOLDS  C3 HOLDS
+      Y=7       |a|=16     keep(a<=A)=10    dead=0   R_a/B_a in [0.1616, 3.8073] max at a=7      u_eff=5.41 delta=9.670e-02 (scale exp(-L/2logY) 2.0e-01)
+              resid=0.282778  kappa_ub=resid/||p||=1.7261  [smooth rows 16: 0.220485 | rough rows 298: 0.177060]  C2 dev 1.2e-13 HOLDS  C3 HOLDS
+      Y=11      |a|=32     keep(a<=A)=12    dead=0   R_a/B_a in [0.1224, 7.6425] max at a=11     u_eff=4.20 delta=1.395e-01 (scale exp(-L/2logY) 2.7e-01)
+              resid=0.368362  kappa_ub=resid/||p||=2.2485  [smooth rows 29: 0.286874 | rough rows 285: 0.231071]  C2 dev 7.8e-14 HOLDS  C3 HOLDS
+      Y=13      |a|=64     keep(a<=A)=13    dead=0   R_a/B_a in [0.0909, 11.1000] max at a=13     u_eff=3.86 delta=1.794e-01 (scale exp(-L/2logY) 3.0e-01)
+              resid=0.418026  kappa_ub=resid/||p||=2.5517  [smooth rows 44: 0.341929 | rough rows 270: 0.240479]  C2 dev 1.5e-14 HOLDS  C3 HOLDS
+      Y=19      |a|=236    keep(a<=A)=15    dead=0   R_a/B_a in [0.0511, 18.8242] max at a=7      u_eff=3.58 delta=2.467e-01 (scale exp(-L/2logY) 3.5e-01)
+              resid=0.456527  kappa_ub=resid/||p||=2.7867  [smooth rows 74: 0.418826 | rough rows 240: 0.181662]  C2 dev 2.0e-14 HOLDS  C3 HOLDS
+      Y=22      |a|=236    keep(a<=A)=15    dead=0   R_a/B_a in [0.0511, 18.8242] max at a=7      u_eff=3.41 delta=2.467e-01 (scale exp(-L/2logY) 3.6e-01)
+              resid=0.456527  kappa_ub=resid/||p||=2.7867  [smooth rows 74: 0.418826 | rough rows 240: 0.181662]  C2 dev 2.0e-14 HOLDS  C3 HOLDS
+      Y=30      |a|=634    keep(a<=A)=15    dead=0   R_a/B_a in [0.0429, 31.2588] max at a=3      u_eff=3.35 delta=3.523e-01 (scale exp(-L/2logY) 4.0e-01)
+              resid=0.538338  kappa_ub=resid/||p||=3.2861  [smooth rows 101: 0.516563 | rough rows 213: 0.151561]  C2 dev 1.1e-13 HOLDS  C3 HOLDS
+      Y=39      |a|=1264   keep(a<=A)=15    dead=0   R_a/B_a in [0.0477, 52.1897] max at a=2      u_eff=3.22 delta=4.326e-01 (scale exp(-L/2logY) 4.3e-01)
+              resid=0.613339  kappa_ub=resid/||p||=3.7439  [smooth rows 121: 0.594188 | rough rows 193: 0.152071]  C2 dev 8.0e-14 HOLDS  C3 HOLDS
+      Y=50      |a|=2559   keep(a<=A)=15    dead=0   R_a/B_a in [0.0045, 64.6047] max at a=2      u_eff=3.01 delta=5.276e-01 (scale exp(-L/2logY) 4.5e-01)
+              resid=0.706329  kappa_ub=resid/||p||=4.3115  [smooth rows 144: 0.689038 | rough rows 170: 0.155328]  C2 dev 3.6e-14 HOLDS  C3 HOLDS
+      Y=100     |a|=8325   keep(a<=A)=15    dead=0   R_a/B_a in [0.0004, 46.8140] max at a=2      u_eff=2.56 delta=7.412e-01 (scale exp(-L/2logY) 5.1e-01)
+              resid=0.915818  kappa_ub=resid/||p||=5.5903  [smooth rows 198: 0.908951 | rough rows 116: 0.111943]  C2 dev 2.0e-14 HOLDS  C3 HOLDS
+      Y=243     |a|=23247  keep(a<=A)=15    dead=6   R_a/B_a in [0.0000, 9.3721] max at a=2      u_eff=2.15 delta=9.646e-01 (scale exp(-L/2logY) 5.7e-01)
+              resid=1.169816  kappa_ub=resid/||p||=7.1407  [smooth rows 269: 1.167839 | rough rows 45: 0.067975]  C2 dev 1.3e-02 NOT APPLICABLE (dead retained class)  C3 HOLDS
+      Y=58940   |a|=39439  keep(a<=A)=0     dead=0   R_a/B_a in [n/a, n/a] max at a=-1     u_eff=nan delta=1.000e+00 (scale exp(-L/2logY) 7.5e-01)
+              resid=1.194895  kappa_ub=resid/||p||=7.2938  [smooth rows 314: 1.194895 | rough rows 0: 0.000000]  C2 dev 0.0e+00 HOLDS  C3 HOLDS
+      BEST over Y: Y=3 gives kappa <= 0.6130  (certified kappa = 0.140860454 ; factor 4.4 above)
+      0.2 s
+================================================================================================================
+2^20  Q=1024   rows=624   |vB|=76946     |vR|=83550      L=log Q=6.9315  A=floor(sqrt Q)=32  L^6=1.11e+05
+      C1 band rebuilt vs cache: |vB| 76946/76946, |vR| 83550/83550, c_B and c_R element for element -> HOLDS
+      ||p||_2 = 0.136099594 (no literal; C4 not scored) ; ||t||_2 = 1.185569 ; x=0 would give ||t||/||p|| = 8.7110 ; certified kappa = 0.105542700
+      normalisation: ||p||_2 >= (1/5)(N/R_1)L^-2 = 0.052244  (holds: True)
+      Y=2       |a|=2      keep(a<=A)=2     dead=0   R_a/B_a in [0.8078, 1.2978] max at a=1      u_eff=20.00 delta=0.000e+00 (scale exp(-L/2logY) nan)
+              resid=0.131564  kappa_ub=resid/||p||=0.9667  [smooth rows 2: 0.000000 | rough rows 622: 0.131564]  C2 dev 7.1e-13 HOLDS  C3 HOLDS
+      Y=3       |a|=4      keep(a<=A)=4     dead=0   R_a/B_a in [0.7344, 1.6089] max at a=1      u_eff=12.62 delta=0.000e+00 (scale exp(-L/2logY) 4.3e-02)
+              resid=0.094023  kappa_ub=resid/||p||=0.6908  [smooth rows 4: 0.000000 | rough rows 620: 0.094023]  C2 dev 7.1e-13 HOLDS  C3 HOLDS
+      Y=5       |a|=8      keep(a<=A)=8     dead=0   R_a/B_a in [0.4815, 2.8799] max at a=30     u_eff=6.50 delta=0.000e+00 (scale exp(-L/2logY) 1.2e-01)
+              resid=0.082850  kappa_ub=resid/||p||=0.6087  [smooth rows 8: 0.000000 | rough rows 616: 0.082850]  C2 dev 9.1e-13 HOLDS  C3 HOLDS
+      Y=7       |a|=16     keep(a<=A)=11    dead=0   R_a/B_a in [0.2453, 4.7072] max at a=30     u_eff=5.38 delta=6.160e-02 (scale exp(-L/2logY) 1.7e-01)
+              resid=0.172525  kappa_ub=resid/||p||=1.2676  [smooth rows 16: 0.140685 | rough rows 608: 0.099863]  C2 dev 2.7e-13 HOLDS  C3 HOLDS
+      Y=11      |a|=32     keep(a<=A)=13    dead=0   R_a/B_a in [0.1619, 6.7592] max at a=30     u_eff=4.36 delta=1.129e-01 (scale exp(-L/2logY) 2.4e-01)
+              resid=0.263155  kappa_ub=resid/||p||=1.9335  [smooth rows 30: 0.224684 | rough rows 594: 0.136995]  C2 dev 4.7e-13 HOLDS  C3 HOLDS
+      Y=13      |a|=64     keep(a<=A)=15    dead=0   R_a/B_a in [0.1072, 9.2567] max at a=30     u_eff=4.08 delta=1.534e-01 (scale exp(-L/2logY) 2.6e-01)
+              resid=0.337977  kappa_ub=resid/||p||=2.4833  [smooth rows 50: 0.288264 | rough rows 574: 0.176443]  C2 dev 9.7e-14 HOLDS  C3 HOLDS
+      Y=19      |a|=250    keep(a<=A)=17    dead=0   R_a/B_a in [0.0639, 15.5273] max at a=17     u_eff=3.75 delta=2.139e-01 (scale exp(-L/2logY) 3.1e-01)
+              resid=0.423501  kappa_ub=resid/||p||=3.1117  [smooth rows 92: 0.373226 | rough rows 532: 0.200138]  C2 dev 3.3e-13 HOLDS  C3 HOLDS
+      Y=30      |a|=761    keep(a<=A)=19    dead=0   R_a/B_a in [0.0420, 23.3690] max at a=11     u_eff=3.37 delta=2.612e-01 (scale exp(-L/2logY) 3.6e-01)
+              resid=0.459971  kappa_ub=resid/||p||=3.3797  [smooth rows 136: 0.429997 | rough rows 488: 0.163326]  C2 dev 1.4e-13 HOLDS  C3 HOLDS
+      Y=32      |a|=1181   keep(a<=A)=20    dead=0   R_a/B_a in [0.0358, 28.6059] max at a=7      u_eff=3.44 delta=2.843e-01 (scale exp(-L/2logY) 3.7e-01)
+              resid=0.479169  kappa_ub=resid/||p||=3.5207  [smooth rows 156: 0.455252 | rough rows 468: 0.149495]  C2 dev 1.5e-13 HOLDS  C3 HOLDS
+      Y=48      |a|=4001   keep(a<=A)=20    dead=0   R_a/B_a in [0.0230, 54.1667] max at a=3      u_eff=3.30 delta=4.117e-01 (scale exp(-L/2logY) 4.1e-01)
+              resid=0.588229  kappa_ub=resid/||p||=4.3221  [smooth rows 219: 0.575352 | rough rows 405: 0.122409]  C2 dev 4.4e-14 HOLDS  C3 HOLDS
+      Y=50      |a|=4001   keep(a<=A)=20    dead=0   R_a/B_a in [0.0230, 54.1667] max at a=3      u_eff=3.26 delta=4.117e-01 (scale exp(-L/2logY) 4.1e-01)
+              resid=0.588229  kappa_ub=resid/||p||=4.3221  [smooth rows 219: 0.575352 | rough rows 405: 0.122409]  C2 dev 4.4e-14 HOLDS  C3 HOLDS
+      Y=100     |a|=16211  keep(a<=A)=20    dead=0   R_a/B_a in [0.0002, 118.5921] max at a=2      u_eff=2.86 delta=6.030e-01 (scale exp(-L/2logY) 4.7e-01)
+              resid=0.774137  kappa_ub=resid/||p||=5.6880  [smooth rows 317: 0.765985 | rough rows 307: 0.112054]  C2 dev 2.0e-13 HOLDS  C3 HOLDS
+      Y=333     |a|=73636  keep(a<=A)=20    dead=6   R_a/B_a in [0.0000, 49.2368] max at a=2      u_eff=2.27 delta=9.163e-01 (scale exp(-L/2logY) 5.5e-01)
+              resid=1.102181  kappa_ub=resid/||p||=8.0983  [smooth rows 488: 1.100483 | rough rows 136: 0.061156]  C2 dev 7.5e-03 NOT APPLICABLE (dead retained class)  C3 HOLDS
+      Y=110905  |a|=160496 keep(a<=A)=0     dead=0   R_a/B_a in [n/a, n/a] max at a=-1     u_eff=nan delta=1.000e+00 (scale exp(-L/2logY) 7.4e-01)
+              resid=1.185569  kappa_ub=resid/||p||=8.7110  [smooth rows 624: 1.185569 | rough rows 0: 0.000000]  C2 dev 0.0e+00 HOLDS  C3 HOLDS
+      BEST over Y: Y=5 gives kappa <= 0.6087  (certified kappa = 0.105542700 ; factor 5.8 above)
+      1.3 s
+================================================================================================================
+2^22  Q=2048   rows=1245  |vB|=315554    |vR|=337797     L=log Q=7.6246  A=floor(sqrt Q)=45  L^6=1.96e+05
+      C1 band rebuilt vs cache: |vB| 315554/315554, |vR| 337797/337797, c_B and c_R element for element -> HOLDS
+      ||p||_2 = 0.114446913 vs literal 0.114446913 -> C4 HOLDS ; ||t||_2 = 1.180119 ; x=0 would give ||t||/||p|| = 10.3115 ; certified kappa = 0.076331000
+      normalisation: ||p||_2 >= (1/5)(N/R_1)L^-2 = 0.042717  (holds: True)
+      Y=2       |a|=2      keep(a<=A)=2     dead=0   R_a/B_a in [0.8256, 1.2482] max at a=1      u_eff=22.00 delta=0.000e+00 (scale exp(-L/2logY) nan)
+              resid=0.114654  kappa_ub=resid/||p||=1.0018  [smooth rows 2: 0.000000 | rough rows 1243: 0.114654]  C2 dev 4.6e-12 HOLDS  C3 HOLDS
+      Y=3       |a|=4      keep(a<=A)=4     dead=0   R_a/B_a in [0.7169, 1.5509] max at a=1      u_eff=13.88 delta=0.000e+00 (scale exp(-L/2logY) 3.1e-02)
+              resid=0.089976  kappa_ub=resid/||p||=0.7862  [smooth rows 4: 0.000000 | rough rows 1241: 0.089976]  C2 dev 3.9e-12 HOLDS  C3 HOLDS
+      Y=5       |a|=8      keep(a<=A)=8     dead=0   R_a/B_a in [0.6875, 1.9190] max at a=30     u_eff=7.36 delta=0.000e+00 (scale exp(-L/2logY) 9.4e-02)
+              resid=0.066846  kappa_ub=resid/||p||=0.5841  [smooth rows 8: 0.000000 | rough rows 1237: 0.066846]  C2 dev 8.0e-13 HOLDS  C3 HOLDS
+      Y=7       |a|=16     keep(a<=A)=13    dead=0   R_a/B_a in [0.3118, 3.4820] max at a=42     u_eff=5.92 delta=2.791e-02 (scale exp(-L/2logY) 1.4e-01)
+              resid=0.094303  kappa_ub=resid/||p||=0.8240  [smooth rows 16: 0.069829 | rough rows 1229: 0.063379]  C2 dev 8.2e-13 HOLDS  C3 HOLDS
+      Y=8       |a|=16     keep(a<=A)=13    dead=0   R_a/B_a in [0.3118, 3.4820] max at a=42     u_eff=5.54 delta=2.791e-02 (scale exp(-L/2logY) 1.6e-01)
+              resid=0.094303  kappa_ub=resid/||p||=0.8240  [smooth rows 16: 0.069829 | rough rows 1229: 0.063379]  C2 dev 8.2e-13 HOLDS  C3 HOLDS
+      Y=11      |a|=32     keep(a<=A)=16    dead=0   R_a/B_a in [0.2186, 4.9610] max at a=42     u_eff=4.80 delta=8.126e-02 (scale exp(-L/2logY) 2.0e-01)
+              resid=0.179596  kappa_ub=resid/||p||=1.5693  [smooth rows 31: 0.162074 | rough rows 1214: 0.077375]  C2 dev 1.3e-12 HOLDS  C3 HOLDS
+      Y=13      |a|=64     keep(a<=A)=19    dead=0   R_a/B_a in [0.1452, 7.0930] max at a=42     u_eff=4.49 delta=1.273e-01 (scale exp(-L/2logY) 2.3e-01)
+              resid=0.256199  kappa_ub=resid/||p||=2.2386  [smooth rows 54: 0.235134 | rough rows 1191: 0.101735]  C2 dev 3.4e-13 HOLDS  C3 HOLDS
+      Y=19      |a|=254    keep(a<=A)=23    dead=0   R_a/B_a in [0.0797, 12.5564] max at a=42     u_eff=3.91 delta=1.935e-01 (scale exp(-L/2logY) 2.7e-01)
+              resid=0.367022  kappa_ub=resid/||p||=3.2069  [smooth rows 114: 0.333521 | rough rows 1131: 0.153196]  C2 dev 6.9e-13 HOLDS  C3 HOLDS
+      Y=30      |a|=864    keep(a<=A)=25    dead=0   R_a/B_a in [0.0535, 18.8460] max at a=29     u_eff=3.49 delta=2.376e-01 (scale exp(-L/2logY) 3.3e-01)
+              resid=0.429904  kappa_ub=resid/||p||=3.7564  [smooth rows 178: 0.393988 | rough rows 1067: 0.172021]  C2 dev 6.9e-13 HOLDS  C3 HOLDS
+      Y=45      |a|=4412   keep(a<=A)=29    dead=0   R_a/B_a in [0.0278, 36.1667] max at a=13     u_eff=3.33 delta=3.021e-01 (scale exp(-L/2logY) 3.7e-01)
+              resid=0.489200  kappa_ub=resid/||p||=4.2745  [smooth rows 296: 0.471084 | rough rows 949: 0.131895]  C2 dev 1.1e-12 HOLDS  C3 HOLDS
+      Y=50      |a|=5872   keep(a<=A)=29    dead=0   R_a/B_a in [0.0239, 42.4580] max at a=11     u_eff=3.29 delta=3.284e-01 (scale exp(-L/2logY) 3.8e-01)
+              resid=0.510977  kappa_ub=resid/||p||=4.4648  [smooth rows 325: 0.495601 | rough rows 920: 0.124408]  C2 dev 9.0e-13 HOLDS  C3 HOLDS
+      Y=58      |a|=7539   keep(a<=A)=29    dead=0   R_a/B_a in [0.0205, 48.0100] max at a=11     u_eff=3.17 delta=3.518e-01 (scale exp(-L/2logY) 3.9e-01)
+              resid=0.531053  kappa_ub=resid/||p||=4.6402  [smooth rows 350: 0.517441 | rough rows 895: 0.119467]  C2 dev 6.7e-13 HOLDS  C3 HOLDS
+      Y=100     |a|=30358  keep(a<=A)=29    dead=0   R_a/B_a in [0.0127, 145.1658] max at a=3      u_eff=3.07 delta=5.007e-01 (scale exp(-L/2logY) 4.4e-01)
+              resid=0.668151  kappa_ub=resid/||p||=5.8381  [smooth rows 508: 0.661614 | rough rows 737: 0.093239]  C2 dev 1.7e-12 HOLDS  C3 HOLDS
+      Y=443     |a|=241283 keep(a<=A)=29    dead=8   R_a/B_a in [0.0000, 140.3139] max at a=2      u_eff=2.39 delta=8.651e-01 (scale exp(-L/2logY) 5.3e-01)
+              resid=1.040193  kappa_ub=resid/||p||=9.0889  [smooth rows 899: 1.038889 | rough rows 346: 0.052073]  C2 dev 5.3e-03 NOT APPLICABLE (dead retained class)  C3 HOLDS
+      Y=196476  |a|=653351 keep(a<=A)=0     dead=0   R_a/B_a in [n/a, n/a] max at a=-1     u_eff=nan delta=1.000e+00 (scale exp(-L/2logY) 7.3e-01)
+              resid=1.180119  kappa_ub=resid/||p||=10.3115  [smooth rows 1245: 1.180119 | rough rows 0: 0.000000]  C2 dev 0.0e+00 HOLDS  C3 HOLDS
+      BEST over Y: Y=5 gives kappa <= 0.5841  (certified kappa = 0.076331000 ; factor 7.7 above)
+      9.3 s
+
+================================================================================================================
+C1  HOLDS
+C2  HOLDS
+C3  HOLDS
+C4  HOLDS
+P1  FAILS/REFUTED
+P2  HOLDS
+P3  HOLDS
+P4  HOLDS
+P5  FAILS/REFUTED
+
+VERDICT  C1 HOLDS | C2 HOLDS | C3 HOLDS | C4 HOLDS | P1 FAILS | P2 HOLDS | P3 HOLDS | P4 HOLDS | P5 FAILS
+P5 table, max_a R_a/B_a at fixed Y across cells [16, 18, 20, 22]:
+   Y=3    1.4843  1.5984  1.6089  1.5509
+   Y=5    3.0000  1.7570  2.8799  1.9190
+   Y=7    6.8235  3.8073  4.7072  3.4820
+   Y=11   9.4821  7.6425  6.7592  4.9610
+   Y=13   13.2391  11.1000  9.2567  7.0930
+   Y=19   28.6129  18.8242  15.5273  12.5564
+   Y=30   34.6957  31.2588  23.3690  18.8460
+best kappa upper bound per cell: 2^16: 0.6981 (Y=3), 2^18: 0.6130 (Y=3), 2^20: 0.6087 (Y=5), 2^22: 0.5841 (Y=5)

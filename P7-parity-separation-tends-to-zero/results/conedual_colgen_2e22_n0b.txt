@@ -1,0 +1,161 @@
+conedual_colgen -- kappa(2^22) by column generation, no full incidence
+======================================================================
+threads 16 (OMP/MKL/numba), sweep block 65536 doubles (512 KB), 64 chunks
+V1 certified lower >= 0.99 x ledger (0.0760823); V2 projected 2^30 RSS <= 24 GB; V3 projected 2^30 wall <= 36 h
+
+cell 2^22 built in 0 s  rows 1245  |vB| 315554  |vR| 337797  Q = 2048
+t built in 1 s (blocked parallel counts; t[0] = 1.000000, must be 1)
+cell cached to conedual_colgen_cache_2e22 (0.00 GB)
+rows 1245  |vB| 315554  ||p|| 1.14446913e-01  add/round 20000  price-tol 1.0e-04  budget 2.0 h
+sweep warm-up (numba compile) ...
+   first sweep (compile included) 1.4 s
+   second sweep 0.00 s  (11.42 Gupd/s over sum_{d<=Q, mu!=0} N/d updates)
+   CONTROL mean_vR W(d>=2) = 3.926813268278e-01 against <t,w> = 3.926813268278e-01 (dev 1.67e-16)
+seed working set: 20000 columns of largest W under the y = 0 (w = t) vector (max W 3.079634e+00)
+      master r1: cd 1 s, 1232 passes, kkt 1.95e-08 -> 4.431235965274e-01 | |P| 817
+round 1   active 20000   (of 20000  ) nnz 445820     kappa <= 3.8718703   max_vB W 3.681e-01  (loss 187.452%)  support 817  violators 292001   inc 1.3 s  sweep 0.0 s  round 2 s  RSS 0.18 GB
+            d=1-repaired float lower -4.8995724  (M 0.044695  R -0.127023)
+      master r2: cd 2 s, 12164 passes, kkt 9.65e-10 -> 9.826080379753e-02 | |P| 1063
+round 2   active 20817   (of 20817  ) nnz 88991      kappa <= 0.8585711   max_vB W 6.165e-02  (loss 638.466%)  support 1063  violators 278902   inc 0.0 s  sweep 0.0 s  round 2 s  RSS 0.18 GB
+            d=1-repaired float lower -3.8812582  (M 0.063621  R 0.011631)
+      master r3: cd 5 s, 12870 passes, kkt 4.87e-10 -> 6.982081339524e-02 | |P| 1972
+round 3   active 21063   (of 21063  ) nnz 242437     kappa <= 0.6100717   max_vB W 2.046e-02  (loss 419.605%)  support 1972  violators 251748   inc 0.0 s  sweep 0.0 s  round 5 s  RSS 0.18 GB
+            d=1-repaired float lower -1.8605672  (M 0.021934  R 0.006354)
+      master r4: cd 18 s, 56134 passes, kkt 2.87e-10 -> 5.353314484533e-02 | |P| 1784
+round 4   active 21972   (of 21972  ) nnz 185041     kappa <= 0.4677553   max_vB W 2.468e-02  (loss 861.243%)  support 1784  violators 224037   inc 0.0 s  sweep 0.0 s  round 18 s  RSS 0.18 GB
+            d=1-repaired float lower -3.2132282  (M 0.025578  R 0.003762)
+      master r5: cd 7 s, 20252 passes, kkt 1.99e-10 -> 4.461103764371e-02 | |P| 1947
+round 5   active 21784   (of 21784  ) nnz 190280     kappa <= 0.3897968   max_vB W 1.298e-02  (loss 652.056%)  support 1947  violators 211821   inc 0.0 s  sweep 0.0 s  round 7 s  RSS 0.18 GB
+            d=1-repaired float lower -2.0566421  (M 0.013756  R 0.002769)
+      master r6: cd 9 s, 23426 passes, kkt 1.22e-10 -> 3.488909755206e-02 | |P| 1974
+round 6   active 21947   (of 21947  ) nnz 209365     kappa <= 0.3048497   max_vB W 1.463e-02  (loss 1201.580%)  support 1974  violators 198375   inc 0.0 s  sweep 0.0 s  round 9 s  RSS 0.18 GB
+            d=1-repaired float lower -3.0793346  (M 0.015190  R 0.001781)
+      master r7: cd 2 s, 5825 passes, kkt 5.13e-11 -> 2.265863327894e-02 | |P| 2242
+round 7   active 21974   (of 21974  ) nnz 230382     kappa <= 0.1979838   max_vB W 1.440e-02  (loss 2805.711%)  support 2242  violators 170319   inc 0.0 s  sweep 0.0 s  round 2 s  RSS 0.18 GB
+            d=1-repaired float lower -4.4841895  (M 0.014814  R 0.000922)
+      master r8: cd 8 s, 18167 passes, kkt 2.35e-11 -> 1.534487991303e-02 | |P| 2402
+round 8   active 22242   (of 22242  ) nnz 235923     kappa <= 0.1340786   max_vB W 3.035e-03  (loss 1288.740%)  support 2402  violators 115541   inc 0.0 s  sweep 0.0 s  round 8 s  RSS 0.18 GB
+            d=1-repaired float lower -1.5530525  (M 0.003582  R 0.000783)
+      master r9: cd 12 s, 28503 passes, kkt 1.30e-11 -> 1.138074829705e-02 | |P| 3345
+round 9   active 22402   (of 22402  ) nnz 236225     kappa <= 0.0994413   max_vB W 2.292e-03  (loss 1769.442%)  support 3345  violators 115524   inc 0.0 s  sweep 0.0 s  round 12 s  RSS 0.18 GB
+            d=1-repaired float lower -1.6086399  (M 0.002983  R 0.000821)
+      master r10: cd 88 s, 200000 passes, kkt 2.53e-10 -> 1.009862775748e-02 | |P| 3215
+round 10  active 23345   (of 23345  ) nnz 228044     kappa <= 0.0882386   max_vB W 5.323e-04  (loss 521.939%)  support 3215  violators 86036   inc 0.0 s  sweep 0.0 s  round 88 s  RSS 0.16 GB
+            d=1-repaired float lower -0.3706096  (M 0.001149  R 0.000718)
+      master r11: cd 19 s, 57284 passes, kkt 8.63e-12 -> 9.288710700361e-03 | |P| 4142
+round 11  active 23215   (of 23215  ) nnz 170385     kappa <= 0.0811618   max_vB W 3.788e-04  (loss 439.031%)  support 4142  violators 54534   inc 0.0 s  sweep 0.0 s  round 19 s  RSS 0.16 GB
+            d=1-repaired float lower -0.2742771  (M 0.000927  R 0.000634)
+      master r12: cd 62 s, 157479 passes, kkt 7.87e-12 -> 8.873139578335e-03 | |P| 3714
+round 12  active 24142   (of 24142  ) nnz 208413     kappa <= 0.0775307   max_vB W 1.722e-04  (loss 218.745%)  support 3714  violators 61681   inc 0.0 s  sweep 0.0 s  round 62 s  RSS 0.12 GB
+            d=1-repaired float lower -0.0919406  (M 0.000698  R 0.000605)
+      master r13: cd 80 s, 200000 passes, kkt 3.46e-08 -> 8.770848801929e-03 | |P| 4182
+round 13  active 23017   (of 23017  ) nnz 202959     kappa <= 0.0766369   max_vB W 6.249e-05  (loss 81.237%)  support 4182  violators 38127   inc 0.0 s  sweep 0.0 s  round 80 s  RSS 0.11 GB
+            d=1-repaired float lower 0.0143728  (M 0.000571  R 0.000585)
+      master r14: cd 64 s, 200000 passes, kkt 1.42e-08 -> 8.749661219085e-03 | |P| 6057
+round 14  active 23400   (of 23400  ) nnz 143719     kappa <= 0.0764518   max_vB W 2.517e-05  (loss 32.875%)  support 6057  violators 21204   inc 0.0 s  sweep 0.0 s  round 64 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0513089  (M 0.000533  R 0.000585)
+      master r15: cd 80 s, 200000 passes, kkt 1.65e-08 -> 8.745877974602e-03 | |P| 6254
+round 15  active 25105   (of 25105  ) nnz 177557     kappa <= 0.0764187   max_vB W 2.990e-05  (loss 39.085%)  support 6254  violators 4346   inc 0.0 s  sweep 0.0 s  round 80 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0465395  (M 0.000538  R 0.000585)
+      master r16: cd 28 s, 200000 passes, kkt 2.52e-08 -> 8.743772599859e-03 | |P| 5035
+round 16  active 10249   (of 10249  ) nnz 80720      kappa <= 0.0764003   max_vB W 2.059e-05  (loss 26.932%)  support 5035  violators 30066   inc 0.0 s  sweep 0.0 s  round 28 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0558162  (M 0.000528  R 0.000584)
+      master r17: cd 69 s, 200000 passes, kkt 2.23e-08 -> 8.741948810588e-03 | |P| 6830
+round 17  active 23700   (of 23700  ) nnz 145509     kappa <= 0.0763844   max_vB W 1.583e-05  (loss 20.715%)  support 6830  violators 11368   inc 0.0 s  sweep 0.0 s  round 69 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0605546  (M 0.000523  R 0.000584)
+      master r18: cd 50 s, 200000 passes, kkt 3.05e-08 -> 8.740701049662e-03 | |P| 6677
+round 18  active 16964   (of 16964  ) nnz 116438     kappa <= 0.0763735   max_vB W 6.017e-06  (loss 7.876%)  support 6677  violators 25465   inc 0.0 s  sweep 0.0 s  round 50 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0703559  (M 0.000514  R 0.000584)
+      master r19: cd 80 s, 200000 passes, kkt 2.06e-08 -> 8.739385929880e-03 | |P| 9526
+round 19  active 24588   (of 24588  ) nnz 155046     kappa <= 0.0763620   max_vB W 3.639e-06  (loss 4.764%)  support 9526  violators 36139   inc 0.0 s  sweep 0.0 s  round 80 s  RSS 0.10 GB
+            d=1-repaired float lower 0.0727221  (M 0.000511  R 0.000584)
+      master r20: cd 74 s, 200000 passes, kkt 2.89e-08 -> 8.737769391019e-03 | |P| 9199
+round 20  active 27122   (of 27122  ) nnz 139837     kappa <= 0.0763478   max_vB W 2.774e-06  (loss 3.634%)  support 9199  violators 25537   inc 0.0 s  sweep 0.0 s  round 74 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0735724  (M 0.000510  R 0.000584)
+      master r21: cd 81 s, 200000 passes, kkt 1.28e-08 -> 8.737069236376e-03 | |P| 11187
+round 21  active 26002   (of 26002  ) nnz 151264     kappa <= 0.0763417   max_vB W 3.024e-06  (loss 3.962%)  support 11187  violators 12892   inc 0.0 s  sweep 0.0 s  round 81 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0733157  (M 0.000510  R 0.000584)
+      master r22: cd 71 s, 200000 passes, kkt 1.93e-08 -> 8.736454091681e-03 | |P| 9367
+round 22  active 21867   (of 21867  ) nnz 140148     kappa <= 0.0763364   max_vB W 1.587e-06  (loss 2.080%)  support 9367  violators 15133   inc 0.0 s  sweep 0.0 s  round 71 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0747475  (M 0.000509  R 0.000584)
+      master r23: cd 64 s, 200000 passes, kkt 8.77e-09 -> 8.736351724435e-03 | |P| 12033
+round 23  active 22143   (of 22143  ) nnz 120010     kappa <= 0.0763355   max_vB W 2.024e-06  (loss 2.652%)  support 12033  violators 27667   inc 0.0 s  sweep 0.0 s  round 64 s  RSS 0.10 GB
+            d=1-repaired float lower 0.0743097  (M 0.000509  R 0.000584)
+      master r24: cd 97 s, 200000 passes, kkt 1.65e-08 -> 8.736262164666e-03 | |P| 13561
+round 24  active 28258   (of 28258  ) nnz 159105     kappa <= 0.0763347   max_vB W 3.735e-06  (loss 4.894%)  support 13561  violators 5809   inc 0.0 s  sweep 0.0 s  round 97 s  RSS 0.10 GB
+            d=1-repaired float lower 0.0725969  (M 0.000511  R 0.000584)
+      master r25: cd 64 s, 200000 passes, kkt 2.06e-08 -> 8.736184438001e-03 | |P| 11159
+round 25  active 18068   (of 18068  ) nnz 121736     kappa <= 0.0763340   max_vB W 1.345e-06  (loss 1.763%)  support 11159  violators 46832   inc 0.0 s  sweep 0.0 s  round 64 s  RSS 0.10 GB
+            d=1-repaired float lower 0.0749880  (M 0.000509  R 0.000584)
+      master r26: cd 107 s, 200000 passes, kkt 9.65e-09 -> 8.736121421850e-03 | |P| 15039
+round 26  active 27012   (of 27012  ) nnz 174165     kappa <= 0.0763334   max_vB W 1.347e-06  (loss 1.765%)  support 15039  violators 31393   inc 0.0 s  sweep 0.0 s  round 108 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0749856  (M 0.000509  R 0.000584)
+      master r27: cd 118 s, 200000 passes, kkt 5.46e-09 -> 8.736096444156e-03 | |P| 18228
+round 27  active 31113   (of 31113  ) nnz 170588     kappa <= 0.0763332   max_vB W 1.308e-06  (loss 1.714%)  support 18228  violators 26749   inc 0.0 s  sweep 0.0 s  round 118 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0750238  (M 0.000509  R 0.000584)
+      master r28: cd 127 s, 200000 passes, kkt 8.64e-09 -> 8.736015824545e-03 | |P| 17636
+round 28  active 33076   (of 33076  ) nnz 189852     kappa <= 0.0763325   max_vB W 9.727e-07  (loss 1.275%)  support 17636  violators 3038   inc 0.0 s  sweep 0.0 s  round 127 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0753585  (M 0.000508  R 0.000584)
+      master r29: cd 74 s, 200000 passes, kkt 7.43e-09 -> 8.735966863258e-03 | |P| 13912
+round 29  active 19728   (of 19728  ) nnz 123442     kappa <= 0.0763321   max_vB W 8.542e-07  (loss 1.119%)  support 13912  violators 23845   inc 0.0 s  sweep 0.0 s  round 74 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0754771  (M 0.000508  R 0.000584)
+      master r30: cd 116 s, 200000 passes, kkt 2.47e-09 -> 8.735932090182e-03 | |P| 18616
+round 30  active 29544   (of 29544  ) nnz 163731     kappa <= 0.0763318   max_vB W 1.348e-06  (loss 1.767%)  support 18616  violators 26164   inc 0.0 s  sweep 0.0 s  round 116 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0749822  (M 0.000509  R 0.000584)
+      master r31: cd 128 s, 200000 passes, kkt 9.46e-09 -> 8.735887599659e-03 | |P| 18441
+round 31  active 33225   (of 33225  ) nnz 193104     kappa <= 0.0763314   max_vB W 2.369e-07  (loss 0.310%)  support 18441  violators 20638   inc 0.0 s  sweep 0.0 s  round 128 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0760942  (M 0.000508  R 0.000584)
+      master r32: cd 134 s, 200000 passes, kkt 1.73e-09 -> 8.735882486354e-03 | |P| 22352
+round 32  active 32592   (of 32592  ) nnz 187551     kappa <= 0.0763314   max_vB W 4.257e-07  (loss 0.558%)  support 22352  violators 6294   inc 0.0 s  sweep 0.0 s  round 134 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0759053  (M 0.000508  R 0.000584)
+      master r33: cd 112 s, 200000 passes, kkt 2.92e-09 -> 8.735879768955e-03 | |P| 20198
+round 33  active 26155   (of 26155  ) nnz 162362     kappa <= 0.0763313   max_vB W 7.275e-07  (loss 0.953%)  support 20198  violators 23729   inc 0.0 s  sweep 0.0 s  round 112 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0756032  (M 0.000508  R 0.000584)
+      master r34: cd 147 s, 200000 passes, kkt 1.48e-09 -> 8.735875893703e-03 | |P| 23390
+round 34  active 33929   (of 33929  ) nnz 200544     kappa <= 0.0763313   max_vB W 2.574e-07  (loss 0.337%)  support 23390  violators 30446   inc 0.0 s  sweep 0.0 s  round 147 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0760736  (M 0.000508  R 0.000584)
+      master r35: cd 155 s, 200000 passes, kkt 2.73e-09 -> 8.735873952560e-03 | |P| 24935
+round 35  active 36442   (of 36442  ) nnz 199447     kappa <= 0.0763313   max_vB W 7.639e-08  (loss 0.100%)  support 24935  violators 17452   inc 0.0 s  sweep 0.0 s  round 155 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0762547  (M 0.000507  R 0.000584)
+      master r36: cd 158 s, 200000 passes, kkt 8.19e-09 -> 8.735871680869e-03 | |P| 23101
+round 36  active 36210   (of 36210  ) nnz 205013     kappa <= 0.0763313   max_vB W 4.779e-08  (loss 0.063%)  support 23101  violators 674   inc 0.0 s  sweep 0.0 s  round 158 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0762829  (M 0.000507  R 0.000584)
+      master r37: cd 97 s, 200000 passes, kkt 1.42e-09 -> 8.735870614840e-03 | |P| 20853
+round 37  active 23442   (of 23442  ) nnz 139255     kappa <= 0.0763313   max_vB W 1.062e-08  (loss 0.014%)  support 20853  violators 28161   inc 0.0 s  sweep 0.0 s  round 97 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0763205  (M 0.000507  R 0.000584)
+      master r38: cd 158 s, 200000 passes, kkt 1.60e-09 -> 8.735870476222e-03 | |P| 24572
+round 38  active 34590   (of 34590  ) nnz 211232     kappa <= 0.0763313   max_vB W 2.783e-08  (loss 0.036%)  support 24572  violators 59277   inc 0.0 s  sweep 0.0 s  round 158 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0763033  (M 0.000507  R 0.000584)
+      master r39: cd 172 s, 200000 passes, kkt 1.62e-09 -> 8.735870347667e-03 | |P| 26451
+round 39  active 36186   (of 36186  ) nnz 232369     kappa <= 0.0763313   max_vB W 1.740e-09  (loss 0.002%)  support 26451  violators 8217   inc 0.0 s  sweep 0.0 s  round 172 s  RSS 0.09 GB
+            d=1-repaired float lower 0.0763294  (M 0.000507  R 0.000584)
+stopped: converged (max_vB W <= 1.0e-04 x ||w||^2) after 39 rounds, 2945 s
+
+   repair: max_vB W(d>=2) 1.000003429   w_1 -1.000000000   residual violation 3.429e-06
+   repair tau 1.000001715 (f 0.50): 4 columns, 4 rows lowered, cost on R 8.808e-09  -> max_vB W(d>=2) 1.000001715  bound 0.0763303
+   repair tau 1.000000343 (f 0.90): 71 columns, 69 rows lowered, cost on R 7.725e-08  -> max_vB W(d>=2) 1.000000343  bound 0.0763309
+   repair tau 1.000000000 (f 1.00): 8217 columns, 625 rows lowered, cost on R 2.761e-07  -> max_vB W(d>=2) 1.000000000  bound 0.0763310
+   repair tau 0.999999314 (f 1.20): 76535 columns, 885 rows lowered, cost on R 2.245e-06  -> max_vB W(d>=2) 0.999999314  bound 0.0763304
+   repair tau 0.999998285 (f 1.50): 76571 columns, 889 rows lowered, cost on R 5.345e-06  -> max_vB W(d>=2) 0.999998285  bound 0.0763293
+   repair: best float bound 0.0763310 (against 0.0763294 before repair, x1.0000)
+separator saved: conedual_colgen_sep_2e22_n0b.npz   float lower 0.0763310   upper 0.0763313
+peak_wset through the colgen phase: 0.19 GB
+
+integer certificate (gramint_kappa_certify, clauses K0-K4; not reimplemented here):
+   | conedual_colgen_sep_2e22_n0b.npz
+   |   sha256[:12] = c222ba6f84ec
+   |   2^22  rowvec family  Q = 2048  rows = 1245  |vB| = 315554  |vR| = 337797  built 0 s
+   |   reconstruction: per-row separator, repaired (src conedual_colgen round 39, tau 1.0000, float bound 0.0763310)
+   |   K0  float bound rebuilt 0.076331046878 vs npz 0.076331046878 (dev 6.94e-17)  HOLDS   [full max_vB W = w[0] + sweep max = 2.220e-16]
+   |   K1  max_vB (W - M) = 0  HOLDS
+   |   K2  integer bound 0.076331046878 (dev 6.08e-13)  HOLDS
+   |   K3  c^2 H D_p < J^2 at c = 76331/10^6  HOLDS
+   |   K4  M -> -M: 314349 of 315554 violate  HOLDS
+   |   J = 50810068014373698  H = 296467692803095392105211634  D_p = 1494581979  M = 1000000000001
+   |   => kappa(2^22) > 76331/10^6 in exact integers
+   | 
+
+peak_wset for the whole run: 0.19 GB
+V1 at 2^22: certified lower 76331/10^6 = 0.0763310 against 0.99 x 0.0760823 = 0.0753215 -> HOLDS;  upper 0.0763313 >= 0.0760823 -> HOLDS
+wrote conedual_colgen_2e22_n0b.json
+FAILS: none
