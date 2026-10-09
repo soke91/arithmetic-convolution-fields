@@ -97,7 +97,7 @@ rebuilt and compared against the cached row counts element for element (C1); eve
 and well formed (C5); every stored index validated before it indexes anything (C4); both int64 kernels
 guarded by the actual integer bound on their accumulator (C2); then `θ_λ ≥ 0` swept over **every**
 even-`ω` column of the whole band, `⟨c_𝓞, λ⟩ < 0`, `q ≥ 0`, and both rational bounds of `eq:cert`
-recomputed and matched against the stored values. Expected: `FAILS: none`. On the authors' machine (below) a first run takes about 73 s for all seven cells; `results/pa_certify_timings_frozen.json` holds that run's breakdown, the hardware, and what the figures do and do not reproduce.
+recomputed and matched against the stored values. Expected: `FAILS: none`. On the authors' machine (below) a first run takes about 86 s for all seven cells; `results/pa_certify_timings_frozen.json` holds that run's breakdown, the hardware, and what the figures do and do not reproduce.
 
 C0 is what binds the answer to the question. Without it, a larger cell's cache and certificate
 relabelled as a smaller cell's pass every other check on their own valid data, and the larger cell's
@@ -144,7 +144,7 @@ integers this step recomputes are the ones §11 prints — `J = 4401612119558212
 the same separator at another scale would certify the same cell with different valid integers; `L4` is
 what keeps the stored certificate the one the paper's numbers come from.
 
-On the authors' machine (below): **230.3 s** in the frozen timing record
+On the authors' machine (below): **246.2 s** in the frozen timing record
 (`results/pa_certify_timings_frozen.json`, field `verify_lower30_s`) — most of it the band rebuild, then
 the sweep. The band at `2^30` is the cost; budget a few minutes and about 16 GB of memory (the memory
 figure was observed when the certificate was built and is not part of a shipped record).
@@ -243,7 +243,7 @@ python code/pa_certify_big.py --cells 28 --sep-tag _pa9 --dual-tag _n28
 
 ```text
 CERTIFICATES: VALID
-DIAGNOSTICS: P3 fails (expected: it compares a nine-decimal rounded float optimum with a twelve-decimal exact interval, which need not contain it -- section 11 says so in a parenthesis)
+DIAGNOSTICS: P3 fails (expected: it compares a nine-decimal rounded float optimum with a twelve-decimal exact interval, which need not contain it -- appendix A's Diagnostics paragraph says so)
 ```
 
 The first line is the verdict on the certificates themselves, and **the exit code reports that line
@@ -258,8 +258,8 @@ target, a number printed elsewhere, the published `eq:certint` integers, a file-
 fail, and both are expected; they occur only in the optional construction runs of step 5 -- the
 mandatory verification runs (steps 1 and 4) report no diagnostic failure. `pa_certify.py`'s `P3` compares the stored *nine-decimal* float
 optima `0.172389352` and `0.140860454` for containment in *twelve-decimal* intervals, and a nine-decimal
-rounding need not lie inside one — Appendix A says so in a parenthesis. `pa_certify_big.py`'s `P2` at `2^28`
-asks for a width below `10⁻⁶` where the width is `1.2·10⁻⁵`; §11 claims only `10⁻⁴` at that size. Both
+rounding need not lie inside one — Appendix A's Diagnostics paragraph says so. `pa_certify_big.py`'s `P2` at `2^28`
+asks for a width below `10⁻⁶` where the width is `1.2·10⁻⁵`, which is what §11 states there (“at most `1.2·10⁻⁵` at `e=28`”); the same Diagnostics paragraph records that this `10⁻⁶` target is the one not met. Both
 are clauses being refuted and recorded, and neither touches a certificate: the certified intervals are
 reproduced unchanged either way. The `FAILS:` line above the verdict still names every failing clause of
 either kind, and the JSON record carries `certificates_valid`, `certification_fails` and

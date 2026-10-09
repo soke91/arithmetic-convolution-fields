@@ -89,10 +89,14 @@ it.  Any failure sets a non-zero exit code.
   K3  The seven widths are `1.0,1.0,2.0,3.0,8.0` in units of `10^-12` at `e <= 24`, `5.6*10^-7` at
       `2^26` and `1.2*10^-5` at `2^28`, each the exact width rounded to one decimal; and the two
       rounded ones round UP, so they are valid upper bounds -- which is what the source now asserts
-      when it introduces them with "at most".
+      when it introduces them with "at most".  The `2^28` figure is printed twice: in section 11 and
+      again in the appendix's diagnostic sentence, which cross-references section 11 for it; both
+      occurrences are required and accounted for here.
   K4  The precision claim: the width is in `(10^-7,10^-6)` at `2^26` and in `(10^-5,10^-4)` at
-      `2^28`.  The source states the two upper bounds directly ("the width is below
-      `10^-6` ... below `10^-4`"); the lower ones are checked too, so the powers named are sharp.
+      `2^28`, which is what makes the two rounded widths six- and four-decimal figures.  Both ends of
+      each bracket are checked, so the powers named are sharp.  These four powers are this clause's
+      own, not quotations: the only width bound the source states at `2^28` outside the table is the
+      `1.2*10^-5` of section 11, which K3 recomputes and K7 reads as a relation.
   K5  The complete even-column counts `4\,414`, `18\,685`, `76\,946` at `e = 16,18,20` equal
       `cell_cache`'s `nB`.
   K6  Each table row carries its OWN exponent label, parsed from the row and required to be the
@@ -104,7 +108,9 @@ it.  Any failure sets a non-zero exit code.
       `<` to `>` left every clause holding while the row asserted the opposite of the certificate.
       This clause parses the relation of every inequality the checker anchors -- the table's two
       bound columns and their header, each row's two-sided seven-decimal statement, the printed
-      `kappa(2^30) > 0.017787`, the two "at most" widths and the two "below" powers, and the
+      `kappa(2^30) > 0.017787`, the two "at most" widths, the appendix's "below" statement of the
+      target and of the width section 11 states instead -- whose cross-reference is resolved, so
+      "stated in \S\ref{...}" must name the section that does state it -- and the
       construction's four `kappa <= ...` -- and from the symbol TOGETHER WITH the side the literal
       sits on decides what the text asserts: a LOWER bound on the quantity, or an UPPER one.  Each
       assertion is then tested against the certified rational enclosure of that quantity: a printed
@@ -453,9 +459,9 @@ def main() -> int:
     # Line anchors in the current source.  EVERY anchor in this file was re-measured by LOCATING its
     # literal in the manuscript, not by applying a reported shift: a restructuring job's own line map is
     # a summary, and a clause that trusts it reports a line it did not test.  The locations below were
-    # read off the source at SHA-256 c29f944b..., each located by its own literal (one of them,
+    # read off the source at SHA-256 7d8aac53..., each located by its own literal (one of them,
     # G5's sign condition, now occurs twice in the source: the appendix's is the one G5 means).
-    TAB = {16: 1375, 18: 1376, 20: 1377, 22: 1378, 24: 1379, 26: 1380, 28: 1381}
+    TAB = {16: 1243, 18: 1244, 20: 1245, 22: 1246, 24: 1247, 26: 1248, 28: 1249}
     k1ok, k1d, k2ok, k2d = True, [], True, []
     for e in CELLS:
         c, ln = C[e], TAB[e]
@@ -493,9 +499,9 @@ def main() -> int:
         k6ok = k6ok and row_ok
         k6d.append("L%d label %s" % (TAB[e], got if got is not None else "UNPARSED"))
     # the exponents section 11 names outside the table, and the construction's Y values
-    SMALL = [("e=16,\\dots,24", 1384), ("e=26", 1385), ("e=28", 1385),
-             ("e=16,18,20", 1388), ("e=22,\\dots,28", 1390),
-             ("e=16,18,20,22", 1437), ("Y=3,3,5,5", 1437)]
+    SMALL = [("e=16,\\dots,24", 1252), ("e=26", 1253), ("e=28", 1253),
+             ("e=16,18,20", 1254), ("e=22,\\dots,28", 1255),
+             ("e=16,18,20,22", 1286), ("Y=3,3,5,5", 1286)]
     smd = [(t, ln, at(lines, t, ln)) for t, ln in SMALL]
     sm_ok = all(v for _, _, v in smd)
     clause("K6", k6ok and sm_ok,
@@ -507,7 +513,13 @@ def main() -> int:
     # ---------------- K3, K4: widths --------------------------------------------------------
     WID = {16: ("1.0", 12), 18: ("1.0", 12), 20: ("2.0", 12), 22: ("3.0", 12), 24: ("8.0", 12),
            26: ("5.6", 7), 28: ("1.2", 5)}
-    WLN = {16: 1384, 18: 1384, 20: 1384, 22: 1384, 24: 1384, 26: 1385, 28: 1385}
+    WLN = {16: 1252, 18: 1252, 20: 1252, 22: 1252, 24: 1252, 26: 1253, 28: 1253}
+    # The appendix's diagnostic sentence, which states the internal target width, whether it is met at
+    # each of the two largest instances, and -- on the next line -- the width section 11 states at the
+    # instance where the target is not met, by a cross-reference to that section.
+    DIAGLN = 1370
+    # that cross-reference repeats the 2^28 width figure, so the same recomputed literal occurs twice
+    REPEAT = {28: DIAGLN + 1}
     k3ok, k3d = True, []
     for e in CELLS:
         lit, k = WID[e]
@@ -521,6 +533,12 @@ def main() -> int:
                                                             got, lit, "ok" if ok else "NO",
                                                             "" if up else " (UNDERSTATES)"))
         cover("K3", lit, WLN[e])
+    for e, ln in sorted(REPEAT.items()):
+        lit = WID[e][0]
+        ok = at(lines, lit, ln)
+        k3ok = k3ok and ok
+        k3d.append("2^%d width %s repeated on L%d %s" % (e, lit, ln, "ok" if ok else "NO"))
+        cover("K3", lit, ln)
     clause("K3", k3ok, "the seven widths, each rounded to one decimal and not understating: "
            + "; ".join(k3d))
 
@@ -537,7 +555,7 @@ def main() -> int:
            % (float(w26), float(w28), nd26, nd28))
 
     # ---------------- K5: the complete column counts ----------------------------------------
-    EVEN = {16: ("4\\,414", 1389), 18: ("18\\,685", 1390), 20: ("76\\,946", 1390)}
+    EVEN = {16: ("4\\,414", 1255), 18: ("18\\,685", 1255), 20: ("76\\,946", 1255)}
     k5ok, k5d = True, []
     for e, (lit, ln) in EVEN.items():
         want = int(lit.replace("\\,", ""))
@@ -557,7 +575,7 @@ def main() -> int:
     nB30, nR30 = int(S30["nB"]), int(S30["nR"])
     # the two lines the band sizes are printed on, named once so the clause cannot report one line
     # while testing another
-    g1ln = (1409, 1410)
+    g1ln = (1262, 1263)
     g1 = (nB30 == 86592333 and nR30 == 89520933
           and at(lines, "86\\,592\\,333", g1ln[0]) and at(lines, "89\\,520\\,933", g1ln[1]))
     cover("G1", "86\\,592\\,333", g1ln[0])
@@ -575,8 +593,8 @@ def main() -> int:
         j30 = json.load(io.open(jp, encoding="utf-8"))
         J30, H30 = int(j30["J"]), int(j30["H"])
         Dp_s, c6 = int(j30["D_p"]), int(j30["c6"])
-        lits = {"4401612119558212802": 1420, "2015370564893177546709684150": 1420,
-                "30382600959846": 1420, "17787": 1421}
+        lits = {"4401612119558212802": 1273, "2015370564893177546709684150": 1273,
+                "30382600959846": 1273, "17787": 1274}
         pres = all(at(lines, t, ln) for t, ln in lits.items())
         for t, ln in lits.items():
             cover("G2", t, ln)
@@ -591,7 +609,7 @@ def main() -> int:
         ineq = c6 * c6 * H30 * Dp_s < J30 * J30 * 10 ** 12
         maxi = not ((c6 + 1) ** 2 * H30 * Dp_s < J30 * J30 * 10 ** 12)
         equiv = (Fraction(J30 * J30, H30 * Dp_s) > Fraction(c6, 10 ** 6) ** 2) == ineq
-        g3ln = 1423                      # the line the six-decimal bound is printed on
+        g3ln = 1276                      # the line the six-decimal bound is printed on
         pb = at(lines, "0.017787", g3ln) and rnd(mp.mpf(c6) / mp.mpf(10) ** 6, 6) == "0.017787"
         cover("G3", "0.017787", g3ln)
         clause("G3", ineq and maxi and equiv and pb,
@@ -601,11 +619,12 @@ def main() -> int:
                   "yes" if equiv else "NO", g3ln, "yes" if pb else "NO"))
 
         ubs = rnd(mp.mpf(repr(float(j30["ub"]))), 5)
-        # section 11 is from its \section line to the bibliography; \approx must occur once there
-        s11 = next((i for i, ln in enumerate(lines, 1) if r"\section{A computational remark}" in ln),
-                   None)
+        # Section 11 runs from its own \section line to the bibliography, and `\approx` must occur
+        # exactly once inside it.  The section is located by its LABEL: the revision renamed every
+        # section title and kept every label, so the title is not a handle and the label is.
+        s11 = next((i for i, ln in enumerate(lines, 1) if r"\label{sec:numerics}" in ln), None)
         apx = [i for i, ln in enumerate(lines, 1) if s11 and i >= s11 and r"\approx" in ln]
-        g4ln = 1433                      # the one approximate value section 11 prints
+        g4ln = 1282                      # the one approximate value section 11 prints
         g4 = (ubs == "0.01779" and at(lines, "0.01779", g4ln) and len(apx) == 1
               and apx == [g4ln])
         cover("G4", "0.01779", g4ln)
@@ -623,7 +642,7 @@ def main() -> int:
     cp = os.path.join(RES, "pa_cert_2e30_lower.npz")
     # the separator tag is the verifier's own default for this cell, and is the file the README names
     sp = os.path.join(RES, "conedual_colgen_sep_2e30_n30b.npz")
-    g5ln = (1532, 1533, 1540, 1543)
+    g5ln = (1376, 1377, 1381, 1382)
     if not (os.path.exists(cp) and os.path.exists(sp)):
         clause("G5", False, "not scored: %s absent"
                % ", ".join(os.path.basename(p) for p in (cp, sp) if not os.path.exists(p)))
@@ -657,11 +676,15 @@ def main() -> int:
         il, iw = int(np.argmax(np.abs(lam))), int(np.argmax(np.abs(w)))
         mx_ok = bool(int(rows30[il]) == int(rows30[iw]) and il > 0
                      and abs(int(lam[il])) == int(np.rint((10.0 ** 12) * abs(float(w[iw])))))
+        # The four statements this clause requires to be PRINTED are the ones the source prints.
+        # The last one replaces an earlier sentence about `\max_{d}|w_{d}|`: the manuscript now states
+        # the stronger fact that the stored vector IS `-10^{12}w` apart from rounding and the rebuilt
+        # first coordinate, which is what (b) and (f) below check on the two shipped files.
         pres = all(at(lines, t, ln) for t, ln in
                    ((r"\langle c_{\vR},w\rangle>0", g5ln[0]),
                     (r"\lambda=\lfloor-10^{12}w\rceil", g5ln[1]),
-                    ("accumulator bound at that scale", g5ln[2]),
-                    (r"\max_{d}|w_{d}|", g5ln[3])))
+                    (r"accumulator bound $2^{62}$ at the chosen scale", g5ln[2]),
+                    (r"the stored vector is $-10^{12}w$", g5ln[3])))
         clause("G5", aligned and d1 and scale_ok and repair_ok and sign_ok and bound_ok
                and mx_ok and pres,
                "the 2^30 dual as section 11 describes it, recomputed from %s and %s: the cell's, the"
@@ -681,7 +704,9 @@ def main() -> int:
     say()
 
     # the line the construction's four kappa <= bounds are printed on, located by its literal
-    k7cln = 1437
+    k7cln = 1286
+    # the appendix's diagnostic sentence (located above, where K3 accounts for the width it repeats)
+    k7dln = DIAGLN
 
     # ---------------- K7: the relation symbols, their direction and their truth -------------
     # The digits a clause finds on a line say nothing about what the line asserts of them.  A blind
@@ -781,26 +806,58 @@ def main() -> int:
             rel("2^30 kappa%s%s on L%d" % (m30.group(1), m30.group(2), g3ln), m30.group(1), False,
                 Fraction(m30.group(2)) ** 2, Fraction(J30 * J30, H30 * Dp_s), None)
 
-    # (d) the four statements about the two largest widths: "at most" and "below"
+    # (d) the statements about the two largest widths.  Section 11 states them as "at most"; the
+    # appendix's diagnostic paragraph then states the internal target as MET at one size and NOT met
+    # at the other, and for that size names the width section 11 states instead, by a cross-reference
+    # to that section -- three relations, one of them negative, so all three are tested here against
+    # the certified widths, and the cross-reference is resolved rather than taken on trust.
     wtxt = " ".join(lines[WLN[16] - 1:WLN[16] + 2])
     wm = re.findall(r"(at most|at least)\s*\$([0-9]+\.[0-9])\\cdot10\^\{(-[0-9]+)\}\$\s*at\s*\$e=([0-9]+)\$",
                     wtxt)
-    pm = re.findall(r"(below|above)\s*\$10\^\{(-[0-9]+)\}\$\s*at\s*\$2\^\{([0-9]+)\}\$", wtxt)
-    if len(wm) != 2 or len(pm) != 2:
+    dtxt = " ".join(lines[k7dln - 1:k7dln + 1])
+    dm = re.search(r"internal target width \$10\^\{(-[0-9]+)\}\$.*?met at \$2\^\{([0-9]+)\}\$"
+                   r" but not at \$2\^\{([0-9]+)\}\$, whose width is nevertheless below the"
+                   r" \$([0-9]+\.[0-9])\\cdot10\^\{(-[0-9]+)\}\$ stated in"
+                   r" \\S\\ref\{([A-Za-z0-9:_-]+)\}", dtxt)
+    if len(wm) != 2 or dm is None:
         k7ok = False
-        k7d.append("the width statements on L%d-%d do not parse (%d scaled, %d powers)"
-                   % (WLN[16], WLN[16] + 2, len(wm), len(pm)))
+        k7d.append("the width statements do not parse (%d scaled on L%d-%d, the diagnostic sentence"
+                   " on L%d-%d %s)"
+                   % (len(wm), WLN[16], WLN[16] + 2, k7dln, k7dln + 1,
+                      "parses" if dm else "does NOT parse"))
     else:
         for word, lit, ex, ec in wm:
             e = int(ec)
             rel("width(2^%d) %s %s*10^%s" % (e, word, lit, ex), word, False,
                 Fraction(lit) * Fraction(10) ** int(ex), C[e]["width"], C[e]["width"])
-        for word, ex, ec in pm:
-            e = int(ec)
-            rel("width(2^%d) %s 10^%s" % (e, word, ex), word, False,
-                Fraction(10) ** int(ex), C[e]["width"], C[e]["width"])
+        tgt, emet, enot = Fraction(10) ** int(dm.group(1)), int(dm.group(2)), int(dm.group(3))
+        rel("width(2^%d) meets the target 10^%s" % (emet, dm.group(1)), "below", False,
+            tgt, C[emet]["width"], C[emet]["width"])
+        notmet = C[enot]["width"] > tgt       # the NEGATIVE claim: the target is not met at 2^28
+        k7ok = k7ok and notmet
+        k7d.append("width(2^%d) does NOT meet the target 10^%s: %s"
+                   % (enot, dm.group(1), "and that is what the source says" if notmet
+                      else "FAILS -- the source says it is not met but it is"))
+        # the cross-reference: the figure the appendix attributes to another section must be the one
+        # that section states for this instance, and the label must be the label of the section the
+        # statement is printed in -- otherwise "stated in X" points at a figure X does not state.
+        lit, ex, lab = dm.group(4), dm.group(5), dm.group(6)
+        ebig = Fraction(lit) * Fraction(10) ** int(ex)
+        quoted = any(w == "at most" and l == lit and x == ex and int(c) == enot
+                     for w, l, x, c in wm)
+        sec = re.findall(r"\\section\{[^}]*\}\\label\{([A-Za-z0-9:_-]+)\}",
+                         "\n".join(lines[:WLN[enot]]))
+        here = sec[-1] if sec else None
+        xref = quoted and here == lab
+        k7ok = k7ok and xref
+        k7d.append("the %s*10^%s it attributes to \\S\\ref{%s} is stated there %s (section 11 is"
+                   " \\label{%s}, and its own statement of that width is on L%d) %s"
+                   % (lit, ex, lab, "yes" if quoted else "NO", here, WLN[enot],
+                      "ok" if xref else "FAILS"))
+        rel("width(2^%d) below the %s*10^%s stated in \\S\\ref{%s}" % (enot, lit, ex, lab),
+            "below", False, ebig, C[enot]["width"], C[enot]["width"])
 
-    # (e) the construction's own bounds: upper bounds on kappa at four cells, in one statement
+    # (e) the construction's own bounds: upper bounds on kappa at four instances, in one statement
     cm = re.search(r"\\kappa(" + SYMRE + r")([0-9.,\\ ]+)\$\s*at\s*\$e=([0-9,]+)\$",
                    lines[k7cln - 1])
     if cm is None:
@@ -831,13 +888,13 @@ def main() -> int:
     L2N = 2 * Ls / mp.log(2)
     say("   crossover: L* = %s  (f(L*) = %s),  2L*/log2 = %s"
         % (mp.nstr(Ls, 16), mp.nstr(f(Ls), 8), mp.nstr(L2N, 16)))
-    x1ln = 1230
+    x1ln = 1135
     x1 = trunc(Ls, 2) == "3766.52" and at(lines, "3766.52", x1ln)
     cover("X1", "3766.52", x1ln)
     clause("X1", x1, "L* = %s, truncated at 2 dp = %s vs 3766.52\\ldots on L%d %s"
            % (mp.nstr(Ls, 12), trunc(Ls, 2), x1ln, "ok" if x1 else "NO"))
     t2, r2 = trunc(L2N, 2), rnd(L2N, 2)
-    x2ln = 1231
+    x2ln = 1135
     x2 = t2 == "10867.87" and at(lines, "10867.87", x2ln) and not re.search(r"10867\.88", body)
     cover("X2", "10867.87", x2ln)
     clause("X2", x2, "2L*/log2 = %s, truncated at 2 dp = %s vs 10867.87\\ldots on L%d %s; the"
@@ -855,7 +912,7 @@ def main() -> int:
     L12 = mp.findroot(lambda L: 12 * mp.log(L) - L, mp.mpf(46))
     t6, t12 = 2 * L6 / mp.log(2), 2 * L12 / mp.log(2)
     # the upward two-decimal rounding, formed on the integer ceil so no float formatting enters
-    x3ln = (1239, 1240)              # the line the two sufficient thresholds are printed on
+    x3ln = (1146, 1146)              # the line the two sufficient thresholds are printed on
     up2 = lambda v: "%d.%02d" % divmod(int(mp.ceil(v * 100)), 100)
     u6, u12 = up2(t6), up2(t12)
     x3 = (u6 == "49.05" and u12 == "132.51"
@@ -877,14 +934,14 @@ def main() -> int:
     b_at2 = g(mp.mpf(2))
     mono = bool(mp.diff(g, mp.mpf("1.5")) < 0 and mp.diff(g, mp.mpf("1.05")) < 0
                 and mp.diff(g, mp.mpf("1.95")) < 0)
-    b1ln = 785
+    b1ln = 700
     b1 = (trunc(b_at2, 4) == "-0.1931" and at(lines, "0.1931", b1ln)
           and mp.almosteq(g(mp.mpf(1)), 1, 1e-30) and mono)
     cover("B1", "0.1931", b1ln)
     clause("B1", b1, "1/v - log v: value 1 at v = 1, %s at v = 2, truncated at 4 dp = %s vs"
                      " -0.1931\\ldots on L%d; derivative negative across [1,2] %s"
            % (mp.nstr(b_at2, 12), trunc(b_at2, 4), b1ln, "yes" if mono else "NO"))
-    n1ln = (726, 820)
+    n1ln = (640, 734)
     n1 = (Fraction(3, 2) == Fraction("1.5") and at(lines, "1.5", n1ln[0])
           and at(lines, "1.5", n1ln[1]))
     cover("N1", "1.5", *n1ln)
@@ -908,9 +965,12 @@ def main() -> int:
     dec = all(qq[i] > qq[i + 1] for i in range(len(qq) - 1))
     under = all(x < Fraction(9, 100) for x in rr)
     above = all(fr(x) > lim for x in qq)
-    n2lit = [("0.0768", 1448, rnd(fr(rr[0]), 4)), ("0.0834", 1448, rnd(fr(rr[-1]), 4)),
-             ("13.03", 1449, rnd(fr(qq[0]), 2)), ("11.99", 1449, rnd(fr(qq[-1]), 2)),
-             ("10.7213", 1450, trunc(lim, 4))]
+    # the limit is printed as `10.7213228\ldots`, its SEVEN-decimal truncation; the four-decimal
+    # form the earlier source printed is no longer there, so the clause checks the precision the
+    # source actually gives
+    n2lit = [("0.0768", 1292, rnd(fr(rr[0]), 4)), ("0.0834", 1292, rnd(fr(rr[-1]), 4)),
+             ("13.03", 1294, rnd(fr(qq[0]), 2)), ("11.99", 1294, rnd(fr(qq[-1]), 2)),
+             ("10.7213228", 1294, trunc(lim, 7))]
     digits = all(lit == got for lit, _, got in n2lit)
     placed = all(at(lines, lit, ln) for lit, ln, _ in n2lit)
     for lit, ln, _ in n2lit:
@@ -921,10 +981,10 @@ def main() -> int:
     clause("N2", digits and placed and inc and dec and under and above,
            "the density remark over %d cells (2^%d..2^%d), from cell_cache row counts: R/N %s -> %s"
            " vs 0.0768/0.0834 on L%d, N/R %s -> %s vs 13.03/11.99 on L%d, limit truncated %s vs"
-           " 10.7213 on L%d; digits %s, on their lines %s; R/N strictly increasing %s and < 0.09"
+           " 10.7213228 on L%d; digits %s, on their lines %s; R/N strictly increasing %s and < 0.09"
            " throughout %s; N/R strictly decreasing %s and above the limit throughout %s"
            % (len(dens), dens[0][0], dens[-1][0], rnd(fr(rr[0]), 6), rnd(fr(rr[-1]), 6),
-              n2ln[0], rnd(fr(qq[0]), 4), rnd(fr(qq[-1]), 4), n2ln[2], trunc(lim, 4), n2ln[4],
+              n2ln[0], rnd(fr(qq[0]), 4), rnd(fr(qq[-1]), 4), n2ln[2], trunc(lim, 7), n2ln[4],
               "ok" if digits else "NO", "yes" if placed else "NO", "yes" if inc else "NO",
               "yes" if under else "NO", "yes" if dec else "NO", "yes" if above else "NO"))
     say()
@@ -956,14 +1016,14 @@ def main() -> int:
     # own section line, located by its title, and takes the paragraph inside it.
     APPSEC = "\\section{Verification of the certificates}"
     app = body.index(APPSEC) if APPSEC in body else 0
-    key = "\\paragraph{The verifier.}"
+    key = "\\paragraph{Verification cost.}"
     sec = body.index(key, app) if key in body[app:] else 0
     # it is the LAST paragraph of the body (what follows it is the bibliography), so the block ends at
     # the next `\paragraph{` when there is one and at the end of the body when there is not
     nxt = body.find("\\paragraph{", sec + 10) if sec else -1
     endp = nxt if nxt != -1 else len(body)
     para = body[sec:endp]
-    printed = re.findall(r"\$([0-9]+\.[0-9])\$\s*s\b", para)
+    printed = re.findall(r"\$([0-9]+\.[0-9])\$\s*(?:s|seconds?)\b", para)
     pl = []
     for tok in printed:
         ln = next((i + 1 for i, x in enumerate(lines) if "$%s$" % tok in x and sec_line(lines, i, sec,
@@ -999,7 +1059,14 @@ def main() -> int:
         parts_s = ("%d.%d" % divmod(int(p10), 10)) if p10.denominator == 1 else str(parts_q)
         gone = [t for t in GONE if re.search(r"(?<![0-9.])" + re.escape(t) + r"(?![0-9.])", body)]
         hw = frozen.get("hardware", {})
-        named = bool(re.search(r"authors' machine|other hardware", para))
+        # The manuscript no longer prints the CPU: it attributes the figures to one machine and
+        # points at the archived timing record, which is where the hardware is specified.  The
+        # provenance claim is the same and now runs through one more link, so both ends are checked:
+        # the paragraph must make the attribution AND name the record, and the record must carry the
+        # hardware it is said to specify.
+        attrib = bool(re.search(r"author'?s' ?machine|that machine", para))
+        points = bool(re.search(r"timing record", para))
+        named = attrib and points and bool(hw.get("cpu"))
         # the record must name the bytes it measured: the verifier THIS run imported, not a revision
         # of it.  Without this the clause can hold while the figures belong to other code.
         vpath = getattr(PC, "__file__", "") or ""
@@ -1019,7 +1086,8 @@ def main() -> int:
         clause("R1", ok, "appendix A prints %s s against the frozen record's %s s (%s, %s, %d threads):"
                          " digits %s, each on its line %s; the three parts sum to %s against the"
                          " printed total %s, exactly %s off the tolerance 2/10 %s; the superseded %s are"
-                         " gone %s; the hardware is named in the text %s; the record's verifier SHA-256"
+                         " gone %s; the text attributes the run to one machine and names the archived"
+                         " record, which carries the hardware %s; the record's verifier SHA-256"
                          " is the shipped pa_certify.py's %s%s"
                % (" / ".join(printed), " / ".join(want), hw.get("cpu", "?"), hw.get("cores", "?"),
                   int(frozen.get("threads", 0)), "ok" if digits else "NO",
@@ -1049,7 +1117,12 @@ def main() -> int:
     # one-decimal literal is no longer there.
     REMOVED = {"0.172389352", "0.140860454", "0.1055426", "0.076331", "0.052762", "0.034622",
                "0.024526", "0.0763313", "0.0346234", "0.0245279", "3767", "10868", "50",
-               "132.5"}
+               "132.5",
+               # v2's V17c: "a factor about 29 in L beyond the point where the formal expression
+               # dips below 1".  Section 9 now states the two scales (the crossing and where
+               # u reaches 1) and not the ratio between them, so the literal is gone; both scales
+               # are still printed and X1/X2/v2's V15-V17b still check them.
+               "29"}
     v2lits = {r["literal"] for r in TC2.REC if r.get("literal")}
     absent, unexplained = [], []
     for lit in sorted(v2lits):
@@ -1068,10 +1141,10 @@ def main() -> int:
     say()
 
     # ---------------- Q1: quoted classical constants ----------------------------------------
-    QUOTED = {("0.2795", 459): "Trudgian Thm. 2, the explicit li-error coefficient",
-              ("6.455", 459): "Trudgian Thm. 2, the exponent's denominator",
-              ("6.455", 463): "the same constant, in the deduction v2's V14a checks",
-              ("1.25506", 446): "Rosser-Schoenfeld (3.6), the Chebyshev coefficient"}
+    QUOTED = {("0.2795", 388): "Trudgian Thm. 2, the explicit li-error coefficient",
+              ("6.455", 388): "Trudgian Thm. 2, the exponent's denominator",
+              ("6.455", 392): "the same constant, in the deduction v2's V14a checks",
+              ("1.25506", 375): "Rosser-Schoenfeld (3.6), the Chebyshev coefficient"}
     q1ok, q1d = True, []
     for (t, ln), why in QUOTED.items():
         p = at(lines, t, ln)
@@ -1140,6 +1213,13 @@ def main() -> int:
     BIBNUM = {"33": "the volume of the Friedlander entry",
               "1976": "its year",
               "565--576": "its page range"}
+    # Locators printed in the BODY rather than inside a `\cite[...]` argument.  The inventory sees
+    # them as ordinary decimals, so they must be accounted for; they are locators and not quantities,
+    # which is the category this clause declares.  The declaration is checked rather than asserted:
+    # each must sit in a subsection that cites the work it locates.
+    BODYLOC = {("3.1", 283): "BradyThesis", ("4.1", 283): "BradyThesis",
+               ("7.1", 283): "BradyThesis", ("4.2", 284): "BradyThesis",
+               ("8.1", 284): "BradyThesis", ("8.2", 285): "BradyThesis"}
     bibtext = raw[raw.index("\\begin{thebibliography}"):] if "\\begin{thebibliography}" in raw else ""
     btoks = PAT.findall(body)
     y1ok, y1d = bool(bibtext), []
@@ -1153,8 +1233,28 @@ def main() -> int:
                    " tracked literal of the body %s"
                    % (t, BIBNUM[t], "yes" if inbib else "NO", "yes" if not stray else "NO",
                       "yes" if not tracked else "NO"))
+    def subsec(ln):
+        """the subsection block containing body line `ln`, as one string."""
+        a = max((k for k in range(ln, 0, -1)
+                 if lines[k - 1].startswith(("\\subsection", "\\section"))), default=1)
+        b = next((k for k in range(ln + 1, len(lines) + 1)
+                  if lines[k - 1].startswith(("\\subsection", "\\section"))), len(lines))
+        return " ".join(lines[a - 1:b])
+
+    locd = []
+    for (t, ln), key in sorted(BODYLOC.items(), key=lambda kv: (kv[0][1], kv[0][0])):
+        here = at(lines, t, ln)
+        cited = ("\\cite" in subsec(ln)) and (key in subsec(ln))
+        ok = here and cited
+        y1ok = y1ok and ok
+        locd.append("%s@L%d locates \\cite{%s} %s"
+                    % (t, ln, key, "ok" if ok else "NO"
+                       if here else "NOT ON THAT LINE"))
+        COVER[(t, ln)] = "Y1"
     clause("Y1", y1ok, "bibliographic numerals, declared and outside the checked body (which ends at"
-                       " \\begin{thebibliography}): " + "; ".join(y1d))
+                       " \\begin{thebibliography}): " + "; ".join(y1d)
+                       + ". Locators printed inside the body, each in a subsection that cites the"
+                         " work it locates: " + "; ".join(locd))
 
     # ---------------- Z1: coverage ----------------------------------------------------------
     # v2 records a `literal` field only for its `clause()` entries.  Its `plain()` entries check

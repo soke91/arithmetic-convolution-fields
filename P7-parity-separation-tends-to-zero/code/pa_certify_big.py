@@ -185,8 +185,9 @@ def say(s: str = "") -> None:
 # exit code reports certificate validity alone; no clause's test or threshold is changed by the split.
 DIAGNOSTIC: dict[str, tuple[bool, str]] = {
     "P2": (True, "a width TARGET of 10^-6, not a condition on the certificate: the width is whatever"
-                 " the colgen primal and the repaired dual give, and at 2^28 it is 1.2e-5 -- section 11"
-                 " claims only 10^-4 there"),
+                 " the colgen primal and the repaired dual give, and at 2^28 it is 1.2e-5, which is"
+                 " what section 11 states there (\"at most 1.2e-5 at e=28\"); appendix A's"
+                 " Diagnostics paragraph records that this target is the one not met"),
     "P3": (False, "it compares this certificate with the published eq:certint integers; a failure is a"
                   " finding about those integers, not about this certificate"),
     "P4": (False, "it compares the exact interval with the separator's stored floats, one side exact"

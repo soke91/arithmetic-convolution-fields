@@ -1,7 +1,7 @@
 {
  "mode": "lower30-verify",
  "threads": 4,
- "wall_s": 230.34535956382751,
+ "wall_s": 246.2431743144989,
  "result": {
   "e": 30,
   "J": "4401612119558212802",
@@ -12,8 +12,8 @@
   "lower": "0.017787",
   "bad": [],
   "checks": 8,
-  "sweep_s": 45.9,
-  "band_s": 139.8
+  "sweep_s": 47.2,
+  "band_s": 150.1
  },
  "completeness_checked": false,
  "clauses": [
@@ -30,7 +30,7 @@
   {
    "name": "C1",
    "holds": true,
-   "detail": "2^30 band rebuilt in 139.8 s: |vB| 86592333/86592333, |vR| 89520933/89520933, c_vB and c_vR element for element EQUAL"
+   "detail": "2^30 band rebuilt in 150.1 s: |vB| 86592333/86592333, |vR| 89520933/89520933, c_vB and c_vR element for element EQUAL"
   },
   {
    "name": "L2",
@@ -40,7 +40,7 @@
   {
    "name": "L3",
    "holds": true,
-   "detail": "2^30 lower endpoint re-established: all 8 checks pass ; kappa(2^30) > 17787/10^6 = 0.017787  (theta min 0, sweep 46 s, band 140 s)"
+   "detail": "2^30 lower endpoint re-established: all 8 checks pass ; kappa(2^30) > 17787/10^6 = 0.017787  (theta min 0, sweep 47 s, band 150 s)"
   },
   {
    "name": "L4",

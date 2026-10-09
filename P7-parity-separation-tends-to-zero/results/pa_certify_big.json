@@ -34,7 +34,7 @@
    "D": 100000000000000,
    "nrows": 157,
    "ncols": 147,
-   "verify_s": 0.6
+   "verify_s": 2.6
   },
   {
    "e": 18,
@@ -114,7 +114,7 @@
    "D": 100000000000,
    "nrows": 4982,
    "ncols": 14914,
-   "verify_s": 11.9
+   "verify_s": 12.2
   },
   {
    "e": 28,
@@ -130,7 +130,7 @@
    "D": 100000000000,
    "nrows": 9962,
    "ncols": 10771,
-   "verify_s": 62.0
+   "verify_s": 58.9
   }
  ],
  "fails": [],
@@ -298,7 +298,7 @@
   {
    "name": "C1",
    "holds": true,
-   "detail": "2^24 band rebuilt in 1.6 s: |vB| 1293845/1293845, |vR| 1367757/1367757, c_vB and c_vR element for element EQUAL"
+   "detail": "2^24 band rebuilt in 1.7 s: |vB| 1293845/1293845, |vR| 1367757/1367757, c_vB and c_vR element for element EQUAL"
   },
   {
    "name": "C0",
@@ -333,7 +333,7 @@
   {
    "name": "C1",
    "holds": true,
-   "detail": "2^26 band rebuilt in 7.4 s: |vB| 5258985/5258985, |vR| 5508942/5508942, c_vB and c_vR element for element EQUAL"
+   "detail": "2^26 band rebuilt in 7.8 s: |vB| 5258985/5258985, |vR| 5508942/5508942, c_vB and c_vR element for element EQUAL"
   },
   {
    "name": "C0",
@@ -368,7 +368,7 @@
   {
    "name": "C1",
    "holds": true,
-   "detail": "2^28 band rebuilt in 40.1 s: |vB| 21392222/21392222, |vR| 22243991/22243991, c_vB and c_vR element for element EQUAL"
+   "detail": "2^28 band rebuilt in 36.4 s: |vB| 21392222/21392222, |vR| 22243991/22243991, c_vB and c_vR element for element EQUAL"
   },
   {
    "name": "C0",

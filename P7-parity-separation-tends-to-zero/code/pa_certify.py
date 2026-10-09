@@ -124,8 +124,8 @@ HOW THE WORK IS DONE
   thread count))`.  So the DEFAULT is 4 and the CAP is 8 -- `ACF_THREADS=8` is honoured, `ACF_THREADS=16`
   is clamped to 8 -- and numba's count
   clamps it further on a smaller machine (a 4-core reader gets 4).  The cap is this machine's limit.  Every measurement in
-  `results/pa_certify_timings_frozen.json` and in section 11 was taken at the default 4, which is also
-  what the reproduction notes tell a reader to set.
+  `results/pa_certify_timings_frozen.json` and in appendix A's Verification cost paragraph was taken at
+  the default 4, which is also what the reproduction notes tell a reader to set.
 
   COST.  The largest cell rebuilds its band in about half a minute at a peak near 4 GB, and every run
   of this file finishes in minutes; nothing here iterates or solves.  The whole seven-cell `--verify`
@@ -412,7 +412,7 @@ DIAGNOSTIC: dict[str, tuple[bool, str]] = {
     "P2": (False, "a width TARGET, not a condition on the certificate: the width is whatever the"
                   " stored primal and integral dual give"),
     "P3": (True, "it compares a nine-decimal rounded float optimum with a twelve-decimal exact"
-                 " interval, which need not contain it -- section 11 says so in a parenthesis"),
+                 " interval, which need not contain it -- appendix A's Diagnostics paragraph says so"),
     "P4": (False, "it compares this certificate with the published eq:certint integers; a failure is a"
                   " finding about those integers, not about this certificate"),
     "P6": (False, "a file-size budget for the shipped certificate files"),
