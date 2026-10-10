@@ -131,9 +131,10 @@ $t=\tfrac12(A_{10}+A_{15})\in K_Q$. Thus $\kappa(25)>0=\kappa(30)$, which explai
 $\kappa(N)$.
 
 \subsection{Dual formulation}\label{sec:measures}
-Let $\lambda=(\lambda_{d})_{d\le Q,\ \mu^{2}(d)=1}$ be a weight of \emph{level} $Q$, let
-$\theta_{\lambda}(n)=\sum_{d\mid n,\ d\le Q}\lambda_{d}$ be its divisor sum, and let $\mathbb E_{\vR}$
-denote the mean over $\vR$.
+Let $\lambda=(\lambda_{d})_{d\le Q,\ \mu^{2}(d)=1}$ be a weight of \emph{level} $Q$.
+Set $\lambda_d=0$ for nonsquarefree $d\le Q$, and write
+$\theta_{\lambda}(n)=\sum_{d\mid n,\ d\le Q}\lambda_{d}$ for its divisor sum.
+Let $\mathbb E_{\vR}$ denote the mean over $\vR$.
 
 \begin{proposition}\label{prop:dual}
 Let $N$ be such that $R>0$. Then
@@ -263,7 +264,7 @@ automatically at most $Q$. The usual decomposition by the largest prime factor t
 the exact identity (Lemma~\ref{lem:1LP})
 \[
   M_{Y,Q}(X)=M_{Y}(X)+\sum_{Q<p\le X}M_{Y}(X/p),\qquad
-  M_{Y}(z)=\!\!\sum_{b\le z,\ \Pm(b)>Y}\!\!\mu(b),
+  M_{Y}(z)=\!\!\sum_{b\le z,\ \Pm(b)>Y}\!\!\mu(b).
 \]
 The inner sums have no additional restriction on the largest prime factor. Quantitative prime number
 and M\"obius estimates, stated as (P) and (L) in \S\ref{sec:inputs}, then give the signed estimate
@@ -632,8 +633,9 @@ By \eqref{eq:e} and Lemmas~\ref{lem:disc} and \ref{lem:rough},
   \dist_{2}(t,K_{Q})\le\sqrt{2(N/R)\delta}+\max(1,C)\frac NR\sqrt{\frac{15}{\pi^{2}}}
   \Bigl(\sum_{p>Y}p^{-2}\Bigr)^{1/2}.
 \]
-By Proposition~\ref{prop:norm}, $1/\|p\|_{2}\le(4+\eps)L^{2}(R/N)$ for $L\ge L_{0}(\eps)$. Multiplying,
-the factor $N/R$ cancels exactly in the second term and halves in the first. \qed
+By Proposition~\ref{prop:norm}, $1/\|p\|_{2}\le(4+\eps)L^{2}(R/N)$ for $L\ge L_{0}(\eps)$.
+Multiplying by this bound gives the result: the factors $N/R$ and $R/N$ cancel in the second term,
+while $(R/N)\sqrt{2(N/R)\delta}=\sqrt{2\delta R/N}$ in the first. \qed
 
 \section{The counting lemmas}\label{sec:counting}
 
@@ -648,9 +650,10 @@ Uniformly for $z\ge Z_{0}$, $\ \Phi(z)=zV(Y)(1+o(1))$.
 Let $P=\prod_{p\le Y}p$, $J=\lceil\log L\rceil$, and for $n\ge1$ put $k=\omega(\gcd(n,P))$. Legendre's
 identity reads $\mathbf1_{\Pm(n)>Y}=\sum_{d\mid\gcd(n,P)}\mu(d)$, and
 \[
-  \sum_{j=0}^{J}(-1)^{j}\binom kj=(-1)^{J}\binom{k-1}J\ \ (k\ge1),\qquad=1\ \ (k=0),
+  \sum_{j=0}^{J}(-1)^{j}\binom kj=(-1)^{J}\binom{k-1}J\ \ (k\ge1),\qquad=1\ \ (k=0).
 \]
-so the truncation error at each $n$ is $\binom{k-1}J\le\binom kJ$. Summing over $n\le z$ and using
+For $k\ge1$, the absolute truncation error is $\binom{k-1}{J}$; for $k=0$, it is zero.
+In either case it is at most $\binom{k}{J}$. Summing over $n\le z$ and using
 $\sum_{n\le z}\binom{\omega(\gcd(n,P))}J=\sum_{d\mid P,\ \omega(d)=J}\lfloor z/d\rfloor$,
 \begin{equation}\label{eq:B1}
   \Bigl|\Phi(z)-\!\!\!\sum_{d\mid P,\ \omega(d)\le J}\!\!\!\mu(d)\lfloor z/d\rfloor\Bigr|
@@ -798,7 +801,7 @@ $\Pm(b)>Y\ge\Pp(a)$, and $\omega(n)=\omega(a)+\omega(b)$. With
 in the notation \eqref{eq:UM}, and $\mu(b)=(-1)^{\omega(b)}$ for squarefree $b$,
 \begin{equation}\label{eq:par}
   \{B_{a},R_{a}\}=\Bigl\{\frac{U_{a}+M_{a}}2,\ \frac{U_{a}-M_{a}}2\Bigr\},\qquad
-  \frac{R_{a}}{B_{a}}\le\frac{U_{a}+|M_{a}|}{U_{a}-|M_{a}|}\quad\text{if }|M_{a}|<U_{a},
+  \frac{R_{a}}{B_{a}}\le\frac{U_{a}+|M_{a}|}{U_{a}-|M_{a}|}\quad\text{if }|M_{a}|<U_{a}.
 \end{equation}
 The order of the two counts is determined by the parity of $\omega(a)$.
 A bound $|M_a|\le\rho U_a$ with a fixed $\rho<1$ would suffice for Hypothesis~\ref{hyp:PC};
@@ -1111,9 +1114,9 @@ For its second bound, use
 and $c_1<2.01317$. \qed
 
 \begin{remark}\label{rem:fixedbeta}
-The first term in \eqref{eq:t1} tends to zero for $\beta\ge4$: at $\beta=4$ the exponent $2-\beta/2$ vanishes and
-the first term is $4\sqrt{15/\pi^{2}}/(2\sqrt{\log L})=2.4656\ldots/\sqrt{\log L}$, still $o(1)$. The
-constant $c_1$ in Corollary~\ref{cor:beta6} depends on the choice $\beta=6$. Allowing $\beta$
+For fixed $\beta\ge4$ and $\eta>0$, the first term in \eqref{eq:t1} is
+$O_{\beta,\eta}(L^{2-\beta/2}/\sqrt{\log L})$ and tends to zero, including at $\beta=4$.
+The constant $c_1$ in Corollary~\ref{cor:beta6} depends on the choice $\beta=6$. Allowing $\beta$
 to grow with $N$ would require estimates uniform in $\beta$ in Lemmas~\ref{lem:phi},
 \ref{lem:psi}, \ref{lem:roughmob}, and Theorem~\ref{thm:PC}; the present argument does not provide them.
 \end{remark}
@@ -1356,8 +1359,8 @@ machine: $7.8$ seconds for $e\le24$ together, $14.1$ seconds at $e=26$, and $63.
 including reconstruction of the band. Checking the $2^{30}$ lower certificate takes a few additional
 minutes, again dominated by band reconstruction.
 The archived timing record specifies the hardware and commands. The reported run starts with an
-empty compiler cache and includes the initial kernel compilation; timings from other cold- and
-warm-cache runs are recorded alongside it. The machine was running unrelated work during all runs,
+empty compiler cache and includes the initial kernel compilation; timings from two warm-cache
+runs are recorded alongside it. The machine was running unrelated work during all runs,
 and the largest-instance reconstruction time varies substantially. These measurements indicate the
 cost on that machine and are not a reproducible timing guarantee. The timing record is not overwritten
 by verification.

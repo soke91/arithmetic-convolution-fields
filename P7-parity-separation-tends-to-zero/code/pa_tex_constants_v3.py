@@ -461,7 +461,7 @@ def main() -> int:
     # a summary, and a clause that trusts it reports a line it did not test.  The locations below were
     # read off the source at SHA-256 7d8aac53..., each located by its own literal (one of them,
     # G5's sign condition, now occurs twice in the source: the appendix's is the one G5 means).
-    TAB = {16: 1243, 18: 1244, 20: 1245, 22: 1246, 24: 1247, 26: 1248, 28: 1249}
+    TAB = {16: 1246, 18: 1247, 20: 1248, 22: 1249, 24: 1250, 26: 1251, 28: 1252}
     k1ok, k1d, k2ok, k2d = True, [], True, []
     for e in CELLS:
         c, ln = C[e], TAB[e]
@@ -499,9 +499,9 @@ def main() -> int:
         k6ok = k6ok and row_ok
         k6d.append("L%d label %s" % (TAB[e], got if got is not None else "UNPARSED"))
     # the exponents section 11 names outside the table, and the construction's Y values
-    SMALL = [("e=16,\\dots,24", 1252), ("e=26", 1253), ("e=28", 1253),
-             ("e=16,18,20", 1254), ("e=22,\\dots,28", 1255),
-             ("e=16,18,20,22", 1286), ("Y=3,3,5,5", 1286)]
+    SMALL = [("e=16,\\dots,24", 1255), ("e=26", 1256), ("e=28", 1256),
+             ("e=16,18,20", 1257), ("e=22,\\dots,28", 1258),
+             ("e=16,18,20,22", 1289), ("Y=3,3,5,5", 1289)]
     smd = [(t, ln, at(lines, t, ln)) for t, ln in SMALL]
     sm_ok = all(v for _, _, v in smd)
     clause("K6", k6ok and sm_ok,
@@ -513,11 +513,11 @@ def main() -> int:
     # ---------------- K3, K4: widths --------------------------------------------------------
     WID = {16: ("1.0", 12), 18: ("1.0", 12), 20: ("2.0", 12), 22: ("3.0", 12), 24: ("8.0", 12),
            26: ("5.6", 7), 28: ("1.2", 5)}
-    WLN = {16: 1252, 18: 1252, 20: 1252, 22: 1252, 24: 1252, 26: 1253, 28: 1253}
+    WLN = {16: 1255, 18: 1255, 20: 1255, 22: 1255, 24: 1255, 26: 1256, 28: 1256}
     # The appendix's diagnostic sentence, which states the internal target width, whether it is met at
     # each of the two largest instances, and -- on the next line -- the width section 11 states at the
     # instance where the target is not met, by a cross-reference to that section.
-    DIAGLN = 1370
+    DIAGLN = 1373
     # that cross-reference repeats the 2^28 width figure, so the same recomputed literal occurs twice
     REPEAT = {28: DIAGLN + 1}
     k3ok, k3d = True, []
@@ -555,7 +555,7 @@ def main() -> int:
            % (float(w26), float(w28), nd26, nd28))
 
     # ---------------- K5: the complete column counts ----------------------------------------
-    EVEN = {16: ("4\\,414", 1255), 18: ("18\\,685", 1255), 20: ("76\\,946", 1255)}
+    EVEN = {16: ("4\\,414", 1258), 18: ("18\\,685", 1258), 20: ("76\\,946", 1258)}
     k5ok, k5d = True, []
     for e, (lit, ln) in EVEN.items():
         want = int(lit.replace("\\,", ""))
@@ -575,7 +575,7 @@ def main() -> int:
     nB30, nR30 = int(S30["nB"]), int(S30["nR"])
     # the two lines the band sizes are printed on, named once so the clause cannot report one line
     # while testing another
-    g1ln = (1262, 1263)
+    g1ln = (1265, 1266)
     g1 = (nB30 == 86592333 and nR30 == 89520933
           and at(lines, "86\\,592\\,333", g1ln[0]) and at(lines, "89\\,520\\,933", g1ln[1]))
     cover("G1", "86\\,592\\,333", g1ln[0])
@@ -593,8 +593,8 @@ def main() -> int:
         j30 = json.load(io.open(jp, encoding="utf-8"))
         J30, H30 = int(j30["J"]), int(j30["H"])
         Dp_s, c6 = int(j30["D_p"]), int(j30["c6"])
-        lits = {"4401612119558212802": 1273, "2015370564893177546709684150": 1273,
-                "30382600959846": 1273, "17787": 1274}
+        lits = {"4401612119558212802": 1276, "2015370564893177546709684150": 1276,
+                "30382600959846": 1276, "17787": 1277}
         pres = all(at(lines, t, ln) for t, ln in lits.items())
         for t, ln in lits.items():
             cover("G2", t, ln)
@@ -609,7 +609,7 @@ def main() -> int:
         ineq = c6 * c6 * H30 * Dp_s < J30 * J30 * 10 ** 12
         maxi = not ((c6 + 1) ** 2 * H30 * Dp_s < J30 * J30 * 10 ** 12)
         equiv = (Fraction(J30 * J30, H30 * Dp_s) > Fraction(c6, 10 ** 6) ** 2) == ineq
-        g3ln = 1276                      # the line the six-decimal bound is printed on
+        g3ln = 1279                      # the line the six-decimal bound is printed on
         pb = at(lines, "0.017787", g3ln) and rnd(mp.mpf(c6) / mp.mpf(10) ** 6, 6) == "0.017787"
         cover("G3", "0.017787", g3ln)
         clause("G3", ineq and maxi and equiv and pb,
@@ -624,7 +624,7 @@ def main() -> int:
         # section title and kept every label, so the title is not a handle and the label is.
         s11 = next((i for i, ln in enumerate(lines, 1) if r"\label{sec:numerics}" in ln), None)
         apx = [i for i, ln in enumerate(lines, 1) if s11 and i >= s11 and r"\approx" in ln]
-        g4ln = 1282                      # the one approximate value section 11 prints
+        g4ln = 1285                      # the one approximate value section 11 prints
         g4 = (ubs == "0.01779" and at(lines, "0.01779", g4ln) and len(apx) == 1
               and apx == [g4ln])
         cover("G4", "0.01779", g4ln)
@@ -642,7 +642,7 @@ def main() -> int:
     cp = os.path.join(RES, "pa_cert_2e30_lower.npz")
     # the separator tag is the verifier's own default for this cell, and is the file the README names
     sp = os.path.join(RES, "conedual_colgen_sep_2e30_n30b.npz")
-    g5ln = (1376, 1377, 1381, 1382)
+    g5ln = (1379, 1380, 1384, 1385)
     if not (os.path.exists(cp) and os.path.exists(sp)):
         clause("G5", False, "not scored: %s absent"
                % ", ".join(os.path.basename(p) for p in (cp, sp) if not os.path.exists(p)))
@@ -704,7 +704,7 @@ def main() -> int:
     say()
 
     # the line the construction's four kappa <= bounds are printed on, located by its literal
-    k7cln = 1286
+    k7cln = 1289
     # the appendix's diagnostic sentence (located above, where K3 accounts for the width it repeats)
     k7dln = DIAGLN
 
@@ -888,13 +888,13 @@ def main() -> int:
     L2N = 2 * Ls / mp.log(2)
     say("   crossover: L* = %s  (f(L*) = %s),  2L*/log2 = %s"
         % (mp.nstr(Ls, 16), mp.nstr(f(Ls), 8), mp.nstr(L2N, 16)))
-    x1ln = 1135
+    x1ln = 1138
     x1 = trunc(Ls, 2) == "3766.52" and at(lines, "3766.52", x1ln)
     cover("X1", "3766.52", x1ln)
     clause("X1", x1, "L* = %s, truncated at 2 dp = %s vs 3766.52\\ldots on L%d %s"
            % (mp.nstr(Ls, 12), trunc(Ls, 2), x1ln, "ok" if x1 else "NO"))
     t2, r2 = trunc(L2N, 2), rnd(L2N, 2)
-    x2ln = 1135
+    x2ln = 1138
     x2 = t2 == "10867.87" and at(lines, "10867.87", x2ln) and not re.search(r"10867\.88", body)
     cover("X2", "10867.87", x2ln)
     clause("X2", x2, "2L*/log2 = %s, truncated at 2 dp = %s vs 10867.87\\ldots on L%d %s; the"
@@ -912,7 +912,7 @@ def main() -> int:
     L12 = mp.findroot(lambda L: 12 * mp.log(L) - L, mp.mpf(46))
     t6, t12 = 2 * L6 / mp.log(2), 2 * L12 / mp.log(2)
     # the upward two-decimal rounding, formed on the integer ceil so no float formatting enters
-    x3ln = (1146, 1146)              # the line the two sufficient thresholds are printed on
+    x3ln = (1149, 1149)              # the line the two sufficient thresholds are printed on
     up2 = lambda v: "%d.%02d" % divmod(int(mp.ceil(v * 100)), 100)
     u6, u12 = up2(t6), up2(t12)
     x3 = (u6 == "49.05" and u12 == "132.51"
@@ -934,14 +934,14 @@ def main() -> int:
     b_at2 = g(mp.mpf(2))
     mono = bool(mp.diff(g, mp.mpf("1.5")) < 0 and mp.diff(g, mp.mpf("1.05")) < 0
                 and mp.diff(g, mp.mpf("1.95")) < 0)
-    b1ln = 700
+    b1ln = 703
     b1 = (trunc(b_at2, 4) == "-0.1931" and at(lines, "0.1931", b1ln)
           and mp.almosteq(g(mp.mpf(1)), 1, 1e-30) and mono)
     cover("B1", "0.1931", b1ln)
     clause("B1", b1, "1/v - log v: value 1 at v = 1, %s at v = 2, truncated at 4 dp = %s vs"
                      " -0.1931\\ldots on L%d; derivative negative across [1,2] %s"
            % (mp.nstr(b_at2, 12), trunc(b_at2, 4), b1ln, "yes" if mono else "NO"))
-    n1ln = (640, 734)
+    n1ln = (642, 737)
     n1 = (Fraction(3, 2) == Fraction("1.5") and at(lines, "1.5", n1ln[0])
           and at(lines, "1.5", n1ln[1]))
     cover("N1", "1.5", *n1ln)
@@ -968,9 +968,9 @@ def main() -> int:
     # the limit is printed as `10.7213228\ldots`, its SEVEN-decimal truncation; the four-decimal
     # form the earlier source printed is no longer there, so the clause checks the precision the
     # source actually gives
-    n2lit = [("0.0768", 1292, rnd(fr(rr[0]), 4)), ("0.0834", 1292, rnd(fr(rr[-1]), 4)),
-             ("13.03", 1294, rnd(fr(qq[0]), 2)), ("11.99", 1294, rnd(fr(qq[-1]), 2)),
-             ("10.7213228", 1294, trunc(lim, 7))]
+    n2lit = [("0.0768", 1295, rnd(fr(rr[0]), 4)), ("0.0834", 1295, rnd(fr(rr[-1]), 4)),
+             ("13.03", 1297, rnd(fr(qq[0]), 2)), ("11.99", 1297, rnd(fr(qq[-1]), 2)),
+             ("10.7213228", 1297, trunc(lim, 7))]
     digits = all(lit == got for lit, _, got in n2lit)
     placed = all(at(lines, lit, ln) for lit, ln, _ in n2lit)
     for lit, ln, _ in n2lit:
@@ -1122,7 +1122,11 @@ def main() -> int:
                # dips below 1".  Section 9 now states the two scales (the crossing and where
                # u reaches 1) and not the ratio between them, so the literal is gone; both scales
                # are still printed and X1/X2/v2's V15-V17b still check them.
-               "29"}
+               "29",
+               # Remark rem:fixedbeta no longer prints the beta = 4 value 4*sqrt(15/pi^2)/2 of the
+               # first term of (eq:t1); it now states the order O(L^{2-beta/2}/sqrt(log L)), which
+               # carries no numeral, and eq:t1 itself is unchanged.
+               "2.4656"}
     v2lits = {r["literal"] for r in TC2.REC if r.get("literal")}
     absent, unexplained = [], []
     for lit in sorted(v2lits):
@@ -1141,10 +1145,10 @@ def main() -> int:
     say()
 
     # ---------------- Q1: quoted classical constants ----------------------------------------
-    QUOTED = {("0.2795", 388): "Trudgian Thm. 2, the explicit li-error coefficient",
-              ("6.455", 388): "Trudgian Thm. 2, the exponent's denominator",
-              ("6.455", 392): "the same constant, in the deduction v2's V14a checks",
-              ("1.25506", 375): "Rosser-Schoenfeld (3.6), the Chebyshev coefficient"}
+    QUOTED = {("0.2795", 389): "Trudgian Thm. 2, the explicit li-error coefficient",
+              ("6.455", 389): "Trudgian Thm. 2, the exponent's denominator",
+              ("6.455", 393): "the same constant, in the deduction v2's V14a checks",
+              ("1.25506", 376): "Rosser-Schoenfeld (3.6), the Chebyshev coefficient"}
     q1ok, q1d = True, []
     for (t, ln), why in QUOTED.items():
         p = at(lines, t, ln)
@@ -1217,9 +1221,9 @@ def main() -> int:
     # them as ordinary decimals, so they must be accounted for; they are locators and not quantities,
     # which is the category this clause declares.  The declaration is checked rather than asserted:
     # each must sit in a subsection that cites the work it locates.
-    BODYLOC = {("3.1", 283): "BradyThesis", ("4.1", 283): "BradyThesis",
-               ("7.1", 283): "BradyThesis", ("4.2", 284): "BradyThesis",
-               ("8.1", 284): "BradyThesis", ("8.2", 285): "BradyThesis"}
+    BODYLOC = {("3.1", 284): "BradyThesis", ("4.1", 284): "BradyThesis",
+               ("7.1", 284): "BradyThesis", ("4.2", 285): "BradyThesis",
+               ("8.1", 285): "BradyThesis", ("8.2", 286): "BradyThesis"}
     bibtext = raw[raw.index("\\begin{thebibliography}"):] if "\\begin{thebibliography}" in raw else ""
     btoks = PAT.findall(body)
     y1ok, y1d = bool(bibtext), []

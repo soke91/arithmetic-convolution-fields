@@ -9,15 +9,15 @@
   "paper_files": [
     {
       "path": "P7-parity-separation-tends-to-zero.tex",
-      "sha256": "674cd469b208b6bc038141fb540f4bea2bf7c0cee53aff3a1d948928109e365e",
+      "sha256": "a1c127d1df609af43fe824759b8ee3ee325350830da267afa7eeea11f112dfe9",
       "imported_from": "generations/v3/paper/kappa_tends_to_zero.tex",
-      "source_commit": "46c2f5f (working tree; this revision is not yet committed)"
+      "source_commit": "51194d5 (working tree; this revision is not yet committed)"
     },
     {
       "path": "P7-parity-separation-tends-to-zero.pdf",
-      "sha256": "53f506de23c90b6ce17bfa52e106f046ad505a202b39fd294e25da8601c8d671",
+      "sha256": "b91589740685d776afdb567ed827a91906f6c3f807bfbab9abaeb13d2570cf7e",
       "imported_from": "pdflatex x3 of the .tex in ghcr.io/xu-cheng/texlive-small (errors 0, warnings 0, undefined 0, overfull 0, underfull 0, 23 pp.)",
-      "source_commit": "46c2f5f (working tree; this revision is not yet committed)"
+      "source_commit": "51194d5 (working tree; this revision is not yet committed)"
     }
   ],
   "env_files": [
@@ -485,7 +485,7 @@
       "kind": "code",
       "name": "pa_tex_constants_v3.py",
       "source": "generations/v3/code/pa_tex_constants_v3.py",
-      "sha256": "f1c2f661d9eec4155a39bff51791d66667f572904fb50a520a46503d405c2a71"
+      "sha256": "1b04c986410c6ffd62bcb68d4feae20a1f675324ba2c4d0f4d291a494579bada"
     },
     {
       "kind": "results",
@@ -617,13 +617,13 @@
       "kind": "results",
       "name": "pa_tex_constants_v3.txt",
       "source": "generations/v3/results/pa_tex_constants_v3.txt",
-      "sha256": "cd75522574bf85dfd171031fff57decfaed26a3d54bbbb018cc10a51800273f9"
+      "sha256": "41f4db19beb1a25258eb63075a7608bc052ce165ecc5bee5778f9cac5b63c176"
     },
     {
       "kind": "results",
       "name": "pa_tex_constants_v3.json",
       "source": "generations/v3/results/pa_tex_constants_v3.json",
-      "sha256": "0dfdb879abc455f812e5b9d2b87535aeb9585621cd43a448503d0269509e45e2"
+      "sha256": "3f85a43e984c23dbf0cc23687847821ac5dcec15d95f55c9a9c56b4e6131fc1f"
     },
     {
       "kind": "results",
