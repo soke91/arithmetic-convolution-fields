@@ -1,0 +1,541 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\e}[1]{\mathbf{e}\!\left(#1\right)}
+\newcommand{\Smu}{S_{\mu}}
+\newcommand{\Suv}{S_{u,v}}
+\newcommand{\lcm}[1]{[#1]}
+\newcommand{\taustar}{\tau^{*}}
+
+\emergencystretch=4em
+\setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
+\setlength{\abovedisplayshortskip}{3pt plus 1pt}
+\setlength{\belowdisplayshortskip}{3pt plus 1pt}
+
+\title{A ternary M\"obius sum with one short variable}
+\author{Youngrok Lee\\
+\small Independent researcher, Republic of Korea\\ \small ORCID \href{https://orcid.org/0009-0005-0409-5267}{0009-0005-0409-5267}\\
+\small \href{mailto:come@live.co.kr}{\texttt{come@live.co.kr}}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For integers $N\ge 3$ and $2\le H\le N$ and complex weights $u,v$ with
+$\|u\|_\infty,\|v\|_\infty\le1$ let
+$\Suv(H,N)=\sum_{n_1+n_2+n_3=N,\,n_3\le H}u_{n_1}v_{n_2}\mu(n_1n_2n_3)$, the sum over ordered triples
+of positive integers, and let $\Smu$ be its case $u=v=1$. Banks and Shparlinski proved
+$\Suv(H,N)\ll_{\eps,C}NH(\log N)^{-C}$ for every $C>0$ in the range $H\ge\exp((\log N)^{\eps})$, and
+asked how small $H$ may be taken. We prove that for every $A>0$ there is a constant $K(A)$ with
+\[
+  |\Suv(H,N)|\ \le\ K(A)\,NH(\log H)^{-A}+c_1\,\frac{N\log N}{\log\log N}
+\]
+for all $2\le H\le N$ and all such $u,v$, where $c_1$ is absolute, so that $\Suv(H,N)=o(NH)$ whenever
+$H\log\log N/\log N\to\infty$. For all $N\le x$ outside $O(x/\log x)$ exceptions the second term
+improves to $N\log\log x$, and then $H/\log\log x\to\infty$ suffices. The proof truncates the
+decomposition over the common divisor $e$ of $n_1$ and $n_2$, using that the equation forces
+$n_3\equiv N\pmod e$. The analytic input is Davenport's 1937 bound for
+$\sum_{n\le x}\mu(n)\e{\alpha n}$, uniform in $\alpha$.
+\end{abstract}
+
+\noindent\textit{2020 Mathematics Subject Classification:} 11N37 (primary); 11L07, 11P32 (secondary).\\
+\textit{Keywords:} M\"obius function; additive problems; short variables; exponential sums.
+
+\section{Introduction}\label{sec:intro}
+
+For integers $N\ge 3$ and $2\le H\le N$ and complex weights $u=\{u_n\}$, $v=\{v_n\}$ with
+$\|u\|_\infty,\|v\|_\infty\le1$ put
+\begin{equation}\label{eq:S}
+  \Suv(H,N)\ =\ \sum_{\substack{n_1+n_2+n_3=N\\ n_3\le H}}u_{n_1}v_{n_2}\,\mu(n_1n_2n_3),
+  \qquad \Smu(H,N)=\Suv(H,N)\big|_{u=v=1},
+\end{equation}
+the sums taken over ordered triples of positive integers; this is the generality of
+\cite[Thm.~2.1]{BS} at $f=g=\wp=\mathrm{id}$. The number of triples is of order $NH$, and
+$|\Suv(H,N)|\le NH$ is the trivial bound.
+
+Banks and Shparlinski \cite[(1.3)]{BS} introduced $\Smu(H,N)$ as a M\"obius analogue of the ternary
+Goldbach problem with one variable restricted to a short range, and asked how short that range may be:
+``it is natural to seek nontrivial bounds for $S_\mu(H,N)$ when $H$ is as small as possible relative
+to $N$'' \cite[\S7.6]{BS}. Their unconditional answer, obtained from their general bilinear theorem,
+is that for a fixed $\eps>0$ and every $C>0$,
+\begin{equation}\label{eq:BS}
+  \Smu(H,N)\ \ll_{\eps,C}\ NH(\log H)^{-C/\eps}\ \le\ NH(\log N)^{-C}
+  \qquad\bigl(H\ge\exp((\log N)^{\eps})\bigr).
+\end{equation}
+At the opposite end, $H=1$ reduces $\Smu(H,N)$ to a sum over pairs, which Banks and Shparlinski
+describe as a variant of Chowla's problem and out of reach of current methods \cite[\S7.6]{BS}. For
+the von Mangoldt function in place of $\mu$ the corresponding sum is positive for sufficiently large
+odd $N$ once $H\ge N^{11/400+\eps}$ \cite{Cai}, and once $H\ge N^{11/420}$
+\cite[Thm.~7.3]{Li}.
+
+\begin{theorem}\label{thm:main}
+There is an absolute constant $c_1$ with the following property. For every $A>0$ there is a constant
+$K(A)$ such that
+\begin{equation}\label{eq:main}
+  |\Suv(H,N)|\ \le\ K(A)\,NH(\log H)^{-A}+c_1\,\frac{N\log N}{\log\log N}
+\end{equation}
+for every integer $N\ge 3$, every integer $H$ with $2\le H\le N$, and all $u,v$ as above.
+\end{theorem}
+
+Every constant in the proof is effective apart from $K(A)$, which inherits the constant of Davenport's
+theorem.
+
+\begin{corollary}\label{cor:ranges}
+\begin{enumerate}
+\item[\textup{(a)}] If $A>0$ and $\eta>0$ are fixed and $(\log N)^{1+\eta}\le H\le N$, then
+  $|\Suv(H,N)|\ll_{A,\eta}NH(\log\log N)^{-A}$.
+\item[\textup{(b)}] $\Suv(H,N)=o(NH)$, uniformly in $u$ and $v$, as $H\log\log N/\log N\to\infty$
+  with $H\le N$.
+\item[\textup{(c)}] Theorem \ref{thm:main} contains \eqref{eq:BS}, for fixed $\eps>0$ and every
+  $C>0$, throughout $\exp((\log N)^{\eps})\le H\le N$.
+\end{enumerate}
+\end{corollary}
+
+Part (b) covers $H$ of order $\log N$, and $H$ down to $(\log N)/(\log\log N)^{1-\delta}$ for any
+fixed $\delta>0$.
+
+\begin{corollary}\label{cor:aa}
+There is an absolute constant $c_2$ with the following property. Let $A>0$, let $x\ge16$ and let
+$H\ge2$ be an integer, and let $K(A)$ be the constant obtained in the proof of
+Theorem \ref{thm:main}. For every integer $N$ with $\max(H,3)\le N\le x$, apart from $O(x/\log x)$
+exceptions depending on $x$ and $H$ alone,
+\begin{equation}\label{eq:aa}
+  |\Suv(H,N)|\ \le\ K(A)\,NH(\log H)^{-A}+c_2\,N\log\log x
+\end{equation}
+for all $u,v$ as above. If $H=H(x)$ with $H/\log\log x\to\infty$, then $\Suv(H,N)=o(NH)$ as
+$x\to\infty$, uniformly in those $N$ and in $u,v$.
+\end{corollary}
+
+The restriction $H\ge\exp((\log N)^{\eps})$ in \eqref{eq:BS} comes from the sum over the common
+divisor of $n_1$ and $n_2$. That sum contributes a factor $\log\max\{A,B\}$ to the bound for their
+$K(d_1,d_2)$ preceding \cite[(4.6)]{BS}, which is $\log N$ in the present application, and the
+hypothesis of \cite[Thm.~2.1]{BS} converts the factor into a power of $\log H$. Writing
+$\mu(n_1n_2)=\mu(n_1)\mu(n_2)\sum_{e\mid(n_1,n_2)}\mu(e)$, the available bound for the $e$-th term
+decays like $1/e$ and the sum runs to $N$. If the decomposition over $e$ is performed first, the
+conditions $e\mid n_1$ and $e\mid n_2$ combine with $n_1+n_2+n_3=N$ to give $n_3\equiv N\pmod e$, so
+the short variable is restricted as well; the $e$-th term then involves at most $(H/e+1)(N/e)$
+triples. The tail beyond $E$ contributes $O(NH/E)$ from $e\le H$ and, from $e>H$, a quantity measured
+by the number of divisors of the integers $N-n_3$ with $n_3\le H$. The analytic argument is applied
+only to $e\le E$, where the loss is a power of $\log E$. In the generality of \cite[Thm.~2.1]{BS} the
+two long variables enter through arbitrary injections and the third through a bracket polynomial, so
+$e\mid n_1$ and $e\mid n_2$ restrict no other variable, only one factor $1/e$ is available, and the
+counting bound for the tail of the $e$-sum gives no saving there. The treatment of the
+terms with $e\le E$, including the second inclusion--exclusion and its truncation, follows
+\cite[\S4]{BS}.
+
+\section{Notation and inputs}\label{sec:notation}
+
+Throughout, $p$ is a prime, $\mu$, $\tau$ and $\omega$ are the M\"obius function, the divisor function
+and the number of distinct prime factors, $(m,n)$ is the greatest common divisor and $\lcm{m,n}$ the
+least common multiple, and $\e{x}=e^{2\pi ix}$. For a weight $w=\{w_n\}$ with $\|w\|_\infty\le1$, for
+$q\ge 1$ and $\alpha\in\mathbb R$ set
+\begin{equation}\label{eq:gens}
+  A_q(w;\alpha)=\sum_{\substack{n\le N\\ q\mid n}}w_n\mu(n)\e{\alpha n},
+  \qquad
+  \Psi_d(\alpha)=\sum_{\substack{m\le H\\ d\mid m}}\mu(m)\e{\alpha m},
+\end{equation}
+and, for $e\ge 1$ and $d\ge1$,
+\begin{equation}\label{eq:Phi}
+  \Phi_{e,d}(\alpha)=\sum_{\substack{n_1,n_2\le N\\ e\mid n_1,\ e\mid n_2\\ d\mid n_1n_2}}
+  u_{n_1}v_{n_2}\mu(n_1)\mu(n_2)\e{\alpha(n_1+n_2)}.
+\end{equation}
+
+\begin{lemma}\label{lem:dav}
+For every $C>0$ there is a constant $c(C)$ such that, for $H\ge3$,
+\[
+  \sup_{\alpha\in\mathbb R}\ \max_{r\ge1,\ a\in\mathbb Z}\
+  \Bigl|\sum_{m\le H,\ m\equiv a\,(r)}\mu(m)\e{\alpha m}\Bigr|\ \le\ c(C)\,H(\log H)^{-C} ;
+\]
+the case $(a,r)=(0,d)$ is $\Psi_d$.
+\end{lemma}
+
+\begin{proof}
+Davenport \cite{Dav} proved
+$\sup_{\beta\in\mathbb R}\bigl|\sum_{m\le x}\mu(m)\e{\beta m}\bigr|\ll_C x(\log x)^{-C}$ for $x\ge3$
+and every $C>0$; see also \cite[Thm.~13.10]{IK}. Detecting $m\equiv a\pmod r$ by additive characters
+modulo $r$, the sum above equals
+\[
+  \frac1r\sum_{j\bmod r}\e{-ja/r}\ \sum_{m\le H}\mu(m)\e{(\alpha+j/r)m},
+\]
+and each inner sum is $O_C(H(\log H)^{-C})$ by Davenport's bound, uniformly in $\alpha$ and $j$.
+\end{proof}
+
+The same statement for a bracket polynomial in place of the linear phase is \cite[Lem.~3.1]{BS}, with
+\cite[Rem.~3.2]{BS} recording the independence of the implied constant from the progression.
+
+\begin{lemma}\label{lem:tau}
+Let $k\ge1$ be an integer and write $\ell=\log x$. For $x\ge 2$,
+\[
+  \sum_{n\le x}\tau(n)^{k}\ll_k x\ell^{2^{k}-1},\qquad
+  \sum_{n\le x}\tau(n)^{k}n^{-1}\ll_k \ell^{2^{k}},\qquad
+  \sum_{n\le x}\tau(n)^{k}n^{-1/2}\ll_k x^{1/2}\ell^{2^{k}-1},
+\]
+\[
+  \sum_{n>x}\tau(n)^{k}n^{-3/2}\ll_k x^{-1/2}\ell^{2^{k}-1}.
+\]
+\end{lemma}
+
+\begin{proof}
+The first estimate is \cite[(1.81)]{IK}; the others follow from it by partial summation, the last two
+as in \cite[(3.11), (3.12)]{BS}.
+\end{proof}
+
+\begin{lemma}\label{lem:taustar}
+Put $\taustar(N)=\max_{1\le m<N}\tau(m)$. There is an absolute effective constant $c_0$ such that
+\begin{equation}\label{eq:taustar}
+  \log\taustar(N)\ \le\ c_0\,\frac{\log N}{\log\log N}\qquad(N\ge3).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Nicolas and Robin \cite{NR} give an explicit constant $c$ with
+$\log\tau(m)\le c\,(\log m)/(\log\log m)$ for every $m\ge3$. For $16\le m<N$ the right side is at most
+$c\,(\log N)/(\log\log N)$, since $t\mapsto(\log t)/(\log\log t)$ increases for $t\ge e^{e}$; and for
+$m<16$ one has $\tau(m)\le6$ while $(\log N)/(\log\log N)\ge e$ for $N\ge3$. So \eqref{eq:taustar}
+holds with $c_0=\max(c,1)$.
+\end{proof}
+
+We also use, for squarefree $e$, $x\ge3$ and $r\ge1$,
+\begin{align}
+  \label{eq:omegasum}
+  \sum_{t\mid e}\tau(t)&=3^{\omega(e)},\qquad
+  \sum_{t\mid e}\tau(t)^{2}=5^{\omega(e)},\qquad
+  \sum_{t\mid e}t\,\tau(t)=\prod_{p\mid e}(1+2p)\le 3^{\omega(e)}e,\\
+  \label{eq:mertens}
+  \sum_{e\le x}\mu^{2}(e)\,r^{\omega(e)}e^{-1}&\le\prod_{p\le x}\Bigl(1+\frac rp\Bigr)
+  \ \ll_r\ (\log x)^{r},
+\end{align}
+the second line being Mertens' theorem.
+
+\section{The decomposition and its tail}\label{sec:decomp}
+
+\begin{lemma}\label{lem:decomp}
+For $e\ge1$ put
+\begin{equation}\label{eq:W}
+  W(e)=\sum_{\substack{n_1+n_2+n_3=N\\ n_3\le H\\ e\mid n_1,\ e\mid n_2}}
+  u_{n_1}v_{n_2}\mu(n_1)\mu(n_2)\mu(n_3)\bigl[(n_1n_2,n_3)=1\bigr],
+\end{equation}
+where $[\,\cdot\,]$ is $1$ if the condition holds and $0$ otherwise. Then
+$\Suv(H,N)=\sum_{e\le N}\mu(e)W(e)$.
+\end{lemma}
+
+\begin{proof}
+For positive integers $n_1,n_2,n_3$,
+\begin{equation}\label{eq:fact}
+  \mu(n_1n_2n_3)=\mu(n_1)\mu(n_2)\mu(n_3)\bigl[(n_1,n_2)=1\bigr]\bigl[(n_1n_2,n_3)=1\bigr].
+\end{equation}
+If two of the three share a prime factor then $n_1n_2n_3$ is not squarefree and both sides vanish;
+otherwise $n_1$, $n_2$, $n_3$ are pairwise coprime and \eqref{eq:fact} is multiplicativity.
+Multiply \eqref{eq:fact} by $u_{n_1}v_{n_2}$, insert
+$[(n_1,n_2)=1]=\sum_{e\mid(n_1,n_2)}\mu(e)$ and exchange the two finite sums; since $n_1\le N$, only
+$e\le N$ occurs.
+\end{proof}
+
+\begin{lemma}\label{lem:tail}
+For every $e\ge1$,
+\begin{equation}\label{eq:T1}
+  |W(e)|\ \le\ \Bigl(\Bigl\lfloor\frac He\Bigr\rfloor+1\Bigr)\Bigl\lfloor\frac Ne\Bigr\rfloor,
+\end{equation}
+and, with
+\begin{equation}\label{eq:X}
+  X_N=\sum_{1\le n_3\le H}\tau(N-n_3)\quad(\tau(m)=0\ \text{for}\ m\le0),
+  \qquad\text{so that}\quad H\le X_N\le H\taustar(N),
+\end{equation}
+for every integer $E\ge1$,
+\begin{equation}\label{eq:T2}
+  \sum_{E<e\le N}|W(e)|\ \le\ \frac{2NH}{E}+N\log\frac{X_N}{H}+N.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If $e\mid n_1$, $e\mid n_2$ and $n_1+n_2+n_3=N$ then $n_3\equiv N\pmod e$, so $n_3$ takes at most
+$\lfloor H/e\rfloor+1$ values in $[1,H]$. For each of them $n_1$ runs through multiples of $e$ in
+$[1,N]$, at most $\lfloor N/e\rfloor$ values, and $n_2=N-n_3-n_1$ is determined. Every summand in
+\eqref{eq:W} has modulus at most $1$, which gives \eqref{eq:T1}.
+
+The upper bound in \eqref{eq:X} holds because $\tau(N-n_3)\le\taustar(N)$ for $n_3<N$, and the lower
+bound because each such term is at least $1$, the case $H=N$ giving
+$X_N=\sum_{m<N}\tau(m)\ge2N-3\ge N$. Write $X=X_N$ and split the range of \eqref{eq:T2} at $H$ and at
+$X$, any of the three parts being possibly empty. If
+$E<e\le H$ then $\lfloor H/e\rfloor+1\le 2H/e$, so by \eqref{eq:T1} the $e$-th term is at most
+$2NH/e^{2}$, and $\sum_{e>E}2NH/e^{2}\le 2NH/E$ because $E$ is an integer. If $H<e\le X$ then
+$\lfloor H/e\rfloor=0$ and \eqref{eq:T1} gives $|W(e)|\le N/e$, so these $e$ contribute at most
+$N\sum_{H<e\le X}1/e\le N\log(X/H)$. Finally let $e>X$. A triple counted in \eqref{eq:W} has
+$n_1+n_2=N-n_3\ge2$ with $e\mid n_1$ and $e\mid n_2$, so $e\mid N-n_3$; hence $W(e)=0$ unless $e$
+divides one of the integers $N-n_3$ with $n_3\le H$ and $n_3<N$, and
+$|W(e)|\le N/e<N/X$ otherwise. The number of pairs $(n_3,e)$ with $n_3\le H$, $n_3<N$ and
+$e\mid N-n_3$ is $X$, so the third part contributes at most $X\cdot N/X=N$.
+\end{proof}
+
+\begin{remark}\label{rem:dyadic}
+Counting the divisors $e>H$ of \eqref{eq:T2} dyadically with $Y_j=2^{j}H$ gives
+\[
+  \sum_{H<e\le N}|W(e)|\ \le\ N\sum_{j\ge0}\min\Bigl(1,\
+  \frac1{Y_j}\sum_{n_3\le H,\ n_3<N}\#\{e\mid N-n_3:\ Y_j<e\le 2Y_j\}\Bigr),
+\]
+since a block holds at most $Y_j$ integers and $|W(e)|\le N/Y_j$ on it. The first entry for
+$Y_j\le X_N$ and the second above it recover \eqref{eq:T2} up to a constant; using
+$|W(e)|\le N/e$ directly instead gives only $N\sum_{H<e\le N}e^{-1}\le N\log(N/H)$.
+\end{remark}
+
+\section{The bilinear factor and the large divisors}\label{sec:bilinear}
+
+\begin{lemma}\label{lem:L1}
+Let $e\ge1$ and let $d\ge1$ be squarefree. Then
+\[
+  \int_0^1|\Phi_{e,d}(\alpha)|\,d\alpha\ \le\ \tau(d)^{2}\,\frac{N\,(e,d)^{1/2}}{e\,d^{1/2}}.
+\]
+\end{lemma}
+
+\begin{proof}
+Let $n_1,n_2$ be positive integers. If $d\mid n_1n_2$, put $d_1=\prod_{p\mid d,\ p\mid n_1}p$ and
+$d_2=d/d_1$. Then $d=d_1d_2$ with $(d_1,d_2)=1$, and $d_1\mid n_1$ because $d$ is squarefree, while
+every prime of $d_2$ divides $n_2$ and not $n_1$, so $d_2\mid n_2$ and $(n_1,d_2)=1$. Conversely those
+conditions give $d\mid n_1n_2$ and recover the same pair $(d_1,d_2)$, since a prime of $d$ divides
+$n_1$ if and only if it divides $d_1$. Hence
+\begin{equation}\label{eq:canon}
+  \bigl[d\mid n_1n_2\bigr]=\sum_{\substack{d_1d_2=d\\ (d_1,d_2)=1}}
+  \bigl[d_1\mid n_1\bigr]\bigl[d_2\mid n_2\bigr]\bigl[(n_1,d_2)=1\bigr].
+\end{equation}
+Writing $[(n_1,d_2)=1]=\sum_{k\mid(n_1,d_2)}\mu(k)$ and inserting \eqref{eq:canon} into
+\eqref{eq:Phi}, the conditions on $n_1$ become $\lcm{e,d_1,k}\mid n_1$ and those on $n_2$ become
+$\lcm{e,d_2}\mid n_2$, so that
+\[
+  \Phi_{e,d}(\alpha)=\sum_{\substack{d_1d_2=d\\ (d_1,d_2)=1}}\ \sum_{k\mid d_2}\mu(k)\,
+  A_{\lcm{e,d_1,k}}(u;\alpha)\,A_{\lcm{e,d_2}}(v;\alpha).
+\]
+By Cauchy--Schwarz and Parseval, for any $q_1,q_2\ge1$ and any weights $w,w'$ bounded by $1$,
+\[
+  \int_0^1|A_{q_1}(w;\cdot)A_{q_2}(w';\cdot)|\,d\alpha\le\|A_{q_1}(w;\cdot)\|_2\|A_{q_2}(w';\cdot)\|_2,
+  \qquad \|A_q(w;\cdot)\|_2^{2}=\sum_{\substack{n\le N\\ q\mid n}}|w_n|^{2}\mu^{2}(n)\le\frac Nq,
+\]
+so each term contributes at most $N(q_1q_2)^{-1/2}$ with $q_1=\lcm{e,d_1,k}$ and $q_2=\lcm{e,d_2}$.
+Since $(d_1,d_2)=1$ and $d$ is squarefree, $(e,d_1)(e,d_2)=(e,d)$, whence
+\[
+  q_1q_2\ \ge\ \lcm{e,d_1}\lcm{e,d_2}=\frac{e^{2}d_1d_2}{(e,d_1)(e,d_2)}=\frac{e^{2}d}{(e,d)}.
+\]
+There are at most $\tau(d)$ factorisations $d=d_1d_2$ and at most $\tau(d)$ values of $k$.
+\end{proof}
+
+\begin{lemma}\label{lem:larged}
+Let $e\ge1$, let $d\ge1$ be squarefree, and put
+\begin{equation}\label{eq:I}
+  I(e,d)=\sum_{\substack{n_1+n_2+n_3=N,\ n_3\le H\\ d\mid n_3,\ d\mid n_1n_2\\ e\mid n_1,\ e\mid n_2}}
+  u_{n_1}v_{n_2}\mu(n_1)\mu(n_2)\mu(n_3).
+\end{equation}
+Then
+\[
+  |I(e,d)|\ \le\ \tau(d)\Bigl(\frac{H(d,e)}{de}+1\Bigr)\Bigl(\frac{N(e,d)}{e\,d^{1/2}}+1\Bigr).
+\]
+\end{lemma}
+
+\begin{proof}
+Every summand in \eqref{eq:I} has modulus at most $1$, so it is enough to count the triples.
+As in Lemma \ref{lem:tail}, $n_3\equiv N\pmod e$; with $d\mid n_3$ this confines $n_3$ to a single
+residue class modulo $\lcm{d,e}=de/(d,e)$ when $(d,e)\mid N$, and admits no $n_3$ otherwise. So $n_3$
+takes at most $H(d,e)/(de)+1$ values in $[1,H]$.
+
+Fix such an $n_3$ and let $d=d_1d_2$ be the factorisation of \eqref{eq:canon} attached to the pair
+$(n_1,n_2)$; there are at most $\tau(d)$ possibilities for it, and we bound the number of $n_1$ for
+each. Put $d_0=\max(d_1,d_2)\ge d^{1/2}$. If $d_0=d_1$ then $d_0\mid n_1$, and if $d_0=d_2$ then
+$d_0\mid n_2=N-n_3-n_1$, so that $n_1\equiv N-n_3\pmod{d_0}$. In either case $n_1$ lies in one
+residue class modulo $d_0$ and in one modulo $e$, hence in at most
+$N(e,d_0)/(ed_0)+1\le N(e,d)/(ed^{1/2})+1$ values of $[1,N]$, since $d_0\mid d$ and $d_0\ge d^{1/2}$;
+and $n_2$ is then determined.
+\end{proof}
+
+\section{Proofs of Theorem \ref{thm:main} and Corollaries \ref{cor:ranges}, \ref{cor:aa}}\label{sec:proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:main}]
+Fix $A>0$ and set
+\begin{equation}\label{eq:param}
+  C=2A+4,\qquad E=\bigl\lceil(\log H)^{A+1}\bigr\rceil,\qquad D=\bigl\lceil(\log H)^{2A+6}\bigr\rceil.
+\end{equation}
+Let $H_1(A)$ and $N_1(A)$ be effective thresholds, at our disposal, and assume $H\ge H_1(A)$ and
+$N\ge N_1(A)$; taking $H_1(A)$ large, we also have $2E\le D\le H$. For $2\le H<H_1(A)$ the trivial bound gives
+$|\Suv(H,N)|\le NH\le(\log H_1(A))^{A}\,NH(\log H)^{-A}$, and the range $N<N_1(A)$ is covered the same
+way, so both are absorbed by enlarging $K(A)$. By Lemma \ref{lem:decomp} and
+Lemma \ref{lem:tail}, and since $|\mu(e)|\le1$ with $\mu(e)=0$ unless $e$ is squarefree,
+\begin{equation}\label{eq:split}
+  |\Suv(H,N)|\ \le\ \sum_{\substack{e\le E\\ \mu^{2}(e)=1}}|W(e)|
+  \ +\ \frac{2NH}{E}+N\log\frac{X_N}{H}+N.
+\end{equation}
+
+Fix a squarefree $e\le E$. Since $d\mid n_3\le H$, inserting
+$[(n_1n_2,n_3)=1]=\sum_{d\mid(n_1n_2,n_3)}\mu(d)$ into \eqref{eq:W} gives
+$W(e)=\sum_{d\le H}\mu(d)I(e,d)$, with $I(e,d)$ as in \eqref{eq:I} and only squarefree $d$
+contributing. By orthogonality,
+\begin{equation}\label{eq:orth}
+  I(e,d)=\int_0^1\Phi_{e,d}(\alpha)\Psi_d(\alpha)\e{-\alpha N}\,d\alpha ,
+\end{equation}
+the integral selecting from the ranges in \eqref{eq:gens} and \eqref{eq:Phi} the triples with
+$n_1+n_2+n_3=N$.
+
+\emph{Divisors $d\le D$.} By \eqref{eq:orth}, Lemma \ref{lem:dav} and Lemma \ref{lem:L1},
+\[
+  \sum_{\substack{d\le D\\ \mu^{2}(d)=1}}|I(e,d)|\ \le\ c(C)H(\log H)^{-C}\cdot\frac Ne\cdot
+  \sum_{\substack{d\le D\\ \mu^{2}(d)=1}}\tau(d)^{2}(e,d)^{1/2}d^{-1/2}.
+\]
+Write $t=(e,d)$ and $d=td'$, and use $\tau(td')\le\tau(t)\tau(d')$ together with Lemma \ref{lem:tau}
+at $k=2$, which applies because $t\le e\le E\le2(\log H)^{A+1}$ and hence
+$D/t\ge(\log H)^{A+5}/2\ge2$:
+\[
+  \sum_{d\le D}\tau(d)^{2}(e,d)^{1/2}d^{-1/2}
+  \le\sum_{t\mid e}\tau(t)^{2}\sum_{d'\le D/t}\tau(d')^{2}d'^{-1/2}
+  \ \ll\ D^{1/2}(\log D)^{3}\sum_{t\mid e}\tau(t)^{2},
+\]
+which is $\ll 5^{\omega(e)}D^{1/2}(\log D)^{3}$ by \eqref{eq:omegasum}. Summing over $e$ and using
+\eqref{eq:mertens} with $r=5$,
+\begin{equation}\label{eq:smalld}
+  \sum_{\substack{e\le E\\ \mu^{2}(e)=1}}\ \sum_{\substack{d\le D\\ \mu^{2}(d)=1}}|I(e,d)|
+  \ \ll\ c(C)\,NH(\log H)^{-C}D^{1/2}(\log D)^{3}(\log E)^{5}.
+\end{equation}
+
+\emph{Divisors $d>D$.} Expand the product in Lemma \ref{lem:larged} into four terms. With $t=(e,d)$
+as above, and with $D/t$ and $H/t$ again at least $2$, Lemma \ref{lem:tau} at $k=1$ and
+\eqref{eq:omegasum} give
+\begin{align*}
+  \sum_{d>D}\tau(d)(e,d)^{2}d^{-3/2}
+    &\le\sum_{t\mid e}t^{1/2}\tau(t)\sum_{d'>D/t}\tau(d')d'^{-3/2}
+     \ \ll\ 3^{\omega(e)}e\,D^{-1/2}\log D,\\
+  \sum_{d\le H}\tau(d)(e,d)d^{-1/2}&\ \ll\ 3^{\omega(e)}H^{1/2}\log H,\\
+  \sum_{d\le H}\tau(d)(e,d)d^{-1}&\ \ll\ 3^{\omega(e)}(\log H)^{2},\qquad
+  \sum_{d\le H}\tau(d)\ \ll\ H\log H.
+\end{align*}
+Multiplying by the prefactors $NH/e^{2}$, $N/e$, $H/e$ and $1$ of the four terms and summing over
+squarefree $e\le E$ with \eqref{eq:mertens} at $r=3$,
+\begin{multline}\label{eq:larged}
+  \sum_{\substack{e\le E\\ \mu^{2}(e)=1}}\ \sum_{\substack{D<d\le H\\ \mu^{2}(d)=1}}|I(e,d)|\\
+  \ll\ NHD^{-1/2}(\log D)(\log E)^{3}+NH^{1/2}(\log H)(\log E)^{3}
+   +H(\log H)^{2}(\log E)^{3}+EH\log H .
+\end{multline}
+
+\emph{Collecting.} Insert \eqref{eq:smalld} and \eqref{eq:larged} into \eqref{eq:split} and use
+\eqref{eq:param}. By $X_N\le H\taustar(N)$, \eqref{eq:taustar} and $(\log N)/(\log\log N)\ge e$, the
+terms of \eqref{eq:split} other than the sum are at most
+$2NH(\log H)^{-A-1}+(c_0+1)N(\log N)/(\log\log N)$. In \eqref{eq:smalld},
+$D^{1/2}\le 2(\log H)^{A+3}$ and $C=2A+4$ leave $\ll c(C)NH(\log H)^{-A-1}(\log\log H)^{8}$, which is
+$\ll c(C)NH(\log H)^{-A}$ once $(\log\log H)^{8}\le\log H$. In \eqref{eq:larged} the first term is
+$\ll NH(\log H)^{-A-3}(\log\log H)^{4}$; the second is $\ll NH(\log H)^{-A}$ once
+$H^{1/2}\ge(\log H)^{A+1}(\log\log H)^{4}$; and the last two are
+$\ll H(\log H)^{A+2}(\log\log H)^{3}$, which is $\ll NH(\log H)^{-A}$ because
+$(\log H)^{2A+2}(\log\log H)^{3}$ is at most $(\log N)^{2A+2}(\log\log N)^{3}$, and that is $\le N$
+for $N\ge N_1(A)$. Each condition here involves $A$ alone, which fixes $H_1(A)$ and $N_1(A)$, and
+every implied constant depends on $A$ only.
+\end{proof}
+
+\begin{remark}\label{rem:weights}
+The weights enter only through $|u|,|v|\le1$, in the counting bounds \eqref{eq:T1} and
+Lemma \ref{lem:larged} and in Parseval's identity for \eqref{eq:gens}. The bound also holds with
+$n_3$ confined to a progression $n_3\equiv a\pmod q$, uniformly in $a$ and $q$: that congruence
+together with $d\mid n_3$ is one class modulo $\lcm{d,q}$ or none, so Lemma \ref{lem:dav} covers the
+resulting $\Psi_d$, while in \eqref{eq:T1}, \eqref{eq:T2} and Lemma \ref{lem:larged} it only reduces
+the number of admissible $n_3$.
+\end{remark}
+
+\begin{proof}[Proof of Corollary \ref{cor:ranges}]
+(a) Apply Theorem \ref{thm:main} with the same $A$. Here
+$(\log H)^{-A}\le\bigl((1+\eta)\log\log N\bigr)^{-A}$, while $N(\log N)/(\log\log N)\le
+NH(\log N)^{-\eta}$, which is $\le NH(\log\log N)^{-A}$ for $N$ large.
+
+(b) Put $\rho=H\log\log N/\log N$ and apply Theorem \ref{thm:main} with $A=1$, giving
+$K(1)NH(\log H)^{-1}+c_1N(\log N)/(\log\log N)$. The second summand is $c_1NH/\rho=o(NH)$. For the
+first, $H=\rho(\log N)/(\log\log N)\ge e\rho\to\infty$, since $(\log N)/(\log\log N)\ge e$ for
+$N\ge3$, so $(\log H)^{-1}\to0$.
+
+(c) Given $C>0$ apply Theorem \ref{thm:main} with $A=C/\eps$. Then
+$(\log H)^{-C/\eps}\le(\log N)^{-C}$, while
+$N(\log N)/(\log\log N)\le N\log N\le NH(\log H)^{-C/\eps}$ for $N$ large, because
+$t\mapsto t(\log t)^{-C/\eps}$ increases for $\log t\ge C/\eps$ and its value at
+$t=\exp((\log N)^{\eps})$ is $\exp((\log N)^{\eps})(\log N)^{-C}\ge\log N$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary \ref{cor:aa}]
+Let $\mathfrak E=\{N\le x:\ X_N>H(\log x)^{2}\}$. By \eqref{eq:X} and Lemma \ref{lem:tau} at $k=1$,
+\[
+  \sum_{N\le x}X_N=\sum_{n_3\le H}\ \sum_{N\le x}\tau(N-n_3)\ \le\ H\sum_{m\le x}\tau(m)
+  \ \ll\ Hx\log x ,
+\]
+so $|\mathfrak E|\ll x\log x/(\log x)^{2}=x/\log x$, with an absolute implied constant. For
+$N\notin\mathfrak E$ one has $\log(X_N/H)\le2\log\log x$, so the proof of Theorem \ref{thm:main}
+applies with $3N\log\log x$ in place of the last two terms of \eqref{eq:split}, using
+$\log\log x\ge1$; this gives \eqref{eq:aa}. If $H/\log\log x\to\infty$ then $H\to\infty$, and
+\eqref{eq:aa} reads $NH\bigl(K(A)(\log H)^{-A}+c_2(\log\log x)/H\bigr)$ with both summands tending to
+$0$.
+\end{proof}
+
+\section*{Formalisation}
+The exact finite steps---the factorisation \eqref{eq:fact},
+Lemma \ref{lem:decomp}, the bounds \eqref{eq:T1}, \eqref{eq:X} and \eqref{eq:T2} of Lemma
+\ref{lem:tail}, the splitting \eqref{eq:canon}, and the residue-class count behind Lemma
+\ref{lem:larged}---are verified in Lean 4 with mathlib, in
+\texttt{P10-short-variable-mobius/lean/} of the public repository
+\url{https://github.com/soke91/arithmetic-convolution-fields}. The analytic estimates and
+Theorem \ref{thm:main} itself are not formalised.
+
+\section*{Funding}
+No external funding was received for this research.
+
+\section*{Acknowledgements and AI use disclosure}
+Claude Opus 5.5 (Anthropic) and ChatGPT (OpenAI; GPT-6) were used in developing, checking
+and writing the mathematical arguments and in preparing the manuscript. The author directed
+the work, reviewed it, and takes responsibility for its contents.
+
+\section*{Declaration of competing interests}
+The author declares no competing interests.
+
+
+\begin{thebibliography}{9}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+
+\bibitem{BS}
+W.~D.~Banks and I.~E.~Shparlinski,
+\emph{Multiple sums with the M\"obius function},
+Quart. J. Math. \textbf{77} (2026), no.~1, 109--127, doi \texttt{10.1093/qmath/haaf049};
+\texttt{arXiv:2506.08787}. Statements and equations are numbered as in the arXiv version.
+
+\bibitem{Cai}
+Y.~Cai,
+\emph{A remark on the Goldbach--Vinogradov theorem},
+Funct. Approx. Comment. Math. \textbf{48} (2013), no.~1, 123--131.
+
+\bibitem{Dav}
+H.~Davenport,
+\emph{On some infinite series involving arithmetical functions (II)},
+Quart. J. Math. \textbf{8} (1937), 313--320.
+
+\bibitem{IK}
+H.~Iwaniec and E.~Kowalski,
+\emph{Analytic number theory},
+Amer. Math. Soc. Colloq. Publ., vol.~53, Amer. Math. Soc., Providence, RI, 2004.
+
+\bibitem{Li}
+R.~Li,
+\emph{Primes in almost all short intervals},
+preprint, \texttt{arXiv:2407.05651}.
+
+\bibitem{NR}
+J.-L.~Nicolas and G.~Robin,
+\emph{Majorations explicites pour le nombre de diviseurs de $N$},
+Canad. Math. Bull. \textbf{26} (1983), no.~4, 485--492.
+
+\end{thebibliography}
+
+\end{document}

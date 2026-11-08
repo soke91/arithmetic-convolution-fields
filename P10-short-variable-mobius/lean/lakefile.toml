@@ -1,0 +1,16 @@
+name = "short-variable-mobius"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["ShortVariableMobius"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "ShortVariableMobius"

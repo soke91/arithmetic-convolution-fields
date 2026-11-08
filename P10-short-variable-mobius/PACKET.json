@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "paper_id": "P10-short-variable-mobius",
+  "public_directory": "P10-short-variable-mobius",
+  "public_repository": "https://github.com/soke91/arithmetic-convolution-fields",
+  "source_snapshot": "1b948919c698e11824e1467f33f314c3e70f013b",
+  "paper_source": "P10-short-variable-mobius.tex",
+  "paper_pdf": "P10-short-variable-mobius.pdf",
+  "paper_files": [
+    {
+      "path": "P10-short-variable-mobius.tex",
+      "sha256": "58a0280dbc7a79158c0e1b01db19b9d8d87b2682a158047f2a5b5ca02f0401a1",
+      "imported_from": "generations/v3/paper/short_variable_mobius.tex; the manuscript is maintained in this directory and has been edited here since, so the projection source is the origin and not a copy",
+      "source_commit": "2c83c36"
+    },
+    {
+      "path": "P10-short-variable-mobius.pdf",
+      "sha256": "15c515b56aa369a152a3567e5f2a83b147f5559e6425035b463afe501683e5d5",
+      "imported_from": "pdflatex x3 of the .tex in ghcr.io/xu-cheng/texlive-small (errors 0, warnings 0, undefined 0, overfull 0, underfull 3, 8 pp.)",
+      "source_commit": "2c83c36"
+    }
+  ],
+  "projection_sources": [
+    "generations/v3/paper/short_variable_mobius.tex"
+  ],
+  "artifacts": [],
+  "formalization": {
+    "status": "library-in-packet",
+    "note": "A standalone Lean 4 / mathlib v4.33.1 project (lean/): 14 theorems on the exact finite steps of the proof -- the factorisation of mu(n1 n2 n3), the decomposition S = sum_{e<=N} mu(e) W(e) over the common divisor of n1 and n2, the counting bound on |W(e)|, the two bounds on X_N, the three-range split of the tail with the two finite-sum inequalities it rests on, the canonical splitting of a squarefree modulus across a product, and the two-residue-class count behind the large-divisor lemma. No sorry; axioms in lean/axioms.txt. The analytic estimates and the main theorem are not formalized, and lean/README.md states the boundary statement by statement.",
+    "files": [
+      {
+        "path": "lean/ShortVariableMobius.lean",
+        "source": "generations/v3/lean_p10/ShortVariableMobius.lean",
+        "sha256": "6cd8bb89b22045e34fe3e129ec1120974600f80287ee0bfb353979b10901962a"
+      },
+      {
+        "path": "lean/axioms.txt",
+        "source": "generations/v3/lean_p10/axioms.txt",
+        "sha256": "b666acaa14459bb5b4ef7bb38c151239f19ff85d82757c959fee14b89f49b516"
+      },
+      {
+        "path": "lean/lakefile.toml",
+        "source": "generations/v3/lean_p10/lakefile.toml",
+        "sha256": "57d17cc138a59d0d47eb593440083a942b2788fe6fa85670366b8bb74f72f45f"
+      },
+      {
+        "path": "lean/lean-toolchain",
+        "source": "generations/v3/lean_p10/lean-toolchain",
+        "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+      },
+      {
+        "path": "lean/lake-manifest.json",
+        "source": "generations/v3/lean_p10/lake-manifest.json",
+        "sha256": "9ecf46e16f8c90d72a7f468c105e155578b6ac3a01480137f75e074d6deb3535"
+      },
+      {
+        "path": "lean/README.md",
+        "source": "generations/v3/lean_p10/README.md",
+        "sha256": "5cd7b3dcf0d92294a8cf4850d2b317c282066a460c08cfa893aa2bc4e52d4afc"
+      }
+    ]
+  },
+  "generated_directories": [
+    "code",
+    "results"
+  ],
+  "editing_rule": "Edit the paper source here; edit the Lean development only at its artifact source, then run tools/packets.py build.",
+  "readme_reproduce": "This paper is a proof and carries no computation: it quotes no measured number, so\n`code/` and `results/` are empty and there is nothing to run there.\n\nWhat can be re-checked mechanically is the Lean 4 development in `lean/`, which formalizes the\npaper's exact finite steps. From that directory, with the toolchain `lean/lean-toolchain` names:\n\n```text\nlake exe cache get\nlake env lean ShortVariableMobius.lean\n```\n\nThe first command fetches mathlib's prebuilt library; the second elaborates the file and prints\nthe `#print axioms` block that `lean/axioms.txt` stores. A clean run reports no errors and no\nwarnings, and every theorem's axiom set is mathlib's standard `[propext, Classical.choice,\nQuot.sound]`; a `sorryAx` on any line would mean that statement is not proved.\n\n`lean/README.md` lists exactly which of the paper's statements are formalized. The analytic\nestimates -- Davenport's exponential-sum bound, the Cauchy-Schwarz and Parseval step for the\nbilinear factor, the divisor moments, the explicit bound on the largest divisor function, and\nthe asymptotic estimates that assemble the main theorem -- are not formalized, and neither is\nthe main theorem."
+}

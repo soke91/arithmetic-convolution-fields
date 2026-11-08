@@ -18,6 +18,7 @@ run, or moved on its own.
 | [`P1-mobius-fixed-class/`](P1-mobius-fixed-class/) | The Huang–Li reduction of Goldbach to Elliott–Halberstam does not decompose, with an unconditional bound for a Möbius-weighted correlation sum in fixed residue classes | not submitted |
 | [`P2-no-go-divisor-switch/`](P2-no-go-divisor-switch/) | No weight that Bombieri–Vinogradov reaches extracts the Möbius-twisted von Mangoldt correlation: a no-go for the divisor-switch route | not submitted |
 | [`P7-parity-separation-tends-to-zero/`](P7-parity-separation-tends-to-zero/) | The parity-separation constant of level-$Q$ divisor weights tends to zero | not submitted; release tag `P7-v1` |
+| [`P10-short-variable-mobius/`](P10-short-variable-mobius/) | A ternary Möbius sum with one short variable | not submitted; release tag `P10-v1` |
 
 **Why one paper has an `-r1` directory and the others do not.** The cell-mean
 paper is with a journal, and a paper under review has to stay citable as the

@@ -1,0 +1,26 @@
+# axioms.txt -- beside ShortVariableMobius.lean
+#
+# Output of the `#print axioms` block at the end of ShortVariableMobius.lean.
+# Produced by:  lake env lean --threads=4 ShortVariableMobius.lean   (run from this directory)
+# Toolchain leanprover/lean4:v4.33.1, mathlib rev v4.33.1, exit 0, no errors, no warnings.
+# Elaboration took about 25 s with mathlib already built and its library files in the page
+# cache; the first elaboration of a session, which loads mathlib from disk, took 6 min 54 s.
+#
+# NO theorem carries `sorryAx`.  Every line below is mathlib's standard axiom set
+# [propext, Classical.choice, Quot.sound].  A `sorryAx` anywhere would mean the statement on
+# that line is NOT proved.
+#
+'ShortVariableMobius.moebius_mul_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.card_le_of_const_mod' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.card_le_of_two_classes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.mem_triples' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.S_eq_sum_moebius_mul_W' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.card_filter_triples_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.norm_W_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.XN_le_mul_taustar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.le_XN' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.W_eq_zero_of_forall_not_dvd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.sum_inv_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.sum_inv_le_log_div' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.sum_norm_W_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ShortVariableMobius.canonical_split' depends on axioms: [propext, Classical.choice, Quot.sound]
